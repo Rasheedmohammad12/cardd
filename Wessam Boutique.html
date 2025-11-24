@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wessam Boutique - متجركم المفضل للأزياء</title>
+    <title>Wessam Boutique - الفخامة والأناقة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #8B4513;
-            --primary-light: #A0522D;
-            --primary-dark: #654321;
-            --accent: #D2691E;
-            --gold: #D4AF37;
-            --gradient: linear-gradient(135deg, #8B4513 0%, #654321 100%);
-            --gradient-accent: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
-            --light-bg: #FAF0E6;
+            --primary: #1a237e;
+            --primary-light: #303f9f;
+            --primary-dark: #0d1452;
+            --accent: #c2185b;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --gradient: linear-gradient(135deg, #1a237e 0%, #0d1452 100%);
+            --gradient-accent: linear-gradient(135deg, #1a237e 0%, #c2185b 100%);
+            --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            --light-bg: #f8f9fa;
             --light-card: #FFFFFF;
-            --dark-text: #2C1810;
-            --light-text: #5D4037;
-            --shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
-            --shadow-lg: 0 20px 40px rgba(139, 69, 19, 0.3);
-            --border: 1px solid #E8D5C4;
+            --dark-text: #1a1a1a;
+            --light-text: #5a5a5a;
+            --shadow: 0 10px 30px rgba(26, 35, 126, 0.15);
+            --shadow-lg: 0 20px 40px rgba(26, 35, 126, 0.25);
+            --border: 1px solid #e8eaf6;
         }
         
         * {
@@ -73,13 +75,44 @@
             background: var(--gradient);
         }
         
-        .cover-photo {
+        .cover-content {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: brightness(0.8) sepia(0.3) hue-rotate(-10deg);
-            mix-blend-mode: overlay;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .logo-container {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border: 5px solid var(--gold);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+        
+        .logo-text {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .cover-subtitle {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: var(--gold);
+            font-weight: 600;
         }
         
         .profile-info {
@@ -104,7 +137,13 @@
             object-fit: cover;
             box-shadow: var(--shadow-lg);
             display: block;
-            filter: brightness(1.1) contrast(1.1);
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: bold;
         }
         
         .verified-badge {
@@ -112,7 +151,7 @@
             bottom: 10px;
             right: 10px;
             background: var(--gold);
-            color: white;
+            color: var(--primary-dark);
             width: 30px;
             height: 30px;
             border-radius: 50%;
@@ -121,6 +160,7 @@
             justify-content: center;
             font-size: 0.8rem;
             border: 2px solid var(--light-card);
+            font-weight: bold;
         }
         
         .profile-name {
@@ -207,7 +247,7 @@
         }
         
         .highlight-box {
-            background: rgba(210, 105, 30, 0.1);
+            background: rgba(194, 24, 91, 0.1);
             padding: 25px;
             border-radius: 15px;
             margin: 25px 0;
@@ -221,89 +261,89 @@
             color: var(--accent);
         }
         
-        /* Products Slider Section */
+        /* Products Gallery Section */
         .products-section {
             background: var(--light-card);
             margin: 40px auto;
             padding: 40px;
             border-radius: 20px;
-            max-width: 900px;
+            max-width: 1200px;
             box-shadow: var(--shadow);
             border: var(--border);
-            position: relative;
         }
         
-        .slider-container {
-            position: relative;
-            margin: 30px 0;
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
         
-        .slider {
-            display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            gap: 20px;
-            padding: 10px 0;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        .slider::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .product-item {
-            min-width: 280px;
+        .product-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
             border: var(--border);
             transition: transform 0.3s ease;
+            position: relative;
         }
         
-        .product-item:hover {
+        .product-card:hover {
             transform: translateY(-5px);
         }
         
-        .product-item img {
+        .product-image {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 250px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
         
-        .product-item-content {
+        .product-content {
             padding: 20px;
         }
         
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            z-index: 10;
+        .product-brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
         }
         
-        .slider-btn:hover {
-            background: var(--primary);
-            transform: translateY(-50%) scale(1.1);
+        .product-code {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
         }
         
-        .slider-btn.prev {
-            right: -25px;
+        .product-sizes {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 10px 0;
         }
         
-        .slider-btn.next {
-            left: -25px;
+        .size-badge {
+            background: rgba(194, 24, 91, 0.1);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--accent);
+        }
+        
+        .product-info {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-top: 10px;
         }
         
         /* Services Section */
@@ -326,7 +366,7 @@
         }
         
         .service-card {
-            background: rgba(210, 105, 30, 0.1);
+            background: rgba(194, 24, 91, 0.1);
             padding: 30px 20px;
             border-radius: 15px;
             text-align: center;
@@ -337,7 +377,7 @@
         .service-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            background: rgba(210, 105, 30, 0.15);
+            background: rgba(194, 24, 91, 0.15);
         }
         
         .service-icon {
@@ -391,7 +431,7 @@
             align-items: center;
             gap: 15px;
             padding: 25px;
-            background: rgba(210, 105, 30, 0.1);
+            background: rgba(194, 24, 91, 0.1);
             border-radius: 15px;
             width: 220px;
             transition: all 0.3s ease;
@@ -401,7 +441,7 @@
         .contact-option:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            background: rgba(210, 105, 30, 0.15);
+            background: rgba(194, 24, 91, 0.15);
         }
         
         .contact-icon {
@@ -454,14 +494,14 @@
             gap: 15px;
             font-size: 1.1rem;
             padding: 15px;
-            background: rgba(210, 105, 30, 0.1);
+            background: rgba(194, 24, 91, 0.1);
             border-radius: 10px;
             transition: all 0.3s ease;
             color: var(--dark-text);
         }
         
         .contact-item:hover {
-            background: rgba(210, 105, 30, 0.2);
+            background: rgba(194, 24, 91, 0.2);
             transform: translateY(-2px);
         }
         
@@ -648,21 +688,16 @@
                 height: 300px;
             }
             
-            .slider-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+            .logo-container {
+                width: 150px;
+                height: 150px;
             }
             
-            .slider-btn.prev {
-                right: -20px;
+            .logo-text {
+                font-size: 2.5rem;
             }
             
-            .slider-btn.next {
-                left: -20px;
-            }
-            
-            .product-item {
+            .product-card {
                 min-width: 250px;
             }
             
@@ -675,6 +710,10 @@
                 flex-direction: column;
                 align-items: center;
             }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -682,15 +721,17 @@
     <!-- Header Section -->
     <header class="profile-header fade-in">
         <div class="cover-container">
-            <div style="width:100%;height:100%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;font-weight:bold;">
-                WESAM BOUTIQUE
+            <div class="cover-content">
+                <div class="logo-container">
+                    <div class="logo-text">WESAM</div>
+                </div>
+                <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Wessam Boutique</h1>
+                <div class="cover-subtitle">سام - لكل العائلة</div>
             </div>
         </div>
         <div class="profile-info">
             <div class="profile-image-container">
-                <div style="width:150px;height:150px;border-radius:20px;border:5px solid var(--light-card);background:var(--gradient-accent);display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:bold;box-shadow:var(--shadow-lg)">
-                    WB
-                </div>
+                <div class="profile-image">WB</div>
                 <div class="verified-badge">
                     <i class="fas fa-crown"></i>
                 </div>
@@ -721,59 +762,88 @@
         <div class="about-section fade-in delay-1">
             <h2 class="section-title">مرحباً بكم</h2>
             <div class="about-text">
-                وجهتكم المفضلة لأحدث صيحات الموضة والأزياء
+                وجهتكم المفضلة لأحدث صيحات الموضة والأزياء للعائلة
             </div>
             
             <div class="highlight-box">
                 <div class="highlight-title">عن المتجر</div>
                 <div class="about-text" style="text-align: center; direction: rtl;">
                     مرحبًا بكم في متجر وسام بوتيك 
-                    وجهتكم المفضلة لأحدث صيحات الموضة والأزياء.
+                    وجهتكم المفضلة لأحدث صيحات الموضة والأزياء للعائلة.
                     نقدم لكم تشكيلة مميزة من الملابس والإكسسوارات العصرية 
-                    التي تناسب جميع الأذواق والمناسبات.
+                    للكبار والصغار التي تناسب جميع الأذواق والمناسبات.
                     نسعى دائمًا لتقديم أفضل جودة وأحدث التصاميم 
                     مع خدمة عملاء متميزة وتوصيل سريع.
                 </div>
             </div>
         </div>
 
-        <!-- Products Slider Section -->
+        <!-- Products Gallery Section -->
         <div class="products-section fade-in delay-2">
-            <h2 class="section-title">منتجاتنا</h2>
-            <div class="slider-container">
-                <button class="slider-btn prev" onclick="scrollSlider(-1)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="slider-btn next" onclick="scrollSlider(1)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="slider" id="productsSlider">
-                    <div class="product-item">
-                        <div style="width:100%;height:200px;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:1.5rem;">
-                            فساتين سهرة
-                        </div>
-                        <div class="product-item-content">
-                            <h3>فساتين سهرة</h3>
-                            <p>أحدث موديلات فساتين السهرة</p>
-                        </div>
+            <h2 class="section-title">منتجاتنا المميزة</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #1a237e 0%, #c2185b 100%);">
+                        منتج فاخر
                     </div>
-                    <div class="product-item">
-                        <div style="width:100%;height:200px;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:1.5rem;">
-                            ملابس يومية
+                    <div class="product-content">
+                        <div class="product-brand">WESAM BOUTIQUE</div>
+                        <div class="product-code">CODE: GA25931</div>
+                        <div class="product-sizes">
+                            <span class="size-badge">38</span>
+                            <span class="size-badge">40</span>
+                            <span class="size-badge">42</span>
+                            <span class="size-badge">44</span>
                         </div>
-                        <div class="product-item-content">
-                            <h3>ملابس يومية</h3>
-                            <p>تشكيلة متنوعة للملابس اليومية</p>
-                        </div>
+                        <div class="product-info">منتج عالي الجودة - فاخر وأنيق</div>
                     </div>
-                    <div class="product-item">
-                        <div style="width:100%;height:200px;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:1.5rem;">
-                            إكسسوارات
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #303f9f 0%, #c2185b 100%);">
+                        MISS MERINA
+                    </div>
+                    <div class="product-content">
+                        <div class="product-brand">MISS MERINA</div>
+                        <div class="product-code">CODE: GA25922</div>
+                        <div class="product-sizes">
+                            <span class="size-badge">38</span>
+                            <span class="size-badge">40</span>
+                            <span class="size-badge">42</span>
                         </div>
-                        <div class="product-item-content">
-                            <h3>إكسسوارات</h3>
-                            <p>إكسسوارات عصرية ومميزة</p>
+                        <div class="product-info">Aligh Jazalion - تصميم أنيق</div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #0d1452 0%, #c2185b 100%);">
+                        Kids Story
+                    </div>
+                    <div class="product-content">
+                        <div class="product-brand">Kids Story FASHION</div>
+                        <div class="product-code">ITEM: FA-202</div>
+                        <div class="product-sizes">
+                            <span class="size-badge">2-5</span>
                         </div>
+                        <div class="product-info">أزياء أطفال عصرية وجميلة</div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #1a237e 0%, #303f9f 100%);">
+                        KIPS STORY
+                    </div>
+                    <div class="product-content">
+                        <div class="product-brand">KIPS STORY FASHION</div>
+                        <div class="product-code">ITEM: FA-5007</div>
+                        <div class="product-sizes">
+                            <span class="size-badge">1-5</span>
+                        </div>
+                        <div class="product-info">FASHION - أزياء أطفال متميزة</div>
                     </div>
                 </div>
             </div>
@@ -921,7 +991,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p class="footer-text">Wessam Boutique - وجهتكم المفضلة للأزياء</p>
+            <p class="footer-text">Wessam Boutique - وجهتكم المفضلة للأزياء للعائلة</p>
             <p class="footer-text">أحدث صيحات الموضة • جودة عالية • خدمة متميزة</p>
         </div>
     </footer>
@@ -930,13 +1000,6 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        // Slider functionality
-        function scrollSlider(direction) {
-            const slider = document.getElementById('productsSlider');
-            const scrollAmount = 300;
-            slider.scrollLeft += direction * scrollAmount;
-        }
-
         // Add click effects
         document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('.social-icon, .action-button');
@@ -972,7 +1035,7 @@ TEL;TYPE=WORK,VOICE:0785900100
 TEL;TYPE=CELL,VOICE:0785900100
 URL:https://www.instagram.com/wessamboutique
 EMAIL:info@wessamboutique.com
-NOTE:وجهتكم المفضلة لأحدث صيحات الموضة والأزياء
+NOTE:وجهتكم المفضلة لأحدث صيحات الموضة والأزياء للعائلة
 END:VCARD`;
             
             // Create blob and download
