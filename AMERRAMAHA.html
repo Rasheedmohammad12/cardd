@@ -321,95 +321,6 @@
             display: block;
         }
         
-        /* Full Gallery Modal */
-        .gallery-modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            overflow: auto;
-            animation: fadeIn 0.3s;
-        }
-        
-        .gallery-modal-content {
-            position: relative;
-            padding: 60px 20px 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .gallery-modal-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--primary-dark);
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1001;
-            box-shadow: var(--shadow);
-        }
-        
-        .gallery-modal-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--brown-light);
-        }
-        
-        .close-gallery {
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            background: var(--accent);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .close-gallery:hover {
-            background: var(--accent-dark);
-            transform: rotate(90deg);
-        }
-        
-        .full-gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
-            margin-top: 60px;
-        }
-        
-        .full-gallery-item {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            background: white;
-            cursor: pointer;
-        }
-        
-        .full-gallery-item:hover {
-            transform: scale(1.03);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .full-gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-        
         /* Lightbox Modal */
         .lightbox-modal {
             display: none;
@@ -717,10 +628,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .full-gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
             .lightbox-content {
                 width: 95%;
                 margin-top: 10%;
@@ -741,31 +648,10 @@
             .cover-container {
                 height: 300px;
             }
-            
-            .full-gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-modal-content {
-                padding: 60px 10px 10px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Full Gallery Modal -->
-    <div id="galleryModal" class="gallery-modal">
-        <div class="gallery-modal-header">
-            <div class="gallery-modal-title">معرض الصور الكامل - Medical Binary</div>
-            <span class="close-gallery">&times;</span>
-        </div>
-        <div class="gallery-modal-content">
-            <div class="full-gallery-grid" id="fullGalleryGrid">
-                <!-- Images will be loaded here by JavaScript -->
-            </div>
-        </div>
-    </div>
-
     <!-- Lightbox Modal -->
     <div id="lightboxModal" class="lightbox-modal">
         <span class="close-lightbox">&times;</span>
@@ -872,7 +758,7 @@
             </div>
         </div>
 
-        <!-- Gallery Section -->
+        <!-- Gallery Section - 4 صور فقط -->
         <div class="gallery-section fade-in delay-2">
             <h2 class="section-title">Our Gallery</h2>
             <div class="gallery-grid">
@@ -888,14 +774,6 @@
                 <div class="gallery-item" onclick="openLightbox('https://i.imgur.com/DSOWciH.jpeg', 3)">
                     <img src="https://i.imgur.com/DSOWciH.jpeg" alt="Surgical Instruments">
                 </div>
-            </div>
-            
-            <!-- View All Gallery Button -->
-            <div class="action-buttons">
-                <button class="action-button primary" onclick="openFullGallery()">
-                    <i class="fas fa-images"></i>
-                    View All Gallery (12 Photos)
-                </button>
             </div>
         </div>
 
@@ -972,50 +850,15 @@
     </footer>
 
     <script>
-        // Gallery images data - ALL IMAGES ARE EMBEDDED IN THIS SINGLE FILE
+        // Gallery images data - 4 صور فقط
         const galleryImages = [
             { src: 'https://i.imgur.com/R4KKy5t.jpeg', alt: 'Medical Products' },
             { src: 'https://i.imgur.com/Ra7yHBp.jpeg', alt: 'Medical Equipment' },
             { src: 'https://i.imgur.com/fFUKoQh.jpeg', alt: 'Healthcare Solutions' },
-            { src: 'https://i.imgur.com/DSOWciH.jpeg', alt: 'Surgical Instruments' },
-            { src: 'https://i.imgur.com/EV8A0GZ.jpeg', alt: 'Pharmaceuticals' },
-            { src: 'https://i.imgur.com/dqkWLfm.jpeg', alt: 'Medical Devices' },
-            { src: 'https://i.imgur.com/rP4mB4V.jpeg', alt: 'Orthopedic Supplies' },
-            { src: 'https://i.imgur.com/OeDkYnj.jpeg', alt: 'Hospital Equipment' },
-            { src: 'https://i.imgur.com/cIpK7eB.jpeg', alt: 'Medical Solutions' },
-            { src: 'https://i.imgur.com/YJ1pdzA.jpeg', alt: 'Healthcare Services' },
-            { src: 'https://i.imgur.com/Kp8GsrS.jpeg', alt: 'Medical Products' },
-            { src: 'https://i.imgur.com/h59p222.jpeg', alt: 'Surgical Tools' }
+            { src: 'https://i.imgur.com/DSOWciH.jpeg', alt: 'Surgical Instruments' }
         ];
 
         let currentImageIndex = 0;
-
-        // Open full gallery modal
-        function openFullGallery() {
-            const modal = document.getElementById('galleryModal');
-            const grid = document.getElementById('fullGalleryGrid');
-            
-            // Clear existing content
-            grid.innerHTML = '';
-            
-            // Add all images to the full gallery
-            galleryImages.forEach((image, index) => {
-                const galleryItem = document.createElement('div');
-                galleryItem.className = 'full-gallery-item';
-                galleryItem.onclick = () => openLightbox(image.src, index);
-                
-                const img = document.createElement('img');
-                img.src = image.src;
-                img.alt = image.alt;
-                img.loading = "lazy"; // Optimize loading
-                
-                galleryItem.appendChild(img);
-                grid.appendChild(galleryItem);
-            });
-            
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
 
         // Open lightbox with specific image
         function openLightbox(imgSrc, index) {
@@ -1041,26 +884,13 @@
 
         // Close modals
         function setupModalClosers() {
-            // Close gallery modal
-            document.querySelector('.close-gallery').addEventListener('click', function() {
-                document.getElementById('galleryModal').style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-            
             // Close lightbox modal
             document.querySelector('.close-lightbox').addEventListener('click', function() {
                 document.getElementById('lightboxModal').style.display = 'none';
                 document.body.style.overflow = 'auto';
             });
             
-            // Close modals when clicking outside
-            document.getElementById('galleryModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
+            // Close lightbox when clicking outside
             document.getElementById('lightboxModal').addEventListener('click', function(e) {
                 if (e.target === this) {
                     this.style.display = 'none';
@@ -1079,12 +909,6 @@
                         document.getElementById('lightboxModal').style.display = 'none';
                         document.body.style.overflow = 'auto';
                     }
-                }
-                
-                // Also close gallery modal with Escape
-                if (document.getElementById('galleryModal').style.display === 'block' && e.key === 'Escape') {
-                    document.getElementById('galleryModal').style.display = 'none';
-                    document.body.style.overflow = 'auto';
                 }
             });
         }
