@@ -313,12 +313,16 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: var(--medical-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .company-logo-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+        .company-logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--medical-blue);
         }
         
         .company-name {
@@ -359,20 +363,15 @@
             box-shadow: var(--shadow-lg);
         }
         
-        .product-image {
+        .product-icon {
             width: 100%;
-            height: 250px;
+            height: 120px;
             background: var(--medical-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-        }
-        
-        .product-img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+            color: var(--medical-blue);
+            font-size: 3rem;
         }
         
         .product-content {
@@ -686,7 +685,7 @@
         <div class="medical-container">
             <div class="header-content">
                 <div class="logo-container">
-                    <img src="https://i.imgur.com/0LHYdRH.png" alt="Medical Binary Establishment Logo" class="logo-img">
+                    <div class="company-logo-text">MBE</div>
                 </div>
                 <div>
                     <h1 class="medical-logo">
@@ -850,7 +849,7 @@
             <div class="orthotrauma-container">
                 <div class="company-header">
                     <div class="company-logo">
-                        <img src="https://i.imgur.com/0LHYdRH.png" alt="Ortho-Trauma International Logo" class="company-logo-img">
+                        <div class="company-logo-text">OTT</div>
                     </div>
                     <h2 class="company-name">ORTHOTRAUMA UK LIMITED</h2>
                     <p class="company-location">
@@ -868,8 +867,8 @@
                     <div class="products-grid">
                         <!-- نظام التثبيت النخاعي -->
                         <div class="product-card">
-                            <div class="product-image">
-                                <img src="https://i.imgur.com/hktdLIu.png" alt="Intra Medullary Interlocking Nailing System" class="product-img">
+                            <div class="product-icon">
+                                <i class="fas fa-bone"></i>
                             </div>
                             <div class="product-content">
                                 <h3 class="product-title">
@@ -885,8 +884,8 @@
 
                         <!-- الغرسات العظمية -->
                         <div class="product-card">
-                            <div class="product-image">
-                                <img src="https://i.imgur.com/RZ8JNrF.png" alt="Orthopaedic Implants" class="product-img">
+                            <div class="product-icon">
+                                <i class="fas fa-cogs"></i>
                             </div>
                             <div class="product-content">
                                 <h3 class="product-title">
@@ -902,8 +901,8 @@
 
                         <!-- الأدوات الجراحية -->
                         <div class="product-card">
-                            <div class="product-image">
-                                <img src="https://i.imgur.com/d6bRRoF.png" alt="Surgical Instruments" class="product-img">
+                            <div class="product-icon">
+                                <i class="fas fa-tools"></i>
                             </div>
                             <div class="product-content">
                                 <h3 class="product-title">
@@ -919,8 +918,8 @@
 
                         <!-- أنظمة التثبيت -->
                         <div class="product-card">
-                            <div class="product-image">
-                                <img src="https://i.imgur.com/HCzk8Td.png" alt="Fixation Systems" class="product-img">
+                            <div class="product-icon">
+                                <i class="fas fa-compress-alt"></i>
                             </div>
                             <div class="product-content">
                                 <h3 class="product-title">
@@ -936,8 +935,8 @@
 
                         <!-- مسامير العظام -->
                         <div class="product-card">
-                            <div class="product-image">
-                                <img src="https://i.imgur.com/lHvqCO3.png" alt="Bone Screws" class="product-img">
+                            <div class="product-icon">
+                                <i class="fas fa-screwdriver"></i>
                             </div>
                             <div class="product-content">
                                 <h3 class="product-title">
@@ -953,8 +952,8 @@
 
                         <!-- الصفائح العظمية -->
                         <div class="product-card">
-                            <div class="product-image">
-                                <img src="https://i.imgur.com/xndbhOp.png" alt="Bone Plates" class="product-img">
+                            <div class="product-icon">
+                                <i class="fas fa-th-large"></i>
                             </div>
                             <div class="product-content">
                                 <h3 class="product-title">
@@ -1029,10 +1028,10 @@
                 </div>
 
                 <div class="website-link">
-                    <a href="https://www.orthotraumaint.co.uk" class="website-btn" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span class="lang-content ar active">زيارة الموقع الرسمي</span>
-                        <span class="lang-content en">Visit Official Website</span>
+                    <a href="#" class="website-btn" id="downloadCatalog">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="lang-content ar active">تحميل الكتالوج (PDF)</span>
+                        <span class="lang-content en">Download Catalog (PDF)</span>
                     </a>
                 </div>
             </div>
@@ -1327,6 +1326,17 @@ END:VCARD`;
                 const message = currentLang === 'ar' 
                     ? 'تم حفظ جهة الاتصال بنجاح' 
                     : 'Contact saved successfully';
+                alert(message);
+            });
+
+            // Download Catalog functionality
+            document.getElementById('downloadCatalog').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                const message = currentLang === 'ar' 
+                    ? 'يرجى التواصل معنا للحصول على كتالوج Ortho-Trauma' 
+                    : 'Please contact us to get the Ortho-Trauma catalog';
                 alert(message);
             });
         });
