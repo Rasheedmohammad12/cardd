@@ -68,24 +68,26 @@
         
         .cover-container {
             width: 100%;
-            height: 70vh; /* زيادة الارتفاع */
-            min-height: 550px; /* زيادة الارتفاع الأدنى */
-            max-height: 800px; /* زيادة الارتفاع الأقصى */
+            height: 85vh; /* زيادة كبيرة في الارتفاع */
+            min-height: 650px; /* زيادة كبيرة في الارتفاع الأدنى */
+            max-height: 900px; /* زيادة كبيرة في الارتفاع الأقصى */
             overflow: hidden;
             position: relative;
             background: var(--dark-bg);
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 40px; /* إضافة padding لضمان المساحة */
         }
         
         .logo-full-cover {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* تغيير من cover إلى contain لعرض اللوجو كاملاً */
+            object-fit: contain; /* عرض اللوجو كاملاً */
             display: block;
-            max-width: 90%; /* تحديد أقصى عرض */
-            max-height: 90%; /* تحديد أقصى ارتفاع */
+            max-width: 95%; /* زيادة العرض الأقصى */
+            max-height: 95%; /* زيادة الارتفاع الأقصى */
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8)); /* إضافة ظل للوجو */
         }
         
         .profile-info {
@@ -103,8 +105,8 @@
         }
         
         .profile-image {
-            width: 180px; /* تكبير الصورة الشخصية */
-            height: 180px; /* تكبير الصورة الشخصية */
+            width: 200px; /* تكبير الصورة الشخصية أكثر */
+            height: 200px; /* تكبير الصورة الشخصية أكثر */
             border-radius: 20px;
             border: 5px solid var(--dark-card);
             object-fit: cover;
@@ -118,29 +120,31 @@
             right: 10px;
             background: var(--accent);
             color: white;
-            width: 35px; /* تكبير شارة التحقق */
-            height: 35px; /* تكبير شارة التحقق */
+            width: 40px; /* تكبير شارة التحقق أكثر */
+            height: 40px; /* تكبير شارة التحقق أكثر */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem; /* تكبير حجم الخط */
+            font-size: 1.2rem; /* تكبير حجم الخط أكثر */
             border: 2px solid var(--dark-card);
         }
         
         .profile-name {
-            font-size: 3rem; /* تكبير حجم الاسم */
+            font-size: 3.5rem; /* تكبير حجم الاسم أكثر */
             font-weight: 800;
             margin-bottom: 10px;
             color: var(--brown-light);
             font-family: 'Playfair Display', serif;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* إضافة ظل للنص */
         }
         
         .profile-username {
-            font-size: 1.5rem; /* تكبير اسم المستخدم */
+            font-size: 1.8rem; /* تكبير اسم المستخدم أكثر */
             font-weight: 600;
             color: var(--brown-text);
             margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3); /* إضافة ظل للنص */
         }
         
         .stats-container {
@@ -156,14 +160,15 @@
         }
         
         .stat-number {
-            font-size: 2rem; /* تكبير الأرقام */
+            font-size: 2.2rem; /* تكبير الأرقام أكثر */
             font-weight: 700;
             color: var(--brown-light);
             display: block;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3); /* إضافة ظل للنص */
         }
         
         .stat-label {
-            font-size: 1rem; /* تكبير النص */
+            font-size: 1.1rem; /* تكبير النص أكثر */
             color: var(--lighter-text);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -517,17 +522,18 @@
         /* Responsive */
         @media (max-width: 768px) {
             .profile-name {
-                font-size: 2.5rem; /* تكبير الاسم في الشاشات الصغيرة */
+                font-size: 2.8rem; /* تكبير الاسم في الشاشات الصغيرة */
             }
             
             .profile-image {
-                width: 150px; /* تكبير الصورة الشخصية في الشاشات الصغيرة */
-                height: 150px; /* تكبير الصورة الشخصية في الشاشات الصغيرة */
+                width: 170px; /* تكبير الصورة الشخصية في الشاشات الصغيرة */
+                height: 170px; /* تكبير الصورة الشخصية في الشاشات الصغيرة */
             }
             
             .cover-container {
-                height: 50vh; /* تكبير الارتفاع في الشاشات الصغيرة */
-                min-height: 400px; /* تكبير الارتفاع الأدنى في الشاشات الصغيرة */
+                height: 65vh; /* تكبير الارتفاع في الشاشات الصغيرة */
+                min-height: 500px; /* تكبير الارتفاع الأدنى في الشاشات الصغيرة */
+                padding: 20px; /* تقليل padding في الشاشات الصغيرة */
             }
             
             .action-buttons {
@@ -542,8 +548,16 @@
 
         @media (max-width: 480px) {
             .cover-container {
-                height: 45vh; /* تكبير الارتفاع في الشاشات الصغيرة جداً */
-                min-height: 350px; /* تكبير الارتفاع الأدنى في الشاشات الصغيرة جداً */
+                height: 55vh; /* تكبير الارتفاع في الشاشات الصغيرة جداً */
+                min-height: 400px; /* تكبير الارتفاع الأدنى في الشاشات الصغيرة جداً */
+            }
+            
+            .profile-name {
+                font-size: 2.5rem; /* تكبير الاسم في الشاشات الصغيرة جداً */
+            }
+            
+            .profile-username {
+                font-size: 1.5rem; /* تكبير اسم المستخدم في الشاشات الصغيرة جداً */
             }
         }
     </style>
