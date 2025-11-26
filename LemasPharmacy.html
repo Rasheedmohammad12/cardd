@@ -6,6 +6,7 @@
     <title>Lemas Pharmacy - صيدلية ليماس</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #1a936f;
@@ -25,7 +26,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
         }
         
         html {
@@ -37,12 +37,47 @@
             color: var(--dark-text);
             line-height: 1.7;
             overflow-x: hidden;
+            font-family: 'Tajawal', 'Inter', sans-serif;
+        }
+        
+        body.english {
+            direction: ltr;
+            font-family: 'Inter', sans-serif;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 50px;
+            padding: 8px 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
         }
         
         /* Header */
@@ -52,7 +87,7 @@
             padding: 15px 0;
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 999;
             box-shadow: var(--shadow-lg);
         }
         
@@ -105,7 +140,7 @@
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
         }
         
@@ -185,6 +220,11 @@
             height: 4px;
             background: var(--accent);
             border-radius: 2px;
+        }
+        
+        body.english .section-title:after {
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         /* About Section */
@@ -344,6 +384,16 @@
             left: -25px;
         }
         
+        body.english .slider-btn.prev {
+            left: -25px;
+            right: auto;
+        }
+        
+        body.english .slider-btn.next {
+            right: -25px;
+            left: auto;
+        }
+        
         /* Contact Section */
         .contact-section {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -412,6 +462,92 @@
             border: none;
         }
         
+        /* Save Contact Form */
+        .save-contact-section {
+            background: var(--light-card);
+            padding: 60px 0;
+        }
+        
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .form-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+        
+        .form-input, .form-textarea {
+            padding: 12px 15px;
+            border: var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 147, 111, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .form-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .form-success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+        
         /* Footer */
         footer {
             background: var(--primary-dark);
@@ -443,6 +579,11 @@
             background: var(--accent);
         }
         
+        body.english .footer-column h3:after {
+            left: 0;
+            right: auto;
+        }
+        
         .footer-links {
             list-style: none;
         }
@@ -463,6 +604,10 @@
         .footer-links a:hover {
             color: white;
             transform: translateX(-5px);
+        }
+        
+        body.english .footer-links a:hover {
+            transform: translateX(5px);
         }
         
         .copyright {
@@ -520,6 +665,18 @@
             .slider-btn.next {
                 left: -20px;
             }
+            
+            body.english .slider-btn.prev {
+                left: -20px;
+            }
+            
+            body.english .slider-btn.next {
+                right: -20px;
+            }
+            
+            .contact-form-container {
+                padding: 30px 20px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -533,10 +690,38 @@
                 max-width: 250px;
                 justify-content: center;
             }
+            
+            .language-switcher {
+                top: 10px;
+                left: 10px;
+            }
+        }
+        
+        /* Language-specific styles */
+        .lang-ar {
+            display: block;
+        }
+        
+        .lang-en {
+            display: none;
+        }
+        
+        body.english .lang-ar {
+            display: none;
+        }
+        
+        body.english .lang-en {
+            display: block;
         }
     </style>
 </head>
 <body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="en">English</button>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -566,16 +751,22 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Lemas Pharmacy</h1>
-                <p class="hero-subtitle">صيدليتك الموثوقة للأدوية والمستلزمات الطبية ومنتجات العناية بالبشرة والشعر</p>
+                <h1 class="hero-title lang-ar">صيدلية ليماس</h1>
+                <h1 class="hero-title lang-en">Lemas Pharmacy</h1>
+                
+                <p class="hero-subtitle lang-ar">صيدليتك الموثوقة للأدوية والمستلزمات الطبية ومنتجات العناية بالبشرة والشعر</p>
+                <p class="hero-subtitle lang-en">Your trusted pharmacy for medicines, medical supplies, and skin & hair care products</p>
+                
                 <div class="hero-buttons">
                     <a href="https://wa.me/962790407768" class="btn btn-primary" target="_blank">
                         <i class="fab fa-whatsapp"></i>
-                        تواصل عبر واتساب
+                        <span class="lang-ar">تواصل عبر واتساب</span>
+                        <span class="lang-en">Contact via WhatsApp</span>
                     </a>
                     <a href="#contact" class="btn btn-outline">
                         <i class="fas fa-map-marker-alt"></i>
-                        موقعنا على الخريطة
+                        <span class="lang-ar">موقعنا على الخريطة</span>
+                        <span class="lang-en">Our Location</span>
                     </a>
                 </div>
             </div>
@@ -585,17 +776,29 @@
     <!-- About Section -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">من نحن</h2>
+            <h2 class="section-title lang-ar">من نحن</h2>
+            <h2 class="section-title lang-en">About Us</h2>
+            
             <div class="about-content">
                 <div class="about-text">
-                    <p>
+                    <p class="lang-ar">
                         مرحباً بكم في صيدلية ليماس، وجهتكم الموثوقة لجميع المستلزمات الطبية والصيدلانية. نحن نقدم مجموعة شاملة من الأدوية الموثوقة والمستحضرات الطبية والصيدلانية، بالإضافة إلى منتجات العناية بالبشرة والشعر الأصلية، مستلزمات الأطفال، التغذية الصحية، المستلزمات الطبية والمواد الاستهلاكية، والأجهزة الطبية.
                     </p>
-                    <p>
+                    <p class="lang-ar">
                         نفتخر بتقديم منتجات أصلية وموثوقة من وكالات عالمية معتمدة، مع ضمان الجودة والفعالية في كل منتج نبيعه. فريقنا من الصيادلة المؤهلين دائماً على استعداد لتقديم الاستشارات والنصائح الطبية المهنية.
                     </p>
-                    <p>
+                    <p class="lang-ar">
                         نعمل على توفير بيئة تسوق مريحة وآمنة لعملائنا الكرام، مع الحفاظ على أعلى معايير الجودة والخدمة.
+                    </p>
+                    
+                    <p class="lang-en">
+                        Welcome to Lemas Pharmacy, your trusted destination for all medical and pharmaceutical supplies. We offer a comprehensive range of reliable medicines and medical preparations, original skin and hair care products, baby supplies, healthy nutrition, medical supplies and consumables, and medical devices.
+                    </p>
+                    <p class="lang-en">
+                        We pride ourselves on providing original and reliable products from certified international agencies, ensuring quality and effectiveness in every product we sell. Our team of qualified pharmacists is always ready to provide professional medical consultations and advice.
+                    </p>
+                    <p class="lang-en">
+                        We work to provide a comfortable and safe shopping environment for our valued customers, while maintaining the highest standards of quality and service.
                     </p>
                 </div>
                 <div class="about-image">
@@ -608,49 +811,63 @@
     <!-- Services Section -->
     <section class="section" style="background: #f8f9fa;">
         <div class="container">
-            <h2 class="section-title">خدماتنا ومنتجاتنا</h2>
+            <h2 class="section-title lang-ar">خدماتنا ومنتجاتنا</h2>
+            <h2 class="section-title lang-en">Our Services & Products</h2>
+            
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-pills"></i>
                     </div>
-                    <h3 class="service-title">الأدوية والمستحضرات الصيدلانية</h3>
-                    <p class="service-desc">جميع الأدوية الموثوقة والمستحضرات الطبية والصيدلانية</p>
+                    <h3 class="service-title lang-ar">الأدوية والمستحضرات الصيدلانية</h3>
+                    <h3 class="service-title lang-en">Medicines & Pharmaceuticals</h3>
+                    <p class="service-desc lang-ar">جميع الأدوية الموثوقة والمستحضرات الطبية والصيدلانية</p>
+                    <p class="service-desc lang-en">All reliable medicines and medical preparations</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-spa"></i>
                     </div>
-                    <h3 class="service-title">العناية بالبشرة والشعر</h3>
-                    <p class="service-desc">منتجات أصلية للعناية بالبشرة والشعر</p>
+                    <h3 class="service-title lang-ar">العناية بالبشرة والشعر</h3>
+                    <h3 class="service-title lang-en">Skin & Hair Care</h3>
+                    <p class="service-desc lang-ar">منتجات أصلية للعناية بالبشرة والشعر</p>
+                    <p class="service-desc lang-en">Original skin and hair care products</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-baby"></i>
                     </div>
-                    <h3 class="service-title">مستلزمات الأطفال</h3>
-                    <p class="service-desc">مجموعة كاملة من مستلزمات العناية بالطفل</p>
+                    <h3 class="service-title lang-ar">مستلزمات الأطفال</h3>
+                    <h3 class="service-title lang-en">Baby Supplies</h3>
+                    <p class="service-desc lang-ar">مجموعة كاملة من مستلزمات العناية بالطفل</p>
+                    <p class="service-desc lang-en">Complete range of baby care products</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-apple-alt"></i>
                     </div>
-                    <h3 class="service-title">التغذية الصحية</h3>
-                    <p class="service-desc">مكملات غذائية ومنتجات صحية متنوعة</p>
+                    <h3 class="service-title lang-ar">التغذية الصحية</h3>
+                    <h3 class="service-title lang-en">Healthy Nutrition</h3>
+                    <p class="service-desc lang-ar">مكملات غذائية ومنتجات صحية متنوعة</p>
+                    <p class="service-desc lang-en">Nutritional supplements and healthy products</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-stethoscope"></i>
                     </div>
-                    <h3 class="service-title">المستلزمات الطبية</h3>
-                    <p class="service-desc">مواد استهلاكية طبية وأجهزة متعددة</p>
+                    <h3 class="service-title lang-ar">المستلزمات الطبية</h3>
+                    <h3 class="service-title lang-en">Medical Supplies</h3>
+                    <p class="service-desc lang-ar">مواد استهلاكية طبية وأجهزة متعددة</p>
+                    <p class="service-desc lang-en">Medical consumables and various devices</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-heartbeat"></i>
                     </div>
-                    <h3 class="service-title">الأجهزة الطبية</h3>
-                    <p class="service-desc">مجموعة متنوعة من الأجهزة والمعدات الطبية</p>
+                    <h3 class="service-title lang-ar">الأجهزة الطبية</h3>
+                    <h3 class="service-title lang-en">Medical Devices</h3>
+                    <p class="service-desc lang-ar">مجموعة متنوعة من الأجهزة والمعدات الطبية</p>
+                    <p class="service-desc lang-en">Various medical equipment and devices</p>
                 </div>
             </div>
         </div>
@@ -659,7 +876,9 @@
     <!-- Products Section -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">منتجاتنا</h2>
+            <h2 class="section-title lang-ar">منتجاتنا</h2>
+            <h2 class="section-title lang-en">Our Products</h2>
+            
             <div class="products-slider">
                 <button class="slider-btn prev" onclick="scrollSlider(-1)">
                     <i class="fas fa-chevron-right"></i>
@@ -667,40 +886,51 @@
                 <button class="slider-btn next" onclick="scrollSlider(1)">
                     <i class="fas fa-chevron-left"></i>
                 </button>
+                
                 <div class="slider-container" id="productSlider">
                     <div class="product-card">
-                        <img src="https://i.imgur.com/WpfDVhH.jpeg" alt="منتجات صيدلانية" class="product-image">
+                        <img src="https://i.imgur.com/Dwq8hVJ.jpeg" alt="منتجات صيدلانية" class="product-image">
                         <div class="product-info">
-                            <h3 class="product-title">منتجات صيدلانية</h3>
-                            <p class="product-desc">أدوية ومستحضرات طبية عالية الجودة من مصادر موثوقة</p>
+                            <h3 class="product-title lang-ar">منتجات صيدلانية</h3>
+                            <h3 class="product-title lang-en">Pharmaceutical Products</h3>
+                            <p class="product-desc lang-ar">أدوية ومستحضرات طبية عالية الجودة من مصادر موثوقة</p>
+                            <p class="product-desc lang-en">High-quality medicines and medical preparations from trusted sources</p>
                         </div>
                     </div>
                     <div class="product-card">
-                        <img src="https://i.imgur.com/WpfDVhH.jpeg" alt="العناية بالبشرة" class="product-image">
+                        <img src="https://i.imgur.com/nAYQixn.jpeg" alt="العناية بالبشرة" class="product-image">
                         <div class="product-info">
-                            <h3 class="product-title">العناية بالبشرة</h3>
-                            <p class="product-desc">منتجات أصلية وفعالة للعناية بالبشرة والشعر</p>
+                            <h3 class="product-title lang-ar">العناية بالبشرة</h3>
+                            <h3 class="product-title lang-en">Skin Care</h3>
+                            <p class="product-desc lang-ar">منتجات أصلية وفعالة للعناية بالبشرة</p>
+                            <p class="product-desc lang-en">Original and effective skin care products</p>
                         </div>
                     </div>
                     <div class="product-card">
                         <img src="https://i.imgur.com/WpfDVhH.jpeg" alt="مستلزمات الأطفال" class="product-image">
                         <div class="product-info">
-                            <h3 class="product-title">مستلزمات الأطفال</h3>
-                            <p class="product-desc">منتجات آمنة وموثوقة للعناية بالأطفال</p>
+                            <h3 class="product-title lang-ar">مستلزمات الأطفال</h3>
+                            <h3 class="product-title lang-en">Baby Supplies</h3>
+                            <p class="product-desc lang-ar">منتجات آمنة وموثوقة للعناية بالأطفال</p>
+                            <p class="product-desc lang-en">Safe and reliable baby care products</p>
                         </div>
                     </div>
                     <div class="product-card">
-                        <img src="https://i.imgur.com/WpfDVhH.jpeg" alt="مستلزمات طبية" class="product-image">
+                        <img src="https://i.imgur.com/L3WvS29.jpeg" alt="مستلزمات طبية" class="product-image">
                         <div class="product-info">
-                            <h3 class="product-title">مستلزمات طبية</h3>
-                            <p class="product-desc">أجهزة طبية ومعدات متطورة للرعاية الصحية</p>
+                            <h3 class="product-title lang-ar">مستلزمات طبية</h3>
+                            <h3 class="product-title lang-en">Medical Supplies</h3>
+                            <p class="product-desc lang-ar">أجهزة طبية ومعدات متطورة للرعاية الصحية</p>
+                            <p class="product-desc lang-en">Advanced medical devices and equipment for healthcare</p>
                         </div>
                     </div>
                     <div class="product-card">
-                        <img src="https://i.imgur.com/WpfDVhH.jpeg" alt="منتجات التغذية" class="product-image">
+                        <img src="https://i.imgur.com/cI3XvUe.jpeg" alt="منتجات التغذية" class="product-image">
                         <div class="product-info">
-                            <h3 class="product-title">منتجات التغذية</h3>
-                            <p class="product-desc">مكملات غذائية ومنتجات صحية متنوعة</p>
+                            <h3 class="product-title lang-ar">منتجات التغذية</h3>
+                            <h3 class="product-title lang-en">Nutrition Products</h3>
+                            <p class="product-desc lang-ar">مكملات غذائية ومنتجات صحية متنوعة</p>
+                            <p class="product-desc lang-en">Nutritional supplements and various health products</p>
                         </div>
                     </div>
                 </div>
@@ -708,10 +938,67 @@
         </div>
     </section>
 
+    <!-- Save Contact Section -->
+    <section class="section save-contact-section">
+        <div class="container">
+            <h2 class="section-title lang-ar">احفظ معلومات الاتصال</h2>
+            <h2 class="section-title lang-en">Save Contact Information</h2>
+            
+            <div class="contact-form-container">
+                <h3 class="form-title lang-ar">احفظ معلوماتنا للرجوع إليها لاحقاً</h3>
+                <h3 class="form-title lang-en">Save our information for future reference</h3>
+                
+                <form class="contact-form" id="saveContactForm">
+                    <div class="form-group">
+                        <label for="contactName" class="form-label lang-ar">اسم جهة الاتصال</label>
+                        <label for="contactName" class="form-label lang-en">Contact Name</label>
+                        <input type="text" id="contactName" class="form-input" placeholder="Lemas Pharmacy" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactPhone" class="form-label lang-ar">رقم الهاتف</label>
+                        <label for="contactPhone" class="form-label lang-en">Phone Number</label>
+                        <input type="tel" id="contactPhone" class="form-input" placeholder="0790407768" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactEmail" class="form-label lang-ar">البريد الإلكتروني</label>
+                        <label for="contactEmail" class="form-label lang-en">Email Address</label>
+                        <input type="email" id="contactEmail" class="form-input" placeholder="t.abuail@medical-binary.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactAddress" class="form-label lang-ar">العنوان</label>
+                        <label for="contactAddress" class="form-label lang-en">Address</label>
+                        <textarea id="contactAddress" class="form-textarea" placeholder="Location: https://maps.google.com/maps?q=31.905942916870117%2C35.910316467285156&z=17&hl=en"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactNotes" class="form-label lang-ar">ملاحظات إضافية</label>
+                        <label for="contactNotes" class="form-label lang-en">Additional Notes</label>
+                        <textarea id="contactNotes" class="form-textarea" placeholder="Lemas Pharmacy - LEMASPHA"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">
+                        <span class="lang-ar">حفظ جهة الاتصال</span>
+                        <span class="lang-en">Save Contact</span>
+                    </button>
+                    
+                    <div class="form-success" id="formSuccess">
+                        <span class="lang-ar">تم حفظ معلومات الاتصال بنجاح!</span>
+                        <span class="lang-en">Contact information saved successfully!</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
         <div class="container">
-            <h2 class="section-title">اتصل بنا</h2>
+            <h2 class="section-title lang-ar">اتصل بنا</h2>
+            <h2 class="section-title lang-en">Contact Us</h2>
+            
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-card">
@@ -719,7 +1006,8 @@
                             <i class="fab fa-whatsapp"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>واتساب</h3>
+                            <h3 class="lang-ar">واتساب</h3>
+                            <h3 class="lang-en">WhatsApp</h3>
                             <p>0790407768</p>
                         </div>
                     </div>
@@ -728,7 +1016,8 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>هاتف</h3>
+                            <h3 class="lang-ar">هاتف</h3>
+                            <h3 class="lang-en">Phone</h3>
                             <p>0790407768</p>
                         </div>
                     </div>
@@ -737,7 +1026,8 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>البريد الإلكتروني</h3>
+                            <h3 class="lang-ar">البريد الإلكتروني</h3>
+                            <h3 class="lang-en">Email</h3>
                             <p>t.abuail@medical-binary.com</p>
                         </div>
                     </div>
@@ -746,8 +1036,10 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>الموقع</h3>
-                            <p>انقر على الخريطة للوصول إلى موقعنا</p>
+                            <h3 class="lang-ar">الموقع</h3>
+                            <h3 class="lang-en">Location</h3>
+                            <p class="lang-ar">انقر على الخريطة للوصول إلى موقعنا</p>
+                            <p class="lang-en">Click on the map to get our location</p>
                         </div>
                     </div>
                 </div>
@@ -764,41 +1056,110 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Lemas Pharmacy</h3>
-                    <p>صيدليتك الموثوقة لجميع المستلزمات الطبية والصيدلانية. نحن نقدم منتجات أصلية وخدمات مهنية بمعايير عالية الجودة.</p>
+                    <p class="lang-ar">صيدليتك الموثوقة لجميع المستلزمات الطبية والصيدلانية. نحن نقدم منتجات أصلية وخدمات مهنية بمعايير عالية الجودة.</p>
+                    <p class="lang-en">Your trusted pharmacy for all medical and pharmaceutical supplies. We provide original products and professional services with high quality standards.</p>
                 </div>
                 <div class="footer-column">
-                    <h3>روابط سريعة</h3>
+                    <h3 class="lang-ar">روابط سريعة</h3>
+                    <h3 class="lang-en">Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> من نحن</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> منتجاتنا</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left lang-ar"></i><i class="fas fa-chevron-right lang-en"></i> <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left lang-ar"></i><i class="fas fa-chevron-right lang-en"></i> <span class="lang-ar">من نحن</span><span class="lang-en">About</span></a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left lang-ar"></i><i class="fas fa-chevron-right lang-en"></i> <span class="lang-ar">خدماتنا</span><span class="lang-en">Services</span></a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left lang-ar"></i><i class="fas fa-chevron-right lang-en"></i> <span class="lang-ar">منتجاتنا</span><span class="lang-en">Products</span></a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-left lang-ar"></i><i class="fas fa-chevron-right lang-en"></i> <span class="lang-ar">اتصل بنا</span><span class="lang-en">Contact</span></a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>اتصل بنا</h3>
+                    <h3 class="lang-ar">اتصل بنا</h3>
+                    <h3 class="lang-en">Contact Us</h3>
                     <ul class="footer-links">
-                        <li><a href="https://wa.me/962790407768"><i class="fab fa-whatsapp"></i> واتساب: 0790407768</a></li>
-                        <li><a href="tel:0790407768"><i class="fas fa-phone"></i> هاتف: 0790407768</a></li>
-                        <li><a href="mailto:t.abuail@medical-binary.com"><i class="fas fa-envelope"></i> البريد الإلكتروني</a></li>
-                        <li><a href="https://maps.google.com/maps?q=31.905942916870117%2C35.910316467285156&z=17&hl=en"><i class="fas fa-map-marker-alt"></i> موقعنا على الخريطة</a></li>
+                        <li><a href="https://wa.me/962790407768"><i class="fab fa-whatsapp"></i> <span class="lang-ar">واتساب: 0790407768</span><span class="lang-en">WhatsApp: 0790407768</span></a></li>
+                        <li><a href="tel:0790407768"><i class="fas fa-phone"></i> <span class="lang-ar">هاتف: 0790407768</span><span class="lang-en">Phone: 0790407768</span></a></li>
+                        <li><a href="mailto:t.abuail@medical-binary.com"><i class="fas fa-envelope"></i> <span class="lang-ar">البريد الإلكتروني</span><span class="lang-en">Email</span></a></li>
+                        <li><a href="https://maps.google.com/maps?q=31.905942916870117%2C35.910316467285156&z=17&hl=en"><i class="fas fa-map-marker-alt"></i> <span class="lang-ar">موقعنا على الخريطة</span><span class="lang-en">Our Location</span></a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>© 2023 Lemas Pharmacy - LEMASPHA. جميع الحقوق محفوظة.</p>
+                <p class="lang-ar">© 2023 صيدلية ليماس - LEMASPHA. جميع الحقوق محفوظة.</p>
+                <p class="lang-en">© 2023 Lemas Pharmacy - LEMASPHA. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Language switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active button
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Change body class for direction
+                    if (lang === 'en') {
+                        document.body.classList.add('english');
+                    } else {
+                        document.body.classList.remove('english');
+                    }
+                });
+            });
+        });
+
         // Slider functionality
         function scrollSlider(direction) {
             const slider = document.getElementById('productSlider');
             const scrollAmount = 300;
             slider.scrollLeft += direction * scrollAmount;
         }
+
+        // Save Contact Form functionality
+        document.getElementById('saveContactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('contactName').value;
+            const phone = document.getElementById('contactPhone').value;
+            const email = document.getElementById('contactEmail').value;
+            const address = document.getElementById('contactAddress').value;
+            const notes = document.getElementById('contactNotes').value;
+            
+            // Create vCard content
+            const vCardContent = `BEGIN:VCARD
+VERSION:3.0
+FN:${name}
+TEL:${phone}
+EMAIL:${email}
+ADR:${address}
+NOTE:${notes}
+END:VCARD`;
+            
+            // Create download link
+            const blob = new Blob([vCardContent], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${name}.vcf`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            // Show success message
+            const successMsg = document.getElementById('formSuccess');
+            successMsg.style.display = 'block';
+            
+            // Reset form
+            setTimeout(() => {
+                document.getElementById('saveContactForm').reset();
+                successMsg.style.display = 'none';
+            }, 3000);
+        });
 
         // Add animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
