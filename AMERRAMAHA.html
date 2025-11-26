@@ -71,56 +71,18 @@
             height: 500px;
             overflow: hidden;
             position: relative;
-        }
-        
-        .cover-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: brightness(0.8);
-        }
-        
-        .cover-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.3) 0%,
-                rgba(0, 0, 0, 0.7) 100%
-            );
+            background: var(--dark-bg);
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
-        .logo-overlay {
-            text-align: center;
-            color: white;
-        }
-        
-        .company-logo-large {
-            max-width: 500px;
-            height: auto;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
-        }
-        
-        .cover-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            font-family: 'Playfair Display', serif;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-        
-        .cover-subtitle {
-            font-size: 1.5rem;
-            font-weight: 600;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        .logo-full {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            padding: 40px;
         }
         
         .profile-info {
@@ -564,16 +526,8 @@
                 height: 400px;
             }
             
-            .company-logo-large {
-                max-width: 300px;
-            }
-            
-            .cover-title {
-                font-size: 2rem;
-            }
-            
-            .cover-subtitle {
-                font-size: 1.2rem;
+            .logo-full {
+                padding: 20px;
             }
             
             .action-buttons {
@@ -585,20 +539,23 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (max-width: 480px) {
+            .cover-container {
+                height: 300px;
+            }
+            
+            .logo-full {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Header Section -->
     <header class="profile-header fade-in">
         <div class="cover-container">
-            <img src="https://i.imgur.com/J8ZSnRM.jpeg" alt="Medical Binary Cover" class="cover-photo">
-            <div class="cover-overlay">
-                <div class="logo-overlay">
-                    <img src="https://i.imgur.com/J8ZSnRM.jpeg" alt="Medical Binary Logo" class="company-logo-large">
-                    <h1 class="cover-title">MEDICAL BINARY</h1>
-                    <p class="cover-subtitle">Integrated Medical Solutions</p>
-                </div>
-            </div>
+            <img src="https://i.imgur.com/J8ZSnRM.jpeg" alt="Medical Binary Logo" class="logo-full">
         </div>
         <div class="profile-info">
             <div class="profile-image-container">
