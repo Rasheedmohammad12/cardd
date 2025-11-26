@@ -286,70 +286,130 @@
             margin-left: 15px;
         }
         
-        /* PDF Section */
-        .pdf-section {
+        /* Ortho-Trauma Section */
+        .orthotrauma-section {
             padding: 80px 0;
             background: var(--light-bg);
         }
         
-        .pdf-container {
+        .orthotrauma-container {
             background: white;
             border-radius: 15px;
             padding: 40px;
             box-shadow: var(--shadow);
+        }
+        
+        .company-header {
             text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--medical-light);
         }
         
-        .pdf-viewer-container {
+        .company-logo {
+            font-size: 3rem;
+            color: var(--medical-blue);
+            margin-bottom: 20px;
+        }
+        
+        .company-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+        
+        .company-location {
+            font-size: 1.2rem;
+            color: var(--light-text);
+        }
+        
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .product-card {
+            background: var(--medical-light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--medical-blue);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .product-icon {
+            font-size: 3rem;
+            color: var(--medical-blue);
+            margin-bottom: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        .product-description {
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             margin: 30px 0;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            overflow: hidden;
-            background: #f9f9f9;
         }
         
-        .pdf-viewer {
-            width: 100%;
-            height: 500px;
-            border: none;
-        }
-        
-        .pdf-actions {
+        .feature-item {
             display: flex;
-            justify-content: center;
+            align-items: center;
             gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
         }
         
-        .pdf-btn {
+        .feature-item i {
+            color: var(--medical-blue);
+            font-size: 1.5rem;
+        }
+        
+        .website-link {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--medical-light);
+        }
+        
+        .website-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 12px 25px;
+            padding: 15px 30px;
             background: var(--medical-blue);
             color: white;
-            border-radius: 30px;
             text-decoration: none;
+            border-radius: 30px;
             font-weight: 600;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
         }
         
-        .pdf-btn:hover {
+        .website-btn:hover {
             background: var(--primary);
             transform: translateY(-3px);
-        }
-        
-        .pdf-btn.outline {
-            background: transparent;
-            color: var(--medical-blue);
-            border: 2px solid var(--medical-blue);
-        }
-        
-        .pdf-btn.outline:hover {
-            background: var(--medical-light);
+            box-shadow: var(--shadow-lg);
         }
         
         /* Services Section */
@@ -602,67 +662,6 @@
             color: #ccc;
         }
         
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 900px;
-            max-height: 90vh;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .modal-header {
-            background: var(--gradient);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: between;
-            align-items: center;
-        }
-        
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .close-modal {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .modal-body {
-            padding: 0;
-            height: 70vh;
-        }
-        
-        .modal-pdf {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
         /* Responsive */
         @media (max-width: 768px) {
             .about-content, .contact-container {
@@ -695,8 +694,8 @@
                 text-align: center;
             }
             
-            .pdf-viewer {
-                height: 400px;
+            .company-name {
+                font-size: 2rem;
             }
         }
         
@@ -874,37 +873,132 @@
         </div>
     </section>
 
-    <!-- PDF Section -->
-    <section class="pdf-section">
+    <!-- Ortho-Trauma Section -->
+    <section class="orthotrauma-section">
         <div class="medical-container">
             <h2 class="section-title">
                 <span class="lang-content ar active">Ortho-Trauma International</span>
                 <span class="lang-content en">Ortho-Trauma International</span>
             </h2>
-            <div class="pdf-container">
-                <p>
-                    <span class="lang-content ar active">استكشف كتيب Ortho-Trauma International للمنتجات والخدمات المتخصصة في جراحة العظام</span>
-                    <span class="lang-content en">Explore the Ortho-Trauma International brochure for specialized orthopedic surgery products and services</span>
-                </p>
-                
-                <div class="pdf-viewer-container">
-                    <iframe src="https://docs.google.com/gview?url=https://www.orthotraumaint.co.uk/wp-content/uploads/2021/03/Ortho-Trauma-International-Brochure.pdf&embedded=true" 
-                            class="pdf-viewer" 
-                            frameborder="0">
-                    </iframe>
+            <div class="orthotrauma-container">
+                <div class="company-header">
+                    <div class="company-logo">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h2 class="company-name">ORTHOTRAUMA UK LIMITED</h2>
+                    <p class="company-location">
+                        <span class="lang-content ar active">المملكة المتحدة</span>
+                        <span class="lang-content en">United Kingdom</span>
+                    </p>
                 </div>
-                
-                <div class="pdf-actions">
-                    <button class="pdf-btn" id="openPdfModal">
-                        <i class="fas fa-expand"></i>
-                        <span class="lang-content ar active">فتح في نافذة كبيرة</span>
-                        <span class="lang-content en">Open in Large Window</span>
-                    </button>
-                    <a href="https://www.orthotraumaint.co.uk/wp-content/uploads/2021/03/Ortho-Trauma-International-Brochure.pdf" 
-                       class="pdf-btn outline" target="_blank">
-                        <i class="fas fa-download"></i>
-                        <span class="lang-content ar active">تحميل الكتيب</span>
-                        <span class="lang-content en">Download Brochure</span>
+
+                <div class="product-showcase">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="product-title">
+                            <span class="lang-content ar active">نظام التثبيت النخاعي</span>
+                            <span class="lang-content en">Intra Medullary Interlocking Nailing System</span>
+                        </h3>
+                        <p class="product-description">
+                            <span class="lang-content ar active">نظام متقدم لتثبيت الكسور داخل النخاع مع تقنية القفل المزدوج لتوفير ثبات فائق</span>
+                            <span class="lang-content en">Advanced system for intramedullary fracture fixation with double locking technology for superior stability</span>
+                        </p>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="product-title">
+                            <span class="lang-content ar active">الغرسات العظمية</span>
+                            <span class="lang-content en">Orthopaedic Implants</span>
+                        </h3>
+                        <p class="product-description">
+                            <span class="lang-content ar active">مجموعة شاملة من الغرسات العظمية عالية الجودة المصممة لتلبية احتياجات جراحة العظام</span>
+                            <span class="lang-content en">Comprehensive range of high-quality orthopedic implants designed to meet all orthopedic surgery needs</span>
+                        </p>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h3 class="product-title">
+                            <span class="lang-content ar active">الأدوات الجراحية</span>
+                            <span class="lang-content en">Surgical Instruments</span>
+                        </h3>
+                        <p class="product-description">
+                            <span class="lang-content ar active">أدوات جراحية متخصصة مصممة بدقة لتسهيل إجراءات جراحة العظام المعقدة</span>
+                            <span class="lang-content en">Specialized surgical instruments precisely designed to facilitate complex orthopedic procedures</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <h4>
+                                <span class="lang-content ar active">جودة عالية</span>
+                                <span class="lang-content en">High Quality</span>
+                            </h4>
+                            <p>
+                                <span class="lang-content ar active">منتجات مصنوعة بأعلى معايير الجودة</span>
+                                <span class="lang-content en">Products manufactured to highest quality standards</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h4>
+                                <span class="lang-content ar active">معايير أوروبية</span>
+                                <span class="lang-content en">European Standards</span>
+                            </h4>
+                            <p>
+                                <span class="lang-content ar active">مطابقة للمواصفات والمعايير الأوروبية</span>
+                                <span class="lang-content en">Compliant with European specifications and standards</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <i class="fas fa-handshake"></i>
+                        <div>
+                            <h4>
+                                <span class="lang-content ar active">دعم فني</span>
+                                <span class="lang-content en">Technical Support</span>
+                            </h4>
+                            <p>
+                                <span class="lang-content ar active">دعم فني متكامل وتدريب للأطباء</span>
+                                <span class="lang-content en">Comprehensive technical support and doctor training</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h4>
+                                <span class="lang-content ar active">توزيع عالمي</span>
+                                <span class="lang-content en">Global Distribution</span>
+                            </h4>
+                            <p>
+                                <span class="lang-content ar active">توفر المنتجات في أكثر من 40 دولة</span>
+                                <span class="lang-content en">Products available in over 40 countries</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="website-link">
+                    <a href="https://www.orthotraumaint.co.uk" class="website-btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span class="lang-content ar active">زيارة الموقع الرسمي</span>
+                        <span class="lang-content en">Visit Official Website</span>
                     </a>
                 </div>
             </div>
@@ -1203,25 +1297,6 @@
         </div>
     </footer>
 
-    <!-- PDF Modal -->
-    <div class="modal" id="pdfModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">
-                    <span class="lang-content ar active">Ortho-Trauma International Brochure</span>
-                    <span class="lang-content en">Ortho-Trauma International Brochure</span>
-                </h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <iframe src="https://docs.google.com/gview?url=https://www.orthotraumaint.co.uk/wp-content/uploads/2021/03/Ortho-Trauma-International-Brochure.pdf&embedded=true" 
-                        class="modal-pdf" 
-                        frameborder="0">
-                </iframe>
-            </div>
-        </div>
-    </div>
-
     <script>
         // Language Toggle
         document.addEventListener('DOMContentLoaded', function() {
@@ -1293,26 +1368,6 @@ END:VCARD`;
                     ? 'تم حفظ جهة الاتصال بنجاح' 
                     : 'Contact saved successfully';
                 alert(message);
-            });
-            
-            // PDF Modal functionality
-            const pdfModal = document.getElementById('pdfModal');
-            const openPdfModalBtn = document.getElementById('openPdfModal');
-            const closePdfModalBtn = document.querySelector('.close-modal');
-            
-            openPdfModalBtn.addEventListener('click', function() {
-                pdfModal.classList.add('active');
-            });
-            
-            closePdfModalBtn.addEventListener('click', function() {
-                pdfModal.classList.remove('active');
-            });
-            
-            // Close modal when clicking outside
-            pdfModal.addEventListener('click', function(e) {
-                if (e.target === pdfModal) {
-                    pdfModal.classList.remove('active');
-                }
             });
         });
     </script>
