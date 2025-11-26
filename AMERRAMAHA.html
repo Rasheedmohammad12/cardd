@@ -281,7 +281,7 @@
             color: var(--lighter-text);
         }
         
-        /* Gallery Section - MODIFIED */
+        /* Gallery Section */
         .gallery-section {
             background: var(--dark-card);
             margin: 40px auto;
@@ -667,11 +667,11 @@
     <!-- Header Section -->
     <header class="profile-header fade-in">
         <div class="cover-container">
-            <img src="https://i.imgur.com/J8ZSnRM.jpeg" alt="Medical Binary Logo" class="logo-full">
+            <!-- سيتم إضافة الصورة هنا عبر JavaScript -->
         </div>
         <div class="profile-info">
             <div class="profile-image-container">
-                <img src="https://i.imgur.com/rP4mB4V.jpeg" alt="AMERRAMAHA" class="profile-image">
+                <!-- سيتم إضافة الصورة هنا عبر JavaScript -->
                 <div class="verified-badge">
                     <i class="fas fa-check"></i>
                 </div>
@@ -758,22 +758,11 @@
             </div>
         </div>
 
-        <!-- Gallery Section - 4 صور فقط -->
+        <!-- Gallery Section -->
         <div class="gallery-section fade-in delay-2">
             <h2 class="section-title">Our Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openLightbox('https://i.imgur.com/R4KKy5t.jpeg', 0)">
-                    <img src="https://i.imgur.com/R4KKy5t.jpeg" alt="Medical Products">
-                </div>
-                <div class="gallery-item" onclick="openLightbox('https://i.imgur.com/Ra7yHBp.jpeg', 1)">
-                    <img src="https://i.imgur.com/Ra7yHBp.jpeg" alt="Medical Equipment">
-                </div>
-                <div class="gallery-item" onclick="openLightbox('https://i.imgur.com/fFUKoQh.jpeg', 2)">
-                    <img src="https://i.imgur.com/fFUKoQh.jpeg" alt="Healthcare Solutions">
-                </div>
-                <div class="gallery-item" onclick="openLightbox('https://i.imgur.com/DSOWciH.jpeg', 3)">
-                    <img src="https://i.imgur.com/DSOWciH.jpeg" alt="Surgical Instruments">
-                </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- سيتم إضافة الصور هنا عبر JavaScript -->
             </div>
         </div>
 
@@ -850,15 +839,61 @@
     </footer>
 
     <script>
-        // Gallery images data - 4 صور فقط
+        // Base64 encoded images - جميع الصور مدمجة في الملف
+        const embeddedImages = {
+            cover: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEAAQADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=",
+            profile: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEAAQADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=",
+            gallery: [
+                "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEAAQADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=",
+                "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEAAQADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=",
+                "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEAAQADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=",
+                "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEAAQADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+            ]
+        };
+
+        // Gallery images data
         const galleryImages = [
-            { src: 'https://i.imgur.com/R4KKy5t.jpeg', alt: 'Medical Products' },
-            { src: 'https://i.imgur.com/Ra7yHBp.jpeg', alt: 'Medical Equipment' },
-            { src: 'https://i.imgur.com/fFUKoQh.jpeg', alt: 'Healthcare Solutions' },
-            { src: 'https://i.imgur.com/DSOWciH.jpeg', alt: 'Surgical Instruments' }
+            { src: embeddedImages.gallery[0], alt: 'Medical Products' },
+            { src: embeddedImages.gallery[1], alt: 'Medical Equipment' },
+            { src: embeddedImages.gallery[2], alt: 'Healthcare Solutions' },
+            { src: embeddedImages.gallery[3], alt: 'Surgical Instruments' }
         ];
 
         let currentImageIndex = 0;
+
+        // Load embedded images
+        function loadEmbeddedImages() {
+            // Load cover image
+            const coverContainer = document.querySelector('.cover-container');
+            const coverImg = document.createElement('img');
+            coverImg.src = embeddedImages.cover;
+            coverImg.alt = "Medical Binary Logo";
+            coverImg.className = "logo-full";
+            coverContainer.appendChild(coverImg);
+
+            // Load profile image
+            const profileContainer = document.querySelector('.profile-image-container');
+            const profileImg = document.createElement('img');
+            profileImg.src = embeddedImages.profile;
+            profileImg.alt = "AMERRAMAHA";
+            profileImg.className = "profile-image";
+            profileContainer.insertBefore(profileImg, profileContainer.firstChild);
+
+            // Load gallery images
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryImages.forEach((image, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.onclick = () => openLightbox(image.src, index);
+                
+                const img = document.createElement('img');
+                img.src = image.src;
+                img.alt = image.alt;
+                
+                galleryItem.appendChild(img);
+                galleryGrid.appendChild(galleryItem);
+            });
+        }
 
         // Open lightbox with specific image
         function openLightbox(imgSrc, index) {
@@ -944,6 +979,7 @@ END:VCARD`;
         
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
+            loadEmbeddedImages();
             setupModalClosers();
             
             // Add click effects
@@ -955,12 +991,6 @@ END:VCARD`;
                         this.style.transform = '';
                     }, 150);
                 });
-            });
-            
-            // Preload images for better performance
-            galleryImages.forEach(image => {
-                const img = new Image();
-                img.src = image.src;
             });
         });
     </script>
