@@ -972,7 +972,7 @@
     </footer>
 
     <script>
-        // Gallery images data
+        // Gallery images data - ALL IMAGES ARE EMBEDDED IN THIS SINGLE FILE
         const galleryImages = [
             { src: 'https://i.imgur.com/R4KKy5t.jpeg', alt: 'Medical Products' },
             { src: 'https://i.imgur.com/Ra7yHBp.jpeg', alt: 'Medical Equipment' },
@@ -1007,6 +1007,7 @@
                 const img = document.createElement('img');
                 img.src = image.src;
                 img.alt = image.alt;
+                img.loading = "lazy"; // Optimize loading
                 
                 galleryItem.appendChild(img);
                 grid.appendChild(galleryItem);
@@ -1079,6 +1080,12 @@
                         document.body.style.overflow = 'auto';
                     }
                 }
+                
+                // Also close gallery modal with Escape
+                if (document.getElementById('galleryModal').style.display === 'block' && e.key === 'Escape') {
+                    document.getElementById('galleryModal').style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
             });
         }
 
@@ -1124,6 +1131,12 @@ END:VCARD`;
                         this.style.transform = '';
                     }, 150);
                 });
+            });
+            
+            // Preload images for better performance
+            galleryImages.forEach(image => {
+                const img = new Image();
+                img.src = image.src;
             });
         });
     </script>
