@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical Binary - Integrated Medical Solutions</title>
+    <title>Amer Rammaha - Medical Binary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,8 +14,8 @@
             --primary-dark: #3E2723;
             --accent: #6D4C41;
             --accent-dark: #4E342E;
-            --brown-text: #5D4037;
-            --brown-light: #8D6E63;
+            --brown-text: #ffffff;
+            --brown-light: #ffffff;
             --gradient: linear-gradient(135deg, #3E2723 0%, #5D4037 100%);
             --gradient-accent: linear-gradient(135deg, #4E342E 0%, #6D4C41 100%);
             --dark-bg: #121212;
@@ -68,26 +68,21 @@
         
         .cover-container {
             width: 100%;
-            height: 85vh; /* زيادة كبيرة في الارتفاع */
-            min-height: 650px; /* زيادة كبيرة في الارتفاع الأدنى */
-            max-height: 900px; /* زيادة كبيرة في الارتفاع الأقصى */
+            height: 500px;
             overflow: hidden;
             position: relative;
             background: var(--dark-bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px; /* إضافة padding لضمان المساحة */
         }
         
-        .logo-full-cover {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* عرض اللوجو كاملاً */
+        .logo-full {
+            width: 80%; /* تصغير اللوغو */
+            height: auto; /* الحفاظ على التناسب */
+            max-height: 400px; /* تحديد أقصى ارتفاع */
+            object-fit: contain; /* عرض الصورة كاملة بدون قص */
             display: block;
-            max-width: 95%; /* زيادة العرض الأقصى */
-            max-height: 95%; /* زيادة الارتفاع الأقصى */
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8)); /* إضافة ظل للوجو */
         }
         
         .profile-info {
@@ -105,8 +100,8 @@
         }
         
         .profile-image {
-            width: 200px; /* تكبير الصورة الشخصية أكثر */
-            height: 200px; /* تكبير الصورة الشخصية أكثر */
+            width: 150px;
+            height: 150px;
             border-radius: 20px;
             border: 5px solid var(--dark-card);
             object-fit: cover;
@@ -120,31 +115,30 @@
             right: 10px;
             background: var(--accent);
             color: white;
-            width: 40px; /* تكبير شارة التحقق أكثر */
-            height: 40px; /* تكبير شارة التحقق أكثر */
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem; /* تكبير حجم الخط أكثر */
+            font-size: 0.8rem;
             border: 2px solid var(--dark-card);
         }
         
         .profile-name {
-            font-size: 3.5rem; /* تكبير حجم الاسم أكثر */
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 10px;
             color: var(--brown-light);
             font-family: 'Playfair Display', serif;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* إضافة ظل للنص */
+            letter-spacing: 1px;
         }
         
         .profile-username {
-            font-size: 1.8rem; /* تكبير اسم المستخدم أكثر */
+            font-size: 1.3rem;
             font-weight: 600;
             color: var(--brown-text);
             margin-bottom: 20px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3); /* إضافة ظل للنص */
         }
         
         .stats-container {
@@ -160,15 +154,14 @@
         }
         
         .stat-number {
-            font-size: 2.2rem; /* تكبير الأرقام أكثر */
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--brown-light);
             display: block;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3); /* إضافة ظل للنص */
         }
         
         .stat-label {
-            font-size: 1.1rem; /* تكبير النص أكثر */
+            font-size: 0.9rem;
             color: var(--lighter-text);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -273,9 +266,9 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 15px;
-            color: white;
+            color: var(--dark-bg);
             font-size: 1.8rem;
-            box-shadow: 0 4px 10px rgba(93, 64, 55, 0.5);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
         }
         
         .service-name {
@@ -290,7 +283,7 @@
             color: var(--lighter-text);
         }
         
-        /* Gallery Section */
+        /* Gallery Section - MODIFIED */
         .gallery-section {
             background: var(--dark-card);
             margin: 40px auto;
@@ -302,31 +295,53 @@
             border: var(--border);
         }
         
-        .gallery-grid {
+        .gallery-preview {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
         }
         
-        .gallery-item {
-            border-radius: 15px;
+        .preview-item {
+            border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: transform 0.3s ease;
             background: white;
-            position: relative;
         }
         
-        .gallery-item:hover {
-            transform: translateY(-5px);
+        .preview-item:hover {
+            transform: scale(1.05);
         }
         
-        .gallery-item img {
+        .preview-item img {
             width: 100%;
-            height: 250px;
+            height: 120px;
             object-fit: cover;
             display: block;
+        }
+        
+        .gallery-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+        
+        .gallery-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
         
         /* Contact Section */
@@ -436,7 +451,7 @@
             transform: translateY(-8px) scale(1.05);
             box-shadow: var(--shadow-lg);
             background: var(--brown-text);
-            color: white;
+            color: var(--dark-bg);
         }
         
         /* Action Buttons */
@@ -522,18 +537,21 @@
         /* Responsive */
         @media (max-width: 768px) {
             .profile-name {
-                font-size: 2.8rem; /* تكبير الاسم في الشاشات الصغيرة */
+                font-size: 2rem;
             }
             
             .profile-image {
-                width: 170px; /* تكبير الصورة الشخصية في الشاشات الصغيرة */
-                height: 170px; /* تكبير الصورة الشخصية في الشاشات الصغيرة */
+                width: 120px;
+                height: 120px;
             }
             
             .cover-container {
-                height: 65vh; /* تكبير الارتفاع في الشاشات الصغيرة */
-                min-height: 500px; /* تكبير الارتفاع الأدنى في الشاشات الصغيرة */
-                padding: 20px; /* تقليل padding في الشاشات الصغيرة */
+                height: 400px;
+            }
+            
+            .logo-full {
+                width: 90%; /* تكبير قليلاً في الشاشات الصغيرة */
+                max-height: 350px;
             }
             
             .action-buttons {
@@ -541,23 +559,23 @@
                 align-items: center;
             }
             
-            .gallery-grid {
-                grid-template-columns: 1fr;
+            .gallery-preview {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
         }
 
         @media (max-width: 480px) {
             .cover-container {
-                height: 55vh; /* تكبير الارتفاع في الشاشات الصغيرة جداً */
-                min-height: 400px; /* تكبير الارتفاع الأدنى في الشاشات الصغيرة جداً */
+                height: 300px;
             }
             
-            .profile-name {
-                font-size: 2.5rem; /* تكبير الاسم في الشاشات الصغيرة جداً */
+            .logo-full {
+                width: 95%;
+                max-height: 250px;
             }
             
-            .profile-username {
-                font-size: 1.5rem; /* تكبير اسم المستخدم في الشاشات الصغيرة جداً */
+            .gallery-preview {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
         }
     </style>
@@ -566,16 +584,16 @@
     <!-- Header Section -->
     <header class="profile-header fade-in">
         <div class="cover-container">
-            <img src="https://i.imgur.com/J8ZSnRM.jpeg" alt="Medical Binary Logo" class="logo-full-cover">
+            <img src="https://i.imgur.com/J8ZSnRM.jpeg" alt="Medical Binary Logo" class="logo-full">
         </div>
         <div class="profile-info">
             <div class="profile-image-container">
-                <img src="https://i.imgur.com/rP4mB4V.jpeg" alt="AMERRAMAHA" class="profile-image">
+                <img src="https://i.imgur.com/rP4mB4V.jpeg" alt="Amer Rammaha" class="profile-image">
                 <div class="verified-badge">
                     <i class="fas fa-check"></i>
                 </div>
             </div>
-            <h1 class="profile-name">AMERRAMAHA</h1>
+            <h1 class="profile-name">Amer Rammaha</h1>
             <div class="profile-username">Medical Binary - Integrated Medical Solutions</div>
             
             <div class="stats-container">
@@ -660,44 +678,27 @@
         <!-- Gallery Section -->
         <div class="gallery-section fade-in delay-2">
             <h2 class="section-title">Our Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
+            <p class="about-text">Preview of our medical products and equipment</p>
+            
+            <div class="gallery-preview">
+                <div class="preview-item">
                     <img src="https://i.imgur.com/R4KKy5t.jpeg" alt="Medical Products">
                 </div>
-                <div class="gallery-item">
+                <div class="preview-item">
                     <img src="https://i.imgur.com/Ra7yHBp.jpeg" alt="Medical Equipment">
                 </div>
-                <div class="gallery-item">
+                <div class="preview-item">
                     <img src="https://i.imgur.com/fFUKoQh.jpeg" alt="Healthcare Solutions">
                 </div>
-                <div class="gallery-item">
+                <div class="preview-item">
                     <img src="https://i.imgur.com/DSOWciH.jpeg" alt="Surgical Instruments">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://i.imgur.com/EV8A0GZ.jpeg" alt="Pharmaceuticals">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.imgur.com/dqkWLfm.jpeg" alt="Medical Devices">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.imgur.com/rP4mB4V.jpeg" alt="Orthopedic Supplies">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.imgur.com/OeDkYnj.jpeg" alt="Hospital Equipment">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.imgur.com/cIpK7eB.jpeg" alt="Medical Solutions">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.imgur.com/YJ1pdzA.jpeg" alt="Healthcare Services">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.imgur.com/Kp8GsrS.jpeg" alt="Medical Products">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.imgur.com/h59p222.jpeg" alt="Surgical Tools">
-                </div>
             </div>
+            
+            <button class="gallery-button" onclick="openGallery()">
+                <i class="fas fa-external-link-alt"></i>
+                Open Full Gallery (12 Photos)
+            </button>
         </div>
 
         <!-- Contact Section -->
@@ -749,10 +750,10 @@
 
         <!-- Action Buttons -->
         <div class="action-buttons fade-in delay-3">
-            <a href="VCF/medical-binary.vcf" class="action-button primary" download>
+            <button class="action-button primary" onclick="saveContact()">
                 <i class="fas fa-download"></i>
                 Save Contact
-            </a>
+            </button>
             <a href="https://wa.me/962790408227" class="action-button" target="_blank">
                 <i class="fab fa-whatsapp"></i>
                 WhatsApp
@@ -773,9 +774,274 @@
     </footer>
 
     <script>
+        // دالة لفتح معرض الصور الكامل
+        function openGallery() {
+            // إنشاء محتوى HTML لملف المعرض
+            const galleryHTML = `
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الصور - Medical Binary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: #121212;
+            color: #E0E0E0;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+        
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .gallery-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: #1E1E1E;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .gallery-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        
+        .gallery-subtitle {
+            font-size: 1.2rem;
+            color: #BDBDBD;
+            margin-bottom: 20px;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: #6D4C41;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: #5D4037;
+            transform: translateY(-2px);
+        }
+        
+        .full-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            background: white;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-title {
+            padding: 15px;
+            text-align: center;
+            background: #1E1E1E;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .full-gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .gallery-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .full-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <h1 class="gallery-title">معرض الصور الكامل</h1>
+            <p class="gallery-subtitle">Medical Binary - Integrated Medical Solutions</p>
+            <button class="back-button" onclick="window.close()">
+                <i class="fas fa-arrow-left"></i>
+                العودة للصفحة الرئيسية
+            </button>
+        </div>
+        
+        <div class="full-gallery-grid">
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/R4KKy5t.jpeg" alt="Medical Products">
+                <div class="image-title">Medical Products</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/Ra7yHBp.jpeg" alt="Medical Equipment">
+                <div class="image-title">Medical Equipment</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/fFUKoQh.jpeg" alt="Healthcare Solutions">
+                <div class="image-title">Healthcare Solutions</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/DSOWciH.jpeg" alt="Surgical Instruments">
+                <div class="image-title">Surgical Instruments</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/EV8A0GZ.jpeg" alt="Pharmaceuticals">
+                <div class="image-title">Pharmaceuticals</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/dqkWLfm.jpeg" alt="Medical Devices">
+                <div class="image-title">Medical Devices</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/rP4mB4V.jpeg" alt="Orthopedic Supplies">
+                <div class="image-title">Orthopedic Supplies</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/OeDkYnj.jpeg" alt="Hospital Equipment">
+                <div class="image-title">Hospital Equipment</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/cIpK7eB.jpeg" alt="Medical Solutions">
+                <div class="image-title">Medical Solutions</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/YJ1pdzA.jpeg" alt="Healthcare Services">
+                <div class="image-title">Healthcare Services</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/Kp8GsrS.jpeg" alt="Medical Products">
+                <div class="image-title">Medical Products</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/h59p222.jpeg" alt="Surgical Tools">
+                <div class="image-title">Surgical Tools</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // إضافة تأثيرات للصور
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.gallery-item img');
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    const lightbox = document.createElement('div');
+                    lightbox.style.cssText = \`
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.9);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 1000;
+                        cursor: pointer;
+                    \`;
+                    
+                    const lightboxImg = document.createElement('img');
+                    lightboxImg.src = this.src;
+                    lightboxImg.style.cssText = \`
+                        max-width: 90%;
+                        max-height: 90%;
+                        border-radius: 10px;
+                        box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+                    \`;
+                    
+                    lightbox.appendChild(lightboxImg);
+                    document.body.appendChild(lightbox);
+                    
+                    lightbox.addEventListener('click', function() {
+                        document.body.removeChild(lightbox);
+                    });
+                });
+            });
+        });
+    <\/script>
+</body>
+</html>`;
+
+            // فتح نافذة جديدة مع محتوى المعرض
+            const galleryWindow = window.open('', '_blank');
+            galleryWindow.document.write(galleryHTML);
+            galleryWindow.document.close();
+        }
+
+        // Save Contact functionality
+        function saveContact() {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Amer Rammaha
+ORG:Medical Binary - Integrated Medical Solutions
+TEL;TYPE=WORK,VOICE:065692727
+TEL;TYPE=CELL,VOICE:0790408227
+EMAIL:Rammaha@medical-binary.com
+ADR;TYPE=WORK:;;Jabal Al-Hussein - Opposite Hiba Hospital, Luluat Al-Quraini Complex 198;;;
+URL:https://cardd.pages.dev/AMERRAMAHA.html
+NOTE:Orthopedic Supplies • Pharmaceuticals • Healthcare Services
+END:VCARD`;
+            
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Amer Rammaha.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('Contact saved successfully!');
+        }
+        
         // Add click effects
         document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.social-icon, .action-button');
+            const buttons = document.querySelectorAll('.social-icon, .action-button, .gallery-button');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
