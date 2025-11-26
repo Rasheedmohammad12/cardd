@@ -498,97 +498,6 @@
             color: white;
         }
         
-        /* PDF Modal */
-        .pdf-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .pdf-modal.active {
-            display: flex;
-        }
-        
-        .pdf-modal-content {
-            background: white;
-            border-radius: var(--radius);
-            width: 90%;
-            height: 90%;
-            max-width: 1000px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .pdf-modal-header {
-            padding: 15px 20px;
-            background: var(--medical-blue);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: var(--radius) var(--radius) 0 0;
-        }
-        
-        .pdf-modal-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-        
-        .pdf-modal-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .pdf-modal-body {
-            flex: 1;
-            padding: 0;
-            overflow: hidden;
-        }
-        
-        .pdf-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 0 0 var(--radius) var(--radius);
-        }
-        
-        .pdf-download-btn {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: white;
-            padding: 10px 15px;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .pdf-download-btn:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-        }
-        
         /* Contact Section */
         .contact-section {
             padding: 100px 0;
@@ -755,6 +664,27 @@
             opacity: 0.7;
         }
         
+        /* Save Contact Button */
+        .save-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--accent);
+            color: white;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            margin-top: 20px;
+        }
+        
+        .save-contact-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .about-content {
@@ -800,11 +730,6 @@
                 width: 100%;
                 max-width: 300px;
                 justify-content: center;
-            }
-            
-            .pdf-modal-content {
-                width: 95%;
-                height: 95%;
             }
             
             .products-grid {
@@ -1034,13 +959,13 @@
                             </ul>
                         </div>
                         <div class="product-actions">
-                            <a href="Ortho%20Pedic.pdf" class="product-link view-pdf" data-pdf="Ortho%20Pedic.pdf" data-title="Ortho-Trauma International Catalog">
-                                <i class="fas fa-eye"></i>
-                                View Catalog
-                            </a>
-                            <a href="Ortho%20Pedic.pdf" class="product-link secondary" download>
+                            <a href="Ortho_Pedic_Catalog.pdf" class="product-link" download>
                                 <i class="fas fa-download"></i>
-                                Download
+                                Download Catalog
+                            </a>
+                            <a href="Ortho_Pedic_Price_List.pdf" class="product-link secondary" download>
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                Price List
                             </a>
                         </div>
                     </div>
@@ -1067,13 +992,13 @@
                             </ul>
                         </div>
                         <div class="product-actions">
-                            <a href="Conwe%20pdf.pdf" class="product-link view-pdf" data-pdf="Conwe%20pdf.pdf" data-title="Orthopedic Supplies Catalog">
-                                <i class="fas fa-eye"></i>
-                                View Catalog
-                            </a>
-                            <a href="Conwe%20pdf.pdf" class="product-link secondary" download>
+                            <a href="Orthopedic_Supplies_Catalog.pdf" class="product-link" download>
                                 <i class="fas fa-download"></i>
-                                Download
+                                Download Catalog
+                            </a>
+                            <a href="Orthopedic_Supplies_Price_List.pdf" class="product-link secondary" download>
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                Price List
                             </a>
                         </div>
                     </div>
@@ -1101,13 +1026,13 @@
                             </ul>
                         </div>
                         <div class="product-actions">
-                            <a href="Farmasi%20Catalogue%20..pdf" class="product-link view-pdf" data-pdf="Farmasi%20Catalogue%20..pdf" data-title="Farmasi Catalog">
-                                <i class="fas fa-eye"></i>
-                                View Catalog
-                            </a>
-                            <a href="Farmasi%20Catalogue%20..pdf" class="product-link secondary" download>
+                            <a href="Farmasi_Catalog.pdf" class="product-link" download>
                                 <i class="fas fa-download"></i>
-                                Download
+                                Download Catalog
+                            </a>
+                            <a href="Farmasi_Price_List.pdf" class="product-link secondary" download>
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                Price List
                             </a>
                         </div>
                     </div>
@@ -1135,13 +1060,13 @@
                             </ul>
                         </div>
                         <div class="product-actions">
-                            <a href="OHO%20Cataloge.pdf" class="product-link view-pdf" data-pdf="OHO%20Cataloge.pdf" data-title="OHO Catalog">
-                                <i class="fas fa-eye"></i>
-                                View Catalog
-                            </a>
-                            <a href="OHO%20Cataloge.pdf" class="product-link secondary" download>
+                            <a href="OHO_Catalog.pdf" class="product-link" download>
                                 <i class="fas fa-download"></i>
-                                Download
+                                Download Catalog
+                            </a>
+                            <a href="OHO_Price_List.pdf" class="product-link secondary" download>
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                Price List
                             </a>
                         </div>
                     </div>
@@ -1169,13 +1094,13 @@
                             </ul>
                         </div>
                         <div class="product-actions">
-                            <a href="NIMO%20TURKEY.pdf" class="product-link view-pdf" data-pdf="NIMO%20TURKEY.pdf" data-title="Medical Equipment Catalog">
-                                <i class="fas fa-eye"></i>
-                                View Catalog
-                            </a>
-                            <a href="NIMO%20TURKEY.pdf" class="product-link secondary" download>
+                            <a href="Medical_Equipment_Catalog.pdf" class="product-link" download>
                                 <i class="fas fa-download"></i>
-                                Download
+                                Download Catalog
+                            </a>
+                            <a href="Medical_Equipment_Price_List.pdf" class="product-link secondary" download>
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                Price List
                             </a>
                         </div>
                     </div>
@@ -1202,13 +1127,13 @@
                             </ul>
                         </div>
                         <div class="product-actions">
-                            <a href="Catalog%20D.C.Tuna.pdf" class="product-link view-pdf" data-pdf="Catalog%20D.C.Tuna.pdf" data-title="D.C. Tuna Catalog">
-                                <i class="fas fa-eye"></i>
-                                View Catalog
-                            </a>
-                            <a href="Catalog%20D.C.Tuna.pdf" class="product-link secondary" download>
+                            <a href="DC_Tuna_Catalog.pdf" class="product-link" download>
                                 <i class="fas fa-download"></i>
-                                Download
+                                Download Catalog
+                            </a>
+                            <a href="DC_Tuna_Price_List.pdf" class="product-link secondary" download>
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                Price List
                             </a>
                         </div>
                     </div>
@@ -1216,25 +1141,6 @@
             </div>
         </div>
     </section>
-
-    <!-- PDF Modal -->
-    <div class="pdf-modal" id="pdfModal">
-        <div class="pdf-modal-content">
-            <div class="pdf-modal-header">
-                <h3 class="pdf-modal-title" id="pdfModalTitle">Product Catalog</h3>
-                <button class="pdf-modal-close" id="pdfModalClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="pdf-modal-body">
-                <iframe class="pdf-iframe" id="pdfIframe" src=""></iframe>
-                <a href="#" class="pdf-download-btn" id="pdfDownloadBtn" target="_blank">
-                    <i class="fas fa-download"></i>
-                    Download File
-                </a>
-            </div>
-        </div>
-    </div>
 
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
@@ -1296,6 +1202,12 @@
                             <p>Friday: 9:00 AM - 1:00 PM</p>
                         </div>
                     </div>
+
+                    <!-- Save Contact Button -->
+                    <button class="save-contact-btn" onclick="saveContact()">
+                        <i class="fas fa-address-card"></i>
+                        Save Contact to Phone
+                    </button>
                 </div>
                 
                 <div class="contact-form">
@@ -1412,44 +1324,6 @@
                 });
             });
             
-            // PDF Modal functionality
-            const pdfModal = document.getElementById('pdfModal');
-            const pdfIframe = document.getElementById('pdfIframe');
-            const pdfModalTitle = document.getElementById('pdfModalTitle');
-            const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
-            const pdfModalClose = document.getElementById('pdfModalClose');
-            const viewPdfLinks = document.querySelectorAll('.view-pdf');
-            
-            viewPdfLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pdfFile = this.getAttribute('data-pdf');
-                    const title = this.getAttribute('data-title');
-                    
-                    pdfModalTitle.textContent = title;
-                    pdfIframe.src = pdfFile;
-                    pdfDownloadBtn.href = pdfFile;
-                    pdfModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-            
-            // Close modal
-            pdfModalClose.addEventListener('click', function() {
-                pdfModal.classList.remove('active');
-                pdfIframe.src = '';
-                document.body.style.overflow = 'auto';
-            });
-            
-            // Close modal when clicking outside
-            pdfModal.addEventListener('click', function(e) {
-                if (e.target === pdfModal) {
-                    pdfModal.classList.remove('active');
-                    pdfIframe.src = '';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
             // Contact form submission
             const contactForm = document.getElementById('contactForm');
             contactForm.addEventListener('submit', function(e) {
@@ -1458,6 +1332,35 @@
                 contactForm.reset();
             });
         });
+
+        // Save Contact Functionality
+        function saveContact() {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Medical Binary Establishment
+ORG:Medical Binary - Integrated Medical Solutions
+TEL;TYPE=WORK,VOICE:065692727
+TEL;TYPE=CELL,VOICE:0790408227
+EMAIL:Rammaha@medical-binary.com
+EMAIL:Medical.Binary@yahoo.com
+ADR;TYPE=WORK:;;Jabal Al-Hussein - Opposite Hiba Hospital, Luluat Al-Quraini Complex 198;Amman;;Jordan;
+URL:https://medical-binary.com
+NOTE:Specialized in medical supplies, orthopedic surgery materials, pharmaceuticals, and healthcare services
+END:VCARD`;
+            
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Medical Binary Contact.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('Contact saved successfully! The vCard file has been downloaded.');
+        }
     </script>
 </body>
 </html>
