@@ -101,6 +101,34 @@
             font-size: 0.9rem;
         }
         
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 20px;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+        
+        .lang-btn.active {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
         /* Navigation */
         .nav-container {
             background: rgba(255, 255, 255, 0.1);
@@ -287,6 +315,290 @@
         
         .service-desc {
             color: var(--light-text);
+        }
+        
+        /* Reviews Section */
+        .reviews-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .average-rating {
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            min-width: 200px;
+        }
+        
+        .rating-stars {
+            color: #FFD700;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .rating-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1;
+        }
+        
+        .rating-count {
+            color: var(--light-text);
+            margin-top: 5px;
+        }
+        
+        .rating-bars {
+            flex: 1;
+            max-width: 400px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .rating-label {
+            width: 80px;
+            font-weight: 600;
+        }
+        
+        .rating-bar-line {
+            flex: 1;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        
+        .rating-bar-fill {
+            height: 100%;
+            background: #FFD700;
+            border-radius: 5px;
+        }
+        
+        .rating-percent {
+            width: 40px;
+            text-align: left;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: var(--border);
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .reviewer-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .reviewer-name {
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .review-date {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .review-rating {
+            color: #FFD700;
+        }
+        
+        .review-text {
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+        
+        .add-review-btn {
+            display: block;
+            margin: 0 auto;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .add-review-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Review Modal */
+        .review-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light-text);
+        }
+        
+        .modal-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+        }
+        
+        .rating-input {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .star-rating {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        .star-rating input {
+            display: none;
+        }
+        
+        .star-rating label {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+            margin: 0 2px;
+        }
+        
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #FFD700;
+        }
+        
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .form-input, .form-textarea {
+            padding: 12px 15px;
+            border: var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .form-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
         
         /* Payment Section */
@@ -651,6 +963,31 @@
             font-size: 1.3rem;
         }
         
+        /* Language-specific styles */
+        [lang="en"] {
+            direction: ltr;
+            text-align: left;
+        }
+        
+        [lang="en"] .section-title:after {
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        [lang="en"] .footer-column h3:after {
+            right: auto;
+            left: 0;
+        }
+        
+        [lang="en"] .footer-links a:hover {
+            transform: translateX(5px);
+        }
+        
+        [lang="en"] .nav-links {
+            direction: ltr;
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .about-content, .contact-content, .payment-content {
@@ -659,6 +996,10 @@
             
             .hero-title {
                 font-size: 2.3rem;
+            }
+            
+            .rating-summary {
+                flex-direction: column;
             }
         }
         
@@ -692,6 +1033,11 @@
             .nav-links {
                 gap: 15px;
             }
+            
+            .language-switcher {
+                margin-left: 0;
+                margin-top: 10px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -715,6 +1061,10 @@
                 flex-direction: column;
                 gap: 10px;
             }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -735,9 +1085,9 @@
                         <i class="fas fa-phone"></i>
                         <span>0786844099</span>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>عيادة بيطرية متخصصة</span>
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="ar">العربية</button>
+                        <button class="lang-btn" data-lang="en">English</button>
                     </div>
                 </div>
             </div>
@@ -748,11 +1098,12 @@
     <div class="nav-container">
         <div class="container">
             <ul class="nav-links">
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#services">خدماتنا</a></li>
-                <li><a href="#payment">طرق الدفع</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-                <li><a href="#save-contact">احفظ معلوماتنا</a></li>
+                <li><a href="#about" data-ar="من نحن" data-en="About Us">من نحن</a></li>
+                <li><a href="#services" data-ar="خدماتنا" data-en="Our Services">خدماتنا</a></li>
+                <li><a href="#reviews" data-ar="تقييمات العملاء" data-en="Customer Reviews">تقييمات العملاء</a></li>
+                <li><a href="#payment" data-ar="طرق الدفع" data-en="Payment Methods">طرق الدفع</a></li>
+                <li><a href="#contact" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</a></li>
+                <li><a href="#save-contact" data-ar="احفظ معلوماتنا" data-en="Save Our Info">احفظ معلوماتنا</a></li>
             </ul>
         </div>
     </div>
@@ -761,16 +1112,16 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Real Vet Clinic</h1>
-                <p class="hero-subtitle">عيادة بيطرية متخصصة في علاج ورعاية الحيوانات الأليفة</p>
+                <h1 class="hero-title" data-ar="Real Vet Clinic" data-en="Real Vet Clinic">Real Vet Clinic</h1>
+                <p class="hero-subtitle" data-ar="عيادة بيطرية متخصصة في علاج ورعاية الحيوانات الأليفة" data-en="Specialized veterinary clinic for pet treatment and care">عيادة بيطرية متخصصة في علاج ورعاية الحيوانات الأليفة</p>
                 <div class="hero-buttons">
                     <a href="https://wa.me/962786844099" class="btn btn-primary" target="_blank">
                         <i class="fab fa-whatsapp"></i>
-                        تواصل عبر واتساب
+                        <span data-ar="تواصل عبر واتساب" data-en="Contact via WhatsApp">تواصل عبر واتساب</span>
                     </a>
                     <a href="#contact" class="btn btn-outline">
                         <i class="fas fa-map-marker-alt"></i>
-                        موقعنا على الخريطة
+                        <span data-ar="موقعنا على الخريطة" data-en="Our Location">موقعنا على الخريطة</span>
                     </a>
                 </div>
             </div>
@@ -780,16 +1131,16 @@
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">من نحن</h2>
+            <h2 class="section-title" data-ar="من نحن" data-en="About Us">من نحن</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>
+                    <p data-ar="مرحباً بكم في Real Vet Clinic، عيادتكم البيطرية المتخصصة في علاج ورعاية الحيوانات الأليفة. نحن نقدم خدمات بيطرية شاملة ومهنية بمعايير عالمية." data-en="Welcome to Real Vet Clinic, your specialized veterinary clinic for pet treatment and care. We provide comprehensive and professional veterinary services with international standards.">
                         مرحباً بكم في Real Vet Clinic، عيادتكم البيطرية المتخصصة في علاج ورعاية الحيوانات الأليفة. نحن نقدم خدمات بيطرية شاملة ومهنية بمعايير عالمية.
                     </p>
-                    <p>
+                    <p data-ar="نتميز بفريق طبي مؤهل وذو خبرة واسعة في تشخيص وعلاج مختلف الحالات المرضية للحيوانات الأليفة. نستخدم أحدث التقنيات والأجهزة الطبية لتقديم أفضل رعاية ممكنة لحيواناتكم." data-en="We have a qualified medical team with extensive experience in diagnosing and treating various medical conditions for pets. We use the latest technologies and medical equipment to provide the best possible care for your animals.">
                         نتميز بفريق طبي مؤهل وذو خبرة واسعة في تشخيص وعلاج مختلف الحالات المرضية للحيوانات الأليفة. نستخدم أحدث التقنيات والأجهزة الطبية لتقديم أفضل رعاية ممكنة لحيواناتكم.
                     </p>
-                    <p>
+                    <p data-ar="نؤمن بأن الحيوانات الأليفة جزء من العائلة، لذلك نقدم لهم الرعاية الطبية الشاملة التي يستحقونها في بيئة آمنة ومريحة." data-en="We believe that pets are part of the family, so we provide them with comprehensive medical care they deserve in a safe and comfortable environment.">
                         نؤمن بأن الحيوانات الأليفة جزء من العائلة، لذلك نقدم لهم الرعاية الطبية الشاملة التي يستحقونها في بيئة آمنة ومريحة.
                     </p>
                 </div>
@@ -803,72 +1154,236 @@
     <!-- Services Section -->
     <section id="services" class="section" style="background: #f8f9fa;">
         <div class="container">
-            <h2 class="section-title">خدماتنا</h2>
+            <h2 class="section-title" data-ar="خدماتنا" data-en="Our Services">خدماتنا</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-microscope"></i>
                     </div>
-                    <h3 class="service-title">فحوصات مخبرية</h3>
-                    <p class="service-desc">فحوصات دقيقة ومتقدمة لتشخيص الحالات المرضية بدقة</p>
+                    <h3 class="service-title" data-ar="فحوصات مخبرية" data-en="Laboratory Tests">فحوصات مخبرية</h3>
+                    <p class="service-desc" data-ar="فحوصات دقيقة ومتقدمة لتشخيص الحالات المرضية بدقة" data-en="Accurate and advanced tests for precise diagnosis of medical conditions">فحوصات دقيقة ومتقدمة لتشخيص الحالات المرضية بدقة</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-stethoscope"></i>
                     </div>
-                    <h3 class="service-title">العلاج الطبي</h3>
-                    <p class="service-desc">برامج علاجية متكاملة لمختلف الأمراض والحالات الصحية</p>
+                    <h3 class="service-title" data-ar="العلاج الطبي" data-en="Medical Treatment">العلاج الطبي</h3>
+                    <p class="service-desc" data-ar="برامج علاجية متكاملة لمختلف الأمراض والحالات الصحية" data-en="Comprehensive treatment programs for various diseases and health conditions">برامج علاجية متكاملة لمختلف الأمراض والحالات الصحية</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-syringe"></i>
                     </div>
-                    <h3 class="service-title">العمليات الجراحية</h3>
-                    <p class="service-desc">عمليات جراحية متخصصة بأعلى معايير السلامة</p>
+                    <h3 class="service-title" data-ar="العمليات الجراحية" data-en="Surgical Operations">العمليات الجراحية</h3>
+                    <p class="service-desc" data-ar="عمليات جراحية متخصصة بأعلى معايير السلامة" data-en="Specialized surgical operations with the highest safety standards">عمليات جراحية متخصصة بأعلى معايير السلامة</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-hotel"></i>
                     </div>
-                    <h3 class="service-title">مبيت فندقي</h3>
-                    <p class="service-desc">خدمة إيواء فندقية مريحة للحيوانات تحت إشراف طبي</p>
+                    <h3 class="service-title" data-ar="مبيت فندقي" data-en="Hotel Boarding">مبيت فندقي</h3>
+                    <p class="service-desc" data-ar="خدمة إيواء فندقية مريحة للحيوانات تحت إشراف طبي" data-en="Comfortable hotel boarding service for animals under medical supervision">خدمة إيواء فندقية مريحة للحيوانات تحت إشراف طبي</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-bath"></i>
                     </div>
-                    <h3 class="service-title">الحمام والحلاقة</h3>
-                    <p class="service-desc">خدمات النظافة والعناية بمظهر الحيوانات الأليفة</p>
+                    <h3 class="service-title" data-ar="الحمام والحلاقة" data-en="Bathing & Grooming">الحمام والحلاقة</h3>
+                    <p class="service-desc" data-ar="خدمات النظافة والعناية بمظهر الحيوانات الأليفة" data-en="Hygiene services and care for the appearance of pets">خدمات النظافة والعناية بمظهر الحيوانات الأليفة</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-shopping-bag"></i>
                     </div>
-                    <h3 class="service-title">مستلزمات الحيوانات</h3>
-                    <p class="service-desc">توفير جميع المستلزمات والأدوية اللازمة للحيوانات</p>
+                    <h3 class="service-title" data-ar="مستلزمات الحيوانات" data-en="Pet Supplies">مستلزمات الحيوانات</h3>
+                    <p class="service-desc" data-ar="توفير جميع المستلزمات والأدوية اللازمة للحيوانات" data-en="Providing all necessary supplies and medications for animals">توفير جميع المستلزمات والأدوية اللازمة للحيوانات</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section id="reviews" class="section reviews-section">
+        <div class="container">
+            <h2 class="section-title" data-ar="تقييمات العملاء" data-en="Customer Reviews">تقييمات العملاء</h2>
+            
+            <div class="rating-summary">
+                <div class="average-rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="rating-value">4.7</div>
+                    <div class="rating-count" data-ar="من 5 بناءً على 84 تقييم" data-en="out of 5 based on 84 reviews">من 5 بناءً على 84 تقييم</div>
+                </div>
+                
+                <div class="rating-bars">
+                    <div class="rating-bar">
+                        <div class="rating-label">5 <i class="fas fa-star"></i></div>
+                        <div class="rating-bar-line">
+                            <div class="rating-bar-fill" style="width: 75%"></div>
+                        </div>
+                        <div class="rating-percent">75%</div>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">4 <i class="fas fa-star"></i></div>
+                        <div class="rating-bar-line">
+                            <div class="rating-bar-fill" style="width: 15%"></div>
+                        </div>
+                        <div class="rating-percent">15%</div>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">3 <i class="fas fa-star"></i></div>
+                        <div class="rating-bar-line">
+                            <div class="rating-bar-fill" style="width: 6%"></div>
+                        </div>
+                        <div class="rating-percent">6%</div>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">2 <i class="fas fa-star"></i></div>
+                        <div class="rating-bar-line">
+                            <div class="rating-bar-fill" style="width: 3%"></div>
+                        </div>
+                        <div class="rating-percent">3%</div>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">1 <i class="fas fa-star"></i></div>
+                        <div class="rating-bar-line">
+                            <div class="rating-bar-fill" style="width: 1%"></div>
+                        </div>
+                        <div class="rating-percent">1%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">م</div>
+                            <div>
+                                <div class="reviewer-name" data-ar="محمد أحمد" data-en="Mohammed Ahmed">محمد أحمد</div>
+                                <div class="review-date">٢٠ أكتوبر ٢٠٢٣</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-text" data-ar="خدمة ممتازة وفريق طبي محترف. عالجوا قطتي بكل عناية واحترافية. أنصح الجميع بهذه العيادة." data-en="Excellent service and professional medical team. They treated my cat with all care and professionalism. I recommend this clinic to everyone.">
+                        خدمة ممتازة وفريق طبي محترف. عالجوا قطتي بكل عناية واحترافية. أنصح الجميع بهذه العيادة.
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">س</div>
+                            <div>
+                                <div class="reviewer-name" data-ar="سارة خالد" data-en="Sara Khaled">سارة خالد</div>
+                                <div class="review-date">١٥ أكتوبر ٢٠٢٣</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-text" data-ar="أفضل عيادة بيطرية زُرتها. الأسعار معقولة والخدمة سريعة. الدكتور كان متعاون جداً وشرح لي كل شيء بالتفصيل." data-en="The best veterinary clinic I've visited. Reasonable prices and fast service. The doctor was very cooperative and explained everything in detail.">
+                        أفضل عيادة بيطرية زُرتها. الأسعار معقولة والخدمة سريعة. الدكتور كان متعاون جداً وشرح لي كل شيء بالتفصيل.
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">ع</div>
+                            <div>
+                                <div class="reviewer-name" data-ar="علي محمود" data-en="Ali Mahmoud">علي محمود</div>
+                                <div class="review-date">٨ أكتوبر ٢٠٢٣</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-text" data-ar="تجربة جيدة بشكل عام. العيادة نظيفة والموظفون متعاونون. العلاج كان فعالاً لكلبي." data-en="Good experience overall. The clinic is clean and the staff are cooperative. The treatment was effective for my dog.">
+                        تجربة جيدة بشكل عام. العيادة نظيفة والموظفون متعاونون. العلاج كان فعالاً لكلبي.
+                    </div>
+                </div>
+            </div>
+            
+            <button class="add-review-btn" id="openReviewModal" data-ar="أضف تقييمك" data-en="Add Your Review">أضف تقييمك</button>
+        </div>
+    </section>
+
+    <!-- Review Modal -->
+    <div class="review-modal" id="reviewModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeReviewModal">&times;</button>
+            <h3 class="modal-title" data-ar="أضف تقييمك" data-en="Add Your Review">أضف تقييمك</h3>
+            
+            <div class="rating-input">
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1"><i class="fas fa-star"></i></label>
+                </div>
+            </div>
+            
+            <form class="review-form" id="reviewForm">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="اسمك" data-ar="اسمك" data-en="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <textarea class="form-textarea" placeholder="اكتب تقييمك هنا..." data-ar="اكتب تقييمك هنا..." data-en="Write your review here..." required></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit" data-ar="إرسال التقييم" data-en="Submit Review">إرسال التقييم</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Payment Section -->
     <section id="payment" class="section payment-section">
         <div class="container">
-            <h2 class="section-title">طرق الدفع</h2>
+            <h2 class="section-title" data-ar="طرق الدفع" data-en="Payment Methods">طرق الدفع</h2>
             <div class="payment-content">
                 <div class="payment-info">
-                    <p>
+                    <p data-ar="نوفر في Real Vet Clinic طرق دفع متعددة لتسهيل عملية الدفع لعملائنا الكرام. يمكنكم الدفع نقداً في العيادة أو من خلال التحويل البنكي." data-en="At Real Vet Clinic, we provide multiple payment methods to facilitate the payment process for our valued customers. You can pay in cash at the clinic or through bank transfer.">
                         نوفر في Real Vet Clinic طرق دفع متعددة لتسهيل عملية الدفع لعملائنا الكرام. يمكنكم الدفع نقداً في العيادة أو من خلال التحويل البنكي.
                     </p>
-                    <p>
+                    <p data-ar="للدفع عبر التحويل البنكي، يرجى استخدام المعلومات التالية:" data-en="For bank transfer payment, please use the following information:">
                         للدفع عبر التحويل البنكي، يرجى استخدام المعلومات التالية:
                     </p>
                     <ul style="margin-right: 20px; margin-top: 15px;">
-                        <li>اسم المستفيد: <strong>VETABD</strong></li>
-                        <li>رقم الحساب: <strong>0786844099</strong></li>
-                        <li>اسم البنك: <strong>كليك</strong></li>
+                        <li data-ar="اسم المستفيد: VETABD" data-en="Beneficiary Name: VETABD">اسم المستفيد: <strong>VETABD</strong></li>
+                        <li data-ar="رقم الحساب: 0786844099" data-en="Account Number: 0786844099">رقم الحساب: <strong>0786844099</strong></li>
+                        <li data-ar="اسم البنك: كليك" data-en="Bank Name: Click">اسم البنك: <strong>كليك</strong></li>
                     </ul>
-                    <p style="margin-top: 15px;">
+                    <p style="margin-top: 15px;" data-ar="بعد إتمام عملية التحويل، يرجى إرسال إشعار الدفع عبر واتساب إلى الرقم 0786844099 لتأكيد الحجز أو لتلقي الخدمة." data-en="After completing the transfer process, please send the payment notification via WhatsApp to 0786844099 to confirm the reservation or to receive the service.">
                         بعد إتمام عملية التحويل، يرجى إرسال إشعار الدفع عبر واتساب إلى الرقم <strong>0786844099</strong> لتأكيد الحجز أو لتلقي الخدمة.
                     </p>
                 </div>
@@ -876,13 +1391,13 @@
                     <div class="payment-icon">
                         <i class="fas fa-credit-card"></i>
                     </div>
-                    <h3 class="payment-title">الدفع عبر كليك</h3>
+                    <h3 class="payment-title" data-ar="الدفع عبر كليك" data-en="Payment via Click">الدفع عبر كليك</h3>
                     <div class="payment-details">
-                        <p><strong>اسم المستفيد:</strong> VETABD</p>
-                        <p><strong>رقم الحساب:</strong> 0786844099</p>
+                        <p data-ar="اسم المستفيد: VETABD" data-en="Beneficiary Name: VETABD"><strong data-ar="اسم المستفيد:" data-en="Beneficiary Name:">اسم المستفيد:</strong> VETABD</p>
+                        <p data-ar="رقم الحساب: 0786844099" data-en="Account Number: 0786844099"><strong data-ar="رقم الحساب:" data-en="Account Number:">رقم الحساب:</strong> 0786844099</p>
                     </div>
                     <div class="payment-note">
-                        <p>يرجى إرسال إشعار الدفع عبر واتساب لتأكيد العملية</p>
+                        <p data-ar="يرجى إرسال إشعار الدفع عبر واتساب لتأكيد العملية" data-en="Please send payment notification via WhatsApp to confirm the transaction">يرجى إرسال إشعار الدفع عبر واتساب لتأكيد العملية</p>
                     </div>
                 </div>
             </div>
@@ -892,33 +1407,33 @@
     <!-- Save Contact Section -->
     <section id="save-contact" class="section save-contact-section">
         <div class="container">
-            <h2 class="section-title">احفظ معلومات الاتصال</h2>
+            <h2 class="section-title" data-ar="احفظ معلومات الاتصال" data-en="Save Contact Information">احفظ معلومات الاتصال</h2>
             <div class="contact-form-container">
-                <h3 class="form-title">احفظ معلوماتنا للرجوع إليها لاحقاً</h3>
+                <h3 class="form-title" data-ar="احفظ معلوماتنا للرجوع إليها لاحقاً" data-en="Save our information for future reference">احفظ معلوماتنا للرجوع إليها لاحقاً</h3>
                 <form class="contact-form" id="saveContactForm">
                     <div class="form-group">
-                        <label for="contactName" class="form-label">اسم جهة الاتصال</label>
+                        <label for="contactName" class="form-label" data-ar="اسم جهة الاتصال" data-en="Contact Name">اسم جهة الاتصال</label>
                         <input type="text" id="contactName" class="form-input" placeholder="Real Vet Clinic" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="contactPhone" class="form-label">رقم الهاتف</label>
+                        <label for="contactPhone" class="form-label" data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
                         <input type="tel" id="contactPhone" class="form-input" placeholder="0786844099" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="contactAddress" class="form-label">العنوان</label>
+                        <label for="contactAddress" class="form-label" data-ar="العنوان" data-en="Address">العنوان</label>
                         <textarea id="contactAddress" class="form-textarea" placeholder="الموقع: https://maps.app.goo.gl/HTw8TG25vcA1SVay9"></textarea>
                     </div>
                     
                     <div class="form-group">
-                        <label for="contactNotes" class="form-label">ملاحظات إضافية</label>
+                        <label for="contactNotes" class="form-label" data-ar="ملاحظات إضافية" data-en="Additional Notes">ملاحظات إضافية</label>
                         <textarea id="contactNotes" class="form-textarea" placeholder="عيادة بيطرية متخصصة - VETABD"></textarea>
                     </div>
                     
-                    <button type="submit" class="form-submit">حفظ جهة الاتصال</button>
+                    <button type="submit" class="form-submit" data-ar="حفظ جهة الاتصال" data-en="Save Contact">حفظ جهة الاتصال</button>
                     
-                    <div class="form-success" id="formSuccess">
+                    <div class="form-success" id="formSuccess" data-ar="تم حفظ معلومات الاتصال بنجاح!" data-en="Contact information saved successfully!">
                         تم حفظ معلومات الاتصال بنجاح!
                     </div>
                 </form>
@@ -929,7 +1444,7 @@
     <!-- Social Icons -->
     <section class="social-section">
         <div class="container">
-            <h2 class="social-title">تابعنا على وسائل التواصل</h2>
+            <h2 class="social-title" data-ar="تابعنا على وسائل التواصل" data-en="Follow Us on Social Media">تابعنا على وسائل التواصل</h2>
             <div class="social-icons-grid">
                 <a href="https://www.instagram.com/realvet_clinic00?igsh=MWRqMjl6OXFvc3FmaQ==" class="social-icon" target="_blank">
                     <i class="fab fa-instagram"></i>
@@ -950,7 +1465,7 @@
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
         <div class="container">
-            <h2 class="section-title">اتصل بنا</h2>
+            <h2 class="section-title" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-card">
@@ -958,7 +1473,7 @@
                             <i class="fab fa-whatsapp"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>واتساب</h3>
+                            <h3 data-ar="واتساب" data-en="WhatsApp">واتساب</h3>
                             <p>0786844099</p>
                         </div>
                     </div>
@@ -967,7 +1482,7 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>هاتف العيادة</h3>
+                            <h3 data-ar="هاتف العيادة" data-en="Clinic Phone">هاتف العيادة</h3>
                             <p>0786844099</p>
                         </div>
                     </div>
@@ -976,8 +1491,8 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>الموقع</h3>
-                            <p>انقر على الخريطة للوصول إلى موقعنا</p>
+                            <h3 data-ar="الموقع" data-en="Location">الموقع</h3>
+                            <p data-ar="انقر على الخريطة للوصول إلى موقعنا" data-en="Click on the map to reach our location">انقر على الخريطة للوصول إلى موقعنا</p>
                         </div>
                     </div>
                     <div class="contact-card">
@@ -985,8 +1500,8 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>ساعات العمل</h3>
-                            <p>يومياً من 9:00 صباحاً - 9:00 مساءً</p>
+                            <h3 data-ar="ساعات العمل" data-en="Working Hours">ساعات العمل</h3>
+                            <p data-ar="يومياً من 9:00 صباحاً - 9:00 مساءً" data-en="Daily from 9:00 AM - 9:00 PM">يومياً من 9:00 صباحاً - 9:00 مساءً</p>
                         </div>
                     </div>
                 </div>
@@ -1001,15 +1516,15 @@
     <div class="action-buttons">
         <a href="https://wa.me/962786844099" class="action-button primary" target="_blank">
             <i class="fab fa-whatsapp"></i>
-            تواصل عبر واتساب
+            <span data-ar="تواصل عبر واتساب" data-en="Contact via WhatsApp">تواصل عبر واتساب</span>
         </a>
         <a href="tel:0786844099" class="action-button">
             <i class="fas fa-phone"></i>
-            اتصل الآن
+            <span data-ar="اتصل الآن" data-en="Call Now">اتصل الآن</span>
         </a>
         <a href="https://maps.app.goo.gl/HTw8TG25vcA1SVay9" class="action-button" target="_blank">
             <i class="fas fa-map-marker-alt"></i>
-            موقع العيادة
+            <span data-ar="موقع العيادة" data-en="Clinic Location">موقع العيادة</span>
         </a>
     </div>
 
@@ -1019,40 +1534,119 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Real Vet Clinic</h3>
-                    <p>عيادة بيطرية متخصصة في علاج ورعاية الحيوانات الأليفة. نقدم خدمات طبية شاملة بمعايير عالمية.</p>
+                    <p data-ar="عيادة بيطرية متخصصة في علاج ورعاية الحيوانات الأليفة. نقدم خدمات طبية شاملة بمعايير عالمية." data-en="Specialized veterinary clinic for pet treatment and care. We provide comprehensive medical services with international standards.">
+                        عيادة بيطرية متخصصة في علاج ورعاية الحيوانات الأليفة. نقدم خدمات طبية شاملة بمعايير عالمية.
+                    </p>
                 </div>
                 <div class="footer-column">
-                    <h3>روابط سريعة</h3>
+                    <h3 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-left"></i> من نحن</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-left"></i> <span data-ar="من نحن" data-en="About Us">من نحن</span></a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-left"></i> <span data-ar="خدماتنا" data-en="Our Services">خدماتنا</span></a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-left"></i> <span data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</span></a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>اتصل بنا</h3>
+                    <h3 data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</h3>
                     <ul class="footer-links">
-                        <li><a href="https://wa.me/962786844099"><i class="fab fa-whatsapp"></i> واتساب: 0786844099</a></li>
-                        <li><a href="tel:0786844099"><i class="fas fa-phone"></i> هاتف: 0786844099</a></li>
-                        <li><a href="https://maps.app.goo.gl/HTw8TG25vcA1SVay9"><i class="fas fa-map-marker-alt"></i> موقع العيادة</a></li>
+                        <li><a href="https://wa.me/962786844099"><i class="fab fa-whatsapp"></i> <span data-ar="واتساب: 0786844099" data-en="WhatsApp: 0786844099">واتساب: 0786844099</span></a></li>
+                        <li><a href="tel:0786844099"><i class="fas fa-phone"></i> <span data-ar="هاتف: 0786844099" data-en="Phone: 0786844099">هاتف: 0786844099</span></a></li>
+                        <li><a href="https://maps.app.goo.gl/HTw8TG25vcA1SVay9"><i class="fas fa-map-marker-alt"></i> <span data-ar="موقع العيادة" data-en="Clinic Location">موقع العيادة</span></a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>طرق الدفع</h3>
+                    <h3 data-ar="طرق الدفع" data-en="Payment Methods">طرق الدفع</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-money-bill-wave"></i> نقداً في العيادة</li>
-                        <li><i class="fas fa-mobile-alt"></i> كليك (VETABD)</li>
+                        <li><i class="fas fa-money-bill-wave"></i> <span data-ar="نقداً في العيادة" data-en="Cash at the clinic">نقداً في العيادة</span></li>
+                        <li><i class="fas fa-mobile-alt"></i> <span data-ar="كليك (VETABD)" data-en="Click (VETABD)">كليك (VETABD)</span></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>© 2023 Real Vet Clinic - VETABD. جميع الحقوق محفوظة.</p>
+                <p>© 2023 Real Vet Clinic - VETABD. <span data-ar="جميع الحقوق محفوظة." data-en="All rights reserved.">جميع الحقوق محفوظة.</span></p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Language Switcher Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const currentLang = localStorage.getItem('preferredLang') || 'ar';
+            
+            // Set initial language
+            setLanguage(currentLang);
+            
+            // Add event listeners to language buttons
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
+                    localStorage.setItem('preferredLang', lang);
+                });
+            });
+            
+            function setLanguage(lang) {
+                // Update active button
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+                
+                // Update HTML lang attribute and direction
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                
+                // Update all elements with data attributes
+                document.querySelectorAll('[data-ar], [data-en]').forEach(element => {
+                    const text = element.getAttribute(`data-${lang}`);
+                    if (text) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = text;
+                        } else {
+                            element.textContent = text;
+                        }
+                    }
+                });
+            }
+        });
+
+        // Review Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const reviewModal = document.getElementById('reviewModal');
+            const openReviewModalBtn = document.getElementById('openReviewModal');
+            const closeReviewModalBtn = document.getElementById('closeReviewModal');
+            const reviewForm = document.getElementById('reviewForm');
+            
+            // Open modal
+            openReviewModalBtn.addEventListener('click', function() {
+                reviewModal.style.display = 'flex';
+            });
+            
+            // Close modal
+            closeReviewModalBtn.addEventListener('click', function() {
+                reviewModal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === reviewModal) {
+                    reviewModal.style.display = 'none';
+                }
+            });
+            
+            // Handle form submission
+            reviewForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real application, you would send this data to a server
+                // For this example, we'll just show an alert and close the modal
+                alert('شكراً لك على تقييمك! سيتم عرضه بعد المراجعة.');
+                reviewModal.style.display = 'none';
+                reviewForm.reset();
+            });
+        });
+
         // Save Contact Form functionality
         document.getElementById('saveContactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -1096,7 +1690,7 @@ END:VCARD`;
 
         // Add animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.service-card, .contact-card');
+            const fadeElements = document.querySelectorAll('.service-card, .contact-card, .review-card');
             
             const fadeOnScroll = function() {
                 fadeElements.forEach(element => {
