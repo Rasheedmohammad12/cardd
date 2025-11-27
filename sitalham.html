@@ -408,6 +408,189 @@
             color: var(--light-text);
         }
         
+        /* Click Service Section */
+        .click-service-section {
+            background: var(--light-card);
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: var(--border);
+        }
+        
+        .click-service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .click-service-card {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid var(--success);
+        }
+        
+        .click-service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(76, 175, 80, 0.15);
+        }
+        
+        .click-service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .click-service-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+        
+        .click-service-desc {
+            font-size: 0.95rem;
+            color: var(--light-text);
+            margin-bottom: 15px;
+        }
+        
+        .click-service-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .click-service-button:hover {
+            background: #3d8b40;
+            transform: translateY(-2px);
+        }
+        
+        /* Rating Section */
+        .rating-section {
+            background: var(--light-card);
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: var(--border);
+        }
+        
+        .rating-stats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .rating-overall {
+            text-align: center;
+        }
+        
+        .rating-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+        
+        .rating-stars {
+            color: #FFC107;
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        
+        .rating-count {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .rating-bars {
+            flex-grow: 1;
+            max-width: 300px;
+        }
+        
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .rating-label {
+            width: 80px;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        .rating-bar-bg {
+            flex-grow: 1;
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        
+        .rating-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 5px;
+        }
+        
+        .rating-bar-count {
+            width: 30px;
+            font-size: 0.9rem;
+            color: var(--light-text);
+            text-align: left;
+        }
+        
+        .rating-actions {
+            margin-top: 30px;
+        }
+        
+        .rate-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .rate-button:hover {
+            background: #e68900;
+            transform: translateY(-2px);
+        }
+        
         /* Contact Section */
         .contact-section {
             background: var(--light-card);
@@ -649,6 +832,61 @@
             color: var(--dark-text);
         }
         
+        /* Rating Modal */
+        .rating-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .rating-modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .rating-stars-input {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            direction: ltr;
+        }
+        
+        .rating-star {
+            font-size: 2.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .rating-star:hover,
+        .rating-star.active {
+            color: #FFC107;
+        }
+        
+        .rating-comment {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: 'Cairo', sans-serif;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -703,6 +941,14 @@
             
             .modal-buttons {
                 flex-direction: column;
+            }
+            
+            .rating-stats {
+                flex-direction: column;
+            }
+            
+            .rating-bars {
+                max-width: 100%;
             }
         }
     </style>
@@ -984,8 +1230,8 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-content">
-                            <h3 class="menu-item-title">صفيحة بعلكية</h3>
-                            <p class="menu-item-desc">صفيحة بعلكية</p>
+                            <h3 class="menu-item-title">صفيحة بعلبكية</h3>
+                            <p class="menu-item-desc">صفيحة بعلبكية</p>
                             <div class="menu-item-price">14.00 <span>دينار/كيلو</span></div>
                         </div>
                     </div>
@@ -1064,6 +1310,108 @@
                     <h3 class="service-name">عروض خاصة</h3>
                     <p class="service-desc">عروض وتخفيضات مستمرة على مختلف الأصناف</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- Click Service Section -->
+        <div class="click-service-section fade-in delay-2">
+            <h2 class="section-title">خدمة كليك</h2>
+            <p class="about-text">اطلب بسهولة وسرعة مع خدمة كليك - نصل إليك أينما كنت</p>
+            
+            <div class="click-service-grid">
+                <div class="click-service-card">
+                    <div class="click-service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="click-service-name">طلب عبر التطبيق</h3>
+                    <p class="click-service-desc">اطلب من خلال تطبيق كليك واستمتع بعروض حصرية</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.click.app" class="click-service-button" target="_blank">
+                        <i class="fab fa-google-play"></i> حمل التطبيق
+                    </a>
+                </div>
+                <div class="click-service-card">
+                    <div class="click-service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="click-service-name">توصيل سريع</h3>
+                    <p class="click-service-desc">توصيل خلال 30 دقيقة في معظم المناطق</p>
+                    <a href="https://wa.me/962796792971" class="click-service-button" target="_blank">
+                        <i class="fab fa-whatsapp"></i> اطلب الآن
+                    </a>
+                </div>
+                <div class="click-service-card">
+                    <div class="click-service-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3 class="click-service-name">عروض كليك</h3>
+                    <p class="click-service-desc">خصومات وعروض حصرية لمستخدمي كليك</p>
+                    <a href="https://www.click.com.jo" class="click-service-button" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> تصفح العروض
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rating Section -->
+        <div class="rating-section fade-in delay-3">
+            <h2 class="section-title">تقييمات العملاء</h2>
+            
+            <div class="rating-stats">
+                <div class="rating-overall">
+                    <div class="rating-number">4.8</div>
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="rating-count">بناءً على 247 تقييم</div>
+                </div>
+                
+                <div class="rating-bars">
+                    <div class="rating-bar">
+                        <div class="rating-label">5 نجوم</div>
+                        <div class="rating-bar-bg">
+                            <div class="rating-bar-fill" style="width: 85%;"></div>
+                        </div>
+                        <div class="rating-bar-count">210</div>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">4 نجوم</div>
+                        <div class="rating-bar-bg">
+                            <div class="rating-bar-fill" style="width: 10%;"></div>
+                        </div>
+                        <div class="rating-bar-count">25</div>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">3 نجوم</div>
+                        <div class="rating-bar-bg">
+                            <div class="rating-bar-fill" style="width: 3%;"></div>
+                        </div>
+                        <div class="rating-bar-count">7</div>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">2 نجوم</div>
+                        <div class="rating-bar-bg">
+                            <div class="rating-bar-fill" style="width: 1%;"></div>
+                        </div>
+                        <div class="rating-bar-count">3</div>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-label">1 نجم</div>
+                        <div class="rating-bar-bg">
+                            <div class="rating-bar-fill" style="width: 1%;"></div>
+                        </div>
+                        <div class="rating-bar-count">2</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rating-actions">
+                <button class="rate-button" id="rateButton">
+                    <i class="fas fa-star"></i> أضف تقييمك
+                </button>
             </div>
         </div>
 
@@ -1156,6 +1504,33 @@
         </div>
     </div>
 
+    <!-- Rating Modal -->
+    <div class="rating-modal" id="ratingModal">
+        <div class="rating-modal-content">
+            <h3 class="modal-title">أضف تقييمك</h3>
+            <p>كيف كانت تجربتك مع مطعم ست الشام؟</p>
+            
+            <div class="rating-stars-input">
+                <span class="rating-star" data-rating="1">★</span>
+                <span class="rating-star" data-rating="2">★</span>
+                <span class="rating-star" data-rating="3">★</span>
+                <span class="rating-star" data-rating="4">★</span>
+                <span class="rating-star" data-rating="5">★</span>
+            </div>
+            
+            <textarea class="rating-comment" placeholder="اكتب تعليقك هنا (اختياري)..."></textarea>
+            
+            <div class="modal-buttons">
+                <button class="modal-button primary" id="submitRating">
+                    <i class="fas fa-paper-plane"></i> إرسال التقييم
+                </button>
+                <button class="modal-button secondary" id="closeRatingModal">
+                    إلغاء
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1227,10 +1602,75 @@ END:VCARD`;
                 saveContactModal.style.display = 'none';
             });
 
-            // Close modal when clicking outside
+            // Rating Modal
+            const rateButton = document.getElementById('rateButton');
+            const ratingModal = document.getElementById('ratingModal');
+            const closeRatingModal = document.getElementById('closeRatingModal');
+            const submitRating = document.getElementById('submitRating');
+            const ratingStars = document.querySelectorAll('.rating-star');
+            let selectedRating = 0;
+
+            rateButton.addEventListener('click', function() {
+                ratingModal.style.display = 'flex';
+            });
+
+            closeRatingModal.addEventListener('click', function() {
+                ratingModal.style.display = 'none';
+                resetRatingStars();
+            });
+
+            // Rating stars interaction
+            ratingStars.forEach(star => {
+                star.addEventListener('click', function() {
+                    selectedRating = parseInt(this.getAttribute('data-rating'));
+                    updateRatingStars(selectedRating);
+                });
+            });
+
+            function updateRatingStars(rating) {
+                ratingStars.forEach(star => {
+                    const starRating = parseInt(star.getAttribute('data-rating'));
+                    if (starRating <= rating) {
+                        star.classList.add('active');
+                    } else {
+                        star.classList.remove('active');
+                    }
+                });
+            }
+
+            function resetRatingStars() {
+                ratingStars.forEach(star => {
+                    star.classList.remove('active');
+                });
+                selectedRating = 0;
+                document.querySelector('.rating-comment').value = '';
+            }
+
+            submitRating.addEventListener('click', function() {
+                if (selectedRating === 0) {
+                    alert('يرجى اختيار تقييم من 1 إلى 5 نجوم');
+                    return;
+                }
+
+                const comment = document.querySelector('.rating-comment').value;
+                
+                // Here you would normally send the rating to your server
+                // For this example, we'll just show a success message
+                
+                alert(`شكراً لك على تقييمك! \nالتقييم: ${selectedRating} نجوم\n${comment ? `التعليق: ${comment}` : ''}`);
+                
+                ratingModal.style.display = 'none';
+                resetRatingStars();
+            });
+
+            // Close modals when clicking outside
             window.addEventListener('click', function(e) {
                 if (e.target === saveContactModal) {
                     saveContactModal.style.display = 'none';
+                }
+                if (e.target === ratingModal) {
+                    ratingModal.style.display = 'none';
+                    resetRatingStars();
                 }
             });
         });
