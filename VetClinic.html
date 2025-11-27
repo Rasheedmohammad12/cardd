@@ -101,6 +101,34 @@
             font-size: 0.9rem;
         }
         
+        /* Navigation */
+        .nav-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(46, 139, 87, 0.9), rgba(46, 139, 87, 0.8)), url('https://images.unsplash.com/photo-1450778869180-41d0601e046e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
@@ -259,6 +287,66 @@
         
         .service-desc {
             color: var(--light-text);
+        }
+        
+        /* Payment Section */
+        .payment-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .payment-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .payment-info {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+        
+        .payment-card {
+            background: var(--light-card);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            border: var(--border);
+        }
+        
+        .payment-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(46, 139, 87, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 2.5rem;
+        }
+        
+        .payment-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        .payment-details {
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+        
+        .payment-note {
+            background: rgba(46, 139, 87, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.9rem;
         }
         
         /* Contact Section */
@@ -565,7 +653,7 @@
         
         /* Responsive */
         @media (max-width: 992px) {
-            .about-content, .contact-content {
+            .about-content, .contact-content, .payment-content {
                 grid-template-columns: 1fr;
             }
             
@@ -600,6 +688,10 @@
             .contact-form-container {
                 padding: 30px 20px;
             }
+            
+            .nav-links {
+                gap: 15px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -617,6 +709,11 @@
             .action-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -647,6 +744,19 @@
         </div>
     </header>
 
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#services">خدماتنا</a></li>
+                <li><a href="#payment">طرق الدفع</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+                <li><a href="#save-contact">احفظ معلوماتنا</a></li>
+            </ul>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
@@ -668,7 +778,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="section">
+    <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">من نحن</h2>
             <div class="about-content">
@@ -691,7 +801,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="section" style="background: #f8f9fa;">
+    <section id="services" class="section" style="background: #f8f9fa;">
         <div class="container">
             <h2 class="section-title">خدماتنا</h2>
             <div class="services-grid">
@@ -741,8 +851,46 @@
         </div>
     </section>
 
+    <!-- Payment Section -->
+    <section id="payment" class="section payment-section">
+        <div class="container">
+            <h2 class="section-title">طرق الدفع</h2>
+            <div class="payment-content">
+                <div class="payment-info">
+                    <p>
+                        نوفر في Real Vet Clinic طرق دفع متعددة لتسهيل عملية الدفع لعملائنا الكرام. يمكنكم الدفع نقداً في العيادة أو من خلال التحويل البنكي.
+                    </p>
+                    <p>
+                        للدفع عبر التحويل البنكي، يرجى استخدام المعلومات التالية:
+                    </p>
+                    <ul style="margin-right: 20px; margin-top: 15px;">
+                        <li>اسم المستفيد: <strong>VETABD</strong></li>
+                        <li>رقم الحساب: <strong>0786844099</strong></li>
+                        <li>اسم البنك: <strong>كليك</strong></li>
+                    </ul>
+                    <p style="margin-top: 15px;">
+                        بعد إتمام عملية التحويل، يرجى إرسال إشعار الدفع عبر واتساب إلى الرقم <strong>0786844099</strong> لتأكيد الحجز أو لتلقي الخدمة.
+                    </p>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="payment-title">الدفع عبر كليك</h3>
+                    <div class="payment-details">
+                        <p><strong>اسم المستفيد:</strong> VETABD</p>
+                        <p><strong>رقم الحساب:</strong> 0786844099</p>
+                    </div>
+                    <div class="payment-note">
+                        <p>يرجى إرسال إشعار الدفع عبر واتساب لتأكيد العملية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Save Contact Section -->
-    <section class="section save-contact-section">
+    <section id="save-contact" class="section save-contact-section">
         <div class="container">
             <h2 class="section-title">احفظ معلومات الاتصال</h2>
             <div class="contact-form-container">
@@ -877,8 +1025,8 @@
                     <h3>روابط سريعة</h3>
                     <ul class="footer-links">
                         <li><a href="#"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> من نحن</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
                         <li><a href="#contact"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
                     </ul>
                 </div>
@@ -888,6 +1036,13 @@
                         <li><a href="https://wa.me/962786844099"><i class="fab fa-whatsapp"></i> واتساب: 0786844099</a></li>
                         <li><a href="tel:0786844099"><i class="fas fa-phone"></i> هاتف: 0786844099</a></li>
                         <li><a href="https://maps.app.goo.gl/HTw8TG25vcA1SVay9"><i class="fas fa-map-marker-alt"></i> موقع العيادة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>طرق الدفع</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-money-bill-wave"></i> نقداً في العيادة</li>
+                        <li><i class="fas fa-mobile-alt"></i> كليك (VETABD)</li>
                     </ul>
                 </div>
             </div>
