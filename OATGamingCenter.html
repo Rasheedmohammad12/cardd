@@ -9,22 +9,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0a0a14;
-            --primary-light: #121226;
-            --primary-dark: #05050a;
-            --accent: #3a86ff;
-            --accent-light: #5a9cff;
-            --accent-dark: #2a66cc;
-            --gradient: linear-gradient(135deg, #0a0a14 0%, #121226 100%);
-            --gradient-accent: linear-gradient(135deg, #0a0a14 0%, #3a86ff 100%);
-            --gradient-blue: linear-gradient(135deg, #3a86ff 0%, #2667cc 100%);
-            --light-bg: #0c0c17;
-            --light-card: #121226;
+            --primary: #0a0a0a;
+            --primary-light: #1a1a1a;
+            --primary-dark: #050505;
+            --accent: #2563eb;
+            --accent-light: #3b82f6;
+            --accent-dark: #1d4ed8;
+            --gradient: linear-gradient(135deg, #0a0a0a 0%, #1e3a8a 100%);
+            --gradient-accent: linear-gradient(135deg, #0a0a0a 0%, #2563eb 100%);
+            --gradient-blue: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            --gradient-card: linear-gradient(135deg, #1a1a1a 0%, #1e293b 100%);
+            --light-bg: #0f0f0f;
+            --light-card: #1a1a1a;
             --dark-text: #ffffff;
-            --light-text: #b8c2d6;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.7);
-            --border: 1px solid #1e2a4a;
+            --light-text: #d1d5db;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.9);
+            --border: 1px solid #374151;
+            --border-glow: 1px solid rgba(37, 99, 235, 0.3);
         }
         
         * {
@@ -163,14 +165,14 @@
         
         /* About Section */
         .about-section {
-            background: var(--light-card);
+            background: var(--gradient-card);
             margin: 40px auto;
             padding: 40px;
             border-radius: 20px;
             max-width: 800px;
             text-align: center;
             box-shadow: var(--shadow);
-            border: var(--border);
+            border: var(--border-glow);
         }
         
         .section-title {
@@ -203,7 +205,7 @@
         }
         
         .highlight-box {
-            background: rgba(58, 134, 255, 0.1);
+            background: rgba(37, 99, 235, 0.1);
             padding: 25px;
             border-radius: 15px;
             margin: 25px 0;
@@ -217,101 +219,16 @@
             color: var(--accent);
         }
         
-        /* Menu Slider Section */
-        .menu-section {
-            background: var(--light-card);
-            margin: 40px auto;
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 900px;
-            box-shadow: var(--shadow);
-            border: var(--border);
-            position: relative;
-        }
-        
-        .slider-container {
-            position: relative;
-            margin: 30px 0;
-        }
-        
-        .slider {
-            display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            gap: 20px;
-            padding: 10px 0;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        .slider::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .menu-item {
-            min-width: 280px;
-            background: #1a1a33;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: var(--border);
-            transition: transform 0.3s ease;
-        }
-        
-        .menu-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .menu-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .menu-item-content {
-            padding: 20px;
-        }
-        
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-        
-        .slider-btn:hover {
-            background: var(--accent-light);
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .slider-btn.prev {
-            right: -25px;
-        }
-        
-        .slider-btn.next {
-            left: -25px;
-        }
-        
         /* Services Section */
         .services-section {
-            background: var(--light-card);
+            background: var(--gradient-card);
             margin: 40px auto;
             padding: 40px;
             border-radius: 20px;
             max-width: 800px;
             text-align: center;
             box-shadow: var(--shadow);
-            border: var(--border);
+            border: var(--border-glow);
         }
         
         .services-grid {
@@ -322,18 +239,19 @@
         }
         
         .service-card {
-            background: rgba(58, 134, 255, 0.1);
+            background: rgba(37, 99, 235, 0.1);
             padding: 30px 20px;
             border-radius: 15px;
             text-align: center;
             transition: all 0.3s ease;
-            border: var(--border);
+            border: var(--border-glow);
         }
         
         .service-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            background: rgba(58, 134, 255, 0.15);
+            background: rgba(37, 99, 235, 0.15);
+            border-color: var(--accent);
         }
         
         .service-icon {
@@ -363,14 +281,14 @@
         
         /* Contact Section */
         .contact-section {
-            background: var(--light-card);
+            background: var(--gradient-card);
             margin: 40px auto;
             padding: 40px;
             border-radius: 20px;
             max-width: 800px;
             text-align: center;
             box-shadow: var(--shadow);
-            border: var(--border);
+            border: var(--border-glow);
         }
         
         .contact-info {
@@ -387,14 +305,14 @@
             gap: 15px;
             font-size: 1.1rem;
             padding: 15px;
-            background: rgba(58, 134, 255, 0.1);
+            background: rgba(37, 99, 235, 0.1);
             border-radius: 10px;
             transition: all 0.3s ease;
             color: var(--dark-text);
         }
         
         .contact-item:hover {
-            background: rgba(58, 134, 255, 0.2);
+            background: rgba(37, 99, 235, 0.2);
             transform: translateY(-2px);
         }
         
@@ -459,7 +377,7 @@
             text-decoration: none;
             transition: all 0.4s ease;
             box-shadow: var(--shadow);
-            background: #1a1a33;
+            background: #1a1a1a;
             position: relative;
             border: 2px solid var(--accent);
         }
@@ -485,7 +403,7 @@
             align-items: center;
             gap: 12px;
             padding: 18px 32px;
-            background: #1a1a33;
+            background: #1a1a1a;
             color: var(--dark-text);
             border: 2px solid var(--accent);
             border-radius: 15px;
@@ -519,6 +437,7 @@
             text-align: center;
             margin-top: 60px;
             color: white;
+            border-top: 1px solid rgba(37, 99, 235, 0.3);
         }
         
         .footer-text {
@@ -528,14 +447,14 @@
         
         /* Phone Numbers Section */
         .phone-section {
-            background: var(--light-card);
+            background: var(--gradient-card);
             margin: 40px auto;
             padding: 40px;
             border-radius: 20px;
             max-width: 800px;
             text-align: center;
             box-shadow: var(--shadow);
-            border: var(--border);
+            border: var(--border-glow);
         }
         
         .phone-grid {
@@ -546,18 +465,18 @@
         }
         
         .phone-card {
-            background: rgba(58, 134, 255, 0.1);
+            background: rgba(37, 99, 235, 0.1);
             padding: 25px;
             border-radius: 15px;
             text-align: center;
             transition: all 0.3s ease;
-            border: var(--border);
+            border: var(--border-glow);
         }
         
         .phone-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            background: rgba(58, 134, 255, 0.15);
+            background: rgba(37, 99, 235, 0.15);
         }
         
         .phone-card.click {
@@ -613,14 +532,14 @@
         
         /* Review Section */
         .review-section {
-            background: var(--light-card);
+            background: var(--gradient-card);
             margin: 40px auto;
             padding: 40px;
             border-radius: 20px;
             max-width: 800px;
             text-align: center;
             box-shadow: var(--shadow);
-            border: var(--border);
+            border: var(--border-glow);
         }
         
         .review-button {
@@ -646,16 +565,28 @@
             box-shadow: var(--shadow-lg);
         }
         
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .rating-stars i {
+            color: #fbbf24;
+            font-size: 1.8rem;
+        }
+        
         /* Location Section */
         .location-section {
-            background: var(--light-card);
+            background: var(--gradient-card);
             margin: 40px auto;
             padding: 40px;
             border-radius: 20px;
             max-width: 800px;
             text-align: center;
             box-shadow: var(--shadow);
-            border: var(--border);
+            border: var(--border-glow);
         }
         
         .location-button {
@@ -663,7 +594,7 @@
             align-items: center;
             gap: 12px;
             padding: 18px 32px;
-            background: #1a1a33;
+            background: #1a1a1a;
             color: var(--dark-text);
             border: 2px solid var(--accent);
             border-radius: 15px;
@@ -718,24 +649,6 @@
                 height: 300px;
             }
             
-            .slider-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            
-            .slider-btn.prev {
-                right: -20px;
-            }
-            
-            .slider-btn.next {
-                left: -20px;
-            }
-            
-            .menu-item {
-                min-width: 250px;
-            }
-            
             .action-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -773,7 +686,7 @@
                     <span class="stat-label">غرف خاصة</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">⭐</span>
+                    <span class="stat-number">4.9</span>
                     <span class="stat-label">تقييم</span>
                 </div>
             </div>
@@ -872,9 +785,20 @@
         <div class="review-section fade-in delay-3">
             <h2 class="section-title">شاركنا رأيك</h2>
             <p class="about-text">ساعدنا في تحسين خدماتنا من خلال تقييم تجربتك</p>
+            
+            <div class="rating-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            
+            <p class="about-text" style="margin-bottom: 20px;">تقييمنا: 4.9/5 بناءً على 127 تقييم</p>
+            
             <a href="#" class="review-button">
                 <i class="fas fa-star"></i>
-                تقييم المحل
+                اضغط هنا لتقييم المحل
             </a>
         </div>
 
@@ -924,13 +848,6 @@
     </footer>
 
     <script>
-        // Slider functionality
-        function scrollSlider(direction) {
-            const slider = document.getElementById('menuSlider');
-            const scrollAmount = 300;
-            slider.scrollLeft += direction * scrollAmount;
-        }
-
         // Add click effects
         document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('.social-icon, .action-button');
