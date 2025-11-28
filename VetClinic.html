@@ -1536,11 +1536,11 @@
             
             <form class="review-form" id="reviewForm">
                 <div class="form-group">
-                    <input type="text" class="form-input" placeholder="اسمك" data-ar="اسمك" data-en="Your Name" required>
+                    <input type="text" id="reviewerName" class="form-input" placeholder="اسمك" data-ar="اسمك" data-en="Your Name" required>
                 </div>
                 
                 <div class="form-group">
-                    <textarea class="form-textarea" placeholder="اكتب تقييمك هنا..." data-ar="اكتب تقييمك هنا..." data-en="Write your review here..." required></textarea>
+                    <textarea id="reviewText" class="form-textarea" placeholder="اكتب تقييمك هنا..." data-ar="اكتب تقييمك هنا..." data-en="Write your review here..." required></textarea>
                 </div>
                 
                 <button type="submit" class="form-submit" data-ar="إرسال التقييم" data-en="Submit Review">إرسال التقييم</button>
@@ -1691,4 +1691,234 @@
                     </div>
                 </div>
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3387.454676796576!2d35.86844157536603!3d31.905942916870117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDU0JzIxLjQiTiAzNc
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3387.454676796576!2d35.86844157536603!3d31.905942916870117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDU0JzIxLjQiTiAzNcKwNTQnMzcuMSJF!5e0!3m2!1sen!2sjo!4v1620000000000!5m2!1sen!2sjo" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <a href="https://wa.me/962786844099" class="action-button primary" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span data-ar="تواصل عبر واتساب" data-en="Contact via WhatsApp">تواصل عبر واتساب</span>
+        </a>
+        <a href="tel:0786844099" class="action-button">
+            <i class="fas fa-phone"></i>
+            <span data-ar="اتصل الآن" data-en="Call Now">اتصل الآن</span>
+        </a>
+        <a href="https://maps.app.goo.gl/HTw8TG25vcA1SVay9" class="action-button" target="_blank">
+            <i class="fas fa-map-marker-alt"></i>
+            <span data-ar="موقع العيادة" data-en="Clinic Location">موقع العيادة</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Real Vet Clinic</h3>
+                    <p data-ar="عيادة بيطرية متخصصة في علاج ورعاية الحيوانات الأليفة. نقدم خدمات طبية شاملة بمعايير عالمية." data-en="Specialized veterinary clinic for pet treatment and care. We provide comprehensive medical services with international standards.">
+                        عيادة بيطرية متخصصة في علاج ورعاية الحيوانات الأليفة. نقدم خدمات طبية شاملة بمعايير عالمية.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-left"></i> <span data-ar="من نحن" data-en="About Us">من نحن</span></a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-left"></i> <span data-ar="خدماتنا" data-en="Our Services">خدماتنا</span></a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-left"></i> <span data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</span></a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/962786844099"><i class="fab fa-whatsapp"></i> <span data-ar="واتساب: 0786844099" data-en="WhatsApp: 0786844099">واتساب: 0786844099</span></a></li>
+                        <li><a href="tel:0786844099"><i class="fas fa-phone"></i> <span data-ar="هاتف: 0786844099" data-en="Phone: 0786844099">هاتف: 0786844099</span></a></li>
+                        <li><a href="https://maps.app.goo.gl/HTw8TG25vcA1SVay9"><i class="fas fa-map-marker-alt"></i> <span data-ar="موقع العيادة" data-en="Clinic Location">موقع العيادة</span></a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-ar="ساعات العمل" data-en="Working Hours">ساعات العمل</h3>
+                    <ul class="footer-links">
+                        <!-- تم تحديث ساعات العمل هنا -->
+                        <li><i class="fas fa-clock"></i> <span data-ar="من الأحد إلى الخميس: 12 ظهراً - 9 مساءً" data-en="Sunday to Thursday: 12 PM - 9 PM">من الأحد إلى الخميس: 12 ظهراً - 9 مساءً</span></li>
+                        <li><i class="fas fa-clock"></i> <span data-ar="الجمعة: 4 مساءً - 9 مساءً" data-en="Friday: 4 PM - 9 PM">الجمعة: 4 مساءً - 9 مساءً</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023 Real Vet Clinic - VETABD. <span data-ar="جميع الحقوق محفوظة." data-en="All rights reserved.">جميع الحقوق محفوظة.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switcher Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const currentLang = localStorage.getItem('preferredLang') || 'ar';
+            
+            // Set initial language
+            setLanguage(currentLang);
+            
+            // Add event listeners to language buttons
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
+                    localStorage.setItem('preferredLang', lang);
+                });
+            });
+            
+            function setLanguage(lang) {
+                // Update active button
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+                
+                // Update HTML lang attribute and direction
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                
+                // Update all elements with data attributes
+                document.querySelectorAll('[data-ar], [data-en]').forEach(element => {
+                    const text = element.getAttribute(`data-${lang}`);
+                    if (text) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = text;
+                        } else {
+                            element.textContent = text;
+                        }
+                    }
+                });
+            }
+        });
+
+        // Review Modal Functionality - FIXED
+        document.addEventListener('DOMContentLoaded', function() {
+            const reviewModal = document.getElementById('reviewModal');
+            const openReviewModalBtn = document.getElementById('openReviewModal');
+            const closeReviewModalBtn = document.getElementById('closeReviewModal');
+            const reviewForm = document.getElementById('reviewForm');
+            const starInputs = document.querySelectorAll('.star-rating input');
+            
+            // Open modal
+            openReviewModalBtn.addEventListener('click', function() {
+                reviewModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+            
+            // Close modal
+            closeReviewModalBtn.addEventListener('click', function() {
+                reviewModal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === reviewModal) {
+                    reviewModal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                }
+            });
+            
+            // Handle form submission
+            reviewForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const reviewerName = document.getElementById('reviewerName').value;
+                const reviewText = document.getElementById('reviewText').value;
+                const rating = document.querySelector('input[name="rating"]:checked');
+                
+                // Validate rating
+                if (!rating) {
+                    alert('يرجى اختيار تقييم من النجوم');
+                    return;
+                }
+                
+                // In a real application, you would send this data to a server
+                // For this example, we'll just show an alert and close the modal
+                alert(`شكراً ${reviewerName} على تقييمك! سيتم عرضه بعد المراجعة.`);
+                reviewModal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
+                reviewForm.reset();
+                
+                // Reset stars
+                starInputs.forEach(input => {
+                    input.checked = false;
+                });
+            });
+            
+            // Add animation on scroll
+            const fadeElements = document.querySelectorAll('.service-card, .contact-card, .review-card');
+            
+            const fadeOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = "1";
+                        element.style.transform = "translateY(0)";
+                    }
+                });
+            };
+            
+            // Set initial state
+            fadeElements.forEach(element => {
+                element.style.opacity = "0";
+                element.style.transform = "translateY(20px)";
+                element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            });
+            
+            window.addEventListener('scroll', fadeOnScroll);
+            fadeOnScroll(); // Trigger once on load
+        });
+
+        // Save Contact Form functionality
+        document.getElementById('saveContactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('contactName').value;
+            const phone = document.getElementById('contactPhone').value;
+            const address = document.getElementById('contactAddress').value;
+            const notes = document.getElementById('contactNotes').value;
+            
+            // Create vCard content
+            const vCardContent = `BEGIN:VCARD
+VERSION:3.0
+FN:${name}
+TEL:${phone}
+ADR:${address}
+NOTE:${notes}
+END:VCARD`;
+            
+            // Create download link
+            const blob = new Blob([vCardContent], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${name}.vcf`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            // Show success message
+            const successMsg = document.getElementById('formSuccess');
+            successMsg.style.display = 'block';
+            
+            // Reset form
+            setTimeout(() => {
+                document.getElementById('saveContactForm').reset();
+                successMsg.style.display = 'none';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
