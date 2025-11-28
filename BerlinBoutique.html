@@ -75,36 +75,16 @@
             height: 400px;
             overflow: hidden;
             position: relative;
+            background: linear-gradient(135deg, #8B4513 0%, #654321 100%);
         }
         
         .cover-photo {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: brightness(0.85);
-        }
-        
-        .logo-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-lg);
-            z-index: 3;
-        }
-        
-        .logo-overlay img {
-            width: 80%;
-            height: 80%;
             object-fit: contain;
+            display: block;
+            padding: 40px;
+            background: white;
         }
         
         .profile-info {
@@ -126,9 +106,11 @@
             height: 150px;
             border-radius: 20px;
             border: 5px solid var(--light-card);
-            object-fit: cover;
+            object-fit: contain;
             box-shadow: var(--shadow-lg);
             display: block;
+            background: white;
+            padding: 15px;
         }
         
         .verified-badge {
@@ -630,9 +612,8 @@
                 height: 300px;
             }
             
-            .logo-overlay {
-                width: 150px;
-                height: 150px;
+            .cover-photo {
+                padding: 20px;
             }
             
             .slider-btn {
@@ -664,14 +645,11 @@
     <!-- Header Section -->
     <header class="profile-header fade-in">
         <div class="cover-container">
-            <img src="https://i.imgur.com/xwPfJ4k.png" alt="Berlin Boutique Cover" class="cover-photo">
-            <div class="logo-overlay">
-                <img src="https://i.imgur.com/Qj0sfmU.png" alt="Berlin Boutique Logo">
-            </div>
+            <img src="https://i.imgur.com/Qj0sfmU.png" alt="Berlin Boutique Cover" class="cover-photo">
         </div>
         <div class="profile-info">
             <div class="profile-image-container">
-                <img src="https://i.imgur.com/xwPfJ4k.png" alt="Berlin Boutique" class="profile-image">
+                <img src="https://i.imgur.com/Qj0sfmU.png" alt="Berlin Boutique" class="profile-image">
                 <div class="verified-badge">
                     <i class="fas fa-check"></i>
                 </div>
