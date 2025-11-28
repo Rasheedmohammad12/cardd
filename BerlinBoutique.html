@@ -15,13 +15,13 @@
             --accent: #D2691E;
             --gradient: linear-gradient(135deg, #8B4513 0%, #654321 100%);
             --gradient-accent: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
-            --light-bg: #f8f5f2;
-            --light-card: #FFFFFF;
-            --dark-text: #2C1810;
-            --light-text: #5D4037;
+            --light-bg: #000000;
+            --light-card: #1a1a1a;
+            --dark-text: #ffffff;
+            --light-text: #cccccc;
             --shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
             --shadow-lg: 0 20px 40px rgba(139, 69, 19, 0.25);
-            --border: 1px solid #E8D5C4;
+            --border: 1px solid #333333;
             --gold: #D4AF37;
         }
         
@@ -43,11 +43,6 @@
             line-height: 1.7;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            background-image: url('https://i.imgur.com/Qj0sfmU.png');
-            background-size: 300px;
-            background-repeat: repeat;
-            background-blend-mode: overlay;
-            background-color: #f8f5f2;
         }
         
         a {
@@ -66,32 +61,32 @@
             width: 100%;
             position: relative;
             overflow: hidden;
-            background: var(--light-card);
-            box-shadow: var(--shadow);
+            background: var(--light-bg);
         }
         
         .cover-container {
             width: 100%;
-            height: 400px;
+            height: 100vh;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(135deg, #8B4513 0%, #654321 100%);
+            background: #000000;
         }
         
         .cover-photo {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             display: block;
-            padding: 40px;
-            background: white;
         }
         
         .profile-info {
-            position: relative;
-            padding: 0 20px 40px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 20px;
             text-align: center;
-            margin-top: -80px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
             z-index: 2;
         }
         
@@ -105,12 +100,11 @@
             width: 150px;
             height: 150px;
             border-radius: 20px;
-            border: 5px solid var(--light-card);
-            object-fit: contain;
+            border: 5px solid rgba(255,255,255,0.2);
+            object-fit: cover;
             box-shadow: var(--shadow-lg);
             display: block;
-            background: white;
-            padding: 15px;
+            background: rgba(0,0,0,0.7);
         }
         
         .verified-badge {
@@ -126,23 +120,24 @@
             align-items: center;
             justify-content: center;
             font-size: 0.8rem;
-            border: 2px solid var(--light-card);
+            border: 2px solid rgba(255,255,255,0.2);
         }
         
         .profile-name {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 800;
             margin-bottom: 10px;
             color: var(--dark-text);
             font-family: 'Playfair Display', serif;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
         }
         
         .profile-username {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: var(--accent);
             margin-bottom: 20px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
         }
         
         .stats-container {
@@ -162,6 +157,7 @@
             font-weight: 700;
             color: var(--accent);
             display: block;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
         }
         
         .stat-label {
@@ -183,18 +179,6 @@
             border: var(--border);
             position: relative;
             overflow: hidden;
-        }
-        
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: url('https://i.imgur.com/Qj0sfmU.png') no-repeat center;
-            background-size: contain;
-            opacity: 0.1;
         }
         
         .section-title {
@@ -227,7 +211,7 @@
         }
         
         .highlight-box {
-            background: rgba(210, 105, 30, 0.1);
+            background: rgba(210, 105, 30, 0.2);
             padding: 25px;
             border-radius: 15px;
             margin: 25px 0;
@@ -275,7 +259,7 @@
         
         .menu-item {
             min-width: 280px;
-            background: white;
+            background: #2a2a2a;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -365,7 +349,7 @@
         }
         
         .service-card {
-            background: rgba(210, 105, 30, 0.1);
+            background: rgba(210, 105, 30, 0.2);
             padding: 30px 20px;
             border-radius: 15px;
             text-align: center;
@@ -376,7 +360,7 @@
         .service-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            background: rgba(210, 105, 30, 0.15);
+            background: rgba(210, 105, 30, 0.25);
         }
         
         .service-icon {
@@ -430,14 +414,14 @@
             gap: 15px;
             font-size: 1.1rem;
             padding: 15px;
-            background: rgba(210, 105, 30, 0.1);
+            background: rgba(210, 105, 30, 0.2);
             border-radius: 10px;
             transition: all 0.3s ease;
             color: var(--dark-text);
         }
         
         .contact-item:hover {
-            background: rgba(210, 105, 30, 0.2);
+            background: rgba(210, 105, 30, 0.3);
             transform: translateY(-2px);
         }
         
@@ -502,7 +486,7 @@
             text-decoration: none;
             transition: all 0.4s ease;
             box-shadow: var(--shadow);
-            background: white;
+            background: #2a2a2a;
             position: relative;
             border: 2px solid var(--accent);
         }
@@ -528,7 +512,7 @@
             align-items: center;
             gap: 12px;
             padding: 18px 32px;
-            background: white;
+            background: #2a2a2a;
             color: var(--dark-text);
             border: 2px solid var(--accent);
             border-radius: 15px;
@@ -557,12 +541,13 @@
         
         /* Footer */
         footer {
-            background: var(--primary-dark);
+            background: #000000;
             padding: 40px 0;
             text-align: center;
             margin-top: 60px;
             color: white;
             position: relative;
+            border-top: 1px solid #333;
         }
         
         .footer-logo {
@@ -609,11 +594,7 @@
             }
             
             .cover-container {
-                height: 300px;
-            }
-            
-            .cover-photo {
-                padding: 20px;
+                height: 70vh;
             }
             
             .slider-btn {
@@ -646,29 +627,29 @@
     <header class="profile-header fade-in">
         <div class="cover-container">
             <img src="https://i.imgur.com/Qj0sfmU.png" alt="Berlin Boutique Cover" class="cover-photo">
-        </div>
-        <div class="profile-info">
-            <div class="profile-image-container">
-                <img src="https://i.imgur.com/Qj0sfmU.png" alt="Berlin Boutique" class="profile-image">
-                <div class="verified-badge">
-                    <i class="fas fa-check"></i>
+            <div class="profile-info">
+                <div class="profile-image-container">
+                    <img src="https://i.imgur.com/Qj0sfmU.png" alt="Berlin Boutique" class="profile-image">
+                    <div class="verified-badge">
+                        <i class="fas fa-check"></i>
+                    </div>
                 </div>
-            </div>
-            <h1 class="profile-name">Berlin Boutique</h1>
-            <div class="profile-username">الجودة التي تشعرين بها. الأسلوب الذي تمتلكينه</div>
-            
-            <div class="stats-container">
-                <div class="stat-item">
-                    <span class="stat-number">4+</span>
-                    <span class="stat-label">أقسام</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">⭐</span>
-                    <span class="stat-label">تقييم</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">جودة</span>
+                <h1 class="profile-name">Berlin Boutique</h1>
+                <div class="profile-username">الجودة التي تشعرين بها. الأسلوب الذي تمتلكينه</div>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-number">4+</span>
+                        <span class="stat-label">أقسام</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">⭐</span>
+                        <span class="stat-label">تقييم</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">جودة</span>
+                    </div>
                 </div>
             </div>
         </div>
