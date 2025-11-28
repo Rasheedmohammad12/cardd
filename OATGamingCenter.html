@@ -9,19 +9,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a1a2e;
-            --primary-light: #16213e;
-            --primary-dark: #0f3460;
-            --accent: #e94560;
-            --gradient: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-            --gradient-accent: linear-gradient(135deg, #1a1a2e 0%, #e94560 100%);
-            --light-bg: #f0f5ff;
-            --light-card: #FFFFFF;
-            --dark-text: #1a1a2e;
-            --light-text: #4a4a6a;
-            --shadow: 0 10px 30px rgba(26, 26, 46, 0.2);
-            --shadow-lg: 0 20px 40px rgba(26, 26, 46, 0.3);
-            --border: 1px solid #d1d9e6;
+            --primary: #0a0a14;
+            --primary-light: #121226;
+            --primary-dark: #05050a;
+            --accent: #3a86ff;
+            --accent-light: #5a9cff;
+            --accent-dark: #2a66cc;
+            --gradient: linear-gradient(135deg, #0a0a14 0%, #121226 100%);
+            --gradient-accent: linear-gradient(135deg, #0a0a14 0%, #3a86ff 100%);
+            --gradient-blue: linear-gradient(135deg, #3a86ff 0%, #2667cc 100%);
+            --light-bg: #0c0c17;
+            --light-card: #121226;
+            --dark-text: #ffffff;
+            --light-text: #b8c2d6;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.7);
+            --border: 1px solid #1e2a4a;
         }
         
         * {
@@ -60,7 +63,7 @@
             width: 100%;
             position: relative;
             overflow: hidden;
-            background: var(--light-card);
+            background: var(--primary);
         }
         
         .cover-container {
@@ -75,7 +78,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            filter: brightness(0.9);
         }
         
         .profile-info {
@@ -201,7 +203,7 @@
         }
         
         .highlight-box {
-            background: rgba(233, 69, 96, 0.1);
+            background: rgba(58, 134, 255, 0.1);
             padding: 25px;
             border-radius: 15px;
             margin: 25px 0;
@@ -248,7 +250,7 @@
         
         .menu-item {
             min-width: 280px;
-            background: white;
+            background: #1a1a33;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -288,7 +290,7 @@
         }
         
         .slider-btn:hover {
-            background: var(--primary);
+            background: var(--accent-light);
             transform: translateY(-50%) scale(1.1);
         }
         
@@ -320,7 +322,7 @@
         }
         
         .service-card {
-            background: rgba(233, 69, 96, 0.1);
+            background: rgba(58, 134, 255, 0.1);
             padding: 30px 20px;
             border-radius: 15px;
             text-align: center;
@@ -331,13 +333,13 @@
         .service-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            background: rgba(233, 69, 96, 0.15);
+            background: rgba(58, 134, 255, 0.15);
         }
         
         .service-icon {
             width: 70px;
             height: 70px;
-            background: var(--accent);
+            background: var(--gradient-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -385,14 +387,14 @@
             gap: 15px;
             font-size: 1.1rem;
             padding: 15px;
-            background: rgba(233, 69, 96, 0.1);
+            background: rgba(58, 134, 255, 0.1);
             border-radius: 10px;
             transition: all 0.3s ease;
             color: var(--dark-text);
         }
         
         .contact-item:hover {
-            background: rgba(233, 69, 96, 0.2);
+            background: rgba(58, 134, 255, 0.2);
             transform: translateY(-2px);
         }
         
@@ -403,7 +405,7 @@
         }
         
         .business-contact {
-            background: var(--gradient-accent);
+            background: var(--gradient-blue);
             color: white;
             padding: 20px;
             border-radius: 15px;
@@ -457,7 +459,7 @@
             text-decoration: none;
             transition: all 0.4s ease;
             box-shadow: var(--shadow);
-            background: white;
+            background: #1a1a33;
             position: relative;
             border: 2px solid var(--accent);
         }
@@ -465,7 +467,7 @@
         .social-icon:hover {
             transform: translateY(-8px) scale(1.05);
             box-shadow: var(--shadow-lg);
-            background: var(--accent);
+            background: var(--gradient-blue);
             color: white;
         }
         
@@ -483,7 +485,7 @@
             align-items: center;
             gap: 12px;
             padding: 18px 32px;
-            background: white;
+            background: #1a1a33;
             color: var(--dark-text);
             border: 2px solid var(--accent);
             border-radius: 15px;
@@ -496,7 +498,7 @@
         }
         
         .action-button.primary {
-            background: var(--gradient-accent);
+            background: var(--gradient-blue);
             color: white;
             border: 2px solid var(--accent);
         }
@@ -544,7 +546,7 @@
         }
         
         .phone-card {
-            background: rgba(233, 69, 96, 0.1);
+            background: rgba(58, 134, 255, 0.1);
             padding: 25px;
             border-radius: 15px;
             text-align: center;
@@ -555,7 +557,7 @@
         .phone-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            background: rgba(233, 69, 96, 0.15);
+            background: rgba(58, 134, 255, 0.15);
         }
         
         .phone-card.click {
@@ -626,7 +628,7 @@
             align-items: center;
             gap: 12px;
             padding: 18px 32px;
-            background: var(--gradient-accent);
+            background: var(--gradient-blue);
             color: white;
             border: none;
             border-radius: 15px;
@@ -661,7 +663,7 @@
             align-items: center;
             gap: 12px;
             padding: 18px 32px;
-            background: white;
+            background: #1a1a33;
             color: var(--dark-text);
             border: 2px solid var(--accent);
             border-radius: 15px;
@@ -677,7 +679,7 @@
         .location-button:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            background: var(--accent);
+            background: var(--gradient-blue);
             color: white;
         }
         
@@ -915,7 +917,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <img src="https://i.imgur.com/3anIxpQ.png" alt="GOAT Gaming Center Logo" style="height: 60px; margin-bottom: 20px;">
+            <img src="https://i.imgur.com/YTIEhGh.png" alt="GOAT Gaming Center Logo" style="height: 60px; margin-bottom: 20px;">
             <p class="footer-text">GOAT Gaming Center - أكبر وأحدث محل بلايستيشن</p>
             <p class="footer-text">الترفيه الفاخر • الأجواء التنافسية • تجربة استثنائية</p>
         </div>
