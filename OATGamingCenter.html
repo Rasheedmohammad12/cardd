@@ -471,6 +471,7 @@
             text-align: center;
             transition: all 0.3s ease;
             border: var(--border-glow);
+            cursor: pointer;
         }
         
         .phone-card:hover {
@@ -522,6 +523,27 @@
         
         .click-icon i {
             animation: pulse 2s infinite;
+        }
+        
+        .click-call-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--gradient-blue);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        
+        .click-call-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
         
         @keyframes pulse {
@@ -849,19 +871,23 @@
         <div class="phone-section fade-in delay-1">
             <h2 class="section-title">تواصل معنا</h2>
             <div class="phone-grid">
-                <div class="phone-card">
+                <div class="phone-card" onclick="callNumber('0785775515')">
                     <i class="fas fa-phone fa-2x" style="color: var(--accent);"></i>
                     <div class="phone-number">0785775515</div>
                     <div class="phone-label">للحجز والاستفسارات</div>
+                    <a href="tel:0785775515" class="click-call-button">
+                        <i class="fas fa-phone"></i>
+                        انقر للاتصال مباشرة
+                    </a>
                 </div>
-                <div class="phone-card click">
+                <div class="phone-card click" onclick="callNumber('0788885914')">
                     <i class="fas fa-mobile-alt fa-2x" style="color: var(--accent);"></i>
                     <div class="phone-number">0788885914</div>
                     <div class="phone-label">للتواصل المباشر</div>
-                    <div class="click-icon">
-                        <i class="fas fa-clock"></i>
-                        <span>انقر للاتصال المباشر</span>
-                    </div>
+                    <a href="tel:0788885914" class="click-call-button">
+                        <i class="fas fa-bolt"></i>
+                        انقر للاتصال فوراً
+                    </a>
                 </div>
             </div>
         </div>
@@ -875,10 +901,10 @@
                     <h3 class="click-service-title">كليك فقط عبر الرقم التالي</h3>
                     <p class="click-service-desc">للحجز السريع والاستفسارات المباشرة، تواصل معنا عبر الرقم المخصص للكليك</p>
                     <div class="phone-number" style="font-size: 1.8rem; color: var(--accent);">0788885914</div>
-                    <div class="click-icon" style="margin-top: 10px;">
-                        <i class="fas fa-mouse-pointer"></i>
-                        <span>انقر للاتصال فوراً</span>
-                    </div>
+                    <a href="tel:0788885914" class="click-call-button" style="font-size: 1.1rem; padding: 12px 25px;">
+                        <i class="fas fa-bolt"></i>
+                        انقر للاتصال فوراً
+                    </a>
                 </div>
             </div>
         </div>
@@ -1007,6 +1033,11 @@
     </footer>
 
     <script>
+        // Function to call phone number
+        function callNumber(phoneNumber) {
+            window.location.href = `tel:${phoneNumber}`;
+        }
+
         // Review Modal Functionality
         const openReviewModal = document.getElementById('openReviewModal');
         const reviewModal = document.getElementById('reviewModal');
@@ -1044,7 +1075,7 @@
 
         // Add click effects
         document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.social-icon, .action-button');
+            const buttons = document.querySelectorAll('.social-icon, .action-button, .phone-card, .click-call-button');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
