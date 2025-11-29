@@ -12,17 +12,20 @@
             --primary: #8B4513;
             --primary-light: #A0522D;
             --primary-dark: #654321;
-            --accent: #D2691E;
+            --accent: #D4AF37;
+            --gold: #D4AF37;
+            --gold-light: #F7EF8A;
+            --gold-dark: #B8860B;
             --gradient: linear-gradient(135deg, #8B4513 0%, #654321 100%);
-            --gradient-accent: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            --gradient-accent: linear-gradient(135deg, #8B4513 0%, #D4AF37 100%);
+            --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F7EF8A 100%);
             --light-bg: #000000;
             --light-card: #1a1a1a;
-            --dark-text: #ffffff;
-            --light-text: #cccccc;
-            --shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
-            --shadow-lg: 0 20px 40px rgba(139, 69, 19, 0.25);
-            --border: 1px solid #333333;
-            --gold: #D4AF37;
+            --dark-text: #D4AF37;
+            --light-text: #F7EF8A;
+            --shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+            --shadow-lg: 0 20px 40px rgba(212, 175, 55, 0.25);
+            --border: 1px solid #D4AF37;
         }
         
         * {
@@ -82,7 +85,7 @@
         
         .lang-btn.active {
             background: var(--accent);
-            color: white;
+            color: #000;
         }
         
         /* Header */
@@ -129,7 +132,7 @@
             width: 120px;
             height: 120px;
             border-radius: 20px;
-            border: 4px solid rgba(255,255,255,0.2);
+            border: 4px solid rgba(212, 175, 55, 0.5);
             object-fit: cover;
             box-shadow: var(--shadow-lg);
             display: block;
@@ -141,7 +144,7 @@
             bottom: 8px;
             right: 8px;
             background: var(--gold);
-            color: white;
+            color: #000;
             width: 25px;
             height: 25px;
             border-radius: 50%;
@@ -164,7 +167,7 @@
         .profile-username {
             font-size: 1.2rem;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--light-text);
             margin-bottom: 15px;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
         }
@@ -240,7 +243,7 @@
         }
         
         .highlight-box {
-            background: rgba(210, 105, 30, 0.2);
+            background: rgba(212, 175, 55, 0.2);
             padding: 25px;
             border-radius: 15px;
             margin: 25px 0;
@@ -255,7 +258,7 @@
             color: var(--accent);
         }
         
-        /* Menu Slider Section */
+        /* Menu Slider Section - الملابس فقط */
         .menu-section {
             background: var(--light-card);
             margin: 40px auto;
@@ -335,7 +338,7 @@
             width: 50px;
             height: 50px;
             background: var(--accent);
-            color: white;
+            color: #000;
             border: none;
             border-radius: 50%;
             font-size: 1.2rem;
@@ -346,7 +349,7 @@
         }
         
         .slider-btn:hover {
-            background: var(--primary);
+            background: var(--gold-light);
             transform: translateY(-50%) scale(1.1);
         }
         
@@ -378,7 +381,7 @@
         }
         
         .product-icon-item {
-            background: rgba(210, 105, 30, 0.2);
+            background: rgba(212, 175, 55, 0.2);
             padding: 25px 15px;
             border-radius: 15px;
             text-align: center;
@@ -389,7 +392,7 @@
         .product-icon-item:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            background: rgba(210, 105, 30, 0.25);
+            background: rgba(212, 175, 55, 0.25);
         }
         
         .product-icon {
@@ -401,7 +404,7 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 15px;
-            color: white;
+            color: #000;
             font-size: 1.5rem;
         }
         
@@ -431,7 +434,7 @@
         }
         
         .service-card {
-            background: rgba(210, 105, 30, 0.2);
+            background: rgba(212, 175, 55, 0.2);
             padding: 30px 20px;
             border-radius: 15px;
             text-align: center;
@@ -442,7 +445,7 @@
         .service-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            background: rgba(210, 105, 30, 0.25);
+            background: rgba(212, 175, 55, 0.25);
         }
         
         .service-icon {
@@ -454,7 +457,7 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 15px;
-            color: white;
+            color: #000;
             font-size: 1.8rem;
         }
         
@@ -496,14 +499,14 @@
             gap: 15px;
             font-size: 1.1rem;
             padding: 15px;
-            background: rgba(210, 105, 30, 0.2);
+            background: rgba(212, 175, 55, 0.2);
             border-radius: 10px;
             transition: all 0.3s ease;
             color: var(--dark-text);
         }
         
         .contact-item:hover {
-            background: rgba(210, 105, 30, 0.3);
+            background: rgba(212, 175, 55, 0.3);
             transform: translateY(-2px);
         }
         
@@ -514,8 +517,8 @@
         }
         
         .business-contact {
-            background: var(--gradient-accent);
-            color: white;
+            background: var(--gradient-gold);
+            color: #000;
             padding: 20px;
             border-radius: 15px;
             margin-top: 25px;
@@ -577,7 +580,7 @@
             transform: translateY(-8px) scale(1.05);
             box-shadow: var(--shadow-lg);
             background: var(--accent);
-            color: white;
+            color: #000;
         }
         
         /* Action Buttons */
@@ -607,8 +610,8 @@
         }
         
         .action-button.primary {
-            background: var(--gradient-accent);
-            color: white;
+            background: var(--gradient-gold);
+            color: #000;
             border: 2px solid var(--accent);
         }
         
@@ -627,9 +630,9 @@
             padding: 40px 0;
             text-align: center;
             margin-top: 60px;
-            color: white;
+            color: var(--dark-text);
             position: relative;
-            border-top: 1px solid #333;
+            border-top: 1px solid var(--accent);
         }
         
         .footer-logo {
