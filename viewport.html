@@ -149,13 +149,13 @@
             line-height: 1.5;
         }
         
-        /* Gallery Section - UPDATED */
+        /* Gallery Section - UPDATED TO GRID */
         .gallery-section {
             background: var(--light-card);
             margin: 30px auto;
-            padding: 30px;
+            padding: 35px;
             border-radius: 25px;
-            max-width: 800px;
+            max-width: 1200px;
             text-align: center;
             box-shadow: var(--shadow);
             border: var(--border);
@@ -164,101 +164,65 @@
         .gallery-title {
             font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             color: var(--dark-text);
         }
         
-        .gallery-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
         
-        .gallery-container {
+        .gallery-item {
             position: relative;
-            width: 100%;
-            overflow: hidden;
             border-radius: 15px;
+            overflow: hidden;
             box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            aspect-ratio: 4/3;
             background-color: var(--light-bg);
         }
         
-        .gallery-slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(142, 68, 173, 0.25);
         }
         
-        .gallery-slide {
-            min-width: 100%;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--light-bg);
-        }
-        
-        .gallery-slide img {
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.5s ease;
         }
         
-        .gallery-nav {
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
             position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 15px;
-            z-index: 10;
-        }
-        
-        .gallery-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.3rem;
-            color: var(--primary-dark);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-            border: 2px solid var(--primary);
-        }
-        
-        .gallery-btn:hover {
-            background: var(--primary);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
             color: white;
-            transform: scale(1.1);
+            padding: 20px 15px 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            text-align: right;
         }
         
-        .gallery-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
         }
         
-        .gallery-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--primary-light);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-dot.active {
-            background: var(--primary-dark);
-            transform: scale(1.2);
+        .gallery-caption {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
         }
         
         /* Contact Section */
@@ -614,14 +578,9 @@
                 font-size: 1.2rem;
             }
             
-            .gallery-slide {
-                height: 300px;
-            }
-            
-            .gallery-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 15px;
             }
             
             .services-grid {
@@ -669,14 +628,9 @@
                 font-size: 1.1rem;
             }
             
-            .gallery-slide {
-                height: 250px;
-            }
-            
-            .gallery-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
             
             .rating-star {
@@ -718,86 +672,102 @@
             </div>
         </div>
 
-        <!-- Gallery Section - UPDATED -->
+        <!-- Gallery Section - UPDATED TO GRID -->
         <div class="gallery-section fade-in delay-2">
             <h2 class="gallery-title">معرض المركز</h2>
-            <div class="gallery-wrapper">
-                <div class="gallery-container">
-                    <div class="gallery-slides">
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/kUJABi1.png" alt="مركز الياسمين للعلاج الطبيعي">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/Sbn7Vch.png" alt="جلسات العلاج الطبيعي">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/aGWi6Cv.png" alt="أجهزة العلاج الطبيعي">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/E01lZxV.png" alt="علاج العظام">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/GpIaSno.png" alt="التأهيل الطبيعي">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/0Wv4lHS.png" alt="علاج الأطفال">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/qPDtFLE.png" alt="الحالات العصبية">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/fC5RoDf.png" alt="مركز متكامل">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/lZDsrpG.png" alt="بيئة علاجية مريحة">
-                        </div>
-                        <!-- الصور المضافة حديثاً -->
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/gW54CVW.png" alt="مركز الياسمين للعلاج الطبيعي">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/aCKwP5P.png" alt="مركز الياسمين للعلاج الطبيعي">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/F8Q15E0.png" alt="مركز الياسمين للعلاج الطبيعي">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/KypyILw.png" alt="مركز الياسمين للعلاج الطبيعي">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/mktK4wK.png" alt="مركز الياسمين للعلاج الطبيعي">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="https://i.imgur.com/qtRZEei.png" alt="مركز الياسمين للعلاج الطبيعي">
-                        </div>
+            <div class="gallery-grid">
+                <!-- الصور الأصلية -->
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/kUJABi1.png" alt="مركز الياسمين للعلاج الطبيعي">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">مركز الياسمين للعلاج الطبيعي</div>
                     </div>
                 </div>
-                <div class="gallery-nav">
-                    <button class="gallery-btn prev-btn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <button class="gallery-btn next-btn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/Sbn7Vch.png" alt="جلسات العلاج الطبيعي">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">جلسات العلاج الطبيعي</div>
+                    </div>
                 </div>
-            </div>
-            <div class="gallery-dots">
-                <div class="gallery-dot active" data-index="0"></div>
-                <div class="gallery-dot" data-index="1"></div>
-                <div class="gallery-dot" data-index="2"></div>
-                <div class="gallery-dot" data-index="3"></div>
-                <div class="gallery-dot" data-index="4"></div>
-                <div class="gallery-dot" data-index="5"></div>
-                <div class="gallery-dot" data-index="6"></div>
-                <div class="gallery-dot" data-index="7"></div>
-                <div class="gallery-dot" data-index="8"></div>
-                <!-- النقاط المضافة حديثاً للصور الجديدة -->
-                <div class="gallery-dot" data-index="9"></div>
-                <div class="gallery-dot" data-index="10"></div>
-                <div class="gallery-dot" data-index="11"></div>
-                <div class="gallery-dot" data-index="12"></div>
-                <div class="gallery-dot" data-index="13"></div>
-                <div class="gallery-dot" data-index="14"></div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/aGWi6Cv.png" alt="أجهزة العلاج الطبيعي">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">أجهزة العلاج الطبيعي</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/E01lZxV.png" alt="علاج العظام">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">علاج العظام</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/GpIaSno.png" alt="التأهيل الطبيعي">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">التأهيل الطبيعي</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/0Wv4lHS.png" alt="علاج الأطفال">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">علاج الأطفال</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/qPDtFLE.png" alt="الحالات العصبية">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">الحالات العصبية</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/fC5RoDf.png" alt="مركز متكامل">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">مركز متكامل</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/lZDsrpG.png" alt="بيئة علاجية مريحة">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">بيئة علاجية مريحة</div>
+                    </div>
+                </div>
+                <!-- الصور المضافة حديثاً -->
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/gW54CVW.png" alt="مركز الياسمين للعلاج الطبيعي">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">مركز الياسمين للعلاج الطبيعي</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/aCKwP5P.png" alt="مركز الياسمين للعلاج الطبيعي">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">مركز الياسمين للعلاج الطبيعي</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/F8Q15E0.png" alt="مركز الياسمين للعلاج الطبيعي">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">مركز الياسمين للعلاج الطبيعي</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/KypyILw.png" alt="مركز الياسمين للعلاج الطبيعي">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">مركز الياسمين للعلاج الطبيعي</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/mktK4wK.png" alt="مركز الياسمين للعلاج الطبيعي">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">مركز الياسمين للعلاج الطبيعي</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.imgur.com/qtRZEei.png" alt="مركز الياسمين للعلاج الطبيعي">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">مركز الياسمين للعلاج الطبيعي</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -921,53 +891,8 @@
     </footer>
 
     <script>
-        // Gallery Functionality
+        // Rating System
         document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelector('.gallery-slides');
-            const slidesCount = document.querySelectorAll('.gallery-slide').length;
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            const dots = document.querySelectorAll('.gallery-dot');
-            
-            let currentSlide = 0;
-            
-            // Update slide position
-            function updateSlide() {
-                slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                // Update dots
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-                });
-            }
-            
-            // Next slide
-            nextBtn.addEventListener('click', function() {
-                currentSlide = (currentSlide + 1) % slidesCount;
-                updateSlide();
-            });
-            
-            // Previous slide
-            prevBtn.addEventListener('click', function() {
-                currentSlide = (currentSlide - 1 + slidesCount) % slidesCount;
-                updateSlide();
-            });
-            
-            // Dot navigation
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', function() {
-                    currentSlide = index;
-                    updateSlide();
-                });
-            });
-            
-            // Auto slide every 5 seconds
-            setInterval(function() {
-                currentSlide = (currentSlide + 1) % slidesCount;
-                updateSlide();
-            }, 5000);
-            
-            // Rating System
             const stars = document.querySelectorAll('.rating-star');
             let currentRating = 0;
             
@@ -1036,7 +961,7 @@
             });
             
             // Add click effects to buttons
-            const buttons = document.querySelectorAll('.social-icon, .action-button, .gallery-btn');
+            const buttons = document.querySelectorAll('.social-icon, .action-button');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
