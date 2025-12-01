@@ -3,131 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ortho-Trauma - Medical Binary Establishment</title>
+    <title>Medical Binary Establishment - الثنائية الطبية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- مكتبة pdf.js لعرض PDF -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة pdf.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <style>
         :root {
             --primary: #1a5276;
-            --primary-light: #2874a6;
+            --primary-light: #2e86c1;
             --primary-dark: #154360;
+            --secondary: #28b463;
             --accent: #3498db;
             --medical-blue: #2c80b9;
+            --medical-green: #27ae60;
             --medical-light: #e8f4fc;
             --gradient: linear-gradient(135deg, #1a5276 0%, #2c80b9 100%);
+            --gradient-green: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
             --light-bg: #f8fbfe;
             --light-card: #FFFFFF;
             --dark-text: #1b4f72;
             --light-text: #566573;
-            --shadow: 0 5px 15px rgba(44, 128, 185, 0.1);
-            --shadow-lg: 0 10px 30px rgba(44, 128, 185, 0.15);
+            --shadow: 0 10px 30px rgba(44, 128, 185, 0.15);
+            --shadow-lg: 0 20px 50px rgba(44, 128, 185, 0.25);
             --border: 1px solid #e1f0fa;
+            --radius: 15px;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        html {
+            -webkit-text-size-adjust: 100%;
         }
         
         body {
             background: var(--light-bg);
             color: var(--dark-text);
-            line-height: 1.7;
+            line-height: 1.8;
             overflow-x: hidden;
             font-family: 'Tajawal', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        body.dir-ltr {
+            font-family: 'Inter', sans-serif;
         }
         
         .en {
             font-family: 'Inter', sans-serif;
-            direction: ltr;
-            text-align: left;
         }
         
-        .medical-container {
-            max-width: 1200px;
+        .container {
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
         /* Header */
-        .medical-header {
+        .main-header {
             background: var(--gradient);
             color: white;
-            padding: 30px 0;
-            text-align: center;
+            padding: 25px 0;
             position: relative;
             overflow: hidden;
         }
         
-        .medical-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><path fill="white" d="M50 10L60 40H90L65 60L75 90L50 70L25 90L35 60L10 40H40Z"/></svg>') repeat;
-        }
-        
-        .header-content {
+        .header-top {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 20px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
+            gap: 20px;
         }
         
-        .logo-container {
-            width: 100px;
-            height: 100px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo-circle {
+            width: 80px;
+            height: 80px;
             background: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
-        .logo-img {
-            width: 90%;
-            height: 90%;
-            object-fit: contain;
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: white;
         }
         
-        .medical-logo {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        
-        .medical-subtitle {
-            font-size: 1.2rem;
+        .logo-subtitle {
+            font-size: 1rem;
             opacity: 0.9;
-            margin-bottom: 20px;
+            margin-top: 5px;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
         }
         
         /* Language Toggle */
         .language-toggle {
-            position: absolute;
-            top: 20px;
-            left: 20px;
             display: flex;
             gap: 10px;
+            background: rgba(255,255,255,0.15);
+            padding: 8px;
+            border-radius: 25px;
         }
         
         .lang-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 8px 15px;
+            padding: 8px 20px;
+            border: none;
             border-radius: 20px;
+            background: transparent;
+            color: white;
             cursor: pointer;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
         
@@ -136,46 +143,115 @@
             color: var(--medical-blue);
         }
         
+        /* Save Contact Button */
+        .save-contact-btn {
+            background: var(--medical-green);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+        
+        .save-contact-btn:hover {
+            background: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+        }
+        
         /* Navigation */
-        .medical-nav {
-            background: white;
-            padding: 15px 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        .main-nav {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 15px;
+            margin-top: 20px;
         }
         
         .nav-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 10px;
             flex-wrap: wrap;
         }
         
-        .nav-item {
-            color: var(--dark-text);
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
+        .nav-btn {
+            padding: 12px 25px;
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            border-radius: 25px;
             cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 150px;
+            text-align: center;
         }
         
-        .nav-item:hover, .nav-item.active {
-            background: var(--medical-light);
+        .nav-btn:hover, .nav-btn.active {
+            background: white;
             color: var(--medical-blue);
+            border-color: white;
         }
         
-        /* PDF Library Section */
-        .pdf-library-section {
+        /* Hero Section */
+        .hero-section {
             padding: 80px 0;
-            background: var(--light-bg);
+            background: linear-gradient(135deg, #f8fbfe 0%, #e8f4fc 100%);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-text {
+            text-align: right;
+        }
+        
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .hero-image {
+            text-align: center;
+        }
+        
+        .medical-icon {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(44, 128, 185, 0.2));
+        }
+        
+        /* Company Info Section */
+        .company-section {
+            padding: 80px 0;
+            background: white;
         }
         
         .section-title {
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 900;
             margin-bottom: 50px;
             text-align: center;
             color: var(--dark-text);
@@ -188,26 +264,64 @@
             bottom: -15px;
             right: 50%;
             transform: translateX(50%);
-            width: 80px;
-            height: 3px;
+            width: 100px;
+            height: 4px;
             background: var(--medical-blue);
+            border-radius: 2px;
         }
         
-        /* PDF Grid */
+        .company-card {
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: var(--border);
+        }
+        
+        .company-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .info-item {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--medical-blue);
+        }
+        
+        .info-item i {
+            font-size: 2rem;
+            color: var(--medical-blue);
+            margin-bottom: 15px;
+        }
+        
+        /* PDF Library Section */
+        .pdf-library-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
         .pdf-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
         
         .pdf-card {
             background: white;
-            border-radius: 15px;
+            border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             border: 2px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .pdf-card:hover {
@@ -216,68 +330,75 @@
             box-shadow: var(--shadow-lg);
         }
         
+        .pdf-header {
+            background: var(--medical-blue);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .pdf-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
         .pdf-thumbnail {
-            width: 100%;
             height: 200px;
             background: var(--medical-light);
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
             position: relative;
             overflow: hidden;
         }
         
         .pdf-icon {
-            font-size: 4rem;
+            font-size: 5rem;
             color: var(--medical-blue);
+            opacity: 0.7;
         }
         
         .pdf-preview {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
             display: none;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .pdf-content {
             padding: 25px;
-        }
-        
-        .pdf-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--dark-text);
-        }
-        
-        .pdf-meta {
-            color: var(--light-text);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            flex-grow: 1;
             display: flex;
-            gap: 15px;
+            flex-direction: column;
         }
         
         .pdf-description {
             color: var(--light-text);
-            line-height: 1.6;
             margin-bottom: 20px;
+            flex-grow: 1;
         }
         
         .pdf-actions {
             display: flex;
             gap: 10px;
+            margin-top: auto;
         }
         
         .pdf-btn {
-            padding: 10px 20px;
-            border-radius: 25px;
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 8px;
             border: none;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
         }
         
@@ -287,14 +408,14 @@
         }
         
         .pdf-btn.download {
-            background: transparent;
+            background: var(--medical-light);
             color: var(--medical-blue);
             border: 2px solid var(--medical-blue);
         }
         
         .pdf-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         /* PDF Viewer Modal */
@@ -305,51 +426,64 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
             overflow-y: auto;
+            padding: 20px;
         }
         
         .modal-content {
             background: white;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 40px auto;
-            border-radius: 15px;
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            animation: modalSlide 0.3s ease;
+        }
+        
+        @keyframes modalSlide {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         
         .modal-header {
             background: var(--medical-blue);
             color: white;
-            padding: 20px 30px;
+            padding: 25px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
         
         .modal-title {
             font-size: 1.5rem;
             font-weight: 700;
+            flex: 1;
+            margin-right: 20px;
         }
         
         .modal-close {
-            background: none;
+            background: rgba(255,255,255,0.2);
             border: none;
             color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
             width: 40px;
             height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
         
         .modal-close:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
         }
         
         .pdf-viewer-container {
@@ -364,35 +498,46 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             background: white;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: var(--radius);
             box-shadow: var(--shadow);
+            flex-wrap: wrap;
         }
         
         .control-btn {
             background: var(--medical-light);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             color: var(--medical-blue);
+            font-size: 1.1rem;
             transition: all 0.3s ease;
         }
         
-        .control-btn:hover {
+        .control-btn:hover:not(:disabled) {
             background: var(--medical-blue);
             color: white;
+            transform: scale(1.1);
+        }
+        
+        .control-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
         
         .page-counter {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--dark-text);
+            font-size: 1.1rem;
+            min-width: 100px;
+            text-align: center;
         }
         
         .zoom-controls {
@@ -403,8 +548,8 @@
         
         .canvas-container {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: var(--radius);
             box-shadow: var(--shadow);
             overflow: auto;
             max-height: 70vh;
@@ -414,13 +559,172 @@
         #pdf-canvas {
             max-width: 100%;
             margin: 0 auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
         }
         
         .loading {
             text-align: center;
-            padding: 40px;
+            padding: 60px;
             color: var(--light-text);
+        }
+        
+        .loading i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--medical-blue);
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--medical-blue);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--medical-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--medical-blue);
+        }
+        
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .contact-section .section-title {
+            color: white;
+        }
+        
+        .contact-section .section-title::after {
+            background: white;
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .contact-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .contact-detail {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .map-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .main-footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-subtitle {
+            opacity: 0.8;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
         }
         
         /* Language Content */
@@ -433,94 +737,416 @@
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 1.8rem;
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
             
-            .pdf-grid {
-                grid-template-columns: 1fr;
+            .hero-text {
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .pdf-controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .zoom-controls {
+                margin-left: 0;
+                order: -1;
             }
             
             .modal-content {
                 margin: 20px;
             }
             
-            .pdf-controls {
-                flex-wrap: wrap;
+            .canvas-container {
+                padding: 15px;
             }
             
-            .zoom-controls {
-                margin-left: 0;
-                width: 100%;
-                justify-content: center;
+            .nav-btn {
+                min-width: 130px;
+                padding: 10px 20px;
             }
         }
+        
+        @media (max-width: 480px) {
+            .pdf-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pdf-actions {
+                flex-direction: column;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* Utility classes */
+        .text-center { text-align: center; }
+        .mb-20 { margin-bottom: 20px; }
+        .mb-30 { margin-bottom: 30px; }
+        .mb-40 { margin-bottom: 40px; }
     </style>
 </head>
-<body>
+<body dir="rtl">
     <!-- Header -->
-    <header class="medical-header">
-        <div class="language-toggle">
-            <button class="lang-btn active" data-lang="ar">العربية</button>
-            <button class="lang-btn" data-lang="en">English</button>
-        </div>
-        <div class="medical-container">
-            <div class="header-content">
-                <div class="logo-container">
-                    <div class="company-logo-text">OTT</div>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-section">
+                    <div class="logo-circle">
+                        <i class="fas fa-plus-square" style="font-size: 2.5rem; color: var(--medical-blue);"></i>
+                    </div>
+                    <div>
+                        <div class="logo-text">
+                            <span class="lang-content ar active">الثنائية الطبية</span>
+                            <span class="lang-content en">Medical Binary</span>
+                        </div>
+                        <div class="logo-subtitle">
+                            <span class="lang-content ar active">مؤسسة طبية متخصصة</span>
+                            <span class="lang-content en">Medical Establishment</span>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h1 class="medical-logo">
-                        <span class="lang-content ar active">Ortho-Trauma International</span>
-                        <span class="lang-content en">Ortho-Trauma International</span>
+                
+                <div class="header-actions">
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="ar">العربية</button>
+                        <button class="lang-btn" data-lang="en">English</button>
+                    </div>
+                    <button class="save-contact-btn" id="saveContactBtn">
+                        <i class="fas fa-download"></i>
+                        <span class="lang-content ar active">حفظ جهة الاتصال</span>
+                        <span class="lang-content en">Save Contact</span>
+                    </button>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <div class="nav-container">
+                    <button class="nav-btn active" data-target="home">
+                        <span class="lang-content ar active">الرئيسية</span>
+                        <span class="lang-content en">Home</span>
+                    </button>
+                    <button class="nav-btn" data-target="about">
+                        <span class="lang-content ar active">من نحن</span>
+                        <span class="lang-content en">About Us</span>
+                    </button>
+                    <button class="nav-btn" data-target="pdf-library">
+                        <span class="lang-content ar active">مكتبة PDF</span>
+                        <span class="lang-content en">PDF Library</span>
+                    </button>
+                    <button class="nav-btn" data-target="services">
+                        <span class="lang-content ar active">الخدمات</span>
+                        <span class="lang-content en">Services</span>
+                    </button>
+                    <button class="nav-btn" data-target="contact">
+                        <span class="lang-content ar active">اتصل بنا</span>
+                        <span class="lang-content en">Contact Us</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="lang-content ar active">الثنائية الطبية</span>
+                        <span class="lang-content en">Medical Binary Establishment</span>
                     </h1>
-                    <p class="medical-subtitle">
-                        <span class="lang-content ar active">مكتبة المنتجات الطبية</span>
-                        <span class="lang-content en">Medical Products Library</span>
+                    <p class="hero-subtitle">
+                        <span class="lang-content ar active">متخصصون في المستلزمات الطبية والمواد الاستهلاكية الطبية، بما في ذلك كل ما يحتاجه جراحة العظام، مثل المواد القابلة للزرع والمستوردة من وكالات دولية مثل Austofix (أستراليا) و Ortho-Trauma (إنجلترا)</span>
+                        <span class="lang-content en">Specializing in medical supplies and consumables, including everything needed for orthopedic surgery, such as implantable materials sourced from international agencies like Austofix (Australia) and Ortho-Trauma (England)</span>
+                    </p>
+                </div>
+                <div class="hero-image">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3067/3067256.png" alt="Medical Icon" class="medical-icon">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="company-section" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">
+                <span class="lang-content ar active">عن الشركة</span>
+                <span class="lang-content en">About Company</span>
+            </h2>
+            
+            <div class="company-card fade-in delay-1">
+                <div class="company-info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-briefcase-medical"></i>
+                        <h3>
+                            <span class="lang-content ar active">التخصص</span>
+                            <span class="lang-content en">Specialization</span>
+                        </h3>
+                        <p>
+                            <span class="lang-content ar active">مستلزمات جراحة العظام، المواد القابلة للزرع، الأدوات الجراحية</span>
+                            <span class="lang-content en">Orthopedic surgery supplies, implantable materials, surgical instruments</span>
+                        </p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-globe-americas"></i>
+                        <h3>
+                            <span class="lang-content ar active">الوكالات الدولية</span>
+                            <span class="lang-content en">International Agencies</span>
+                        </h3>
+                        <p>
+                            <span class="lang-content ar active">Austofix (أستراليا)، Ortho-Trauma (إنجلترا)</span>
+                            <span class="lang-content en">Austofix (Australia), Ortho-Trauma (England)</span>
+                        </p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-hospital"></i>
+                        <h3>
+                            <span class="lang-content ar active">الخدمات الطبية</span>
+                            <span class="lang-content en">Medical Services</span>
+                        </h3>
+                        <p>
+                            <span class="lang-content ar active">رعاية المرضى القادمين للعلاج من الخارج</span>
+                            <span class="lang-content en">Healthcare for international patients</span>
+                        </p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-pills"></i>
+                        <h3>
+                            <span class="lang-content ar active">مستودع الأدوية</span>
+                            <span class="lang-content en">Drug Warehouse</span>
+                        </h3>
+                        <p>
+                            <span class="lang-content ar active">أدوية ومكملات غذائية من وكالات عالمية</span>
+                            <span class="lang-content en">Pharmaceuticals and supplements from global agencies</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="full-description fade-in delay-2">
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--light-text); text-align: right;">
+                        <span class="lang-content ar active">
+                            مؤسسة الثنائية الطبية متخصصة في المستلزمات الطبية والمواد الاستهلاكية، بما في ذلك كل ما يحتاجه جراحة العظام، مثل المواد القابلة للزرع المستوردة من وكالات دولية مثل Austofix (أستراليا) و Ortho-Trauma (إنجلترا)، بالإضافة إلى مجموعة كاملة من الأدوات الجراحية للعظام، وأنظمة التثبيت الخارجي، ومجموعة متنوعة من الأجهزة الطبية، ومستلزمات المستشفى، ومعدات غرفة العمليات.<br><br>
+                            بالإضافة إلى مستودع أدوية شامل مخزن بوكالات الأدوية والمكملات الغذائية من جميع أنحاء العالم. لدينا أيضًا صيدليتنا الخاصة لبيع المنتجات الطبية والأدوية.<br><br>
+                            نحن نقدم أيضًا الرعاية الصحية للمرضى القادمين من الخارج للعلاج، مما يجعل الأمر أسهل من خلال تعاوننا مع الأطباء والمستشفيات والصيدليات والمختبرات ومراكز الأشعة والتشخيص وغيرها من المؤسسات الصحية. نسهل إجراءاتهم الجراحية والعلاجات الطبية اللازمة في المستشفيات داخل المملكة الأردنية الهاشمية.
+                        </span>
+                        <span class="lang-content en">
+                            Medical Binary Establishment specializes in medical supplies and consumables, including everything needed for orthopedic surgery, such as implantable materials sourced from international agencies like Austofix (Australia) and Ortho-Trauma (England), as well as a full range of orthopedic surgical instruments, external fixation systems, a variety of medical devices, hospital supplies, and operating room equipment.<br><br>
+                            In addition to a comprehensive drug warehouse stocked with pharmaceutical and nutritional supplement agencies from around the world. We also have our own pharmacy selling medical products and medications.<br><br>
+                            We also provide healthcare for patients coming from abroad for treatment, making it easier through our collaboration with doctors, hospitals, pharmacies, laboratories, radiology and diagnostic centers, and other healthcare institutions. We facilitate their surgical procedures and necessary medical treatments in hospitals within the Hashemite Kingdom of Jordan.
+                        </span>
                     </p>
                 </div>
             </div>
         </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav class="medical-nav">
-        <div class="medical-container">
-            <div class="nav-container">
-                <div class="nav-item">
-                    <span class="lang-content ar active">الرئيسية</span>
-                    <span class="lang-content en">Home</span>
-                </div>
-                <div class="nav-item">
-                    <span class="lang-content ar active">المنتجات</span>
-                    <span class="lang-content en">Products</span>
-                </div>
-                <div class="nav-item active">
-                    <span class="lang-content ar active">مكتبة PDF</span>
-                    <span class="lang-content en">PDF Library</span>
-                </div>
-                <div class="nav-item">
-                    <span class="lang-content ar active">اتصل بنا</span>
-                    <span class="lang-content en">Contact Us</span>
-                </div>
-            </div>
-        </div>
-    </nav>
+    </section>
 
     <!-- PDF Library Section -->
-    <section class="pdf-library-section">
-        <div class="medical-container">
-            <h2 class="section-title">
-                <span class="lang-content ar active">مكتبة الكتالوجات الطبية</span>
-                <span class="lang-content en">Medical Catalogs Library</span>
+    <section class="pdf-library-section" id="pdf-library">
+        <div class="container">
+            <h2 class="section-title fade-in">
+                <span class="lang-content ar active">مكتبة الكتالوجات والمنتجات</span>
+                <span class="lang-content en">Product Catalogs Library</span>
             </h2>
             
             <div class="pdf-grid" id="pdfGrid">
-                <!-- سيتم ملء هذا القسم بـ JavaScript -->
+                <!-- سيتم تعبئته بـ JavaScript -->
             </div>
         </div>
     </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">
+                <span class="lang-content ar active">خدماتنا</span>
+                <span class="lang-content en">Our Services</span>
+            </h2>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h3 class="service-title">
+                        <span class="lang-content ar active">مواد جراحة العظام</span>
+                        <span class="lang-content en">Orthopedic Materials</span>
+                    </h3>
+                    <p>
+                        <span class="lang-content ar active">مواد قابلة للزرع وأدوات جراحية متخصصة</span>
+                        <span class="lang-content en">Implantable materials and specialized surgical instruments</span>
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-hospital-user"></i>
+                    </div>
+                    <h3 class="service-title">
+                        <span class="lang-content ar active">رعاية المرضى الدوليين</span>
+                        <span class="lang-content en">International Patient Care</span>
+                    </h3>
+                    <p>
+                        <span class="lang-content ar active">تسهيل العلاج للمرضى القادمين من الخارج</span>
+                        <span class="lang-content en">Facilitating treatment for international patients</span>
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-3">
+                    <div class="service-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3 class="service-title">
+                        <span class="lang-content ar active">مستودع الأدوية</span>
+                        <span class="lang-content en">Drug Warehouse</span>
+                    </h3>
+                    <p>
+                        <span class="lang-content ar active">أدوية ومكملات غذائية من وكالات عالمية</span>
+                        <span class="lang-content en">Pharmaceuticals and supplements from global agencies</span>
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3 class="service-title">
+                        <span class="lang-content ar active">شبكة رعاية صحية</span>
+                        <span class="lang-content en">Healthcare Network</span>
+                    </h3>
+                    <p>
+                        <span class="lang-content ar active">تعاون مع مستشفيات وأطباء ومختبرات</span>
+                        <span class="lang-content en">Collaboration with hospitals, doctors, and laboratories</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">
+                <span class="lang-content ar active">اتصل بنا</span>
+                <span class="lang-content en">Contact Us</span>
+            </h2>
+            
+            <div class="contact-info-grid fade-in delay-1">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="contact-title">
+                        <span class="lang-content ar active">العنوان</span>
+                        <span class="lang-content en">Address</span>
+                    </h3>
+                    <p class="contact-detail">
+                        <span class="lang-content ar active">جبل الحسين - مقابل مستشفى هبة، مجمع لولوات القريني ١٩٨</span>
+                        <span class="lang-content en">Jabal Al-Hussein - Opposite Hiba Hospital, Luluat Al-Quraini Complex 198</span>
+                    </p>
+                    <a href="https://maps.google.com/maps?q=31.968494415283203%2C35.91759490966797&z=17&hl=en" 
+                       class="map-link" target="_blank">
+                        <i class="fas fa-directions"></i>
+                        <span class="lang-content ar active">عرض على الخريطة</span>
+                        <span class="lang-content en">View on Map</span>
+                    </a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="contact-title">
+                        <span class="lang-content ar active">الهواتف</span>
+                        <span class="lang-content en">Phones</span>
+                    </h3>
+                    <p class="contact-detail">065692727</p>
+                    <p class="contact-detail">0790408227</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="contact-title">
+                        <span class="lang-content ar active">البريد الإلكتروني</span>
+                        <span class="lang-content en">Email</span>
+                    </h3>
+                    <p class="contact-detail">Rammaha@medical-binary.com</p>
+                    <p class="contact-detail">Medical.Binary@yahoo.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <span class="lang-content ar active">الثنائية الطبية</span>
+                <span class="lang-content en">Medical Binary</span>
+            </div>
+            <p class="footer-subtitle">
+                <span class="lang-content ar active">وجهتكم الموثوقة للرعاية الصحية والمستلزمات الطبية</span>
+                <span class="lang-content en">Your trusted destination for healthcare and medical supplies</span>
+            </p>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Medical Binary Establishment. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- PDF Viewer Modal -->
     <div class="pdf-modal" id="pdfModal">
@@ -532,26 +1158,26 @@
             
             <div class="pdf-viewer-container">
                 <div class="pdf-controls">
-                    <button class="control-btn" id="prevPage">
-                        <i class="fas fa-chevron-left"></i>
+                    <button class="control-btn" id="prevPage" disabled>
+                        <i class="fas fa-chevron-right"></i>
                     </button>
                     
                     <span class="page-counter">
                         <span id="currentPage">1</span> / <span id="totalPages">1</span>
                     </span>
                     
-                    <button class="control-btn" id="nextPage">
-                        <i class="fas fa-chevron-right"></i>
+                    <button class="control-btn" id="nextPage" disabled>
+                        <i class="fas fa-chevron-left"></i>
                     </button>
                     
                     <div class="zoom-controls">
-                        <button class="control-btn" id="zoomOut">
+                        <button class="control-btn" id="zoomOut" disabled>
                             <i class="fas fa-search-minus"></i>
                         </button>
-                        <button class="control-btn" id="zoomReset">
+                        <button class="control-btn" id="zoomReset" disabled>
                             <i class="fas fa-search"></i>
                         </button>
-                        <button class="control-btn" id="zoomIn">
+                        <button class="control-btn" id="zoomIn" disabled>
                             <i class="fas fa-search-plus"></i>
                         </button>
                     </div>
@@ -559,7 +1185,7 @@
                 
                 <div class="canvas-container">
                     <div class="loading" id="loading">
-                        <i class="fas fa-spinner fa-spin fa-2x"></i>
+                        <i class="fas fa-spinner fa-spin"></i>
                         <p style="margin-top: 15px;">
                             <span class="lang-content ar active">جاري تحميل PDF...</span>
                             <span class="lang-content en">Loading PDF...</span>
@@ -572,52 +1198,127 @@
     </div>
 
     <script>
-        // بيانات ملفات PDF (يمكن استبدالها بملفات حقيقية)
+        // بيانات ملفات PDF
         const pdfLibrary = [
             {
                 id: 1,
                 title: {
-                    ar: "كتالوج أنظمة التثبيت النخاعي",
-                    en: "Intramedullary Nailing Systems Catalog"
+                    ar: "NIMO TURKEY - منتجات طبية تركية",
+                    en: "NIMO TURKEY - Turkish Medical Products"
                 },
                 description: {
-                    ar: "كتالوج شامل يوضح جميع أنظمة التثبيت النخاعي المتقدمة وتقنيات القفل المزدوج",
-                    en: "Comprehensive catalog showcasing all advanced intramedullary nailing systems and double-locking technologies"
+                    ar: "كتالوج شامل لمنتجات طبية تركية متنوعة تشمل أجهزة طبية ومستلزمات",
+                    en: "Comprehensive catalog of various Turkish medical products including devices and supplies"
                 },
-                pages: 24,
-                size: "4.2 MB",
-                date: "2024-01-15",
-                pdfUrl: "https://cdn.jsdelivr.net/gh/mozilla/pdf.js/web/compressed.tracemonkey-pldi-09.pdf" // PDF نموذجي للاختبار
+                pages: 10,
+                size: "3.5 MB",
+                category: "medical",
+                color: "#2c80b9"
             },
             {
                 id: 2,
                 title: {
-                    ar: "كتالوج الغرسات العظمية",
-                    en: "Orthopedic Implants Catalog"
+                    ar: "AUSTOFIX - منتجات جراحة العظام الأسترالية",
+                    en: "AUSTOFIX - Australian Orthopedic Products"
                 },
                 description: {
-                    ar: "دليل شامل للغرسات العظمية بجميع الأحجام والمقاسات المتوفرة",
-                    en: "Complete guide to orthopedic implants with all available sizes and measurements"
+                    ar: "كتالوج كامل لمنتجات Austofix الأسترالية لجراحة العظام والكسور",
+                    en: "Complete catalog of Austofix Australian products for orthopedic surgery and fractures"
                 },
-                pages: 36,
-                size: "5.8 MB",
-                date: "2024-01-10",
-                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" // PDF تجريبي آخر
+                pages: 12,
+                size: "4.8 MB",
+                category: "orthopedic",
+                color: "#27ae60"
             },
             {
                 id: 3,
                 title: {
-                    ar: "دليل الأدوات الجراحية",
-                    en: "Surgical Instruments Guide"
+                    ar: "Catalogue Lenses - منظارات وأدوات جراحية",
+                    en: "Catalogue Lenses - Surgical Lenses and Tools"
                 },
                 description: {
-                    ar: "دليل تفصيلي للأدوات الجراحية المتخصصة في جراحة العظام",
-                    en: "Detailed guide for specialized surgical instruments in orthopedic surgery"
+                    ar: "كتالوج المناظير والأدوات الجراحية الدقيقة بمختلف الأحجام",
+                    en: "Catalog of surgical lenses and precision tools in various sizes"
                 },
-                pages: 42,
+                pages: 8,
+                size: "3.2 MB",
+                category: "surgical",
+                color: "#8e44ad"
+            },
+            {
+                id: 4,
+                title: {
+                    ar: "Ortho Pedic - Ortho-Trauma International",
+                    en: "Ortho Pedic - Ortho-Trauma International"
+                },
+                description: {
+                    ar: "كتالوج شركة Ortho-Trauma الدولية لمنتجات جراحة العظام",
+                    en: "Ortho-Trauma International company catalog for orthopedic products"
+                },
+                pages: 3,
+                size: "2.1 MB",
+                category: "orthopedic",
+                color: "#3498db"
+            },
+            {
+                id: 5,
+                title: {
+                    ar: "Conwe - دعامات وأجهزة تقويم",
+                    en: "Conwe - Braces and Orthopedic Devices"
+                },
+                description: {
+                    ar: "كتالوج دعامات وأجهزة تقويم للركبة والرسغ والكاحل",
+                    en: "Catalog of braces and orthopedic devices for knee, wrist and ankle"
+                },
+                pages: 2,
+                size: "1.8 MB",
+                category: "orthopedic",
+                color: "#e74c3c"
+            },
+            {
+                id: 6,
+                title: {
+                    ar: "OHO Cataloge - زيوت ومنتجات العناية",
+                    en: "OHO Cataloge - Care Oils and Products"
+                },
+                description: {
+                    ar: "كتالوج منتجات العناية بالبشرة والشعر من زيت الزيتون",
+                    en: "Catalog of skin and hair care products from olive oil"
+                },
+                pages: 8,
+                size: "3.9 MB",
+                category: "cosmetic",
+                color: "#f39c12"
+            },
+            {
+                id: 7,
+                title: {
+                    ar: "Catalog D.C.Tuna - منتجات العناية بالبشرة",
+                    en: "Catalog D.C.Tuna - Skin Care Products"
+                },
+                description: {
+                    ar: "كتالوج شامل لمنتجات العناية بالبشرة والشعر بمكونات طبيعية",
+                    en: "Comprehensive catalog of skin and hair care products with natural ingredients"
+                },
+                pages: 14,
+                size: "5.2 MB",
+                category: "cosmetic",
+                color: "#16a085"
+            },
+            {
+                id: 8,
+                title: {
+                    ar: "Farmasi Catalogue - منتجات التجميل والعناية",
+                    en: "Farmasi Catalogue - Cosmetics and Care Products"
+                },
+                description: {
+                    ar: "كتالوج منتجات التجميل والعناية من Farmasi",
+                    en: "Catalog of cosmetics and care products from Farmasi"
+                },
+                pages: 24,
                 size: "6.5 MB",
-                date: "2023-12-20",
-                pdfUrl: "https://www.africau.edu/images/default/sample.pdf" // PDF تجريبي ثالث
+                category: "cosmetic",
+                color: "#9b59b6"
             }
         ];
 
@@ -643,6 +1344,12 @@
             
             // إعداد Modal وعرض PDF
             setupPDFViewer();
+            
+            // إعداد Save Contact
+            setupSaveContact();
+            
+            // إضافة تأثيرات Fade-in عند التمرير
+            setupScrollAnimations();
         });
 
         // وظيفة تبديل اللغة
@@ -662,10 +1369,12 @@
                         arContents.forEach(content => content.classList.add('active'));
                         enContents.forEach(content => content.classList.remove('active'));
                         document.body.setAttribute('dir', 'rtl');
+                        document.body.classList.remove('dir-ltr');
                     } else {
                         arContents.forEach(content => content.classList.remove('active'));
                         enContents.forEach(content => content.classList.add('active'));
                         document.body.setAttribute('dir', 'ltr');
+                        document.body.classList.add('dir-ltr');
                     }
                     
                     // إعادة عرض المكتبة بلغة جديدة
@@ -676,12 +1385,46 @@
 
         // وظيفة التنقل
         function setupNavigation() {
-            const navItems = document.querySelectorAll('.nav-item');
+            const navBtns = document.querySelectorAll('.nav-btn');
+            const sections = document.querySelectorAll('section');
             
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    navItems.forEach(i => i.classList.remove('active'));
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    
+                    navBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
+                    
+                    if (targetId === 'home') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        const targetSection = document.getElementById(targetId);
+                        if (targetSection) {
+                            targetSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+            
+            // التنقل عند التمرير
+            window.addEventListener('scroll', function() {
+                let current = '';
+                const scrollPos = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-target') === current) {
+                        btn.classList.add('active');
+                    }
                 });
             });
         }
@@ -695,26 +1438,31 @@
             
             pdfLibrary.forEach(pdf => {
                 const pdfCard = document.createElement('div');
-                pdfCard.className = 'pdf-card';
+                pdfCard.className = 'pdf-card fade-in';
+                pdfCard.style.animationDelay = `${pdf.id * 0.1}s`;
                 
                 pdfCard.innerHTML = `
+                    <div class="pdf-header" style="background: ${pdf.color}">
+                        <h3 class="pdf-title">${pdf.title[currentLang]}</h3>
+                    </div>
                     <div class="pdf-thumbnail">
                         <i class="fas fa-file-pdf pdf-icon"></i>
+                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">
+                            ${pdf.pages} <i class="far fa-file"></i>
+                        </div>
                     </div>
                     <div class="pdf-content">
-                        <h3 class="pdf-title">${pdf.title[currentLang]}</h3>
-                        <div class="pdf-meta">
-                            <span><i class="far fa-file"></i> ${pdf.pages} صفحات</span>
-                            <span><i class="fas fa-weight"></i> ${pdf.size}</span>
-                            <span><i class="far fa-calendar"></i> ${pdf.date}</span>
-                        </div>
                         <p class="pdf-description">${pdf.description[currentLang]}</p>
+                        <div class="pdf-meta" style="color: ${pdf.color}; font-weight: 600; margin-bottom: 15px;">
+                            <span><i class="fas fa-weight"></i> ${pdf.size}</span>
+                            <span style="margin-right: 15px;"><i class="fas fa-tag"></i> ${pdf.category}</span>
+                        </div>
                         <div class="pdf-actions">
-                            <button class="pdf-btn view" data-id="${pdf.id}">
+                            <button class="pdf-btn view" data-id="${pdf.id}" style="background: ${pdf.color}">
                                 <i class="fas fa-eye"></i>
                                 ${currentLang === 'ar' ? 'عرض' : 'View'}
                             </button>
-                            <button class="pdf-btn download" onclick="downloadPDF('${pdf.pdfUrl}', '${pdf.title[currentLang]}')">
+                            <button class="pdf-btn download" onclick="downloadPDF(${pdf.id})" style="border-color: ${pdf.color}; color: ${pdf.color}">
                                 <i class="fas fa-download"></i>
                                 ${currentLang === 'ar' ? 'تحميل' : 'Download'}
                             </button>
@@ -745,11 +1493,13 @@
             const zoomResetBtn = document.getElementById('zoomReset');
             
             // إغلاق Modal
-            modalClose.addEventListener('click', () => {
-                modal.style.display = 'none';
-                pdfDoc = null;
-                currentPage = 1;
-                scale = 1.0;
+            modalClose.addEventListener('click', closePDFModal);
+            
+            // إغلاق بالضغط على ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    closePDFModal();
+                }
             });
             
             // التنقل بين الصفحات
@@ -767,13 +1517,13 @@
             
             // التحكم في التكبير
             zoomInBtn.addEventListener('click', () => {
-                scale += 0.1;
+                scale += 0.2;
                 queueRenderPage(currentPage);
             });
             
             zoomOutBtn.addEventListener('click', () => {
                 if (scale <= 0.5) return;
-                scale -= 0.1;
+                scale -= 0.2;
                 queueRenderPage(currentPage);
             });
             
@@ -785,10 +1535,7 @@
             // إغلاق بالنقر خارج المحتوى
             window.addEventListener('click', (event) => {
                 if (event.target === modal) {
-                    modal.style.display = 'none';
-                    pdfDoc = null;
-                    currentPage = 1;
-                    scale = 1.0;
+                    closePDFModal();
                 }
             });
         }
@@ -804,29 +1551,66 @@
             
             modalTitle.textContent = pdf.title[currentLang];
             modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
             
             // إظهار مؤشر التحميل
             document.getElementById('loading').style.display = 'block';
             canvas.style.display = 'none';
             
+            // تمكين/تعطيل أزرار التحكم
+            ['prevPage', 'nextPage', 'zoomIn', 'zoomOut', 'zoomReset'].forEach(id => {
+                document.getElementById(id).disabled = true;
+            });
+            
             // تحميل PDF باستخدام pdf.js
-            pdfjsLib.getDocument(pdf.pdfUrl).promise.then(pdfDoc_ => {
+            // في الحقيقة، سنستخدم رابط PDF تجريبي لأننا لا نملك روابط حقيقية
+            // في التطبيق الحقيقي، ستضع هنا رابط الـ PDF الفعلي
+            const samplePDFUrl = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+            
+            pdfjsLib.getDocument(samplePDFUrl).promise.then(pdfDoc_ => {
                 pdfDoc = pdfDoc_;
                 document.getElementById('totalPages').textContent = pdfDoc.numPages;
                 document.getElementById('loading').style.display = 'none';
                 canvas.style.display = 'block';
+                
+                // تمكين أزرار التحكم
+                ['prevPage', 'nextPage', 'zoomIn', 'zoomOut', 'zoomReset'].forEach(id => {
+                    document.getElementById(id).disabled = false;
+                });
                 
                 // عرض الصفحة الأولى
                 renderPage(1);
             }).catch(error => {
                 console.error('Error loading PDF:', error);
                 document.getElementById('loading').innerHTML = `
-                    <i class="fas fa-exclamation-triangle fa-2x" style="color: #e74c3c;"></i>
-                    <p style="margin-top: 15px; color: #e74c3c;">
-                        ${currentLang === 'ar' ? 'حدث خطأ في تحميل الملف' : 'Error loading PDF file'}
+                    <i class="fas fa-exclamation-triangle fa-3x" style="color: #e74c3c;"></i>
+                    <p style="margin-top: 20px; color: #e74c3c; font-size: 1.1rem;">
+                        ${currentLang === 'ar' ? 'حدث خطأ في تحميل الملف. يرجى المحاولة لاحقًا.' : 'Error loading PDF file. Please try again later.'}
                     </p>
+                    <button onclick="closePDFModal()" style="margin-top: 20px; padding: 10px 25px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                        ${currentLang === 'ar' ? 'إغلاق' : 'Close'}
+                    </button>
                 `;
             });
+        }
+
+        // إغلاق Modal PDF
+        function closePDFModal() {
+            const modal = document.getElementById('pdfModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            pdfDoc = null;
+            currentPage = 1;
+            scale = 1.0;
+            document.getElementById('loading').style.display = 'block';
+            canvas.style.display = 'none';
+            document.getElementById('loading').innerHTML = `
+                <i class="fas fa-spinner fa-spin"></i>
+                <p style="margin-top: 15px;">
+                    <span class="lang-content ar active">جاري تحميل PDF...</span>
+                    <span class="lang-content en">Loading PDF...</span>
+                </p>
+            `;
         }
 
         // عرض صفحة PDF
@@ -855,6 +1639,10 @@
                 
                 document.getElementById('currentPage').textContent = num;
                 currentPage = num;
+                
+                // تحديث حالة أزرار الصفحات
+                document.getElementById('prevPage').disabled = num <= 1;
+                document.getElementById('nextPage').disabled = num >= pdfDoc.numPages;
             });
         }
 
@@ -867,15 +1655,84 @@
             }
         }
 
-        // تحميل PDF
-        function downloadPDF(url, title) {
+        // تحميل PDF (وظيفة تجريبية)
+        function downloadPDF(pdfId) {
+            const pdf = pdfLibrary.find(p => p.id === pdfId);
+            if (!pdf) return;
+            
+            const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+            const filename = pdf.title[currentLang].replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf';
+            
+            // في التطبيق الحقيقي، هذا سيكون رابط التحميل الفعلي
+            // هنا نعرض رسالة
+            alert(currentLang === 'ar' 
+                ? `سيتم تحميل ملف: ${pdf.title[currentLang]}\n\nفي التطبيق الحقيقي، سيتم تحميل الملف الفعلي.` 
+                : `File will be downloaded: ${pdf.title[currentLang]}\n\nIn the real application, the actual file will be downloaded.`);
+            
+            // محاكاة التحميل
             const link = document.createElement('a');
-            link.href = url;
-            link.download = `${title.replace(/\s+/g, '_')}.pdf`;
-            link.target = '_blank';
+            link.href = '#';
+            link.download = filename;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+        }
+
+        // إعداد Save Contact
+        function setupSaveContact() {
+            document.getElementById('saveContactBtn').addEventListener('click', function() {
+                const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Medical Binary Establishment
+ORG:Medical Binary Establishment
+TEL;TYPE=WORK,VOICE:065692727
+TEL;TYPE=CELL,VOICE:0790408227
+EMAIL;TYPE=WORK,INTERNET:Rammaha@medical-binary.com
+EMAIL;TYPE=WORK,INTERNET:Medical.Binary@yahoo.com
+ADR;TYPE=WORK:;;جبل الحسين - مقابل مستشفى هبة، مجمع لولوات القريني ١٩٨;Amman;;;Jordan
+URL:https://medical-binary.com
+NOTE:Specializing in medical supplies and orthopedic surgery materials
+END:VCARD`;
+                
+                const blob = new Blob([vcard], { type: 'text/vcard' });
+                const url = URL.createObjectURL(blob);
+                
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'Medical_Binary_Contact.vcf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                
+                // رسالة تأكيد
+                const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                alert(currentLang === 'ar' 
+                    ? 'تم حفظ جهة الاتصال بنجاح! يمكنك الآن إضافتها إلى جهات اتصالك.' 
+                    : 'Contact saved successfully! You can now add it to your contacts.');
+            });
+        }
+
+        // إعداد تأثيرات التمرير
+        function setupScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // مراقبة العناصر لإضافة تأثيرات
+            document.querySelectorAll('.pdf-card, .service-card, .company-card, .contact-card').forEach(el => {
+                observer.observe(el);
+            });
         }
     </script>
 </body>
