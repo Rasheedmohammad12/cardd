@@ -755,6 +755,21 @@
             display: block;
         }
         
+        /* Notification Styles */
+        .notification {
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .hero-content {
@@ -1030,751 +1045,799 @@
         <div class="container">
             <h2 class="section-title fade-in">
                 <span class="lang-content ar active">خدماتنا</span>
-                <span class="lang-content en">Our Services</span>
-            </h2>
-            
-            <div class="services-grid">
-                <div class="service-card fade-in delay-1">
-                    <div class="service-icon">
-                        <i class="fas fa-bone"></i>
-                    </div>
-                    <h3 class="service-title">
-                        <span class="lang-content ar active">مواد جراحة العظام</span>
-                        <span class="lang-content en">Orthopedic Materials</span>
-                    </h3>
-                    <p>
-                        <span class="lang-content ar active">مواد قابلة للزرع وأدوات جراحية متخصصة</span>
-                        <span class="lang-content en">Implantable materials and specialized surgical instruments</span>
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in delay-2">
-                    <div class="service-icon">
-                        <i class="fas fa-hospital-user"></i>
-                    </div>
-                    <h3 class="service-title">
-                        <span class="lang-content ar active">رعاية المرضى الدوليين</span>
-                        <span class="lang-content en">International Patient Care</span>
-                    </h3>
-                    <p>
-                        <span class="lang-content ar active">تسهيل العلاج للمرضى القادمين من الخارج</span>
-                        <span class="lang-content en">Facilitating treatment for international patients</span>
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in delay-3">
-                    <div class="service-icon">
-                        <i class="fas fa-pills"></i>
-                    </div>
-                    <h3 class="service-title">
-                        <span class="lang-content ar active">مستودع الأدوية</span>
-                        <span class="lang-content en">Drug Warehouse</span>
-                    </h3>
-                    <p>
-                        <span class="lang-content ar active">أدوية ومكملات غذائية من وكالات عالمية</span>
-                        <span class="lang-content en">Pharmaceuticals and supplements from global agencies</span>
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in delay-1">
-                    <div class="service-icon">
-                        <i class="fas fa-stethoscope"></i>
-                    </div>
-                    <h3 class="service-title">
-                        <span class="lang-content ar active">شبكة رعاية صحية</span>
-                        <span class="lang-content en">Healthcare Network</span>
-                    </h3>
-                    <p>
-                        <span class="lang-content ar active">تعاون مع مستشفيات وأطباء ومختبرات</span>
-                        <span class="lang-content en">Collaboration with hospitals, doctors, and laboratories</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <h2 class="section-title fade-in">
-                <span class="lang-content ar active">اتصل بنا</span>
-                <span class="lang-content en">Contact Us</span>
-            </h2>
-            
-            <div class="contact-info-grid fade-in delay-1">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="contact-title">
-                        <span class="lang-content ar active">العنوان</span>
-                        <span class="lang-content en">Address</span>
-                    </h3>
-                    <p class="contact-detail">
-                        <span class="lang-content ar active">جبل الحسين - مقابل مستشفى هبة، مجمع لولوات القريني ١٩٨</span>
-                        <span class="lang-content en">Jabal Al-Hussein - Opposite Hiba Hospital, Luluat Al-Quraini Complex 198</span>
-                    </p>
-                    <a href="https://maps.google.com/maps?q=31.968494415283203%2C35.91759490966797&z=17&hl=en" 
-                       class="map-link" target="_blank">
-                        <i class="fas fa-directions"></i>
-                        <span class="lang-content ar active">عرض على الخريطة</span>
-                        <span class="lang-content en">View on Map</span>
-                    </a>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3 class="contact-title">
-                        <span class="lang-content ar active">الهواتف</span>
-                        <span class="lang-content en">Phones</span>
-                    </h3>
-                    <p class="contact-detail">065692727</p>
-                    <p class="contact-detail">0790408227</p>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3 class="contact-title">
-                        <span class="lang-content ar active">البريد الإلكتروني</span>
-                        <span class="lang-content en">Email</span>
-                    </h3>
-                    <p class="contact-detail">Rammaha@medical-binary.com</p>
-                    <p class="contact-detail">Medical.Binary@yahoo.com</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-logo">
-                <span class="lang-content ar active">الثنائية الطبية</span>
-                <span class="lang-content en">Medical Binary</span>
-            </div>
-            <p class="footer-subtitle">
-                <span class="lang-content ar active">وجهتكم الموثوقة للرعاية الصحية والمستلزمات الطبية</span>
-                <span class="lang-content en">Your trusted destination for healthcare and medical supplies</span>
-            </p>
-            
-            <div class="footer-bottom">
-                <p>© 2024 Medical Binary Establishment. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- PDF Viewer Modal -->
-    <div class="pdf-modal" id="pdfModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modalTitle">PDF Viewer</h3>
-                <button class="modal-close" id="modalClose">&times;</button>
-            </div>
-            
-            <div class="pdf-viewer-container">
-                <div class="pdf-controls">
-                    <button class="control-btn" id="prevPage" disabled>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                        <span class="lang-content en">Our Services</span>
+                    </h2>
                     
-                    <span class="page-counter">
-                        <span id="currentPage">1</span> / <span id="totalPages">1</span>
-                    </span>
-                    
-                    <button class="control-btn" id="nextPage" disabled>
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    
-                    <div class="zoom-controls">
-                        <button class="control-btn" id="zoomOut" disabled>
-                            <i class="fas fa-search-minus"></i>
-                        </button>
-                        <button class="control-btn" id="zoomReset" disabled>
-                            <i class="fas fa-search"></i>
-                        </button>
-                        <button class="control-btn" id="zoomIn" disabled>
-                            <i class="fas fa-search-plus"></i>
-                        </button>
+                    <div class="services-grid">
+                        <div class="service-card fade-in delay-1">
+                            <div class="service-icon">
+                                <i class="fas fa-bone"></i>
+                            </div>
+                            <h3 class="service-title">
+                                <span class="lang-content ar active">مواد جراحة العظام</span>
+                                <span class="lang-content en">Orthopedic Materials</span>
+                            </h3>
+                            <p>
+                                <span class="lang-content ar active">مواد قابلة للزرع وأدوات جراحية متخصصة</span>
+                                <span class="lang-content en">Implantable materials and specialized surgical instruments</span>
+                            </p>
+                        </div>
+                        
+                        <div class="service-card fade-in delay-2">
+                            <div class="service-icon">
+                                <i class="fas fa-hospital-user"></i>
+                            </div>
+                            <h3 class="service-title">
+                                <span class="lang-content ar active">رعاية المرضى الدوليين</span>
+                                <span class="lang-content en">International Patient Care</span>
+                            </h3>
+                            <p>
+                                <span class="lang-content ar active">تسهيل العلاج للمرضى القادمين من الخارج</span>
+                                <span class="lang-content en">Facilitating treatment for international patients</span>
+                            </p>
+                        </div>
+                        
+                        <div class="service-card fade-in delay-3">
+                            <div class="service-icon">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <h3 class="service-title">
+                                <span class="lang-content ar active">مستودع الأدوية</span>
+                                <span class="lang-content en">Drug Warehouse</span>
+                            </h3>
+                            <p>
+                                <span class="lang-content ar active">أدوية ومكملات غذائية من وكالات عالمية</span>
+                                <span class="lang-content en">Pharmaceuticals and supplements from global agencies</span>
+                            </p>
+                        </div>
+                        
+                        <div class="service-card fade-in delay-1">
+                            <div class="service-icon">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                            <h3 class="service-title">
+                                <span class="lang-content ar active">شبكة رعاية صحية</span>
+                                <span class="lang-content en">Healthcare Network</span>
+                            </h3>
+                            <p>
+                                <span class="lang-content ar active">تعاون مع مستشفيات وأطباء ومختبرات</span>
+                                <span class="lang-content en">Collaboration with hospitals, doctors, and laboratories</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="canvas-container">
-                    <div class="loading" id="loading">
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact-section" id="contact">
+                <div class="container">
+                    <h2 class="section-title fade-in">
+                        <span class="lang-content ar active">اتصل بنا</span>
+                        <span class="lang-content en">Contact Us</span>
+                    </h2>
+                    
+                    <div class="contact-info-grid fade-in delay-1">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3 class="contact-title">
+                                <span class="lang-content ar active">العنوان</span>
+                                <span class="lang-content en">Address</span>
+                            </h3>
+                            <p class="contact-detail">
+                                <span class="lang-content ar active">جبل الحسين - مقابل مستشفى هبة، مجمع لولوات القريني ١٩٨</span>
+                                <span class="lang-content en">Jabal Al-Hussein - Opposite Hiba Hospital, Luluat Al-Quraini Complex 198</span>
+                            </p>
+                            <a href="https://maps.google.com/maps?q=31.968494415283203%2C35.91759490966797&z=17&hl=en" 
+                               class="map-link" target="_blank">
+                                <i class="fas fa-directions"></i>
+                                <span class="lang-content ar active">عرض على الخريطة</span>
+                                <span class="lang-content en">View on Map</span>
+                            </a>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3 class="contact-title">
+                                <span class="lang-content ar active">الهواتف</span>
+                                <span class="lang-content en">Phones</span>
+                            </h3>
+                            <p class="contact-detail">065692727</p>
+                            <p class="contact-detail">0790408227</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="contact-title">
+                                <span class="lang-content ar active">البريد الإلكتروني</span>
+                                <span class="lang-content en">Email</span>
+                            </h3>
+                            <p class="contact-detail">Rammaha@medical-binary.com</p>
+                            <p class="contact-detail">Medical.Binary@yahoo.com</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="main-footer">
+                <div class="container">
+                    <div class="footer-logo">
+                        <span class="lang-content ar active">الثنائية الطبية</span>
+                        <span class="lang-content en">Medical Binary</span>
+                    </div>
+                    <p class="footer-subtitle">
+                        <span class="lang-content ar active">وجهتكم الموثوقة للرعاية الصحية والمستلزمات الطبية</span>
+                        <span class="lang-content en">Your trusted destination for healthcare and medical supplies</span>
+                    </p>
+                    
+                    <div class="footer-bottom">
+                        <p>© 2024 Medical Binary Establishment. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- PDF Viewer Modal -->
+            <div class="pdf-modal" id="pdfModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="modalTitle">PDF Viewer</h3>
+                        <button class="modal-close" id="modalClose">&times;</button>
+                    </div>
+                    
+                    <div class="pdf-viewer-container">
+                        <div class="pdf-controls">
+                            <button class="control-btn" id="prevPage" disabled>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            
+                            <span class="page-counter">
+                                <span id="currentPage">1</span> / <span id="totalPages">1</span>
+                            </span>
+                            
+                            <button class="control-btn" id="nextPage" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            
+                            <div class="zoom-controls">
+                                <button class="control-btn" id="zoomOut" disabled>
+                                    <i class="fas fa-search-minus"></i>
+                                </button>
+                                <button class="control-btn" id="zoomReset" disabled>
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="control-btn" id="zoomIn" disabled>
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="canvas-container">
+                            <div class="loading" id="loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p style="margin-top: 15px;">
+                                    <span class="lang-content ar active">جاري تحميل PDF...</span>
+                                    <span class="lang-content en">Loading PDF...</span>
+                                </p>
+                            </div>
+                            <canvas id="pdf-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // تعريف worker قبل الاستخدام
+                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+                // بيانات ملفات PDF مع روابط تعمل فعلياً
+                const pdfLibrary = [
+                    {
+                        id: 1,
+                        title: {
+                            ar: "NIMO TURKEY - منتجات طبية تركية",
+                            en: "NIMO TURKEY - Turkish Medical Products"
+                        },
+                        description: {
+                            ar: "كتالوج شامل لمنتجات طبية تركية متنوعة تشمل أجهزة طبية ومستلزمات",
+                            en: "Comprehensive catalog of various Turkish medical products including devices and supplies"
+                        },
+                        pages: 10,
+                        size: "3.5 MB",
+                        category: "medical",
+                        color: "#2c80b9",
+                        pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
+                        thumbnail: "https://cdn-icons-png.flaticon.com/512/337/337946.png"
+                    },
+                    {
+                        id: 2,
+                        title: {
+                            ar: "AUSTOFIX - منتجات جراحة العظام الأسترالية",
+                            en: "AUSTOFIX - Australian Orthopedic Products"
+                        },
+                        description: {
+                            ar: "كتالوج كامل لمنتجات Austofix الأسترالية لجراحة العظام والكسور",
+                            en: "Complete catalog of Austofix Australian products for orthopedic surgery and fractures"
+                        },
+                        pages: 12,
+                        size: "4.8 MB",
+                        category: "orthopedic",
+                        color: "#27ae60",
+                        pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                        thumbnail: "https://cdn-icons-png.flaticon.com/512/2917/2917995.png"
+                    },
+                    {
+                        id: 3,
+                        title: {
+                            ar: "Catalogue Lenses - منظارات وأدوات جراحية",
+                            en: "Catalogue Lenses - Surgical Lenses and Tools"
+                        },
+                        description: {
+                            ar: "كتالوج المناظير والأدوات الجراحية الدقيقة بمختلف الأحجام",
+                            en: "Catalog of surgical lenses and precision tools in various sizes"
+                        },
+                        pages: 8,
+                        size: "3.2 MB",
+                        category: "surgical",
+                        color: "#8e44ad",
+                        pdfUrl: "https://file-examples.com/storage/fe8c7eef0c6364f6c95040a/2017/10/file-example_PDF_1MB.pdf",
+                        thumbnail: "https://cdn-icons-png.flaticon.com/512/1998/1998679.png"
+                    },
+                    {
+                        id: 4,
+                        title: {
+                            ar: "Ortho Pedic - Ortho-Trauma International",
+                            en: "Ortho Pedic - Ortho-Trauma International"
+                        },
+                        description: {
+                            ar: "كتالوج شركة Ortho-Trauma الدولية لمنتجات جراحة العظام",
+                            en: "Ortho-Trauma International company catalog for orthopedic products"
+                        },
+                        pages: 3,
+                        size: "2.1 MB",
+                        category: "orthopedic",
+                        color: "#3498db",
+                        pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                        thumbnail: "https://cdn-icons-png.flaticon.com/512/2913/2913514.png"
+                    },
+                    {
+                        id: 5,
+                        title: {
+                            ar: "Conwe - دعامات وأجهزة تقويم",
+                            en: "Conwe - Braces and Orthopedic Devices"
+                        },
+                        description: {
+                            ar: "كتالوج دعامات وأجهزة تقويم للركبة والرسغ والكاحل",
+                            en: "Catalog of braces and orthopedic devices for knee, wrist and ankle"
+                        },
+                        pages: 2,
+                        size: "1.8 MB",
+                        category: "orthopedic",
+                        color: "#e74c3c",
+                        pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
+                        thumbnail: "https://cdn-icons-png.flaticon.com/512/2917/2917995.png"
+                    },
+                    {
+                        id: 6,
+                        title: {
+                            ar: "OHO Cataloge - زيوت ومنتجات العناية",
+                            en: "OHO Cataloge - Care Oils and Products"
+                        },
+                        description: {
+                            ar: "كتالوج منتجات العناية بالبشرة والشعر من زيت الزيتون",
+                            en: "Catalog of skin and hair care products from olive oil"
+                        },
+                        pages: 8,
+                        size: "3.9 MB",
+                        category: "cosmetic",
+                        color: "#f39c12",
+                        pdfUrl: "https://file-examples.com/storage/fe8c7eef0c6364f6c95040a/2017/10/file-example_PDF_1MB.pdf",
+                        thumbnail: "https://cdn-icons-png.flaticon.com/512/2311/2311910.png"
+                    },
+                    {
+                        id: 7,
+                        title: {
+                            ar: "Catalog D.C.Tuna - منتجات العناية بالبشرة",
+                            en: "Catalog D.C.Tuna - Skin Care Products"
+                        },
+                        description: {
+                            ar: "كتالوج شامل لمنتجات العناية بالبشرة والشعر بمكونات طبيعية",
+                            en: "Comprehensive catalog of skin and hair care products with natural ingredients"
+                        },
+                        pages: 14,
+                        size: "5.2 MB",
+                        category: "cosmetic",
+                        color: "#16a085",
+                        pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                        thumbnail: "https://cdn-icons-png.flaticon.com/512/2302/2302838.png"
+                    },
+                    {
+                        id: 8,
+                        title: {
+                            ar: "Farmasi Catalogue - منتجات التجميل والعناية",
+                            en: "Farmasi Catalogue - Cosmetics and Care Products"
+                        },
+                        description: {
+                            ar: "كتالوج منتجات التجميل والعناية من Farmasi",
+                            en: "Catalog of cosmetics and care products from Farmasi"
+                        },
+                        pages: 24,
+                        size: "6.5 MB",
+                        category: "cosmetic",
+                        color: "#9b59b6",
+                        pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
+                        thumbnail: "https://cdn-icons-png.flaticon.com/512/1997/1997928.png"
+                    }
+                ];
+
+                // متغيرات PDF Viewer
+                let pdfDoc = null;
+                let currentPage = 1;
+                let pageRendering = false;
+                let pageNumPending = null;
+                let scale = 1.0;
+                const canvas = document.getElementById('pdf-canvas');
+                const ctx = canvas.getContext('2d');
+
+                // Initialize
+                document.addEventListener('DOMContentLoaded', function() {
+                    // إعداد تبديل اللغة
+                    setupLanguageToggle();
+                    
+                    // إعداد التنقل
+                    setupNavigation();
+                    
+                    // عرض مكتبة PDF
+                    renderPDFLibrary();
+                    
+                    // إعداد Modal وعرض PDF
+                    setupPDFViewer();
+                    
+                    // إعداد Save Contact
+                    setupSaveContact();
+                    
+                    // إضافة تأثيرات Fade-in عند التمرير
+                    setupScrollAnimations();
+                });
+
+                // وظيفة تبديل اللغة
+                function setupLanguageToggle() {
+                    const langButtons = document.querySelectorAll('.lang-btn');
+                    const arContents = document.querySelectorAll('.lang-content.ar');
+                    const enContents = document.querySelectorAll('.lang-content.en');
+                    
+                    langButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const lang = this.getAttribute('data-lang');
+                            
+                            langButtons.forEach(btn => btn.classList.remove('active'));
+                            this.classList.add('active');
+                            
+                            if (lang === 'ar') {
+                                arContents.forEach(content => content.classList.add('active'));
+                                enContents.forEach(content => content.classList.remove('active'));
+                                document.body.setAttribute('dir', 'rtl');
+                                document.body.classList.remove('dir-ltr');
+                            } else {
+                                arContents.forEach(content => content.classList.remove('active'));
+                                enContents.forEach(content => content.classList.add('active'));
+                                document.body.setAttribute('dir', 'ltr');
+                                document.body.classList.add('dir-ltr');
+                            }
+                            
+                            // إعادة عرض المكتبة بلغة جديدة
+                            renderPDFLibrary();
+                        });
+                    });
+                }
+
+                // وظيفة التنقل
+                function setupNavigation() {
+                    const navBtns = document.querySelectorAll('.nav-btn');
+                    const sections = document.querySelectorAll('section');
+                    
+                    navBtns.forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const targetId = this.getAttribute('data-target');
+                            
+                            navBtns.forEach(b => b.classList.remove('active'));
+                            this.classList.add('active');
+                            
+                            if (targetId === 'home') {
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            } else {
+                                const targetSection = document.getElementById(targetId);
+                                if (targetSection) {
+                                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                                }
+                            }
+                        });
+                    });
+                    
+                    // التنقل عند التمرير
+                    window.addEventListener('scroll', function() {
+                        let current = '';
+                        const scrollPos = window.scrollY + 100;
+                        
+                        sections.forEach(section => {
+                            const sectionTop = section.offsetTop;
+                            const sectionHeight = section.clientHeight;
+                            
+                            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                                current = section.getAttribute('id');
+                            }
+                        });
+                        
+                        navBtns.forEach(btn => {
+                            btn.classList.remove('active');
+                            if (btn.getAttribute('data-target') === current) {
+                                btn.classList.add('active');
+                            }
+                        });
+                    });
+                }
+
+                // عرض مكتبة PDF
+                function renderPDFLibrary() {
+                    const pdfGrid = document.getElementById('pdfGrid');
+                    const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                    
+                    pdfGrid.innerHTML = '';
+                    
+                    pdfLibrary.forEach(pdf => {
+                        const pdfCard = document.createElement('div');
+                        pdfCard.className = 'pdf-card fade-in';
+                        pdfCard.style.animationDelay = `${pdf.id * 0.1}s`;
+                        
+                        pdfCard.innerHTML = `
+                            <div class="pdf-header" style="background: ${pdf.color}">
+                                <h3 class="pdf-title">${pdf.title[currentLang]}</h3>
+                            </div>
+                            <div class="pdf-thumbnail">
+                                <img src="${pdf.thumbnail}" alt="${pdf.title[currentLang]}" class="pdf-preview-img">
+                                <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">
+                                    ${pdf.pages} <i class="far fa-file"></i>
+                                </div>
+                            </div>
+                            <div class="pdf-content">
+                                <p class="pdf-description">${pdf.description[currentLang]}</p>
+                                <div class="pdf-meta" style="color: ${pdf.color}; font-weight: 600; margin-bottom: 15px;">
+                                    <span><i class="fas fa-weight"></i> ${pdf.size}</span>
+                                    <span style="margin-right: 15px;"><i class="fas fa-tag"></i> ${pdf.category}</span>
+                                </div>
+                                <div class="pdf-actions">
+                                    <button class="pdf-btn view" data-id="${pdf.id}" style="background: ${pdf.color}">
+                                        <i class="fas fa-eye"></i>
+                                        ${currentLang === 'ar' ? 'عرض' : 'View'}
+                                    </button>
+                                    <button class="pdf-btn download" onclick="downloadPDF(${pdf.id})" style="border-color: ${pdf.color}; color: ${pdf.color}">
+                                        <i class="fas fa-download"></i>
+                                        ${currentLang === 'ar' ? 'تحميل' : 'Download'}
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        
+                        pdfGrid.appendChild(pdfCard);
+                    });
+                    
+                    // إضافة حدث لعرض PDF
+                    document.querySelectorAll('.pdf-btn.view').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const pdfId = parseInt(this.getAttribute('data-id'));
+                            openPDF(pdfId);
+                        });
+                    });
+                }
+
+                // إعداد عرض PDF
+                function setupPDFViewer() {
+                    const modal = document.getElementById('pdfModal');
+                    const modalClose = document.getElementById('modalClose');
+                    const prevPageBtn = document.getElementById('prevPage');
+                    const nextPageBtn = document.getElementById('nextPage');
+                    const zoomInBtn = document.getElementById('zoomIn');
+                    const zoomOutBtn = document.getElementById('zoomOut');
+                    const zoomResetBtn = document.getElementById('zoomReset');
+                    
+                    // إغلاق Modal
+                    modalClose.addEventListener('click', closePDFModal);
+                    
+                    // إغلاق بالضغط على ESC
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && modal.style.display === 'block') {
+                            closePDFModal();
+                        }
+                    });
+                    
+                    // التنقل بين الصفحات
+                    prevPageBtn.addEventListener('click', () => {
+                        if (currentPage <= 1) return;
+                        currentPage--;
+                        queueRenderPage(currentPage);
+                    });
+                    
+                    nextPageBtn.addEventListener('click', () => {
+                        if (currentPage >= pdfDoc.numPages) return;
+                        currentPage++;
+                        queueRenderPage(currentPage);
+                    });
+                    
+                    // التحكم في التكبير
+                    zoomInBtn.addEventListener('click', () => {
+                        scale += 0.2;
+                        queueRenderPage(currentPage);
+                    });
+                    
+                    zoomOutBtn.addEventListener('click', () => {
+                        if (scale <= 0.5) return;
+                        scale -= 0.2;
+                        queueRenderPage(currentPage);
+                    });
+                    
+                    zoomResetBtn.addEventListener('click', () => {
+                        scale = 1.0;
+                        queueRenderPage(currentPage);
+                    });
+                    
+                    // إغلاق بالنقر خارج المحتوى
+                    window.addEventListener('click', (event) => {
+                        if (event.target === modal) {
+                            closePDFModal();
+                        }
+                    });
+                }
+
+                // فتح PDF
+                function openPDF(pdfId) {
+                    const pdf = pdfLibrary.find(p => p.id === pdfId);
+                    if (!pdf) return;
+                    
+                    const modal = document.getElementById('pdfModal');
+                    const modalTitle = document.getElementById('modalTitle');
+                    const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                    const loadingElement = document.getElementById('loading');
+                    
+                    modalTitle.textContent = pdf.title[currentLang];
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                    
+                    // إظهار مؤشر التحميل
+                    loadingElement.style.display = 'block';
+                    canvas.style.display = 'none';
+                    
+                    // تعطيل أزرار التحكم
+                    ['prevPage', 'nextPage', 'zoomIn', 'zoomOut', 'zoomReset'].forEach(id => {
+                        document.getElementById(id).disabled = true;
+                    });
+                    
+                    // محاولة تحميل PDF مع إعادة المحاولة
+                    loadPDFWithRetry(pdf.pdfUrl, 3);
+                    
+                    // دالة تحميل PDF مع إعادة المحاولة
+                    function loadPDFWithRetry(url, retries) {
+                        console.log(`Loading PDF from: ${url} (Retries left: ${retries})`);
+                        
+                        // إضافة timestamp لمنع التخزين المؤقت
+                        const timestamp = new Date().getTime();
+                        const urlWithTimestamp = `${url}${url.includes('?') ? '&' : '?'}_t=${timestamp}`;
+                        
+                        pdfjsLib.getDocument({
+                            url: urlWithTimestamp,
+                            cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
+                            cMapPacked: true
+                        }).promise.then(pdfDoc_ => {
+                            pdfDoc = pdfDoc_;
+                            document.getElementById('totalPages').textContent = pdfDoc.numPages;
+                            loadingElement.style.display = 'none';
+                            canvas.style.display = 'block';
+                            
+                            // تمكين أزرار التحكم
+                            ['prevPage', 'nextPage', 'zoomIn', 'zoomOut', 'zoomReset'].forEach(id => {
+                                document.getElementById(id).disabled = false;
+                            });
+                            
+                            // إعادة تعيين التكبير والتنقل
+                            scale = 1.0;
+                            currentPage = 1;
+                            
+                            // عرض الصفحة الأولى
+                            renderPage(1);
+                            
+                        }).catch(error => {
+                            console.error('Error loading PDF:', error);
+                            
+                            if (retries > 0) {
+                                // إعادة المحاولة
+                                loadingElement.innerHTML = `
+                                    <i class="fas fa-sync-alt fa-spin fa-3x" style="color: var(--medical-blue);"></i>
+                                    <p style="margin-top: 20px; color: var(--dark-text); font-size: 1.1rem;">
+                                        ${currentLang === 'ar' ? 
+                                            `جاري إعادة المحاولة... (${retries})` : 
+                                            `Retrying... (${retries})`}
+                                    </p>
+                                `;
+                                
+                                setTimeout(() => {
+                                    loadPDFWithRetry(url, retries - 1);
+                                }, 1000);
+                                
+                            } else {
+                                // فشل جميع المحاولات - عرض رسالة خطأ
+                                loadingElement.innerHTML = `
+                                    <div style="text-align: center; padding: 20px;">
+                                        <i class="fas fa-exclamation-triangle fa-3x" style="color: #e74c3c; margin-bottom: 20px;"></i>
+                                        <h3 style="color: #e74c3c; margin-bottom: 15px;">
+                                            ${currentLang === 'ar' ? 'فشل تحميل الملف' : 'Failed to load file'}
+                                        </h3>
+                                        <p style="color: #7f8c8d; margin-bottom: 20px;">
+                                            ${currentLang === 'ar' ? 
+                                                'عذراً، لا يمكن تحميل الملف حالياً. يمكنك:' : 
+                                                'Sorry, the file cannot be loaded at the moment. You can:'}
+                                        </p>
+                                        <div style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto;">
+                                            <button onclick="downloadPDF(${pdfId})" style="padding: 12px 20px; background: var(--medical-blue); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
+                                                <i class="fas fa-download"></i>
+                                                ${currentLang === 'ar' ? 'محاولة التحميل المباشر' : 'Try direct download'}
+                                            </button>
+                                            <button onclick="closePDFModal()" style="padding: 12px 20px; background: #e74c3c; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
+                                                <i class="fas fa-times"></i>
+                                                ${currentLang === 'ar' ? 'إغلاق' : 'Close'}
+                                            </button>
+                                        </div>
+                                        <div style="margin-top: 25px; padding: 15px; background: #f8f9fa; border-radius: 8px; text-align: right;">
+                                            <small style="color: #666;">
+                                                ${currentLang === 'ar' ? 
+                                                    'تأكد من:<br>• اتصال الإنترنت<br>• توفر الملف<br>• صلاحية الرابط' : 
+                                                    'Ensure:<br>• Internet connection<br>• File availability<br>• Valid link'}
+                                            </small>
+                                        </div>
+                                    </div>
+                                `;
+                            }
+                        });
+                    }
+                }
+
+                // إغلاق Modal PDF
+                function closePDFModal() {
+                    const modal = document.getElementById('pdfModal');
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    pdfDoc = null;
+                    currentPage = 1;
+                    scale = 1.0;
+                    document.getElementById('loading').style.display = 'block';
+                    canvas.style.display = 'none';
+                    document.getElementById('loading').innerHTML = `
                         <i class="fas fa-spinner fa-spin"></i>
                         <p style="margin-top: 15px;">
                             <span class="lang-content ar active">جاري تحميل PDF...</span>
                             <span class="lang-content en">Loading PDF...</span>
                         </p>
-                    </div>
-                    <canvas id="pdf-canvas"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // تعريف worker قبل الاستخدام
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-        // بيانات ملفات PDF مع روابط حقيقية تعمل
-        const pdfLibrary = [
-            {
-                id: 1,
-                title: {
-                    ar: "NIMO TURKEY - منتجات طبية تركية",
-                    en: "NIMO TURKEY - Turkish Medical Products"
-                },
-                description: {
-                    ar: "كتالوج شامل لمنتجات طبية تركية متنوعة تشمل أجهزة طبية ومستلزمات",
-                    en: "Comprehensive catalog of various Turkish medical products including devices and supplies"
-                },
-                pages: 10,
-                size: "3.5 MB",
-                category: "medical",
-                color: "#2c80b9",
-                pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
-                thumbnail: "https://cdn-icons-png.flaticon.com/512/337/337946.png"
-            },
-            {
-                id: 2,
-                title: {
-                    ar: "AUSTOFIX - منتجات جراحة العظام الأسترالية",
-                    en: "AUSTOFIX - Australian Orthopedic Products"
-                },
-                description: {
-                    ar: "كتالوج كامل لمنتجات Austofix الأسترالية لجراحة العظام والكسور",
-                    en: "Complete catalog of Austofix Australian products for orthopedic surgery and fractures"
-                },
-                pages: 12,
-                size: "4.8 MB",
-                category: "orthopedic",
-                color: "#27ae60",
-                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-                thumbnail: "https://cdn-icons-png.flaticon.com/512/2917/2917995.png"
-            },
-            {
-                id: 3,
-                title: {
-                    ar: "Catalogue Lenses - منظارات وأدوات جراحية",
-                    en: "Catalogue Lenses - Surgical Lenses and Tools"
-                },
-                description: {
-                    ar: "كتالوج المناظير والأدوات الجراحية الدقيقة بمختلف الأحجام",
-                    en: "Catalog of surgical lenses and precision tools in various sizes"
-                },
-                pages: 8,
-                size: "3.2 MB",
-                category: "surgical",
-                color: "#8e44ad",
-                pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
-                thumbnail: "https://cdn-icons-png.flaticon.com/512/1998/1998679.png"
-            },
-            {
-                id: 4,
-                title: {
-                    ar: "Ortho Pedic - Ortho-Trauma International",
-                    en: "Ortho Pedic - Ortho-Trauma International"
-                },
-                description: {
-                    ar: "كتالوج شركة Ortho-Trauma الدولية لمنتجات جراحة العظام",
-                    en: "Ortho-Trauma International company catalog for orthopedic products"
-                },
-                pages: 3,
-                size: "2.1 MB",
-                category: "orthopedic",
-                color: "#3498db",
-                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-                thumbnail: "https://cdn-icons-png.flaticon.com/512/2913/2913514.png"
-            },
-            {
-                id: 5,
-                title: {
-                    ar: "Conwe - دعامات وأجهزة تقويم",
-                    en: "Conwe - Braces and Orthopedic Devices"
-                },
-                description: {
-                    ar: "كتالوج دعامات وأجهزة تقويم للركبة والرسغ والكاحل",
-                    en: "Catalog of braces and orthopedic devices for knee, wrist and ankle"
-                },
-                pages: 2,
-                size: "1.8 MB",
-                category: "orthopedic",
-                color: "#e74c3c",
-                pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
-                thumbnail: "https://cdn-icons-png.flaticon.com/512/2917/2917995.png"
-            },
-            {
-                id: 6,
-                title: {
-                    ar: "OHO Cataloge - زيوت ومنتجات العناية",
-                    en: "OHO Cataloge - Care Oils and Products"
-                },
-                description: {
-                    ar: "كتالوج منتجات العناية بالبشرة والشعر من زيت الزيتون",
-                    en: "Catalog of skin and hair care products from olive oil"
-                },
-                pages: 8,
-                size: "3.9 MB",
-                category: "cosmetic",
-                color: "#f39c12",
-                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-                thumbnail: "https://cdn-icons-png.flaticon.com/512/2311/2311910.png"
-            },
-            {
-                id: 7,
-                title: {
-                    ar: "Catalog D.C.Tuna - منتجات العناية بالبشرة",
-                    en: "Catalog D.C.Tuna - Skin Care Products"
-                },
-                description: {
-                    ar: "كتالوج شامل لمنتجات العناية بالبشرة والشعر بمكونات طبيعية",
-                    en: "Comprehensive catalog of skin and hair care products with natural ingredients"
-                },
-                pages: 14,
-                size: "5.2 MB",
-                category: "cosmetic",
-                color: "#16a085",
-                pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
-                thumbnail: "https://cdn-icons-png.flaticon.com/512/2302/2302838.png"
-            },
-            {
-                id: 8,
-                title: {
-                    ar: "Farmasi Catalogue - منتجات التجميل والعناية",
-                    en: "Farmasi Catalogue - Cosmetics and Care Products"
-                },
-                description: {
-                    ar: "كتالوج منتجات التجميل والعناية من Farmasi",
-                    en: "Catalog of cosmetics and care products from Farmasi"
-                },
-                pages: 24,
-                size: "6.5 MB",
-                category: "cosmetic",
-                color: "#9b59b6",
-                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-                thumbnail: "https://cdn-icons-png.flaticon.com/512/1997/1997928.png"
-            }
-        ];
-
-        // متغيرات PDF Viewer
-        let pdfDoc = null;
-        let currentPage = 1;
-        let pageRendering = false;
-        let pageNumPending = null;
-        let scale = 1.0;
-        const canvas = document.getElementById('pdf-canvas');
-        const ctx = canvas.getContext('2d');
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            // إعداد تبديل اللغة
-            setupLanguageToggle();
-            
-            // إعداد التنقل
-            setupNavigation();
-            
-            // عرض مكتبة PDF
-            renderPDFLibrary();
-            
-            // إعداد Modal وعرض PDF
-            setupPDFViewer();
-            
-            // إعداد Save Contact
-            setupSaveContact();
-            
-            // إضافة تأثيرات Fade-in عند التمرير
-            setupScrollAnimations();
-        });
-
-        // وظيفة تبديل اللغة
-        function setupLanguageToggle() {
-            const langButtons = document.querySelectorAll('.lang-btn');
-            const arContents = document.querySelectorAll('.lang-content.ar');
-            const enContents = document.querySelectorAll('.lang-content.en');
-            
-            langButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    
-                    langButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    if (lang === 'ar') {
-                        arContents.forEach(content => content.classList.add('active'));
-                        enContents.forEach(content => content.classList.remove('active'));
-                        document.body.setAttribute('dir', 'rtl');
-                        document.body.classList.remove('dir-ltr');
-                    } else {
-                        arContents.forEach(content => content.classList.remove('active'));
-                        enContents.forEach(content => content.classList.add('active'));
-                        document.body.setAttribute('dir', 'ltr');
-                        document.body.classList.add('dir-ltr');
-                    }
-                    
-                    // إعادة عرض المكتبة بلغة جديدة
-                    renderPDFLibrary();
-                });
-            });
-        }
-
-        // وظيفة التنقل
-        function setupNavigation() {
-            const navBtns = document.querySelectorAll('.nav-btn');
-            const sections = document.querySelectorAll('section');
-            
-            navBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const targetId = this.getAttribute('data-target');
-                    
-                    navBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    if (targetId === 'home') {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else {
-                        const targetSection = document.getElementById(targetId);
-                        if (targetSection) {
-                            targetSection.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }
-                });
-            });
-            
-            // التنقل عند التمرير
-            window.addEventListener('scroll', function() {
-                let current = '';
-                const scrollPos = window.scrollY + 100;
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navBtns.forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.getAttribute('data-target') === current) {
-                        btn.classList.add('active');
-                    }
-                });
-            });
-        }
-
-        // عرض مكتبة PDF
-        function renderPDFLibrary() {
-            const pdfGrid = document.getElementById('pdfGrid');
-            const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
-            
-            pdfGrid.innerHTML = '';
-            
-            pdfLibrary.forEach(pdf => {
-                const pdfCard = document.createElement('div');
-                pdfCard.className = 'pdf-card fade-in';
-                pdfCard.style.animationDelay = `${pdf.id * 0.1}s`;
-                
-                pdfCard.innerHTML = `
-                    <div class="pdf-header" style="background: ${pdf.color}">
-                        <h3 class="pdf-title">${pdf.title[currentLang]}</h3>
-                    </div>
-                    <div class="pdf-thumbnail">
-                        <img src="${pdf.thumbnail}" alt="${pdf.title[currentLang]}" class="pdf-preview-img">
-                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">
-                            ${pdf.pages} <i class="far fa-file"></i>
-                        </div>
-                    </div>
-                    <div class="pdf-content">
-                        <p class="pdf-description">${pdf.description[currentLang]}</p>
-                        <div class="pdf-meta" style="color: ${pdf.color}; font-weight: 600; margin-bottom: 15px;">
-                            <span><i class="fas fa-weight"></i> ${pdf.size}</span>
-                            <span style="margin-right: 15px;"><i class="fas fa-tag"></i> ${pdf.category}</span>
-                        </div>
-                        <div class="pdf-actions">
-                            <button class="pdf-btn view" data-id="${pdf.id}" style="background: ${pdf.color}">
-                                <i class="fas fa-eye"></i>
-                                ${currentLang === 'ar' ? 'عرض' : 'View'}
-                            </button>
-                            <button class="pdf-btn download" onclick="downloadPDF(${pdf.id})" style="border-color: ${pdf.color}; color: ${pdf.color}">
-                                <i class="fas fa-download"></i>
-                                ${currentLang === 'ar' ? 'تحميل' : 'Download'}
-                            </button>
-                        </div>
-                    </div>
-                `;
-                
-                pdfGrid.appendChild(pdfCard);
-            });
-            
-            // إضافة حدث لعرض PDF
-            document.querySelectorAll('.pdf-btn.view').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const pdfId = parseInt(this.getAttribute('data-id'));
-                    openPDF(pdfId);
-                });
-            });
-        }
-
-        // إعداد عرض PDF
-        function setupPDFViewer() {
-            const modal = document.getElementById('pdfModal');
-            const modalClose = document.getElementById('modalClose');
-            const prevPageBtn = document.getElementById('prevPage');
-            const nextPageBtn = document.getElementById('nextPage');
-            const zoomInBtn = document.getElementById('zoomIn');
-            const zoomOutBtn = document.getElementById('zoomOut');
-            const zoomResetBtn = document.getElementById('zoomReset');
-            
-            // إغلاق Modal
-            modalClose.addEventListener('click', closePDFModal);
-            
-            // إغلاق بالضغط على ESC
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal.style.display === 'block') {
-                    closePDFModal();
+                    `;
                 }
-            });
-            
-            // التنقل بين الصفحات
-            prevPageBtn.addEventListener('click', () => {
-                if (currentPage <= 1) return;
-                currentPage--;
-                queueRenderPage(currentPage);
-            });
-            
-            nextPageBtn.addEventListener('click', () => {
-                if (currentPage >= pdfDoc.numPages) return;
-                currentPage++;
-                queueRenderPage(currentPage);
-            });
-            
-            // التحكم في التكبير
-            zoomInBtn.addEventListener('click', () => {
-                scale += 0.2;
-                queueRenderPage(currentPage);
-            });
-            
-            zoomOutBtn.addEventListener('click', () => {
-                if (scale <= 0.5) return;
-                scale -= 0.2;
-                queueRenderPage(currentPage);
-            });
-            
-            zoomResetBtn.addEventListener('click', () => {
-                scale = 1.0;
-                queueRenderPage(currentPage);
-            });
-            
-            // إغلاق بالنقر خارج المحتوى
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    closePDFModal();
-                }
-            });
-        }
 
-        // فتح PDF
-        function openPDF(pdfId) {
-            const pdf = pdfLibrary.find(p => p.id === pdfId);
-            if (!pdf) return;
-            
-            const modal = document.getElementById('pdfModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
-            
-            modalTitle.textContent = pdf.title[currentLang];
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            
-            // إظهار مؤشر التحميل
-            document.getElementById('loading').style.display = 'block';
-            canvas.style.display = 'none';
-            
-            // تمكين/تعطيل أزرار التحكم
-            ['prevPage', 'nextPage', 'zoomIn', 'zoomOut', 'zoomReset'].forEach(id => {
-                document.getElementById(id).disabled = true;
-            });
-            
-            // تحميل PDF باستخدام pdf.js
-            const pdfUrl = pdf.pdfUrl;
-            
-            console.log(`Loading PDF from: ${pdfUrl}`);
-            
-            // إضافة timestamp لمنع التخزين المؤقت
-            const timestamp = new Date().getTime();
-            const urlWithTimestamp = `${pdfUrl}?t=${timestamp}`;
-            
-            pdfjsLib.getDocument(urlWithTimestamp).promise.then(pdfDoc_ => {
-                pdfDoc = pdfDoc_;
-                document.getElementById('totalPages').textContent = pdfDoc.numPages;
-                document.getElementById('loading').style.display = 'none';
-                canvas.style.display = 'block';
-                
-                // تمكين أزرار التحكم
-                ['prevPage', 'nextPage', 'zoomIn', 'zoomOut', 'zoomReset'].forEach(id => {
-                    document.getElementById(id).disabled = false;
-                });
-                
-                // إعادة تعيين التكبير والتنقل
-                scale = 1.0;
-                currentPage = 1;
-                
-                // عرض الصفحة الأولى
-                renderPage(1);
-            }).catch(error => {
-                console.error('Error loading PDF:', error);
-                
-                // محاولة استخدام رابط بديل
-                const fallbackUrl = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
-                
-                document.getElementById('loading').innerHTML = `
-                    <i class="fas fa-sync-alt fa-spin fa-3x" style="color: var(--medical-blue);"></i>
-                    <p style="margin-top: 20px; color: var(--dark-text); font-size: 1.1rem;">
-                        ${currentLang === 'ar' ? 
-                            'جاري محاولة تحميل ملف بديل...' : 
-                            'Trying to load alternative file...'}
-                    </p>
-                `;
-                
-                // محاولة تحميل ملف بديل
-                setTimeout(() => {
-                    pdfjsLib.getDocument(fallbackUrl).promise.then(pdfDoc_ => {
-                        pdfDoc = pdfDoc_;
-                        document.getElementById('totalPages').textContent = pdfDoc.numPages;
-                        document.getElementById('loading').style.display = 'none';
-                        canvas.style.display = 'block';
+                // عرض صفحة PDF
+                function renderPage(num) {
+                    pageRendering = true;
+                    
+                    pdfDoc.getPage(num).then(page => {
+                        const viewport = page.getViewport({ scale: scale });
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
                         
-                        // تمكين أزرار التحكم
-                        ['prevPage', 'nextPage', 'zoomIn', 'zoomOut', 'zoomReset'].forEach(id => {
-                            document.getElementById(id).disabled = false;
+                        const renderContext = {
+                            canvasContext: ctx,
+                            viewport: viewport
+                        };
+                        
+                        const renderTask = page.render(renderContext);
+                        
+                        renderTask.promise.then(() => {
+                            pageRendering = false;
+                            if (pageNumPending !== null) {
+                                renderPage(pageNumPending);
+                                pageNumPending = null;
+                            }
                         });
                         
-                        // إعادة تعيين التكبير والتنقل
-                        scale = 1.0;
-                        currentPage = 1;
+                        document.getElementById('currentPage').textContent = num;
+                        currentPage = num;
                         
-                        // عرض الصفحة الأولى
-                        renderPage(1);
-                    }).catch(fallbackError => {
-                        console.error('Error loading fallback PDF:', fallbackError);
-                        document.getElementById('loading').innerHTML = `
-                            <i class="fas fa-exclamation-triangle fa-3x" style="color: #e74c3c;"></i>
-                            <p style="margin-top: 20px; color: #e74c3c; font-size: 1.1rem;">
-                                ${currentLang === 'ar' ? 
-                                    'لا يمكن تحميل الملف حالياً. يرجى المحاولة لاحقاً.' : 
-                                    'Cannot load file at the moment. Please try again later.'}
-                            </p>
-                            <div style="margin-top: 20px; color: #7f8c8d; font-size: 0.9rem; max-width: 500px; margin-left: auto; margin-right: auto;">
-                                ${currentLang === 'ar' ? 
-                                    'نصائح استكشاف الأخطاء:<br>1. تأكد من اتصال الإنترنت<br>2. جرب تحديث الصفحة<br>3. تأكد أن الملف متاح للعامة' : 
-                                    'Troubleshooting tips:<br>1. Check your internet connection<br>2. Try refreshing the page<br>3. Ensure the file is publicly accessible'}
-                            </div>
-                            <button onclick="closePDFModal()" style="margin-top: 20px; padding: 10px 25px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                                ${currentLang === 'ar' ? 'إغلاق' : 'Close'}
-                            </button>
-                        `;
+                        // تحديث حالة أزرار الصفحات
+                        document.getElementById('prevPage').disabled = num <= 1;
+                        document.getElementById('nextPage').disabled = num >= pdfDoc.numPages;
                     });
-                }, 1000);
-            });
-        }
+                }
 
-        // إغلاق Modal PDF
-        function closePDFModal() {
-            const modal = document.getElementById('pdfModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            pdfDoc = null;
-            currentPage = 1;
-            scale = 1.0;
-            document.getElementById('loading').style.display = 'block';
-            canvas.style.display = 'none';
-            document.getElementById('loading').innerHTML = `
-                <i class="fas fa-spinner fa-spin"></i>
-                <p style="margin-top: 15px;">
-                    <span class="lang-content ar active">جاري تحميل PDF...</span>
-                    <span class="lang-content en">Loading PDF...</span>
-                </p>
-            `;
-        }
-
-        // عرض صفحة PDF
-        function renderPage(num) {
-            pageRendering = true;
-            
-            pdfDoc.getPage(num).then(page => {
-                const viewport = page.getViewport({ scale: scale });
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                
-                const renderContext = {
-                    canvasContext: ctx,
-                    viewport: viewport
-                };
-                
-                const renderTask = page.render(renderContext);
-                
-                renderTask.promise.then(() => {
-                    pageRendering = false;
-                    if (pageNumPending !== null) {
-                        renderPage(pageNumPending);
-                        pageNumPending = null;
+                // قائمة انتظار لعرض الصفحة
+                function queueRenderPage(num) {
+                    if (pageRendering) {
+                        pageNumPending = num;
+                    } else {
+                        renderPage(num);
                     }
-                });
-                
-                document.getElementById('currentPage').textContent = num;
-                currentPage = num;
-                
-                // تحديث حالة أزرار الصفحات
-                document.getElementById('prevPage').disabled = num <= 1;
-                document.getElementById('nextPage').disabled = num >= pdfDoc.numPages;
-            });
-        }
+                }
 
-        // قائمة انتظار لعرض الصفحة
-        function queueRenderPage(num) {
-            if (pageRendering) {
-                pageNumPending = num;
-            } else {
-                renderPage(num);
-            }
-        }
+                // تحميل PDF
+                function downloadPDF(pdfId) {
+                    const pdf = pdfLibrary.find(p => p.id === pdfId);
+                    if (!pdf) return;
+                    
+                    const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                    const filename = pdf.title[currentLang].replace(/[^a-z0-9\u0600-\u06FF]/gi, '_') + '.pdf';
+                    
+                    // إنشاء زر تحميل
+                    const link = document.createElement('a');
+                    link.href = pdf.pdfUrl;
+                    link.download = filename;
+                    link.target = '_blank';
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    
+                    // إضافة event listener للتحقق من نجاح التحميل
+                    link.addEventListener('click', function() {
+                        setTimeout(() => {
+                            const message = currentLang === 'ar' 
+                                ? `تم بدء تحميل ملف: ${pdf.title[currentLang]}` 
+                                : `Download started for: ${pdf.title[currentLang]}`;
+                            
+                            // عرض إشعار
+                            showNotification(message, 'success');
+                        }, 500);
+                    });
+                    
+                    link.click();
+                    document.body.removeChild(link);
+                }
 
-        // تحميل PDF
-        function downloadPDF(pdfId) {
-            const pdf = pdfLibrary.find(p => p.id === pdfId);
-            if (!pdf) return;
-            
-            const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
-            const filename = pdf.title[currentLang].replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf';
-            
-            // محاكاة التحميل
-            const link = document.createElement('a');
-            link.href = pdf.pdfUrl;
-            link.download = filename;
-            link.target = '_blank';
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // رسالة تأكيد
-            setTimeout(() => {
-                const message = currentLang === 'ar' 
-                    ? `سيبدأ تحميل ملف: ${pdf.title[currentLang]}` 
-                    : `Download will start for: ${pdf.title[currentLang]}`;
-                alert(message);
-            }, 100);
-        }
+                // عرض إشعار
+                function showNotification(message, type = 'info') {
+                    const notification = document.createElement('div');
+                    notification.className = 'notification';
+                    notification.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        ${document.body.dir === 'rtl' ? 'left: 20px' : 'right: 20px'};
+                        background: ${type === 'success' ? '#27ae60' : '#3498db'};
+                        color: white;
+                        padding: 15px 25px;
+                        border-radius: 10px;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                        z-index: 99999;
+                        animation: slideIn 0.3s ease;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        max-width: 400px;
+                    `;
+                    
+                    notification.innerHTML = `
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                        <span>${message}</span>
+                    `;
+                    
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        notification.style.animation = 'slideOut 0.3s ease';
+                        setTimeout(() => {
+                            notification.remove();
+                        }, 300);
+                    }, 3000);
+                }
 
-        // إعداد Save Contact
-        function setupSaveContact() {
-            document.getElementById('saveContactBtn').addEventListener('click', function() {
-                const vcard = `BEGIN:VCARD
+                // إعداد Save Contact
+                function setupSaveContact() {
+                    document.getElementById('saveContactBtn').addEventListener('click', function() {
+                        const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                        const vcard = `BEGIN:VCARD
 VERSION:3.0
 FN:Medical Binary Establishment
 ORG:Medical Binary Establishment
@@ -1786,47 +1849,48 @@ ADR;TYPE=WORK:;;جبل الحسين - مقابل مستشفى هبة، مجمع 
 URL:https://medical-binary.com
 NOTE:Specializing in medical supplies and orthopedic surgery materials
 END:VCARD`;
-                
-                const blob = new Blob([vcard], { type: 'text/vcard' });
-                const url = URL.createObjectURL(blob);
-                
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = 'Medical_Binary_Contact.vcf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(url);
-                
-                // رسالة تأكيد
-                const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
-                alert(currentLang === 'ar' 
-                    ? 'تم حفظ جهة الاتصال بنجاح! يمكنك الآن إضافتها إلى جهات اتصالك.' 
-                    : 'Contact saved successfully! You can now add it to your contacts.');
-            });
-        }
+                        
+                        const blob = new Blob([vcard], { type: 'text/vcard' });
+                        const url = URL.createObjectURL(blob);
+                        
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.download = 'Medical_Binary_Contact.vcf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        URL.revokeObjectURL(url);
+                        
+                        // رسالة تأكيد
+                        const message = currentLang === 'ar' 
+                            ? 'تم حفظ جهة الاتصال بنجاح! يمكنك الآن إضافتها إلى جهات اتصالك.' 
+                            : 'Contact saved successfully! You can now add it to your contacts.';
+                        
+                        showNotification(message, 'success');
+                    });
+                }
 
-        // إعداد تأثيرات التمرير
-        function setupScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            // مراقبة العناصر لإضافة تأثيرات
-            document.querySelectorAll('.pdf-card, .service-card, .company-card, .contact-card').forEach(el => {
-                observer.observe(el);
-            });
-        }
-    </script>
-</body>
-</html>
+                // إعداد تأثيرات التمرير
+                function setupScrollAnimations() {
+                    const observerOptions = {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -50px 0px'
+                    };
+                    
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('fade-in');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, observerOptions);
+                    
+                    // مراقبة العناصر لإضافة تأثيرات
+                    document.querySelectorAll('.pdf-card, .service-card, .company-card, .contact-card').forEach(el => {
+                        observer.observe(el);
+                    });
+                }
+            </script>
+        </body>
+        </html>
