@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كنوز مكة - معرض التحف والهدايا</title>
+    <title>كنوز مكة - معرض التحف والهدايا | Mecca Treasures - Antiques & Gifts Gallery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -55,6 +55,36 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: var(--shadow);
+            display: flex;
+            border: var(--border);
+        }
+        
+        .lang-btn {
+            padding: 8px 15px;
+            border: none;
+            background: transparent;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .lang-btn.active {
+            background: var(--gold);
+            color: white;
         }
         
         /* Header */
@@ -135,11 +165,44 @@
             margin-bottom: 20px;
         }
         
-        .profile-position {
+        .profile-tagline {
             font-size: 1.2rem;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        
+        /* Rating Section */
+        .rating-section {
+            margin: 20px 0;
+        }
+        
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .star {
+            color: #ddd;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .star.active {
+            color: var(--gold);
+        }
+        
+        .rating-text {
+            font-size: 1.1rem;
+            color: var(--light-text);
+        }
+        
+        .rating-count {
             color: var(--gold);
             font-weight: 700;
-            margin-bottom: 10px;
         }
         
         .stats-container {
@@ -265,6 +328,7 @@
             border: var(--border);
             transition: transform 0.3s ease;
             position: relative;
+            cursor: pointer;
         }
         
         .gallery-item:hover {
@@ -332,6 +396,50 @@
         
         .slider-btn.next {
             left: -25px;
+        }
+        
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: -10px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: scale(1.2);
         }
         
         /* Contact Section */
@@ -539,6 +647,11 @@
             }
         }
         
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         .fade-in {
             animation: fadeInUp 0.8s ease forwards;
         }
@@ -592,10 +705,29 @@
             .map-container {
                 height: 300px;
             }
+            
+            .language-switcher {
+                top: 10px;
+                left: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" id="lang-ar">عربي</button>
+        <button class="lang-btn" id="lang-en">English</button>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <img src="" alt="" class="modal-image" id="modalImage">
+        </div>
+    </div>
+
     <!-- Header Section -->
     <header class="profile-header fade-in">
         <div class="cover-container">
@@ -603,27 +735,45 @@
         </div>
         <div class="profile-info">
             <div class="profile-image-container">
-                <img src="https://i.imgur.com/twetZyS.png" alt="عدي النعيمات" class="profile-image">
+                <img src="https://i.imgur.com/twetZyS.png" alt="كنوز مكة" class="profile-image">
                 <div class="verified-badge">
                     <i class="fas fa-check"></i>
                 </div>
             </div>
-            <h1 class="profile-name">كنوز مكة</h1>
-            <div class="profile-username">معرض التحف والهدايا</div>
-            <div class="profile-position">عدي النعيمات - صاحب المعرض</div>
+            <h1 class="profile-name" data-ar="كنوز مكة" data-en="Mecca Treasures">كنوز مكة</h1>
+            <div class="profile-username" data-ar="معرض التحف والهدايا" data-en="Antiques & Gifts Gallery">معرض التحف والهدايا</div>
+            <div class="profile-tagline" data-ar="وجهتكم المميزة للتحف والهدايا ذات الطابع الإسلامي والفني المميز" data-en="Your distinguished destination for Islamic and artistic antiques and gifts">
+                وجهتكم المميزة للتحف والهدايا ذات الطابع الإسلامي والفني المميز
+            </div>
+            
+            <!-- Rating Section -->
+            <div class="rating-section">
+                <div class="rating-stars" id="ratingStars">
+                    <span class="star active"><i class="fas fa-star"></i></span>
+                    <span class="star active"><i class="fas fa-star"></i></span>
+                    <span class="star active"><i class="fas fa-star"></i></span>
+                    <span class="star active"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                </div>
+                <div class="rating-text">
+                    <span data-ar="التقييم:" data-en="Rating:">التقييم:</span> 
+                    <span class="rating-count">4.5</span> 
+                    <span data-ar="من 5 (بناءً على 127 تقييم)" data-en="out of 5 (based on 127 reviews)">من 5 (بناءً على 127 تقييم)</span>
+                </div>
+            </div>
             
             <div class="stats-container">
                 <div class="stat-item">
                     <span class="stat-number">0799474344</span>
-                    <span class="stat-label">رقم الهاتف</span>
+                    <span class="stat-label" data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">0796700855</span>
-                    <span class="stat-label">واتساب</span>
+                    <span class="stat-label" data-ar="واتساب" data-en="WhatsApp">واتساب</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">⭐ ⭐ ⭐ ⭐ ⭐</span>
-                    <span class="stat-label">التقييم</span>
+                    <span class="stat-number">⭐ 4.5</span>
+                    <span class="stat-label" data-ar="التقييم" data-en="Rating">التقييم</span>
                 </div>
             </div>
         </div>
@@ -633,24 +783,22 @@
     <div class="container">
         <!-- About Section -->
         <div class="about-section fade-in delay-1">
-            <h2 class="section-title">مرحباً بكم في كنوز مكة</h2>
-            <div class="about-text">
+            <h2 class="section-title" data-ar="مرحباً بكم في كنوز مكة" data-en="Welcome to Mecca Treasures">مرحباً بكم في كنوز مكة</h2>
+            <div class="about-text" data-ar="معرض كنوز مكة وجهتكم المميزة للتحف والهدايا ذات الطابع الإسلامي والفني المميز" data-en="Mecca Treasures Gallery is your distinguished destination for Islamic and artistic antiques and gifts">
                 معرض كنوز مكة وجهتكم المميزة للتحف والهدايا ذات الطابع الإسلامي والفني المميز
             </div>
             
             <div class="highlight-box">
-                <div class="highlight-title">من نحن</div>
-                <div class="about-text">
-                    معرض كنوز مكة هو وجهة مميزة لعشاق التحف والهدايا ذات الطابع الإسلامي والفني. 
-                    نقدم لكم تشكيلة متنوعة من القطع الفنية والتحف النادرة والهدايا التي تعكس التراث الإسلامي الأصيل. 
-                    بقيادة السيد عدي النعيمات، نسعى لتقديم أفضل القطع التي تليق بذوقكم الرفيع.
+                <div class="highlight-title" data-ar="من نحن" data-en="About Us">من نحن</div>
+                <div class="about-text" data-ar="معرض كنوز مكة هو وجهة مميزة لعشاق التحف والهدايا ذات الطابع الإسلامي والفني. نقدم لكم تشكيلة متنوعة من القطع الفنية والتحف النادرة والهدايا التي تعكس التراث الإسلامي الأصيل. نسعى لتقديم أفضل القطع التي تليق بذوقكم الرفيع." data-en="Mecca Treasures Gallery is a distinguished destination for lovers of Islamic and artistic antiques and gifts. We offer you a diverse collection of artistic pieces, rare antiques, and gifts that reflect authentic Islamic heritage. We strive to provide the best pieces that suit your refined taste.">
+                    معرض كنوز مكة هو وجهة مميزة لعشاق التحف والهدايا ذات الطابع الإسلامي والفني. نقدم لكم تشكيلة متنوعة من القطع الفنية والتحف النادرة والهدايا التي تعكس التراث الإسلامي الأصيل. نسعى لتقديم أفضل القطع التي تليق بذوقكم الرفيع.
                 </div>
             </div>
         </div>
 
         <!-- Gallery Section -->
         <div class="gallery-section fade-in delay-2">
-            <h2 class="section-title">صور المعرض</h2>
+            <h2 class="section-title" data-ar="صور المعرض" data-en="Gallery Photos">صور المعرض</h2>
             <div class="gallery-container">
                 <button class="slider-btn prev" onclick="scrollGallery(-1)">
                     <i class="fas fa-chevron-right"></i>
@@ -659,90 +807,15 @@
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="gallery-slider" id="gallerySlider">
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/gY4r8QA.png" alt="معرض كنوز مكة 1">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/gY4r8QA.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/36s8dPB.png" alt="معرض كنوز مكة 2">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/36s8dPB.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/3iQrKQZ.png" alt="معرض كنوز مكة 3">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/3iQrKQZ.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/F9seb2G.png" alt="معرض كنوز مكة 4">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/F9seb2G.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/hiHq9Mp.png" alt="معرض كنوز مكة 5">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/hiHq9Mp.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/fbWmufE.png" alt="معرض كنوز مكة 6">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/fbWmufE.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/nNNyv9y.png" alt="معرض كنوز مكة 7">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/nNNyv9y.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/FF2OKWy.png" alt="معرض كنوز مكة 8">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/FF2OKWy.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/AXy45y3.png" alt="معرض كنوز مكة 9">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/AXy45y3.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/PHgel6Z.png" alt="معرض كنوز مكة 10">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/PHgel6Z.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/ngIw0WB.png" alt="معرض كنوز مكة 11">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/ngIw0WB.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://i.imgur.com/WYezHVe.png" alt="معرض كنوز مكة 12">
-                        <button class="save-concat-btn" onclick="saveImage('https://i.imgur.com/WYezHVe.png')">
-                            <i class="fas fa-download"></i> حفظ
-                        </button>
-                    </div>
+                    <!-- Gallery items will be added by JavaScript -->
                 </div>
             </div>
         </div>
 
         <!-- Contact Section -->
         <div class="contact-section fade-in delay-3">
-            <h2 class="section-title">تواصل معنا</h2>
+            <h2 class="section-title" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h2>
             <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-user"></i>
-                    <span>عدي النعيمات - صاحب المعرض</span>
-                </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
                     <span>0799474344</span>
@@ -751,17 +824,21 @@
                     <i class="fab fa-whatsapp"></i>
                     <span>0796700855</span>
                 </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span data-ar="للتواصل عبر البريد" data-en="For email communication">للتواصل عبر البريد</span>
+                </div>
             </div>
             
             <div class="business-contact">
-                <div class="business-title">للاستفسارات والحجوزات</div>
+                <div class="business-title" data-ar="للاستفسارات والحجوزات" data-en="For inquiries and reservations">للاستفسارات والحجوزات</div>
                 <div class="business-number">00962796700855</div>
             </div>
         </div>
 
         <!-- Location Section -->
         <div class="location-section fade-in delay-2">
-            <h2 class="section-title">موقعنا على الخريطة</h2>
+            <h2 class="section-title" data-ar="موقعنا على الخريطة" data-en="Our Location">موقعنا على الخريطة</h2>
             <div class="map-container">
                 <iframe 
                     src="https://maps.google.com/maps?q=31.97602653503418%2C35.853580474853516&z=17&hl=ar&output=embed"
@@ -774,7 +851,7 @@
 
         <!-- Social Icons -->
         <div class="social-section fade-in delay-3">
-            <h2 class="social-title">تابعونا على وسائل التواصل</h2>
+            <h2 class="social-title" data-ar="تابعونا على وسائل التواصل" data-en="Follow Us on Social Media">تابعونا على وسائل التواصل</h2>
             <div class="social-icons-grid">
                 <a href="https://www.facebook.com/share/1EX7UuUFEV/?mibextid=wwXIfr" class="social-icon" target="_blank">
                     <i class="fab fa-facebook"></i>
@@ -799,15 +876,15 @@
             <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:كنوز مكة - معرض التحف والهدايا%0ATEL:0799474344%0ATEL;TYPE=WHATSAPP:0796700855%0AURL:https://www.facebook.com/share/1EX7UuUFEV/%0AURL:https://www.instagram.com/knozmakah%0AEND:VCARD" 
                class="action-button primary" download="كنوز-مكة.vcf">
                 <i class="fas fa-download"></i>
-                حفظ جهة الاتصال
+                <span data-ar="حفظ جهة الاتصال" data-en="Save Contact">حفظ جهة الاتصال</span>
             </a>
             <a href="https://wa.me/962796700855" class="action-button" target="_blank">
                 <i class="fab fa-whatsapp"></i>
-                التواصل عبر واتساب
+                <span data-ar="التواصل عبر واتساب" data-en="Contact via WhatsApp">التواصل عبر واتساب</span>
             </a>
             <a href="tel:0799474344" class="action-button">
                 <i class="fas fa-phone"></i>
-                الاتصال الآن
+                <span data-ar="الاتصال الآن" data-en="Call Now">الاتصال الآن</span>
             </a>
         </div>
     </div>
@@ -815,13 +892,64 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p class="footer-text">كنوز مكة - معرض التحف والهدايا</p>
-            <p class="footer-text">عدي النعيمات - هاتف: 0799474344 | واتساب: 0796700855</p>
-            <p class="footer-text">© 2023 جميع الحقوق محفوظة</p>
+            <p class="footer-text" data-ar="كنوز مكة - معرض التحف والهدايا" data-en="Mecca Treasures - Antiques & Gifts Gallery">
+                كنوز مكة - معرض التحف والهدايا
+            </p>
+            <p class="footer-text">
+                <span data-ar="هاتف:" data-en="Phone:">هاتف:</span> 0799474344 | 
+                <span data-ar="واتساب:" data-en="WhatsApp:">واتساب:</span> 0796700855
+            </p>
+            <p class="footer-text">© 2023 <span data-ar="جميع الحقوق محفوظة" data-en="All rights reserved">جميع الحقوق محفوظة</span></p>
         </div>
     </footer>
 
     <script>
+        // Gallery images data
+        const galleryImages = [
+            { url: "https://i.imgur.com/gY4r8QA.png", alt: "معرض كنوز مكة 1" },
+            { url: "https://i.imgur.com/36s8dPB.png", alt: "معرض كنوز مكة 2" },
+            { url: "https://i.imgur.com/3iQrKQZ.png", alt: "معرض كنوز مكة 3" },
+            { url: "https://i.imgur.com/F9seb2G.png", alt: "معرض كنوز مكة 4" },
+            { url: "https://i.imgur.com/hiHq9Mp.png", alt: "معرض كنوز مكة 5" },
+            { url: "https://i.imgur.com/fbWmufE.png", alt: "معرض كنوز مكة 6" },
+            { url: "https://i.imgur.com/nNNyv9y.png", alt: "معرض كنوز مكة 7" },
+            { url: "https://i.imgur.com/FF2OKWy.png", alt: "معرض كنوز مكة 8" },
+            { url: "https://i.imgur.com/AXy45y3.png", alt: "معرض كنوز مكة 9" },
+            { url: "https://i.imgur.com/PHgel6Z.png", alt: "معرض كنوز مكة 10" },
+            { url: "https://i.imgur.com/ngIw0WB.png", alt: "معرض كنوز مكة 11" },
+            { url: "https://i.imgur.com/WYezHVe.png", alt: "معرض كنوز مكة 12" }
+        ];
+
+        // Language management
+        let currentLang = 'ar';
+        const langArBtn = document.getElementById('lang-ar');
+        const langEnBtn = document.getElementById('lang-en');
+        
+        // Initialize gallery
+        function initializeGallery() {
+            const gallerySlider = document.getElementById('gallerySlider');
+            gallerySlider.innerHTML = '';
+            
+            galleryImages.forEach((image, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${image.url}" alt="${image.alt}" loading="lazy" data-index="${index}">
+                    <button class="save-concat-btn" onclick="saveImage('${image.url}')">
+                        <i class="fas fa-download"></i> 
+                        <span data-ar="حفظ" data-en="Save">حفظ</span>
+                    </button>
+                `;
+                
+                // Add click event to open image in modal
+                galleryItem.querySelector('img').addEventListener('click', function() {
+                    openImageModal(this.src, this.alt);
+                });
+                
+                gallerySlider.appendChild(galleryItem);
+            });
+        }
+
         // Gallery slider functionality
         function scrollGallery(direction) {
             const slider = document.getElementById('gallerySlider');
@@ -833,14 +961,104 @@
         function saveImage(imageUrl) {
             const link = document.createElement('a');
             link.href = imageUrl;
-            link.download = 'كنوز-مكة-صورة.jpg';
+            link.download = `mecca-treasures-${Date.now()}.jpg`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
 
-        // Add click effects
+        // Image modal functionality
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+
+        function openImageModal(src, alt) {
+            modalImage.src = src;
+            modalImage.alt = alt;
+            imageModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            imageModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        closeModal.addEventListener('click', closeImageModal);
+        imageModal.addEventListener('click', function(e) {
+            if (e.target === imageModal) {
+                closeImageModal();
+            }
+        });
+
+        // Rating functionality
+        const ratingStars = document.querySelectorAll('#ratingStars .star');
+        ratingStars.forEach((star, index) => {
+            star.addEventListener('click', function() {
+                // Update rating display
+                ratingStars.forEach((s, i) => {
+                    if (i <= index) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+                
+                // Update rating text
+                const ratingCount = document.querySelector('.rating-count');
+                const newRating = (index + 1) + (0.5 * (index === 3 ? 1 : 0)); // 4.5 if 4 stars clicked
+                ratingCount.textContent = newRating;
+            });
+        });
+
+        // Language switching functionality
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update language buttons
+            langArBtn.classList.toggle('active', lang === 'ar');
+            langEnBtn.classList.toggle('active', lang === 'en');
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-ar], [data-en]').forEach(element => {
+                if (lang === 'ar' && element.dataset.ar) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = element.dataset.ar;
+                    } else {
+                        element.textContent = element.dataset.ar;
+                    }
+                } else if (lang === 'en' && element.dataset.en) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = element.dataset.en;
+                    } else {
+                        element.textContent = element.dataset.en;
+                    }
+                }
+            });
+            
+            // Update HTML direction
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+            
+            // Update slider button directions
+            document.querySelectorAll('.slider-btn.prev i').forEach(icon => {
+                icon.className = lang === 'ar' ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
+            });
+            document.querySelectorAll('.slider-btn.next i').forEach(icon => {
+                icon.className = lang === 'ar' ? 'fas fa-chevron-left' : 'fas fa-chevron-right';
+            });
+        }
+
+        // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize gallery
+            initializeGallery();
+            
+            // Set up language switching
+            langArBtn.addEventListener('click', () => switchLanguage('ar'));
+            langEnBtn.addEventListener('click', () => switchLanguage('en'));
+            
+            // Add click effects
             const buttons = document.querySelectorAll('.social-icon, .action-button, .save-concat-btn');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
@@ -860,6 +1078,13 @@
                     slider.scrollLeft += 300;
                 }
             }, 5000);
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeImageModal();
+                }
+            });
         });
     </script>
 </body>
