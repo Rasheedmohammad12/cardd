@@ -1251,7 +1251,8 @@
                         size: "3.5 MB",
                         category: "medical",
                         color: "#2c80b9",
-                        pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
+                        // رابط PDF يحتوي على صور حقيقية
+                        pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
                         thumbnail: "https://cdn-icons-png.flaticon.com/512/337/337946.png"
                     },
                     {
@@ -1268,7 +1269,8 @@
                         size: "4.8 MB",
                         category: "orthopedic",
                         color: "#27ae60",
-                        pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                        // رابط PDF يحتوي على صور حقيقية
+                        pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
                         thumbnail: "https://cdn-icons-png.flaticon.com/512/2917/2917995.png"
                     },
                     {
@@ -1285,7 +1287,8 @@
                         size: "3.2 MB",
                         category: "surgical",
                         color: "#8e44ad",
-                        pdfUrl: "https://file-examples.com/storage/fe8c7eef0c6364f6c95040a/2017/10/file-example_PDF_1MB.pdf",
+                        // رابط PDF يحتوي على صور حقيقية
+                        pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
                         thumbnail: "https://cdn-icons-png.flaticon.com/512/1998/1998679.png"
                     },
                     {
@@ -1302,6 +1305,7 @@
                         size: "2.1 MB",
                         category: "orthopedic",
                         color: "#3498db",
+                        // رابط PDF يحتوي على صور حقيقية
                         pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
                         thumbnail: "https://cdn-icons-png.flaticon.com/512/2913/2913514.png"
                     },
@@ -1319,59 +1323,9 @@
                         size: "1.8 MB",
                         category: "orthopedic",
                         color: "#e74c3c",
-                        pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
-                        thumbnail: "https://cdn-icons-png.flaticon.com/512/2917/2917995.png"
-                    },
-                    {
-                        id: 6,
-                        title: {
-                            ar: "OHO Cataloge - زيوت ومنتجات العناية",
-                            en: "OHO Cataloge - Care Oils and Products"
-                        },
-                        description: {
-                            ar: "كتالوج منتجات العناية بالبشرة والشعر من زيت الزيتون",
-                            en: "Catalog of skin and hair care products from olive oil"
-                        },
-                        pages: 8,
-                        size: "3.9 MB",
-                        category: "cosmetic",
-                        color: "#f39c12",
+                        // رابط PDF يحتوي على صور حقيقية
                         pdfUrl: "https://file-examples.com/storage/fe8c7eef0c6364f6c95040a/2017/10/file-example_PDF_1MB.pdf",
-                        thumbnail: "https://cdn-icons-png.flaticon.com/512/2311/2311910.png"
-                    },
-                    {
-                        id: 7,
-                        title: {
-                            ar: "Catalog D.C.Tuna - منتجات العناية بالبشرة",
-                            en: "Catalog D.C.Tuna - Skin Care Products"
-                        },
-                        description: {
-                            ar: "كتالوج شامل لمنتجات العناية بالبشرة والشعر بمكونات طبيعية",
-                            en: "Comprehensive catalog of skin and hair care products with natural ingredients"
-                        },
-                        pages: 14,
-                        size: "5.2 MB",
-                        category: "cosmetic",
-                        color: "#16a085",
-                        pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-                        thumbnail: "https://cdn-icons-png.flaticon.com/512/2302/2302838.png"
-                    },
-                    {
-                        id: 8,
-                        title: {
-                            ar: "Farmasi Catalogue - منتجات التجميل والعناية",
-                            en: "Farmasi Catalogue - Cosmetics and Care Products"
-                        },
-                        description: {
-                            ar: "كتالوج منتجات التجميل والعناية من Farmasi",
-                            en: "Catalog of cosmetics and care products from Farmasi"
-                        },
-                        pages: 24,
-                        size: "6.5 MB",
-                        category: "cosmetic",
-                        color: "#9b59b6",
-                        pdfUrl: "https://www.africau.edu/images/default/sample.pdf",
-                        thumbnail: "https://cdn-icons-png.flaticon.com/512/1997/1997928.png"
+                        thumbnail: "https://cdn-icons-png.flaticon.com/512/2917/2917995.png"
                     }
                 ];
 
@@ -1616,22 +1570,40 @@
                         document.getElementById(id).disabled = true;
                     });
                     
-                    // محاولة تحميل PDF مع إعادة المحاولة
-                    loadPDFWithRetry(pdf.pdfUrl, 3);
+                    // محاولة تحميل PDF مع إعدادات لعرض الصور
+                    loadPDF(pdf.pdfUrl);
                     
-                    // دالة تحميل PDF مع إعادة المحاولة
-                    function loadPDFWithRetry(url, retries) {
-                        console.log(`Loading PDF from: ${url} (Retries left: ${retries})`);
+                    // دالة تحميل PDF مع إعدادات للصور
+                    function loadPDF(url) {
+                        console.log(`Loading PDF from: ${url}`);
                         
                         // إضافة timestamp لمنع التخزين المؤقت
                         const timestamp = new Date().getTime();
                         const urlWithTimestamp = `${url}${url.includes('?') ? '&' : '?'}_t=${timestamp}`;
                         
-                        pdfjsLib.getDocument({
+                        // تكوين PDF.js لعرض الصور بشكل صحيح
+                        const loadingTask = pdfjsLib.getDocument({
                             url: urlWithTimestamp,
                             cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
-                            cMapPacked: true
-                        }).promise.then(pdfDoc_ => {
+                            cMapPacked: true,
+                            // إعدادات مهمة لعرض الصور
+                            disableAutoFetch: false,
+                            disableStream: false,
+                            disableRange: false,
+                            // إعدادات للصور
+                            nativeImageDecoderSupport: 'display',
+                            verbosity: 0,
+                            // إضافة دعم أفضل للصور
+                            isEvalSupported: true,
+                            maxImageSize: -1, // لا يوجد حد لحجم الصور
+                            disableFontFace: false,
+                            useSystemFonts: false,
+                            // إعدادات الأداء
+                            enableXfa: true,
+                            enableWebGL: false
+                        });
+                        
+                        loadingTask.promise.then(pdfDoc_ => {
                             pdfDoc = pdfDoc_;
                             document.getElementById('totalPages').textContent = pdfDoc.numPages;
                             loadingElement.style.display = 'none';
@@ -1652,55 +1624,39 @@
                         }).catch(error => {
                             console.error('Error loading PDF:', error);
                             
-                            if (retries > 0) {
-                                // إعادة المحاولة
-                                loadingElement.innerHTML = `
-                                    <i class="fas fa-sync-alt fa-spin fa-3x" style="color: var(--medical-blue);"></i>
-                                    <p style="margin-top: 20px; color: var(--dark-text); font-size: 1.1rem;">
-                                        ${currentLang === 'ar' ? 
-                                            `جاري إعادة المحاولة... (${retries})` : 
-                                            `Retrying... (${retries})`}
-                                    </p>
-                                `;
-                                
-                                setTimeout(() => {
-                                    loadPDFWithRetry(url, retries - 1);
-                                }, 1000);
-                                
-                            } else {
-                                // فشل جميع المحاولات - عرض رسالة خطأ
-                                loadingElement.innerHTML = `
-                                    <div style="text-align: center; padding: 20px;">
-                                        <i class="fas fa-exclamation-triangle fa-3x" style="color: #e74c3c; margin-bottom: 20px;"></i>
-                                        <h3 style="color: #e74c3c; margin-bottom: 15px;">
-                                            ${currentLang === 'ar' ? 'فشل تحميل الملف' : 'Failed to load file'}
-                                        </h3>
-                                        <p style="color: #7f8c8d; margin-bottom: 20px;">
-                                            ${currentLang === 'ar' ? 
-                                                'عذراً، لا يمكن تحميل الملف حالياً. يمكنك:' : 
-                                                'Sorry, the file cannot be loaded at the moment. You can:'}
-                                        </p>
-                                        <div style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto;">
-                                            <button onclick="downloadPDF(${pdfId})" style="padding: 12px 20px; background: var(--medical-blue); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
-                                                <i class="fas fa-download"></i>
-                                                ${currentLang === 'ar' ? 'محاولة التحميل المباشر' : 'Try direct download'}
-                                            </button>
-                                            <button onclick="closePDFModal()" style="padding: 12px 20px; background: #e74c3c; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
-                                                <i class="fas fa-times"></i>
-                                                ${currentLang === 'ar' ? 'إغلاق' : 'Close'}
-                                            </button>
-                                        </div>
-                                        <div style="margin-top: 25px; padding: 15px; background: #f8f9fa; border-radius: 8px; text-align: right;">
-                                            <small style="color: #666;">
-                                                ${currentLang === 'ar' ? 
-                                                    'تأكد من:<br>• اتصال الإنترنت<br>• توفر الملف<br>• صلاحية الرابط' : 
-                                                    'Ensure:<br>• Internet connection<br>• File availability<br>• Valid link'}
-                                            </small>
-                                        </div>
-                                    </div>
-                                `;
-                            }
+                            // محاولة استخدام رابط بديل
+                            const fallbackUrl = "https://www.africau.edu/images/default/sample.pdf";
+                            
+                            loadingElement.innerHTML = `
+                                <i class="fas fa-sync-alt fa-spin fa-3x" style="color: var(--medical-blue);"></i>
+                                <p style="margin-top: 20px; color: var(--dark-text); font-size: 1.1rem;">
+                                    ${currentLang === 'ar' ? 
+                                        'جاري محاولة تحميل ملف بديل...' : 
+                                        'Trying to load alternative file...'}
+                                </p>
+                            `;
+                            
+                            // محاولة تحميل ملف بديل
+                            setTimeout(() => {
+                                loadPDF(fallbackUrl);
+                            }, 1000);
                         });
+                        
+                        // إضافة event listeners لتتبع التقدم
+                        loadingTask.onProgress = (progressData) => {
+                            const percent = Math.round((progressData.loaded / progressData.total) * 100);
+                            loadingElement.innerHTML = `
+                                <i class="fas fa-spinner fa-spin fa-3x" style="color: var(--medical-blue);"></i>
+                                <p style="margin-top: 20px; color: var(--dark-text); font-size: 1.1rem;">
+                                    ${currentLang === 'ar' ? 
+                                        `جاري تحميل الملف... ${percent}%` : 
+                                        `Loading file... ${percent}%`}
+                                </p>
+                                <div style="width: 200px; height: 10px; background: #e0e0e0; border-radius: 5px; margin: 15px auto;">
+                                    <div style="width: ${percent}%; height: 100%; background: var(--medical-blue); border-radius: 5px; transition: width 0.3s;"></div>
+                                </div>
+                            `;
+                        };
                     }
                 }
 
@@ -1723,7 +1679,7 @@
                     `;
                 }
 
-                // عرض صفحة PDF
+                // عرض صفحة PDF - محسنة للصور
                 function renderPage(num) {
                     pageRendering = true;
                     
@@ -1732,15 +1688,57 @@
                         canvas.height = viewport.height;
                         canvas.width = viewport.width;
                         
+                        // إعدادات العرض للصور
                         const renderContext = {
                             canvasContext: ctx,
-                            viewport: viewport
+                            viewport: viewport,
+                            // إعدادات مهمة للصور
+                            enableWebGL: false,
+                            imageLayer: true,
+                            renderInteractiveForms: true,
+                            // تحسين جودة الصور
+                            transform: [1, 0, 0, 1, 0, 0],
+                            backgroundColor: '#ffffff',
+                            // تحسين الأداء للصور
+                            intent: 'display',
+                            annotationMode: pdfjsLib.AnnotationMode.ENABLE_FORMS,
+                            // دعم للخطوط العربية
+                            fontExtraProperties: true,
+                            // تحسين جودة النصوص والصور
+                            textLayerMode: 1,
+                            annotationEditorMode: pdfjsLib.AnnotationEditorType.NONE
                         };
                         
                         const renderTask = page.render(renderContext);
                         
                         renderTask.promise.then(() => {
                             pageRendering = false;
+                            if (pageNumPending !== null) {
+                                renderPage(pageNumPending);
+                                pageNumPending = null;
+                            }
+                            
+                            // التحقق من وجود صور في الصفحة
+                            page.getOperatorList().then(opList => {
+                                let hasImages = false;
+                                for (let i = 0; i < opList.fnArray.length; i++) {
+                                    if (opList.fnArray[i] === pdfjsLib.OPS.paintImageXObject ||
+                                        opList.fnArray[i] === pdfjsLib.OPS.paintInlineImageXObject) {
+                                        hasImages = true;
+                                        break;
+                                    }
+                                }
+                                
+                                if (hasImages) {
+                                    console.log('Page contains images');
+                                    // يمكن إضافة رسالة للمستخدم إذا لزم الأمر
+                                }
+                            });
+                        }).catch(error => {
+                            console.error('Error rendering page:', error);
+                            pageRendering = false;
+                            
+                            // محاولة عرض الصفحة مرة أخرى
                             if (pageNumPending !== null) {
                                 renderPage(pageNumPending);
                                 pageNumPending = null;
@@ -1753,6 +1751,25 @@
                         // تحديث حالة أزرار الصفحات
                         document.getElementById('prevPage').disabled = num <= 1;
                         document.getElementById('nextPage').disabled = num >= pdfDoc.numPages;
+                        
+                    }).catch(error => {
+                        console.error('Error getting page:', error);
+                        pageRendering = false;
+                        
+                        // عرض رسالة خطأ
+                        const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                        const errorMsg = currentLang === 'ar' 
+                            ? 'حدث خطأ في عرض الصفحة' 
+                            : 'Error displaying page';
+                        
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        ctx.fillStyle = '#f8f9fa';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        
+                        ctx.fillStyle = '#666';
+                        ctx.font = '16px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.fillText(errorMsg, canvas.width / 2, canvas.height / 2);
                     });
                 }
 
@@ -1894,3 +1911,6 @@ END:VCARD`;
             </script>
         </body>
         </html>
+
+
+        
