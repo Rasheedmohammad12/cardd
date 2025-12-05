@@ -65,6 +65,42 @@
             padding: 0 20px;
         }
         
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: rgba(30, 64, 175, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 8px;
+            border: var(--blue-border);
+            box-shadow: var(--glow);
+        }
+        
+        .lang-btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 50px;
+            background: transparent;
+            color: var(--light-text);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn.active {
+            background: var(--blue-gradient);
+            color: white;
+        }
+        
+        .lang-btn:hover:not(.active) {
+            background: rgba(30, 64, 175, 0.3);
+        }
+        
         /* Header Logo */
         .header-logo-container {
             position: absolute;
@@ -95,14 +131,16 @@
             height: 400px;
             overflow: hidden;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark-gradient);
         }
         
-        .cover-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: brightness(0.7);
+        .cover-logo {
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 5px 25px rgba(30, 64, 175, 0.7));
         }
         
         .profile-info {
@@ -335,6 +373,103 @@
             color: var(--accent-light);
         }
         
+        /* Food Categories Section */
+        .food-categories {
+            background: var(--light-card);
+            margin: 40px auto;
+            padding: 50px 40px;
+            border-radius: 25px;
+            max-width: 900px;
+            box-shadow: var(--shadow-lg);
+            border: var(--blue-border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .food-categories:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--blue-gradient);
+            border-radius: 100px 0 0 0;
+            opacity: 0.1;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .category-card {
+            background: #1A1A1A;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: var(--blue-border);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), var(--glow);
+        }
+        
+        .category-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--blue-gradient);
+            z-index: 2;
+        }
+        
+        .category-header {
+            padding: 25px;
+            text-align: center;
+            background: rgba(30, 64, 175, 0.1);
+        }
+        
+        .category-title {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: var(--accent-light);
+            font-weight: 700;
+        }
+        
+        .category-desc {
+            font-size: 1rem;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+        
+        .category-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 15px;
+        }
+        
+        .category-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: var(--blue-border);
+            transition: transform 0.3s ease;
+        }
+        
+        .category-img:hover {
+            transform: scale(1.05);
+        }
+        
         /* Menu Slider Section */
         .menu-section {
             background: var(--light-card);
@@ -351,12 +486,12 @@
         .menu-section:before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
+            top: 0;
+            right: 0;
             width: 100px;
             height: 100px;
             background: var(--blue-gradient);
-            border-radius: 100px 0 0 0;
+            border-radius: 0 0 0 100px;
             opacity: 0.1;
         }
         
@@ -465,101 +600,6 @@
         
         .slider-btn.next {
             left: -30px;
-        }
-        
-        /* Specialties Section */
-        .specialties-section {
-            background: var(--light-card);
-            margin: 40px auto;
-            padding: 50px 40px;
-            border-radius: 25px;
-            max-width: 800px;
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-            border: var(--blue-border);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .specialties-section:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 150px;
-            height: 150px;
-            background: var(--blue-gradient);
-            border-radius: 0 0 150px 0;
-            opacity: 0.05;
-        }
-        
-        .specialties-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .specialty-card {
-            background: rgba(30, 64, 175, 0.1);
-            padding: 35px 25px;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.4s ease;
-            border: var(--blue-border);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .specialty-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), var(--glow);
-            background: rgba(30, 64, 175, 0.15);
-        }
-        
-        .specialty-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60px;
-            height: 60px;
-            background: var(--blue-gradient);
-            border-radius: 0 0 0 60px;
-            opacity: 0.1;
-        }
-        
-        .specialty-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--blue-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 2rem;
-            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .specialty-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--accent-light);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .specialty-desc {
-            font-size: 1rem;
-            color: var(--light-text);
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
         }
         
         /* Customer Reviews Section */
@@ -993,8 +1033,23 @@
         
         /* Responsive */
         @media (max-width: 768px) {
+            .language-switcher {
+                top: 15px;
+                left: 15px;
+                padding: 6px;
+            }
+            
+            .lang-btn {
+                padding: 6px 15px;
+                font-size: 0.9rem;
+            }
+            
             .header-logo {
                 max-width: 200px;
+            }
+            
+            .cover-logo {
+                max-width: 300px;
             }
             
             .profile-name {
@@ -1037,8 +1092,12 @@
                 left: -20px;
             }
             
-            .menu-item {
+            .menu-item, .category-card {
                 min-width: 270px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
             }
             
             .action-buttons {
@@ -1073,10 +1132,24 @@
                 height: 75px;
                 font-size: 1.8rem;
             }
+            
+            .category-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-img {
+                height: 120px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="changeLanguage('ar')">العربية</button>
+        <button class="lang-btn" onclick="changeLanguage('en')">English</button>
+    </div>
+    
     <!-- Header Logo -->
     <div class="header-logo-container">
         <img src="https://i.imgur.com/8tFQU5m.png" alt="Zasty Logo" class="header-logo">
@@ -1085,7 +1158,7 @@
     <!-- Header Section -->
     <header class="profile-header fade-in">
         <div class="cover-container">
-            <img src="https://i.imgur.com/ciyRrTl.png" alt="Zasty Coffee & Waffle Cover" class="cover-photo">
+            <img src="https://i.imgur.com/8tFQU5m.png" alt="Zasty Logo" class="cover-logo">
         </div>
         <div class="profile-info">
             <div class="profile-image-container">
@@ -1094,9 +1167,9 @@
                     <i class="fas fa-crown"></i>
                 </div>
             </div>
-            <h1 class="profile-name">Zasty Coffee & Waffle</h1>
-            <div class="profile-username">@zasty.jo</div>
-            <div class="tagline">أصنافنا مصنوعة بحب 💙</div>
+            <h1 class="profile-name" data-ar="Zasty Coffee & Waffle" data-en="Zasty Coffee & Waffle">Zasty Coffee & Waffle</h1>
+            <div class="profile-username" data-ar="@zasty.jo" data-en="@zasty.jo">@zasty.jo</div>
+            <div class="tagline" data-ar="أصنافنا مصنوعة بحب 💙" data-en="Our specialties are made with love 💙">أصنافنا مصنوعة بحب 💙</div>
             
             <!-- Rating Section -->
             <div class="rating-container">
@@ -1108,21 +1181,21 @@
                     <i class="fas fa-star-half-alt"></i>
                 </div>
                 <div class="rating-text">4.7/5</div>
-                <div class="rating-count">(247 تقييم)</div>
+                <div class="rating-count" data-ar="(247 تقييم)" data-en="(247 reviews)">(247 تقييم)</div>
             </div>
             
             <div class="stats-container">
                 <div class="stat-item">
                     <span class="stat-number">🍽️</span>
-                    <span class="stat-label">متنوع</span>
+                    <span class="stat-label" data-ar="متنوع" data-en="Variety">متنوع</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">⏰ 8AM-12AM</span>
-                    <span class="stat-label">ساعات العمل</span>
+                    <span class="stat-label" data-ar="ساعات العمل" data-en="Working Hours">ساعات العمل</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">💙</span>
-                    <span class="stat-label">بالحب</span>
+                    <span class="stat-label" data-ar="بالحب" data-en="With Love">بالحب</span>
                 </div>
             </div>
         </div>
@@ -1132,14 +1205,16 @@
     <div class="container">
         <!-- About Section -->
         <div class="about-section fade-in delay-1">
-            <h2 class="section-title">مرحبًا بكم في Zasty</h2>
-            <div class="about-text">
+            <h2 class="section-title" data-ar="مرحبًا بكم في Zasty" data-en="Welcome to Zasty">مرحبًا بكم في Zasty</h2>
+            <div class="about-text" data-ar="أصنافنا مصنوعة بحب 💙 مثل الوافل و الكريب والبان كيك عندنا افضل طعم" data-en="Our specialties are made with love 💙 like waffles, crepes, and pancakes - we have the best taste">
                 أصنافنا مصنوعة بحب 💙 مثل الوافل و الكريب والبان كيك عندنا افضل طعم
             </div>
             
             <div class="highlight-box">
-                <div class="highlight-title">نبذة عنا</div>
-                <div class="about-text" style="text-align: right; direction: rtl;">
+                <div class="highlight-title" data-ar="نبذة عنا" data-en="About Us">نبذة عنا</div>
+                <div class="about-text" style="text-align: right; direction: rtl;" 
+                     data-ar="بنحب نخبر الزباين حبايبنا انو اطلبهم شوكولاته خفيف عشان تذوق طعم العجين 💙<br><br>افضل انواع ونكهات البوظه والكوكتيلات اللذيذه والعصائر الطبيعية 🍊🥭<br><br>اهم نقطة انو كل اشي بتحضر امامك 😇💙<br><br>وصحه وألف عافيه 💙 Zasty 💙"
+                     data-en="We love to tell our dear customers to order light chocolate to taste the dough 💙<br><br>Best types and flavors of ice cream, delicious cocktails, and natural juices 🍊🥭<br><br>Most importantly, everything is prepared in front of you 😇💙<br><br>Bon Appétit 💙 Zasty 💙">
                     بنحب نخبر الزباين حبايبنا انو اطلبهم شوكولاته خفيف عشان تذوق طعم العجين 💙 
                     <br><br>
                     افضل انواع ونكهات البوظه والكوكتيلات اللذيذه والعصائر الطبيعية 🍊🥭 
@@ -1151,9 +1226,40 @@
             </div>
         </div>
 
+        <!-- Food Categories Section -->
+        <div class="food-categories fade-in delay-2">
+            <h2 class="section-title" data-ar="أقسام الطعام" data-en="Food Categories">أقسام الطعام</h2>
+            
+            <div class="categories-grid">
+                <!-- Beverages Section -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <h3 class="category-title" data-ar="المشروبات" data-en="Beverages">المشروبات</h3>
+                        <p class="category-desc" data-ar="تشكيلة واسعة من المشروبات الساخنة والباردة" data-en="Wide variety of hot and cold drinks">تشكيلة واسعة من المشروبات الساخنة والباردة</p>
+                    </div>
+                    <div class="category-images">
+                        <img src="https://i.imgur.com/MOl1ZVp.png" alt="Coffee" class="category-img">
+                        <img src="https://i.imgur.com/9iMzv9o.png" alt="Cold Drinks" class="category-img">
+                    </div>
+                </div>
+                
+                <!-- Waffles & Crepes Section -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <h3 class="category-title" data-ar="الوافل والكريب" data-en="Waffles & Crepes">الوافل والكريب</h3>
+                        <p class="category-desc" data-ar="وافل وكريب طازج مع تشكيلة متنوعة من الحشوات" data-en="Fresh waffles & crepes with variety of fillings">وافل وكريب طازج مع تشكيلة متنوعة من الحشوات</p>
+                    </div>
+                    <div class="category-images">
+                        <img src="https://i.imgur.com/bYslIFg.png" alt="Waffle" class="category-img">
+                        <img src="https://i.imgur.com/R4VQZit.png" alt="Crepe" class="category-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Menu Slider Section -->
         <div class="menu-section fade-in delay-2">
-            <h2 class="section-title">قائمة طعامنا</h2>
+            <h2 class="section-title" data-ar="قائمة الطعام" data-en="Our Menu">قائمة الطعام</h2>
             <div class="slider-container">
                 <button class="slider-btn prev" onclick="scrollSlider(-1)">
                     <i class="fas fa-chevron-right"></i>
@@ -1163,87 +1269,52 @@
                 </button>
                 <div class="slider" id="menuSlider">
                     <div class="menu-item">
-                        <img src="https://i.imgur.com/MOl1ZVp.png" alt="Coffee Menu 1">
+                        <img src="https://i.imgur.com/MOl1ZVp.png" alt="Coffee Menu">
                         <div class="menu-item-content">
-                            <h3>قهوة إيطالية مميزة</h3>
-                            <p>أجود أنواع القهوة الإيطالية مع نكهات مميزة</p>
+                            <h3 data-ar="قهوة إيطالية مميزة" data-en="Special Italian Coffee">قهوة إيطالية مميزة</h3>
+                            <p data-ar="أجود أنواع القهوة الإيطالية مع نكهات مميزة" data-en="Finest Italian coffee with unique flavors">أجود أنواع القهوة الإيطالية مع نكهات مميزة</p>
                         </div>
                     </div>
                     <div class="menu-item">
-                        <img src="https://i.imgur.com/bYslIFg.png" alt="Coffee Menu 2">
+                        <img src="https://i.imgur.com/bYslIFg.png" alt="Waffle Menu">
                         <div class="menu-item-content">
-                            <h3>وافل بلجيكي فاخر</h3>
-                            <p>وافل مقرمش مع تشكيلة من التوبينغات المميزة</p>
+                            <h3 data-ar="وافل بلجيكي فاخر" data-en="Premium Belgian Waffle">وافل بلجيكي فاخر</h3>
+                            <p data-ar="وافل مقرمش مع تشكيلة من التوبينغات المميزة" data-en="Crispy waffle with premium toppings">وافل مقرمش مع تشكيلة من التوبينغات المميزة</p>
                         </div>
                     </div>
                     <div class="menu-item">
-                        <img src="https://i.imgur.com/LyCsC3D.png" alt="Coffee Menu 3">
+                        <img src="https://i.imgur.com/LyCsC3D.png" alt="Cocktail Menu">
                         <div class="menu-item-content">
-                            <h3>كوكتيلات فواكه طازجة</h3>
-                            <p>كوكتيلات لذيذة مصنوعة من فواكه طازجة</p>
+                            <h3 data-ar="كوكتيلات فواكه طازجة" data-en="Fresh Fruit Cocktails">كوكتيلات فواكه طازجة</h3>
+                            <p data-ar="كوكتيلات لذيذة مصنوعة من فواكه طازجة" data-en="Delicious cocktails made from fresh fruits">كوكتيلات لذيذة مصنوعة من فواكه طازجة</p>
                         </div>
                     </div>
                     <div class="menu-item">
-                        <img src="https://i.imgur.com/PAFgjuD.png" alt="Coffee Menu 4">
+                        <img src="https://i.imgur.com/PAFgjuD.png" alt="Desserts Menu">
                         <div class="menu-item-content">
-                            <h3>حلويات متنوعة</h3>
-                            <p>تشكيلة واسعة من الحلويات الطازجة والمميزة</p>
+                            <h3 data-ar="حلويات متنوعة" data-en="Various Desserts">حلويات متنوعة</h3>
+                            <p data-ar="تشكيلة واسعة من الحلويات الطازجة والمميزة" data-en="Wide variety of fresh and unique desserts">تشكيلة واسعة من الحلويات الطازجة والمميزة</p>
                         </div>
                     </div>
                     <div class="menu-item">
-                        <img src="https://i.imgur.com/9iMzv9o.png" alt="Coffee Menu 5">
+                        <img src="https://i.imgur.com/9iMzv9o.png" alt="Cold Drinks Menu">
                         <div class="menu-item-content">
-                            <h3>مشروبات باردة منعشة</h3>
-                            <p>تشكيلة من المشروبات الباردة المنعشة للصيف</p>
+                            <h3 data-ar="مشروبات باردة منعشة" data-en="Refreshing Cold Drinks">مشروبات باردة منعشة</h3>
+                            <p data-ar="تشكيلة من المشروبات الباردة المنعشة للصيف" data-en="Variety of refreshing cold drinks for summer">تشكيلة من المشروبات الباردة المنعشة للصيف</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Specialties Section -->
-        <div class="specialties-section fade-in delay-2">
-            <h2 class="section-title">تخصصاتنا</h2>
-            <div class="specialties-grid">
-                <div class="specialty-card">
-                    <div class="specialty-icon">
-                        <i class="fas fa-waffle"></i>
-                    </div>
-                    <h3 class="specialty-name">وافل بلجيكي</h3>
-                    <p class="specialty-desc">وافل مقرمش مع تشكيلة من التوبينغات المميزة</p>
-                </div>
-                <div class="specialty-card">
-                    <div class="specialty-icon">
-                        <i class="fas fa-pancakes"></i>
-                    </div>
-                    <h3 class="specialty-name">بان كيك طري</h3>
-                    <p class="specialty-desc">بان كيك أمريكي طري مع شراب القيقب الأصلي</p>
-                </div>
-                <div class="specialty-card">
-                    <div class="specialty-icon">
-                        <i class="fas fa-ice-cream"></i>
-                    </div>
-                    <h3 class="specialty-name">بوظة إيطالية</h3>
-                    <p class="specialty-desc">أفضل أنواع البوظة الإيطالية بنكهات متنوعة</p>
-                </div>
-                <div class="specialty-card">
-                    <div class="specialty-icon">
-                        <i class="fas fa-cocktail"></i>
-                    </div>
-                    <h3 class="specialty-name">كوكتيلات فواكه</h3>
-                    <p class="specialty-desc">كوكتيلات لذيذة وعصائر طبيعية طازجة</p>
                 </div>
             </div>
         </div>
 
         <!-- Customer Reviews Section -->
         <div class="reviews-section fade-in delay-2">
-            <h2 class="section-title">تقييمات العملاء</h2>
+            <h2 class="section-title" data-ar="تقييمات العملاء" data-en="Customer Reviews">تقييمات العملاء</h2>
             <div class="reviews-grid">
                 <div class="review-card">
                     <div class="review-header">
-                        <div class="reviewer-name">أحمد محمد</div>
-                        <div class="review-date">٢٠ مارس ٢٠٢٤</div>
+                        <div class="reviewer-name" data-ar="أحمد محمد" data-en="Ahmed Mohammed">أحمد محمد</div>
+                        <div class="review-date" data-ar="٢٠ مارس ٢٠٢٤" data-en="March 20, 2024">٢٠ مارس ٢٠٢٤</div>
                     </div>
                     <div class="review-rating">
                         <i class="fas fa-star"></i>
@@ -1252,15 +1323,15 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="review-text">
+                    <div class="review-text" data-ar="تجربة رائعة! الوافل كان مقرمشًا ولذيذًا، والخدمة سريعة والموظفون لطفاء للغاية. سأعود بالتأكيد!" data-en="Amazing experience! The waffle was crispy and delicious, service was fast and staff were very friendly. I will definitely come back!">
                         تجربة رائعة! الوافل كان مقرمشًا ولذيذًا، والخدمة سريعة والموظفون لطفاء للغاية. سأعود بالتأكيد!
                     </div>
                 </div>
                 
                 <div class="review-card">
                     <div class="review-header">
-                        <div class="reviewer-name">سارة خالد</div>
-                        <div class="review-date">١٥ مارس ٢٠٢٤</div>
+                        <div class="reviewer-name" data-ar="سارة خالد" data-en="Sara Khalid">سارة خالد</div>
+                        <div class="review-date" data-ar="١٥ مارس ٢٠٢٤" data-en="March 15, 2024">١٥ مارس ٢٠٢٤</div>
                     </div>
                     <div class="review-rating">
                         <i class="fas fa-star"></i>
@@ -1269,15 +1340,15 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <div class="review-text">
+                    <div class="review-text" data-ar="أفضل كريب تناولته في حياتي! الحشوات طازجة والقهوة ممتازة. الجو العام أنيق وهادئ، مثالي للقاءات العائلية." data-en="The best crepe I've ever had in my life! The fillings are fresh and the coffee is excellent. The overall atmosphere is elegant and quiet, perfect for family gatherings.">
                         أفضل كريب تناولته في حياتي! الحشوات طازجة والقهوة ممتازة. الجو العام أنيق وهادئ، مثالي للقاءات العائلية.
                     </div>
                 </div>
                 
                 <div class="review-card">
                     <div class="review-header">
-                        <div class="reviewer-name">علي حسن</div>
-                        <div class="review-date">١٠ مارس ٢٠٢٤</div>
+                        <div class="reviewer-name" data-ar="علي حسن" data-en="Ali Hassan">علي حسن</div>
+                        <div class="review-date" data-ar="١٠ مارس ٢٠٢٤" data-en="March 10, 2024">١٠ مارس ٢٠٢٤</div>
                     </div>
                     <div class="review-rating">
                         <i class="fas fa-star"></i>
@@ -1286,7 +1357,7 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="review-text">
+                    <div class="review-text" data-ar="مكان رائع بمعنى الكلمة. البان كيك طري جدًا والبوظة الإيطالية أصلية. شكرًا لفريق Zasty على التجربة المميزة!" data-en="A wonderful place in every sense of the word. The pancakes are very soft and the Italian ice cream is authentic. Thanks to the Zasty team for the exceptional experience!">
                         مكان رائع بمعنى الكلمة. البان كيك طري جدًا والبوظة الإيطالية أصلية. شكرًا لفريق Zasty على التجربة المميزة!
                     </div>
                 </div>
@@ -1295,7 +1366,7 @@
 
         <!-- Contact Section -->
         <div class="contact-section fade-in delay-3">
-            <h2 class="section-title">اتصل بنا</h2>
+            <h2 class="section-title" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</h2>
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fab fa-whatsapp"></i>
@@ -1307,19 +1378,19 @@
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>شفا بدران ـ الكوم ـ مقابل اسواق السلالة</span>
+                    <span data-ar="شفا بدران ـ الكوم ـ مقابل اسواق السلالة" data-en="Shafa Badran - Al-Koum - Opposite Al-Salala Markets">شفا بدران ـ الكوم ـ مقابل اسواق السلالة</span>
                 </div>
             </div>
             
             <div class="address-box">
-                <div class="address-title">العنوان</div>
-                <div class="address-text">شفا بدران ـ الكوم ـ مقابل اسواق السلالة</div>
+                <div class="address-title" data-ar="العنوان" data-en="Address">العنوان</div>
+                <div class="address-text" data-ar="شفا بدران ـ الكوم ـ مقابل اسواق السلالة" data-en="Shafa Badran - Al-Koum - Opposite Al-Salala Markets">شفا بدران ـ الكوم ـ مقابل اسواق السلالة</div>
             </div>
         </div>
 
         <!-- Social Icons -->
         <div class="social-section fade-in delay-3">
-            <h2 class="social-title">تابعنا على وسائل التواصل</h2>
+            <h2 class="social-title" data-ar="تابعنا على وسائل التواصل" data-en="Follow Us on Social Media">تابعنا على وسائل التواصل</h2>
             <div class="social-icons-grid">
                 <a href="https://www.instagram.com/zasty.jo?igsh=aWw5NXdrZGs3dm03" class="social-icon" target="_blank">
                     <i class="fab fa-instagram"></i>
@@ -1343,15 +1414,15 @@
         <div class="action-buttons fade-in delay-3">
             <a href="https://maps.app.goo.gl/mM4xX44S5rtiEc1v5?g_st=iw" class="action-button primary" target="_blank">
                 <i class="fas fa-map-marked-alt"></i>
-                <span>الموقع على الخريطة</span>
+                <span data-ar="الموقع على الخريطة" data-en="Location on Map">الموقع على الخريطة</span>
             </a>
             <a href="https://wa.me/962790717175" class="action-button" target="_blank">
                 <i class="fab fa-whatsapp"></i>
-                <span>واتساب</span>
+                <span data-ar="واتساب" data-en="WhatsApp">واتساب</span>
             </a>
             <a href="tel:0790717175" class="action-button">
                 <i class="fas fa-phone"></i>
-                <span>اتصل الآن</span>
+                <span data-ar="اتصل الآن" data-en="Call Now">اتصل الآن</span>
             </a>
         </div>
     </div>
@@ -1364,20 +1435,55 @@
                 <img src="https://i.imgur.com/8tFQU5m.png" alt="Zasty Logo" class="footer-logo">
             </div>
             
-            <p class="footer-text">Zasty Coffee & Waffle - <span class="footer-highlight">أصنافنا مصنوعة بحب 💙</span></p>
-            <p class="footer-text">شفا بدران ـ الكوم ـ مقابل اسواق السلالة</p>
-            <p class="footer-text">هاتف: <span class="footer-highlight">0790717175</span></p>
+            <p class="footer-text" data-ar="Zasty Coffee & Waffle - أصنافنا مصنوعة بحب 💙" data-en="Zasty Coffee & Waffle - Our specialties are made with love 💙">Zasty Coffee & Waffle - <span class="footer-highlight" data-ar="أصنافنا مصنوعة بحب 💙" data-en="Our specialties are made with love 💙">أصنافنا مصنوعة بحب 💙</span></p>
+            <p class="footer-text" data-ar="شفا بدران ـ الكوم ـ مقابل اسواق السلالة" data-en="Shafa Badran - Al-Koum - Opposite Al-Salala Markets">شفا بدران ـ الكوم ـ مقابل اسواق السلالة</p>
+            <p class="footer-text" data-ar="هاتف: 0790717175" data-en="Phone: 0790717175">هاتف: <span class="footer-highlight">0790717175</span></p>
             
             <div class="footer-links">
-                <a href="https://www.instagram.com/zasty.jo" class="footer-link" target="_blank">انستجرام</a>
-                <a href="https://www.tiktok.com/@zasty83" class="footer-link" target="_blank">تيك توك</a>
-                <a href="https://wa.me/962790717175" class="footer-link" target="_blank">واتساب</a>
-                <a href="tel:0790717175" class="footer-link">اتصال</a>
+                <a href="https://www.instagram.com/zasty.jo" class="footer-link" target="_blank" data-ar="انستجرام" data-en="Instagram">انستجرام</a>
+                <a href="https://www.tiktok.com/@zasty83" class="footer-link" target="_blank" data-ar="تيك توك" data-en="TikTok">تيك توك</a>
+                <a href="https://wa.me/962790717175" class="footer-link" target="_blank" data-ar="واتساب" data-en="WhatsApp">واتساب</a>
+                <a href="tel:0790717175" class="footer-link" data-ar="اتصال" data-en="Call">اتصال</a>
             </div>
         </div>
     </footer>
 
     <script>
+        // Language switching functionality
+        let currentLanguage = 'ar';
+        
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.includes(lang === 'ar' ? 'العربية' : 'English')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-ar]').forEach(element => {
+                if (lang === 'ar') {
+                    if (element.hasAttribute('data-ar')) {
+                        element.innerHTML = element.getAttribute('data-ar');
+                    }
+                } else {
+                    if (element.hasAttribute('data-en')) {
+                        element.innerHTML = element.getAttribute('data-en');
+                    }
+                }
+            });
+            
+            // Update direction
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+            
+            // Update page title
+            document.title = lang === 'ar' ? 'Zasty Coffee & Waffle' : 'Zasty Coffee & Waffle';
+        }
+        
         // Slider functionality
         function scrollSlider(direction) {
             const slider = document.getElementById('menuSlider');
@@ -1406,6 +1512,9 @@
                     slider.scrollLeft += 300;
                 }
             }, 5000);
+            
+            // Initialize language
+            changeLanguage('ar');
         });
     </script>
 </body>
