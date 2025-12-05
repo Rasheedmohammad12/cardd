@@ -14,9 +14,11 @@
             --primary-dark: #E55A2B;
             --accent: #2D5BFF;
             --nfc-color: #9C27B0;
+            --rating-color: #FFD700;
             --gradient: linear-gradient(135deg, #FF6B35 0%, #FF8E5E 100%);
             --gradient-accent: linear-gradient(135deg, #FF6B35 0%, #2D5BFF 100%);
             --gradient-nfc: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%);
+            --gradient-rating: linear-gradient(135deg, #FFD700 0%, #FF9800 100%);
             --light-bg: #FFF8F5;
             --light-card: #FFFFFF;
             --dark-text: #333333;
@@ -88,6 +90,43 @@
             color: white;
         }
         
+        /* Rating Fixed Button */
+        .rating-fixed-button {
+            position: fixed;
+            bottom: 100px;
+            left: 30px;
+            z-index: 998;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--gradient-rating);
+            color: #333;
+            padding: 20px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            animation: pulseRating 2s infinite;
+            border: 3px solid white;
+        }
+        
+        .rating-fixed-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+        }
+        
+        .rating-fixed-button i {
+            font-size: 1.8rem;
+        }
+        
+        @keyframes pulseRating {
+            0% { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+            50% { box-shadow: 0 10px 40px rgba(255, 215, 0, 0.7); }
+            100% { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+        }
+        
         /* NFC Fixed Button */
         .nfc-fixed-button {
             position: fixed;
@@ -125,6 +164,203 @@
             100% { box-shadow: 0 10px 30px rgba(156, 39, 176, 0.4); }
         }
         
+        /* Rating Modal */
+        .rating-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9998;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .rating-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .rating-modal-content {
+            background: white;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .rating-modal-header {
+            background: var(--gradient-rating);
+            color: #333;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .rating-modal-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .rating-modal-close:hover {
+            background: rgba(0, 0, 0, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        .rating-modal-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .rating-modal-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .rating-modal-body {
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .rating-stars-input {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            direction: ltr;
+        }
+        
+        .rating-star-input {
+            font-size: 3rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .rating-star-input:hover,
+        .rating-star-input.active {
+            color: var(--rating-color);
+            transform: scale(1.2);
+        }
+        
+        .rating-form {
+            margin-top: 30px;
+            text-align: right;
+        }
+        
+        .rating-form-group {
+            margin-bottom: 25px;
+            text-align: right;
+        }
+        
+        .rating-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark-text);
+            text-align: right;
+        }
+        
+        .rating-input,
+        .rating-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+        }
+        
+        .rating-input:focus,
+        .rating-textarea:focus {
+            outline: none;
+            border-color: var(--rating-color);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+        }
+        
+        .rating-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .rating-submit-btn {
+            background: var(--gradient-rating);
+            color: #333;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .rating-submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+        
+        .rating-success {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .rating-success-icon {
+            font-size: 5rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .rating-success-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        .rating-success-message {
+            color: var(--light-text);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
         /* NFC Modal */
         .nfc-modal {
             display: none;
@@ -145,11 +381,6 @@
             animation: fadeIn 0.3s ease;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
         .nfc-modal-content {
             background: white;
             border-radius: 25px;
@@ -158,11 +389,6 @@
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideUp 0.4s ease;
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
         
         .nfc-modal-header {
@@ -337,13 +563,13 @@
             margin-right: auto;
         }
         
-        /* Rating Section */
-        .rating-section {
+        /* Rating Display Section */
+        .rating-display-section {
             padding: 60px 0;
             text-align: center;
         }
         
-        .rating-container {
+        .rating-display-container {
             background: white;
             padding: 40px;
             border-radius: 20px;
@@ -352,38 +578,60 @@
             margin: 0 auto;
         }
         
-        .rating-title {
+        .rating-display-title {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 30px;
             color: var(--dark-text);
         }
         
-        .rating-stars {
+        .rating-display-stars {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-bottom: 20px;
         }
         
-        .rating-star {
-            color: #FFD700;
+        .rating-display-star {
+            color: var(--rating-color);
             font-size: 2.5rem;
         }
         
-        .rating-value {
+        .rating-display-value {
             font-size: 3rem;
             font-weight: 800;
             color: var(--primary);
             margin-bottom: 10px;
         }
         
-        .rating-count {
+        .rating-display-count {
             color: var(--light-text);
             margin-bottom: 30px;
         }
         
-        .rating-platforms {
+        .rating-display-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gradient-rating);
+            color: #333;
+            padding: 15px 35px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            border: none;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .rating-display-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+        
+        .rating-display-platforms {
             display: flex;
             justify-content: center;
             gap: 20px;
@@ -391,7 +639,7 @@
             margin-top: 30px;
         }
         
-        .rating-platform {
+        .rating-display-platform {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -401,7 +649,7 @@
             transition: all 0.3s ease;
         }
         
-        .rating-platform:hover {
+        .rating-display-platform:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow);
         }
@@ -687,7 +935,7 @@
         footer {
             background: var(--primary-dark);
             color: white;
-            padding: 60px 0 100px;
+            padding: 60px 0 130px;
             margin-top: 60px;
             position: relative;
         }
@@ -792,6 +1040,13 @@
                 left: 10px;
             }
             
+            .rating-fixed-button {
+                left: 15px;
+                bottom: 100px;
+                padding: 15px 25px;
+                font-size: 1rem;
+            }
+            
             .nfc-fixed-button {
                 left: 15px;
                 bottom: 15px;
@@ -799,14 +1054,17 @@
                 font-size: 1rem;
             }
             
+            .rating-fixed-button i,
             .nfc-fixed-button i {
                 font-size: 1.5rem;
             }
             
+            .rating-modal-content,
             .nfc-modal-content {
                 max-width: 90%;
             }
             
+            .rating-modal-body,
             .nfc-modal-body {
                 padding: 30px 20px;
             }
@@ -833,6 +1091,13 @@
                 height: 50px;
             }
             
+            .rating-fixed-button {
+                left: 10px;
+                bottom: 100px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            
             .nfc-fixed-button {
                 left: 10px;
                 bottom: 10px;
@@ -840,10 +1105,12 @@
                 font-size: 0.9rem;
             }
             
+            .rating-fixed-button span,
             .nfc-fixed-button span {
                 display: none;
             }
             
+            .rating-fixed-button i,
             .nfc-fixed-button i {
                 font-size: 1.3rem;
                 margin: 0;
@@ -867,10 +1134,89 @@
         <button class="lang-btn" onclick="switchLanguage('en')">English</button>
     </div>
 
+    <!-- Rating Fixed Button -->
+    <div class="rating-fixed-button" onclick="openRatingModal()">
+        <i class="fas fa-star"></i>
+        <span class="rating-button-text">تقييم المحل</span>
+    </div>
+
     <!-- NFC Fixed Button -->
     <div class="nfc-fixed-button" onclick="openNFCModal()">
         <i class="fas fa-id-card"></i>
         <span class="nfc-button-text">NFC CARD Request</span>
+    </div>
+
+    <!-- Rating Modal -->
+    <div class="rating-modal" id="ratingModal">
+        <div class="rating-modal-content">
+            <div class="rating-modal-header">
+                <div class="rating-modal-close" onclick="closeRatingModal()">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="rating-modal-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h2 class="rating-modal-title rating-modal-title-ar">تقييم متجرنا</h2>
+                <h2 class="rating-modal-title rating-modal-title-en" style="display: none;">Rate Our Store</h2>
+            </div>
+            <div class="rating-modal-body">
+                <div id="ratingForm">
+                    <p class="nfc-modal-description rating-modal-desc-ar" style="margin-bottom: 30px;">
+                        شاركنا تجربتك مع متجر Flick Mobile وساعدنا على تحسين خدماتنا
+                    </p>
+                    <p class="nfc-modal-description rating-modal-desc-en" style="display: none; margin-bottom: 30px;">
+                        Share your experience with Flick Mobile store and help us improve our services
+                    </p>
+                    
+                    <div class="rating-stars-input">
+                        <i class="fas fa-star rating-star-input" data-rating="1" onclick="setRating(1)"></i>
+                        <i class="fas fa-star rating-star-input" data-rating="2" onclick="setRating(2)"></i>
+                        <i class="fas fa-star rating-star-input" data-rating="3" onclick="setRating(3)"></i>
+                        <i class="fas fa-star rating-star-input" data-rating="4" onclick="setRating(4)"></i>
+                        <i class="fas fa-star rating-star-input" data-rating="5" onclick="setRating(5)"></i>
+                    </div>
+                    
+                    <div class="rating-form">
+                        <div class="rating-form-group">
+                            <label class="rating-label rating-label-ar">اسمك (اختياري)</label>
+                            <label class="rating-label rating-label-en" style="display: none;">Your Name (Optional)</label>
+                            <input type="text" class="rating-input" id="ratingName" placeholder="أدخل اسمك">
+                        </div>
+                        
+                        <div class="rating-form-group">
+                            <label class="rating-label rating-label-ar">تعليقك (اختياري)</label>
+                            <label class="rating-label rating-label-en" style="display: none;">Your Comment (Optional)</label>
+                            <textarea class="rating-textarea" id="ratingComment" placeholder="شاركنا تجربتك مع متجرنا..."></textarea>
+                        </div>
+                        
+                        <button class="rating-submit-btn" onclick="submitRating()">
+                            <i class="fas fa-paper-plane"></i>
+                            <span class="rating-submit-text-ar">إرسال التقييم</span>
+                            <span class="rating-submit-text-en" style="display: none;">Submit Rating</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="rating-success" id="ratingSuccess">
+                    <div class="rating-success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="rating-success-title rating-success-title-ar">شكراً لتقييمك!</h3>
+                    <h3 class="rating-success-title rating-success-title-en" style="display: none;">Thank You for Your Rating!</h3>
+                    <p class="rating-success-message rating-success-message-ar">
+                        تم إرسال تقييمك بنجاح. نقدّر رأيك وسنسعى لتحسين خدماتنا بناءً على ملاحظاتك.
+                    </p>
+                    <p class="rating-success-message rating-success-message-en" style="display: none;">
+                        Your rating has been submitted successfully. We appreciate your feedback and will work to improve our services based on your comments.
+                    </p>
+                    <button class="rating-submit-btn" onclick="closeRatingModal()">
+                        <i class="fas fa-check"></i>
+                        <span class="rating-close-text-ar">حسناً</span>
+                        <span class="rating-close-text-en" style="display: none;">OK</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- NFC Modal -->
@@ -946,31 +1292,36 @@
             </div>
         </section>
 
-        <!-- Rating Section -->
-        <section class="rating-section fade-in delay-1">
+        <!-- Rating Display Section -->
+        <section class="rating-display-section fade-in delay-1">
             <div class="container">
-                <div class="rating-container">
-                    <h2 class="rating-title">تقييم متجرنا</h2>
-                    <div class="rating-stars">
-                        <i class="fas fa-star rating-star"></i>
-                        <i class="fas fa-star rating-star"></i>
-                        <i class="fas fa-star rating-star"></i>
-                        <i class="fas fa-star rating-star"></i>
-                        <i class="fas fa-star-half-alt rating-star"></i>
+                <div class="rating-display-container">
+                    <h2 class="rating-display-title">تقييم متجرنا</h2>
+                    <div class="rating-display-stars">
+                        <i class="fas fa-star rating-display-star"></i>
+                        <i class="fas fa-star rating-display-star"></i>
+                        <i class="fas fa-star rating-display-star"></i>
+                        <i class="fas fa-star rating-display-star"></i>
+                        <i class="fas fa-star-half-alt rating-display-star"></i>
                     </div>
-                    <div class="rating-value">4.7</div>
-                    <div class="rating-count">بناءً على 347 تقييم</div>
+                    <div class="rating-display-value">4.7</div>
+                    <div class="rating-display-count">بناءً على 347 تقييم</div>
                     
-                    <div class="rating-platforms">
-                        <div class="rating-platform">
+                    <button class="rating-display-button" onclick="openRatingModal()">
+                        <i class="fas fa-star"></i>
+                        أضف تقييمك
+                    </button>
+                    
+                    <div class="rating-display-platforms">
+                        <div class="rating-display-platform">
                             <i class="fab fa-google" style="color: #4285F4;"></i>
                             <span>جوجل</span>
                         </div>
-                        <div class="rating-platform">
+                        <div class="rating-display-platform">
                             <i class="fab fa-facebook" style="color: #1877F2;"></i>
                             <span>فيسبوك</span>
                         </div>
-                        <div class="rating-platform">
+                        <div class="rating-display-platform">
                             <i class="fab fa-instagram" style="color: #E4405F;"></i>
                             <span>انستجرام</span>
                         </div>
@@ -1250,6 +1601,7 @@
                             <li><a href="#">بيع أجهزة جديدة</a></li>
                             <li><a href="#">تبديل الأجهزة</a></li>
                             <li><a href="#">صيانة وإصلاح</a></li>
+                            <li><a href="javascript:void(0)" onclick="openRatingModal()">تقييم المحل</a></li>
                             <li><a href="javascript:void(0)" onclick="openNFCModal()">NFC CARD Request</a></li>
                             <li><a href="#">خدمة Cliq للتحويل</a></li>
                         </ul>
@@ -1288,31 +1640,36 @@
             </div>
         </section>
 
-        <!-- Rating Section -->
-        <section class="rating-section fade-in delay-1">
+        <!-- Rating Display Section -->
+        <section class="rating-display-section fade-in delay-1">
             <div class="container">
-                <div class="rating-container">
-                    <h2 class="rating-title english-text">Store Rating</h2>
-                    <div class="rating-stars">
-                        <i class="fas fa-star rating-star"></i>
-                        <i class="fas fa-star rating-star"></i>
-                        <i class="fas fa-star rating-star"></i>
-                        <i class="fas fa-star rating-star"></i>
-                        <i class="fas fa-star-half-alt rating-star"></i>
+                <div class="rating-display-container">
+                    <h2 class="rating-display-title english-text">Store Rating</h2>
+                    <div class="rating-display-stars">
+                        <i class="fas fa-star rating-display-star"></i>
+                        <i class="fas fa-star rating-display-star"></i>
+                        <i class="fas fa-star rating-display-star"></i>
+                        <i class="fas fa-star rating-display-star"></i>
+                        <i class="fas fa-star-half-alt rating-display-star"></i>
                     </div>
-                    <div class="rating-value">4.7</div>
-                    <div class="rating-count english-text">Based on 347 reviews</div>
+                    <div class="rating-display-value">4.7</div>
+                    <div class="rating-display-count english-text">Based on 347 reviews</div>
                     
-                    <div class="rating-platforms">
-                        <div class="rating-platform">
+                    <button class="rating-display-button" onclick="openRatingModal()">
+                        <i class="fas fa-star"></i>
+                        Add Your Rating
+                    </button>
+                    
+                    <div class="rating-display-platforms">
+                        <div class="rating-display-platform">
                             <i class="fab fa-google" style="color: #4285F4;"></i>
                             <span class="english-text">Google</span>
                         </div>
-                        <div class="rating-platform">
+                        <div class="rating-display-platform">
                             <i class="fab fa-facebook" style="color: #1877F2;"></i>
                             <span class="english-text">Facebook</span>
                         </div>
-                        <div class="rating-platform">
+                        <div class="rating-display-platform">
                             <i class="fab fa-instagram" style="color: #E4405F;"></i>
                             <span class="english-text">Instagram</span>
                         </div>
@@ -1592,6 +1949,7 @@
                             <li><a href="#" class="english-text">New Device Sales</a></li>
                             <li><a href="#" class="english-text">Device Exchange</a></li>
                             <li><a href="#" class="english-text">Maintenance & Repair</a></li>
+                            <li><a href="javascript:void(0)" onclick="openRatingModal()" class="english-text">Rate Our Store</a></li>
                             <li><a href="javascript:void(0)" onclick="openNFCModal()" class="english-text">NFC CARD Request</a></li>
                             <li><a href="#" class="english-text">Cliq Transfer Service</a></li>
                         </ul>
@@ -1616,6 +1974,184 @@
     </div>
 
     <script>
+        // Rating Variables
+        let currentRating = 0;
+        let ratings = JSON.parse(localStorage.getItem('flickMobileRatings')) || [];
+        
+        // Initialize rating display
+        function updateRatingDisplay() {
+            if (ratings.length > 0) {
+                const totalRating = ratings.reduce((sum, rating) => sum + rating.stars, 0);
+                const averageRating = (totalRating / ratings.length).toFixed(1);
+                
+                // Update display
+                document.querySelector('.rating-display-value').textContent = averageRating;
+                document.querySelector('.rating-display-count').textContent = 
+                    document.getElementById('ar-content').classList.contains('active') ?
+                    `بناءً على ${ratings.length} تقييم` : `Based on ${ratings.length} reviews`;
+                
+                // Update stars in display section
+                const displayStars = document.querySelectorAll('.rating-display-star');
+                displayStars.forEach((star, index) => {
+                    const starValue = index + 1;
+                    if (averageRating >= starValue) {
+                        star.classList.remove('fa-star-half-alt');
+                        star.classList.add('fa-star');
+                    } else if (averageRating >= starValue - 0.5) {
+                        star.classList.remove('fa-star');
+                        star.classList.add('fa-star-half-alt');
+                    } else {
+                        star.classList.remove('fa-star', 'fa-star-half-alt');
+                        star.classList.add('fa-star');
+                        star.style.opacity = '0.3';
+                    }
+                });
+            }
+        }
+        
+        // Rating Modal Functions
+        function openRatingModal() {
+            document.getElementById('ratingModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Reset form
+            currentRating = 0;
+            document.getElementById('ratingName').value = '';
+            document.getElementById('ratingComment').value = '';
+            updateRatingStars();
+            
+            // Show form, hide success message
+            document.getElementById('ratingForm').style.display = 'block';
+            document.getElementById('ratingSuccess').style.display = 'none';
+            
+            // Update modal content based on current language
+            const isArabic = document.getElementById('ar-content').classList.contains('active');
+            updateRatingModalLanguage(isArabic);
+        }
+        
+        function closeRatingModal() {
+            document.getElementById('ratingModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function setRating(rating) {
+            currentRating = rating;
+            updateRatingStars();
+        }
+        
+        function updateRatingStars() {
+            const stars = document.querySelectorAll('.rating-star-input');
+            stars.forEach((star, index) => {
+                const starValue = index + 1;
+                if (starValue <= currentRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+        
+        function submitRating() {
+            if (currentRating === 0) {
+                alert(document.getElementById('ar-content').classList.contains('active') ? 
+                    'الرجاء اختيار تقييم قبل الإرسال' : 'Please select a rating before submitting');
+                return;
+            }
+            
+            const name = document.getElementById('ratingName').value.trim();
+            const comment = document.getElementById('ratingComment').value.trim();
+            
+            // Create new rating object
+            const newRating = {
+                id: Date.now(),
+                stars: currentRating,
+                name: name || 'مستخدم',
+                comment: comment || '',
+                date: new Date().toISOString()
+            };
+            
+            // Add to ratings array
+            ratings.push(newRating);
+            
+            // Save to localStorage
+            localStorage.setItem('flickMobileRatings', JSON.stringify(ratings));
+            
+            // Update display
+            updateRatingDisplay();
+            
+            // Show success message
+            document.getElementById('ratingForm').style.display = 'none';
+            document.getElementById('ratingSuccess').style.display = 'block';
+            
+            // You can also send this data to a server here
+            // sendRatingToServer(newRating);
+        }
+        
+        function updateRatingModalLanguage(isArabic) {
+            const elements = {
+                titleAr: document.querySelector('.rating-modal-title-ar'),
+                titleEn: document.querySelector('.rating-modal-title-en'),
+                descAr: document.querySelector('.rating-modal-desc-ar'),
+                descEn: document.querySelector('.rating-modal-desc-en'),
+                labelNameAr: document.querySelector('.rating-label-ar'),
+                labelNameEn: document.querySelector('.rating-label-en'),
+                labelCommentAr: document.querySelectorAll('.rating-label-ar')[1],
+                labelCommentEn: document.querySelectorAll('.rating-label-en')[1],
+                submitTextAr: document.querySelector('.rating-submit-text-ar'),
+                submitTextEn: document.querySelector('.rating-submit-text-en'),
+                successTitleAr: document.querySelector('.rating-success-title-ar'),
+                successTitleEn: document.querySelector('.rating-success-title-en'),
+                successMessageAr: document.querySelector('.rating-success-message-ar'),
+                successMessageEn: document.querySelector('.rating-success-message-en'),
+                closeTextAr: document.querySelector('.rating-close-text-ar'),
+                closeTextEn: document.querySelector('.rating-close-text-en')
+            };
+            
+            if (isArabic) {
+                elements.titleAr.style.display = 'block';
+                elements.titleEn.style.display = 'none';
+                elements.descAr.style.display = 'block';
+                elements.descEn.style.display = 'none';
+                elements.labelNameAr.style.display = 'block';
+                elements.labelNameEn.style.display = 'none';
+                elements.labelCommentAr.style.display = 'block';
+                elements.labelCommentEn.style.display = 'none';
+                elements.submitTextAr.style.display = 'inline';
+                elements.submitTextEn.style.display = 'none';
+                elements.successTitleAr.style.display = 'block';
+                elements.successTitleEn.style.display = 'none';
+                elements.successMessageAr.style.display = 'block';
+                elements.successMessageEn.style.display = 'none';
+                elements.closeTextAr.style.display = 'inline';
+                elements.closeTextEn.style.display = 'none';
+                
+                document.getElementById('ratingName').placeholder = 'أدخل اسمك';
+                document.getElementById('ratingComment').placeholder = 'شاركنا تجربتك مع متجرنا...';
+                document.querySelector('.rating-button-text').textContent = 'تقييم المحل';
+            } else {
+                elements.titleAr.style.display = 'none';
+                elements.titleEn.style.display = 'block';
+                elements.descAr.style.display = 'none';
+                elements.descEn.style.display = 'block';
+                elements.labelNameAr.style.display = 'none';
+                elements.labelNameEn.style.display = 'block';
+                elements.labelCommentAr.style.display = 'none';
+                elements.labelCommentEn.style.display = 'block';
+                elements.submitTextAr.style.display = 'none';
+                elements.submitTextEn.style.display = 'inline';
+                elements.successTitleAr.style.display = 'none';
+                elements.successTitleEn.style.display = 'block';
+                elements.successMessageAr.style.display = 'none';
+                elements.successMessageEn.style.display = 'block';
+                elements.closeTextAr.style.display = 'none';
+                elements.closeTextEn.style.display = 'inline';
+                
+                document.getElementById('ratingName').placeholder = 'Enter your name';
+                document.getElementById('ratingComment').placeholder = 'Share your experience with our store...';
+                document.querySelector('.rating-button-text').textContent = 'Rate Store';
+            }
+        }
+        
         // NFC Modal Functions
         function openNFCModal() {
             document.getElementById('nfcModal').classList.add('active');
@@ -1680,24 +2216,39 @@
                 document.documentElement.dir = 'ltr';
             }
             
-            // Update NFC modal content
+            // Update modals content
+            updateRatingModalLanguage(lang === 'ar');
             updateNFCModalLanguage(lang === 'ar');
+            
+            // Update rating display
+            updateRatingDisplay();
             
             // Scroll to top when changing language
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        // Close modal when clicking outside
+        // Close modals when clicking outside
+        document.getElementById('ratingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeRatingModal();
+            }
+        });
+        
         document.getElementById('nfcModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeNFCModal();
             }
         });
         
-        // Close modal with Escape key
+        // Close modals with Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && document.getElementById('nfcModal').classList.contains('active')) {
-                closeNFCModal();
+            if (e.key === 'Escape') {
+                if (document.getElementById('ratingModal').classList.contains('active')) {
+                    closeRatingModal();
+                }
+                if (document.getElementById('nfcModal').classList.contains('active')) {
+                    closeNFCModal();
+                }
             }
         });
         
@@ -1721,7 +2272,7 @@
             });
             
             // Add click effects to buttons
-            const buttons = document.querySelectorAll('.social-icon, .contact-item, .product-card, .nfc-fixed-button');
+            const buttons = document.querySelectorAll('.social-icon, .contact-item, .product-card, .rating-fixed-button, .nfc-fixed-button, .rating-display-button');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
@@ -1730,6 +2281,9 @@
                     }, 150);
                 });
             });
+            
+            // Initialize rating display
+            updateRatingDisplay();
             
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1748,6 +2302,28 @@
                 });
             });
         });
+        
+        // Function to send rating to server (optional)
+        function sendRatingToServer(rating) {
+            // This is where you would send the rating to your backend
+            // Example using fetch API:
+            /*
+            fetch('/api/ratings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(rating)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Rating submitted successfully:', data);
+            })
+            .catch(error => {
+                console.error('Error submitting rating:', error);
+            });
+            */
+        }
     </script>
 </body>
 </html>
