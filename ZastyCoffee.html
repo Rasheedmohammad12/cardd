@@ -16,6 +16,7 @@
             --accent: #1E40AF;
             --accent-light: #3B82F6;
             --accent-dark: #1D4ED8;
+            --facebook-blue: #1877F2;
             --blue-gradient: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
             --dark-gradient: linear-gradient(135deg, #0A0A0A 0%, #000000 100%);
             --light-bg: #0A0A0A;
@@ -329,110 +330,6 @@
             background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
         }
         
-        /* Web Rating Section */
-        .web-rating-section {
-            background: var(--light-card);
-            margin: 40px auto;
-            padding: 40px 30px;
-            border-radius: 25px;
-            max-width: 800px;
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-            border: var(--blue-border);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .web-rating-section:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 80px;
-            height: 80px;
-            background: var(--blue-gradient);
-            border-radius: 0 0 0 80px;
-            opacity: 0.1;
-        }
-        
-        .rating-form {
-            max-width: 500px;
-            margin: 25px auto 0;
-            text-align: right;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--accent-light);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        
-        .star-rating {
-            direction: ltr;
-            text-align: left;
-            margin-bottom: 15px;
-        }
-        
-        .star-rating input {
-            display: none;
-        }
-        
-        .star-rating label {
-            font-size: 1.8rem;
-            color: #666;
-            cursor: pointer;
-            transition: color 0.3s;
-            margin: 0 4px;
-        }
-        
-        .star-rating input:checked ~ label,
-        .star-rating label:hover,
-        .star-rating label:hover ~ label {
-            color: #FFD700;
-        }
-        
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 12px;
-            background: rgba(30, 64, 175, 0.1);
-            border: var(--blue-border);
-            border-radius: 10px;
-            color: var(--light-text);
-            font-size: 1rem;
-            resize: vertical;
-        }
-        
-        .form-textarea {
-            min-height: 100px;
-        }
-        
-        .submit-rating {
-            padding: 12px 35px;
-            background: var(--blue-gradient);
-            color: white;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .submit-rating:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--glow);
-        }
-        
         /* About Section */
         .about-section {
             background: var(--light-card);
@@ -516,20 +413,32 @@
             color: var(--accent-light);
         }
         
-        /* Food Categories Section */
-        .food-categories {
+        /* Fancy Menu Section - NEW DESIGN */
+        .fancy-menu-section {
             background: var(--light-card);
             margin: 40px auto;
             padding: 40px 30px;
             border-radius: 25px;
-            max-width: 900px;
+            max-width: 1000px;
             box-shadow: var(--shadow-lg);
             border: var(--blue-border);
             position: relative;
             overflow: hidden;
         }
         
-        .food-categories:before {
+        .fancy-menu-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--blue-gradient);
+            border-radius: 0 0 0 80px;
+            opacity: 0.1;
+        }
+        
+        .fancy-menu-section:after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -541,29 +450,31 @@
             opacity: 0.1;
         }
         
-        .categories-grid {
+        .fancy-menu-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
             margin-top: 35px;
         }
         
-        .category-card {
-            background: #1A1A1A;
+        .fancy-menu-category {
+            background: rgba(30, 64, 175, 0.1);
             border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
+            padding: 25px;
             border: var(--blue-border);
+            box-shadow: var(--shadow);
             transition: all 0.4s ease;
             position: relative;
+            overflow: hidden;
         }
         
-        .category-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), var(--glow);
+        .fancy-menu-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg), var(--glow);
+            background: rgba(30, 64, 175, 0.15);
         }
         
-        .category-card:before {
+        .fancy-menu-category:before {
             content: '';
             position: absolute;
             top: 0;
@@ -571,49 +482,121 @@
             width: 100%;
             height: 4px;
             background: var(--blue-gradient);
-            z-index: 2;
         }
         
         .category-header {
-            padding: 20px;
-            text-align: center;
-            background: rgba(30, 64, 175, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(30, 64, 175, 0.3);
         }
         
-        .category-title {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
+        .category-icon {
+            font-size: 2rem;
             color: var(--accent-light);
+            width: 50px;
+            height: 50px;
+            background: rgba(30, 64, 175, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-name {
+            font-size: 1.6rem;
             font-weight: 700;
+            color: var(--accent-light);
+            font-family: 'Playfair Display', serif;
         }
         
-        .category-desc {
-            font-size: 0.95rem;
+        .fancy-menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .fancy-menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(30, 64, 175, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(30, 64, 175, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .fancy-menu-item:hover {
+            background: rgba(30, 64, 175, 0.1);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .fancy-menu-item:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 0;
+            background: var(--blue-gradient);
+            border-radius: 5px;
+            transition: height 0.3s ease;
+        }
+        
+        .fancy-menu-item:hover:before {
+            height: 70%;
+        }
+        
+        .item-name {
+            font-size: 1.1rem;
+            font-weight: 600;
             color: var(--light-text);
-            line-height: 1.6;
+            flex-grow: 1;
+            padding-right: 15px;
         }
         
-        .category-images {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            padding: 12px;
+        .item-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            background: rgba(30, 64, 175, 0.15);
+            padding: 6px 12px;
+            border-radius: 8px;
+            min-width: 70px;
+            text-align: center;
         }
         
-        .category-img {
+        .item-description {
+            font-size: 0.9rem;
+            color: var(--blue-text);
+            margin-top: 5px;
+            font-style: italic;
             width: 100%;
-            height: 130px;
-            object-fit: cover;
-            border-radius: 10px;
-            border: var(--blue-border);
-            transition: transform 0.3s ease;
+            padding-right: 15px;
         }
         
-        .category-img:hover {
-            transform: scale(1.05);
+        .special-tag {
+            position: absolute;
+            top: -8px;
+            left: 15px;
+            background: var(--blue-gradient);
+            color: white;
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
         }
         
-        /* Full Screen Menu Section */
+        /* Fullscreen Menu Gallery */
         .fullscreen-menu-section {
             background: var(--light-card);
             margin: 40px auto;
@@ -638,9 +621,34 @@
             opacity: 0.1;
         }
         
+        .gallery-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--accent-light);
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .gallery-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--blue-gradient);
+            border-radius: 3px;
+        }
+        
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-top: 35px;
         }
@@ -1001,7 +1009,7 @@
             z-index: 1;
         }
         
-        /* Social Icons */
+        /* Social Icons - Updated with Facebook */
         .social-section {
             text-align: center;
             padding: 50px 0 30px;
@@ -1034,7 +1042,7 @@
             justify-content: center;
             gap: 25px;
             flex-wrap: wrap;
-            max-width: 650px;
+            max-width: 750px;
             margin: 0 auto;
         }
         
@@ -1054,6 +1062,15 @@
             position: relative;
             border: var(--blue-border);
             overflow: hidden;
+        }
+        
+        .social-icon.facebook {
+            color: var(--facebook-blue);
+            border-color: rgba(24, 119, 242, 0.5);
+        }
+        
+        .social-icon.facebook:before {
+            background: linear-gradient(135deg, #1877F2 0%, #0a58ca 100%);
         }
         
         .social-icon:before {
@@ -1214,6 +1231,110 @@
             color: var(--accent-light);
         }
         
+        /* Web Rating Section */
+        .web-rating-section {
+            background: var(--light-card);
+            margin: 40px auto;
+            padding: 40px 30px;
+            border-radius: 25px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: var(--blue-border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .web-rating-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--blue-gradient);
+            border-radius: 0 0 0 80px;
+            opacity: 0.1;
+        }
+        
+        .rating-form {
+            max-width: 500px;
+            margin: 25px auto 0;
+            text-align: right;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .star-rating {
+            direction: ltr;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        
+        .star-rating input {
+            display: none;
+        }
+        
+        .star-rating label {
+            font-size: 1.8rem;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s;
+            margin: 0 4px;
+        }
+        
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #FFD700;
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(30, 64, 175, 0.1);
+            border: var(--blue-border);
+            border-radius: 10px;
+            color: var(--light-text);
+            font-size: 1rem;
+            resize: vertical;
+        }
+        
+        .form-textarea {
+            min-height: 100px;
+        }
+        
+        .submit-rating {
+            padding: 12px 35px;
+            background: var(--blue-gradient);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .submit-rating:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow);
+        }
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -1301,16 +1422,20 @@
                 font-size: 1.4rem;
             }
             
-            .menu-grid, .categories-grid {
+            .fancy-menu-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .fancy-menu-category {
+                padding: 20px;
+            }
+            
+            .menu-grid {
                 grid-template-columns: 1fr;
             }
             
             .menu-item {
                 height: 220px;
-            }
-            
-            .category-img {
-                height: 110px;
             }
             
             .lightbox-nav {
@@ -1335,6 +1460,10 @@
                 width: 70px;
                 height: 70px;
                 font-size: 1.8rem;
+            }
+            
+            .social-icons-grid {
+                gap: 15px;
             }
         }
         
@@ -1365,12 +1494,20 @@
                 font-size: 1.6rem;
             }
             
-            .category-images {
-                grid-template-columns: 1fr;
+            .fancy-menu-category {
+                padding: 15px;
             }
             
-            .category-img {
-                height: 100px;
+            .category-name {
+                font-size: 1.4rem;
+            }
+            
+            .item-name {
+                font-size: 1rem;
+            }
+            
+            .item-price {
+                font-size: 1.1rem;
             }
             
             .menu-item {
@@ -1510,44 +1647,184 @@
             </form>
         </div>
 
-        <!-- Food Categories Section -->
-        <div class="food-categories fade-in delay-2">
-            <h2 class="section-title" data-ar="أقسام الطعام" data-en="Food Categories">أقسام الطعام</h2>
+        <!-- Fancy Menu Section - NEW DESIGN -->
+        <div class="fancy-menu-section fade-in delay-2">
+            <h2 class="section-title" data-ar="قائمتنا الفخمة" data-en="Our Fancy Menu">قائمتنا الفخمة</h2>
             
-            <div class="categories-grid">
-                <!-- Waffles & Crepes Section -->
-                <div class="category-card">
+            <div class="fancy-menu-container">
+                <!-- Waffles Category -->
+                <div class="fancy-menu-category">
                     <div class="category-header">
-                        <h3 class="category-title" data-ar="الوافل والكريب" data-en="Waffles & Crepes">الوافل والكريب</h3>
-                        <p class="category-desc" data-ar="أفضل أنواع الوافل والكريب الطازج" data-en="Best types of fresh waffles & crepes">أفضل أنواع الوافل والكريب الطازج</p>
+                        <div class="category-icon">🧇</div>
+                        <div class="category-name" data-ar="الوافل" data-en="Waffles">الوافل</div>
                     </div>
-                    <div class="category-images">
-                        <img src="https://i.imgur.com/ciyRrTl.png" alt="Waffle 1" class="category-img">
-                        <img src="https://i.imgur.com/R4VQZit.png" alt="Crepe" class="category-img">
-                        <img src="https://i.imgur.com/MfBNTyg.png" alt="Waffle 2" class="category-img">
-                        <img src="https://i.imgur.com/VPN4qLo.png" alt="Waffle 3" class="category-img">
+                    <div class="fancy-menu-items">
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="وافل شوكولاته بالمارشميلو" data-en="Chocolate Waffle with Marshmallow">وافل شوكولاته بالمارشميلو</div>
+                                <div class="item-description" data-ar="مع صوص الشوكولاته الساخن" data-en="With hot chocolate sauce">مع صوص الشوكولاته الساخن</div>
+                            </div>
+                            <div class="item-price">3.5 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="وافل كراميل بالبندق" data-en="Caramel Waffle with Nuts">وافل كراميل بالبندق</div>
+                                <div class="item-description" data-ar="مغطى بصوص الكراميل واللوز" data-en="Topped with caramel sauce and almonds">مغطى بصوص الكراميل واللوز</div>
+                            </div>
+                            <div class="item-price">4.0 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div class="special-tag" data-ar="الأكثر طلباً" data-en="Most Popular">الأكثر طلباً</div>
+                            <div>
+                                <div class="item-name" data-ar="وافل الفراولة والكريمة" data-en="Strawberry Waffle with Cream">وافل الفراولة والكريمة</div>
+                                <div class="item-description" data-ar="مع فراولة طازجة وكريمة مخفوقة" data-en="With fresh strawberries and whipped cream">مع فراولة طازجة وكريمة مخفوقة</div>
+                            </div>
+                            <div class="item-price">3.8 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="وافل أوريو بالشوكولاته" data-en="Oreo Chocolate Waffle">وافل أوريو بالشوكولاته</div>
+                                <div class="item-description" data-ar="مع قطع أوريو وصوص شوكولاته" data-en="With Oreo pieces and chocolate sauce">مع قطع أوريو وصوص شوكولاته</div>
+                            </div>
+                            <div class="item-price">4.2 JD</div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Beverages Section -->
-                <div class="category-card">
+                <!-- Crepes Category -->
+                <div class="fancy-menu-category">
                     <div class="category-header">
-                        <h3 class="category-title" data-ar="المشروبات" data-en="Beverages">المشروبات</h3>
-                        <p class="category-desc" data-ar="تشكيلة واسعة من المشروبات المميزة" data-en="Wide variety of premium drinks">تشكيلة واسعة من المشروبات المميزة</p>
+                        <div class="category-icon">🥞</div>
+                        <div class="category-name" data-ar="الكريب" data-en="Crepes">الكريب</div>
                     </div>
-                    <div class="category-images">
-                        <img src="https://i.imgur.com/ciyRrTl.png" alt="Beverage 1" class="category-img">
-                        <img src="https://i.imgur.com/csZIKT1.png" alt="Beverage 2" class="category-img">
-                        <img src="https://i.imgur.com/mXKNF2g.png" alt="Beverage 3" class="category-img">
-                        <img src="https://i.imgur.com/Am6NhMv.png" alt="Beverage 4" class="category-img">
+                    <div class="fancy-menu-items">
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="كريب جبنة ونوتيلا" data-en="Cheese and Nutella Crepe">كريب جبنة ونوتيلا</div>
+                                <div class="item-description" data-ar="مزيج لذيذ من الجبنة والنوتيلا" data-en="Delicious mix of cheese and Nutella">مزيج لذيذ من الجبنة والنوتيلا</div>
+                            </div>
+                            <div class="item-price">3.0 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div class="special-tag" data-ar="مميز" data-en="Special">مميز</div>
+                            <div>
+                                <div class="item-name" data-ar="كريب الدجاج بالجبنة" data-en="Chicken and Cheese Crepe">كريب الدجاج بالجبنة</div>
+                                <div class="item-description" data-ar="دجاج مشوي مع جبنة موزاريلا" data-en="Grilled chicken with mozzarella cheese">دجاج مشوي مع جبنة موزاريلا</div>
+                            </div>
+                            <div class="item-price">4.5 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="كريب الموز بالكراميل" data-en="Banana Caramel Crepe">كريب الموز بالكراميل</div>
+                                <div class="item-description" data-ar="موز طازج مع صوص الكراميل" data-en="Fresh banana with caramel sauce">موز طازج مع صوص الكراميل</div>
+                            </div>
+                            <div class="item-price">3.3 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="كريب الشوكولاته والمارشميلو" data-en="Chocolate Marshmallow Crepe">كريب الشوكولاته والمارشميلو</div>
+                                <div class="item-description" data-ar="مع مارشميلو سائل وشوكولاته" data-en="With liquid marshmallow and chocolate">مع مارشميلو سائل وشوكولاته</div>
+                            </div>
+                            <div class="item-price">3.7 JD</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Beverages Category -->
+                <div class="fancy-menu-category">
+                    <div class="category-header">
+                        <div class="category-icon">☕</div>
+                        <div class="category-name" data-ar="المشروبات" data-en="Beverages">المشروبات</div>
+                    </div>
+                    <div class="fancy-menu-items">
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="قهوة لاتيه" data-en="Latte Coffee">قهوة لاتيه</div>
+                                <div class="item-description" data-ar="مع رسومات فنية على الوجه" data-en="With artistic designs on top">مع رسومات فنية على الوجه</div>
+                            </div>
+                            <div class="item-price">2.0 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div class="special-tag" data-ar="جديد" data-en="New">جديد</div>
+                            <div>
+                                <div class="item-name" data-ar="ميلك شيك أوريو" data-en="Oreo Milkshake">ميلك شيك أوريو</div>
+                                <div class="item-description" data-ar="مع كريمة وقطع أوريو" data-en="With cream and Oreo pieces">مع كريمة وقطع أوريو</div>
+                            </div>
+                            <div class="item-price">3.5 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="عصير برتقال طازج" data-en="Fresh Orange Juice">عصير برتقال طازج</div>
+                                <div class="item-description" data-ar="برتقال طازج مع سكر خفيف" data-en="Fresh oranges with light sugar">برتقال طازج مع سكر خفيف</div>
+                            </div>
+                            <div class="item-price">2.5 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="شاي مثلج بالنعناع" data-en="Iced Mint Tea">شاي مثلج بالنعناع</div>
+                                <div class="item-description" data-ar="مع أوراق النعناع الطازجة" data-en="With fresh mint leaves">مع أوراق النعناع الطازجة</div>
+                            </div>
+                            <div class="item-price">1.8 JD</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ice Cream Category -->
+                <div class="fancy-menu-category">
+                    <div class="category-header">
+                        <div class="category-icon">🍨</div>
+                        <div class="category-name" data-ar="البوظة" data-en="Ice Cream">البوظة</div>
+                    </div>
+                    <div class="fancy-menu-items">
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="بوظة إيطالية بالفانيليا" data-en="Italian Vanilla Ice Cream">بوظة إيطالية بالفانيليا</div>
+                                <div class="item-description" data-ar="فانيليا إيطالية أصلية" data-en="Original Italian vanilla">فانيليا إيطالية أصلية</div>
+                            </div>
+                            <div class="item-price">2.5 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="ساندويش بوظة شوكولاته" data-en="Chocolate Ice Cream Sandwich">ساندويش بوظة شوكولاته</div>
+                                <div class="item-description" data-ar="بين قطع بسكويت شوكولاته" data-en="Between chocolate cookie pieces">بين قطع بسكويت شوكولاته</div>
+                            </div>
+                            <div class="item-price">3.0 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div class="special-tag" data-ar="موسمي" data-en="Seasonal">موسمي</div>
+                            <div>
+                                <div class="item-name" data-ar="ميلك شيك مانجو" data-en="Mango Milkshake">ميلك شيك مانجو</div>
+                                <div class="item-description" data-ar="مع قطع مانجو طازجة" data-en="With fresh mango pieces">مع قطع مانجو طازجة</div>
+                            </div>
+                            <div class="item-price">3.8 JD</div>
+                        </div>
+                        
+                        <div class="fancy-menu-item">
+                            <div>
+                                <div class="item-name" data-ar="مثلجات ميكس الفواكه" data-en="Mixed Fruit Ice Cream">مثلجات ميكس الفواكه</div>
+                                <div class="item-description" data-ar="ثلاث نكهات مع قطع فواكه" data-en="Three flavors with fruit pieces">ثلاث نكهات مع قطع فواكه</div>
+                            </div>
+                            <div class="item-price">3.2 JD</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Full Screen Menu Section -->
+        <!-- Full Screen Menu Gallery -->
         <div class="fullscreen-menu-section fade-in delay-2">
-            <h2 class="section-title" data-ar="قائمة الطعام" data-en="Our Menu">قائمة الطعام</h2>
+            <h3 class="gallery-title" data-ar="معرض صور المنيو" data-en="Menu Gallery">معرض صور المنيو</h3>
             
             <div class="menu-grid">
                 <!-- Menu Item 1 -->
@@ -1695,12 +1972,15 @@
             </div>
         </div>
 
-        <!-- Social Icons -->
+        <!-- Social Icons - Updated with Facebook -->
         <div class="social-section fade-in delay-3">
             <h2 class="social-title" data-ar="تابعنا على وسائل التواصل" data-en="Follow Us on Social Media">تابعنا على وسائل التواصل</h2>
             <div class="social-icons-grid">
                 <a href="https://www.instagram.com/zasty.jo?igsh=aWw5NXdrZGs3dm03" class="social-icon" target="_blank">
                     <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/share/16cpGDvHih/?mibextid=wwXIfr" class="social-icon facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
                 </a>
                 <a href="https://www.tiktok.com/@zasty83?_r=1&_t=ZS-91ui5ubNqQX" class="social-icon" target="_blank">
                     <i class="fab fa-tiktok"></i>
@@ -1723,6 +2003,10 @@
                 <i class="fas fa-map-marked-alt"></i>
                 <span data-ar="الموقع على الخريطة" data-en="Location on Map">الموقع على الخريطة</span>
             </a>
+            <a href="https://www.facebook.com/share/16cpGDvHih/?mibextid=wwXIfr" class="action-button" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+                <span data-ar="فيسبوك" data-en="Facebook">فيسبوك</span>
+            </a>
             <a href="https://wa.me/962790717175" class="action-button" target="_blank">
                 <i class="fab fa-whatsapp"></i>
                 <span data-ar="واتساب" data-en="WhatsApp">واتساب</span>
@@ -1743,6 +2027,7 @@
             
             <div class="footer-links">
                 <a href="https://www.instagram.com/zasty.jo" class="footer-link" target="_blank" data-ar="انستجرام" data-en="Instagram">انستجرام</a>
+                <a href="https://www.facebook.com/share/16cpGDvHih/?mibextid=wwXIfr" class="footer-link" target="_blank" data-ar="فيسبوك" data-en="Facebook">فيسبوك</a>
                 <a href="https://www.tiktok.com/@zasty83" class="footer-link" target="_blank" data-ar="تيك توك" data-en="TikTok">تيك توك</a>
                 <a href="https://wa.me/962790717175" class="footer-link" target="_blank" data-ar="واتساب" data-en="WhatsApp">واتساب</a>
                 <a href="tel:0790717175" class="footer-link" data-ar="اتصال" data-en="Call">اتصال</a>
@@ -1867,6 +2152,7 @@ TEL;TYPE=CELL:0790717175
 EMAIL:info@zasty.com
 ADR;TYPE=WORK:;;شفا بدران ـ الكوم ـ مقابل اسواق السلالة;;;;;
 URL:https://www.instagram.com/zasty.jo
+URL:https://www.facebook.com/share/16cpGDvHih/
 NOTE:أصنافنا مصنوعة بحب 💙
 END:VCARD`;
             
