@@ -101,38 +101,41 @@
             background: rgba(30, 64, 175, 0.3);
         }
         
-        /* Full Cover Image */
-        .full-cover {
+        /* Logo Header */
+        .logo-header {
             width: 100%;
-            height: 500px;
+            height: 400px;
             position: relative;
             overflow: hidden;
-        }
-        
-        .full-cover-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.8);
-        }
-        
-        .cover-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
             display: flex;
             align-items: center;
             justify-content: center;
+            background: var(--dark-gradient);
         }
         
-        .cover-logo {
-            max-width: 400px;
+        .logo-container {
+            position: relative;
+            text-align: center;
+        }
+        
+        .main-logo {
+            max-width: 450px;
             height: auto;
-            filter: drop-shadow(0 5px 25px rgba(30, 64, 175, 0.8));
-            z-index: 2;
+            filter: drop-shadow(0 10px 30px rgba(30, 64, 175, 0.8));
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .logo-tagline {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
         
         /* Header */
@@ -603,8 +606,8 @@
             transform: scale(1.05);
         }
         
-        /* Menu Image Slider Section */
-        .menu-section {
+        /* Full Screen Image Slider */
+        .fullscreen-menu-section {
             background: var(--light-card);
             margin: 40px auto;
             padding: 50px 40px;
@@ -616,7 +619,7 @@
             overflow: hidden;
         }
         
-        .menu-section:before {
+        .fullscreen-menu-section:before {
             content: '';
             position: absolute;
             top: 0;
@@ -628,66 +631,114 @@
             opacity: 0.1;
         }
         
-        .image-slider-container {
-            position: relative;
-            margin: 30px 0;
-            height: 400px;
-            overflow: hidden;
-            border-radius: 20px;
-            border: var(--blue-border);
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
         
-        .image-slider {
+        .menu-item {
             position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: var(--blue-border);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            height: 300px;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), var(--glow);
+        }
+        
+        .menu-item img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
         
-        .menu-slide {
+        .menu-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .menu-item-overlay {
             position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover .menu-item-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .menu-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--blue-gradient);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Full Screen Lightbox */
+        .lightbox-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
             opacity: 0;
-            transition: opacity 1s ease;
+            transition: opacity 0.3s ease;
         }
         
-        .menu-slide.active {
+        .lightbox-overlay.active {
+            display: flex;
             opacity: 1;
         }
         
-        .menu-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            border: var(--blue-border);
         }
         
-        .menu-slider-controls {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 3;
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
         }
         
-        .menu-slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .menu-slider-dot.active {
-            background: var(--accent-light);
-            transform: scale(1.2);
-        }
-        
-        .menu-slider-nav {
+        .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -697,26 +748,64 @@
             color: white;
             border: none;
             border-radius: 50%;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 3;
             transition: all 0.3s ease;
+            z-index: 2001;
         }
         
-        .menu-slider-nav:hover {
+        .lightbox-nav:hover {
             background: var(--accent-light);
             transform: translateY(-50%) scale(1.1);
         }
         
-        .menu-slider-nav.prev {
+        .lightbox-prev {
             right: 20px;
         }
         
-        .menu-slider-nav.next {
+        .lightbox-next {
             left: 20px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(30, 64, 175, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2001;
+        }
+        
+        .lightbox-close:hover {
+            background: #ef4444;
+            transform: scale(1.1);
+        }
+        
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            z-index: 2001;
         }
         
         /* Customer Reviews Section */
@@ -1161,11 +1250,11 @@
                 font-size: 0.9rem;
             }
             
-            .full-cover {
-                height: 400px;
+            .logo-header {
+                height: 300px;
             }
             
-            .cover-logo {
+            .main-logo {
                 max-width: 300px;
             }
             
@@ -1203,18 +1292,28 @@
                 font-size: 1.5rem;
             }
             
-            .image-slider-container {
-                height: 300px;
+            .menu-grid {
+                grid-template-columns: 1fr;
             }
             
-            .menu-slider-nav {
+            .menu-item {
+                height: 250px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lightbox-nav {
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
             }
             
-            .categories-grid {
-                grid-template-columns: 1fr;
+            .lightbox-close {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
             
             .action-buttons {
@@ -1228,11 +1327,11 @@
         }
         
         @media (max-width: 480px) {
-            .full-cover {
-                height: 300px;
+            .logo-header {
+                height: 250px;
             }
             
-            .cover-logo {
+            .main-logo {
                 max-width: 250px;
             }
             
@@ -1258,8 +1357,8 @@
                 height: 120px;
             }
             
-            .image-slider-container {
-                height: 250px;
+            .menu-item {
+                height: 200px;
             }
         }
     </style>
@@ -1271,11 +1370,11 @@
         <button class="lang-btn" onclick="changeLanguage('en')">English</button>
     </div>
     
-    <!-- Full Cover Image -->
-    <div class="full-cover fade-in">
-        <img src="https://i.imgur.com/8tFQU5m.png" alt="Zasty Cover" class="full-cover-img">
-        <div class="cover-overlay">
-            <img src="https://i.imgur.com/8tFQU5m.png" alt="Zasty Logo" class="cover-logo">
+    <!-- Logo Header -->
+    <div class="logo-header fade-in">
+        <div class="logo-container">
+            <img src="https://i.imgur.com/8tFQU5m.png" alt="Zasty Logo" class="main-logo">
+            <div class="logo-tagline" data-ar="أصنافنا مصنوعة بحب 💙" data-en="Our specialties are made with love 💙">أصنافنا مصنوعة بحب 💙</div>
         </div>
     </div>
     
@@ -1290,7 +1389,6 @@
             </div>
             <h1 class="profile-name" data-ar="Zasty Coffee & Waffle" data-en="Zasty Coffee & Waffle">Zasty Coffee & Waffle</h1>
             <div class="profile-username" data-ar="@zasty.jo" data-en="@zasty.jo">@zasty.jo</div>
-            <div class="tagline" data-ar="أصنافنا مصنوعة بحب 💙" data-en="Our specialties are made with love 💙">أصنافنا مصنوعة بحب 💙</div>
             
             <!-- Rating Section -->
             <div class="rating-container">
@@ -1431,54 +1529,72 @@
             </div>
         </div>
 
-        <!-- Menu Image Slider Section -->
-        <div class="menu-section fade-in delay-2">
+        <!-- Full Screen Menu Section -->
+        <div class="fullscreen-menu-section fade-in delay-2">
             <h2 class="section-title" data-ar="قائمة الطعام" data-en="Our Menu">قائمة الطعام</h2>
             
-            <div class="image-slider-container">
-                <div class="image-slider">
-                    <!-- Menu Slide 1 -->
-                    <div class="menu-slide active">
-                        <img src="https://i.imgur.com/bYslIFg.png" alt="Menu Item 1">
-                    </div>
-                    
-                    <!-- Menu Slide 2 -->
-                    <div class="menu-slide">
-                        <img src="https://i.imgur.com/LyCsC3D.png" alt="Menu Item 2">
-                    </div>
-                    
-                    <!-- Menu Slide 3 -->
-                    <div class="menu-slide">
-                        <img src="https://i.imgur.com/PAFgjuD.png" alt="Menu Item 3">
-                    </div>
-                    
-                    <!-- Menu Slide 4 -->
-                    <div class="menu-slide">
-                        <img src="https://i.imgur.com/9iMzv9o.png" alt="Menu Item 4">
-                    </div>
-                    
-                    <!-- Menu Slide 5 -->
-                    <div class="menu-slide">
-                        <img src="https://i.imgur.com/MOl1ZVp.png" alt="Menu Item 5">
+            <div class="menu-grid">
+                <!-- Menu Item 1 -->
+                <div class="menu-item" onclick="openLightbox(0)">
+                    <div class="menu-number">1</div>
+                    <img src="https://i.imgur.com/bYslIFg.png" alt="Menu Item 1">
+                    <div class="menu-item-overlay">
+                        <small data-ar="انقر للتكبير" data-en="Click to enlarge">انقر للتكبير</small>
                     </div>
                 </div>
                 
-                <!-- Navigation Buttons -->
-                <button class="menu-slider-nav prev" onclick="prevMenuSlide()">
+                <!-- Menu Item 2 -->
+                <div class="menu-item" onclick="openLightbox(1)">
+                    <div class="menu-number">2</div>
+                    <img src="https://i.imgur.com/LyCsC3D.png" alt="Menu Item 2">
+                    <div class="menu-item-overlay">
+                        <small data-ar="انقر للتكبير" data-en="Click to enlarge">انقر للتكبير</small>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 3 -->
+                <div class="menu-item" onclick="openLightbox(2)">
+                    <div class="menu-number">3</div>
+                    <img src="https://i.imgur.com/PAFgjuD.png" alt="Menu Item 3">
+                    <div class="menu-item-overlay">
+                        <small data-ar="انقر للتكبير" data-en="Click to enlarge">انقر للتكبير</small>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 4 -->
+                <div class="menu-item" onclick="openLightbox(3)">
+                    <div class="menu-number">4</div>
+                    <img src="https://i.imgur.com/9iMzv9o.png" alt="Menu Item 4">
+                    <div class="menu-item-overlay">
+                        <small data-ar="انقر للتكبير" data-en="Click to enlarge">انقر للتكبير</small>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 5 -->
+                <div class="menu-item" onclick="openLightbox(4)">
+                    <div class="menu-number">5</div>
+                    <img src="https://i.imgur.com/MOl1ZVp.png" alt="Menu Item 5">
+                    <div class="menu-item-overlay">
+                        <small data-ar="انقر للتكبير" data-en="Click to enlarge">انقر للتكبير</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Screen Lightbox -->
+        <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+            <div class="lightbox-content" onclick="event.stopPropagation()">
+                <button class="lightbox-close" onclick="closeLightbox()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <img src="" alt="" class="lightbox-img" id="lightbox-img">
+                <button class="lightbox-nav prev" onclick="prevLightbox()">
                     <i class="fas fa-chevron-right"></i>
                 </button>
-                <button class="menu-slider-nav next" onclick="nextMenuSlide()">
+                <button class="lightbox-nav next" onclick="nextLightbox()">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                
-                <!-- Dots -->
-                <div class="menu-slider-controls">
-                    <div class="menu-slider-dot active" onclick="goToMenuSlide(0)"></div>
-                    <div class="menu-slider-dot" onclick="goToMenuSlide(1)"></div>
-                    <div class="menu-slider-dot" onclick="goToMenuSlide(2)"></div>
-                    <div class="menu-slider-dot" onclick="goToMenuSlide(3)"></div>
-                    <div class="menu-slider-dot" onclick="goToMenuSlide(4)"></div>
-                </div>
+                <div class="lightbox-counter" id="lightbox-counter">1 / 5</div>
             </div>
         </div>
 
@@ -1663,35 +1779,67 @@
             document.title = lang === 'ar' ? 'Zasty Coffee & Waffle' : 'Zasty Coffee & Waffle';
         }
         
-        // Menu Image Slider functionality
-        let currentMenuSlide = 0;
-        const menuSlides = document.querySelectorAll('.menu-slide');
-        const menuDots = document.querySelectorAll('.menu-slider-dot');
+        // Menu Images Array
+        const menuImages = [
+            'https://i.imgur.com/bYslIFg.png',
+            'https://i.imgur.com/LyCsC3D.png',
+            'https://i.imgur.com/PAFgjuD.png',
+            'https://i.imgur.com/9iMzv9o.png',
+            'https://i.imgur.com/MOl1ZVp.png'
+        ];
         
-        function showMenuSlide(n) {
-            menuSlides.forEach(slide => slide.classList.remove('active'));
-            menuDots.forEach(dot => dot.classList.remove('active'));
+        // Lightbox functionality
+        let currentLightboxIndex = 0;
+        
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCounter = document.getElementById('lightbox-counter');
             
-            currentMenuSlide = (n + menuSlides.length) % menuSlides.length;
+            lightboxImg.src = menuImages[currentLightboxIndex];
+            lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${menuImages.length}`;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function nextLightbox() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % menuImages.length;
+            updateLightbox();
+        }
+        
+        function prevLightbox() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + menuImages.length) % menuImages.length;
+            updateLightbox();
+        }
+        
+        function updateLightbox() {
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCounter = document.getElementById('lightbox-counter');
             
-            menuSlides[currentMenuSlide].classList.add('active');
-            menuDots[currentMenuSlide].classList.add('active');
+            lightboxImg.src = menuImages[currentLightboxIndex];
+            lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${menuImages.length}`;
         }
         
-        function nextMenuSlide() {
-            showMenuSlide(currentMenuSlide + 1);
-        }
-        
-        function prevMenuSlide() {
-            showMenuSlide(currentMenuSlide - 1);
-        }
-        
-        function goToMenuSlide(n) {
-            showMenuSlide(n);
-        }
-        
-        // Auto slide menu every 4 seconds
-        setInterval(nextMenuSlide, 4000);
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    nextLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    prevLightbox();
+                }
+            }
+        });
         
         // Save Contact functionality
         function saveContact() {
@@ -1739,23 +1887,22 @@ END:VCARD`;
             document.getElementById('star1').checked = true;
         });
         
-        // Add click effects
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.social-icon, .action-button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
-            
             // Initialize language
             changeLanguage('ar');
             
-            // Initialize menu slider
-            showMenuSlide(0);
+            // Add hover effects to menu items
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach((item, index) => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
         });
     </script>
 </body>
