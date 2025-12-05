@@ -164,6 +164,45 @@
             100% { box-shadow: 0 10px 30px rgba(156, 39, 176, 0.4); }
         }
         
+        /* Plus Icon in Header */
+        .plus-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--accent);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 800;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Working Hours Badge */
+        .working-hours-badge {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(45, 91, 255, 0.1);
+            color: var(--accent);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 10px;
+            border: 1px solid rgba(45, 91, 255, 0.2);
+        }
+        
+        .working-hours-badge i {
+            color: var(--accent);
+        }
+        
         /* Rating Modal */
         .rating-modal {
             display: none;
@@ -483,6 +522,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            position: relative;
         }
         
         .logo-img {
@@ -517,6 +557,7 @@
             border-radius: 25px;
             transition: all 0.3s ease;
             color: var(--dark-text);
+            position: relative;
         }
         
         .header-contact:hover {
@@ -561,6 +602,100 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+        }
+        
+        /* Working Hours Section */
+        .working-hours-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(45, 91, 255, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+        }
+        
+        .working-hours-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .working-hours-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+        }
+        
+        .working-hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .working-day-card {
+            background: var(--light-bg);
+            padding: 25px 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .working-day-card.friday {
+            background: rgba(45, 91, 255, 0.1);
+            border-color: var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .working-day-card.friday:before {
+            content: 'مميز';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .working-day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .day-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+        
+        .day-hours {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .day-status {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .day-status.open {
+            color: #4CAF50;
+        }
+        
+        .day-status.closed {
+            color: #F44336;
         }
         
         /* Rating Display Section */
@@ -1068,6 +1203,10 @@
             .nfc-modal-body {
                 padding: 30px 20px;
             }
+            
+            .working-hours-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1114,6 +1253,12 @@
             .nfc-fixed-button i {
                 font-size: 1.3rem;
                 margin: 0;
+            }
+            
+            .plus-badge {
+                width: 18px;
+                height: 18px;
+                font-size: 0.6rem;
             }
         }
         
@@ -1257,6 +1402,7 @@
             <div class="header-content">
                 <div class="logo-container">
                     <img src="https://i.imgur.com/fbB8XKv.png" alt="Flick Mobile Logo" class="logo-img">
+                    <div class="plus-badge">+</div>
                     <div>
                         <div class="brand-name">Flick Mobile</div>
                         <div class="brand-tagline">متجر الهواتف الذكية والأجهزة الإلكترونية</div>
@@ -1267,11 +1413,16 @@
                     <a href="tel:0790777900" class="header-contact">
                         <i class="fas fa-phone"></i>
                         <span>0790777900</span>
+                        <div class="plus-badge">+</div>
                     </a>
                     <a href="https://wa.me/962790777900" class="header-contact" target="_blank">
                         <i class="fab fa-whatsapp"></i>
                         <span>واتساب</span>
                     </a>
+                    <div class="working-hours-badge">
+                        <i class="fas fa-clock"></i>
+                        <span>الجمعة: 3م - 11م</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1283,11 +1434,53 @@
         <section class="hero-section fade-in">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Flick Mobile</h1>
+                    <h1 class="hero-title">Flick Mobile<span style="color: var(--accent); margin-right: 5px;">+</span></h1>
                     <p class="hero-subtitle">
                         وجهتك الأولى لأحدث الهواتف الذكية والأجهزة الإلكترونية. 
                         نوفر لكم مجموعة واسعة من المنتجات والخدمات التقنية مع ضمان الجودة والتميز في الخدمة.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Working Hours Section -->
+        <section class="working-hours-section fade-in delay-1">
+            <div class="container">
+                <div class="working-hours-container">
+                    <h2 class="working-hours-title">ساعات العمل</h2>
+                    <p style="color: var(--light-text); margin-bottom: 30px;">
+                        نحن في خدمتكم طوال أيام الأسبوع. يوم الجمعة ساعات عمل مميزة!
+                    </p>
+                    
+                    <div class="working-hours-grid">
+                        <div class="working-day-card">
+                            <div class="day-name">السبت - الخميس</div>
+                            <div class="day-hours">9:00 صباحاً - 10:00 مساءً</div>
+                            <div class="day-status open">
+                                <i class="fas fa-check-circle"></i>
+                                <span>مفتوح</span>
+                            </div>
+                        </div>
+                        
+                        <div class="working-day-card friday">
+                            <div class="day-name">يوم الجمعة</div>
+                            <div class="day-hours">3:00 مساءً - 11:00 مساءً</div>
+                            <div class="day-status open">
+                                <i class="fas fa-check-circle"></i>
+                                <span>مفتوح</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(255, 107, 53, 0.1); border-radius: 15px;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                            <span style="font-weight: 600; color: var(--dark-text);">ملاحظة هامة:</span>
+                        </div>
+                        <p style="color: var(--light-text); font-size: 0.95rem; margin: 0;">
+                            يوم الجمعة تختلف ساعات العمل عن باقي أيام الأسبوع. نحن في خدمتكم من الساعة 3:00 مساءً حتى 11:00 مساءً.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1331,7 +1524,7 @@
         </section>
 
         <!-- Brands Section -->
-        <section class="brands-section fade-in delay-1">
+        <section class="brands-section fade-in delay-2">
             <div class="container">
                 <h2 class="section-title">العلامات التجارية</h2>
                 <p style="color: var(--light-text); max-width: 700px; margin: 0 auto 40px;">
@@ -1391,7 +1584,7 @@
         </section>
 
         <!-- Products Section -->
-        <section class="products-section fade-in delay-2">
+        <section class="products-section fade-in delay-3">
             <div class="container">
                 <h2 class="section-title">منتجاتنا المميزة</h2>
                 <p style="color: var(--light-text); text-align: center; max-width: 700px; margin: 0 auto 40px;">
@@ -1467,7 +1660,7 @@
         </section>
 
         <!-- Services Section -->
-        <section class="services-section fade-in delay-3">
+        <section class="services-section fade-in">
             <div class="container">
                 <h2 class="section-title">خدماتنا</h2>
                 <p style="color: var(--light-text); text-align: center; max-width: 700px; margin: 0 auto 40px;">
@@ -1503,7 +1696,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section class="contact-section fade-in delay-3">
+        <section class="contact-section fade-in">
             <div class="container">
                 <h2 class="section-title">تواصل معنا</h2>
                 <p style="color: var(--light-text); text-align: center; max-width: 700px; margin: 0 auto 40px;">
@@ -1516,7 +1709,7 @@
                         
                         <a href="tel:0790777900" class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>0790777900</span>
+                            <span>0790777900<span style="color: var(--accent); margin-right: 5px;">+</span></span>
                         </a>
                         
                         <a href="https://wa.me/962790777900" class="contact-item" target="_blank">
@@ -1526,7 +1719,10 @@
                         
                         <div class="contact-item">
                             <i class="fas fa-clock"></i>
-                            <span>ساعات العمل: 9 صباحاً - 10 مساءً</span>
+                            <div>
+                                <div>الأحد - الخميس: 9 صباحاً - 10 مساءً</div>
+                                <div style="color: var(--accent); font-weight: 600; margin-top: 5px;">الجمعة: 3 مساءً - 11 مساءً</div>
+                            </div>
                         </div>
                         
                         <div class="contact-item">
@@ -1610,16 +1806,17 @@
                     <div>
                         <h4 class="footer-title">معلومات الاتصال</h4>
                         <ul class="footer-links">
-                            <li><i class="fas fa-phone" style="margin-left: 8px;"></i> 0790777900</li>
+                            <li><i class="fas fa-phone" style="margin-left: 8px;"></i> 0790777900<span style="color: var(--accent); margin-right: 5px;">+</span></li>
                             <li><i class="fab fa-whatsapp" style="margin-left: 8px;"></i> واتساب: 0790777900</li>
-                            <li><i class="fas fa-clock" style="margin-left: 8px;"></i> 9:00 ص - 10:00 م</li>
+                            <li><i class="fas fa-clock" style="margin-left: 8px;"></i> الأحد - الخميس: 9 ص - 10 م</li>
+                            <li><i class="fas fa-clock" style="margin-left: 8px;"></i> الجمعة: 3 م - 11 م</li>
                             <li><i class="fas fa-map-marker-alt" style="margin-left: 8px;"></i> الأردن</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="copyright">
-                    <p>© 2024 Flick Mobile. جميع الحقوق محفوظة.</p>
+                    <p>© 2024 Flick Mobile<span style="color: var(--accent); margin: 0 5px;">+</span>. جميع الحقوق محفوظة.</p>
                 </div>
             </div>
         </footer>
@@ -1631,11 +1828,53 @@
         <section class="hero-section fade-in">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title english-text">Flick Mobile</h1>
+                    <h1 class="hero-title english-text">Flick Mobile<span style="color: var(--accent); margin-left: 5px;">+</span></h1>
                     <p class="hero-subtitle english-text">
                         Your premier destination for the latest smartphones and electronic devices.
                         We offer a wide range of products and technical services with guaranteed quality and excellent service.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Working Hours Section -->
+        <section class="working-hours-section fade-in delay-1">
+            <div class="container">
+                <div class="working-hours-container">
+                    <h2 class="working-hours-title english-text">Working Hours</h2>
+                    <p class="english-text" style="color: var(--light-text); margin-bottom: 30px;">
+                        We are at your service throughout the week. Friday has special working hours!
+                    </p>
+                    
+                    <div class="working-hours-grid">
+                        <div class="working-day-card">
+                            <div class="day-name english-text">Saturday - Thursday</div>
+                            <div class="day-hours english-text">9:00 AM - 10:00 PM</div>
+                            <div class="day-status open">
+                                <i class="fas fa-check-circle"></i>
+                                <span class="english-text">Open</span>
+                            </div>
+                        </div>
+                        
+                        <div class="working-day-card friday">
+                            <div class="day-name english-text">Friday</div>
+                            <div class="day-hours english-text">3:00 PM - 11:00 PM</div>
+                            <div class="day-status open">
+                                <i class="fas fa-check-circle"></i>
+                                <span class="english-text">Open</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(255, 107, 53, 0.1); border-radius: 15px;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                            <span class="english-text" style="font-weight: 600; color: var(--dark-text);">Important Note:</span>
+                        </div>
+                        <p class="english-text" style="color: var(--light-text); font-size: 0.95rem; margin: 0;">
+                            Friday working hours are different from the rest of the week. We are at your service from 3:00 PM until 11:00 PM.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1657,7 +1896,7 @@
                     
                     <button class="rating-display-button" onclick="openRatingModal()">
                         <i class="fas fa-star"></i>
-                        Add Your Rating
+                        <span class="english-text">Add Your Rating</span>
                     </button>
                     
                     <div class="rating-display-platforms">
@@ -1679,7 +1918,7 @@
         </section>
 
         <!-- Brands Section -->
-        <section class="brands-section fade-in delay-1">
+        <section class="brands-section fade-in delay-2">
             <div class="container">
                 <h2 class="section-title english-text">Brands</h2>
                 <p class="english-text" style="color: var(--light-text); max-width: 700px; margin: 0 auto 40px;">
@@ -1739,7 +1978,7 @@
         </section>
 
         <!-- Products Section -->
-        <section class="products-section fade-in delay-2">
+        <section class="products-section fade-in delay-3">
             <div class="container">
                 <h2 class="section-title english-text">Our Products</h2>
                 <p class="english-text" style="color: var(--light-text); text-align: center; max-width: 700px; margin: 0 auto 40px;">
@@ -1815,7 +2054,7 @@
         </section>
 
         <!-- Services Section -->
-        <section class="services-section fade-in delay-3">
+        <section class="services-section fade-in">
             <div class="container">
                 <h2 class="section-title english-text">Our Services</h2>
                 <p class="english-text" style="color: var(--light-text); text-align: center; max-width: 700px; margin: 0 auto 40px;">
@@ -1851,7 +2090,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section class="contact-section fade-in delay-3">
+        <section class="contact-section fade-in">
             <div class="container">
                 <h2 class="section-title english-text">Contact Us</h2>
                 <p class="english-text" style="color: var(--light-text); text-align: center; max-width: 700px; margin: 0 auto 40px;">
@@ -1864,7 +2103,7 @@
                         
                         <a href="tel:0790777900" class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span class="english-text">0790777900</span>
+                            <span class="english-text">0790777900<span style="color: var(--accent); margin-left: 5px;">+</span></span>
                         </a>
                         
                         <a href="https://wa.me/962790777900" class="contact-item" target="_blank">
@@ -1874,7 +2113,10 @@
                         
                         <div class="contact-item">
                             <i class="fas fa-clock"></i>
-                            <span class="english-text">Working Hours: 9 AM - 10 PM</span>
+                            <div>
+                                <div class="english-text">Sunday - Thursday: 9 AM - 10 PM</div>
+                                <div class="english-text" style="color: var(--accent); font-weight: 600; margin-top: 5px;">Friday: 3 PM - 11 PM</div>
+                            </div>
                         </div>
                         
                         <div class="contact-item">
@@ -1958,16 +2200,17 @@
                     <div>
                         <h4 class="footer-title english-text">Contact Information</h4>
                         <ul class="footer-links">
-                            <li class="english-text"><i class="fas fa-phone" style="margin-left: 8px;"></i> 0790777900</li>
+                            <li class="english-text"><i class="fas fa-phone" style="margin-left: 8px;"></i> 0790777900<span style="color: var(--accent); margin-left: 5px;">+</span></li>
                             <li class="english-text"><i class="fab fa-whatsapp" style="margin-left: 8px;"></i> WhatsApp: 0790777900</li>
-                            <li class="english-text"><i class="fas fa-clock" style="margin-left: 8px;"></i> 9:00 AM - 10:00 PM</li>
+                            <li class="english-text"><i class="fas fa-clock" style="margin-left: 8px;"></i> Sun - Thu: 9 AM - 10 PM</li>
+                            <li class="english-text"><i class="fas fa-clock" style="margin-left: 8px;"></i> Friday: 3 PM - 11 PM</li>
                             <li class="english-text"><i class="fas fa-map-marker-alt" style="margin-left: 8px;"></i> Jordan</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="copyright">
-                    <p class="english-text">© 2024 Flick Mobile. All rights reserved.</p>
+                    <p class="english-text">© 2024 Flick Mobile<span style="color: var(--accent); margin: 0 5px;">+</span>. All rights reserved.</p>
                 </div>
             </div>
         </footer>
@@ -2082,9 +2325,6 @@
             // Show success message
             document.getElementById('ratingForm').style.display = 'none';
             document.getElementById('ratingSuccess').style.display = 'block';
-            
-            // You can also send this data to a server here
-            // sendRatingToServer(newRating);
         }
         
         function updateRatingModalLanguage(isArabic) {
@@ -2302,28 +2542,6 @@
                 });
             });
         });
-        
-        // Function to send rating to server (optional)
-        function sendRatingToServer(rating) {
-            // This is where you would send the rating to your backend
-            // Example using fetch API:
-            /*
-            fetch('/api/ratings', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(rating)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Rating submitted successfully:', data);
-            })
-            .catch(error => {
-                console.error('Error submitting rating:', error);
-            });
-            */
-        }
     </script>
 </body>
 </html>
