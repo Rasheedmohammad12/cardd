@@ -809,6 +809,30 @@
             font-size: 1.5rem;
         }
         
+        /* Save Contact Button Styles */
+        .save-contact-btn {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px auto;
+        }
+        
+        .save-contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
+            background: linear-gradient(135deg, #388E3C 0%, #2E7D32 100%);
+        }
+        
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
@@ -984,6 +1008,12 @@
                     <span class="stat-label lang-text" data-ar="تقييم" data-en="Rating">تقييم</span>
                 </div>
             </div>
+            
+            <!-- Save Contact Button -->
+            <button class="save-contact-btn" onclick="saveContact()">
+                <i class="fas fa-download"></i>
+                <span class="lang-text" data-ar="حفظ جهة الاتصال" data-en="Save Contact">حفظ جهة الاتصال</span>
+            </button>
         </div>
     </header>
 
@@ -1333,9 +1363,49 @@
             }, 5000);
         }
         
+        // Save Contact Functionality
+        function saveContact() {
+            // Create VCF file content
+            const vcfContent = `BEGIN:VCARD
+VERSION:3.0
+FN:عالم الأناقة - Fashion World
+ORG:عالم الأناقة - متجر الأزياء
+TEL;TYPE=CELL,VOICE:00962777610909
+TEL;TYPE=WHATSAPP:00962777610909
+EMAIL:
+URL:https://www.instagram.com/world.fashion505
+ADR:;;موقعنا على الخريطة;;;
+NOTE:متجر أزياء نسائية وبناتية وأولادية جاهزة
+X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/world.fashion505
+X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/share/1ASpz2p6Ub/
+END:VCARD`;
+            
+            // Create download link
+            const blob = new Blob([vcfContent], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            
+            a.href = url;
+            a.download = 'عالم-الأناقة.vcf';
+            document.body.appendChild(a);
+            a.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                // Show success message
+                const message = currentLang === 'ar' 
+                    ? 'تم حفظ جهة الاتصال بنجاح! ✓' 
+                    : 'Contact saved successfully! ✓';
+                alert(message);
+            }, 100);
+        }
+        
         // Add click effects
         document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.social-icon, .action-button, .nfc-btn');
+            const buttons = document.querySelectorAll('.social-icon, .action-button, .nfc-btn, .save-contact-btn');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
