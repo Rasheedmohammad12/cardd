@@ -200,47 +200,12 @@
             font-style: italic;
         }
         
-        /* Simplified Stats - Only 24/7 */
-        .stats-container {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: 15px 25px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            min-width: 120px;
-        }
-        
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: white;
-            display: block;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .stat-label {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.9);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
-        }
-        
         /* WhatsApp and Location Icons Below Name */
         .contact-icons-row {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin: 25px 0;
+            gap: 40px;
+            margin: 25px 0 35px;
             flex-wrap: wrap;
         }
         
@@ -254,13 +219,13 @@
         }
         
         .contact-icon {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: white;
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -295,7 +260,7 @@
         
         .contact-icon-text {
             color: white;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
@@ -694,36 +659,19 @@
                 align-items: center;
             }
             
-            .stats-container {
-                gap: 20px;
-            }
-            
-            .stat-item {
-                padding: 10px 15px;
-                min-width: 100px;
-            }
-            
-            .stat-number {
-                font-size: 1.8rem;
-            }
-            
-            .stat-label {
-                font-size: 0.9rem;
-            }
-            
             .click-number-display {
                 font-size: 2.8rem;
                 padding: 15px;
             }
             
             .contact-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
             }
             
             .contact-icons-row {
-                gap: 20px;
+                gap: 30px;
             }
         }
         
@@ -746,23 +694,6 @@
                 font-size: 1.3rem;
             }
             
-            .stats-container {
-                gap: 10px;
-            }
-            
-            .stat-item {
-                padding: 8px 12px;
-                min-width: 80px;
-            }
-            
-            .stat-number {
-                font-size: 1.5rem;
-            }
-            
-            .stat-label {
-                font-size: 0.8rem;
-            }
-            
             .click-number-display {
                 font-size: 2.2rem;
                 padding: 12px;
@@ -774,17 +705,17 @@
             }
             
             .contact-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 1.5rem;
+                width: 65px;
+                height: 65px;
+                font-size: 1.8rem;
             }
             
             .contact-icons-row {
-                gap: 15px;
+                gap: 20px;
             }
             
             .contact-icon-text {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
         }
     </style>
@@ -808,7 +739,7 @@
             <h1 class="profile-name lang-text" data-ar="عالم الأناقة" data-en="Fashion World">عالم الأناقة</h1>
             <div class="profile-username">@world.fashion505</div>
             
-            <!-- WhatsApp and Location Icons -->
+            <!-- WhatsApp and Location Icons Only -->
             <div class="contact-icons-row">
                 <a href="https://wa.me/962777610909" class="contact-icon-item" target="_blank">
                     <div class="contact-icon whatsapp">
@@ -822,14 +753,6 @@
                     </div>
                     <span class="contact-icon-text lang-text" data-ar="موقعنا" data-en="Location">موقعنا</span>
                 </a>
-            </div>
-            
-            <!-- Only 24/7 Stats -->
-            <div class="stats-container">
-                <div class="stat-item">
-                    <span class="stat-number">⏰</span>
-                    <span class="stat-label lang-text" data-ar="24/7" data-en="24/7">24/7</span>
-                </div>
             </div>
             
             <!-- Save Contact Button -->
@@ -1022,14 +945,4 @@ END:VCARD`;
                 button.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
                     setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
-            
-            // Initialize with Arabic
-            changeLanguage('ar');
-        });
-    </script>
-</body>
-</html>
+                        this
