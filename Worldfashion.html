@@ -200,6 +200,7 @@
             font-style: italic;
         }
         
+        /* Simplified Stats - Only 24/7 */
         .stats-container {
             display: flex;
             justify-content: center;
@@ -232,6 +233,95 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 5px;
+        }
+        
+        /* WhatsApp and Location Icons Below Name */
+        .contact-icons-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .contact-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-icon.whatsapp {
+            background: rgba(37, 211, 102, 0.2);
+            border-color: rgba(37, 211, 102, 0.3);
+        }
+        
+        .contact-icon.location {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: rgba(255, 0, 0, 0.3);
+        }
+        
+        .contact-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-icon.whatsapp:hover {
+            background: #25D366;
+        }
+        
+        .contact-icon.location:hover {
+            background: #FF0000;
+        }
+        
+        .contact-icon-text {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Save Contact Button Styles */
+        .save-contact-btn {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px auto;
+        }
+        
+        .save-contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
+            background: linear-gradient(135deg, #388E3C 0%, #2E7D32 100%);
         }
         
         /* Social Icons - في الهيدر */
@@ -287,34 +377,6 @@
         
         .social-icon.phone:hover {
             background: #34B7F1;
-        }
-        
-        .social-icon.location:hover {
-            background: #FF0000;
-        }
-        
-        /* Save Contact Button Styles */
-        .save-contact-btn {
-            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 20px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 20px auto;
-        }
-        
-        .save-contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
-            background: linear-gradient(135deg, #388E3C 0%, #2E7D32 100%);
         }
         
         /* About Section */
@@ -653,6 +715,16 @@
                 font-size: 2.8rem;
                 padding: 15px;
             }
+            
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+            
+            .contact-icons-row {
+                gap: 20px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -700,6 +772,20 @@
             .click-description {
                 font-size: 1.1rem;
             }
+            
+            .contact-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+            
+            .contact-icons-row {
+                gap: 15px;
+            }
+            
+            .contact-icon-text {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -722,18 +808,27 @@
             <h1 class="profile-name lang-text" data-ar="عالم الأناقة" data-en="Fashion World">عالم الأناقة</h1>
             <div class="profile-username">@world.fashion505</div>
             
+            <!-- WhatsApp and Location Icons -->
+            <div class="contact-icons-row">
+                <a href="https://wa.me/962777610909" class="contact-icon-item" target="_blank">
+                    <div class="contact-icon whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <span class="contact-icon-text lang-text" data-ar="واتساب" data-en="WhatsApp">واتساب</span>
+                </a>
+                <a href="https://maps.app.goo.gl/waNbd2Z1GYPo6sRj7" class="contact-icon-item" target="_blank">
+                    <div class="contact-icon location">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <span class="contact-icon-text lang-text" data-ar="موقعنا" data-en="Location">موقعنا</span>
+                </a>
+            </div>
+            
+            <!-- Only 24/7 Stats -->
             <div class="stats-container">
                 <div class="stat-item">
                     <span class="stat-number">⏰</span>
                     <span class="stat-label lang-text" data-ar="24/7" data-en="24/7">24/7</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">📱</span>
-                    <span class="stat-label lang-text" data-ar="واتساب" data-en="WhatsApp">واتساب</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">📍</span>
-                    <span class="stat-label lang-text" data-ar="موقعنا" data-en="Location">موقعنا</span>
                 </div>
             </div>
             
@@ -743,7 +838,7 @@
                 <span class="lang-text" data-ar="حفظ جهة الاتصال" data-en="Save Contact">حفظ جهة الاتصال</span>
             </button>
             
-            <!-- Social Icons في الهيدر -->
+            <!-- Social Icons -->
             <div class="social-section">
                 <div class="social-icons-grid">
                     <a href="https://www.instagram.com/world.fashion505" class="social-icon instagram" target="_blank">
@@ -757,9 +852,6 @@
                     </a>
                     <a href="tel:0777610909" class="social-icon phone">
                         <i class="fas fa-phone"></i>
-                    </a>
-                    <a href="https://maps.app.goo.gl/waNbd2Z1GYPo6sRj7" class="social-icon location" target="_blank">
-                        <i class="fas fa-map-marker-alt"></i>
                     </a>
                 </div>
             </div>
@@ -925,7 +1017,7 @@ END:VCARD`;
         
         // Add click effects
         document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.social-icon, .action-button, .save-contact-btn');
+            const buttons = document.querySelectorAll('.social-icon, .action-button, .save-contact-btn, .contact-icon-item');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
