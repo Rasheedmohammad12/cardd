@@ -292,7 +292,7 @@
             color: var(--accent);
         }
         
-        /* Categories Section */
+        /* Categories Section - بدون صور */
         .categories-section {
             background: var(--light-card);
             margin: 40px auto;
@@ -314,41 +314,51 @@
         .category-card {
             background: white;
             border-radius: 20px;
-            overflow: hidden;
+            padding: 40px 30px;
             box-shadow: var(--shadow);
             transition: all 0.4s ease;
             border: var(--border);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
         }
         
         .category-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
+            background: rgba(218, 112, 214, 0.05);
         }
         
-        .category-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        
-        .category-content {
-            padding: 25px;
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 2rem;
         }
         
         .category-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: var(--dark-text);
         }
         
         .category-desc {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--light-text);
-            margin-bottom: 20px;
+            line-height: 1.6;
         }
         
-        /* Products Slider */
+        /* Products Section - بدون صور */
         .products-section {
             background: var(--light-card);
             margin: 40px auto;
@@ -360,77 +370,58 @@
             position: relative;
         }
         
-        .slider-container {
-            position: relative;
-            margin: 40px 0;
-        }
-        
-        .slider {
+        .products-list {
             display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
+            flex-direction: column;
             gap: 25px;
-            padding: 15px 0;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        .slider::-webkit-scrollbar {
-            display: none;
+            margin-top: 30px;
         }
         
         .product-item {
-            min-width: 280px;
             background: white;
             border-radius: 15px;
-            overflow: hidden;
+            padding: 25px 30px;
             box-shadow: var(--shadow);
             border: var(--border);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
         
         .product-item:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(218, 112, 214, 0.05);
         }
         
-        .product-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
         }
         
         .product-content {
-            padding: 20px;
+            flex: 1;
         }
         
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            z-index: 10;
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark-text);
         }
         
-        .slider-btn:hover {
-            background: var(--primary);
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .slider-btn.prev {
-            right: -25px;
-        }
-        
-        .slider-btn.next {
-            left: -25px;
+        .product-desc {
+            font-size: 1.1rem;
+            color: var(--light-text);
         }
         
         /* Services Section */
@@ -727,22 +718,29 @@
                 height: 350px;
             }
             
-            .slider-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+            .category-card {
+                padding: 30px 20px;
+                min-height: 200px;
             }
             
-            .slider-btn.prev {
-                right: -20px;
-            }
-            
-            .slider-btn.next {
-                left: -20px;
+            .category-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
             }
             
             .product-item {
-                min-width: 250px;
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .product-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
             }
             
             .action-buttons {
@@ -816,79 +814,81 @@
             </div>
         </div>
 
-        <!-- Categories Section -->
+        <!-- Categories Section - بدون صور -->
         <div class="categories-section fade-in delay-1">
             <h2 class="section-title lang-text" data-ar="فئات المنتجات" data-en="Product Categories">فئات المنتجات</h2>
             <div class="categories-grid">
                 <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Women's Fashion">
-                    <div class="category-content">
-                        <h3 class="category-title lang-text" data-ar="أزياء نسائية" data-en="Women's Fashion">أزياء نسائية</h3>
-                        <p class="category-desc lang-text" data-ar="تشكيلة مميزة من الملابس النسائية الجاهزة بجميع المقاسات والألوان" data-en="A distinctive collection of ready-to-wear women's clothing in all sizes and colors">تشكيلة مميزة من الملابس النسائية الجاهزة بجميع المقاسات والألوان</p>
+                    <div class="category-icon">
+                        <i class="fas fa-female"></i>
                     </div>
+                    <h3 class="category-title lang-text" data-ar="أزياء نسائية" data-en="Women's Fashion">أزياء نسائية</h3>
+                    <p class="category-desc lang-text" data-ar="تشكيلة مميزة من الملابس النسائية الجاهزة بجميع المقاسات والألوان والأنماط العصرية" data-en="A distinctive collection of ready-to-wear women's clothing in all sizes, colors and modern styles">تشكيلة مميزة من الملابس النسائية الجاهزة بجميع المقاسات والألوان والأنماط العصرية</p>
                 </div>
                 <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Girls Fashion">
-                    <div class="category-content">
-                        <h3 class="category-title lang-text" data-ar="أزياء بناتية" data-en="Girls Fashion">أزياء بناتية</h3>
-                        <p class="category-desc lang-text" data-ar="أجمل الأزياء والألبسة الخاصة بالبنات بجميع الأعمار" data-en="The most beautiful fashion and clothing for girls of all ages">أجمل الأزياء والألبسة الخاصة بالبنات بجميع الأعمار</p>
+                    <div class="category-icon">
+                        <i class="fas fa-child"></i>
                     </div>
+                    <h3 class="category-title lang-text" data-ar="أزياء بناتية" data-en="Girls Fashion">أزياء بناتية</h3>
+                    <p class="category-desc lang-text" data-ar="أجمل الأزياء والألبسة الخاصة بالبنات بجميع الأعمار مع التركيز على الراحة والجمال" data-en="The most beautiful fashion and clothing for girls of all ages with focus on comfort and beauty">أجمل الأزياء والألبسة الخاصة بالبنات بجميع الأعمار مع التركيز على الراحة والجمال</p>
                 </div>
                 <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boys Fashion">
-                    <div class="category-content">
-                        <h3 class="category-title lang-text" data-ar="أزياء أولادية" data-en="Boys Fashion">أزياء أولادية</h3>
-                        <p class="category-desc lang-text" data-ar="أحدث صيحات الموضة للأولاد بمختلف الأعمار" data-en="Latest fashion trends for boys of different ages">أحدث صيحات الموضة للأولاد بمختلف الأعمار</p>
+                    <div class="category-icon">
+                        <i class="fas fa-male"></i>
                     </div>
+                    <h3 class="category-title lang-text" data-ar="أزياء أولادية" data-en="Boys Fashion">أزياء أولادية</h3>
+                    <p class="category-desc lang-text" data-ar="أحدث صيحات الموضة للأولاد بمختلف الأعمار مع خيارات متنوعة للأنشطة اليومية والمناسبات" data-en="Latest fashion trends for boys of different ages with diverse options for daily activities and occasions">أحدث صيحات الموضة للأولاد بمختلف الأعمار مع خيارات متنوعة للأنشطة اليومية والمناسبات</p>
                 </div>
             </div>
         </div>
 
-        <!-- Products Slider -->
+        <!-- Products Section - بدون صور -->
         <div class="products-section fade-in delay-2">
             <h2 class="section-title lang-text" data-ar="أحدث المنتجات" data-en="Latest Products">أحدث المنتجات</h2>
-            <div class="slider-container">
-                <button class="slider-btn prev" onclick="scrollSlider(-1, 'productSlider')">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="slider-btn next" onclick="scrollSlider(1, 'productSlider')">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="slider" id="productSlider">
-                    <div class="product-item">
-                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Women Dress">
-                        <div class="product-content">
-                            <h3 class="lang-text" data-ar="فستان نسائي أنيق" data-en="Elegant Women's Dress">فستان نسائي أنيق</h3>
-                            <p class="lang-text" data-ar="فستان صيفي أنيق بتصميم عصري" data-en="Elegant summer dress with modern design">فستان صيفي أنيق بتصميم عصري</p>
-                        </div>
+            <div class="products-list">
+                <div class="product-item">
+                    <div class="product-icon">
+                        <i class="fas fa-tshirt"></i>
                     </div>
-                    <div class="product-item">
-                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Girls Outfit">
-                        <div class="product-content">
-                            <h3 class="lang-text" data-ar="لبس بناتي شتوي" data-en="Winter Girls Outfit">لبس بناتي شتوي</h3>
-                            <p class="lang-text" data-ar="طقم بناتي دافئ ومريح للشتاء" data-en="Warm and comfortable winter outfit for girls">طقم بناتي دافئ ومريح للشتاء</p>
-                        </div>
+                    <div class="product-content">
+                        <h3 class="product-title lang-text" data-ar="فساتين سهرة أنيقة" data-en="Elegant Evening Dresses">فساتين سهرة أنيقة</h3>
+                        <p class="product-desc lang-text" data-ar="مجموعة من الفساتين الأنيقة للسهرات والحفلات بتصميمات عصرية وألوان متنوعة" data-en="A collection of elegant dresses for evenings and parties with modern designs and various colors">مجموعة من الفساتين الأنيقة للسهرات والحفلات بتصميمات عصرية وألوان متنوعة</p>
                     </div>
-                    <div class="product-item">
-                        <img src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Boys Jeans">
-                        <div class="product-content">
-                            <h3 class="lang-text" data-ar="جينز أولادي" data-en="Boys Jeans">جينز أولادي</h3>
-                            <p class="lang-text" data-ar="جينز أولادي عالي الجودة" data-en="High quality boys jeans">جينز أولادي عالي الجودة</p>
-                        </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-icon">
+                        <i class="fas fa-vest"></i>
                     </div>
-                    <div class="product-item">
-                        <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Women Jacket">
-                        <div class="product-content">
-                            <h3 class="lang-text" data-ar="جاكيت نسائي" data-en="Women's Jacket">جاكيت نسائي</h3>
-                            <p class="lang-text" data-ar="جاكيت شتوي أنيق للنساء" data-en="Elegant winter jacket for women">جاكيت شتوي أنيق للنساء</p>
-                        </div>
+                    <div class="product-content">
+                        <h3 class="product-title lang-text" data-ar="سترات شتوية دافئة" data-en="Warm Winter Jackets">سترات شتوية دافئة</h3>
+                        <p class="product-desc lang-text" data-ar="سترات عالية الجودة للشتاء بتصميمات عصرية وألوان متنوعة تناسب جميع الأذواق" data-en="High quality winter jackets with modern designs and various colors to suit all tastes">سترات عالية الجودة للشتاء بتصميمات عصرية وألوان متنوعة تناسب جميع الأذواق</p>
                     </div>
-                    <div class="product-item">
-                        <img src="https://images.unsplash.com/photo-1599398066636-eb171e7d0e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kids Set">
-                        <div class="product-content">
-                            <h3 class="lang-text" data-ar="طقم أطفال" data-en="Kids Set">طقم أطفال</h3>
-                            <p class="lang-text" data-ar="طقم أطفال مريح وجميل" data-en="Comfortable and beautiful kids set">طقم أطفال مريح وجميل</p>
-                        </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-icon">
+                        <i class="fas fa-hat-cowboy"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title lang-text" data-ar="ملابس رياضية مريحة" data-en="Comfortable Sportswear">ملابس رياضية مريحة</h3>
+                        <p class="product-desc lang-text" data-ar="ملابس رياضية مصممة للراحة والحركة السهلة مع خامات عالية الجودة تناسب النشاطات اليومية" data-en="Sportswear designed for comfort and easy movement with high quality materials suitable for daily activities">ملابس رياضية مصممة للراحة والحركة السهلة مع خامات عالية الجودة تناسب النشاطات اليومية</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title lang-text" data-ar="أحذية وأكسسوارات متنوعة" data-en="Various Shoes & Accessories">أحذية وأكسسوارات متنوعة</h3>
+                        <p class="product-desc lang-text" data-ar="تشكيلة واسعة من الأحذية والأكسسوارات التي تكمل إطلالتك بأسلوب أنيق وعصري" data-en="A wide range of shoes and accessories that complete your look with elegant and modern style">تشكيلة واسعة من الأحذية والأكسسوارات التي تكمل إطلالتك بأسلوب أنيق وعصري</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title lang-text" data-ar="ملابس أطفال بتصميمات جذابة" data-en="Attractive Children's Clothing">ملابس أطفال بتصميمات جذابة</h3>
+                        <p class="product-desc lang-text" data-ar="ملابس أطفال بتصميمات مميزة وألوان زاهية تناسب مختلف الأعمار والمناسبات" data-en="Children's clothing with distinctive designs and bright colors suitable for different ages and occasions">ملابس أطفال بتصميمات مميزة وألوان زاهية تناسب مختلف الأعمار والمناسبات</p>
                     </div>
                 </div>
             </div>
@@ -1034,13 +1034,6 @@
                     element.textContent = englishText;
                 }
             });
-        }
-        
-        // Slider functionality
-        function scrollSlider(direction, sliderId) {
-            const slider = document.getElementById(sliderId);
-            const scrollAmount = 320;
-            slider.scrollLeft += direction * scrollAmount;
         }
         
         // NFC Card functionality
