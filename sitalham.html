@@ -22,6 +22,7 @@
             --shadow-lg: 0 20px 40px rgba(198, 40, 40, 0.3);
             --border: 1px solid #FFCDD2;
             --success: #4CAF50;
+            --star: #FFC107;
         }
         
         * {
@@ -347,6 +348,180 @@
         .special-price {
             color: var(--success);
             font-weight: 700;
+        }
+        
+        /* Rating Section */
+        .rating-section {
+            background: var(--light-card);
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: var(--border);
+        }
+        
+        .rating-stats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .average-rating {
+            text-align: center;
+        }
+        
+        .rating-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+        
+        .total-ratings {
+            font-size: 1rem;
+            color: var(--light-text);
+            margin-top: 5px;
+        }
+        
+        .stars-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .stars-display {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--star);
+        }
+        
+        .rating-form {
+            background: rgba(255, 152, 0, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .form-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .rating-input {
+            margin-bottom: 20px;
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 15px;
+            direction: ltr;
+        }
+        
+        .rating-star {
+            font-size: 2.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .rating-star:hover,
+        .rating-star.active {
+            color: var(--star);
+            transform: scale(1.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #FFCDD2;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: white;
+            transition: all 0.3s ease;
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+        }
+        
+        .submit-button {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .recent-ratings {
+            margin-top: 40px;
+        }
+        
+        .ratings-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .rating-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: right;
+            border: var(--border);
+        }
+        
+        .rating-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .rating-user {
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .rating-date {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .rating-comment {
+            color: var(--light-text);
+            line-height: 1.6;
+            margin-top: 10px;
         }
         
         /* Services Section */
@@ -704,6 +879,15 @@
             .modal-buttons {
                 flex-direction: column;
             }
+            
+            .rating-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .rating-star {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -984,8 +1168,8 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-content">
-                            <h3 class="menu-item-title">صفيحة بعلكية</h3>
-                            <p class="menu-item-desc">صفيحة بعلكية</p>
+                            <h3 class="menu-item-title">صفيحة بعلبكية</h3>
+                            <p class="menu-item-desc">صفيحة بعلبكية أصيلة</p>
                             <div class="menu-item-price">14.00 <span>دينار/كيلو</span></div>
                         </div>
                     </div>
@@ -1028,6 +1212,88 @@
                 <div class="offer-title">🔥 عروض البيتزا 🔥</div>
                 <div class="offer-desc">
                     3 بيتزا صغير بـ 4.50 دينار | 3 بيتزا وسط بـ 7 دينار | 3 بيتزا كبير بـ 10 دينار
+                </div>
+            </div>
+        </div>
+
+        <!-- Rating Section -->
+        <div class="rating-section fade-in delay-2">
+            <h2 class="section-title">تقييمات الزبائن</h2>
+            
+            <div class="rating-stats">
+                <div class="average-rating">
+                    <div class="rating-number" id="averageRating">4.8</div>
+                    <div class="stars-display">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="total-ratings" id="totalRatings">(125 تقييم)</div>
+                </div>
+                
+                <div class="stars-container">
+                    <div class="star-count">
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <span style="margin-right: 10px;">80 تقييم</span>
+                    </div>
+                    <div class="star-count">
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <i class="far fa-star" style="color: var(--star);"></i>
+                        <span style="margin-right: 10px;">25 تقييم</span>
+                    </div>
+                    <div class="star-count">
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <i class="fas fa-star" style="color: var(--star);"></i>
+                        <i class="far fa-star" style="color: var(--star);"></i>
+                        <i class="far fa-star" style="color: var(--star);"></i>
+                        <span style="margin-right: 10px;">15 تقييم</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rating Form -->
+            <div class="rating-form">
+                <h3 class="form-title">أضف تقييمك</h3>
+                <div class="rating-input">
+                    <div class="rating-stars" id="ratingStars">
+                        <i class="far fa-star rating-star" data-value="5"></i>
+                        <i class="far fa-star rating-star" data-value="4"></i>
+                        <i class="far fa-star rating-star" data-value="3"></i>
+                        <i class="far fa-star rating-star" data-value="2"></i>
+                        <i class="far fa-star rating-star" data-value="1"></i>
+                    </div>
+                    <div id="selectedRatingText">قيمنا من 5 نجوم</div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" class="form-input" id="userName" placeholder="اسمك (اختياري)" style="height: 50px;">
+                </div>
+                
+                <div class="form-group">
+                    <textarea class="form-input" id="userComment" placeholder="اكتب تعليقك عن تجربتك مع مطعمنا..."></textarea>
+                </div>
+                
+                <button class="submit-button" id="submitRating">
+                    <i class="fas fa-star"></i>
+                    إرسال التقييم
+                </button>
+            </div>
+            
+            <!-- Recent Ratings -->
+            <div class="recent-ratings">
+                <h3 class="section-title" style="font-size: 1.5rem; margin-bottom: 20px;">آخر التقييمات</h3>
+                <div class="ratings-list" id="ratingsList">
+                    <!-- Ratings will be added here dynamically -->
                 </div>
             </div>
         </div>
@@ -1233,6 +1499,161 @@ END:VCARD`;
                     saveContactModal.style.display = 'none';
                 }
             });
+
+            // Rating System
+            let selectedRating = 0;
+            const ratingStars = document.querySelectorAll('.rating-star');
+            const selectedRatingText = document.getElementById('selectedRatingText');
+            const submitRatingBtn = document.getElementById('submitRating');
+            const ratingsList = document.getElementById('ratingsList');
+            const averageRatingEl = document.getElementById('averageRating');
+            const totalRatingsEl = document.getElementById('totalRatings');
+            
+            // Sample initial ratings (in a real app, these would come from a database)
+            const initialRatings = [
+                { name: "أحمد محمد", rating: 5, comment: "المعجنات رائعة والخدمة ممتازة، أنصح الجميع بتجربة مطعم ست الشام", date: "منذ يومين" },
+                { name: "سارة خالد", rating: 4, comment: "البيتزا لذيذة والأسعار معقولة، جودة عالية", date: "منذ 3 أيام" },
+                { name: "محمد علي", rating: 5, comment: "أفضل معجنات في المنطقة، خاصة صفيحة بعلبكية", date: "منذ أسبوع" },
+                { name: "فاطمة الزهراء", rating: 4, comment: "الطعم أصلي والتوصيل سريع، شكراً لكم", date: "منذ 10 أيام" }
+            ];
+            
+            let ratings = [...initialRatings];
+            let ratingCounts = {5: 80, 4: 25, 3: 15, 2: 3, 1: 2};
+            
+            // Initialize star rating selection
+            ratingStars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = parseInt(this.getAttribute('data-value'));
+                    selectedRating = value;
+                    
+                    // Update star display
+                    ratingStars.forEach(s => {
+                        const starValue = parseInt(s.getAttribute('data-value'));
+                        if (starValue <= value) {
+                            s.classList.remove('far');
+                            s.classList.add('fas');
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('fas');
+                            s.classList.add('far');
+                            s.classList.remove('active');
+                        }
+                    });
+                    
+                    // Update rating text
+                    const ratingTexts = {
+                        1: "سيء",
+                        2: "غير جيد",
+                        3: "متوسط",
+                        4: "جيد",
+                        5: "ممتاز"
+                    };
+                    selectedRatingText.textContent = `لقد قيمتنا بـ ${value} نجوم - ${ratingTexts[value]}`;
+                });
+                
+                star.addEventListener('mouseover', function() {
+                    const value = parseInt(this.getAttribute('data-value'));
+                    
+                    ratingStars.forEach(s => {
+                        const starValue = parseInt(s.getAttribute('data-value'));
+                        if (starValue <= value) {
+                            s.classList.add('hover');
+                        } else {
+                            s.classList.remove('hover');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseout', function() {
+                    ratingStars.forEach(s => {
+                        s.classList.remove('hover');
+                    });
+                });
+            });
+            
+            // Function to display ratings
+            function displayRatings() {
+                ratingsList.innerHTML = '';
+                ratings.slice(0, 5).forEach(rating => {
+                    const ratingItem = document.createElement('div');
+                    ratingItem.className = 'rating-item';
+                    
+                    let stars = '';
+                    for (let i = 1; i <= 5; i++) {
+                        if (i <= rating.rating) {
+                            stars += '<i class="fas fa-star" style="color: var(--star); font-size: 0.9rem;"></i>';
+                        } else {
+                            stars += '<i class="far fa-star" style="color: var(--star); font-size: 0.9rem;"></i>';
+                        }
+                    }
+                    
+                    ratingItem.innerHTML = `
+                        <div class="rating-header">
+                            <div class="rating-user">${rating.name || "زبون"}</div>
+                            <div class="rating-date">${rating.date}</div>
+                        </div>
+                        <div class="stars-display" style="justify-content: right; font-size: 1rem; margin-bottom: 10px;">
+                            ${stars}
+                        </div>
+                        <div class="rating-comment">${rating.comment}</div>
+                    `;
+                    
+                    ratingsList.appendChild(ratingItem);
+                });
+                
+                // Calculate and update average rating
+                const totalRating = ratings.reduce((sum, r) => sum + r.rating, 0);
+                const averageRating = (totalRating / ratings.length).toFixed(1);
+                averageRatingEl.textContent = averageRating;
+                totalRatingsEl.textContent = `(${ratings.length} تقييم)`;
+            }
+            
+            // Submit rating
+            submitRatingBtn.addEventListener('click', function() {
+                if (selectedRating === 0) {
+                    alert('الرجاء اختيار تقييم من 1 إلى 5 نجوم');
+                    return;
+                }
+                
+                const userName = document.getElementById('userName').value || "زبون";
+                const userComment = document.getElementById('userComment').value.trim();
+                
+                if (!userComment) {
+                    alert('الرجاء كتابة تعليق عن تجربتك');
+                    return;
+                }
+                
+                // Add new rating
+                const newRating = {
+                    name: userName,
+                    rating: selectedRating,
+                    comment: userComment,
+                    date: "الآن"
+                };
+                
+                ratings.unshift(newRating);
+                ratingCounts[selectedRating] = (ratingCounts[selectedRating] || 0) + 1;
+                
+                // Reset form
+                selectedRating = 0;
+                ratingStars.forEach(star => {
+                    star.classList.remove('fas');
+                    star.classList.add('far');
+                    star.classList.remove('active');
+                });
+                selectedRatingText.textContent = 'قيمنا من 5 نجوم';
+                document.getElementById('userName').value = '';
+                document.getElementById('userComment').value = '';
+                
+                // Update display
+                displayRatings();
+                
+                // Show success message
+                alert('شكراً لك على تقييمك! تم إضافة تقييمك بنجاح.');
+            });
+            
+            // Initial display of ratings
+            displayRatings();
         });
     </script>
 </body>
