@@ -34,6 +34,7 @@
         
         html {
             -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
         }
         
         body {
@@ -752,6 +753,56 @@
             font-size: 1.3rem;
         }
         
+        /* Big Go to Restaurant Button */
+        .big-restaurant-button {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 25px;
+            border-radius: 20px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            animation: pulse 2s infinite;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .big-restaurant-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(198, 40, 40, 0.4);
+            background: linear-gradient(135deg, #C62828 0%, #FF5722 100%);
+        }
+        
+        .big-restaurant-button i {
+            font-size: 2.2rem;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 20px 40px rgba(198, 40, 40, 0.3);
+            }
+            50% {
+                box-shadow: 0 25px 50px rgba(198, 40, 40, 0.5);
+            }
+            100% {
+                box-shadow: 0 20px 40px rgba(198, 40, 40, 0.3);
+            }
+        }
+        
         /* Footer */
         footer {
             background: var(--primary-dark);
@@ -759,6 +810,7 @@
             text-align: center;
             margin-top: 60px;
             color: white;
+            position: relative;
         }
         
         .footer-text {
@@ -887,6 +939,18 @@
             
             .rating-star {
                 font-size: 2rem;
+            }
+            
+            .big-restaurant-button {
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+                padding: 20px;
+                font-size: 1.5rem;
+            }
+            
+            .big-restaurant-button i {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -1402,6 +1466,14 @@
             </a>
         </div>
     </div>
+
+    <!-- Big Go to Restaurant Button -->
+    <a href="https://maps.app.goo.gl/?link=https://www.google.com/maps?q=جبل+الزهور+بين+مسجد+الرواس+ومدرسة+الوكالة+الجديدة" 
+       class="big-restaurant-button" 
+       target="_blank">
+        <i class="fas fa-map-marker-alt"></i>
+        اذهب إلى المطعم الآن
+    </a>
 
     <!-- Save Contact Modal -->
     <div class="modal" id="saveContactModal">
