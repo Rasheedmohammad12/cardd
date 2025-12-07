@@ -712,6 +712,43 @@
             color: white;
         }
         
+        /* Restaurant Location Icon (Google Maps) */
+        .map-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            background: var(--gradient);
+            border: 2px solid var(--primary);
+            animation: mapPulse 2s infinite;
+        }
+        
+        .map-icon:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(198, 40, 40, 0.4);
+            background: linear-gradient(135deg, #C62828 0%, #FF5722 100%);
+        }
+        
+        @keyframes mapPulse {
+            0% {
+                box-shadow: 0 10px 30px rgba(198, 40, 40, 0.4);
+            }
+            50% {
+                box-shadow: 0 15px 40px rgba(198, 40, 40, 0.6);
+            }
+            100% {
+                box-shadow: 0 10px 30px rgba(198, 40, 40, 0.4);
+            }
+        }
+        
         /* Action Buttons */
         .action-buttons {
             display: flex;
@@ -751,56 +788,6 @@
         
         .action-button i {
             font-size: 1.3rem;
-        }
-        
-        /* Big Go to Restaurant Button */
-        .big-restaurant-button {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            right: 30px;
-            background: var(--gradient-accent);
-            color: white;
-            border: none;
-            padding: 25px;
-            border-radius: 20px;
-            font-size: 1.8rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: var(--shadow-lg);
-            z-index: 100;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            animation: pulse 2s infinite;
-            backdrop-filter: blur(10px);
-            border: 3px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .big-restaurant-button:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(198, 40, 40, 0.4);
-            background: linear-gradient(135deg, #C62828 0%, #FF5722 100%);
-        }
-        
-        .big-restaurant-button i {
-            font-size: 2.2rem;
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 20px 40px rgba(198, 40, 40, 0.3);
-            }
-            50% {
-                box-shadow: 0 25px 50px rgba(198, 40, 40, 0.5);
-            }
-            100% {
-                box-shadow: 0 20px 40px rgba(198, 40, 40, 0.3);
-            }
         }
         
         /* Footer */
@@ -941,16 +928,28 @@
                 font-size: 2rem;
             }
             
-            .big-restaurant-button {
-                left: 15px;
-                right: 15px;
-                bottom: 15px;
-                padding: 20px;
-                font-size: 1.5rem;
+            .social-icon,
+            .map-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
             }
             
-            .big-restaurant-button i {
-                font-size: 1.8rem;
+            .social-icons-grid {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .social-icon,
+            .map-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+            
+            .social-icons-grid {
+                gap: 15px;
             }
         }
     </style>
@@ -1447,6 +1446,13 @@
                 <a href="https://imgur.com/dU1dDuW" class="social-icon" target="_blank">
                     <i class="fas fa-qrcode"></i>
                 </a>
+                <!-- Google Maps Icon -->
+                <a href="https://maps.app.goo.gl/?link=https://www.google.com/maps?q=جبل+الزهور+بين+مسجد+الرواس+ومدرسة+الوكالة+الجديدة" 
+                   class="map-icon" 
+                   target="_blank"
+                   title="اذهب إلى المطعم">
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
             </div>
         </div>
 
@@ -1466,14 +1472,6 @@
             </a>
         </div>
     </div>
-
-    <!-- Big Go to Restaurant Button -->
-    <a href="https://maps.app.goo.gl/?link=https://www.google.com/maps?q=جبل+الزهور+بين+مسجد+الرواس+ومدرسة+الوكالة+الجديدة" 
-       class="big-restaurant-button" 
-       target="_blank">
-        <i class="fas fa-map-marker-alt"></i>
-        اذهب إلى المطعم الآن
-    </a>
 
     <!-- Save Contact Modal -->
     <div class="modal" id="saveContactModal">
@@ -1505,7 +1503,7 @@
     <script>
         // Add click effects
         document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.social-icon, .action-button');
+            const buttons = document.querySelectorAll('.social-icon, .action-button, .map-icon');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
