@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fahem & Saj - مطعم الفحم والصاج</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C62828;
+            --primary-light: #EF5350;
+            --primary-dark: #B71C1C;
+            --accent: #FF9800;
+            --gold: #FFD700;
+            --gradient: linear-gradient(135deg, #C62828 0%, #B71C1C 100%);
+            --gradient-accent: linear-gradient(135deg, #C62828 0%, #FF9800 100%);
+            --light-bg: #FFF8F0;
+            --light-card: #FFFFFF;
+            --dark-text: #3E2723;
+            --light-text: #5D4037;
+            --shadow: 0 10px 30px rgba(198, 40, 40, 0.2);
+            --shadow-lg: 0 20px 40px rgba(198, 40, 40, 0.3);
+            --border: 1px solid #FFE0B2;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: var(--light-bg);
+            color: var(--dark-text);
+            min-height: 100vh;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .main-header {
+            background: var(--gradient);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            color: var(--gold);
+        }
+        
+        .logo-text {
+            font-family: 'Amiri', serif;
+        }
+        
+        .restaurant-name {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+        
+        .restaurant-tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .header-btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .header-btn:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.imgur.com/d6bRRoF.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: white;
+            font-family: 'Amiri', serif;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            background: rgba(255, 152, 0, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            color: var(--dark-text);
+            box-shadow: var(--shadow);
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: var(--light-card);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-family: 'Amiri', serif;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--light-text);
+        }
+        
+        .highlight-box {
+            background: rgba(255, 152, 0, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-right: 4px solid var(--accent);
+        }
+        
+        /* Menu Section */
+        .menu-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .menu-category {
+            background: var(--light-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-category:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .category-header {
+            background: var(--gradient);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .items-list {
+            padding: 25px;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-name {
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .item-desc {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-top: 5px;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: var(--light-card);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-card {
+            background: rgba(198, 40, 40, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .contact-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .contact-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .contact-info {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            direction: ltr;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--accent);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        /* Location Section */
+        .location-section {
+            padding: 80px 0;
+            background: var(--light-card);
+        }
+        
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .location-info {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--light-text);
+        }
+        
+        .location-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .location-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Social Section */
+        .social-section {
+            padding: 60px 0;
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+        }
+        
+        .social-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .copyright {
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .about-content, .location-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .restaurant-name {
+                font-size: 1.5rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="logo-text">
+                        <div class="restaurant-name">Fahem & Saj</div>
+                        <div class="restaurant-tagline">مطعم الفحم والصاج</div>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <a href="tel:+962778001919" class="header-btn">
+                        <i class="fas fa-phone"></i>
+                        اتصل بنا
+                    </a>
+                    <a href="#location" class="header-btn">
+                        <i class="fas fa-map-marker-alt"></i>
+                        الموقع
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Fahem & Saj</h1>
+                <h2 class="hero-subtitle">نكهات تراثية وأصالة في كل لقمة</h2>
+                <div class="hero-text">
+                    <p>نقدم لكم أجود أنواع الشاورما والمشاوي المعدة باحترافية عالية</p>
+                    <p>شاورما الفحم المعتقة بنكهة الدخان الطبيعي، وشاورما الصاج المقرمشة</p>
+                    <p>مشاوي تركية مميزة بطعم لا يقاوم</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">عن مطعمنا</h2>
+                <p class="section-subtitle">أصالة الطعم وجودة المكونات هي شعارنا</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <img src="https://i.imgur.com/Rdt2CIW.png" alt="مشاوي الفحم">
+                </div>
+                <div class="about-text fade-in">
+                    <p>في <strong>Fahem & Saj</strong>، نؤمن بأن الطعام الجيد يجمع الناس معًا. نحن نخصص كل جهدنا لتقديم تجربة طعام لا تُنسى، حيث ندمج بين الأصالة والحداثة في كل طبق نقدمه.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>لماذا نحن الأفضل؟</h3>
+                        <p>✓ نستخدم أفضل قطع اللحوم والدجاج الطازج</p>
+                        <p>✓ نطهو على الفحم الطبيعي لأصالة النكهة</p>
+                        <p>✓ خلطات التوابل السرية المميزة</p>
+                        <p>✓ خدمة سريعة وودودة</p>
+                    </div>
+                    
+                    <p>نفتخر بأننا الوجهة المفضلة لعشاق الشاورما والمشاوي في المنطقة، حيث نضمن لكل زبون تجربة طعم فريدة ترغب في تكرارها.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">قائمة طعامنا</h2>
+                <p class="section-subtitle">تشكيلة واسعة من أطباقنا الشهية</p>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- شاورما الفحم -->
+                <div class="menu-category fade-in">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3 class="category-title">شاورما الفحم</h3>
+                    </div>
+                    <div class="items-list">
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">شاورما دجاج على الفحم</div>
+                                <div class="item-desc">دجاج معتّق بنكهة الفحم الطبيعي</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">شاورما لحم على الفحم</div>
+                                <div class="item-desc">لحم بقري مميز مع تتبيلة سرية</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">مشكل شاورما فحم</div>
+                                <div class="item-desc">مزيج من الدجاج واللحم</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- شاورما الصاج -->
+                <div class="menu-category fade-in">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="category-title">شاورما الصاج</h3>
+                    </div>
+                    <div class="items-list">
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">شاورما دجاج صاج</div>
+                                <div class="item-desc">مقرمش وبنكهة مميزة</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">شاورما لحم صاج</div>
+                                <div class="item-desc">لحم بقري طري ومتبل</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المشاوي -->
+                <div class="menu-category fade-in">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-drumstick-bite"></i>
+                        </div>
+                        <h3 class="category-title">المشاوي</h3>
+                    </div>
+                    <div class="items-list">
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">دجاج تركي</div>
+                                <div class="item-desc">دجاج مشوي بتتبيلة تركية</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">دجاج تكا</div>
+                                <div class="item-desc">بنكهة هندية مميزة</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">شيش طاووق</div>
+                                <div class="item-desc">قطع دجاج مشوية على الأسياخ</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">كباب بلدي</div>
+                                <div class="item-desc">لحم مفروم مع التوابل</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">خدماتنا</h2>
+                <p class="section-subtitle">نقدم لكم أفضل الخدمات لتجربة مميزة</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3 class="service-title">توصيل سريع</h3>
+                    <p>نضمن وصول طلبك ساخنًا وفي وقت قياسي</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-phone-volume"></i>
+                    </div>
+                    <h3 class="service-title">حجوزات واستفسارات</h3>
+                    <p>خدمة عملاء متاحة على مدار الساعة</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h3 class="service-title">دفع إلكتروني</h3>
+                    <p>تقبل الدفع عبر Qliq: 0799543452</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="service-title">طلبات جماعية</h3>
+                    <p>نستقبل الطلبات للمناسبات واللقاءات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">اتصل بنا</h2>
+                <p class="section-subtitle">نحن هنا لخدمتكم على مدار الساعة</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="contact-title">فحم وصاج 1</h3>
+                    <div class="contact-info">+962 7 7800 1919</div>
+                    <p>للاستفسارات والطلبات</p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="contact-title">فحم وصاج 2</h3>
+                    <div class="contact-info">+962 7 7500 1616</div>
+                    <p>للاستفسارات والطلبات</p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="contact-title">واتساب</h3>
+                    <div class="contact-info">+962 7 7800 1919</div>
+                    <p>للحجوزات السريعة</p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h3 class="contact-title">Qliq للتحويل</h3>
+                    <div class="contact-info">0799543452</div>
+                    <p>Mataam Mohammad Altorman</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section" id="location">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">موقعنا</h2>
+                <p class="section-subtitle">زورونا واستمتعوا بتجربة الأكل مباشرة</p>
+            </div>
+            
+            <div class="location-content">
+                <div class="location-info fade-in">
+                    <p>نقع في موقع متميز يسهل الوصول إليه، حيث نرحب بكم بأجواء عائلية دافئة وخدمة مميزة.</p>
+                    <p>العنوان: مطعم محمد الطرمان - موقع يمكن الوصول إليه بسهولة عبر خرائط جوجل</p>
+                    
+                    <a href="https://maps.app.goo.gl/jA9gsfWK5oFncUtV9?g_st=iw" class="location-btn" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i>
+                        افتح الموقع على خرائط جوجل
+                    </a>
+                </div>
+                
+                <div class="about-image fade-in">
+                    <img src="https://i.imgur.com/bfoE47G.png" alt="موقع المطعم">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Section -->
+    <section class="social-section" id="social">
+        <div class="container">
+            <h2 class="social-title">تابعونا على وسائل التواصل</h2>
+            
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/1GAxkE8gMj/?mibextid=wwXIfr" class="social-icon" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/fahem_saj?igsh=MTlmbWo4aTBxeHp2bQ==" class="social-icon" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/962778001919" class="social-icon" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="tel:+962778001919" class="social-icon">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>© 2024 Fahem & Saj - جميع الحقوق محفوظة</p>
+                    <p>مطعم الفحم والصاج - نكهات تراثية وأصالة في كل لقمة</p>
+                </div>
+                
+                <div class="footer-logo">
+                    <div style="font-size: 2rem; color: var(--accent);">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div style="font-weight: 700; margin-top: 10px;">Fahem & Saj</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add fade-in animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = "1";
+                        element.style.transform = "translateY(0)";
+                    }
+                });
+            };
+            
+            // Set initial state
+            fadeElements.forEach(element => {
+                element.style.opacity = "0";
+                element.style.transform = "translateY(30px)";
+                element.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+            });
+            
+            // Check on load
+            fadeInOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
