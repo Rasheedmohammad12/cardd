@@ -326,81 +326,160 @@
             background: var(--light-bg);
         }
         
-        .menu-grid {
+        /* Menu Icons Grid */
+        .menu-icons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 60px;
         }
         
-        .menu-category {
+        .menu-icon-item {
             background: var(--light-card);
-            border-radius: 25px;
-            overflow: hidden;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
             box-shadow: var(--shadow);
             transition: all 0.4s ease;
-            height: 100%;
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            border: 2px solid transparent;
         }
         
-        .menu-category:hover {
+        .menu-icon-item:hover {
             transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+        
+        .menu-icon-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+        
+        .menu-item-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(198, 40, 40, 0.2);
+        }
+        
+        .menu-icon-item:hover .menu-item-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--accent);
+        }
+        
+        .menu-item-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .menu-item-desc {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .menu-item-types {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .type-badge {
+            background: rgba(255, 152, 0, 0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            border: 1px solid rgba(255, 152, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .type-badge:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Menu Images Section */
+        .menu-images-section {
+            margin-top: 80px;
+        }
+        
+        .menu-images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .menu-image-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .menu-image-card:hover {
+            transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
         }
         
-        .category-header {
-            background: var(--gradient);
-            color: white;
+        .menu-image-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .menu-image-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .menu-image-overlay {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
             padding: 30px;
-            text-align: center;
-            flex-shrink: 0;
+            color: white;
         }
         
-        .category-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--gold);
-        }
-        
-        .category-title {
+        .menu-image-title {
             font-size: 2rem;
             font-weight: 800;
             margin-bottom: 10px;
         }
         
-        .items-list {
-            padding: 30px;
-            flex-grow: 1;
-        }
-        
-        .menu-item {
-            padding: 20px 0;
-            border-bottom: 2px dashed var(--border);
-            transition: all 0.3s ease;
-        }
-        
-        .menu-item:hover {
-            background: rgba(255, 152, 0, 0.05);
-            padding-right: 10px;
-            border-radius: 10px;
-        }
-        
-        .menu-item:last-child {
-            border-bottom: none;
-        }
-        
-        .item-name {
-            font-weight: 800;
-            color: var(--dark-text);
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-        }
-        
-        .item-desc {
+        .menu-image-desc {
             font-size: 1.1rem;
-            color: var(--light-text);
-            line-height: 1.6;
+            opacity: 0.9;
         }
         
         /* Image Modal */
@@ -527,68 +606,6 @@
             margin-top: 10px;
         }
         
-        /* Services Section */
-        .services-section {
-            padding: 100px 0;
-            background: var(--light-bg);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .service-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--dark-text);
-        }
-        
-        .service-desc {
-            font-size: 1.1rem;
-            color: var(--light-text);
-            line-height: 1.6;
-        }
-        
         /* Location Section */
         .location-section {
             padding: 100px 0;
@@ -630,67 +647,9 @@
             box-shadow: var(--shadow-lg);
         }
         
-        /* Social Section */
-        .social-section {
-            padding: 80px 0;
-            background: var(--primary-dark);
-            color: white;
-            text-align: center;
-        }
-        
-        .social-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: white;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .social-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: white;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .social-icon:hover {
-            background: var(--accent);
-            transform: translateY(-8px) scale(1.1);
-        }
-        
-        .social-icon:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: translateX(-100%);
-        }
-        
-        .social-icon:hover:before {
-            animation: shine 0.8s ease;
-        }
-        
         /* NFC Card Section */
         .nfc-section {
-            padding: 60px 0;
+            padding: 80px 0;
             background: var(--light-bg);
             text-align: center;
         }
@@ -758,6 +717,64 @@
             transform: translateY(-5px) scale(1.05);
             box-shadow: var(--shadow-lg);
             background: var(--primary-dark);
+        }
+        
+        /* Social Section */
+        .social-section {
+            padding: 80px 0;
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+        }
+        
+        .social-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-icon:hover {
+            background: var(--accent);
+            transform: translateY(-8px) scale(1.1);
+        }
+        
+        .social-icon:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+        }
+        
+        .social-icon:hover:before {
+            animation: shine 0.8s ease;
         }
         
         /* Save Contact Button */
@@ -895,7 +912,11 @@
                 font-size: 2.3rem;
             }
             
-            .menu-grid {
+            .menu-icons-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-images-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -933,7 +954,7 @@
                 padding: 80px 0;
             }
             
-            .about-section, .menu-section, .contact-section, .services-section, .location-section {
+            .about-section, .menu-section, .contact-section, .location-section {
                 padding: 70px 0;
             }
             
@@ -955,6 +976,16 @@
             .nfc-card {
                 padding: 30px 20px;
             }
+            
+            .menu-item-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .menu-item-name {
+                font-size: 1.6rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -971,7 +1002,7 @@
                 padding: 20px;
             }
             
-            .contact-grid, .services-grid {
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -979,6 +1010,10 @@
                 width: 55px;
                 height: 55px;
                 font-size: 1.3rem;
+            }
+            
+            .menu-image-title {
+                font-size: 1.6rem;
             }
         }
         
@@ -1103,111 +1138,69 @@
                 <p class="section-subtitle" id="menuSubtitle">تشكيلة واسعة من أطباقنا الشهية</p>
             </div>
             
-            <div class="menu-grid">
-                <!-- شاورما الفحم -->
-                <div class="menu-category fade-in">
-                    <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <h3 class="category-title" id="charcoalTitle">شاورما الفحم</h3>
+            <!-- Menu Icons Grid -->
+            <div class="menu-icons-grid">
+                <div class="menu-icon-item fade-in">
+                    <div class="menu-item-icon">
+                        <i class="fas fa-fire"></i>
                     </div>
-                    <div class="items-list">
-                        <div class="about-image mb-30" onclick="openModal('https://i.imgur.com/Rdt2CIW.png')">
-                            <img src="https://i.imgur.com/Rdt2CIW.png" alt="شاورما فحم" loading="lazy">
-                            <div class="zoom-icon">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <div>
-                                <div class="item-name" id="charcoalChicken">شاورما دجاج على الفحم</div>
-                                <div class="item-desc" id="charcoalChickenDesc">دجاج معتّق بنكهة الفحم الطبيعي</div>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <div>
-                                <div class="item-name" id="charcoalBeef">شاورما لحم على الفحم</div>
-                                <div class="item-desc" id="charcoalBeefDesc">لحم بقري مميز مع تتبيلة سرية</div>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <div>
-                                <div class="item-name" id="charcoalMix">مشكل شاورما فحم</div>
-                                <div class="item-desc" id="charcoalMixDesc">مزيج من الدجاج واللحم</div>
-                            </div>
-                        </div>
+                    <h3 class="menu-item-name" id="charcoalTitle">شاورما الفحم</h3>
+                    <p class="menu-item-desc" id="charcoalDesc">شاورما معتقة بنكهة الفحم الطبيعي الأصيلة</p>
+                    <div class="menu-item-types">
+                        <span class="type-badge" id="charcoalChicken">دجاج</span>
+                        <span class="type-badge" id="charcoalBeef">لحم</span>
+                        <span class="type-badge" id="charcoalMix">مشكل</span>
                     </div>
                 </div>
                 
-                <!-- شاورما الصاج -->
-                <div class="menu-category fade-in">
-                    <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <h3 class="category-title" id="sajTitle">شاورما الصاج</h3>
+                <div class="menu-icon-item fade-in">
+                    <div class="menu-item-icon">
+                        <i class="fas fa-utensils"></i>
                     </div>
-                    <div class="items-list">
-                        <div class="about-image mb-30" onclick="openModal('https://i.imgur.com/bfoE47G.png')">
-                            <img src="https://i.imgur.com/bfoE47G.png" alt="شاورما صاج" loading="lazy">
-                            <div class="zoom-icon">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <div>
-                                <div class="item-name" id="sajChicken">شاورما دجاج صاج</div>
-                                <div class="item-desc" id="sajChickenDesc">مقرمش وبنكهة مميزة</div>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <div>
-                                <div class="item-name" id="sajBeef">شاورما لحم صاج</div>
-                                <div class="item-desc" id="sajBeefDesc">لحم بقري طري ومتبل</div>
-                            </div>
-                        </div>
+                    <h3 class="menu-item-name" id="sajTitle">شاورما الصاج</h3>
+                    <p class="menu-item-desc" id="sajDesc">شاورما مقرمشة بنكهات مميزة على الصاج</p>
+                    <div class="menu-item-types">
+                        <span class="type-badge" id="sajChicken">دجاج</span>
+                        <span class="type-badge" id="sajBeef">لحم</span>
                     </div>
                 </div>
                 
-                <!-- المشاوي -->
-                <div class="menu-category fade-in">
-                    <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-drumstick-bite"></i>
-                        </div>
-                        <h3 class="category-title" id="grillTitle">المشاوي</h3>
+                <div class="menu-icon-item fade-in">
+                    <div class="menu-item-icon">
+                        <i class="fas fa-drumstick-bite"></i>
                     </div>
-                    <div class="items-list">
-                        <div class="about-image mb-30" onclick="openModal('https://i.imgur.com/d6bRRoF.png')">
-                            <img src="https://i.imgur.com/d6bRRoF.png" alt="مشاوي" loading="lazy">
-                            <div class="zoom-icon">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
+                    <h3 class="menu-item-name" id="grillTitle">المشاوي</h3>
+                    <p class="menu-item-desc" id="grillDesc">مشاوي تركية ومحلية بنكهات خاصة</p>
+                    <div class="menu-item-types">
+                        <span class="type-badge" id="turkishChicken">دجاج تركي</span>
+                        <span class="type-badge" id="tikkaChicken">دجاج تكا</span>
+                        <span class="type-badge" id="shishTawook">شيش طاووق</span>
+                        <span class="type-badge" id="kebab">كباب بلدي</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Menu Images Section -->
+            <div class="menu-images-section">
+                <div class="section-header fade-in">
+                    <h2 class="section-title" id="menuImagesTitle">أطباقنا المميزة</h2>
+                    <p class="section-subtitle" id="menuImagesSubtitle">استمتعوا بمشاهدة أطباقنا الشهية</p>
+                </div>
+                
+                <div class="menu-images-grid">
+                    <div class="menu-image-card fade-in" onclick="openModal('https://i.imgur.com/Rdt2CIW.png')">
+                        <img src="https://i.imgur.com/Rdt2CIW.png" alt="شاورما الفحم" loading="lazy">
+                        <div class="menu-image-overlay">
+                            <h3 class="menu-image-title" id="menuImage1Title">شاورما الفحم</h3>
+                            <p class="menu-image-desc" id="menuImage1Desc">معتقة بنكهة الفحم الطبيعي</p>
                         </div>
-                        <div class="menu-item">
-                            <div>
-                                <div class="item-name" id="turkishChicken">دجاج تركي</div>
-                                <div class="item-desc" id="turkishChickenDesc">دجاج مشوي بتتبيلة تركية</div>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <div>
-                                <div class="item-name" id="tikkaChicken">دجاج تكا</div>
-                                <div class="item-desc" id="tikkaChickenDesc">بنكهة هندية مميزة</div>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <div>
-                                <div class="item-name" id="shishTawook">شيش طاووق</div>
-                                <div class="item-desc" id="shishTawookDesc">قطع دجاج مشوية على الأسياخ</div>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <div>
-                                <div class="item-name" id="kebab">كباب بلدي</div>
-                                <div class="item-desc" id="kebabDesc">لحم مفروم مع التوابل</div>
-                            </div>
+                    </div>
+                    
+                    <div class="menu-image-card fade-in" onclick="openModal('https://i.imgur.com/bfoE47G.png')">
+                        <img src="https://i.imgur.com/bfoE47G.png" alt="شاورما الصاج" loading="lazy">
+                        <div class="menu-image-overlay">
+                            <h3 class="menu-image-title" id="menuImage2Title">شاورما الصاج</h3>
+                            <p class="menu-image-desc" id="menuImage2Desc">مقرمشة وبنكهات مميزة</p>
                         </div>
                     </div>
                 </div>
@@ -1410,30 +1403,32 @@
                 whyUs4: "✓ خدمة سريعة وودودة على مدار الساعة",
                 aboutText2: "نفتخر بأننا الوجهة المفضلة لعشاق الشاورما والمشاوي في المنطقة، حيث نضمن لكل زبون تجربة طعم فريدة ترغب في تكرارها.",
                 
-                // Menu
+                // Menu - Icons
                 menuTitle: "قائمة طعامنا",
                 menuSubtitle: "تشكيلة واسعة من أطباقنا الشهية",
                 charcoalTitle: "شاورما الفحم",
-                charcoalChicken: "شاورما دجاج على الفحم",
-                charcoalChickenDesc: "دجاج معتّق بنكهة الفحم الطبيعي",
-                charcoalBeef: "شاورما لحم على الفحم",
-                charcoalBeefDesc: "لحم بقري مميز مع تتبيلة سرية",
-                charcoalMix: "مشكل شاورما فحم",
-                charcoalMixDesc: "مزيج من الدجاج واللحم",
+                charcoalDesc: "شاورما معتقة بنكهة الفحم الطبيعي الأصيلة",
+                charcoalChicken: "دجاج",
+                charcoalBeef: "لحم",
+                charcoalMix: "مشكل",
                 sajTitle: "شاورما الصاج",
-                sajChicken: "شاورما دجاج صاج",
-                sajChickenDesc: "مقرمش وبنكهة مميزة",
-                sajBeef: "شاورما لحم صاج",
-                sajBeefDesc: "لحم بقري طري ومتبل",
+                sajDesc: "شاورما مقرمشة بنكهات مميزة على الصاج",
+                sajChicken: "دجاج",
+                sajBeef: "لحم",
                 grillTitle: "المشاوي",
+                grillDesc: "مشاوي تركية ومحلية بنكهات خاصة",
                 turkishChicken: "دجاج تركي",
-                turkishChickenDesc: "دجاج مشوي بتتبيلة تركية",
                 tikkaChicken: "دجاج تكا",
-                tikkaChickenDesc: "بنكهة هندية مميزة",
                 shishTawook: "شيش طاووق",
-                shishTawookDesc: "قطع دجاج مشوية على الأسياخ",
                 kebab: "كباب بلدي",
-                kebabDesc: "لحم مفروم مع التوابل",
+                
+                // Menu - Images
+                menuImagesTitle: "أطباقنا المميزة",
+                menuImagesSubtitle: "استمتعوا بمشاهدة أطباقنا الشهية",
+                menuImage1Title: "شاورما الفحم",
+                menuImage1Desc: "معتقة بنكهة الفحم الطبيعي",
+                menuImage2Title: "شاورما الصاج",
+                menuImage2Desc: "مقرمشة وبنكهات مميزة",
                 
                 // Contact
                 contactTitle: "اتصل بنا",
@@ -1503,30 +1498,32 @@
                 whyUs4: "✓ Fast and friendly service 24/7",
                 aboutText2: "We are proud to be the preferred destination for shawarma and grill lovers in the area, ensuring each customer a unique taste experience they'll want to repeat.",
                 
-                // Menu
+                // Menu - Icons
                 menuTitle: "Our Menu",
                 menuSubtitle: "A wide variety of our delicious dishes",
                 charcoalTitle: "Charcoal Shawarma",
-                charcoalChicken: "Chicken Charcoal Shawarma",
-                charcoalChickenDesc: "Chicken aged with natural charcoal flavor",
-                charcoalBeef: "Beef Charcoal Shawarma",
-                charcoalBeefDesc: "Premium beef with secret marinade",
-                charcoalMix: "Mixed Charcoal Shawarma",
-                charcoalMixDesc: "Mix of chicken and beef",
+                charcoalDesc: "Shawarma aged with authentic natural charcoal flavor",
+                charcoalChicken: "Chicken",
+                charcoalBeef: "Beef",
+                charcoalMix: "Mixed",
                 sajTitle: "Saj Shawarma",
-                sajChicken: "Chicken Saj Shawarma",
-                sajChickenDesc: "Crispy with distinctive flavor",
-                sajBeef: "Beef Saj Shawarma",
-                sajBeefDesc: "Tender, marinated beef",
+                sajDesc: "Crispy shawarma with distinctive flavors on saj",
+                sajChicken: "Chicken",
+                sajBeef: "Beef",
                 grillTitle: "Grills",
+                grillDesc: "Turkish and local grills with special flavors",
                 turkishChicken: "Turkish Chicken",
-                turkishChickenDesc: "Grilled chicken with Turkish marinade",
                 tikkaChicken: "Chicken Tikka",
-                tikkaChickenDesc: "With distinctive Indian flavor",
                 shishTawook: "Shish Tawook",
-                shishTawookDesc: "Chicken pieces grilled on skewers",
                 kebab: "Local Kebab",
-                kebabDesc: "Minced meat with spices",
+                
+                // Menu - Images
+                menuImagesTitle: "Our Special Dishes",
+                menuImagesSubtitle: "Enjoy viewing our delicious dishes",
+                menuImage1Title: "Charcoal Shawarma",
+                menuImage1Desc: "Aged with natural charcoal flavor",
+                menuImage2Title: "Saj Shawarma",
+                menuImage2Desc: "Crispy with distinctive flavors",
                 
                 // Contact
                 contactTitle: "Contact Us",
@@ -1701,7 +1698,7 @@ END:VCARD`;
             checkScroll();
             
             // Add click animation to buttons
-            document.querySelectorAll('.header-btn, .location-btn, .save-contact-btn, .nfc-btn').forEach(btn => {
+            document.querySelectorAll('.header-btn, .location-btn, .save-contact-btn, .nfc-btn, .type-badge').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
                     setTimeout(() => {
