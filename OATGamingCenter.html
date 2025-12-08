@@ -163,8 +163,8 @@
             letter-spacing: 1px;
         }
         
-        /* About Section */
-        .about-section {
+        /* Services Section */
+        .services-section {
             background: var(--gradient-card);
             margin: 40px auto;
             padding: 40px;
@@ -217,18 +217,6 @@
             font-weight: 700;
             margin-bottom: 15px;
             color: var(--accent);
-        }
-        
-        /* Services Section */
-        .services-section {
-            background: var(--gradient-card);
-            margin: 40px auto;
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 800px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border: var(--border-glow);
         }
         
         .services-grid {
@@ -647,7 +635,7 @@
             color: white;
         }
         
-        /* Click Service Section */
+        /* كليك Service Section */
         .click-service {
             background: var(--gradient-card);
             margin: 40px auto;
@@ -813,6 +801,61 @@
             transform: translateX(-50%) translateY(0);
         }
         
+        /* GOAT Gaming Center Section */
+        .goat-section {
+            background: var(--gradient-card);
+            margin: 40px auto 60px;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 900px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: var(--border-glow);
+        }
+        
+        .goat-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .goat-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .goat-content {
+            text-align: center;
+            direction: rtl;
+            line-height: 1.9;
+            font-size: 1.15rem;
+            color: var(--light-text);
+            padding: 0 20px;
+        }
+        
+        .goat-content p {
+            margin-bottom: 20px;
+        }
+        
+        .goat-logo-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .goat-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            border: 4px solid var(--accent);
+            object-fit: cover;
+            box-shadow: var(--shadow-lg);
+        }
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -870,11 +913,19 @@
                 width: 120px;
                 height: 120px;
             }
+            
+            .goat-title {
+                font-size: 2rem;
+            }
+            
+            .goat-section {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header Section - بدون قسم GOAT Gaming Center -->
+    <!-- Header Section - بدون قسم مرحباً بكم -->
     <header class="profile-header fade-in">
         <div class="cover-container">
             <img src="https://i.imgur.com/zFPtHxb.png" alt="GOAT Gaming Center Cover" class="cover-photo">
@@ -933,18 +984,18 @@
             </div>
         </div>
 
-        <!-- كليك Service Section -->
+        <!-- كليك Service Section - تم تغيير الاسم -->
         <div class="click-service fade-in delay-2">
-            <h2 class="section-title">كليك - خدمة التحويل المالي</h2>
+            <h2 class="section-title">كليك</h2>
             <div class="click-service-content">
-                <img src="https://i.imgur.com/YTIEhGh.png" alt="خدمة التحويل المالي" class="click-service-image">
+                <img src="https://i.imgur.com/YTIEhGh.png" alt="كليك خدمة التحويل المالي" class="click-service-image">
                 <div class="click-service-info">
                     <h3 class="click-service-title">كليك - خدمة التحويل المالي السريع</h3>
-                    <p class="click-service-desc">لتحويل الأموال بسرعة وأمان، استخدم خدمة الكليك للتحويلات المالية عبر الإنترنت</p>
+                    <p class="click-service-desc">لتحويل الأموال بسرعة وأمان، استخدم خدمة كليك للتحويلات المالية عبر الإنترنت</p>
                     
                     <!-- Phone Number with Copy Button -->
                     <div style="background: rgba(37, 99, 235, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; color: var(--accent);">رقم التحويل: 0788885914</div>
+                        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; color: var(--accent);">رقم كليك: 0788885914</div>
                         <div style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 10px;">انسخ الرقم للتحويل عبر تطبيق كليك</div>
                         <button class="copy-button" onclick="copyToClipboard('0788885914')">
                             <i class="far fa-copy"></i>
@@ -968,14 +1019,14 @@
                         </div>
                     </div>
                     
-                    <!-- Money Transfer Button -->
+                    <!-- كليك Button -->
                     <a href="tel:0788885914" class="money-transfer-button">
                         <i class="fas fa-exchange-alt money-icon"></i>
-                        <div class="money-text">تحويل<br>الأموال</div>
+                        <div class="money-text">كليك<br>للتحويل</div>
                     </a>
                     
                     <p style="color: var(--light-text); font-size: 0.9rem; margin-top: 10px;">
-                        انقر للتواصل مع مدير التحويلات
+                        انقر للتواصل مع مدير خدمة كليك
                     </p>
                 </div>
             </div>
@@ -1083,25 +1134,21 @@
         </div>
 
         <!-- GOAT Gaming Center Section - في الأسفل فقط -->
-        <div class="about-section fade-in delay-3" style="margin-bottom: 60px;">
-            <h2 class="section-title">GOAT Gaming Center</h2>
-            <div class="about-text">
-                أكبر وأحدث محل بلايستيشن في المنطقة
+        <div class="goat-section fade-in delay-3">
+            <h2 class="goat-title">GOAT Gaming Center</h2>
+            <div class="goat-subtitle">أكبر وأحدث محل بلايستيشن في المنطقة</div>
+            
+            <div class="goat-content">
+                <p>
+                    يُعد GOAT أكبر وأحدث محل بلايستيشن في المنطقة، حيث يجمع بين الترفيه الفاخر والأجواء التنافسية في مكان واحد. يقدّم GOAT تجربة لعب استثنائية لعشاق الألعاب الإلكترونية من جميع الأعمار، مع أحدث أجهزة PlayStation 5، وشاشات عالية الدقة، ومقاعد مريحة مصممة خصيصاً لجلسات اللعب الطويلة.
+                </p>
+                <p>
+                    يضم المحل غرف VIP لمحبي الخصوصية، ومنطقة مخصصة للمنافسات والتحديات الجماعية، بالإضافة إلى مقهى صغير يقدم مشروبات وسناك لذيذة تجعل التجربة أكثر متعة. في GOAT، لا يتعلق الأمر فقط باللعب، بل بخلق تجربة ترفيه متكاملة تجمع الأصدقاء وتطلق روح التحدي.
+                </p>
             </div>
             
-            <div class="highlight-box">
-                <div class="highlight-title">لماذا تختار GOAT Gaming Center؟</div>
-                <div class="about-text" style="text-align: center; direction: rtl;">
-                    GOAT ليس مجرد مركز ألعاب عادي، بل هو وجهة ترفيهية متكاملة تجمع بين أحدث التقنيات وأفضل الخدمات.
-                    مع أجهزة PlayStation 5 المتميزة، وغرف VIP الخاصة، وأجواء التنافس الصحية، نضمن لك تجربة لعب لا تُنسى.
-                    
-                    نحن نؤمن بأن الترفيه الجيد يجب أن يكون متاحاً للجميع، ولهذا نقدم أسعاراً تنافسية وعروضاً خاصة باستمرار.
-                    سواء كنت لاعباً محترفاً أو هاوياً، في GOAT ستجد المكان المثالي لقضاء أوقات ممتعة مع الأصدقاء والعائلة.
-                </div>
-            </div>
-            
-            <div style="display: flex; justify-content: center; margin-top: 30px;">
-                <img src="https://i.imgur.com/3anIxpQ.png" alt="GOAT Gaming Center Logo" style="width: 100px; height: 100px; border-radius: 15px; border: 3px solid var(--accent);">
+            <div class="goat-logo-container">
+                <img src="https://i.imgur.com/3anIxpQ.png" alt="GOAT Gaming Center Logo" class="goat-logo">
             </div>
         </div>
     </div>
