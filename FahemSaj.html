@@ -57,13 +57,14 @@
         
         /* Header */
         .main-header {
-            background: var(--gradient);
-            color: white;
-            padding: 20px 0;
+            background: var(--light-card);
+            color: var(--dark-text);
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow);
+            border-bottom: 3px solid var(--accent);
         }
         
         .header-content {
@@ -78,9 +79,10 @@
             gap: 15px;
         }
         
-        .logo {
-            font-size: 2.5rem;
-            color: var(--gold);
+        .logo-image {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
         }
         
         .logo-text {
@@ -91,11 +93,13 @@
             font-size: 2rem;
             font-weight: 900;
             line-height: 1.2;
+            color: var(--primary);
         }
         
         .restaurant-tagline {
             font-size: 1rem;
-            opacity: 0.9;
+            color: var(--light-text);
+            margin-top: 5px;
         }
         
         .header-actions {
@@ -105,8 +109,8 @@
         
         .header-btn {
             padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: var(--gradient);
+            border: none;
             border-radius: 30px;
             color: white;
             font-weight: 600;
@@ -114,12 +118,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            box-shadow: var(--shadow);
         }
         
         .header-btn:hover {
-            background: white;
-            color: var(--primary);
+            background: var(--primary-dark);
             transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
         
         /* Hero Section */
@@ -138,8 +143,19 @@
             margin: 0 auto;
         }
         
+        .hero-logo {
+            max-width: 300px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-logo img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+        }
+        
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
             margin-bottom: 20px;
             color: white;
@@ -151,6 +167,7 @@
             font-size: 1.5rem;
             margin-bottom: 30px;
             opacity: 0.9;
+            color: var(--gold);
         }
         
         .hero-text {
@@ -437,11 +454,12 @@
             font-weight: 600;
             margin-top: 20px;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow);
         }
         
         .location-btn:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
         }
         
         /* Social Section */
@@ -498,14 +516,36 @@
             gap: 20px;
         }
         
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        
         .copyright {
             opacity: 0.8;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-link {
+            color: white;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--accent);
         }
         
         /* Responsive */
         @media (max-width: 992px) {
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
             
             .about-content, .location-content {
@@ -516,11 +556,15 @@
                 flex-direction: column;
                 gap: 20px;
             }
+            
+            .hero-logo {
+                max-width: 250px;
+            }
         }
         
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .section-title {
@@ -528,11 +572,20 @@
             }
             
             .restaurant-name {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
             
             .menu-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-image {
+                height: 60px;
             }
         }
         
@@ -551,6 +604,22 @@
         .fade-in {
             animation: fadeIn 1s ease forwards;
         }
+        
+        /* Menu Item Images */
+        .menu-item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .category-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
@@ -559,9 +628,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <div class="logo">
-                        <i class="fas fa-fire"></i>
-                    </div>
+                    <img src="https://i.imgur.com/TeHBiZi.png" alt="Fahem & Saj Logo" class="logo-image">
                     <div class="logo-text">
                         <div class="restaurant-name">Fahem & Saj</div>
                         <div class="restaurant-tagline">مطعم الفحم والصاج</div>
@@ -586,12 +653,15 @@
     <section class="hero-section">
         <div class="container">
             <div class="hero-content fade-in">
-                <h1 class="hero-title">Fahem & Saj</h1>
+                <div class="hero-logo">
+                    <img src="https://i.imgur.com/TeHBiZi.png" alt="Fahem & Saj Logo">
+                </div>
+                <h1 class="hero-title">مطعم فاهم و صاج</h1>
                 <h2 class="hero-subtitle">نكهات تراثية وأصالة في كل لقمة</h2>
                 <div class="hero-text">
                     <p>نقدم لكم أجود أنواع الشاورما والمشاوي المعدة باحترافية عالية</p>
                     <p>شاورما الفحم المعتقة بنكهة الدخان الطبيعي، وشاورما الصاج المقرمشة</p>
-                    <p>مشاوي تركية مميزة بطعم لا يقاوم</p>
+                    <p>مشاوي تركية مميزة بطعم لا يقاوم تجمع بين الأصالة والحداثة</p>
                 </div>
             </div>
         </div>
@@ -613,11 +683,11 @@
                     <p>في <strong>Fahem & Saj</strong>، نؤمن بأن الطعام الجيد يجمع الناس معًا. نحن نخصص كل جهدنا لتقديم تجربة طعام لا تُنسى، حيث ندمج بين الأصالة والحداثة في كل طبق نقدمه.</p>
                     
                     <div class="highlight-box">
-                        <h3>لماذا نحن الأفضل؟</h3>
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">لماذا نحن الأفضل؟</h3>
                         <p>✓ نستخدم أفضل قطع اللحوم والدجاج الطازج</p>
                         <p>✓ نطهو على الفحم الطبيعي لأصالة النكهة</p>
                         <p>✓ خلطات التوابل السرية المميزة</p>
-                        <p>✓ خدمة سريعة وودودة</p>
+                        <p>✓ خدمة سريعة وودودة على مدار الساعة</p>
                     </div>
                     
                     <p>نفتخر بأننا الوجهة المفضلة لعشاق الشاورما والمشاوي في المنطقة، حيث نضمن لكل زبون تجربة طعم فريدة ترغب في تكرارها.</p>
@@ -644,6 +714,7 @@
                         <h3 class="category-title">شاورما الفحم</h3>
                     </div>
                     <div class="items-list">
+                        <img src="https://i.imgur.com/Rdt2CIW.png" alt="شاورما فحم" class="category-image">
                         <div class="menu-item">
                             <div>
                                 <div class="item-name">شاورما دجاج على الفحم</div>
@@ -674,6 +745,7 @@
                         <h3 class="category-title">شاورما الصاج</h3>
                     </div>
                     <div class="items-list">
+                        <img src="https://i.imgur.com/bfoE47G.png" alt="شاورما صاج" class="category-image">
                         <div class="menu-item">
                             <div>
                                 <div class="item-name">شاورما دجاج صاج</div>
@@ -698,6 +770,7 @@
                         <h3 class="category-title">المشاوي</h3>
                     </div>
                     <div class="items-list">
+                        <img src="https://i.imgur.com/d6bRRoF.png" alt="مشاوي" class="category-image">
                         <div class="menu-item">
                             <div>
                                 <div class="item-name">دجاج تركي</div>
@@ -837,6 +910,12 @@
                         <i class="fas fa-map-marker-alt"></i>
                         افتح الموقع على خرائط جوجل
                     </a>
+                    
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(255,152,0,0.1); border-radius: 10px;">
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">ساعات العمل:</h4>
+                        <p>أيام الأسبوع: 10:00 صباحاً - 12:00 منتصف الليل</p>
+                        <p>عطلات نهاية الأسبوع: 10:00 صباحاً - 1:00 صباحاً</p>
+                    </div>
                 </div>
                 
                 <div class="about-image fade-in">
@@ -872,16 +951,27 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="copyright">
-                    <p>© 2024 Fahem & Saj - جميع الحقوق محفوظة</p>
-                    <p>مطعم الفحم والصاج - نكهات تراثية وأصالة في كل لقمة</p>
+                <div>
+                    <div class="footer-logo">
+                        <img src="https://i.imgur.com/TeHBiZi.png" alt="Fahem & Saj Logo">
+                    </div>
+                    <div class="copyright" style="margin-top: 15px;">
+                        <p>Fahem & Saj - مطعم الفحم والصاج</p>
+                        <p>نكهات تراثية وأصالة في كل لقمة</p>
+                    </div>
                 </div>
                 
-                <div class="footer-logo">
-                    <div style="font-size: 2rem; color: var(--accent);">
-                        <i class="fas fa-fire"></i>
+                <div>
+                    <div class="footer-links">
+                        <a href="#about" class="footer-link">عن المطعم</a>
+                        <a href="#menu" class="footer-link">القائمة</a>
+                        <a href="#contact" class="footer-link">اتصل بنا</a>
+                        <a href="#location" class="footer-link">الموقع</a>
                     </div>
-                    <div style="font-weight: 700; margin-top: 10px;">Fahem & Saj</div>
+                    <div class="copyright" style="margin-top: 20px;">
+                        <p>© 2024 Fahem & Saj - جميع الحقوق محفوظة</p>
+                        <p>تصميم وتطوير خاص للمطعم</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -934,6 +1024,18 @@
                     }
                 });
             });
+            
+            // Add logo animation
+            const logo = document.querySelector('.hero-logo img');
+            if(logo) {
+                setTimeout(() => {
+                    logo.style.transform = 'scale(1.05)';
+                    logo.style.transition = 'transform 0.5s ease';
+                    setTimeout(() => {
+                        logo.style.transform = 'scale(1)';
+                    }, 500);
+                }, 1000);
+            }
         });
     </script>
 </body>
