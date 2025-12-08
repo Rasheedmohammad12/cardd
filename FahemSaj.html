@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fahem & Saj - مطعم الفحم والصاج | Charcoal & Saj Restaurant</title>
+    <title>فحم وصاج - مطعم الفحم والصاج | Charcoal & Saj Restaurant</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -170,11 +170,9 @@
         
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 120px 0;
+            background: var(--light-bg);
+            color: var(--dark-text);
+            padding: 100px 0;
             text-align: center;
             position: relative;
         }
@@ -185,40 +183,41 @@
         }
         
         .hero-logo {
-            max-width: 350px;
+            max-width: 400px;
             margin: 0 auto 40px;
         }
         
         .hero-logo img {
             width: 100%;
             height: auto;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 5px 15px rgba(198, 40, 40, 0.3));
         }
         
         .hero-title {
             font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 20px;
-            color: white;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .hero-subtitle {
             font-size: 1.8rem;
             margin-bottom: 30px;
-            opacity: 0.9;
-            color: var(--gold);
+            color: var(--accent);
+            font-weight: 600;
         }
         
         .hero-text {
             font-size: 1.3rem;
             line-height: 1.8;
             margin-bottom: 50px;
-            background: rgba(255, 152, 0, 0.9);
+            background: rgba(255, 152, 0, 0.1);
             padding: 30px;
             border-radius: 20px;
             color: var(--dark-text);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow);
+            border: 2px solid var(--accent);
         }
         
         /* About Section */
@@ -650,6 +649,8 @@
             justify-content: center;
             gap: 25px;
             flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .social-icon {
@@ -687,11 +688,83 @@
             animation: shine 0.8s ease;
         }
         
+        /* NFC Card Section */
+        .nfc-section {
+            padding: 60px 0;
+            background: var(--light-bg);
+            text-align: center;
+        }
+        
+        .nfc-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+            border: 3px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nfc-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+        
+        .nfc-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+        
+        .nfc-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+        
+        .nfc-desc {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .nfc-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .nfc-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+            background: var(--primary-dark);
+        }
+        
         /* Save Contact Button */
         .save-contact-section {
             padding: 60px 0;
             text-align: center;
-            background: var(--light-bg);
+            background: var(--light-card);
         }
         
         .save-contact-btn {
@@ -830,6 +903,10 @@
                 top: 15px;
                 left: 15px;
             }
+            
+            .social-icons {
+                gap: 20px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -860,13 +937,23 @@
                 padding: 70px 0;
             }
             
-            .header-btn, .save-contact-btn, .location-btn {
+            .header-btn, .save-contact-btn, .location-btn, .nfc-btn {
                 padding: 15px 25px;
                 font-size: 1rem;
             }
             
             .contact-info {
                 font-size: 1.2rem;
+            }
+            
+            .social-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .nfc-card {
+                padding: 30px 20px;
             }
         }
         
@@ -889,9 +976,9 @@
             }
             
             .social-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
             }
         }
         
@@ -937,9 +1024,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <img src="https://i.imgur.com/TeHBiZi.png" alt="Fahem & Saj Logo" class="logo-image">
+                    <img src="https://i.imgur.com/TeHBiZi.png" alt="فحم وصاج Logo" class="logo-image">
                     <div class="logo-text">
-                        <div class="restaurant-name" id="restaurantName">Fahem & Saj</div>
+                        <div class="restaurant-name" id="restaurantName">فحم وصاج</div>
                         <div class="restaurant-tagline" id="restaurantTagline">مطعم الفحم والصاج</div>
                     </div>
                 </div>
@@ -963,9 +1050,9 @@
         <div class="container">
             <div class="hero-content fade-in">
                 <div class="hero-logo">
-                    <img src="https://i.imgur.com/TeHBiZi.png" alt="Fahem & Saj Logo">
+                    <img src="https://i.imgur.com/TeHBiZi.png" alt="فحم وصاج Logo">
                 </div>
-                <h1 class="hero-title" id="heroTitle">مطعم فاهم و صاج</h1>
+                <h1 class="hero-title" id="heroTitle">فحم وصاج</h1>
                 <h2 class="hero-subtitle" id="heroSubtitle">نكهات تراثية وأصالة في كل لقمة</h2>
                 <div class="hero-text" id="heroText">
                     <p>نقدم لكم أجود أنواع الشاورما والمشاوي المعدة باحترافية عالية</p>
@@ -992,7 +1079,7 @@
                     </div>
                 </div>
                 <div class="about-text fade-in">
-                    <p id="aboutText1">في <strong>Fahem & Saj</strong>، نؤمن بأن الطعام الجيد يجمع الناس معًا. نحن نخصص كل جهدنا لتقديم تجربة طعام لا تُنسى، حيث ندمج بين الأصالة والحداثة في كل طبق نقدمه.</p>
+                    <p id="aboutText1">في <strong>فحم وصاج</strong>، نؤمن بأن الطعام الجيد يجمع الناس معًا. نحن نخصص كل جهدنا لتقديم تجربة طعام لا تُنسى، حيث ندمج بين الأصالة والحداثة في كل طبق نقدمه.</p>
                     
                     <div class="highlight-box">
                         <h3 style="color: var(--primary); margin-bottom: 15px;" id="whyUsTitle">لماذا نحن الأفضل؟</h3>
@@ -1128,50 +1215,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-section" id="services">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title" id="servicesTitle">خدماتنا</h2>
-                <p class="section-subtitle" id="servicesSubtitle">نقدم لكم أفضل الخدمات لتجربة مميزة</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-shipping-fast"></i>
-                    </div>
-                    <h3 class="service-title" id="deliveryTitle">توصيل سريع</h3>
-                    <p class="service-desc" id="deliveryDesc">نضمن وصول طلبك ساخنًا وفي وقت قياسي</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-phone-volume"></i>
-                    </div>
-                    <h3 class="service-title" id="reservationsTitle">حجوزات واستفسارات</h3>
-                    <p class="service-desc" id="reservationsDesc">خدمة عملاء متاحة على مدار الساعة</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <h3 class="service-title" id="paymentTitle">دفع إلكتروني</h3>
-                    <p class="service-desc" id="paymentDesc">تقبل الدفع عبر Qliq: 0799543452</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3 class="service-title" id="cateringTitle">طلبات جماعية</h3>
-                    <p class="service-desc" id="cateringDesc">نستقبل الطلبات للمناسبات واللقاءات</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
@@ -1214,7 +1257,7 @@
                     </div>
                     <h3 class="contact-title" id="qliqTitle">Qliq للتحويل</h3>
                     <div class="contact-info">0799543452</div>
-                    <p class="contact-note" id="qliqNote">Mataam Mohammad Altorman</p>
+                    <p class="contact-note" id="qliqNote">مطعم محمد الطرمان</p>
                 </div>
             </div>
         </div>
@@ -1237,12 +1280,6 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <span id="openMapBtn">افتح الموقع على خرائط جوجل</span>
                     </button>
-                    
-                    <div style="margin-top: 40px; padding: 25px; background: rgba(255,152,0,0.1); border-radius: 15px;">
-                        <h4 style="color: var(--primary); margin-bottom: 15px;" id="hoursTitle">ساعات العمل:</h4>
-                        <p id="weekdaysHours">أيام الأسبوع: 10:00 صباحاً - 12:00 منتصف الليل</p>
-                        <p id="weekendHours">عطلات نهاية الأسبوع: 10:00 صباحاً - 1:00 صباحاً</p>
-                    </div>
                 </div>
                 
                 <div class="about-image fade-in" onclick="openModal('https://i.imgur.com/bfoE47G.png')">
@@ -1255,23 +1292,43 @@
         </div>
     </section>
 
+    <!-- NFC Card Section -->
+    <section class="nfc-section" id="nfc">
+        <div class="container">
+            <div class="nfc-card fade-in">
+                <div class="nfc-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <h2 class="nfc-title" id="nfcTitle">NFC Card Request</h2>
+                <p class="nfc-desc" id="nfcDesc">اطلب بطاقة NFC الخاصة بمطعمنا للحصول على تجربة سريعة وسهلة للوصول إلى معلوماتنا وعروضنا الخاصة</p>
+                <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="nfc-btn" target="_blank" id="nfcBtn">
+                    <i class="fab fa-instagram"></i>
+                    طلب بطاقة NFC عبر الإنستجرام
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Social Section -->
     <section class="social-section" id="social">
         <div class="container">
             <h2 class="social-title" id="followUsTitle">تابعونا على وسائل التواصل</h2>
             
             <div class="social-icons">
-                <a href="https://www.facebook.com/share/1GAxkE8gMj/?mibextid=wwXIfr" class="social-icon" target="_blank">
+                <a href="https://www.facebook.com/share/1GAxkE8gMj/?mibextid=wwXIfr" class="social-icon" target="_blank" title="فيسبوك">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://www.instagram.com/fahem_saj?igsh=MTlmbWo4aTBxeHp2bQ==" class="social-icon" target="_blank">
+                <a href="https://www.instagram.com/fahem_saj?igsh=MTlmbWo4aTBxeHp2bQ==" class="social-icon" target="_blank" title="إنستجرام">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://wa.me/962778001919" class="social-icon" target="_blank">
+                <a href="https://wa.me/962778001919" class="social-icon" target="_blank" title="واتساب">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <a href="tel:+962778001919" class="social-icon">
+                <a href="tel:+962778001919" class="social-icon" title="اتصال">
                     <i class="fas fa-phone"></i>
+                </a>
+                <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="social-icon" target="_blank" title="NFC Card Request">
+                    <i class="fas fa-id-card"></i>
                 </a>
             </div>
         </div>
@@ -1293,7 +1350,7 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-logo">
-                        <img src="https://i.imgur.com/TeHBiZi.png" alt="Fahem & Saj Logo">
+                        <img src="https://i.imgur.com/TeHBiZi.png" alt="فحم وصاج Logo">
                     </div>
                     <div class="footer-info mt-20">
                         <p id="footerTagline">نكهات تراثية وأصالة في كل لقمة</p>
@@ -1307,6 +1364,7 @@
                         <a href="#menu" class="footer-link" id="footerMenu">القائمة</a>
                         <a href="#contact" class="footer-link" id="footerContact">اتصل بنا</a>
                         <a href="#location" class="footer-link" id="footerLocation">الموقع</a>
+                        <a href="#nfc" class="footer-link" id="footerNFC">طلب بطاقة NFC</a>
                     </div>
                 </div>
                 
@@ -1318,7 +1376,7 @@
             </div>
             
             <div class="copyright">
-                <p>© 2024 Fahem & Saj - <span id="footerRights">جميع الحقوق محفوظة</span></p>
+                <p>© 2024 فحم وصاج - <span id="footerRights">جميع الحقوق محفوظة</span></p>
                 <p class="mt-20" id="footerDesign">تصميم وتطوير خاص للمطعم</p>
             </div>
         </div>
@@ -1329,13 +1387,13 @@
         const languageData = {
             ar: {
                 // Header
-                restaurantName: "Fahem & Saj",
+                restaurantName: "فحم وصاج",
                 restaurantTagline: "مطعم الفحم والصاج",
                 callText: "اتصل بنا",
                 locationText: "الموقع",
                 
                 // Hero
-                heroTitle: "مطعم فاهم و صاج",
+                heroTitle: "فحم وصاج",
                 heroSubtitle: "نكهات تراثية وأصالة في كل لقمة",
                 heroText1: "نقدم لكم أجود أنواع الشاورما والمشاوي المعدة باحترافية عالية",
                 heroText2: "شاورما الفحم المعتقة بنكهة الدخان الطبيعي، وشاورما الصاج المقرمشة",
@@ -1344,7 +1402,7 @@
                 // About
                 aboutTitle: "عن مطعمنا",
                 aboutSubtitle: "أصالة الطعم وجودة المكونات هي شعارنا",
-                aboutText1: "في Fahem & Saj، نؤمن بأن الطعام الجيد يجمع الناس معًا. نحن نخصص كل جهدنا لتقديم تجربة طعام لا تُنسى، حيث ندمج بين الأصالة والحداثة في كل طبق نقدمه.",
+                aboutText1: "في فحم وصاج، نؤمن بأن الطعام الجيد يجمع الناس معًا. نحن نخصص كل جهدنا لتقديم تجربة طعام لا تُنسى، حيث ندمج بين الأصالة والحداثة في كل طبق نقدمه.",
                 whyUsTitle: "لماذا نحن الأفضل؟",
                 whyUs1: "✓ نستخدم أفضل قطع اللحوم والدجاج الطازج",
                 whyUs2: "✓ نطهو على الفحم الطبيعي لأصالة النكهة",
@@ -1377,18 +1435,6 @@
                 kebab: "كباب بلدي",
                 kebabDesc: "لحم مفروم مع التوابل",
                 
-                // Services
-                servicesTitle: "خدماتنا",
-                servicesSubtitle: "نقدم لكم أفضل الخدمات لتجربة مميزة",
-                deliveryTitle: "توصيل سريع",
-                deliveryDesc: "نضمن وصول طلبك ساخنًا وفي وقت قياسي",
-                reservationsTitle: "حجوزات واستفسارات",
-                reservationsDesc: "خدمة عملاء متاحة على مدار الساعة",
-                paymentTitle: "دفع إلكتروني",
-                paymentDesc: "تقبل الدفع عبر Qliq: 0799543452",
-                cateringTitle: "طلبات جماعية",
-                cateringDesc: "نستقبل الطلبات للمناسبات واللقاءات",
-                
                 // Contact
                 contactTitle: "اتصل بنا",
                 contactSubtitle: "نحن هنا لخدمتكم على مدار الساعة",
@@ -1399,7 +1445,7 @@
                 whatsappTitle: "واتساب",
                 whatsappNote: "للحجوزات السريعة",
                 qliqTitle: "Qliq للتحويل",
-                qliqNote: "Mataam Mohammad Altorman",
+                qliqNote: "مطعم محمد الطرمان",
                 
                 // Location
                 locationTitle: "موقعنا",
@@ -1407,9 +1453,11 @@
                 locationText1: "نقع في موقع متميز يسهل الوصول إليه، حيث نرحب بكم بأجواء عائلية دافئة وخدمة مميزة.",
                 locationText2: "العنوان: مطعم محمد الطرمان - موقع يمكن الوصول إليه بسهولة عبر خرائط جوجل",
                 openMapBtn: "افتح الموقع على خرائط جوجل",
-                hoursTitle: "ساعات العمل:",
-                weekdaysHours: "أيام الأسبوع: 10:00 صباحاً - 12:00 منتصف الليل",
-                weekendHours: "عطلات نهاية الأسبوع: 10:00 صباحاً - 1:00 صباحاً",
+                
+                // NFC
+                nfcTitle: "NFC Card Request",
+                nfcDesc: "اطلب بطاقة NFC الخاصة بمطعمنا للحصول على تجربة سريعة وسهلة للوصول إلى معلوماتنا وعروضنا الخاصة",
+                nfcBtn: "طلب بطاقة NFC عبر الإنستجرام",
                 
                 // Social
                 followUsTitle: "تابعونا على وسائل التواصل",
@@ -1424,6 +1472,7 @@
                 footerMenu: "القائمة",
                 footerContact: "اتصل بنا",
                 footerLocation: "الموقع",
+                footerNFC: "طلب بطاقة NFC",
                 footerContactInfo: "للحجوزات والاستفسارات:",
                 footerRights: "جميع الحقوق محفوظة",
                 footerDesign: "تصميم وتطوير خاص للمطعم"
@@ -1431,13 +1480,13 @@
             
             en: {
                 // Header
-                restaurantName: "Fahem & Saj",
+                restaurantName: "فحم وصاج",
                 restaurantTagline: "Charcoal & Saj Restaurant",
                 callText: "Call Us",
                 locationText: "Location",
                 
                 // Hero
-                heroTitle: "Fahem & Saj Restaurant",
+                heroTitle: "فحم وصاج",
                 heroSubtitle: "Authentic Flavors in Every Bite",
                 heroText1: "We offer you the finest types of shawarma and grilled meats prepared with high professionalism",
                 heroText2: "Charcoal shawarma aged with natural smoke flavor, and crispy saj shawarma",
@@ -1446,7 +1495,7 @@
                 // About
                 aboutTitle: "About Us",
                 aboutSubtitle: "Authentic taste and quality ingredients are our motto",
-                aboutText1: "At Fahem & Saj, we believe that good food brings people together. We dedicate all our efforts to providing an unforgettable dining experience, combining authenticity and modernity in every dish we serve.",
+                aboutText1: "At فحم وصاج, we believe that good food brings people together. We dedicate all our efforts to providing an unforgettable dining experience, combining authenticity and modernity in every dish we serve.",
                 whyUsTitle: "Why We're The Best?",
                 whyUs1: "✓ We use the best cuts of fresh meat and chicken",
                 whyUs2: "✓ We cook on natural charcoal for authentic flavor",
@@ -1479,24 +1528,12 @@
                 kebab: "Local Kebab",
                 kebabDesc: "Minced meat with spices",
                 
-                // Services
-                servicesTitle: "Our Services",
-                servicesSubtitle: "We provide you with the best services for a unique experience",
-                deliveryTitle: "Fast Delivery",
-                deliveryDesc: "We ensure your order arrives hot and in record time",
-                reservationsTitle: "Reservations & Inquiries",
-                reservationsDesc: "Customer service available 24/7",
-                paymentTitle: "Electronic Payment",
-                paymentDesc: "Accept payment via Qliq: 0799543452",
-                cateringTitle: "Group Orders",
-                cateringDesc: "We accept orders for occasions and gatherings",
-                
                 // Contact
                 contactTitle: "Contact Us",
                 contactSubtitle: "We are here to serve you 24/7",
-                contact1Title: "Charcoal & Saj 1",
+                contact1Title: "فحم وصاج 1",
                 contact1Note: "For inquiries and orders",
-                contact2Title: "Charcoal & Saj 2",
+                contact2Title: "فحم وصاج 2",
                 contact2Note: "For inquiries and orders",
                 whatsappTitle: "WhatsApp",
                 whatsappNote: "For quick reservations",
@@ -1509,9 +1546,11 @@
                 locationText1: "We are located in a prime location easily accessible, where we welcome you with warm family atmosphere and distinguished service.",
                 locationText2: "Address: Mataam Mohammad Altorman - easily accessible via Google Maps",
                 openMapBtn: "Open Location on Google Maps",
-                hoursTitle: "Working Hours:",
-                weekdaysHours: "Weekdays: 10:00 AM - 12:00 Midnight",
-                weekendHours: "Weekends: 10:00 AM - 1:00 AM",
+                
+                // NFC
+                nfcTitle: "NFC Card Request",
+                nfcDesc: "Request our restaurant's NFC card for a fast and easy experience to access our information and special offers",
+                nfcBtn: "Request NFC Card via Instagram",
                 
                 // Social
                 followUsTitle: "Follow Us on Social Media",
@@ -1526,6 +1565,7 @@
                 footerMenu: "Menu",
                 footerContact: "Contact Us",
                 footerLocation: "Location",
+                footerNFC: "NFC Card Request",
                 footerContactInfo: "For reservations and inquiries:",
                 footerRights: "All Rights Reserved",
                 footerDesign: "Custom design and development for the restaurant"
@@ -1611,8 +1651,8 @@
         function downloadVCard() {
             const vCard = `BEGIN:VCARD
 VERSION:3.0
-FN:Fahem & Saj Restaurant
-ORG:Fahem & Saj - مطعم الفحم والصاج
+FN:فحم وصاج Restaurant
+ORG:فحم وصاج - مطعم الفحم والصاج
 TEL;TYPE=WORK,VOICE:+962778001919
 TEL;TYPE=WORK,VOICE:+962775001616
 URL:${window.location.href}
@@ -1625,7 +1665,7 @@ END:VCARD`;
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'Fahem-Saj-Contact.vcf';
+            a.download = 'فحم-وصاج-Contact.vcf';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -1661,7 +1701,7 @@ END:VCARD`;
             checkScroll();
             
             // Add click animation to buttons
-            document.querySelectorAll('.header-btn, .location-btn, .save-contact-btn').forEach(btn => {
+            document.querySelectorAll('.header-btn, .location-btn, .save-contact-btn, .nfc-btn').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
                     setTimeout(() => {
