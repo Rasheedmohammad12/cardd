@@ -260,56 +260,17 @@
         }
         
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
-        }
-        
-        .about-image {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        .about-image .zoom-icon {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .about-image:hover .zoom-icon {
-            opacity: 1;
         }
         
         .about-text {
             font-size: 1.2rem;
             line-height: 1.9;
             color: var(--light-text);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
         
         .highlight-box {
@@ -647,76 +608,63 @@
             box-shadow: var(--shadow-lg);
         }
         
-        /* NFC Card Section */
-        .nfc-section {
-            padding: 80px 0;
+        /* NFC Icon Section */
+        .nfc-icon-section {
+            padding: 60px 0;
             background: var(--light-bg);
             text-align: center;
         }
         
-        .nfc-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 500px;
-            margin: 0 auto;
-            box-shadow: var(--shadow-lg);
-            border: 3px solid var(--accent);
+        .nfc-icon-container {
+            display: inline-block;
             position: relative;
-            overflow: hidden;
-        }
-        
-        .nfc-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-        }
-        
-        .nfc-icon {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-        }
-        
-        .nfc-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--dark-text);
-        }
-        
-        .nfc-desc {
-            font-size: 1.1rem;
-            color: var(--light-text);
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-        
-        .nfc-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            background: var(--gradient);
-            color: white;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-            border: none;
             cursor: pointer;
-            text-decoration: none;
+            transition: all 0.4s ease;
         }
         
-        .nfc-btn:hover {
-            transform: translateY(-5px) scale(1.05);
+        .nfc-icon-container:hover {
+            transform: translateY(-10px) scale(1.1);
+        }
+        
+        .nfc-icon-circle {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: white;
+            font-size: 3.5rem;
             box-shadow: var(--shadow-lg);
+            border: 5px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .nfc-icon-container:hover .nfc-icon-circle {
+            transform: rotate(15deg);
+            background: var(--accent);
+        }
+        
+        .nfc-icon-tooltip {
+            position: absolute;
+            bottom: -40px;
+            right: 50%;
+            transform: translateX(50%);
             background: var(--primary-dark);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .nfc-icon-container:hover .nfc-icon-tooltip {
+            opacity: 1;
         }
         
         /* Social Section */
@@ -895,7 +843,7 @@
                 font-size: 2.8rem;
             }
             
-            .about-content, .location-content {
+            .location-content {
                 grid-template-columns: 1fr;
             }
             
@@ -958,7 +906,7 @@
                 padding: 70px 0;
             }
             
-            .header-btn, .save-contact-btn, .location-btn, .nfc-btn {
+            .header-btn, .save-contact-btn, .location-btn {
                 padding: 15px 25px;
                 font-size: 1rem;
             }
@@ -973,10 +921,6 @@
                 font-size: 1.5rem;
             }
             
-            .nfc-card {
-                padding: 30px 20px;
-            }
-            
             .menu-item-icon {
                 width: 80px;
                 height: 80px;
@@ -985,6 +929,12 @@
             
             .menu-item-name {
                 font-size: 1.6rem;
+            }
+            
+            .nfc-icon-circle {
+                width: 100px;
+                height: 100px;
+                font-size: 2.8rem;
             }
         }
         
@@ -1107,12 +1057,6 @@
             </div>
             
             <div class="about-content">
-                <div class="about-image fade-in" onclick="openModal('https://i.imgur.com/Rdt2CIW.png')">
-                    <img src="https://i.imgur.com/Rdt2CIW.png" alt="مشاوي الفحم" loading="lazy">
-                    <div class="zoom-icon">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
                 <div class="about-text fade-in">
                     <p id="aboutText1">في <strong>فحم وصاج</strong>، نؤمن بأن الطعام الجيد يجمع الناس معًا. نحن نخصص كل جهدنا لتقديم تجربة طعام لا تُنسى، حيث ندمج بين الأصالة والحداثة في كل طبق نقدمه.</p>
                     
@@ -1285,20 +1229,17 @@
         </div>
     </section>
 
-    <!-- NFC Card Section -->
-    <section class="nfc-section" id="nfc">
+    <!-- NFC Icon Section -->
+    <section class="nfc-icon-section" id="nfc">
         <div class="container">
-            <div class="nfc-card fade-in">
-                <div class="nfc-icon">
+            <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" 
+               class="nfc-icon-container" 
+               target="_blank">
+                <div class="nfc-icon-circle">
                     <i class="fas fa-id-card"></i>
                 </div>
-                <h2 class="nfc-title" id="nfcTitle">NFC Card Request</h2>
-                <p class="nfc-desc" id="nfcDesc">اطلب بطاقة NFC الخاصة بمطعمنا للحصول على تجربة سريعة وسهلة للوصول إلى معلوماتنا وعروضنا الخاصة</p>
-                <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="nfc-btn" target="_blank" id="nfcBtn">
-                    <i class="fab fa-instagram"></i>
-                    طلب بطاقة NFC عبر الإنستجرام
-                </a>
-            </div>
+                <div class="nfc-icon-tooltip" id="nfcTooltip">طلب بطاقة NFC</div>
+            </a>
         </div>
     </section>
 
@@ -1450,9 +1391,7 @@
                 openMapBtn: "افتح الموقع على خرائط جوجل",
                 
                 // NFC
-                nfcTitle: "NFC Card Request",
-                nfcDesc: "اطلب بطاقة NFC الخاصة بمطعمنا للحصول على تجربة سريعة وسهلة للوصول إلى معلوماتنا وعروضنا الخاصة",
-                nfcBtn: "طلب بطاقة NFC عبر الإنستجرام",
+                nfcTooltip: "طلب بطاقة NFC",
                 
                 // Social
                 followUsTitle: "تابعونا على وسائل التواصل",
@@ -1545,9 +1484,7 @@
                 openMapBtn: "Open Location on Google Maps",
                 
                 // NFC
-                nfcTitle: "NFC Card Request",
-                nfcDesc: "Request our restaurant's NFC card for a fast and easy experience to access our information and special offers",
-                nfcBtn: "Request NFC Card via Instagram",
+                nfcTooltip: "NFC Card Request",
                 
                 // Social
                 followUsTitle: "Follow Us on Social Media",
@@ -1698,7 +1635,7 @@ END:VCARD`;
             checkScroll();
             
             // Add click animation to buttons
-            document.querySelectorAll('.header-btn, .location-btn, .save-contact-btn, .nfc-btn, .type-badge').forEach(btn => {
+            document.querySelectorAll('.header-btn, .location-btn, .save-contact-btn, .type-badge, .nfc-icon-container').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
                     setTimeout(() => {
