@@ -837,6 +837,45 @@
             color: var(--accent);
         }
         
+        /* Copy Button */
+        .copy-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .copy-button:hover {
+            background: rgba(37, 99, 235, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: var(--gradient-blue);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1001;
+            transition: transform 0.4s ease;
+        }
+        
+        .copy-notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -977,14 +1016,24 @@
             </div>
         </div>
 
-        <!-- Click Service Section -->
+        <!-- كليك Service Section -->
         <div class="click-service fade-in delay-2">
-            <h2 class="section-title">خدمة التحويل المالي</h2>
+            <h2 class="section-title">كليك - خدمة التحويل المالي</h2>
             <div class="click-service-content">
                 <img src="https://i.imgur.com/YTIEhGh.png" alt="خدمة التحويل المالي" class="click-service-image">
                 <div class="click-service-info">
-                    <h3 class="click-service-title">تحويل الأموال عبر الإنترنت</h3>
+                    <h3 class="click-service-title">كليك - خدمة التحويل المالي السريع</h3>
                     <p class="click-service-desc">لتحويل الأموال بسرعة وأمان، استخدم خدمة الكليك للتحويلات المالية عبر الإنترنت</p>
+                    
+                    <!-- Phone Number with Copy Button -->
+                    <div style="background: rgba(37, 99, 235, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; color: var(--accent);">رقم التحويل: 0788885914</div>
+                        <div style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 10px;">انسخ الرقم للتحويل عبر تطبيق كليك</div>
+                        <button class="copy-button" onclick="copyToClipboard('0788885914')">
+                            <i class="far fa-copy"></i>
+                            انسخ الرقم
+                        </button>
+                    </div>
                     
                     <!-- Payment Methods -->
                     <div class="payment-methods">
@@ -1115,6 +1164,29 @@
                 الموقع
             </a>
         </div>
+
+        <!-- GOAT Gaming Center Section - Moved to Bottom -->
+        <div class="about-section fade-in delay-3" style="margin-bottom: 60px;">
+            <h2 class="section-title">GOAT Gaming Center</h2>
+            <div class="about-text">
+                أكبر وأحدث محل بلايستيشن في المنطقة
+            </div>
+            
+            <div class="highlight-box">
+                <div class="highlight-title">لماذا تختار GOAT Gaming Center؟</div>
+                <div class="about-text" style="text-align: center; direction: rtl;">
+                    GOAT ليس مجرد مركز ألعاب عادي، بل هو وجهة ترفيهية متكاملة تجمع بين أحدث التقنيات وأفضل الخدمات.
+                    مع أجهزة PlayStation 5 المتميزة، وغرف VIP الخاصة، وأجواء التنافس الصحية، نضمن لك تجربة لعب لا تُنسى.
+                    
+                    نحن نؤمن بأن الترفيه الجيد يجب أن يكون متاحاً للجميع، ولهذا نقدم أسعاراً تنافسية وعروضاً خاصة باستمرار.
+                    سواء كنت لاعباً محترفاً أو هاوياً، في GOAT ستجد المكان المثالي لقضاء أوقات ممتعة مع الأصدقاء والعائلة.
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: center; margin-top: 30px;">
+                <img src="https://i.imgur.com/3anIxpQ.png" alt="GOAT Gaming Center Logo" style="width: 100px; height: 100px; border-radius: 15px; border: 3px solid var(--accent);">
+            </div>
+        </div>
     </div>
 
     <!-- Review Modal -->
@@ -1127,6 +1199,11 @@
                 <button class="modal-btn cancel-btn" id="cancelReview">إلغاء</button>
             </div>
         </div>
+    </div>
+
+    <!-- Copy Notification -->
+    <div class="copy-notification" id="copyNotification">
+        <i class="fas fa-check-circle"></i> تم نسخ الرقم بنجاح!
     </div>
 
     <!-- Footer -->
@@ -1142,6 +1219,39 @@
         // Function to call phone number
         function callNumber(phoneNumber) {
             window.location.href = `tel:${phoneNumber}`;
+        }
+
+        // Function to copy text to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Show notification
+                const notification = document.getElementById('copyNotification');
+                notification.classList.add('show');
+                
+                // Hide notification after 2 seconds
+                setTimeout(function() {
+                    notification.classList.remove('show');
+                }, 2000);
+                
+                // Optional: Alert confirmation
+                console.log('تم نسخ الرقم: ' + text);
+            }, function(err) {
+                console.error('فشل نسخ النص: ', err);
+                // Fallback for older browsers
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                // Show notification even with fallback
+                const notification = document.getElementById('copyNotification');
+                notification.classList.add('show');
+                setTimeout(function() {
+                    notification.classList.remove('show');
+                }, 2000);
+            });
         }
 
         // Review Modal Functionality
@@ -1181,7 +1291,7 @@
 
         // Add click effects
         document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.social-icon, .action-button, .phone-card, .click-call-button, .money-transfer-button');
+            const buttons = document.querySelectorAll('.social-icon, .action-button, .phone-card, .click-call-button, .money-transfer-button, .copy-button');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     this.style.transform = 'scale(0.95)';
