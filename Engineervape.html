@@ -1,1 +1,761 @@
-
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المهندس فيب | متجر متكامل لأرقى منتجات التدخين والرحلات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #e94560;
+            --gold-color: #d4af37;
+            --light-color: #f5f5f5;
+            --text-color: #333;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* التصميم العام */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* الهيدر */
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--gold-color);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--gold-color);
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold-color);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gold-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* البانر الرئيسي */
+        .hero {
+            background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.9)), url('https://images.unsplash.com/photo-1607941102519-b0e7da032d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--gold-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #ff5773;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.4);
+        }
+        
+        /* قسم الخدمات */
+        .services {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 3px;
+            background: var(--gold-color);
+            bottom: -10px;
+            left: 15%;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 5px solid var(--accent-color);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* قسم التواصل */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .contact-info h3:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: 0;
+            right: 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background: #e9ecef;
+            transform: translateX(-5px);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-left: 15px;
+        }
+        
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .contact-text a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-text a:hover {
+            text-decoration: underline;
+        }
+        
+        /* الفوتر */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--gold-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: 0;
+            right: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold-color);
+            padding-right: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* تأثيرات إضافية */
+        .highlight-number {
+            background: var(--accent-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 5px;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-float:hover {
+            background: #128C7E;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- زر واتساب عائم -->
+    <a href="https://wa.me/962770775285" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- الهيدر -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <img src="https://i.imgur.com/kRcHFfU.png" alt="المهندس فيب - شعار">
+                </div>
+                <div class="logo-text">
+                    <h1>المهندس فيب</h1>
+                    <p>جودة مضمونة - أسعار منافسة</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#services">خدماتنا</a>
+                <a href="#products">منتجاتنا</a>
+                <a href="#contact">التواصل</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- البانر الرئيسي -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>المهندس فيب</h2>
+            <p>نوفّر لكم مجموعة متكاملة من أرقى منتجات التدخين ومستلزمات الرحلات بجودة مضمونة وأسعار منافسة. هدفنا نوفرلكم كل احتياجاتكم بمكان واحد وبأفضل تجربة.</p>
+            <a href="#contact" class="cta-button">اطلب الآن <i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </section>
+    
+    <!-- قسم الخدمات -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>منتجاتنا وخدماتنا</h2>
+                <p>نقدم لكم أفضل المنتجات الأصلية بجودة عالية وخدمة سريعة</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-smoking"></i>
+                    </div>
+                    <h3>فيب بأنواعه الأصلية</h3>
+                    <p>أجود أنواع الفيب بماركات عالمية مع ضمان الجودة والأصلية</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3>معسّل فاخر بنكهات متعددة</h3>
+                    <p>معسّل بجودة عالية ونكهات متنوعة تناسب جميع الأذواق</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>فحم عالي الجودة</h3>
+                    <p>فحم طبيعي عالي الجودة يضمن تجربة تدخين ممتازة</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-campground"></i>
+                    </div>
+                    <h3>أراجيل ومستلزماتها</h3>
+                    <p>أراجيل فاخرة مع جميع مستلزماتها من خراطيم وكاسات وغيرها</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-suitcase-rolling"></i>
+                    </div>
+                    <h3>مستلزمات رحلات متكاملة</h3>
+                    <p>كل ما تحتاجه للرحلات من أدوات وأغراض أساسية</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>خدمة سريعة وتوصيل</h3>
+                    <p>خدمة توصيل سريعة إلى جميع المناطق مع ضمان وصول المنتجات بحالة مثالية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم التواصل -->
+    <section class="contact" id="contact">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h3>تواصل معنا</h3>
+                <p>نحن هنا لخدمتكم على مدار الساعة، يمكنكم التواصل معنا عبر أي من الوسائل التالية:</p>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>رقم التواصل وخدمة كليك</h4>
+                        <p>0770775285 <span class="highlight-number">انسخ الرقم</span></p>
+                        <p>نفس الرقم للتواصل المباشر وخدمة كليك للتحويل</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>صفحة الفيس بوك</h4>
+                        <a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" target="_blank">المهندس فيب على فيسبوك</a>
+                        <p>تابعنا على فيسبوك للاطلاع على أحدث المنتجات والعروض</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>حساب الانستجرام</h4>
+                        <a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" target="_blank">eng.vapeforsmoking@</a>
+                        <p>شاهد منتجاتنا وصورها الحصرية على انستجرام</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>رابط المنتجات والصور</h4>
+                        <a href="https://share.google.com/BS1FoJZlng5yALoBz" target="_blank">معرض منتجات المهندس فيب</a>
+                        <p>اطلع على كتالوج المنتجات الكامل عبر هذا الرابط</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h3>عن المهندس فيب</h3>
+                <p>نحن متخصصون في توفير كل ما يلزم لعشاق التدخين والرحلات، مع التركيز على الجودة والأصالة والخدمة المميزة.</p>
+                
+                <div class="contact-item" style="background-color: rgba(233, 69, 96, 0.1);">
+                    <div class="contact-icon" style="background-color: var(--accent-color);">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>جودة مضمونة</h4>
+                        <p>جميع منتجاتنا أصلية وذات جودة عالية مع ضمان الرضا</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item" style="background-color: rgba(212, 175, 55, 0.1);">
+                    <div class="contact-icon" style="background-color: var(--gold-color);">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>أسعار منافسة</h4>
+                        <p>نوفر منتجات عالية الجودة بأسعار تنافسية تناسب جميع العملاء</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item" style="background-color: rgba(26, 26, 46, 0.1);">
+                    <div class="contact-icon" style="background-color: var(--primary-color);">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>خدمة سريعة</h4>
+                        <p>نضمن لكم توصيل سريع وآمن للمنتجات إلى جميع المناطق</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>المهندس فيب</h3>
+                    <p>متجر متكامل لأرقى منتجات التدخين والرحلات. جودة مضمونة، أسعار منافسة، خدمة سريعة.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" class="social-icon" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" class="social-icon" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/962770775285" class="social-icon" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#products">منتجاتنا</a></li>
+                        <li><a href="#contact">التواصل</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>منتجاتنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">فيب بأنواعه</a></li>
+                        <li><a href="#">معسّل فاخر</a></li>
+                        <li><a href="#">فحم عالي الجودة</a></li>
+                        <li><a href="#">أراجيل ومستلزماتها</a></li>
+                        <li><a href="#">مستلزمات رحلات</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>معلومات التواصل</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> 0770775285</li>
+                        <li><i class="fab fa-whatsapp"></i> واتساب: 0770775285</li>
+                        <li><i class="fas fa-envelope"></i> info@eng-vape.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> الأردن - عمّان</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 المهندس فيب | تصميم وتطوير: <a href="#" style="color: var(--gold-color);">المهندس فيب</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // دالة لنسخ الرقم عند النقر عليه
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneNumber = document.querySelector('.contact-text p');
+            if (phoneNumber) {
+                phoneNumber.addEventListener('click', function() {
+                    const number = '0770775285';
+                    navigator.clipboard.writeText(number).then(function() {
+                        alert('تم نسخ الرقم: ' + number);
+                    }, function(err) {
+                        console.error('فشل نسخ الرقم: ', err);
+                    });
+                });
+            }
+            
+            // تأثير التمرير السلس للروابط
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // تأثير الظهور عند التمرير
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, observerOptions);
+            
+            // مراقبة العناصر لإضافة تأثيرات
+            document.querySelectorAll('.service-card, .contact-item').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
