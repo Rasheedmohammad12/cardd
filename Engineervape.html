@@ -513,25 +513,97 @@
             color: var(--electric-blue);
         }
         
-        /* رقم الهاتف الخاص */
-        .phone-highlight {
-            background: linear-gradient(135deg, rgba(45, 156, 219, 0.2), rgba(26, 95, 122, 0.2));
-            border-radius: 15px;
-            padding: 25px;
+        /* قسم وسائل التواصل المحدث */
+        .social-section {
             margin-top: 40px;
-            border: 1px solid var(--electric-blue);
-            position: relative;
-            overflow: hidden;
         }
         
-        .phone-highlight::before {
+        .social-title {
+            font-size: 1.6rem;
+            color: var(--electric-blue);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .social-title i {
+            color: var(--neon-blue);
+        }
+        
+        .social-grid-updated {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .social-card-updated {
+            background: rgba(18, 18, 37, 0.7);
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            border: 1px solid rgba(45, 156, 219, 0.2);
+            transition: var(--transition-med);
+            text-decoration: none;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+        }
+        
+        .social-card-updated:hover {
+            background: rgba(45, 156, 219, 0.1);
+            border-color: var(--electric-blue);
+            transform: translateY(-8px);
+        }
+        
+        .social-icon-updated {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .facebook-updated { color: #1877F2; }
+        .instagram-updated { 
+            background: linear-gradient(45deg, #405DE6, #833AB4, #F56040, #FFDC80);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .whatsapp-updated { color: #25D366; }
+        
+        .social-card-updated h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .social-card-updated p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        /* رقم الهاتف المميز */
+        .phone-highlight-updated {
+            background: linear-gradient(135deg, rgba(45, 156, 219, 0.15), rgba(26, 95, 122, 0.15));
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 2px solid var(--electric-blue);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .phone-highlight-updated::before {
             content: '';
             position: absolute;
             top: 0;
             right: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(45, 156, 219, 0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(45, 156, 219, 0.15), transparent);
             animation: shine 3s infinite;
         }
         
@@ -540,65 +612,34 @@
             100% { transform: translateX(100%); }
         }
         
-        .phone-number {
-            font-size: 2.2rem;
+        .phone-label-updated {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .phone-label-updated i {
+            color: var(--neon-blue);
+        }
+        
+        .phone-number-updated {
+            font-size: 2.4rem;
             font-weight: 800;
             color: var(--electric-blue);
-            text-align: center;
-            margin-bottom: 15px;
             letter-spacing: 2px;
-        }
-        
-        .phone-label {
-            text-align: center;
-            color: var(--text-gray);
-            font-size: 1.1rem;
-        }
-        
-        /* شبكة وسائل التواصل */
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .social-card {
-            background: rgba(18, 18, 37, 0.7);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            border: 1px solid rgba(45, 156, 219, 0.2);
-            transition: var(--transition-med);
-            text-decoration: none;
-            color: var(--text-light);
-        }
-        
-        .social-card:hover {
-            background: rgba(45, 156, 219, 0.1);
-            border-color: var(--electric-blue);
-            transform: translateY(-10px);
-        }
-        
-        .social-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            direction: ltr;
             display: block;
         }
         
-        .facebook { color: #1877F2; }
-        .instagram { 
-            background: linear-gradient(45deg, #405DE6, #5B51D8, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .whatsapp { color: #25D366; }
-        .gallery { color: var(--light-blue); }
-        
-        .social-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+        .phone-description-updated {
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin-top: 10px;
         }
         
         /* الفوتر الفاخر */
@@ -679,6 +720,10 @@
             .section-title h2 {
                 font-size: 2.8rem;
             }
+            
+            .social-grid-updated {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (max-width: 992px) {
@@ -692,6 +737,10 @@
             
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .social-grid-updated {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
         
@@ -717,13 +766,27 @@
                 padding: 30px;
             }
             
-            .phone-number {
-                font-size: 1.8rem;
+            .phone-number-updated {
+                font-size: 2rem;
             }
             
             .btn-primary, .btn-secondary {
                 padding: 15px 25px;
                 font-size: 1rem;
+            }
+            
+            .social-grid-updated {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .social-grid-updated {
+                grid-template-columns: 1fr;
+            }
+            
+            .phone-number-updated {
+                font-size: 1.8rem;
             }
         }
         
@@ -761,6 +824,31 @@
             top: 40%;
             left: 20%;
             animation-delay: -10s;
+        }
+        
+        /* تأثير النسخ */
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(to right, var(--accent-blue), var(--electric-blue));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            z-index: 9999;
+            box-shadow: var(--shadow-glow);
+            font-weight: bold;
+            animation: fadeInOut 3s ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(-20px); }
+            20% { opacity: 1; transform: translateY(0); }
+            80% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); }
         }
     </style>
 </head>
@@ -836,10 +924,6 @@
                             <i class="fas fa-arrow-left"></i>
                         </a>
                     </div>
-                </div>
-                
-                <div class="hero-visual">
-                    <!-- سيتم إضافة صورة أو رسوم متحركة هنا -->
                 </div>
             </div>
         </div>
@@ -921,64 +1005,61 @@
         </div>
     </section>
 
-    <!-- قسم التواصل الفاخر -->
+    <!-- قسم التواصل الفاخر - محدث -->
     <section class="luxury-contact" id="contact">
         <div class="section-title">
             <h2 class="animate__animated animate__fadeInDown">تواصل معنا</h2>
-            <p class="animate__animated animate__fadeIn animate__delay-1s">نحن هنا لخدمتكم على مدار الساعة، يمكنكم التواصل معنا عبر أي من الوسائل التالية</p>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">نحن هنا لخدمتكم، يمكنكم التواصل معنا عبر أي من الوسائل التالية</p>
         </div>
         
         <div class="contact-grid">
+            <!-- معلومات التواصل الأساسية -->
             <div class="contact-card animate__animated animate__fadeInLeft">
                 <h3 class="contact-title">معلومات التواصل</h3>
                 
-                <!-- رقم الهاتف -->
-                <div class="contact-info-item" onclick="copyPhoneNumber()">
-                    <div class="contact-icon-wrapper">
+                <!-- رقم الهاتف الرئيسي -->
+                <div class="phone-highlight-updated" onclick="copyPhoneNumber()">
+                    <div class="phone-label-updated">
                         <i class="fas fa-phone-alt"></i>
+                        <span>رقم التواصل وخدمة كليك</span>
                     </div>
-                    <div class="contact-text">
-                        <h4>رقم التواصل وخدمة كليك</h4>
-                        <p id="phoneNumber">0770775285</p>
-                        <p>نفس الرقم للتواصل المباشر وخدمة كليك للتحويل</p>
-                        <small style="color: var(--neon-blue); margin-top: 5px; display: block;">انقر لنسخ الرقم</small>
-                    </div>
+                    <div class="phone-number-updated" id="phoneNumber">0770775285</div>
+                    <p class="phone-description-updated">نفس الرقم للتواصل المباشر وخدمة كليك للتحويل</p>
+                    <small style="color: var(--neon-blue); margin-top: 10px; display: block; font-size: 0.9rem;">
+                        <i class="fas fa-copy"></i> انقر لنسخ الرقم
+                    </small>
                 </div>
                 
-                <!-- وسائل التواصل الاجتماعي -->
-                <div class="social-grid">
-                    <a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" class="social-card" target="_blank">
-                        <i class="fab fa-facebook-f social-icon facebook"></i>
-                        <h4>فيسبوك</h4>
-                        <p>المهندس فيب</p>
-                    </a>
+                <!-- وسائل التواصل الاجتماعي المحدثة -->
+                <div class="social-section">
+                    <div class="social-title">
+                        <i class="fas fa-share-alt"></i>
+                        <span>وسائل التواصل الاجتماعي</span>
+                    </div>
                     
-                    <a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" class="social-card" target="_blank">
-                        <i class="fab fa-instagram social-icon instagram"></i>
-                        <h4>انستجرام</h4>
-                        <p>@eng.vapeforsmoking</p>
-                    </a>
-                    
-                    <a href="https://wa.me/962770775285" class="social-card" target="_blank">
-                        <i class="fab fa-whatsapp social-icon whatsapp"></i>
-                        <h4>واتساب</h4>
-                        <p>0770775285</p>
-                    </a>
-                    
-                    <a href="https://share.google.com/BS1FoJZlng5yALoBz" class="social-card" target="_blank">
-                        <i class="fas fa-images social-icon gallery"></i>
-                        <h4>معرض المنتجات</h4>
-                        <p>شاهد جميع المنتجات</p>
-                    </a>
-                </div>
-                
-                <!-- تسليط الضوء على الرقم -->
-                <div class="phone-highlight">
-                    <div class="phone-number">077 077 5285</div>
-                    <div class="phone-label">خدمة متاحة على مدار الساعة</div>
+                    <div class="social-grid-updated">
+                        <a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" class="social-card-updated" target="_blank">
+                            <i class="fab fa-facebook-f social-icon-updated facebook-updated"></i>
+                            <h4>فيسبوك</h4>
+                            <p>صفحتنا الرسمية</p>
+                        </a>
+                        
+                        <a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" class="social-card-updated" target="_blank">
+                            <i class="fab fa-instagram social-icon-updated instagram-updated"></i>
+                            <h4>انستجرام</h4>
+                            <p>@eng.vapeforsmoking</p>
+                        </a>
+                        
+                        <a href="https://wa.me/962770775285" class="social-card-updated" target="_blank">
+                            <i class="fab fa-whatsapp social-icon-updated whatsapp-updated"></i>
+                            <h4>واتساب</h4>
+                            <p>تواصل مباشر</p>
+                        </a>
+                    </div>
                 </div>
             </div>
             
+            <!-- مميزاتنا -->
             <div class="contact-card animate__animated animate__fadeInRight animate__delay-1s">
                 <h3 class="contact-title">مميزاتنا</h3>
                 
@@ -1088,28 +1169,31 @@
         function copyPhoneNumber() {
             const phoneNumber = "0770775285";
             navigator.clipboard.writeText(phoneNumber).then(() => {
-                // إشعار نسخ الرقم
-                const notification = document.createElement('div');
-                notification.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    left: 20px;
-                    background: linear-gradient(to right, var(--accent-blue), var(--electric-blue));
-                    color: white;
-                    padding: 15px 25px;
-                    border-radius: 10px;
-                    z-index: 9999;
-                    box-shadow: var(--shadow-glow);
-                    font-weight: bold;
-                    animation: fadeInOut 3s ease-in-out;
-                `;
-                notification.innerHTML = `<i class="fas fa-check-circle"></i> تم نسخ الرقم: ${phoneNumber}`;
-                document.body.appendChild(notification);
-                
-                setTimeout(() => {
-                    notification.remove();
-                }, 3000);
+                showNotification('تم نسخ الرقم: ' + phoneNumber);
+            }).catch(err => {
+                console.error('فشل نسخ الرقم: ', err);
+                showNotification('فشل نسخ الرقم، حاول مرة أخرى');
             });
+        }
+        
+        // دالة إظهار الإشعار
+        function showNotification(message) {
+            // إزالة أي إشعارات سابقة
+            const existingNotification = document.querySelector('.copy-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // إنشاء الإشعار الجديد
+            const notification = document.createElement('div');
+            notification.className = 'copy-notification';
+            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            document.body.appendChild(notification);
+            
+            // إزالة الإشعار بعد 3 ثوان
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
         }
         
         // تأثيرات التمرير
@@ -1162,19 +1246,14 @@
                     header.style.backdropFilter = 'blur(10px)';
                 }
             });
+            
+            // إضافة تأثير للعناصر عند تحميل الصفحة
+            setTimeout(() => {
+                document.querySelectorAll('.animate__animated').forEach(el => {
+                    el.style.opacity = '1';
+                });
+            }, 100);
         });
-        
-        // إضافة أنيميشن للـ CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeInOut {
-                0% { opacity: 0; transform: translateY(-20px); }
-                20% { opacity: 1; transform: translateY(0); }
-                80% { opacity: 1; transform: translateY(0); }
-                100% { opacity: 0; transform: translateY(-20px); }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
