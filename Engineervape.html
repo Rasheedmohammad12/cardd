@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المهندس فيب | فخامة وجودة في عالم التدخين والرحلات</title>
+    <title>ENG Vape | Premium Vape & Hookah Products</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
@@ -35,26 +35,34 @@
         }
         
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Tajawal', 'Poppins', sans-serif;
             background-color: var(--primary-dark);
             color: var(--text-light);
             line-height: 1.8;
             overflow-x: hidden;
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
             background-attachment: fixed;
+            padding-top: 90px; /* مساحة للهيدر الثابت */
         }
         
-        /* تصميم الهيدر الفخم */
+        body[dir="ltr"] {
+            font-family: 'Poppins', 'Tajawal', sans-serif;
+        }
+        
+        /* تصميم الهيدر الفخم - ثابت في الأعلى */
         .luxury-header {
-            background: linear-gradient(to bottom, rgba(10, 10, 20, 0.95) 0%, rgba(18, 18, 37, 0.85) 100%);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(to bottom, rgba(10, 10, 20, 0.98) 0%, rgba(18, 18, 37, 0.95) 100%);
+            backdrop-filter: blur(15px);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(45, 156, 219, 0.2);
+            border-bottom: 1px solid rgba(45, 156, 219, 0.3);
             padding: 15px 0;
             transition: var(--transition-med);
+            height: 90px;
+            display: flex;
+            align-items: center;
         }
         
         .header-container {
@@ -64,6 +72,7 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 40px;
+            width: 100%;
         }
         
         .logo-section {
@@ -73,8 +82,8 @@
         }
         
         .logo-frame {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--accent-blue), var(--electric-blue));
             display: flex;
@@ -104,7 +113,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain;
             position: relative;
             z-index: 2;
             background: var(--primary-dark);
@@ -115,8 +124,12 @@
             text-align: right;
         }
         
+        body[dir="ltr"] .logo-text {
+            text-align: left;
+        }
+        
         .logo-text h1 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             background: linear-gradient(to right, var(--electric-blue), var(--light-blue));
             -webkit-background-clip: text;
             background-clip: text;
@@ -128,14 +141,53 @@
         
         .logo-text p {
             color: var(--text-gray);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             letter-spacing: 2px;
+        }
+        
+        /* زر تبديل اللغة */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 30px;
+        }
+        
+        body[dir="ltr"] .language-switcher {
+            margin-right: 0;
+            margin-left: 30px;
+        }
+        
+        .lang-btn {
+            background: rgba(45, 156, 219, 0.1);
+            border: 1px solid rgba(45, 156, 219, 0.3);
+            color: var(--text-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition-med);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(45, 156, 219, 0.2);
+            border-color: var(--electric-blue);
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(to right, var(--electric-blue), var(--neon-blue));
+            color: white;
         }
         
         /* القائمة الفخمة */
         .luxury-nav {
             display: flex;
             gap: 40px;
+            align-items: center;
         }
         
         .nav-link {
@@ -146,6 +198,13 @@
             position: relative;
             padding: 10px 0;
             transition: var(--transition-med);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        body[dir="ltr"] .nav-link {
+            flex-direction: row-reverse;
         }
         
         .nav-link::before {
@@ -159,6 +218,11 @@
             transition: var(--transition-med);
         }
         
+        body[dir="ltr"] .nav-link::before {
+            right: auto;
+            left: 0;
+        }
+        
         .nav-link:hover {
             color: var(--electric-blue);
         }
@@ -168,17 +232,15 @@
         }
         
         .nav-icon {
-            margin-left: 8px;
             font-size: 1rem;
         }
         
         /* البانر الفخم */
         .luxury-hero {
-            min-height: 100vh;
+            min-height: calc(100vh - 90px);
             display: flex;
             align-items: center;
             position: relative;
-            padding-top: 120px;
             overflow: hidden;
         }
         
@@ -188,9 +250,7 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(10, 10, 20, 0.9), rgba(18, 18, 37, 0.95)), url('https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(10, 10, 20, 0.9), rgba(18, 18, 37, 0.95));
             z-index: -1;
         }
         
@@ -212,8 +272,17 @@
             animation: fadeInRight 1.2s ease-out;
         }
         
+        body[dir="ltr"] .hero-text {
+            animation: fadeInLeft 1.2s ease-out;
+        }
+        
         @keyframes fadeInRight {
             from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
             to { opacity: 1; transform: translateX(0); }
         }
         
@@ -240,6 +309,11 @@
             border-radius: 2px;
         }
         
+        body[dir="ltr"] .hero-title::after {
+            right: auto;
+            left: 0;
+        }
+        
         .hero-description {
             font-size: 1.3rem;
             color: var(--text-gray);
@@ -255,6 +329,12 @@
             border-radius: 0 15px 15px 0;
             margin-bottom: 40px;
             backdrop-filter: blur(10px);
+        }
+        
+        body[dir="ltr"] .highlight-box {
+            border-right: none;
+            border-left: 4px solid var(--electric-blue);
+            border-radius: 15px 0 0 15px;
         }
         
         .highlight-title {
@@ -355,6 +435,11 @@
             bottom: -15px;
             right: 0;
             border-radius: 5px;
+        }
+        
+        body[dir="ltr"] .section-title h2::before {
+            right: auto;
+            left: 0;
         }
         
         .section-title p {
@@ -463,6 +548,11 @@
             background: linear-gradient(to right, var(--electric-blue), transparent);
         }
         
+        body[dir="ltr"] .contact-title::after {
+            right: auto;
+            left: 0;
+        }
+        
         /* معلومات التواصل الفاخرة */
         .contact-info-item {
             display: flex;
@@ -476,10 +566,18 @@
             transition: var(--transition-med);
         }
         
+        body[dir="ltr"] .contact-info-item {
+            flex-direction: row-reverse;
+        }
+        
         .contact-info-item:hover {
             background: rgba(45, 156, 219, 0.1);
             border-color: var(--electric-blue);
             transform: translateX(-10px);
+        }
+        
+        body[dir="ltr"] .contact-info-item:hover {
+            transform: translateX(10px);
         }
         
         .contact-icon-wrapper {
@@ -533,14 +631,14 @@
         
         .social-grid-updated {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
         }
         
         .social-card-updated {
             background: rgba(18, 18, 37, 0.7);
             border-radius: 15px;
-            padding: 25px 20px;
+            padding: 20px;
             text-align: center;
             border: 1px solid rgba(45, 156, 219, 0.2);
             transition: var(--transition-med);
@@ -550,7 +648,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 140px;
+            min-height: 120px;
         }
         
         .social-card-updated:hover {
@@ -560,8 +658,8 @@
         }
         
         .social-icon-updated {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            margin-bottom: 10px;
             display: block;
         }
         
@@ -573,15 +671,18 @@
             color: transparent;
         }
         .whatsapp-updated { color: #25D366; }
+        .nfc-updated { color: var(--light-blue); }
         
         .social-card-updated h4 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            display: none; /* إخفاء النص */
         }
         
         .social-card-updated p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-gray);
+            display: none; /* إخفاء النص */
         }
         
         /* رقم الهاتف المميز */
@@ -677,6 +778,11 @@
             background: var(--electric-blue);
         }
         
+        body[dir="ltr"] .footer-column h3::after {
+            right: auto;
+            left: 0;
+        }
+        
         .footer-links {
             list-style: none;
         }
@@ -694,9 +800,18 @@
             gap: 10px;
         }
         
+        body[dir="ltr"] .footer-links a {
+            flex-direction: row-reverse;
+        }
+        
         .footer-links a:hover {
             color: var(--electric-blue);
             padding-right: 5px;
+        }
+        
+        body[dir="ltr"] .footer-links a:hover {
+            padding-right: 0;
+            padding-left: 5px;
         }
         
         .copyright {
@@ -722,7 +837,7 @@
             }
             
             .social-grid-updated {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(4, 1fr);
             }
         }
         
@@ -740,7 +855,15 @@
             }
             
             .social-grid-updated {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .language-switcher {
+                margin-right: 15px;
+            }
+            
+            body[dir="ltr"] .language-switcher {
+                margin-left: 15px;
             }
         }
         
@@ -776,17 +899,21 @@
             }
             
             .social-grid-updated {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(4, 1fr);
             }
         }
         
         @media (max-width: 480px) {
             .social-grid-updated {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .phone-number-updated {
                 font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -829,8 +956,8 @@
         /* تأثير النسخ */
         .copy-notification {
             position: fixed;
-            top: 20px;
-            left: 20px;
+            top: 100px;
+            right: 20px;
             background: linear-gradient(to right, var(--accent-blue), var(--electric-blue));
             color: white;
             padding: 15px 25px;
@@ -844,43 +971,121 @@
             gap: 10px;
         }
         
+        body[dir="ltr"] .copy-notification {
+            right: auto;
+            left: 20px;
+        }
+        
         @keyframes fadeInOut {
             0% { opacity: 0; transform: translateY(-20px); }
             20% { opacity: 1; transform: translateY(0); }
             80% { opacity: 1; transform: translateY(0); }
             100% { opacity: 0; transform: translateY(-20px); }
         }
+        
+        /* قائمة الجوال */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        @media (max-width: 992px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .luxury-nav {
+                position: fixed;
+                top: 90px;
+                right: 0;
+                width: 300px;
+                height: calc(100vh - 90px);
+                background: rgba(10, 10, 20, 0.95);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                padding: 40px 20px;
+                transform: translateX(100%);
+                transition: var(--transition-med);
+                z-index: 999;
+                border-left: 1px solid rgba(45, 156, 219, 0.3);
+            }
+            
+            body[dir="ltr"] .luxury-nav {
+                right: auto;
+                left: 0;
+                transform: translateX(-100%);
+            }
+            
+            .luxury-nav.active {
+                transform: translateX(0);
+            }
+            
+            .nav-link {
+                font-size: 1.2rem;
+                padding: 15px 0;
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
     </style>
 </head>
-<body>
-    <!-- الهيدر الفاخر -->
+<body dir="rtl">
+    <!-- الهيدر الفاخر - ثابت في الأعلى -->
     <header class="luxury-header">
         <div class="header-container">
             <div class="logo-section">
                 <div class="logo-frame">
-                    <img src="https://i.imgur.com/kRcHFfU.png" alt="المهندس فيب" class="logo-img">
+                    <img src="https://i.imgur.com/kRcHFfU.png" alt="ENG Vape" class="logo-img">
                 </div>
                 <div class="logo-text">
-                    <h1>المهندس فيب</h1>
-                    <p>VAPE · HOOKAH · PREMIUM PRODUCTS</p>
+                    <h1 class="ar-text">المهندس فيب</h1>
+                    <h1 class="en-text" style="display: none;">ENG Vape</h1>
+                    <p class="ar-text">VAPE · HOOKAH · PREMIUM PRODUCTS</p>
+                    <p class="en-text" style="display: none;">VAPE · HOOKAH · PREMIUM PRODUCTS</p>
                 </div>
             </div>
+            
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="ar">
+                    <i class="fas fa-language"></i>
+                    <span class="ar-text">العربية</span>
+                    <span class="en-text" style="display: none;">Arabic</span>
+                </button>
+                <button class="lang-btn" data-lang="en">
+                    <i class="fas fa-globe"></i>
+                    <span>English</span>
+                </button>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
             <nav class="luxury-nav">
                 <a href="#home" class="nav-link">
-                    <span>الرئيسية</span>
                     <i class="fas fa-home nav-icon"></i>
+                    <span class="ar-text">الرئيسية</span>
+                    <span class="en-text" style="display: none;">Home</span>
                 </a>
                 <a href="#products" class="nav-link">
-                    <span>منتجاتنا</span>
                     <i class="fas fa-cube nav-icon"></i>
+                    <span class="ar-text">منتجاتنا</span>
+                    <span class="en-text" style="display: none;">Products</span>
                 </a>
                 <a href="#services" class="nav-link">
-                    <span>خدماتنا</span>
                     <i class="fas fa-concierge-bell nav-icon"></i>
+                    <span class="ar-text">خدماتنا</span>
+                    <span class="en-text" style="display: none;">Services</span>
                 </a>
                 <a href="#contact" class="nav-link">
-                    <span>التواصل</span>
                     <i class="fas fa-phone-alt nav-icon"></i>
+                    <span class="ar-text">التواصل</span>
+                    <span class="en-text" style="display: none;">Contact</span>
                 </a>
             </nav>
         </div>
@@ -896,31 +1101,38 @@
         <div class="hero-content">
             <div class="hero-grid">
                 <div class="hero-text">
-                    <h1 class="hero-title animate__animated animate__fadeInDown">فخامة وجودة في عالم التدخين والرحلات</h1>
+                    <h1 class="hero-title animate__animated animate__fadeInDown">
+                        <span class="ar-text">فخامة وجودة في عالم التدخين والرحلات</span>
+                        <span class="en-text" style="display: none;">Luxury & Quality in Smoking & Travel World</span>
+                    </h1>
                     <p class="hero-description animate__animated animate__fadeIn animate__delay-1s">
-                        نوفّر لكم مجموعة متكاملة من أرقى منتجات التدخين ومستلزمات الرحلات بجودة مضمونة وأسعار منافسة. هدفنا نوفرلكم كل احتياجاتكم بمكان واحد وبأفضل تجربة.
+                        <span class="ar-text">نوفّر لكم مجموعة متكاملة من أرقى منتجات التدخين ومستلزمات الرحلات بجودة مضمونة وأسعار منافسة. هدفنا نوفرلكم كل احتياجاتكم بمكان واحد وبأفضل تجربة.</span>
+                        <span class="en-text" style="display: none;">We provide you with a complete collection of the finest smoking products and travel supplies with guaranteed quality and competitive prices. Our goal is to provide all your needs in one place with the best experience.</span>
                     </p>
                     
                     <div class="highlight-box animate__animated animate__fadeInUp animate__delay-1s">
                         <div class="highlight-title">
                             <i class="fas fa-crown"></i>
-                            <span>مميزاتنا الحصرية</span>
+                            <span class="ar-text">مميزاتنا الحصرية</span>
+                            <span class="en-text" style="display: none;">Our Exclusive Features</span>
                         </div>
                         <ul class="highlight-list">
-                            <li><i class="fas fa-check-circle"></i> جودة مضمونة ومنتجات أصلية</li>
-                            <li><i class="fas fa-check-circle"></i> أسعار تنافسية مع عروض حصرية</li>
-                            <li><i class="fas fa-check-circle"></i> خدمة توصيل سريعة ومضمونة</li>
-                            <li><i class="fas fa-check-circle"></i> دعم فني واستشاري متكامل</li>
+                            <li><i class="fas fa-check-circle"></i> <span class="ar-text">جودة مضمونة ومنتجات أصلية</span><span class="en-text" style="display: none;">Guaranteed quality & original products</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="ar-text">أسعار تنافسية مع عروض حصرية</span><span class="en-text" style="display: none;">Competitive prices with exclusive offers</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="ar-text">خدمة توصيل سريعة ومضمونة</span><span class="en-text" style="display: none;">Fast & guaranteed delivery service</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="ar-text">دعم فني واستشاري متكامل</span><span class="en-text" style="display: none;">Complete technical & advisory support</span></li>
                         </ul>
                     </div>
                     
                     <div class="luxury-buttons animate__animated animate__fadeInUp animate__delay-2s">
                         <a href="#contact" class="btn-primary">
-                            <span>اطلب الآن</span>
+                            <span class="ar-text">اطلب الآن</span>
+                            <span class="en-text" style="display: none;">Order Now</span>
                             <i class="fas fa-shopping-cart"></i>
                         </a>
                         <a href="#products" class="btn-secondary">
-                            <span>تصفح المنتجات</span>
+                            <span class="ar-text">تصفح المنتجات</span>
+                            <span class="en-text" style="display: none;">Browse Products</span>
                             <i class="fas fa-arrow-left"></i>
                         </a>
                     </div>
@@ -932,8 +1144,14 @@
     <!-- قسم المنتجات الفاخر -->
     <section class="luxury-products" id="products">
         <div class="section-title">
-            <h2 class="animate__animated animate__fadeInDown">منتجاتنا الفاخرة</h2>
-            <p class="animate__animated animate__fadeIn animate__delay-1s">نقدم لكم تشكيلة حصرية من أرقى المنتجات بجودة عالمية وتصاميم فاخرة</p>
+            <h2 class="animate__animated animate__fadeInDown">
+                <span class="ar-text">منتجاتنا الفاخرة</span>
+                <span class="en-text" style="display: none;">Our Luxury Products</span>
+            </h2>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">
+                <span class="ar-text">نقدم لكم تشكيلة حصرية من أرقى المنتجات بجودة عالمية وتصاميم فاخرة</span>
+                <span class="en-text" style="display: none;">We offer you an exclusive collection of the finest products with global quality and luxurious designs</span>
+            </p>
         </div>
         
         <div class="products-grid">
@@ -943,8 +1161,10 @@
                     <i class="fas fa-smoking"></i>
                 </div>
                 <div class="product-content">
-                    <h3>فيب بأنواعه الأصلية</h3>
-                    <p>أجود أنواع الفيب بماركات عالمية مع ضمان الجودة والأصلية. نقدم تشكيلة واسعة من أجهزة الفيب بالسوائل المختلفة والنكهات المميزة.</p>
+                    <h3 class="ar-text">فيب بأنواعه الأصلية</h3>
+                    <h3 class="en-text" style="display: none;">Original Vape Types</h3>
+                    <p class="ar-text">أجود أنواع الفيب بماركات عالمية مع ضمان الجودة والأصلية. نقدم تشكيلة واسعة من أجهزة الفيب بالسوائل المختلفة والنكهات المميزة.</p>
+                    <p class="en-text" style="display: none;">The finest types of vape with global brands with quality and originality guarantee. We offer a wide range of vape devices with different liquids and distinctive flavors.</p>
                 </div>
             </div>
             
@@ -954,8 +1174,10 @@
                     <i class="fas fa-wind"></i>
                 </div>
                 <div class="product-content">
-                    <h3>معسّل فاخر بنكهات متعددة</h3>
-                    <p>معسّل بجودة عالية ونكهات متنوعة تناسب جميع الأذواق. نقدم تشكيلة واسعة من النكهات العالمية الأصلية.</p>
+                    <h3 class="ar-text">معسّل فاخر بنكهات متعددة</h3>
+                    <h3 class="en-text" style="display: none;">Luxury Molasses with Multiple Flavors</h3>
+                    <p class="ar-text">معسّل بجودة عالية ونكهات متنوعة تناسب جميع الأذواق. نقدم تشكيلة واسعة من النكهات العالمية الأصلية.</p>
+                    <p class="en-text" style="display: none;">High-quality molasses with diverse flavors that suit all tastes. We offer a wide range of original global flavors.</p>
                 </div>
             </div>
             
@@ -965,8 +1187,10 @@
                     <i class="fas fa-fire"></i>
                 </div>
                 <div class="product-content">
-                    <h3>فحم عالي الجودة</h3>
-                    <p>فحم طبيعي عالي الجودة يضمن تجربة تدخين ممتازة. مصنوع من أفضل أنواع الخشب الطبيعي بدون إضافات كيميائية.</p>
+                    <h3 class="ar-text">فحم عالي الجودة</h3>
+                    <h3 class="en-text" style="display: none;">High Quality Charcoal</h3>
+                    <p class="ar-text">فحم طبيعي عالي الجودة يضمن تجربة تدخين ممتازة. مصنوع من أفضل أنواع الخشب الطبيعي بدون إضافات كيميائية.</p>
+                    <p class="en-text" style="display: none;">Natural high-quality charcoal that ensures an excellent smoking experience. Made from the finest types of natural wood without chemical additives.</p>
                 </div>
             </div>
             
@@ -976,8 +1200,10 @@
                     <i class="fas fa-campground"></i>
                 </div>
                 <div class="product-content">
-                    <h3>أراجيل ومستلزماتها</h3>
-                    <p>أراجيل فاخرة مع جميع مستلزماتها من خراطيم وكاسات وغيرها. تصاميم فاخرة تناسب الأذواق الراقية.</p>
+                    <h3 class="ar-text">أراجيل ومستلزماتها</h3>
+                    <h3 class="en-text" style="display: none;">Hookahs & Accessories</h3>
+                    <p class="ar-text">أراجيل فاخرة مع جميع مستلزماتها من خراطيم وكاسات وغيرها. تصاميم فاخرة تناسب الأذواق الراقية.</p>
+                    <p class="en-text" style="display: none;">Luxurious hookahs with all their accessories including hoses, cups, and more. Luxurious designs suitable for sophisticated tastes.</p>
                 </div>
             </div>
             
@@ -987,8 +1213,10 @@
                     <i class="fas fa-suitcase-rolling"></i>
                 </div>
                 <div class="product-content">
-                    <h3>مستلزمات رحلات متكاملة</h3>
-                    <p>كل ما تحتاجه للرحلات من أدوات وأغراض أساسية. نقدم تشكيلة متكاملة تناسب جميع أنواع الرحلات.</p>
+                    <h3 class="ar-text">مستلزمات رحلات متكاملة</h3>
+                    <h3 class="en-text" style="display: none;">Complete Travel Supplies</h3>
+                    <p class="ar-text">كل ما تحتاجه للرحلات من أدوات وأغراض أساسية. نقدم تشكيلة متكاملة تناسب جميع أنواع الرحلات.</p>
+                    <p class="en-text" style="display: none;">Everything you need for trips from tools and basic necessities. We offer a complete collection suitable for all types of trips.</p>
                 </div>
             </div>
             
@@ -998,8 +1226,10 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <div class="product-content">
-                    <h3>منتجات حصرية فاخرة</h3>
-                    <p>تشكيلة حصرية من المنتجات الفاخرة التي لا تجدها إلا عندنا. جودة استثنائية وتصاميم مبتكرة.</p>
+                    <h3 class="ar-text">منتجات حصرية فاخرة</h3>
+                    <h3 class="en-text" style="display: none;">Exclusive Luxury Products</h3>
+                    <p class="ar-text">تشكيلة حصرية من المنتجات الفاخرة التي لا تجدها إلا عندنا. جودة استثنائية وتصاميم مبتكرة.</p>
+                    <p class="en-text" style="display: none;">An exclusive collection of luxury products that you only find with us. Exceptional quality and innovative designs.</p>
                 </div>
             </div>
         </div>
@@ -1008,25 +1238,40 @@
     <!-- قسم التواصل الفاخر - محدث -->
     <section class="luxury-contact" id="contact">
         <div class="section-title">
-            <h2 class="animate__animated animate__fadeInDown">تواصل معنا</h2>
-            <p class="animate__animated animate__fadeIn animate__delay-1s">نحن هنا لخدمتكم، يمكنكم التواصل معنا عبر أي من الوسائل التالية</p>
+            <h2 class="animate__animated animate__fadeInDown">
+                <span class="ar-text">تواصل معنا</span>
+                <span class="en-text" style="display: none;">Contact Us</span>
+            </h2>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">
+                <span class="ar-text">نحن هنا لخدمتكم، يمكنكم التواصل معنا عبر أي من الوسائل التالية</span>
+                <span class="en-text" style="display: none;">We are here to serve you, you can contact us through any of the following means</span>
+            </p>
         </div>
         
         <div class="contact-grid">
             <!-- معلومات التواصل الأساسية -->
             <div class="contact-card animate__animated animate__fadeInLeft">
-                <h3 class="contact-title">معلومات التواصل</h3>
+                <h3 class="contact-title">
+                    <span class="ar-text">معلومات التواصل</span>
+                    <span class="en-text" style="display: none;">Contact Information</span>
+                </h3>
                 
                 <!-- رقم الهاتف الرئيسي -->
                 <div class="phone-highlight-updated" onclick="copyPhoneNumber()">
                     <div class="phone-label-updated">
                         <i class="fas fa-phone-alt"></i>
-                        <span>رقم التواصل وخدمة كليك</span>
+                        <span class="ar-text">رقم التواصل وخدمة كليك</span>
+                        <span class="en-text" style="display: none;">Contact Number & Click Service</span>
                     </div>
                     <div class="phone-number-updated" id="phoneNumber">0770775285</div>
-                    <p class="phone-description-updated">نفس الرقم للتواصل المباشر وخدمة كليك للتحويل</p>
+                    <p class="phone-description-updated">
+                        <span class="ar-text">نفس الرقم للتواصل المباشر وخدمة كليك للتحويل</span>
+                        <span class="en-text" style="display: none;">Same number for direct contact and click transfer service</span>
+                    </p>
                     <small style="color: var(--neon-blue); margin-top: 10px; display: block; font-size: 0.9rem;">
-                        <i class="fas fa-copy"></i> انقر لنسخ الرقم
+                        <i class="fas fa-copy"></i> 
+                        <span class="ar-text">انقر لنسخ الرقم</span>
+                        <span class="en-text" style="display: none;">Click to copy number</span>
                     </small>
                 </div>
                 
@@ -1034,26 +1279,25 @@
                 <div class="social-section">
                     <div class="social-title">
                         <i class="fas fa-share-alt"></i>
-                        <span>وسائل التواصل الاجتماعي</span>
+                        <span class="ar-text">وسائل التواصل الاجتماعي</span>
+                        <span class="en-text" style="display: none;">Social Media</span>
                     </div>
                     
                     <div class="social-grid-updated">
                         <a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" class="social-card-updated" target="_blank">
                             <i class="fab fa-facebook-f social-icon-updated facebook-updated"></i>
-                            <h4>فيسبوك</h4>
-                            <p>صفحتنا الرسمية</p>
                         </a>
                         
                         <a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" class="social-card-updated" target="_blank">
                             <i class="fab fa-instagram social-icon-updated instagram-updated"></i>
-                            <h4>انستجرام</h4>
-                            <p>@eng.vapeforsmoking</p>
                         </a>
                         
                         <a href="https://wa.me/962770775285" class="social-card-updated" target="_blank">
                             <i class="fab fa-whatsapp social-icon-updated whatsapp-updated"></i>
-                            <h4>واتساب</h4>
-                            <p>تواصل مباشر</p>
+                        </a>
+                        
+                        <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="social-card-updated" target="_blank">
+                            <i class="fas fa-nfc social-icon-updated nfc-updated"></i>
                         </a>
                     </div>
                 </div>
@@ -1061,15 +1305,20 @@
             
             <!-- مميزاتنا -->
             <div class="contact-card animate__animated animate__fadeInRight animate__delay-1s">
-                <h3 class="contact-title">مميزاتنا</h3>
+                <h3 class="contact-title">
+                    <span class="ar-text">مميزاتنا</span>
+                    <span class="en-text" style="display: none;">Our Features</span>
+                </h3>
                 
                 <div class="contact-info-item">
                     <div class="contact-icon-wrapper">
                         <i class="fas fa-award"></i>
                     </div>
                     <div class="contact-text">
-                        <h4>جودة مضمونة</h4>
-                        <p>جميع منتجاتنا أصلية وذات جودة عالية مع ضمان الرضا التام</p>
+                        <h4 class="ar-text">جودة مضمونة</h4>
+                        <h4 class="en-text" style="display: none;">Guaranteed Quality</h4>
+                        <p class="ar-text">جميع منتجاتنا أصلية وذات جودة عالية مع ضمان الرضا التام</p>
+                        <p class="en-text" style="display: none;">All our products are original and of high quality with complete satisfaction guarantee</p>
                     </div>
                 </div>
                 
@@ -1078,8 +1327,10 @@
                         <i class="fas fa-tags"></i>
                     </div>
                     <div class="contact-text">
-                        <h4>أسعار منافسة</h4>
-                        <p>نوفر منتجات عالية الجودة بأسعار تنافسية تناسب جميع العملاء</p>
+                        <h4 class="ar-text">أسعار منافسة</h4>
+                        <h4 class="en-text" style="display: none;">Competitive Prices</h4>
+                        <p class="ar-text">نوفر منتجات عالية الجودة بأسعار تنافسية تناسب جميع العملاء</p>
+                        <p class="en-text" style="display: none;">We provide high-quality products at competitive prices suitable for all customers</p>
                     </div>
                 </div>
                 
@@ -1088,8 +1339,10 @@
                         <i class="fas fa-shipping-fast"></i>
                     </div>
                     <div class="contact-text">
-                        <h4>خدمة سريعة</h4>
-                        <p>نضمن لكم توصيل سريع وآمن للمنتجات إلى جميع المناطق</p>
+                        <h4 class="ar-text">خدمة سريعة</h4>
+                        <h4 class="en-text" style="display: none;">Fast Service</h4>
+                        <p class="ar-text">نضمن لكم توصيل سريع وآمن للمنتجات إلى جميع المناطق</p>
+                        <p class="en-text" style="display: none;">We guarantee fast and secure delivery of products to all areas</p>
                     </div>
                 </div>
                 
@@ -1098,18 +1351,10 @@
                         <i class="fas fa-headset"></i>
                     </div>
                     <div class="contact-text">
-                        <h4>دعم فني متكامل</h4>
-                        <p>فريق دعم فني متاح لمساعدتكم في اختيار المنتجات المناسبة</p>
-                    </div>
-                </div>
-                
-                <div class="contact-info-item">
-                    <div class="contact-icon-wrapper">
-                        <i class="fas fa-gift"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h4>عروض حصرية</h4>
-                        <p>عروض وتخفيضات حصرية للمتابعين والعملاء الدائمين</p>
+                        <h4 class="ar-text">دعم فني متكامل</h4>
+                        <h4 class="en-text" style="display: none;">Complete Technical Support</h4>
+                        <p class="ar-text">فريق دعم فني متاح لمساعدتكم في اختيار المنتجات المناسبة</p>
+                        <p class="en-text" style="display: none;">Technical support team available to help you choose suitable products</p>
                     </div>
                 </div>
             </div>
@@ -1120,59 +1365,103 @@
     <footer class="luxury-footer">
         <div class="footer-content">
             <div class="footer-column">
-                <h3>المهندس فيب</h3>
-                <p>متجر متكامل لأرقى منتجات التدخين والرحلات. جودة مضمونة، أسعار منافسة، خدمة سريعة.</p>
+                <h3 class="ar-text">المهندس فيب</h3>
+                <h3 class="en-text" style="display: none;">ENG Vape</h3>
+                <p class="ar-text">متجر متكامل لأرقى منتجات التدخين والرحلات. جودة مضمونة، أسعار منافسة، خدمة سريعة.</p>
+                <p class="en-text" style="display: none;">A complete store for the finest smoking and travel products. Guaranteed quality, competitive prices, fast service.</p>
                 <div style="margin-top: 20px;">
-                    <img src="https://i.imgur.com/kRcHFfU.png" alt="شعار المهندس فيب" style="width: 80px; border-radius: 50%; border: 2px solid var(--electric-blue); padding: 5px;">
+                    <div class="logo-frame" style="width: 80px; height: 80px;">
+                        <img src="https://i.imgur.com/kRcHFfU.png" alt="ENG Vape" class="logo-img">
+                    </div>
                 </div>
             </div>
             
             <div class="footer-column">
-                <h3>روابط سريعة</h3>
+                <h3 class="ar-text">روابط سريعة</h3>
+                <h3 class="en-text" style="display: none;">Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
-                    <li><a href="#products"><i class="fas fa-chevron-left"></i> منتجاتنا</a></li>
-                    <li><a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
-                    <li><a href="#contact"><i class="fas fa-chevron-left"></i> التواصل</a></li>
+                    <li><a href="#home"><i class="fas fa-chevron-left"></i> <span class="ar-text">الرئيسية</span><span class="en-text" style="display: none;">Home</span></a></li>
+                    <li><a href="#products"><i class="fas fa-chevron-left"></i> <span class="ar-text">منتجاتنا</span><span class="en-text" style="display: none;">Products</span></a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-left"></i> <span class="ar-text">خدماتنا</span><span class="en-text" style="display: none;">Services</span></a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-left"></i> <span class="ar-text">التواصل</span><span class="en-text" style="display: none;">Contact</span></a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
-                <h3>منتجاتنا</h3>
+                <h3 class="ar-text">منتجاتنا</h3>
+                <h3 class="en-text" style="display: none;">Our Products</h3>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="fas fa-chevron-left"></i> فيب بأنواعه</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-left"></i> معسّل فاخر</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-left"></i> فحم عالي الجودة</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-left"></i> أراجيل ومستلزماتها</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-left"></i> مستلزمات رحلات</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> <span class="ar-text">فيب بأنواعه</span><span class="en-text" style="display: none;">Vape Types</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> <span class="ar-text">معسّل فاخر</span><span class="en-text" style="display: none;">Luxury Molasses</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> <span class="ar-text">فحم عالي الجودة</span><span class="en-text" style="display: none;">High Quality Charcoal</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> <span class="ar-text">أراجيل ومستلزماتها</span><span class="en-text" style="display: none;">Hookahs & Accessories</span></a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
-                <h3>تواصل معنا</h3>
+                <h3 class="ar-text">تواصل معنا</h3>
+                <h3 class="en-text" style="display: none;">Contact Us</h3>
                 <ul class="footer-links">
                     <li><a href="tel:0770775285"><i class="fas fa-phone"></i> 0770775285</a></li>
-                    <li><a href="https://wa.me/962770775285" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a></li>
-                    <li><a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a></li>
-                    <li><a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> انستجرام</a></li>
+                    <li><a href="https://wa.me/962770775285" target="_blank"><i class="fab fa-whatsapp"></i> <span class="ar-text">واتساب</span><span class="en-text" style="display: none;">WhatsApp</span></a></li>
+                    <li><a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i> <span class="ar-text">فيسبوك</span><span class="en-text" style="display: none;">Facebook</span></a></li>
+                    <li><a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> <span class="ar-text">انستجرام</span><span class="en-text" style="display: none;">Instagram</span></a></li>
                 </ul>
             </div>
         </div>
         
         <div class="copyright">
-            <p>جميع الحقوق محفوظة &copy; 2023 المهندس فيب | تصميم وتطوير: <span style="color: var(--electric-blue);">المهندس فيب</span></p>
+            <p class="ar-text">جميع الحقوق محفوظة &copy; 2023 المهندس فيب | تصميم وتطوير: <span style="color: var(--electric-blue);">المهندس فيب</span></p>
+            <p class="en-text" style="display: none;">All rights reserved &copy; 2023 ENG Vape | Design & Development: <span style="color: var(--electric-blue);">ENG Vape</span></p>
         </div>
     </footer>
 
     <script>
+        // دالة تبديل اللغة
+        function switchLanguage(lang) {
+            const isArabic = lang === 'ar';
+            
+            // تغيير اتجاه الصفحة
+            document.body.dir = isArabic ? 'rtl' : 'ltr';
+            
+            // إظهار/إخفاء النصوص العربية والإنجليزية
+            document.querySelectorAll('.ar-text').forEach(el => {
+                el.style.display = isArabic ? 'inline' : 'none';
+            });
+            
+            document.querySelectorAll('.en-text').forEach(el => {
+                el.style.display = isArabic ? 'none' : 'inline';
+            });
+            
+            // تحديث أزرار اللغة
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // حفظ اللغة المختارة
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
         // دالة نسخ الرقم
         function copyPhoneNumber() {
             const phoneNumber = "0770775285";
             navigator.clipboard.writeText(phoneNumber).then(() => {
-                showNotification('تم نسخ الرقم: ' + phoneNumber);
+                showNotification(
+                    document.body.dir === 'rtl' ? 
+                    'تم نسخ الرقم: ' + phoneNumber : 
+                    'Number copied: ' + phoneNumber
+                );
             }).catch(err => {
-                console.error('فشل نسخ الرقم: ', err);
-                showNotification('فشل نسخ الرقم، حاول مرة أخرى');
+                console.error('Failed to copy: ', err);
+                showNotification(
+                    document.body.dir === 'rtl' ? 
+                    'فشل نسخ الرقم، حاول مرة أخرى' : 
+                    'Failed to copy number, please try again'
+                );
             });
         }
         
@@ -1196,8 +1485,12 @@
             }, 3000);
         }
         
-        // تأثيرات التمرير
+        // تهيئة الصفحة عند التحميل
         document.addEventListener('DOMContentLoaded', () => {
+            // تحميل اللغة المفضلة
+            const preferredLanguage = localStorage.getItem('preferredLanguage') || 'ar';
+            switchLanguage(preferredLanguage);
+            
             // إضافة تأثيرات للمنتجات عند التمرير
             const observerOptions = {
                 threshold: 0.1,
@@ -1228,22 +1521,36 @@
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 100,
+                            top: targetElement.offsetTop - 90,
                             behavior: 'smooth'
                         });
+                        
+                        // إغلاق قائمة الجوال إذا كانت مفتوحة
+                        const mobileMenu = document.querySelector('.luxury-nav');
+                        mobileMenu.classList.remove('active');
                     }
                 });
             });
             
-            // تأثير للهيدر عند التمرير
-            window.addEventListener('scroll', () => {
-                const header = document.querySelector('.luxury-header');
-                if (window.scrollY > 100) {
-                    header.style.background = 'rgba(10, 10, 20, 0.95)';
-                    header.style.backdropFilter = 'blur(15px)';
-                } else {
-                    header.style.background = 'linear-gradient(to bottom, rgba(10, 10, 20, 0.95) 0%, rgba(18, 18, 37, 0.85) 100%)';
-                    header.style.backdropFilter = 'blur(10px)';
+            // أحداث أزرار اللغة
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    switchLanguage(btn.dataset.lang);
+                });
+            });
+            
+            // قائمة الجوال
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.querySelector('.luxury-nav');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+            
+            // إغلاق القائمة عند النقر خارجها
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
                 }
             });
             
