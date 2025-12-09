@@ -11,26 +11,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* ألوان بيضاء فاخرة */
-            --primary: #8B4513; /* بني فاتح أنيق */
+            /* ألوان بيضاء بالكامل */
+            --primary: #8B4513; /* بني أنيق للتمييز */
             --primary-light: #A0522D;
             --primary-dark: #654321;
             --accent: #C19A6B; /* ذهبي فاتح */
-            --accent-light: #D4B996;
-            --accent-dark: #8B7355;
-            --light-bg: #FFFFFF; /* أبيض نقي */
-            --light-card: #F8F8F8; /* أبيض فاتح */
-            --light-card-hover: #F0F0F0;
-            --dark-text: #2C1810; /* بني داكن أنيق */
-            --light-text: #5D4037; /* بني فاتح */
-            --border-color: #E0D6CC; /* بيج فاتح */
-            --shadow-color: rgba(139, 69, 19, 0.1);
+            --text-dark: #2C1810; /* بني داكن للنصوص */
+            --text-light: #5D4037; /* بني فاتح للنصوص الثانوية */
+            --white: #FFFFFF;
+            --light-bg: #FFFFFF;
+            --light-card: #FFFFFF;
+            --border-color: #E8E2D9; /* بيج فاتح جداً */
+            --shadow-color: rgba(139, 69, 19, 0.08);
             --gradient: linear-gradient(135deg, #8B4513 0%, #654321 100%);
             --gradient-accent: linear-gradient(135deg, #C19A6B 0%, #D4B996 100%);
-            --gradient-light: linear-gradient(135deg, #FFFFFF 0%, #F8F8F8 100%);
-            --shadow: 0 8px 30px var(--shadow-color);
-            --shadow-lg: 0 15px 50px rgba(139, 69, 19, 0.15);
-            --shadow-accent: 0 5px 20px rgba(193, 154, 107, 0.2);
+            --shadow: 0 5px 20px var(--shadow-color);
+            --shadow-lg: 0 10px 30px rgba(139, 69, 19, 0.12);
             --border: 1px solid var(--border-color);
             --border-radius: 12px;
             --border-radius-lg: 20px;
@@ -44,17 +40,15 @@
         
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 100px; /* تعويض للهيدر الثابت */
         }
         
         body {
-            background: var(--light-bg);
-            color: var(--dark-text);
+            background: var(--white);
+            color: var(--text-dark);
             min-height: 100vh;
             line-height: 1.7;
             overflow-x: hidden;
             font-family: 'Cairo', 'Poppins', sans-serif;
-            transition: all 0.3s ease;
         }
         
         body[dir="ltr"] {
@@ -67,14 +61,14 @@
         }
         
         a {
-            color: var(--accent-dark);
+            color: var(--primary);
             text-decoration: none;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
         }
         
         /* Language Switcher */
@@ -83,7 +77,7 @@
             top: 20px;
             left: 20px;
             z-index: 1002;
-            background: var(--light-card);
+            background: var(--white);
             border-radius: 50px;
             box-shadow: var(--shadow);
             overflow: hidden;
@@ -98,7 +92,7 @@
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
-            color: var(--light-text);
+            color: var(--text-light);
         }
         
         .lang-btn.active {
@@ -108,18 +102,16 @@
         
         /* Header - ثابت في الأعلى */
         .main-header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            color: var(--dark-text);
+            background: var(--white);
+            color: var(--text-dark);
             padding: 15px 0;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1001;
-            box-shadow: 0 2px 20px rgba(139, 69, 19, 0.08);
+            box-shadow: 0 2px 10px rgba(139, 69, 19, 0.05);
             border-bottom: 2px solid var(--accent);
-            transition: all 0.3s ease;
         }
         
         .header-content {
@@ -138,12 +130,7 @@
             height: 60px;
             width: auto;
             object-fit: contain;
-            transition: transform 0.3s ease;
             filter: drop-shadow(0 2px 4px rgba(139, 69, 19, 0.1));
-        }
-        
-        .logo-image:hover {
-            transform: scale(1.05);
         }
         
         .logo-text {
@@ -155,12 +142,11 @@
             font-weight: 900;
             line-height: 1.2;
             color: var(--primary);
-            letter-spacing: -0.5px;
         }
         
         .restaurant-tagline {
             font-size: 0.9rem;
-            color: var(--accent-dark);
+            color: var(--accent);
             margin-top: 3px;
             font-weight: 500;
         }
@@ -185,7 +171,6 @@
             box-shadow: var(--shadow);
             cursor: pointer;
             font-size: 0.9rem;
-            white-space: nowrap;
         }
         
         .header-btn:hover {
@@ -194,33 +179,206 @@
             box-shadow: var(--shadow-lg);
         }
         
-        /* Hero Section - بعد الهيدر الثابت */
-        .hero-section {
-            background: linear-gradient(135deg, #FFFFFF 0%, #F8F8F8 100%);
-            color: var(--dark-text);
-            padding: 140px 0 80px; /* زيادة البادنج العلوي للتعويض عن الهيدر */
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        /* Main Layout - مواقع التواصل على اليسار والمحتوى على اليمين */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            min-height: 100vh;
+            padding-top: 100px; /* لتعويض الهيدر الثابت */
         }
         
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(193, 154, 107, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(139, 69, 19, 0.05) 0%, transparent 40%);
+        /* Sidebar - مواقع التواصل على اليسار */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding: 30px 0;
+            background: var(--white);
+            border-left: 2px solid var(--border-color);
+        }
+        
+        .sidebar-content {
+            padding: 0 20px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 40px;
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        /* Contact Info */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: var(--light-card);
+            border-radius: var(--border-radius);
+            border: var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .contact-details {
+            flex: 1;
+        }
+        
+        .contact-type {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 3px;
+        }
+        
+        .contact-number {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            direction: ltr;
+            text-align: right;
+        }
+        
+        /* Social Media */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .social-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            background: var(--light-card);
+            border-radius: var(--border-radius);
+            border: var(--border);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .social-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .social-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Quick Links */
+        .quick-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background: var(--light-card);
+            border-radius: var(--border-radius);
+            border: var(--border);
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+        
+        .quick-link:hover {
+            transform: translateX(-5px);
+            background: rgba(193, 154, 107, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .quick-link i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        
+        /* NFC Card */
+        .nfc-card {
+            text-align: center;
+            padding: 20px;
+            background: var(--light-card);
+            border-radius: var(--border-radius);
+            border: 2px dashed var(--accent);
+            margin-top: 20px;
+        }
+        
+        .nfc-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .nfc-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Main Content - على اليمين */
+        .main-content {
+            padding: 30px 0 50px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            margin-bottom: 60px;
         }
         
         .hero-content {
+            text-align: center;
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
         
         .hero-logo {
@@ -231,7 +389,7 @@
         .hero-logo img {
             width: 100%;
             height: auto;
-            filter: drop-shadow(0 8px 20px rgba(139, 69, 19, 0.15));
+            filter: drop-shadow(0 5px 15px rgba(139, 69, 19, 0.1));
         }
         
         .hero-title {
@@ -239,37 +397,34 @@
             font-weight: 900;
             margin-bottom: 15px;
             color: var(--primary);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         
         .hero-subtitle {
             font-size: 1.4rem;
             margin-bottom: 25px;
-            color: var(--accent-dark);
+            color: var(--accent);
             font-weight: 600;
         }
         
         .hero-text {
             font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 40px;
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--light-card);
             padding: 25px;
             border-radius: var(--border-radius-lg);
-            color: var(--light-text);
+            color: var(--text-light);
             box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
+            border: var(--border);
         }
         
         /* About Section */
         .about-section {
-            padding: 80px 0;
-            background: var(--light-bg);
+            margin-bottom: 60px;
         }
         
         .section-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         
         .section-title {
@@ -295,17 +450,23 @@
         
         .section-subtitle {
             font-size: 1.1rem;
-            color: var(--light-text);
+            color: var(--text-light);
             max-width: 700px;
             margin: 20px auto 0;
+        }
+        
+        .about-content {
+            background: var(--light-card);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            border: var(--border);
         }
         
         .about-text {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: var(--light-text);
-            max-width: 800px;
-            margin: 0 auto;
+            color: var(--text-light);
             text-align: center;
         }
         
@@ -315,30 +476,28 @@
             border-radius: var(--border-radius);
             margin: 25px 0;
             border-right: 4px solid var(--accent);
-            border: 1px solid rgba(193, 154, 107, 0.2);
         }
         
-        /* Menu Section - تصميم مضغوط وأنيق */
+        /* Menu Section */
         .menu-section {
-            padding: 80px 0;
-            background: var(--light-card);
+            margin-bottom: 60px;
         }
         
-        /* Menu Grid - تصميم أنيق وصغير */
+        /* Menu Grid - واضح ومتكامل */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .menu-category {
-            background: var(--light-bg);
-            padding: 30px 25px;
-            border-radius: var(--border-radius);
+            background: var(--light-card);
+            padding: 30px;
+            border-radius: var(--border-radius-lg);
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
+            border: var(--border);
             position: relative;
             overflow: hidden;
         }
@@ -352,13 +511,11 @@
         .category-header {
             text-align: center;
             margin-bottom: 25px;
-            position: relative;
-            z-index: 1;
         }
         
         .category-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: var(--gradient);
             border-radius: 50%;
             display: flex;
@@ -366,20 +523,20 @@
             justify-content: center;
             margin: 0 auto 15px;
             color: white;
-            font-size: 1.5rem;
-            box-shadow: var(--shadow-accent);
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
         }
         
         .category-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--primary);
             margin-bottom: 8px;
         }
         
         .category-desc {
-            font-size: 0.95rem;
-            color: var(--light-text);
+            font-size: 1rem;
+            color: var(--text-light);
             line-height: 1.5;
         }
         
@@ -387,8 +544,6 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            position: relative;
-            z-index: 1;
         }
         
         .menu-item {
@@ -397,7 +552,6 @@
             border-radius: 8px;
             border-right: 3px solid var(--accent);
             transition: all 0.2s ease;
-            border: 1px solid rgba(193, 154, 107, 0.1);
         }
         
         .menu-item:hover {
@@ -406,26 +560,26 @@
         }
         
         .item-name {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 5px;
         }
         
         .item-desc {
-            font-size: 0.9rem;
-            color: var(--light-text);
+            font-size: 0.95rem;
+            color: var(--text-light);
             line-height: 1.5;
         }
         
-        /* Menu Images Section - صور واضحة وكاملة */
+        /* Menu Images Section - صور كاملة وواضحة */
         .menu-images-section {
-            margin-top: 70px;
+            margin-top: 60px;
         }
         
         .menu-images-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
@@ -437,8 +591,8 @@
             transition: all 0.3s ease;
             position: relative;
             cursor: pointer;
-            border: 1px solid var(--border-color);
-            aspect-ratio: 4/3; /* نسبة ثابتة للصور */
+            border: var(--border);
+            aspect-ratio: 4/3;
         }
         
         .menu-image-card:hover {
@@ -469,15 +623,142 @@
         }
         
         .menu-image-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             margin-bottom: 5px;
             color: white;
         }
         
         .menu-image-desc {
-            font-size: 0.95rem;
+            font-size: 1rem;
             opacity: 0.9;
+        }
+        
+        /* Location Section */
+        .location-section {
+            margin-bottom: 60px;
+        }
+        
+        .location-content {
+            background: var(--light-card);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            border: var(--border);
+        }
+        
+        .location-info {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        
+        .location-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 30px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .location-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: var(--primary-dark);
+        }
+        
+        /* Save Contact Button */
+        .save-contact-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .save-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 35px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .save-contact-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: var(--primary-dark);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 40px 0 20px;
+            text-align: center;
+            border-top: 2px solid var(--border-color);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo img {
+            height: 70px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(139, 69, 19, 0.1));
+            margin-bottom: 15px;
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .footer-link {
+            color: var(--text-light);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .footer-info {
+            opacity: 0.8;
+            line-height: 1.7;
+            color: var(--text-light);
         }
         
         /* Image Modal */
@@ -531,347 +812,7 @@
         }
         
         .close-modal:hover {
-            color: var(--accent-dark);
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            padding: 80px 0;
-            background: var(--light-bg);
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .contact-card {
-            background: var(--light-card);
-            padding: 30px 25px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-accent);
-        }
-        
-        .contact-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-accent);
-        }
-        
-        .contact-card:hover .contact-icon {
-            transform: scale(1.1);
-            background: var(--gradient);
-        }
-        
-        .contact-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .contact-info {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--dark-text);
-            direction: ltr;
-            margin: 10px 0;
-        }
-        
-        .contact-note {
-            font-size: 0.9rem;
-            color: var(--light-text);
-            margin-top: 8px;
-        }
-        
-        /* Location Section */
-        .location-section {
-            padding: 80px 0;
-            background: var(--light-card);
-        }
-        
-        .location-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .location-info {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--light-text);
-        }
-        
-        .location-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px 30px;
-            background: var(--gradient);
-            color: white;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 1rem;
-            margin-top: 25px;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-            border: none;
-            cursor: pointer;
-        }
-        
-        .location-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            background: var(--primary-dark);
-        }
-        
-        /* NFC Icon Section */
-        .nfc-icon-section {
-            padding: 60px 0;
-            background: var(--light-bg);
-            text-align: center;
-        }
-        
-        .nfc-icon-container {
-            display: inline-block;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .nfc-icon-container:hover {
-            transform: translateY(-8px) scale(1.05);
-        }
-        
-        .nfc-icon-circle {
-            width: 100px;
-            height: 100px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            color: white;
-            font-size: 2.5rem;
-            box-shadow: var(--shadow-lg);
-            border: 4px solid var(--accent);
-            transition: all 0.3s ease;
-        }
-        
-        .nfc-icon-container:hover .nfc-icon-circle {
-            transform: rotate(10deg);
-            background: var(--gradient-accent);
-        }
-        
-        .nfc-icon-tooltip {
-            position: absolute;
-            bottom: -35px;
-            right: 50%;
-            transform: translateX(50%);
-            background: var(--primary);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            white-space: nowrap;
-            box-shadow: var(--shadow);
-        }
-        
-        .nfc-icon-container:hover .nfc-icon-tooltip {
-            opacity: 1;
-        }
-        
-        /* Social Section */
-        .social-section {
-            padding: 70px 0;
-            background: var(--light-bg);
-            color: var(--dark-text);
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-        }
-        
-        .social-title {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: var(--primary);
-        }
-        
-        .social-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .social-card {
-            background: var(--light-card);
-            padding: 25px 20px;
-            border-radius: var(--border-radius);
-            transition: all 0.3s ease;
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
-        
-        .social-card:hover {
-            background: var(--light-card-hover);
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .social-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            transition: all 0.3s ease;
-            margin: 0 auto 15px;
-        }
-        
-        .social-card:hover .social-icon {
-            background: var(--gradient);
-            transform: scale(1.1);
-        }
-        
-        .social-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-        
-        .social-desc {
-            font-size: 0.9rem;
-            color: var(--light-text);
-        }
-        
-        /* Save Contact Button */
-        .save-contact-section {
-            padding: 60px 0;
-            text-align: center;
-            background: var(--light-card);
-        }
-        
-        .save-contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 18px 35px;
-            background: var(--gradient);
-            color: white;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-            border: none;
-            cursor: pointer;
-            margin: 20px;
-        }
-        
-        .save-contact-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            background: var(--primary-dark);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--light-card);
-            color: var(--dark-text);
-            padding: 60px 0 30px;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-logo img {
-            height: 70px;
-            width: auto;
-            filter: drop-shadow(0 2px 4px rgba(139, 69, 19, 0.1));
-            margin-bottom: 15px;
-        }
-        
-        .copyright {
-            opacity: 0.8;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.9rem;
-            color: var(--light-text);
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: center;
-        }
-        
-        .footer-link {
-            color: var(--light-text);
-            opacity: 0.8;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-        
-        .footer-link:hover {
-            opacity: 1;
-            color: var(--primary);
-            transform: translateX(5px);
-        }
-        
-        .footer-info {
-            opacity: 0.8;
-            line-height: 1.7;
-            color: var(--light-text);
+            color: var(--accent);
         }
         
         /* Animations */
@@ -898,23 +839,49 @@
         }
         
         /* Responsive */
+        @media (max-width: 1200px) {
+            .main-layout {
+                grid-template-columns: 280px 1fr;
+                gap: 30px;
+            }
+        }
+        
         @media (max-width: 992px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+                padding-top: 90px;
+            }
+            
+            .sidebar {
+                position: static;
+                height: auto;
+                border-left: none;
+                border-bottom: 2px solid var(--border-color);
+                padding-bottom: 30px;
+                margin-bottom: 40px;
+            }
+            
+            .sidebar-content {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+            }
+            
+            .sidebar-section {
+                margin-bottom: 0;
+            }
+            
+            .contact-list {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
             .hero-title {
                 font-size: 2.2rem;
             }
             
-            .location-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .hero-logo {
-                max-width: 250px;
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
             
             .section-title {
@@ -923,40 +890,34 @@
             
             .menu-grid {
                 grid-template-columns: 1fr;
-                max-width: 500px;
+                max-width: 600px;
                 margin-left: auto;
                 margin-right: auto;
             }
             
             .menu-images-grid {
                 grid-template-columns: 1fr;
-                max-width: 500px;
+                max-width: 600px;
                 margin-left: auto;
                 margin-right: auto;
-            }
-            
-            .language-switcher {
-                top: 15px;
-                left: 15px;
-            }
-            
-            .social-links {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: 500px;
-            }
-            
-            .hero-section {
-                padding: 130px 0 60px;
             }
         }
         
         @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .main-layout {
+                padding-top: 80px;
+            }
+            
             .hero-title {
                 font-size: 1.8rem;
             }
             
             .hero-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
             .section-title {
@@ -965,7 +926,6 @@
             
             .restaurant-name {
                 font-size: 1.5rem;
-                text-align: center;
             }
             
             .logo-container {
@@ -974,76 +934,64 @@
                 gap: 10px;
             }
             
-            .hero-section {
-                padding: 120px 0 50px;
+            .header-actions {
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
-            .about-section, .menu-section, .contact-section, .location-section {
-                padding: 60px 0;
+            .about-content {
+                padding: 30px;
             }
             
-            .header-btn, .save-contact-btn, .location-btn {
-                padding: 12px 20px;
-                font-size: 0.9rem;
+            .location-content {
+                padding: 30px;
             }
             
-            .contact-info {
-                font-size: 1.1rem;
-            }
-            
-            .social-links {
-                grid-template-columns: 1fr;
-                max-width: 300px;
-            }
-            
-            .social-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 1.3rem;
-            }
-            
-            .nfc-icon-circle {
-                width: 80px;
-                height: 80px;
-                font-size: 2rem;
-            }
-            
-            .menu-images-grid {
-                grid-template-columns: 1fr;
+            .social-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
         
         @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
             .hero-title {
                 font-size: 1.6rem;
             }
             
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .hero-text {
-                font-size: 1rem;
+                font-size: 0.95rem;
                 padding: 20px;
             }
             
-            .contact-grid {
-                grid-template-columns: 1fr;
+            .section-title {
+                font-size: 1.4rem;
             }
             
-            .social-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .menu-category {
+                padding: 25px 20px;
             }
             
             .menu-image-title {
                 font-size: 1.3rem;
             }
             
-            .header-actions {
-                flex-wrap: wrap;
-                justify-content: center;
+            .contact-item {
+                padding: 12px;
+            }
+            
+            .contact-number {
+                font-size: 1rem;
             }
             
             .language-switcher {
@@ -1056,27 +1004,6 @@
                 font-size: 0.9rem;
             }
         }
-        
-        /* Utility Classes */
-        .text-center {
-            text-align: center;
-        }
-        
-        .mt-20 {
-            margin-top: 20px;
-        }
-        
-        .mt-30 {
-            margin-top: 30px;
-        }
-        
-        .mb-20 {
-            margin-bottom: 20px;
-        }
-        
-        .mb-30 {
-            margin-bottom: 30px;
-        }
     </style>
 </head>
 <body dir="rtl">
@@ -1087,7 +1014,7 @@
     </div>
 
     <!-- Header - ثابت في الأعلى -->
-    <header class="main-header" id="mainHeader">
+    <header class="main-header">
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
@@ -1112,312 +1039,313 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-content fade-in">
-                <div class="hero-logo">
-                    <img src="https://i.imgur.com/TeHBiZi.png" alt="فحم وصاج Logo">
-                </div>
-                <h1 class="hero-title" id="heroTitle">فحم وصاج</h1>
-                <h2 class="hero-subtitle" id="heroSubtitle">نكهات تراثية وأصالة في كل لقمة</h2>
-                <div class="hero-text" id="heroText">
-                    <p>نقدم لكم أجود أنواع الشاورما والمشاوي المعدة باحترافية عالية</p>
-                    <p>شاورما الفحم المعتقة بنكهة الدخان الطبيعي، وشاورما الصاج المقرمشة</p>
-                    <p>مشاوي تركية مميزة بطعم لا يقاوم تجمع بين الأصالة والحداثة</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- باقي الأقسام تبقى كما هي بدون تغيير -->
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title" id="aboutTitle">عن مطعمنا</h2>
-                <p class="section-subtitle" id="aboutSubtitle">أصالة الطعم وجودة المكونات هي شعارنا</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text fade-in">
-                    <p id="aboutText1">في <strong>فحم وصاج</strong>، نؤمن بأن الطعام الجيد يجمع الناس معًا. نحن نخصص كل جهدنا لتقديم تجربة طعام لا تُنسى، حيث ندمج بين الأصالة والحداثة في كل طبق نقدمه.</p>
-                    
-                    <div class="highlight-box">
-                        <h3 style="color: var(--primary); margin-bottom: 15px;" id="whyUsTitle">لماذا نحن الأفضل؟</h3>
-                        <p id="whyUs1">✓ نستخدم أفضل قطع اللحوم والدجاج الطازج</p>
-                        <p id="whyUs2">✓ نطهو على الفحم الطبيعي لأصالة النكهة</p>
-                        <p id="whyUs3">✓ خلطات التوابل السرية المميزة</p>
-                        <p id="whyUs4">✓ خدمة سريعة وودودة على مدار الساعة</p>
-                    </div>
-                    
-                    <p id="aboutText2">نفتخر بأننا الوجهة المفضلة لعشاق الشاورما والمشاوي في المنطقة، حيث نضمن لكل زبون تجربة طعم فريدة ترغب في تكرارها.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section class="menu-section" id="menu">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title" id="menuTitle">قائمة طعامنا</h2>
-                <p class="section-subtitle" id="menuSubtitle">تشكيلة واسعة من أطباقنا الشهية</p>
-            </div>
-            
-            <!-- Menu Grid -->
-            <div class="menu-grid">
-                <div class="menu-category fade-in">
-                    <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <h3 class="category-title" id="charcoalTitle">شاورما الفحم</h3>
-                        <p class="category-desc" id="charcoalDesc">شاورما معتقة بنكهة الفحم الطبيعي الأصيلة</p>
-                    </div>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-name" id="charcoalChicken">شاورما دجاج على الفحم</div>
-                            <div class="item-desc">دجاج طازج معتق على الفحم الطبيعي</div>
-                        </div>
-                        <div class="menu-item">
-                            <div class="item-name" id="charcoalBeef">شاورما لحم على الفحم</div>
-                            <div class="item-desc">لحم عالي الجودة معتق على الفحم</div>
-                        </div>
-                        <div class="menu-item">
-                            <div class="item-name" id="charcoalMix">شاورما مشكل على الفحم</div>
-                            <div class="item-desc">مزيج من الدجاج واللحم على الفحم</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-category fade-in">
-                    <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <h3 class="category-title" id="sajTitle">شاورما الصاج</h3>
-                        <p class="category-desc" id="sajDesc">شاورما مقرمشة بنكهات مميزة على الصاج</p>
-                    </div>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-name" id="sajChicken">شاورما دجاج على الصاج</div>
-                            <div class="item-desc">دجاج مقرمش بنكهات خاصة على الصاج</div>
-                        </div>
-                        <div class="menu-item">
-                            <div class="item-name" id="sajBeef">شاورما لحم على الصاج</div>
-                            <div class="item-desc">لحم مقرمش بنكهات مميزة على الصاج</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-category fade-in">
-                    <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-drumstick-bite"></i>
-                        </div>
-                        <h3 class="category-title" id="grillTitle">المشاوي</h3>
-                        <p class="category-desc" id="grillDesc">مشاوي تركية ومحلية بنكهات خاصة</p>
-                    </div>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-name" id="turkishChicken">دجاج تركي</div>
-                            <div class="item-desc">دجاج مشوي على الطريقة التركية</div>
-                        </div>
-                        <div class="menu-item">
-                            <div class="item-name" id="tikkaChicken">دجاج تكا</div>
-                            <div class="item-desc">دجاج تكا مع توابل هندية</div>
-                        </div>
-                        <div class="menu-item">
-                            <div class="item-name" id="shishTawook">شيش طاووق</div>
-                            <div class="item-desc">قطع دجاج مشوية مع خضار</div>
-                        </div>
-                        <div class="menu-item">
-                            <div class="item-name" id="kebab">كباب بلدي</div>
-                            <div class="item-desc">كباب لحم مميز</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Menu Images Section -->
-            <div class="menu-images-section">
-                <div class="section-header fade-in">
-                    <h2 class="section-title" id="menuImagesTitle">أطباقنا المميزة</h2>
-                    <p class="section-subtitle" id="menuImagesSubtitle">استمتعوا بمشاهدة أطباقنا الشهية</p>
-                </div>
-                
-                <div class="menu-images-grid">
-                    <div class="menu-image-card fade-in" onclick="openModal('https://i.imgur.com/Rdt2CIW.png')">
-                        <img src="https://i.imgur.com/Rdt2CIW.png" alt="شاورما الفحم" loading="lazy">
-                        <div class="menu-image-overlay">
-                            <h3 class="menu-image-title" id="menuImage1Title">شاورما الفحم</h3>
-                            <p class="menu-image-desc" id="menuImage1Desc">معتقة بنكهة الفحم الطبيعي</p>
+    <!-- Main Layout -->
+    <div class="container">
+        <div class="main-layout">
+            <!-- Sidebar - مواقع التواصل على اليسار -->
+            <aside class="sidebar">
+                <div class="sidebar-content">
+                    <!-- Contact Information -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title" id="sidebarContactTitle">معلومات الاتصال</h3>
+                        <div class="contact-list">
+                            <a href="tel:+962778001919" class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <div class="contact-type" id="contactType1">فحم وصاج 1</div>
+                                    <div class="contact-number">+962 7 7800 1919</div>
+                                </div>
+                            </a>
+                            
+                            <a href="tel:+962775001616" class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <div class="contact-type" id="contactType2">فحم وصاج 2</div>
+                                    <div class="contact-number">+962 7 7500 1616</div>
+                                </div>
+                            </a>
+                            
+                            <a href="https://wa.me/962778001919" target="_blank" class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <div class="contact-type" id="contactType3">واتساب</div>
+                                    <div class="contact-number">+962 7 7800 1919</div>
+                                </div>
+                            </a>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-qrcode"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <div class="contact-type" id="contactType4">Qliq للتحويل</div>
+                                    <div class="contact-number">0799543452</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="menu-image-card fade-in" onclick="openModal('https://i.imgur.com/bfoE47G.png')">
-                        <img src="https://i.imgur.com/bfoE47G.png" alt="شاورما الصاج" loading="lazy">
-                        <div class="menu-image-overlay">
-                            <h3 class="menu-image-title" id="menuImage2Title">شاورما الصاج</h3>
-                            <p class="menu-image-desc" id="menuImage2Desc">مقرمشة وبنكهات مميزة</p>
+                    <!-- Social Media -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title" id="sidebarSocialTitle">وسائل التواصل</h3>
+                        <div class="social-grid">
+                            <a href="https://www.facebook.com/share/1GAxkE8gMj/?mibextid=wwXIfr" target="_blank" class="social-item">
+                                <div class="social-icon">
+                                    <i class="fab fa-facebook-f"></i>
+                                </div>
+                                <div class="social-name">فيسبوك</div>
+                            </a>
+                            
+                            <a href="https://www.instagram.com/fahem_saj?igsh=MTlmbWo4aTBxeHp2bQ==" target="_blank" class="social-item">
+                                <div class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="social-name">إنستجرام</div>
+                            </a>
+                            
+                            <a href="https://wa.me/962778001919" target="_blank" class="social-item">
+                                <div class="social-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="social-name">واتساب</div>
+                            </a>
+                            
+                            <a href="tel:+962778001919" class="social-item">
+                                <div class="social-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="social-name">اتصال</div>
+                            </a>
+                            
+                            <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" target="_blank" class="social-item">
+                                <div class="social-icon">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <div class="social-name">NFC</div>
+                            </a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title" id="contactTitle">اتصل بنا</h2>
-                <p class="section-subtitle" id="contactSubtitle">نحن هنا لخدمتكم على مدار الساعة</p>
-            </div>
-            
-            <div class="contact-grid">
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3 class="contact-title" id="contact1Title">فحم وصاج 1</h3>
-                    <div class="contact-info">+962 7 7800 1919</div>
-                    <p class="contact-note" id="contact1Note">للاستفسارات والطلبات</p>
-                </div>
-                
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="contact-title" id="contact2Title">فحم وصاج 2</h3>
-                    <div class="contact-info">+962 7 7500 1616</div>
-                    <p class="contact-note" id="contact2Note">للاستفسارات والطلبات</p>
-                </div>
-                
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3 class="contact-title" id="whatsappTitle">واتساب</h3>
-                    <div class="contact-info">+962 7 7800 1919</div>
-                    <p class="contact-note" id="whatsappNote">للحجوزات السريعة</p>
-                </div>
-                
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <h3 class="contact-title" id="qliqTitle">Qliq للتحويل</h3>
-                    <div class="contact-info">0799543452</div>
-                    <p class="contact-note" id="qliqNote">مطعم محمد الطرمان</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location Section -->
-    <section class="location-section" id="location">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title" id="locationTitle">موقعنا</h2>
-                <p class="section-subtitle" id="locationSubtitle">زورونا واستمتعوا بتجربة الأكل مباشرة</p>
-            </div>
-            
-            <div class="location-content">
-                <div class="location-info fade-in">
-                    <p id="locationText1">نقع في موقع متميز يسهل الوصول إليه، حيث نرحب بكم بأجواء عائلية دافئة وخدمة مميزة.</p>
-                    <p id="locationText2">العنوان: مطعم محمد الطرمان - موقع يمكن الوصول إليه بسهولة عبر خرائط جوجل</p>
                     
-                    <button class="location-btn" onclick="window.open('https://maps.app.goo.gl/jA9gsfWK5oFncUtV9?g_st=iw', '_blank')">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span id="openMapBtn">افتح الموقع على خرائط جوجل</span>
+                    <!-- Quick Links -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title" id="sidebarLinksTitle">روابط سريعة</h3>
+                        <div class="quick-links">
+                            <a href="#about" class="quick-link">
+                                <i class="fas fa-info-circle"></i>
+                                <span id="quickLink1">عن المطعم</span>
+                            </a>
+                            <a href="#menu" class="quick-link">
+                                <i class="fas fa-utensils"></i>
+                                <span id="quickLink2">القائمة</span>
+                            </a>
+                            <a href="#location" class="quick-link">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span id="quickLink3">الموقع</span>
+                            </a>
+                            <a href="https://maps.app.goo.gl/jA9gsfWK5oFncUtV9?g_st=iw" target="_blank" class="quick-link">
+                                <i class="fas fa-map"></i>
+                                <span id="quickLink4">خرائط جوجل</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- NFC Card -->
+                    <div class="sidebar-section">
+                        <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" target="_blank" class="nfc-card">
+                            <i class="fas fa-id-card"></i>
+                            <div class="nfc-text" id="nfcText">اطلب بطاقة NFC</div>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- Main Content - على اليمين -->
+            <main class="main-content">
+                <!-- Hero Section -->
+                <section class="hero-section fade-in">
+                    <div class="hero-content">
+                        <div class="hero-logo">
+                            <img src="https://i.imgur.com/TeHBiZi.png" alt="فحم وصاج Logo">
+                        </div>
+                        <h1 class="hero-title" id="heroTitle">فحم وصاج</h1>
+                        <h2 class="hero-subtitle" id="heroSubtitle">نكهات تراثية وأصالة في كل لقمة</h2>
+                        <div class="hero-text" id="heroText">
+                            <p>نقدم لكم أجود أنواع الشاورما والمشاوي المعدة باحترافية عالية</p>
+                            <p>شاورما الفحم المعتقة بنكهة الدخان الطبيعي، وشاورما الصاج المقرمشة</p>
+                            <p>مشاوي تركية مميزة بطعم لا يقاوم تجمع بين الأصالة والحداثة</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- About Section -->
+                <section class="about-section" id="about">
+                    <div class="section-header fade-in">
+                        <h2 class="section-title" id="aboutTitle">عن مطعمنا</h2>
+                        <p class="section-subtitle" id="aboutSubtitle">أصالة الطعم وجودة المكونات هي شعارنا</p>
+                    </div>
+                    
+                    <div class="about-content fade-in">
+                        <div class="about-text">
+                            <p id="aboutText1">في <strong>فحم وصاج</strong>، نؤمن بأن الطعام الجيد يجمع الناس معًا. نحن نخصص كل جهدنا لتقديم تجربة طعام لا تُنسى، حيث ندمج بين الأصالة والحداثة في كل طبق نقدمه.</p>
+                            
+                            <div class="highlight-box">
+                                <h3 style="color: var(--primary); margin-bottom: 15px;" id="whyUsTitle">لماذا نحن الأفضل؟</h3>
+                                <p id="whyUs1">✓ نستخدم أفضل قطع اللحوم والدجاج الطازج</p>
+                                <p id="whyUs2">✓ نطهو على الفحم الطبيعي لأصالة النكهة</p>
+                                <p id="whyUs3">✓ خلطات التوابل السرية المميزة</p>
+                                <p id="whyUs4">✓ خدمة سريعة وودودة على مدار الساعة</p>
+                            </div>
+                            
+                            <p id="aboutText2">نفتخر بأننا الوجهة المفضلة لعشاق الشاورما والمشاوي في المنطقة، حيث نضمن لكل زبون تجربة طعم فريدة ترغب في تكرارها.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Menu Section -->
+                <section class="menu-section" id="menu">
+                    <div class="section-header fade-in">
+                        <h2 class="section-title" id="menuTitle">قائمة طعامنا</h2>
+                        <p class="section-subtitle" id="menuSubtitle">تشكيلة واسعة من أطباقنا الشهية</p>
+                    </div>
+                    
+                    <!-- Menu Grid -->
+                    <div class="menu-grid">
+                        <div class="menu-category fade-in">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-fire"></i>
+                                </div>
+                                <h3 class="category-title" id="charcoalTitle">شاورما الفحم</h3>
+                                <p class="category-desc" id="charcoalDesc">شاورما معتقة بنكهة الفحم الطبيعي الأصيلة</p>
+                            </div>
+                            <div class="menu-items">
+                                <div class="menu-item">
+                                    <div class="item-name" id="charcoalChicken">شاورما دجاج على الفحم</div>
+                                    <div class="item-desc">دجاج طازج معتق على الفحم الطبيعي</div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="item-name" id="charcoalBeef">شاورما لحم على الفحم</div>
+                                    <div class="item-desc">لحم عالي الجودة معتق على الفحم</div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="item-name" id="charcoalMix">شاورما مشكل على الفحم</div>
+                                    <div class="item-desc">مزيج من الدجاج واللحم على الفحم</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-category fade-in">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h3 class="category-title" id="sajTitle">شاورما الصاج</h3>
+                                <p class="category-desc" id="sajDesc">شاورما مقرمشة بنكهات مميزة على الصاج</p>
+                            </div>
+                            <div class="menu-items">
+                                <div class="menu-item">
+                                    <div class="item-name" id="sajChicken">شاورما دجاج على الصاج</div>
+                                    <div class="item-desc">دجاج مقرمش بنكهات خاصة على الصاج</div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="item-name" id="sajBeef">شاورما لحم على الصاج</div>
+                                    <div class="item-desc">لحم مقرمش بنكهات مميزة على الصاج</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-category fade-in">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-drumstick-bite"></i>
+                                </div>
+                                <h3 class="category-title" id="grillTitle">المشاوي</h3>
+                                <p class="category-desc" id="grillDesc">مشاوي تركية ومحلية بنكهات خاصة</p>
+                            </div>
+                            <div class="menu-items">
+                                <div class="menu-item">
+                                    <div class="item-name" id="turkishChicken">دجاج تركي</div>
+                                    <div class="item-desc">دجاج مشوي على الطريقة التركية</div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="item-name" id="tikkaChicken">دجاج تكا</div>
+                                    <div class="item-desc">دجاج تكا مع توابل هندية</div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="item-name" id="shishTawook">شيش طاووق</div>
+                                    <div class="item-desc">قطع دجاج مشوية مع خضار</div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="item-name" id="kebab">كباب بلدي</div>
+                                    <div class="item-desc">كباب لحم مميز</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Menu Images Section -->
+                    <div class="menu-images-section">
+                        <div class="section-header fade-in">
+                            <h2 class="section-title" id="menuImagesTitle">أطباقنا المميزة</h2>
+                            <p class="section-subtitle" id="menuImagesSubtitle">استمتعوا بمشاهدة أطباقنا الشهية</p>
+                        </div>
+                        
+                        <div class="menu-images-grid">
+                            <div class="menu-image-card fade-in" onclick="openModal('https://i.imgur.com/Rdt2CIW.png')">
+                                <img src="https://i.imgur.com/Rdt2CIW.png" alt="شاورما الفحم" loading="lazy">
+                                <div class="menu-image-overlay">
+                                    <h3 class="menu-image-title" id="menuImage1Title">شاورما الفحم</h3>
+                                    <p class="menu-image-desc" id="menuImage1Desc">معتقة بنكهة الفحم الطبيعي</p>
+                                </div>
+                            </div>
+                            
+                            <div class="menu-image-card fade-in" onclick="openModal('https://i.imgur.com/bfoE47G.png')">
+                                <img src="https://i.imgur.com/bfoE47G.png" alt="شاورما الصاج" loading="lazy">
+                                <div class="menu-image-overlay">
+                                    <h3 class="menu-image-title" id="menuImage2Title">شاورما الصاج</h3>
+                                    <p class="menu-image-desc" id="menuImage2Desc">مقرمشة وبنكهات مميزة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Location Section -->
+                <section class="location-section" id="location">
+                    <div class="section-header fade-in">
+                        <h2 class="section-title" id="locationTitle">موقعنا</h2>
+                        <p class="section-subtitle" id="locationSubtitle">زورونا واستمتعوا بتجربة الأكل مباشرة</p>
+                    </div>
+                    
+                    <div class="location-content fade-in">
+                        <div class="location-info">
+                            <p id="locationText1">نقع في موقع متميز يسهل الوصول إليه، حيث نرحب بكم بأجواء عائلية دافئة وخدمة مميزة.</p>
+                            <p id="locationText2">العنوان: مطعم محمد الطرمان - موقع يمكن الوصول إليه بسهولة عبر خرائط جوجل</p>
+                        </div>
+                        
+                        <button class="location-btn" onclick="window.open('https://maps.app.goo.gl/jA9gsfWK5oFncUtV9?g_st=iw', '_blank')">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="openMapBtn">افتح الموقع على خرائط جوجل</span>
+                        </button>
+                    </div>
+                </section>
+                
+                <!-- Save Contact Button -->
+                <section class="save-contact-section">
+                    <button class="save-contact-btn" onclick="downloadVCard()">
+                        <i class="fas fa-download"></i>
+                        <span id="saveContactBtn">حفظ جهة الاتصال</span>
                     </button>
-                </div>
-                
-                <div class="menu-image-card fade-in" onclick="openModal('https://i.imgur.com/bfoE47G.png')">
-                    <img src="https://i.imgur.com/bfoE47G.png" alt="موقع المطعم" loading="lazy">
-                    <div class="menu-image-overlay">
-                        <h3 class="menu-image-title">موقعنا</h3>
-                        <p class="menu-image-desc">زورونا واستمتعوا بأجواء المطعم</p>
-                    </div>
-                </div>
-            </div>
+                </section>
+            </main>
         </div>
-    </section>
-
-    <!-- NFC Icon Section -->
-    <section class="nfc-icon-section" id="nfc">
-        <div class="container">
-            <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" 
-               class="nfc-icon-container" 
-               target="_blank">
-                <div class="nfc-icon-circle">
-                    <i class="fas fa-id-card"></i>
-                </div>
-                <div class="nfc-icon-tooltip" id="nfcTooltip">طلب بطاقة NFC</div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Social Section -->
-    <section class="social-section" id="social">
-        <div class="container">
-            <h2 class="social-title" id="followUsTitle">تابعونا على وسائل التواصل</h2>
-            
-            <div class="social-links">
-                <a href="https://www.facebook.com/share/1GAxkE8gMj/?mibextid=wwXIfr" class="social-card" target="_blank">
-                    <div class="social-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </div>
-                    <div class="social-name">فيسبوك</div>
-                    <div class="social-desc">تابعونا على فيسبوك</div>
-                </a>
-                
-                <a href="https://www.instagram.com/fahem_saj?igsh=MTlmbWo4aTBxeHp2bQ==" class="social-card" target="_blank">
-                    <div class="social-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <div class="social-name">إنستجرام</div>
-                    <div class="social-desc">شاهدوا صور أطباقنا</div>
-                </a>
-                
-                <a href="https://wa.me/962778001919" class="social-card" target="_blank">
-                    <div class="social-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <div class="social-name">واتساب</div>
-                    <div class="social-desc">للحجوزات والاستفسارات</div>
-                </a>
-                
-                <a href="tel:+962778001919" class="social-card">
-                    <div class="social-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="social-name">اتصال مباشر</div>
-                    <div class="social-desc">اتصل بنا مباشرة</div>
-                </a>
-                
-                <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="social-card" target="_blank">
-                    <div class="social-icon">
-                        <i class="fas fa-id-card"></i>
-                    </div>
-                    <div class="social-name">بطاقة NFC</div>
-                    <div class="social-desc">اطلب بطاقة NFC</div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Save Contact Button -->
-    <section class="save-contact-section">
-        <div class="container">
-            <button class="save-contact-btn" onclick="downloadVCard()">
-                <i class="fas fa-download"></i>
-                <span id="saveContactBtn">حفظ جهة الاتصال</span>
-            </button>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1437,9 +1365,7 @@
                     <div class="footer-links">
                         <a href="#about" class="footer-link" id="footerAbout">عن المطعم</a>
                         <a href="#menu" class="footer-link" id="footerMenu">القائمة</a>
-                        <a href="#contact" class="footer-link" id="footerContact">اتصل بنا</a>
                         <a href="#location" class="footer-link" id="footerLocation">الموقع</a>
-                        <a href="#nfc" class="footer-link" id="footerNFC">طلب بطاقة NFC</a>
                     </div>
                 </div>
                 
@@ -1457,6 +1383,14 @@
         </div>
     </footer>
 
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Zoomed Image">
+        </div>
+    </div>
+
     <script>
         // Language Data
         const languageData = {
@@ -1466,6 +1400,20 @@
                 restaurantTagline: "مطعم الفحم والصاج",
                 callText: "اتصل بنا",
                 locationText: "الموقع",
+                
+                // Sidebar
+                sidebarContactTitle: "معلومات الاتصال",
+                contactType1: "فحم وصاج 1",
+                contactType2: "فحم وصاج 2",
+                contactType3: "واتساب",
+                contactType4: "Qliq للتحويل",
+                sidebarSocialTitle: "وسائل التواصل",
+                sidebarLinksTitle: "روابط سريعة",
+                quickLink1: "عن المطعم",
+                quickLink2: "القائمة",
+                quickLink3: "الموقع",
+                quickLink4: "خرائط جوجل",
+                nfcText: "اطلب بطاقة NFC",
                 
                 // Hero
                 heroTitle: "فحم وصاج",
@@ -1485,7 +1433,7 @@
                 whyUs4: "✓ خدمة سريعة وودودة على مدار الساعة",
                 aboutText2: "نفتخر بأننا الوجهة المفضلة لعشاق الشاورما والمشاوي في المنطقة، حيث نضمن لكل زبون تجربة طعم فريدة ترغب في تكرارها.",
                 
-                // Menu - Categories
+                // Menu
                 menuTitle: "قائمة طعامنا",
                 menuSubtitle: "تشكيلة واسعة من أطباقنا الشهية",
                 charcoalTitle: "شاورما الفحم",
@@ -1504,7 +1452,7 @@
                 shishTawook: "شيش طاووق",
                 kebab: "كباب بلدي",
                 
-                // Menu - Images
+                // Menu Images
                 menuImagesTitle: "أطباقنا المميزة",
                 menuImagesSubtitle: "استمتعوا بمشاهدة أطباقنا الشهية",
                 menuImage1Title: "شاورما الفحم",
@@ -1512,30 +1460,12 @@
                 menuImage2Title: "شاورما الصاج",
                 menuImage2Desc: "مقرمشة وبنكهات مميزة",
                 
-                // Contact
-                contactTitle: "اتصل بنا",
-                contactSubtitle: "نحن هنا لخدمتكم على مدار الساعة",
-                contact1Title: "فحم وصاج 1",
-                contact1Note: "للاستفسارات والطلبات",
-                contact2Title: "فحم وصاج 2",
-                contact2Note: "للاستفسارات والطلبات",
-                whatsappTitle: "واتساب",
-                whatsappNote: "للحجوزات السريعة",
-                qliqTitle: "Qliq للتحويل",
-                qliqNote: "مطعم محمد الطرمان",
-                
                 // Location
                 locationTitle: "موقعنا",
                 locationSubtitle: "زورونا واستمتعوا بتجربة الأكل مباشرة",
                 locationText1: "نقع في موقع متميز يسهل الوصول إليه، حيث نرحب بكم بأجواء عائلية دافئة وخدمة مميزة.",
                 locationText2: "العنوان: مطعم محمد الطرمان - موقع يمكن الوصول إليه بسهولة عبر خرائط جوجل",
                 openMapBtn: "افتح الموقع على خرائط جوجل",
-                
-                // NFC
-                nfcTooltip: "طلب بطاقة NFC",
-                
-                // Social
-                followUsTitle: "تابعونا على وسائل التواصل",
                 
                 // Save Contact
                 saveContactBtn: "حفظ جهة الاتصال",
@@ -1545,9 +1475,7 @@
                 footerAddress: "مطعم محمد الطرمان",
                 footerAbout: "عن المطعم",
                 footerMenu: "القائمة",
-                footerContact: "اتصل بنا",
                 footerLocation: "الموقع",
-                footerNFC: "طلب بطاقة NFC",
                 footerContactInfo: "للحجوزات والاستفسارات:",
                 footerRights: "جميع الحقوق محفوظة",
                 footerDesign: "تصميم وتطوير خاص للمطعم"
@@ -1559,6 +1487,20 @@
                 restaurantTagline: "Charcoal & Saj Restaurant",
                 callText: "Call Us",
                 locationText: "Location",
+                
+                // Sidebar
+                sidebarContactTitle: "Contact Information",
+                contactType1: "فحم وصاج 1",
+                contactType2: "فحم وصاج 2",
+                contactType3: "WhatsApp",
+                contactType4: "Qliq Transfer",
+                sidebarSocialTitle: "Social Media",
+                sidebarLinksTitle: "Quick Links",
+                quickLink1: "About Us",
+                quickLink2: "Menu",
+                quickLink3: "Location",
+                quickLink4: "Google Maps",
+                nfcText: "Request NFC Card",
                 
                 // Hero
                 heroTitle: "فحم وصاج",
@@ -1578,7 +1520,7 @@
                 whyUs4: "✓ Fast and friendly service 24/7",
                 aboutText2: "We are proud to be the preferred destination for shawarma and grill lovers in the area, ensuring each customer a unique taste experience they'll want to repeat.",
                 
-                // Menu - Categories
+                // Menu
                 menuTitle: "Our Menu",
                 menuSubtitle: "A wide variety of our delicious dishes",
                 charcoalTitle: "Charcoal Shawarma",
@@ -1597,7 +1539,7 @@
                 shishTawook: "Shish Tawook",
                 kebab: "Local Kebab",
                 
-                // Menu - Images
+                // Menu Images
                 menuImagesTitle: "Our Special Dishes",
                 menuImagesSubtitle: "Enjoy viewing our delicious dishes",
                 menuImage1Title: "Charcoal Shawarma",
@@ -1605,30 +1547,12 @@
                 menuImage2Title: "Saj Shawarma",
                 menuImage2Desc: "Crispy with distinctive flavors",
                 
-                // Contact
-                contactTitle: "Contact Us",
-                contactSubtitle: "We are here to serve you 24/7",
-                contact1Title: "فحم وصاج 1",
-                contact1Note: "For inquiries and orders",
-                contact2Title: "فحم وصاج 2",
-                contact2Note: "For inquiries and orders",
-                whatsappTitle: "WhatsApp",
-                whatsappNote: "For quick reservations",
-                qliqTitle: "Qliq Transfer",
-                qliqNote: "Mataam Mohammad Altorman",
-                
                 // Location
                 locationTitle: "Our Location",
                 locationSubtitle: "Visit us and enjoy the dining experience directly",
                 locationText1: "We are located in a prime location easily accessible, where we welcome you with warm family atmosphere and distinguished service.",
                 locationText2: "Address: Mataam Mohammad Altorman - easily accessible via Google Maps",
                 openMapBtn: "Open Location on Google Maps",
-                
-                // NFC
-                nfcTooltip: "NFC Card Request",
-                
-                // Social
-                followUsTitle: "Follow Us on Social Media",
                 
                 // Save Contact
                 saveContactBtn: "Save Contact",
@@ -1638,9 +1562,7 @@
                 footerAddress: "Mataam Mohammad Altorman",
                 footerAbout: "About Us",
                 footerMenu: "Menu",
-                footerContact: "Contact Us",
                 footerLocation: "Location",
-                footerNFC: "NFC Card Request",
                 footerContactInfo: "For reservations and inquiries:",
                 footerRights: "All Rights Reserved",
                 footerDesign: "Custom design and development for the restaurant"
@@ -1761,16 +1683,6 @@ END:VCARD`;
             
             // Initial check
             checkScroll();
-            
-            // Add click animation to buttons
-            document.querySelectorAll('.header-btn, .location-btn, .save-contact-btn, .menu-item, .nfc-icon-container, .menu-image-card, .social-card').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
         });
 
         // Close modal with Escape key
