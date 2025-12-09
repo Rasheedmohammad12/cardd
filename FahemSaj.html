@@ -3,656 +3,919 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فحم وصاج - مطعم الفحم والصاج | Charcoal & Saj Restaurant</title>
+    <title>مطعـم محمد الطرمان</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/SciJmZK.png">
     <style>
         :root {
-            --primary: #000000; /* أسود */
-            --primary-light: #333333;
-            --primary-dark: #000000;
-            --accent: #8B4513; /* بني للأيقونات */
-            --white: #FFFFFF;
-            --light-bg: #FFFFFF;
-            --light-card: #FFFFFF;
-            --dark-text: #000000; /* أسود للنصوص */
-            --light-text: #666666; /* رمادي للنصوص الثانوية */
-            --gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
-            --border: 1px solid rgba(0, 0, 0, 0.1);
-            --border-radius: 10px;
+            --primary-color: #d32f2f;
+            --primary-dark: #b71c1c;
+            --secondary-color: #f5f5f5;
+            --text-color: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         html {
             scroll-behavior: smooth;
         }
-        
+
         body {
-            background: var(--white);
-            color: var(--dark-text);
-            min-height: 100vh;
-            line-height: 1.7;
-            overflow-x: hidden;
-            font-family: 'Cairo', 'Poppins', sans-serif;
+            font-family: 'Cairo', sans-serif;
+            color: var(--text-color);
+            background-color: var(--white);
+            line-height: 1.6;
+            direction: rtl;
         }
-        
+
+        .english {
+            font-family: 'Poppins', sans-serif;
+            direction: ltr;
+        }
+
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* Social Icons Section (أولاً) */
-        .social-icons-section {
-            background: var(--gradient);
-            padding: 20px 0;
-            position: sticky;
+
+        /* Header & Navbar */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-lg);
         }
-        
-        .social-icons-container {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .social-icon:hover {
-            background: var(--accent);
-            transform: translateY(-5px) scale(1.1);
-        }
-        
-        /* Header */
-        .main-header {
-            background: var(--white);
-            color: var(--dark-text);
-            padding: 20px 0;
-            border-bottom: 3px solid var(--accent);
-        }
-        
-        .header-content {
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            padding: 15px 20px;
         }
-        
-        .logo-container {
+
+        .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
         }
-        
-        .logo-image {
-            height: 70px;
-            width: auto;
-            object-fit: contain;
+
+        .logo img {
+            height: 50px;
+            margin-left: 10px;
         }
-        
-        .restaurant-name {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--primary);
-            font-family: 'Amiri', serif;
-        }
-        
-        .restaurant-tagline {
-            font-size: 1rem;
-            color: var(--light-text);
-            margin-top: 5px;
-        }
-        
-        /* Contact Section (ثانياً) */
-        .contact-section {
-            padding: 60px 0;
-            background: var(--light-bg);
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--light-text);
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        
-        .contact-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-            border: 2px solid transparent;
-            color: var(--dark-text);
-        }
-        
-        .contact-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .contact-title {
-            font-size: 1.3rem;
+
+        .logo-text {
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--primary);
+            color: var(--primary-color);
         }
-        
-        .contact-info {
+
+        .logo-text .english {
             font-size: 1.2rem;
+            color: var(--text-light);
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin: 0 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
             font-weight: 600;
-            color: var(--dark-text);
-            margin: 10px 0;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
         }
-        
-        .contact-note {
-            font-size: 0.9rem;
-            color: var(--light-text);
-            margin-top: 10px;
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
         }
-        
-        /* Qliq Card */
-        .qliq-card {
-            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
-            color: white !important;
+
+        .lang-switch {
+            display: flex;
+            margin-right: 20px;
         }
-        
-        .qliq-card .contact-title,
-        .qliq-card .contact-info,
-        .qliq-card .contact-note {
-            color: white !important;
-        }
-        
-        /* Menu Section (ثالثاً) */
-        .menu-section {
-            padding: 60px 0;
-            background: var(--light-bg);
-        }
-        
-        /* Menu Images Grid */
-        .menu-images-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .menu-image-card {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            position: relative;
+
+        .lang-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 5px 12px;
             cursor: pointer;
-            background: white;
+            font-family: 'Cairo', sans-serif;
+            transition: var(--transition);
         }
-        
-        .menu-image-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .menu-image-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .menu-image-card:hover img {
-            transform: scale(1.05);
-        }
-        
-        .menu-image-overlay {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            padding: 20px;
+
+        .lang-btn.active {
+            background-color: var(--primary-color);
             color: white;
+            border-color: var(--primary-color);
         }
-        
-        .menu-image-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: white;
+
+        .lang-btn:first-child {
+            border-radius: 4px 0 0 4px;
         }
-        
-        .menu-image-desc {
-            font-size: 1rem;
-            opacity: 0.9;
-            color: white;
+
+        .lang-btn:last-child {
+            border-radius: 0 4px 4px 0;
         }
-        
-        .menu-image-content {
-            padding: 20px;
-            color: var(--dark-text);
-        }
-        
-        .menu-item-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .menu-item-desc {
-            font-size: 1rem;
-            color: var(--light-text);
-            margin-bottom: 15px;
-        }
-        
-        .menu-item-price {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        
-        /* Image Modal */
-        .image-modal {
+
+        .mobile-menu-btn {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-        }
-        
-        .modal-content img {
-            width: 100%;
-            height: auto;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 2.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
             cursor: pointer;
-            transition: color 0.3s ease;
         }
-        
-        .close-modal:hover {
-            color: var(--accent);
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 180px 0 100px;
+            text-align: center;
         }
-        
-        /* Call Buttons */
-        .call-buttons {
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--text-light);
+        }
+
+        .hero-buttons {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 40px;
-            flex-wrap: wrap;
+            margin-top: 30px;
         }
-        
-        .call-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background: var(--gradient);
-            color: white;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
             text-decoration: none;
-            border: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: var(--transition);
             cursor: pointer;
+            border: none;
+            font-family: 'Cairo', sans-serif;
         }
-        
-        .call-btn:hover {
-            background: var(--primary-dark);
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 7px 15px rgba(211, 47, 47, 0.3);
         }
-        
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 40px 0 20px;
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Social Media Section */
+        .social-section {
+            padding: 60px 0;
+            background-color: var(--secondary-color);
             text-align: center;
         }
-        
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .social-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-10px);
+            color: var(--white);
+        }
+
+        .social-icon.facebook:hover {
+            background-color: #1877F2;
+        }
+
+        .social-icon.instagram:hover {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+
+        .social-icon.whatsapp:hover {
+            background-color: #25D366;
+        }
+
+        .social-icon.call:hover {
+            background-color: #34B7F1;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .specialties {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .specialty {
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .specialty:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .specialty i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 80px 0;
+            background-color: var(--secondary-color);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .menu-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .menu-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-left: 15px;
+            width: 30px;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
-        
+
         .footer-logo img {
             height: 60px;
-            width: auto;
-            filter: brightness(0) invert(1);
             margin-bottom: 15px;
         }
-        
+
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3:after, .footer-contact h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            right: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-right: 5px;
+        }
+
         .copyright {
-            opacity: 0.8;
+            text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid #444;
+            color: #bbb;
             font-size: 0.9rem;
         }
-        
-        /* Responsive */
+
+        /* WhatsApp Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            overflow: hidden;
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .modal-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .modal-header h3 {
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .whatsapp-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .whatsapp-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .whatsapp-option:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(211, 47, 47, 0.05);
+        }
+
+        .phone-number {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .modal-footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .close-modal {
+            background-color: #ddd;
+            color: #333;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            background-color: #ccc;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .social-icons-container {
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: var(--shadow);
+                padding: 20px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-icons {
                 gap: 15px;
             }
             
             .social-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 10px;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
             }
             
             .section-title {
                 font-size: 1.8rem;
             }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .menu-images-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            
-            .logo-container {
-                flex-direction: column;
-            }
-            
-            .call-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .contact-card {
-                padding: 20px;
-            }
-            
-            .menu-image-card img {
-                height: 200px;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.5s ease forwards;
         }
     </style>
 </head>
-<body dir="rtl">
-    <!-- Image Modal -->
-    <div class="image-modal" id="imageModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <img id="modalImage" src="" alt="Zoomed Image">
-        </div>
-    </div>
-
-    <!-- 1. Social Icons Section (أولاً) -->
-    <section class="social-icons-section" id="social">
-        <div class="container">
-            <div class="social-icons-container">
-                <a href="https://www.facebook.com/share/1GAxkE8gMj/?mibextid=wwXIfr" class="social-icon" target="_blank" title="فيسبوك">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/fahem_saj?igsh=MTlmbWo4aTBxeHp2bQ==" class="social-icon" target="_blank" title="إنستجرام">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://wa.me/962778001919" class="social-icon" target="_blank" title="واتساب">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="tel:+962778001919" class="social-icon" title="اتصال">
-                    <i class="fas fa-phone"></i>
-                </a>
-                <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="social-icon" target="_blank" title="NFC Card">
-                    <i class="fas fa-id-card"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-container">
-                    <img src="https://i.imgur.com/TeHBiZi.png" alt="فحم وصاج Logo" class="logo-image">
-                    <div>
-                        <div class="restaurant-name">فحم وصاج</div>
-                        <div class="restaurant-tagline">مطعم الفحم والصاج</div>
-                    </div>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://i.imgur.com/SciJmZK.png" alt="مطعم محمد الطرمان">
+                <div class="logo-text">
+                    مطعـم محمد الطرمان
+                    <span class="english">Mohammad Altorman Restaurant</span>
                 </div>
             </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="lang-switch">
+                <button class="lang-btn active" id="arabicBtn">العربية</button>
+                <button class="lang-btn" id="englishBtn">English</button>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">عن المطعم</a></li>
+                    <li><a href="#menu">قائمة الطعام</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- 2. Contact Section (ثانياً) -->
-    <section class="contact-section" id="contact">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">اتصل بنا</h2>
-                <p class="section-subtitle">نحن هنا لخدمتكم على مدار الساعة</p>
-            </div>
+            <h1>مطعم محمد الطرمان</h1>
+            <p class="ar-text">استمتع بألذ وأشهى المأكولات الشرقية والأسيوية التي نقدمها بأعلى معايير الجودة والنظافة. طعامنا يُعد بحب واهتمام لتجربة طعام لا تُنسى.</p>
+            <p class="en-text english">Enjoy the most delicious Oriental and Asian cuisine prepared with the highest standards of quality and cleanliness. Our food is made with love and care for an unforgettable dining experience.</p>
             
-            <div class="contact-grid">
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3 class="contact-title">فحم وصاج 1</h3>
-                    <div class="contact-info">+962 7 7800 1919</div>
-                    <p class="contact-note">للاستفسارات والطلبات</p>
-                </div>
-                
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="contact-title">فحم وصاج 2</h3>
-                    <div class="contact-info">+962 7 7500 1616</div>
-                    <p class="contact-note">للاستفسارات والطلبات</p>
-                </div>
-                
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3 class="contact-title">واتساب</h3>
-                    <div class="contact-info">+962 7 7800 1919</div>
-                    <p class="contact-note">للحجوزات السريعة</p>
-                </div>
-                
-                <div class="contact-card fade-in qliq-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <h3 class="contact-title">Qliq للتحويل</h3>
-                    <div class="contact-info">0799543452</div>
-                    <p class="contact-note">مطعم محمد الطرمان</p>
-                </div>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">استعرض قائمتنا</a>
+                <a href="#contact" class="btn btn-secondary">اطلب الآن</a>
             </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+        <div class="container">
+            <h2 class="section-title ar-text">تواصل معنا</h2>
+            <h2 class="section-title en-text english" style="display:none;">Connect With Us</h2>
             
-            <div class="call-buttons">
-                <a href="tel:+962778001919" class="call-btn">
-                    <i class="fas fa-phone"></i>
-                    اتصل الآن: 078001919
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/1GAxkE8gMj/?mibextid=wwXIfr" target="_blank" class="social-icon facebook">
+                    <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="tel:+962775001616" class="call-btn">
-                    <i class="fas fa-phone"></i>
-                    اتصل الآن: 075001616
+                <a href="https://www.instagram.com/fahem_saj?igsh=MTlmbWo4aTBxeHp2bQ==" target="_blank" class="social-icon instagram">
+                    <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://wa.me/962778001919" class="call-btn" target="_blank">
+                <a href="javascript:void(0);" class="social-icon whatsapp" id="whatsappBtn">
                     <i class="fab fa-whatsapp"></i>
-                    تواصل عبر واتساب
+                </a>
+                <a href="tel:+962778001919" class="social-icon call">
+                    <i class="fas fa-phone-alt"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 3. Menu Section (ثالثاً) -->
-    <section class="menu-section" id="menu">
+    <!-- About Section -->
+    <section class="about" id="about">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">قائمة طعامنا</h2>
-                <p class="section-subtitle">تشكيلة واسعة من أطباقنا الشهية</p>
-            </div>
+            <h2 class="section-title ar-text">عن مطعمنا</h2>
+            <h2 class="section-title en-text english" style="display:none;">About Our Restaurant</h2>
             
-            <div class="menu-images-grid">
-                <!-- Menu Item 1 -->
-                <div class="menu-image-card fade-in" onclick="openModal('https://i.imgur.com/Rdt2CIW.png')">
-                    <img src="https://i.imgur.com/Rdt2CIW.png" alt="شاورما الفحم" loading="lazy">
-                    <div class="menu-image-overlay">
-                        <h3 class="menu-image-title">شاورما الفحم</h3>
-                        <p class="menu-image-desc">انقر للتكبير</p>
-                    </div>
-                    <div class="menu-image-content">
-                        <h3 class="menu-item-name">شاورما الفحم</h3>
-                        <p class="menu-item-desc">شاورما معتقة بنكهة الفحم الطبيعي الأصيلة، متوفرة بدجاج، لحم، ومشكل</p>
-                        <div class="menu-item-price">أسعار تبدأ من 3 دينار</div>
-                    </div>
-                </div>
-                
-                <!-- Menu Item 2 -->
-                <div class="menu-image-card fade-in" onclick="openModal('https://i.imgur.com/bfoE47G.png')">
-                    <img src="https://i.imgur.com/bfoE47G.png" alt="شاورما الصاج" loading="lazy">
-                    <div class="menu-image-overlay">
-                        <h3 class="menu-image-title">شاورما الصاج</h3>
-                        <p class="menu-image-desc">انقر للتكبير</p>
-                    </div>
-                    <div class="menu-image-content">
-                        <h3 class="menu-item-name">شاورما الصاج</h3>
-                        <p class="menu-item-desc">شاورما مقرمشة بنكهات مميزة على الصاج، متوفرة بدجاج ولحم</p>
-                        <div class="menu-item-price">أسعار تبدأ من 2.5 دينار</div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="ar-text">نحن في مطعم محمد الطرمان نقدم أشهى المأكولات الشرقية بلمسة عصرية. نحرص على استخدام أفضل المكونات الطازجة والتوابل المختارة بعناية لتقديم نكهات أصيلة تذكرك بطعام المنزل.</p>
+                    <p class="ar-text">مطعمنا يتميز بالنظافة والجودة العالية في التحضير، مع فريق عمل محترف يضمن لكم تجربة طعام استثنائية سواءً في المطعم أو عبر التوصيل.</p>
+                    
+                    <p class="en-text english" style="display:none;">At Mohammad Altorman Restaurant, we serve the most delicious oriental cuisine with a modern touch. We insist on using the best fresh ingredients and carefully selected spices to provide authentic flavors that remind you of homemade food.</p>
+                    <p class="en-text english" style="display:none;">Our restaurant is distinguished by cleanliness and high quality in preparation, with a professional team that ensures you an exceptional dining experience whether in the restaurant or through delivery.</p>
+                    
+                    <div class="specialties">
+                        <div class="specialty">
+                            <i class="fas fa-fire"></i>
+                            <h3 class="ar-text">شاورما فحم</h3>
+                            <h3 class="en-text english" style="display:none;">Charcoal Shawarma</h3>
+                        </div>
+                        <div class="specialty">
+                            <i class="fas fa-utensils"></i>
+                            <h3 class="ar-text">شاورما صاج</h3>
+                            <h3 class="en-text english" style="display:none;">Saj Shawarma</h3>
+                        </div>
+                        <div class="specialty">
+                            <i class="fas fa-drumstick-bite"></i>
+                            <h3 class="ar-text">مشاوي متنوعة</h3>
+                            <h3 class="en-text english" style="display:none;">Mixed Grills</h3>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Menu Item 3 -->
-                <div class="menu-image-card fade-in" onclick="openModal('https://i.imgur.com/Rdt2CIW.png')">
-                    <img src="https://i.imgur.com/Rdt2CIW.png" alt="المشاوي التركية" loading="lazy">
-                    <div class="menu-image-overlay">
-                        <h3 class="menu-image-title">المشاوي التركية</h3>
-                        <p class="menu-image-desc">انقر للتكبير</p>
-                    </div>
-                    <div class="menu-image-content">
-                        <h3 class="menu-item-name">المشاوي التركية</h3>
-                        <p class="menu-item-desc">مشاوي تركية ومحلية بنكهات خاصة: دجاج تركي، تكا، شيش طاووق، كباب</p>
-                        <div class="menu-item-price">أسعار تبدأ من 4 دينار</div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="مطعم محمد الطرمان">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2 class="section-title ar-text">قائمة الطعام</h2>
+            <h2 class="section-title en-text english" style="display:none;">Our Menu</h2>
+            
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="https://i.imgur.com/Cl8TROm.png" alt="شاورما فحم">
+                    <div class="menu-item-content">
+                        <h3 class="ar-text">شاورما فحم</h3>
+                        <h3 class="en-text english" style="display:none;">Charcoal Shawarma</h3>
+                        <p class="ar-text">شاورما لحم ودجاج مطهوة على الفحم الطبيعي لإعطاء نكهة مدخنة مميزة.</p>
+                        <p class="en-text english" style="display:none;">Meat and chicken shawarma cooked on natural charcoal for a distinctive smoky flavor.</p>
                     </div>
                 </div>
                 
-                <!-- Menu Item 4 -->
-                <div class="menu-image-card fade-in" onclick="openModal('https://i.imgur.com/bfoE47G.png')">
-                    <img src="https://i.imgur.com/bfoE47G.png" alt="وجبات خاصة" loading="lazy">
-                    <div class="menu-image-overlay">
-                        <h3 class="menu-image-title">الوجبات الخاصة</h3>
-                        <p class="menu-image-desc">انقر للتكبير</p>
+                <div class="menu-item">
+                    <img src="https://i.imgur.com/f2YyDCf.png" alt="شاورما صاج">
+                    <div class="menu-item-content">
+                        <h3 class="ar-text">شاورما صاج</h3>
+                        <h3 class="en-text english" style="display:none;">Saj Shawarma</h3>
+                        <p class="ar-text">شاورما دجاج ولحمة على الصاج الساخن، مقرمشة من الخارج وطرية من الداخل.</p>
+                        <p class="en-text english" style="display:none;">Chicken and meat shawarma on hot saj, crispy on the outside and tender on the inside.</p>
                     </div>
-                    <div class="menu-image-content">
-                        <h3 class="menu-item-name">الوجبات الخاصة</h3>
-                        <p class="menu-item-desc">وجبات كاملة مع أرز وصوص خاص وشراب، متوفرة بجميع أنواع الشاورما والمشاوي</p>
-                        <div class="menu-item-price">أسعار تبدأ من 5 دينار</div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="مشاوي">
+                    <div class="menu-item-content">
+                        <h3 class="ar-text">مشاوي متنوعة</h3>
+                        <h3 class="en-text english" style="display:none;">Mixed Grills</h3>
+                        <p class="ar-text">دجاج تركي، دجاج تكا، شيش طاووق، كباب بلدي، جميعها مشوية على الفحم.</p>
+                        <p class="en-text english" style="display:none;">Turkish chicken, tikka chicken, shish tawook, local kebab, all grilled on charcoal.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title ar-text">اتصل بنا</h2>
+            <h2 class="section-title en-text english" style="display:none;">Contact Us</h2>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3 class="ar-text">العنوان</h3>
+                            <h3 class="en-text english" style="display:none;">Address</h3>
+                            <p class="ar-text">مطعم محمد الطرمان - الأردن</p>
+                            <p class="en-text english" style="display:none;">Mohammad Altorman Restaurant - Jordan</p>
+                            <a href="https://maps.google.com" target="_blank" class="ar-text">عرض على خريطة جوجل</a>
+                            <a href="https://maps.google.com" target="_blank" class="en-text english" style="display:none;">View on Google Maps</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3 class="ar-text">هواتف التواصل</h3>
+                            <h3 class="en-text english" style="display:none;">Contact Phones</h3>
+                            <p>‎+962 7 7800 1919</p>
+                            <p>‎+962 7 7500 1616</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div>
+                            <h3 class="ar-text">خدمة كليك (Qliq)</h3>
+                            <h3 class="en-text english" style="display:none;">Qliq Service</h3>
+                            <p>0799543452</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 class="ar-text" style="margin-bottom:20px;">أرسل لنا رسالة</h3>
+                    <h3 class="en-text english" style="margin-bottom:20px; display:none;">Send us a message</h3>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="ar-text">الاسم</label>
+                            <label for="name" class="en-text english" style="display:none;">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="ar-text">رقم الهاتف</label>
+                            <label for="phone" class="en-text english" style="display:none;">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="ar-text">الرسالة</label>
+                            <label for="message" class="en-text english" style="display:none;">Message</label>
+                            <textarea id="message" class="form-control" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary ar-text">إرسال الرسالة</button>
+                        <button type="submit" class="btn btn-primary en-text english" style="display:none;">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -662,99 +925,225 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div>
-                    <div class="footer-logo">
-                        <img src="https://i.imgur.com/TeHBiZi.png" alt="فحم وصاج Logo">
-                    </div>
-                    <p>نكهات تراثية وأصالة في كل لقمة</p>
-                    <p>مطعم محمد الطرمان</p>
+                <div class="footer-logo">
+                    <img src="https://i.imgur.com/SciJmZK.png" alt="مطعم محمد الطرمان">
+                    <p class="ar-text">أشهى المأكولات الشرقية والأسيوية بأعلى معايير الجودة</p>
+                    <p class="en-text english" style="display:none;">The most delicious Oriental and Asian cuisine with the highest quality standards</p>
                 </div>
                 
-                <div>
-                    <h4>روابط سريعة</h4>
-                    <p><a href="#social" style="color: white; text-decoration: none;">وسائل التواصل</a></p>
-                    <p><a href="#contact" style="color: white; text-decoration: none;">اتصل بنا</a></p>
-                    <p><a href="#menu" style="color: white; text-decoration: none;">قائمة الطعام</a></p>
+                <div class="footer-links">
+                    <h3 class="ar-text">روابط سريعة</h3>
+                    <h3 class="en-text english" style="display:none;">Quick Links</h3>
+                    <ul>
+                        <li><a href="#home" class="ar-text">الرئيسية</a><a href="#home" class="en-text english" style="display:none;">Home</a></li>
+                        <li><a href="#about" class="ar-text">عن المطعم</a><a href="#about" class="en-text english" style="display:none;">About</a></li>
+                        <li><a href="#menu" class="ar-text">قائمة الطعام</a><a href="#menu" class="en-text english" style="display:none;">Menu</a></li>
+                        <li><a href="#contact" class="ar-text">اتصل بنا</a><a href="#contact" class="en-text english" style="display:none;">Contact</a></li>
+                    </ul>
                 </div>
                 
-                <div>
-                    <h4>معلومات الاتصال</h4>
-                    <p>+962 7 7800 1919</p>
-                    <p>+962 7 7500 1616</p>
-                    <p>على مدار الساعة</p>
+                <div class="footer-contact">
+                    <h3 class="ar-text">معلومات التواصل</h3>
+                    <h3 class="en-text english" style="display:none;">Contact Info</h3>
+                    <p class="ar-text"><i class="fas fa-phone" style="margin-left:8px;"></i> ‎+962 7 7800 1919</p>
+                    <p class="ar-text"><i class="fas fa-phone" style="margin-left:8px;"></i> ‎+962 7 7500 1616</p>
+                    <p class="en-text english" style="display:none;"><i class="fas fa-phone" style="margin-right:8px;"></i> ‎+962 7 7800 1919</p>
+                    <p class="en-text english" style="display:none;"><i class="fas fa-phone" style="margin-right:8px;"></i> ‎+962 7 7500 1616</p>
+                    <p><i class="fas fa-mobile-alt" style="margin-left:8px;"></i> Qliq: 0799543452</p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2024 فحم وصاج - جميع الحقوق محفوظة</p>
+                <p class="ar-text">© 2023 مطعم محمد الطرمان. جميع الحقوق محفوظة.</p>
+                <p class="en-text english" style="display:none;">© 2023 Mohammad Altorman Restaurant. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp Modal -->
+    <div class="modal" id="whatsappModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="ar-text">اختر رقم الواتساب للتواصل</h3>
+                <h3 class="en-text english" style="display:none;">Choose WhatsApp Number</h3>
+            </div>
+            <div class="modal-body">
+                <div class="whatsapp-options">
+                    <div class="whatsapp-option">
+                        <div>
+                            <div class="phone-number">‎+962 7 7800 1919</div>
+                            <div class="ar-text">الرقم الأول</div>
+                            <div class="en-text english" style="display:none;">First Number</div>
+                        </div>
+                        <div>
+                            <button class="copy-btn" data-number="+962778001919" onclick="copyToClipboard(this)">
+                                <span class="ar-text">نسخ</span>
+                                <span class="en-text english" style="display:none;">Copy</span>
+                            </button>
+                            <a href="https://wa.me/962778001919" target="_blank" class="btn btn-primary" style="margin-right:10px;">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="whatsapp-option">
+                        <div>
+                            <div class="phone-number">‎+962 7 7500 1616</div>
+                            <div class="ar-text">الرقم الثاني</div>
+                            <div class="en-text english" style="display:none;">Second Number</div>
+                        </div>
+                        <div>
+                            <button class="copy-btn" data-number="+962775001616" onclick="copyToClipboard(this)">
+                                <span class="ar-text">نسخ</span>
+                                <span class="en-text english" style="display:none;">Copy</span>
+                            </button>
+                            <a href="https://wa.me/962775001616" target="_blank" class="btn btn-primary" style="margin-right:10px;">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-modal" id="closeModal">
+                    <span class="ar-text">إغلاق</span>
+                    <span class="en-text english" style="display:none;">Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Image Modal Functions
-        function openModal(imageSrc) {
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            modalImage.src = imageSrc;
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('imageModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal when clicking outside the image
-        document.getElementById('imageModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
         });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        // Add scroll animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
+        
+        // Language Switch
+        const arabicBtn = document.getElementById('arabicBtn');
+        const englishBtn = document.getElementById('englishBtn');
+        const arTexts = document.querySelectorAll('.ar-text');
+        const enTexts = document.querySelectorAll('.en-text');
+        
+        arabicBtn.addEventListener('click', function() {
+            arabicBtn.classList.add('active');
+            englishBtn.classList.remove('active');
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, {
-                threshold: 0.1
+            arTexts.forEach(text => {
+                text.style.display = 'block';
             });
             
-            fadeElements.forEach(element => {
-                element.style.opacity = 0;
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(element);
+            enTexts.forEach(text => {
+                text.style.display = 'none';
             });
+            
+            // Change direction for Arabic
+            document.body.dir = 'rtl';
+            document.body.style.fontFamily = "'Cairo', sans-serif";
         });
-
-        // Make social icons section sticky on scroll
-        window.addEventListener('scroll', function() {
-            const socialSection = document.querySelector('.social-icons-section');
-            if (window.scrollY > 100) {
-                socialSection.style.position = 'fixed';
-                socialSection.style.top = '0';
-                socialSection.style.width = '100%';
-                socialSection.style.zIndex = '1000';
+        
+        englishBtn.addEventListener('click', function() {
+            englishBtn.classList.add('active');
+            arabicBtn.classList.remove('active');
+            
+            arTexts.forEach(text => {
+                text.style.display = 'none';
+            });
+            
+            enTexts.forEach(text => {
+                text.style.display = 'block';
+            });
+            
+            // Change direction for English
+            document.body.dir = 'ltr';
+            document.body.style.fontFamily = "'Poppins', sans-serif";
+        });
+        
+        // WhatsApp Modal
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const whatsappModal = document.getElementById('whatsappModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        whatsappBtn.addEventListener('click', function() {
+            whatsappModal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', function() {
+            whatsappModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === whatsappModal) {
+                whatsappModal.style.display = 'none';
+            }
+        });
+        
+        // Copy to Clipboard Function
+        function copyToClipboard(button) {
+            const number = button.getAttribute('data-number');
+            const tempInput = document.createElement('input');
+            tempInput.value = number;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            // Change button text temporarily
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check"></i>';
+            button.style.backgroundColor = '#4CAF50';
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.backgroundColor = '';
+            }, 2000);
+        }
+        
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real implementation, you would send this data to a server
+            // For demo purposes, we'll just show an alert
+            const isArabic = arabicBtn.classList.contains('active');
+            
+            if (isArabic) {
+                alert(`شكراً ${name}! تم استلام رسالتك وسنتصل بك على ${phone} قريباً.`);
             } else {
-                socialSection.style.position = 'sticky';
+                alert(`Thank you ${name}! Your message has been received and we will contact you at ${phone} soon.`);
             }
+            
+            contactForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                }
+            });
         });
     </script>
 </body>
