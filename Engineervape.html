@@ -42,7 +42,7 @@
             overflow-x: hidden;
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
             background-attachment: fixed;
-            padding-top: 80px; /* مساحة للهيدر الثابت */
+            padding-top: 100px; /* مساحة للهيدر الثابت */
         }
         
         body[dir="ltr"] {
@@ -60,7 +60,7 @@
             border-bottom: 1px solid rgba(45, 156, 219, 0.3);
             padding: 15px 0;
             transition: var(--transition-med);
-            height: 80px;
+            height: 100px;
             display: flex;
             align-items: center;
         }
@@ -78,12 +78,12 @@
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
         
         .logo-frame {
-            width: 60px;
-            height: 60px;
+            width: 80px; /* تكبير الشعار */
+            height: 80px; /* تكبير الشعار */
             border-radius: 50%;
             background: linear-gradient(135deg, var(--accent-blue), var(--electric-blue));
             display: flex;
@@ -129,7 +129,7 @@
         }
         
         .logo-text h1 {
-            font-size: 1.8rem;
+            font-size: 2.2rem; /* تكبير النص */
             background: linear-gradient(to right, var(--electric-blue), var(--light-blue));
             -webkit-background-clip: text;
             background-clip: text;
@@ -141,7 +141,7 @@
         
         .logo-text p {
             color: var(--text-gray);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             letter-spacing: 2px;
         }
         
@@ -235,13 +235,14 @@
             font-size: 1rem;
         }
         
-        /* البانر الفخم */
+        /* البانر الفخم - مع رفع مواقع التواصل */
         .luxury-hero {
-            min-height: calc(100vh - 80px);
+            min-height: calc(100vh - 100px);
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 40px; /* رفع المحتوى للأعلى */
         }
         
         .hero-bg {
@@ -409,13 +410,13 @@
         
         /* قسم المنتجات الفاخر */
         .luxury-products {
-            padding: 120px 0;
+            padding: 100px 0; /* تقليل المساحة */
             position: relative;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 70px; /* تقليل المساحة */
         }
         
         .section-title h2 {
@@ -505,9 +506,9 @@
             font-size: 1.1rem;
         }
         
-        /* قسم التواصل الفاخر */
+        /* قسم التواصل الفاخر - تم رفعه للأعلى */
         .luxury-contact {
-            padding: 120px 0;
+            padding: 80px 0; /* تقليل المساحة */
             background: linear-gradient(to bottom, var(--secondary-dark), var(--primary-dark));
             position: relative;
         }
@@ -515,7 +516,7 @@
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 60px; /* تقليل المسافة */
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 40px;
@@ -524,7 +525,7 @@
         .contact-card {
             background: linear-gradient(145deg, rgba(18, 18, 37, 0.8), rgba(10, 10, 20, 0.9));
             border-radius: 25px;
-            padding: 50px;
+            padding: 40px; /* تقليل المساحة الداخلية */
             border: 1px solid rgba(45, 156, 219, 0.2);
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow-dark);
@@ -532,10 +533,10 @@
         
         .contact-title {
             font-size: 2.2rem;
-            margin-bottom: 40px;
+            margin-bottom: 30px; /* تقليل المسافة */
             color: var(--electric-blue);
             position: relative;
-            padding-bottom: 20px;
+            padding-bottom: 15px; /* تقليل المسافة */
         }
         
         .contact-title::after {
@@ -558,7 +559,7 @@
             display: flex;
             align-items: center;
             gap: 25px;
-            margin-bottom: 35px;
+            margin-bottom: 30px; /* تقليل المسافة */
             padding: 20px;
             border-radius: 15px;
             background: rgba(45, 156, 219, 0.05);
@@ -611,15 +612,15 @@
             color: var(--electric-blue);
         }
         
-        /* قسم وسائل التواصل المحدث */
+        /* قسم وسائل التواصل المحدث - تم رفعه للأعلى */
         .social-section {
-            margin-top: 40px;
+            margin-top: 30px; /* تقليل المسافة */
         }
         
         .social-title {
             font-size: 1.6rem;
             color: var(--electric-blue);
-            margin-bottom: 25px;
+            margin-bottom: 20px; /* تقليل المسافة */
             display: flex;
             align-items: center;
             gap: 15px;
@@ -660,7 +661,7 @@
         }
         
         .social-icon-updated {
-            font-size: 2.2rem;
+            font-size: 2.4rem; /* تكبير الأيقونات */
             margin-bottom: 10px;
             display: block;
         }
@@ -703,22 +704,22 @@
         }
         
         .nfc-card-icon i:first-child {
-            font-size: 1.8rem;
+            font-size: 2rem; /* تكبير أيقونة البطاقة */
             color: #FF6B6B;
         }
         
         .nfc-card-icon i:last-child {
-            font-size: 1.2rem;
+            font-size: 1.4rem; /* تكبير أيقونة الموجة */
             color: var(--electric-blue);
             margin-top: -5px;
         }
         
-        /* رقم الهاتف المميز */
+        /* رقم الهاتف المميز - تم رفعه للأعلى */
         .phone-highlight-updated {
             background: linear-gradient(135deg, rgba(45, 156, 219, 0.15), rgba(26, 95, 122, 0.15));
             border-radius: 20px;
             padding: 30px;
-            margin-top: 40px;
+            margin-top: 30px; /* تقليل المسافة */
             border: 2px solid var(--electric-blue);
             position: relative;
             overflow: hidden;
@@ -774,7 +775,7 @@
         /* الفوتر الفاخر */
         .luxury-footer {
             background: linear-gradient(to top, var(--primary-dark), var(--secondary-dark));
-            padding: 80px 0 30px;
+            padding: 60px 0 30px; /* تقليل المساحة */
             border-top: 1px solid rgba(45, 156, 219, 0.2);
         }
         
@@ -784,13 +785,13 @@
             padding: 0 40px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 60px;
-            margin-bottom: 60px;
+            gap: 50px; /* تقليل المسافة */
+            margin-bottom: 50px; /* تقليل المسافة */
         }
         
         .footer-column h3 {
             font-size: 1.6rem;
-            margin-bottom: 30px;
+            margin-bottom: 25px; /* تقليل المسافة */
             color: var(--electric-blue);
             position: relative;
             padding-bottom: 15px;
@@ -844,7 +845,7 @@
         
         .copyright {
             text-align: center;
-            padding-top: 40px;
+            padding-top: 30px; /* تقليل المسافة */
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-gray);
             font-size: 0.95rem;
@@ -893,6 +894,10 @@
             body[dir="ltr"] .language-switcher {
                 margin-left: 15px;
             }
+            
+            .header-container {
+                padding: 0 25px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -929,6 +934,15 @@
             .social-grid-updated {
                 grid-template-columns: repeat(4, 1fr);
             }
+            
+            .logo-frame {
+                width: 70px; /* تقليل الشعار قليلاً على الشاشات الصغيرة */
+                height: 70px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.8rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -942,6 +956,19 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+            
+            .logo-section {
+                gap: 15px;
+            }
+            
+            .logo-frame {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.5rem;
             }
         }
         
@@ -984,7 +1011,7 @@
         /* تأثير النسخ */
         .copy-notification {
             position: fixed;
-            top: 100px;
+            top: 120px; /* تعديل الموقع */
             right: 20px;
             background: linear-gradient(to right, var(--accent-blue), var(--electric-blue));
             color: white;
@@ -1029,10 +1056,10 @@
             
             .luxury-nav {
                 position: fixed;
-                top: 80px;
+                top: 100px; /* تعديل الموقع حسب ارتفاع الهيدر */
                 right: 0;
                 width: 300px;
-                height: calc(100vh - 80px);
+                height: calc(100vh - 100px);
                 background: rgba(10, 10, 20, 0.95);
                 backdrop-filter: blur(15px);
                 flex-direction: column;
@@ -1263,7 +1290,7 @@
         </div>
     </section>
 
-    <!-- قسم التواصل الفاخر - محدث -->
+    <!-- قسم التواصل الفاخر - تم رفعه للأعلى -->
     <section class="luxury-contact" id="contact">
         <div class="section-title">
             <h2 class="animate__animated animate__fadeInDown">
@@ -1551,7 +1578,7 @@
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: targetElement.offsetTop - 100,
                             behavior: 'smooth'
                         });
                         
