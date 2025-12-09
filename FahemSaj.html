@@ -288,136 +288,10 @@
             background-color: #34B7F1;
         }
 
-        /* About Section */
-        .about {
-            padding: 100px 0;
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            font-weight: 800;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            color: var(--text-color);
-            font-weight: 600;
-        }
-
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 5px solid var(--primary-color);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .specialties {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .specialty {
-            background-color: var(--secondary-color);
-            padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-
-        .specialty:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary-color);
-        }
-
-        .specialty i {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .specialty h3 {
-            font-size: 1.8rem;
-            color: var(--text-color);
-            font-weight: 800;
-        }
-
-        /* Menu Section */
-        .menu {
-            padding: 100px 0;
-            background-color: var(--secondary-color);
-        }
-
-        .menu-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .menu-item {
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 3px solid transparent;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-color);
-        }
-
-        .menu-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .menu-item-content {
-            padding: 25px;
-        }
-
-        .menu-item h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-            font-weight: 800;
-        }
-
-        .menu-item p {
-            color: var(--text-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        /* Contact Section */
+        /* Contact Section - MOVED TO TOP */
         .contact {
             padding: 100px 0;
+            background-color: var(--white);
         }
 
         .contact-content {
@@ -492,6 +366,134 @@
         .form-control:focus {
             border-color: var(--primary-color);
             outline: none;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 100px 0;
+            background-color: var(--secondary-color);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .menu-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 25px;
+        }
+
+        .menu-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        .menu-item p {
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* About Section - MOVED TO BOTTOM */
+        .about {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 5px solid var(--primary-color);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .specialties {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .specialty {
+            background-color: var(--secondary-color);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .specialty:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+        }
+
+        .specialty i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .specialty h3 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            font-weight: 800;
         }
 
         /* Footer */
@@ -805,9 +807,9 @@
             <nav id="mainNav">
                 <ul>
                     <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#about">عن المطعم</a></li>
-                    <li><a href="#menu">قائمة الطعام</a></li>
                     <li><a href="#contact">اتصل بنا</a></li>
+                    <li><a href="#menu">قائمة الطعام</a></li>
+                    <li><a href="#about">عن المطعم</a></li>
                 </ul>
             </nav>
         </div>
@@ -850,47 +852,84 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
+    <!-- Contact Section - NOW AT TOP -->
+    <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title ar-text">عن مطعمنا</h2>
-            <h2 class="section-title en-text english" style="display:none;">About Our Restaurant</h2>
+            <h2 class="section-title ar-text">اتصل بنا</h2>
+            <h2 class="section-title en-text english" style="display:none;">Contact Us</h2>
             
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="ar-text">في "فحم و صاج" نؤمن أن النكهة الأصيلة تبدأ من المكونات الطازجة وطريقة التحضير التقليدية. نحن نستخدم أفضل قطع اللحوم والدجاج مع خلطة توابل سرية تعطي طعمًا مميزًا لا يقاوم.</p>
-                    <p class="ar-text">جميع أطباقنا تُحضّر يوميًا بأيدي خبراء الطهي الذين يحرصون على تقديم تجربة طعام استثنائية. سواءً كنت تفضل الشاورما على الفحم أو الصاج، ستجد عندنا ما يرضي ذوقك.</p>
-                    
-                    <p class="en-text english" style="display:none;">At "Coal & Saj", we believe that authentic flavor starts from fresh ingredients and traditional preparation methods. We use the best cuts of meat and chicken with a secret spice mix that gives a distinctive, irresistible taste.</p>
-                    <p class="en-text english" style="display:none;">All our dishes are prepared daily by cooking experts who are keen to provide an exceptional dining experience. Whether you prefer charcoal or saj shawarma, you will find what satisfies your taste with us.</p>
-                    
-                    <div class="specialties">
-                        <div class="specialty">
-                            <i class="fas fa-fire"></i>
-                            <h3 class="ar-text">شاورما فحم</h3>
-                            <h3 class="en-text english" style="display:none;">Charcoal Shawarma</h3>
-                            <p class="ar-text">(دجاج و لحمة)</p>
-                            <p class="en-text english" style="display:none;">(Chicken & Meat)</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3 class="ar-text">العنوان</h3>
+                            <h3 class="en-text english" style="display:none;">Address</h3>
+                            <p class="ar-text">مطعم فحم و صاج - الأردن</p>
+                            <p class="en-text english" style="display:none;">Coal & Saj Restaurant - Jordan</p>
+                            <a href="https://maps.google.com" target="_blank" class="ar-text" style="color: var(--primary-color); font-weight: 700;">عرض على خريطة جوجل</a>
+                            <a href="https://maps.google.com" target="_blank" class="en-text english" style="color: var(--primary-color); font-weight: 700; display:none;">View on Google Maps</a>
                         </div>
-                        <div class="specialty">
-                            <i class="fas fa-utensils"></i>
-                            <h3 class="ar-text">شاورما صاج</h3>
-                            <h3 class="en-text english" style="display:none;">Saj Shawarma</h3>
-                            <p class="ar-text">(دجاج و لحمة)</p>
-                            <p class="en-text english" style="display:none;">(Chicken & Meat)</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3 class="ar-text">هواتف التواصل</h3>
+                            <h3 class="en-text english" style="display:none;">Contact Phones</h3>
+                            <p style="font-weight: 800; font-size: 1.2rem;">‎+962 7 7800 1919</p>
+                            <p style="font-weight: 800; font-size: 1.2rem;">‎+962 7 7500 1616</p>
                         </div>
-                        <div class="specialty">
-                            <i class="fas fa-drumstick-bite"></i>
-                            <h3 class="ar-text">مشاوي متنوعة</h3>
-                            <h3 class="en-text english" style="display:none;">Mixed Grills</h3>
-                            <p class="ar-text">(دجاج تركي، تكا، شيش طاووق، كباب)</p>
-                            <p class="en-text english" style="display:none;">(Turkish Chicken, Tikka, Shish Tawook, Kebab)</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div>
+                            <h3 class="ar-text">خدمة كليك (Qliq)</h3>
+                            <h3 class="en-text english" style="display:none;">Qliq Service</h3>
+                            <p style="font-weight: 800; font-size: 1.2rem;">0799543452</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3 class="ar-text">ساعات العمل</h3>
+                            <h3 class="en-text english" style="display:none;">Working Hours</h3>
+                            <p class="ar-text">كل أيام الأسبوع</p>
+                            <p class="en-text english" style="display:none;">Every day of the week</p>
+                            <p class="ar-text">من ١٠ صباحاً حتى ١٢ منتصف الليل</p>
+                            <p class="en-text english" style="display:none;">From 10 AM to 12 Midnight</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="مطعم فحم و صاج">
+                <div class="contact-form">
+                    <h3 class="ar-text" style="margin-bottom:20px; font-size: 1.8rem;">أرسل لنا رسالة</h3>
+                    <h3 class="en-text english" style="margin-bottom:20px; font-size: 1.8rem; display:none;">Send us a message</h3>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="ar-text">الاسم</label>
+                            <label for="name" class="en-text english" style="display:none;">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="ar-text">رقم الهاتف</label>
+                            <label for="phone" class="en-text english" style="display:none;">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="ar-text">الرسالة</label>
+                            <label for="message" class="en-text english" style="display:none;">Message</label>
+                            <textarea id="message" class="form-control" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary ar-text">إرسال الرسالة</button>
+                        <button type="submit" class="btn btn-primary en-text english" style="display:none;">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -936,72 +975,47 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <!-- About Section - NOW AT BOTTOM -->
+    <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title ar-text">اتصل بنا</h2>
-            <h2 class="section-title en-text english" style="display:none;">Contact Us</h2>
+            <h2 class="section-title ar-text">عن مطعمنا</h2>
+            <h2 class="section-title en-text english" style="display:none;">About Our Restaurant</h2>
             
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3 class="ar-text">العنوان</h3>
-                            <h3 class="en-text english" style="display:none;">Address</h3>
-                            <p class="ar-text">مطعم فحم و صاج - الأردن</p>
-                            <p class="en-text english" style="display:none;">Coal & Saj Restaurant - Jordan</p>
-                            <a href="https://maps.google.com" target="_blank" class="ar-text" style="color: var(--primary-color); font-weight: 700;">عرض على خريطة جوجل</a>
-                            <a href="https://maps.google.com" target="_blank" class="en-text english" style="color: var(--primary-color); font-weight: 700; display:none;">View on Google Maps</a>
-                        </div>
-                    </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="ar-text">في "فحم و صاج" نؤمن أن النكهة الأصيلة تبدأ من المكونات الطازجة وطريقة التحضير التقليدية. نحن نستخدم أفضل قطع اللحوم والدجاج مع خلطة توابل سرية تعطي طعمًا مميزًا لا يقاوم.</p>
+                    <p class="ar-text">جميع أطباقنا تُحضّر يوميًا بأيدي خبراء الطهي الذين يحرصون على تقديم تجربة طعام استثنائية. سواءً كنت تفضل الشاورما على الفحم أو الصاج، ستجد عندنا ما يرضي ذوقك.</p>
                     
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <h3 class="ar-text">هواتف التواصل</h3>
-                            <h3 class="en-text english" style="display:none;">Contact Phones</h3>
-                            <p style="font-weight: 800;">‎+962 7 7800 1919</p>
-                            <p style="font-weight: 800;">‎+962 7 7500 1616</p>
-                        </div>
-                    </div>
+                    <p class="en-text english" style="display:none;">At "Coal & Saj", we believe that authentic flavor starts from fresh ingredients and traditional preparation methods. We use the best cuts of meat and chicken with a secret spice mix that gives a distinctive, irresistible taste.</p>
+                    <p class="en-text english" style="display:none;">All our dishes are prepared daily by cooking experts who are keen to provide an exceptional dining experience. Whether you prefer charcoal or saj shawarma, you will find what satisfies your taste with us.</p>
                     
-                    <div class="contact-item">
-                        <i class="fas fa-mobile-alt"></i>
-                        <div>
-                            <h3 class="ar-text">خدمة كليك (Qliq)</h3>
-                            <h3 class="en-text english" style="display:none;">Qliq Service</h3>
-                            <p style="font-weight: 800;">0799543452</p>
+                    <div class="specialties">
+                        <div class="specialty">
+                            <i class="fas fa-fire"></i>
+                            <h3 class="ar-text">شاورما فحم</h3>
+                            <h3 class="en-text english" style="display:none;">Charcoal Shawarma</h3>
+                            <p class="ar-text">(دجاج و لحمة)</p>
+                            <p class="en-text english" style="display:none;">(Chicken & Meat)</p>
+                        </div>
+                        <div class="specialty">
+                            <i class="fas fa-utensils"></i>
+                            <h3 class="ar-text">شاورما صاج</h3>
+                            <h3 class="en-text english" style="display:none;">Saj Shawarma</h3>
+                            <p class="ar-text">(دجاج و لحمة)</p>
+                            <p class="en-text english" style="display:none;">(Chicken & Meat)</p>
+                        </div>
+                        <div class="specialty">
+                            <i class="fas fa-drumstick-bite"></i>
+                            <h3 class="ar-text">مشاوي متنوعة</h3>
+                            <h3 class="en-text english" style="display:none;">Mixed Grills</h3>
+                            <p class="ar-text">(دجاج تركي، تكا، شيش طاووق، كباب)</p>
+                            <p class="en-text english" style="display:none;">(Turkish Chicken, Tikka, Shish Tawook, Kebab)</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <h3 class="ar-text" style="margin-bottom:20px; font-size: 1.8rem;">أرسل لنا رسالة</h3>
-                    <h3 class="en-text english" style="margin-bottom:20px; font-size: 1.8rem; display:none;">Send us a message</h3>
-                    
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="ar-text">الاسم</label>
-                            <label for="name" class="en-text english" style="display:none;">Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone" class="ar-text">رقم الهاتف</label>
-                            <label for="phone" class="en-text english" style="display:none;">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="ar-text">الرسالة</label>
-                            <label for="message" class="en-text english" style="display:none;">Message</label>
-                            <textarea id="message" class="form-control" rows="4" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary ar-text">إرسال الرسالة</button>
-                        <button type="submit" class="btn btn-primary en-text english" style="display:none;">Send Message</button>
-                    </form>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="مطعم فحم و صاج">
                 </div>
             </div>
         </div>
@@ -1023,9 +1037,9 @@
                     <h3 class="en-text english" style="display:none;">Quick Links</h3>
                     <ul>
                         <li><a href="#home" class="ar-text">الرئيسية</a><a href="#home" class="en-text english" style="display:none;">Home</a></li>
-                        <li><a href="#about" class="ar-text">عن المطعم</a><a href="#about" class="en-text english" style="display:none;">About</a></li>
-                        <li><a href="#menu" class="ar-text">قائمة الطعام</a><a href="#menu" class="en-text english" style="display:none;">Menu</a></li>
                         <li><a href="#contact" class="ar-text">اتصل بنا</a><a href="#contact" class="en-text english" style="display:none;">Contact</a></li>
+                        <li><a href="#menu" class="ar-text">قائمة الطعام</a><a href="#menu" class="en-text english" style="display:none;">Menu</a></li>
+                        <li><a href="#about" class="ar-text">عن المطعم</a><a href="#about" class="en-text english" style="display:none;">About</a></li>
                     </ul>
                 </div>
                 
