@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مطعـم محمد الطرمان</title>
+    <title>فحم و صاج - مطعم المشاوي والشاورما</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap">
-    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/SciJmZK.png">
     <style>
         :root {
-            --primary-color: #d32f2f;
-            --primary-dark: #b71c1c;
+            --primary-color: #c62828;
+            --primary-dark: #8e0000;
             --secondary-color: #f5f5f5;
-            --text-color: #333;
-            --text-light: #666;
+            --text-color: #000000;
+            --text-light: #444444;
             --white: #ffffff;
             --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
@@ -71,21 +70,18 @@
             align-items: center;
         }
 
-        .logo img {
-            height: 50px;
-            margin-left: 10px;
-        }
-
         .logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             color: var(--primary-color);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .logo-text .english {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-light);
             display: block;
+            font-weight: 600;
         }
 
         nav ul {
@@ -100,10 +96,11 @@
         nav a {
             text-decoration: none;
             color: var(--text-color);
-            font-weight: 600;
+            font-weight: 700;
             padding: 8px 12px;
             border-radius: 4px;
             transition: var(--transition);
+            font-size: 1.1rem;
         }
 
         nav a:hover {
@@ -123,6 +120,7 @@
             cursor: pointer;
             font-family: 'Cairo', sans-serif;
             transition: var(--transition);
+            color: var(--text-color);
         }
 
         .lang-btn.active {
@@ -150,8 +148,8 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+                        url('https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             padding: 180px 0 100px;
@@ -159,16 +157,19 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 20px;
             color: var(--primary-color);
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 800px;
             margin: 0 auto 30px;
-            color: var(--text-light);
+            color: var(--text-color);
+            font-weight: 600;
         }
 
         .hero-buttons {
@@ -179,15 +180,16 @@
         }
 
         .btn {
-            padding: 12px 30px;
+            padding: 14px 35px;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             display: inline-block;
             transition: var(--transition);
             cursor: pointer;
             border: none;
             font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
         }
 
         .btn-primary {
@@ -198,7 +200,7 @@
         .btn-primary:hover {
             background-color: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(211, 47, 47, 0.3);
+            box-shadow: 0 7px 15px rgba(198, 40, 40, 0.3);
         }
 
         .btn-secondary {
@@ -223,18 +225,19 @@
         .section-title {
             text-align: center;
             margin-bottom: 40px;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--primary-color);
             position: relative;
+            font-weight: 800;
         }
 
         .section-title:after {
             content: '';
             position: absolute;
-            width: 80px;
-            height: 3px;
+            width: 100px;
+            height: 4px;
             background-color: var(--primary-color);
-            bottom: -10px;
+            bottom: -15px;
             right: 50%;
             transform: translateX(50%);
         }
@@ -248,23 +251,25 @@
         }
 
         .social-icon {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background-color: var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary-color);
-            font-size: 1.8rem;
+            font-size: 2rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
             text-decoration: none;
+            border: 2px solid transparent;
         }
 
         .social-icon:hover {
             transform: translateY(-10px);
             color: var(--white);
+            border-color: var(--white);
         }
 
         .social-icon.facebook:hover {
@@ -285,7 +290,7 @@
 
         /* About Section */
         .about {
-            padding: 80px 0;
+            padding: 100px 0;
         }
 
         .about-content {
@@ -299,15 +304,17 @@
         }
 
         .about-text h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             color: var(--primary-color);
+            font-weight: 800;
         }
 
         .about-text p {
             margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: var(--text-light);
+            font-size: 1.2rem;
+            color: var(--text-color);
+            font-weight: 600;
         }
 
         .about-image {
@@ -315,6 +322,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            border: 5px solid var(--primary-color);
         }
 
         .about-image img {
@@ -332,32 +340,40 @@
 
         .specialty {
             background-color: var(--secondary-color);
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
             text-align: center;
             transition: var(--transition);
+            border: 2px solid transparent;
         }
 
         .specialty:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow);
+            border-color: var(--primary-color);
         }
 
         .specialty i {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .specialty h3 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            font-weight: 800;
         }
 
         /* Menu Section */
         .menu {
-            padding: 80px 0;
+            padding: 100px 0;
             background-color: var(--secondary-color);
         }
 
         .menu-items {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
@@ -368,31 +384,40 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            border: 3px solid transparent;
         }
 
         .menu-item:hover {
             transform: translateY(-10px);
+            border-color: var(--primary-color);
         }
 
         .menu-item img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
         }
 
         .menu-item-content {
-            padding: 20px;
+            padding: 25px;
         }
 
         .menu-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
             color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        .menu-item p {
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         /* Contact Section */
         .contact {
-            padding: 80px 0;
+            padding: 100px 0;
         }
 
         .contact-content {
@@ -405,6 +430,7 @@
             background-color: var(--secondary-color);
             padding: 30px;
             border-radius: 10px;
+            border: 2px solid var(--primary-color);
         }
 
         .contact-item {
@@ -414,10 +440,22 @@
         }
 
         .contact-item i {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--primary-color);
             margin-left: 15px;
-            width: 30px;
+            width: 40px;
+        }
+
+        .contact-item h3 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            font-weight: 800;
+        }
+
+        .contact-item p {
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .contact-form {
@@ -425,32 +463,42 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: var(--shadow);
+            border: 2px solid var(--primary-color);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
+            margin-bottom: 10px;
+            font-weight: 800;
+            color: var(--text-color);
+            font-size: 1.1rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
+            padding: 15px;
+            border: 2px solid #ddd;
             border-radius: 5px;
             font-family: 'Cairo', sans-serif;
             font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
         }
 
         /* Footer */
         footer {
-            background-color: #222;
+            background-color: #111;
             color: var(--white);
-            padding: 50px 0 20px;
+            padding: 60px 0 20px;
         }
 
         .footer-content {
@@ -460,24 +508,42 @@
             margin-bottom: 40px;
         }
 
-        .footer-logo img {
-            height: 60px;
-            margin-bottom: 15px;
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo .english {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #bbb;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .footer-logo p {
+            font-size: 1.2rem;
+            color: #bbb;
+            font-weight: 600;
+            margin-top: 15px;
         }
 
         .footer-links h3, .footer-contact h3 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 20px;
             color: var(--white);
             position: relative;
             padding-bottom: 10px;
+            font-weight: 800;
         }
 
         .footer-links h3:after, .footer-contact h3:after {
             content: '';
             position: absolute;
-            width: 40px;
-            height: 2px;
+            width: 50px;
+            height: 3px;
             background-color: var(--primary-color);
             bottom: 0;
             right: 0;
@@ -488,26 +554,29 @@
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
             color: #bbb;
             text-decoration: none;
             transition: var(--transition);
+            font-size: 1.1rem;
+            font-weight: 600;
         }
 
         .footer-links a:hover {
             color: var(--primary-color);
-            padding-right: 5px;
+            padding-right: 8px;
         }
 
         .copyright {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid #444;
+            border-top: 1px solid #333;
             color: #bbb;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         /* WhatsApp Modal */
@@ -518,7 +587,7 @@
             right: 0;
             bottom: 0;
             left: 0;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 2000;
             align-items: center;
             justify-content: center;
@@ -531,6 +600,7 @@
             max-width: 500px;
             overflow: hidden;
             animation: modalFade 0.3s;
+            border: 3px solid var(--primary-color);
         }
 
         @keyframes modalFade {
@@ -546,7 +616,8 @@
         }
 
         .modal-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 800;
         }
 
         .modal-body {
@@ -563,31 +634,39 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
             transition: var(--transition);
         }
 
         .whatsapp-option:hover {
             border-color: var(--primary-color);
-            background-color: rgba(211, 47, 47, 0.05);
+            background-color: rgba(198, 40, 40, 0.05);
         }
 
         .phone-number {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-color);
+        }
+
+        .whatsapp-option div:first-child div:last-child {
+            color: var(--text-light);
             font-weight: 600;
+            margin-top: 5px;
         }
 
         .copy-btn {
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
             font-family: 'Cairo', sans-serif;
             transition: var(--transition);
+            font-weight: 700;
         }
 
         .copy-btn:hover {
@@ -597,18 +676,19 @@
         .modal-footer {
             padding: 20px;
             text-align: center;
-            background-color: #f9f9f9;
+            background-color: #f5f5f5;
         }
 
         .close-modal {
             background-color: #ddd;
-            color: #333;
+            color: var(--text-color);
             border: none;
-            padding: 10px 25px;
+            padding: 12px 30px;
             border-radius: 5px;
             cursor: pointer;
             font-family: 'Cairo', sans-serif;
             transition: var(--transition);
+            font-weight: 700;
         }
 
         .close-modal:hover {
@@ -622,7 +702,7 @@
             }
             
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 3.2rem;
             }
         }
 
@@ -655,7 +735,7 @@
             }
             
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.8rem;
             }
             
             .hero-buttons {
@@ -668,9 +748,9 @@
             }
             
             .social-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
             }
         }
 
@@ -679,12 +759,8 @@
                 padding: 10px;
             }
             
-            .logo img {
-                height: 40px;
-            }
-            
             .logo-text {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
             
             .hero {
@@ -692,11 +768,16 @@
             }
             
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2.5rem;
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -706,10 +787,9 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="https://i.imgur.com/SciJmZK.png" alt="مطعم محمد الطرمان">
                 <div class="logo-text">
-                    مطعـم محمد الطرمان
-                    <span class="english">Mohammad Altorman Restaurant</span>
+                    فحم و صاج
+                    <span class="english">Coal & Saj</span>
                 </div>
             </div>
             
@@ -736,9 +816,9 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>مطعم محمد الطرمان</h1>
-            <p class="ar-text">استمتع بألذ وأشهى المأكولات الشرقية والأسيوية التي نقدمها بأعلى معايير الجودة والنظافة. طعامنا يُعد بحب واهتمام لتجربة طعام لا تُنسى.</p>
-            <p class="en-text english">Enjoy the most delicious Oriental and Asian cuisine prepared with the highest standards of quality and cleanliness. Our food is made with love and care for an unforgettable dining experience.</p>
+            <h1>فحم و صاج</h1>
+            <p class="ar-text">نقدم لكم ألذ المشاوي والشاورما المعدة على الفحم الطبيعي والصاج الساخن. طعم أصيل ونكهة لا تُنسى تجمع بين الأصالة والجودة.</p>
+            <p class="en-text english">We offer you the most delicious grills and shawarma prepared on natural charcoal and hot saj. Authentic taste and unforgettable flavor that combines authenticity and quality.</p>
             
             <div class="hero-buttons">
                 <a href="#menu" class="btn btn-primary">استعرض قائمتنا</a>
@@ -778,33 +858,39 @@
             
             <div class="about-content">
                 <div class="about-text">
-                    <p class="ar-text">نحن في مطعم محمد الطرمان نقدم أشهى المأكولات الشرقية بلمسة عصرية. نحرص على استخدام أفضل المكونات الطازجة والتوابل المختارة بعناية لتقديم نكهات أصيلة تذكرك بطعام المنزل.</p>
-                    <p class="ar-text">مطعمنا يتميز بالنظافة والجودة العالية في التحضير، مع فريق عمل محترف يضمن لكم تجربة طعام استثنائية سواءً في المطعم أو عبر التوصيل.</p>
+                    <p class="ar-text">في "فحم و صاج" نؤمن أن النكهة الأصيلة تبدأ من المكونات الطازجة وطريقة التحضير التقليدية. نحن نستخدم أفضل قطع اللحوم والدجاج مع خلطة توابل سرية تعطي طعمًا مميزًا لا يقاوم.</p>
+                    <p class="ar-text">جميع أطباقنا تُحضّر يوميًا بأيدي خبراء الطهي الذين يحرصون على تقديم تجربة طعام استثنائية. سواءً كنت تفضل الشاورما على الفحم أو الصاج، ستجد عندنا ما يرضي ذوقك.</p>
                     
-                    <p class="en-text english" style="display:none;">At Mohammad Altorman Restaurant, we serve the most delicious oriental cuisine with a modern touch. We insist on using the best fresh ingredients and carefully selected spices to provide authentic flavors that remind you of homemade food.</p>
-                    <p class="en-text english" style="display:none;">Our restaurant is distinguished by cleanliness and high quality in preparation, with a professional team that ensures you an exceptional dining experience whether in the restaurant or through delivery.</p>
+                    <p class="en-text english" style="display:none;">At "Coal & Saj", we believe that authentic flavor starts from fresh ingredients and traditional preparation methods. We use the best cuts of meat and chicken with a secret spice mix that gives a distinctive, irresistible taste.</p>
+                    <p class="en-text english" style="display:none;">All our dishes are prepared daily by cooking experts who are keen to provide an exceptional dining experience. Whether you prefer charcoal or saj shawarma, you will find what satisfies your taste with us.</p>
                     
                     <div class="specialties">
                         <div class="specialty">
                             <i class="fas fa-fire"></i>
                             <h3 class="ar-text">شاورما فحم</h3>
                             <h3 class="en-text english" style="display:none;">Charcoal Shawarma</h3>
+                            <p class="ar-text">(دجاج و لحمة)</p>
+                            <p class="en-text english" style="display:none;">(Chicken & Meat)</p>
                         </div>
                         <div class="specialty">
                             <i class="fas fa-utensils"></i>
                             <h3 class="ar-text">شاورما صاج</h3>
                             <h3 class="en-text english" style="display:none;">Saj Shawarma</h3>
+                            <p class="ar-text">(دجاج و لحمة)</p>
+                            <p class="en-text english" style="display:none;">(Chicken & Meat)</p>
                         </div>
                         <div class="specialty">
                             <i class="fas fa-drumstick-bite"></i>
                             <h3 class="ar-text">مشاوي متنوعة</h3>
                             <h3 class="en-text english" style="display:none;">Mixed Grills</h3>
+                            <p class="ar-text">(دجاج تركي، تكا، شيش طاووق، كباب)</p>
+                            <p class="en-text english" style="display:none;">(Turkish Chicken, Tikka, Shish Tawook, Kebab)</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="مطعم محمد الطرمان">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="مطعم فحم و صاج">
                 </div>
             </div>
         </div>
@@ -822,8 +908,8 @@
                     <div class="menu-item-content">
                         <h3 class="ar-text">شاورما فحم</h3>
                         <h3 class="en-text english" style="display:none;">Charcoal Shawarma</h3>
-                        <p class="ar-text">شاورما لحم ودجاج مطهوة على الفحم الطبيعي لإعطاء نكهة مدخنة مميزة.</p>
-                        <p class="en-text english" style="display:none;">Meat and chicken shawarma cooked on natural charcoal for a distinctive smoky flavor.</p>
+                        <p class="ar-text">شاورما لحم ودجاج مطهوة على الفحم الطبيعي لإعطاء نكهة مدخنة مميزة. تُقدم مع خبز طازج وخلطة خضار.</p>
+                        <p class="en-text english" style="display:none;">Meat and chicken shawarma cooked on natural charcoal for a distinctive smoky flavor. Served with fresh bread and vegetable mix.</p>
                     </div>
                 </div>
                 
@@ -832,8 +918,8 @@
                     <div class="menu-item-content">
                         <h3 class="ar-text">شاورما صاج</h3>
                         <h3 class="en-text english" style="display:none;">Saj Shawarma</h3>
-                        <p class="ar-text">شاورما دجاج ولحمة على الصاج الساخن، مقرمشة من الخارج وطرية من الداخل.</p>
-                        <p class="en-text english" style="display:none;">Chicken and meat shawarma on hot saj, crispy on the outside and tender on the inside.</p>
+                        <p class="ar-text">شاورما دجاج ولحمة على الصاج الساخن، مقرمشة من الخارج وطرية من الداخل. بنكهات الشرق الأوسطية الأصيلة.</p>
+                        <p class="en-text english" style="display:none;">Chicken and meat shawarma on hot saj, crispy on the outside and tender on the inside. With authentic Middle Eastern flavors.</p>
                     </div>
                 </div>
                 
@@ -842,8 +928,8 @@
                     <div class="menu-item-content">
                         <h3 class="ar-text">مشاوي متنوعة</h3>
                         <h3 class="en-text english" style="display:none;">Mixed Grills</h3>
-                        <p class="ar-text">دجاج تركي، دجاج تكا، شيش طاووق، كباب بلدي، جميعها مشوية على الفحم.</p>
-                        <p class="en-text english" style="display:none;">Turkish chicken, tikka chicken, shish tawook, local kebab, all grilled on charcoal.</p>
+                        <p class="ar-text">دجاج تركي، دجاج تكا، شيش طاووق، كباب بلدي. جميعها مشوية على الفحم مع الأرص والخضار المشوية.</p>
+                        <p class="en-text english" style="display:none;">Turkish chicken, tikka chicken, shish tawook, local kebab. All grilled on charcoal with rice and grilled vegetables.</p>
                     </div>
                 </div>
             </div>
@@ -863,10 +949,10 @@
                         <div>
                             <h3 class="ar-text">العنوان</h3>
                             <h3 class="en-text english" style="display:none;">Address</h3>
-                            <p class="ar-text">مطعم محمد الطرمان - الأردن</p>
-                            <p class="en-text english" style="display:none;">Mohammad Altorman Restaurant - Jordan</p>
-                            <a href="https://maps.google.com" target="_blank" class="ar-text">عرض على خريطة جوجل</a>
-                            <a href="https://maps.google.com" target="_blank" class="en-text english" style="display:none;">View on Google Maps</a>
+                            <p class="ar-text">مطعم فحم و صاج - الأردن</p>
+                            <p class="en-text english" style="display:none;">Coal & Saj Restaurant - Jordan</p>
+                            <a href="https://maps.google.com" target="_blank" class="ar-text" style="color: var(--primary-color); font-weight: 700;">عرض على خريطة جوجل</a>
+                            <a href="https://maps.google.com" target="_blank" class="en-text english" style="color: var(--primary-color); font-weight: 700; display:none;">View on Google Maps</a>
                         </div>
                     </div>
                     
@@ -875,8 +961,8 @@
                         <div>
                             <h3 class="ar-text">هواتف التواصل</h3>
                             <h3 class="en-text english" style="display:none;">Contact Phones</h3>
-                            <p>‎+962 7 7800 1919</p>
-                            <p>‎+962 7 7500 1616</p>
+                            <p style="font-weight: 800;">‎+962 7 7800 1919</p>
+                            <p style="font-weight: 800;">‎+962 7 7500 1616</p>
                         </div>
                     </div>
                     
@@ -885,14 +971,14 @@
                         <div>
                             <h3 class="ar-text">خدمة كليك (Qliq)</h3>
                             <h3 class="en-text english" style="display:none;">Qliq Service</h3>
-                            <p>0799543452</p>
+                            <p style="font-weight: 800;">0799543452</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <h3 class="ar-text" style="margin-bottom:20px;">أرسل لنا رسالة</h3>
-                    <h3 class="en-text english" style="margin-bottom:20px; display:none;">Send us a message</h3>
+                    <h3 class="ar-text" style="margin-bottom:20px; font-size: 1.8rem;">أرسل لنا رسالة</h3>
+                    <h3 class="en-text english" style="margin-bottom:20px; font-size: 1.8rem; display:none;">Send us a message</h3>
                     
                     <form id="contactForm">
                         <div class="form-group">
@@ -926,9 +1012,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="https://i.imgur.com/SciJmZK.png" alt="مطعم محمد الطرمان">
-                    <p class="ar-text">أشهى المأكولات الشرقية والأسيوية بأعلى معايير الجودة</p>
-                    <p class="en-text english" style="display:none;">The most delicious Oriental and Asian cuisine with the highest quality standards</p>
+                    <div>فحم و صاج</div>
+                    <div class="english">Coal & Saj Restaurant</div>
+                    <p class="ar-text">أشهى المشاوي والشاورما على الفحم والصاج</p>
+                    <p class="en-text english" style="display:none;">The most delicious grills and shawarma on coal and saj</p>
                 </div>
                 
                 <div class="footer-links">
@@ -954,8 +1041,8 @@
             </div>
             
             <div class="copyright">
-                <p class="ar-text">© 2023 مطعم محمد الطرمان. جميع الحقوق محفوظة.</p>
-                <p class="en-text english" style="display:none;">© 2023 Mohammad Altorman Restaurant. All rights reserved.</p>
+                <p class="ar-text">© 2023 مطعم فحم و صاج. جميع الحقوق محفوظة.</p>
+                <p class="en-text english" style="display:none;">© 2023 Coal & Saj Restaurant. All rights reserved.</p>
             </div>
         </div>
     </footer>
