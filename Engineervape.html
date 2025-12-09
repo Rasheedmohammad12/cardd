@@ -42,7 +42,7 @@
             overflow-x: hidden;
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
             background-attachment: fixed;
-            padding-top: 110px; /* مساحة للهيدر الثابت */
+            padding-top: 160px; /* مساحة للهيدر الثابت */
         }
         
         body[dir="ltr"] {
@@ -58,9 +58,102 @@
             width: 100%;
             z-index: 1000;
             border-bottom: 1px solid rgba(45, 156, 219, 0.3);
-            padding: 15px 0;
             transition: var(--transition-med);
-            height: 110px; /* زيادة ارتفاع الهيدر */
+            height: 160px; /* زيادة ارتفاع الهيدر ليتسع للخدمات الجديدة */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* الجزء العلوي من الهيدر (خدمة كليك ووسائل التواصل) */
+        .header-top-section {
+            background: rgba(18, 18, 37, 0.8);
+            border-bottom: 1px solid rgba(45, 156, 219, 0.2);
+            padding: 12px 0;
+        }
+        
+        .header-top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+        }
+        
+        /* خدمة كليك */
+        .click-service {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--electric-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .click-icon {
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: var(--shadow-glow);
+        }
+        
+        /* وسائل التواصل في الهيدر */
+        .header-social-grid {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .header-social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: rgba(18, 18, 37, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition-med);
+            border: 1px solid rgba(45, 156, 219, 0.2);
+        }
+        
+        .header-social-icon:hover {
+            background: rgba(45, 156, 219, 0.1);
+            border-color: var(--electric-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .header-social-icon.facebook { color: #1877F2; }
+        .header-social-icon.instagram { 
+            background: linear-gradient(45deg, #405DE6, #833AB4, #F56040, #FFDC80);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .header-social-icon.whatsapp { color: #25D366; }
+        .header-social-icon.nfc { 
+            color: #FF6B6B;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        /* الجزء الرئيسي من الهيدر (الشعار والقائمة) */
+        .header-main-section {
+            padding: 15px 0;
+            flex-grow: 1;
             display: flex;
             align-items: center;
         }
@@ -75,15 +168,20 @@
             width: 100%;
         }
         
-        .logo-section {
+        /* الشعار في المنتصف */
+        .logo-center-section {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 25px;
         }
         
         .logo-frame {
-            width: 90px; /* تكبير الشعار أكثر */
-            height: 90px; /* تكبير الشعار أكثر */
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--accent-blue), var(--electric-blue));
             display: flex;
@@ -93,6 +191,7 @@
             box-shadow: var(--shadow-glow);
             position: relative;
             overflow: hidden;
+            margin-bottom: 10px;
         }
         
         .logo-frame::before {
@@ -121,15 +220,11 @@
         }
         
         .logo-text {
-            text-align: right;
-        }
-        
-        body[dir="ltr"] .logo-text {
-            text-align: left;
+            text-align: center;
         }
         
         .logo-text h1 {
-            font-size: 2.4rem; /* تكبير النص أكثر */
+            font-size: 2rem;
             background: linear-gradient(to right, var(--electric-blue), var(--light-blue));
             -webkit-background-clip: text;
             background-clip: text;
@@ -141,8 +236,8 @@
         
         .logo-text p {
             color: var(--text-gray);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
         
         /* زر تبديل اللغة */
@@ -150,12 +245,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-right: 30px;
-        }
-        
-        body[dir="ltr"] .language-switcher {
-            margin-right: 0;
-            margin-left: 30px;
         }
         
         .lang-btn {
@@ -233,93 +322,6 @@
         
         .nav-icon {
             font-size: 1rem;
-        }
-        
-        /* قسم مواقع التواصل الاجتماعي - في الأعلى */
-        .top-social-section {
-            background: rgba(18, 18, 37, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(45, 156, 219, 0.2);
-            padding: 15px 0;
-            position: relative;
-            z-index: 999;
-            margin-top: 110px; /* تحت الهيدر مباشرة */
-        }
-        
-        .top-social-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .top-social-title {
-            font-size: 1.2rem;
-            color: var(--electric-blue);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .top-social-title i {
-            color: var(--neon-blue);
-        }
-        
-        .top-social-grid {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        
-        .top-social-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: rgba(18, 18, 37, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--text-light);
-            text-decoration: none;
-            transition: var(--transition-med);
-            border: 1px solid rgba(45, 156, 219, 0.2);
-        }
-        
-        .top-social-icon:hover {
-            background: rgba(45, 156, 219, 0.1);
-            border-color: var(--electric-blue);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .top-social-icon.facebook { color: #1877F2; }
-        .top-social-icon.instagram { 
-            background: linear-gradient(45deg, #405DE6, #833AB4, #F56040, #FFDC80);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .top-social-icon.whatsapp { color: #25D366; }
-        .top-social-icon.nfc { 
-            color: #FF6B6B;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .top-social-icon.nfc i:first-child {
-            font-size: 1.5rem;
-        }
-        
-        .top-social-icon.nfc i:last-child {
-            font-size: 1rem;
-            position: absolute;
-            bottom: 5px;
         }
         
         /* البانر الفخم - مع رفع المحتوى أكثر */
@@ -938,144 +940,6 @@
             font-size: 0.95rem;
         }
         
-        /* تصميم متجاوب */
-        @media (max-width: 1200px) {
-            .hero-grid, .contact-grid {
-                gap: 50px;
-            }
-            
-            .hero-title {
-                font-size: 3.5rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.8rem;
-            }
-            
-            .social-grid-updated {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .hero-grid, .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .luxury-nav {
-                display: none;
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .social-grid-updated {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .language-switcher {
-                margin-right: 15px;
-            }
-            
-            body[dir="ltr"] .language-switcher {
-                margin-left: 15px;
-            }
-            
-            .header-container {
-                padding: 0 25px;
-            }
-            
-            .top-social-container {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-container, .hero-content, .contact-grid, .top-social-container {
-                padding: 0 25px;
-            }
-            
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.4rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-                padding: 0 25px;
-            }
-            
-            .contact-card {
-                padding: 30px;
-            }
-            
-            .phone-number-updated {
-                font-size: 2rem;
-            }
-            
-            .btn-primary, .btn-secondary {
-                padding: 15px 25px;
-                font-size: 1rem;
-            }
-            
-            .social-grid-updated {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .logo-frame {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .logo-text h1 {
-                font-size: 2rem;
-            }
-            
-            .top-social-grid {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .social-grid-updated {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .phone-number-updated {
-                font-size: 1.8rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .logo-section {
-                gap: 15px;
-            }
-            
-            .logo-frame {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .logo-text h1 {
-                font-size: 1.8rem;
-            }
-            
-            .top-social-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.6rem;
-            }
-        }
-        
         /* تأثيرات إضافية */
         .floating-element {
             position: absolute;
@@ -1153,17 +1017,56 @@
             padding: 10px;
         }
         
+        /* تصميم متجاوب */
+        @media (max-width: 1200px) {
+            .hero-grid, .contact-grid {
+                gap: 50px;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.8rem;
+            }
+            
+            .social-grid-updated {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
         @media (max-width: 992px) {
+            .hero-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .luxury-nav {
+                display: none;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .social-grid-updated {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .header-container, .hero-content, .contact-grid, .header-top-container {
+                padding: 0 25px;
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
             
             .luxury-nav {
                 position: fixed;
-                top: 110px;
+                top: 160px;
                 right: 0;
                 width: 300px;
-                height: calc(100vh - 110px);
+                height: calc(100vh - 160px);
                 background: rgba(10, 10, 20, 0.95);
                 backdrop-filter: blur(15px);
                 flex-direction: column;
@@ -1190,95 +1093,221 @@
                 width: 100%;
                 justify-content: flex-start;
             }
+            
+            .header-top-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .click-service {
+                font-size: 1rem;
+            }
+            
+            .logo-center-section {
+                position: static;
+                transform: none;
+                margin-top: 10px;
+            }
+            
+            .header-container {
+                justify-content: space-between;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container, .hero-content, .contact-grid, .header-top-container {
+                padding: 0 25px;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.4rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                padding: 0 25px;
+            }
+            
+            .contact-card {
+                padding: 30px;
+            }
+            
+            .phone-number-updated {
+                font-size: 2rem;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 15px 25px;
+                font-size: 1rem;
+            }
+            
+            .social-grid-updated {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .logo-frame {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header-social-grid {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .header-social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.4rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .social-grid-updated {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .phone-number-updated {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-top-section {
+                padding: 8px 0;
+            }
+            
+            .header-social-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.3rem;
+            }
+            
+            .click-service {
+                font-size: 0.9rem;
+            }
+            
+            .click-icon {
+                width: 35px;
+                height: 35px;
+            }
         }
     </style>
 </head>
 <body dir="rtl">
     <!-- الهيدر الفاخر - ثابت في الأعلى -->
     <header class="luxury-header">
-        <div class="header-container">
-            <div class="logo-section">
-                <div class="logo-frame">
-                    <img src="https://i.imgur.com/kRcHFfU.png" alt="ENG Vape" class="logo-img">
+        <!-- الجزء العلوي: خدمة كليك ووسائل التواصل -->
+        <div class="header-top-section">
+            <div class="header-top-container">
+                <!-- خدمة كليك -->
+                <div class="click-service" onclick="copyPhoneNumber()">
+                    <div class="click-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <span class="ar-text">خدمة كليك: </span>
+                        <span class="en-text" style="display: none;">Click Service: </span>
+                        <strong style="color: var(--neon-blue);">0770775285</strong>
+                        <small style="display: block; font-size: 0.8rem; color: var(--text-gray); margin-top: 3px;">
+                            <i class="fas fa-copy"></i> 
+                            <span class="ar-text">انقر لنسخ الرقم</span>
+                            <span class="en-text" style="display: none;">Click to copy number</span>
+                        </small>
+                    </div>
                 </div>
-                <div class="logo-text">
-                    <h1 class="ar-text">المهندس فيب</h1>
-                    <h1 class="en-text" style="display: none;">ENG Vape</h1>
-                    <p class="ar-text">VAPE · HOOKAH · PREMIUM PRODUCTS</p>
-                    <p class="en-text" style="display: none;">VAPE · HOOKAH · PREMIUM PRODUCTS</p>
+                
+                <!-- وسائل التواصل الاجتماعي -->
+                <div class="header-social-grid">
+                    <a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" class="header-social-icon facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" class="header-social-icon instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    
+                    <a href="https://wa.me/962770775285" class="header-social-icon whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="header-social-icon nfc" target="_blank">
+                        <i class="fas fa-id-card"></i>
+                    </a>
                 </div>
             </div>
-            
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang="ar">
-                    <i class="fas fa-language"></i>
-                    <span class="ar-text">العربية</span>
-                    <span class="en-text" style="display: none;">Arabic</span>
+        </div>
+        
+        <!-- الجزء الرئيسي: الشعار والقائمة -->
+        <div class="header-main-section">
+            <div class="header-container">
+                <!-- زر تبديل اللغة -->
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ar">
+                        <i class="fas fa-language"></i>
+                        <span class="ar-text">العربية</span>
+                        <span class="en-text" style="display: none;">Arabic</span>
+                    </button>
+                    <button class="lang-btn" data-lang="en">
+                        <i class="fas fa-globe"></i>
+                        <span>English</span>
+                    </button>
+                </div>
+                
+                <!-- الشعار في المنتصف -->
+                <div class="logo-center-section">
+                    <div class="logo-frame">
+                        <img src="https://i.imgur.com/kRcHFfU.png" alt="ENG Vape" class="logo-img">
+                    </div>
+                    <div class="logo-text">
+                        <h1 class="ar-text">المهندس فيب</h1>
+                        <h1 class="en-text" style="display: none;">ENG Vape</h1>
+                        <p class="ar-text">VAPE · HOOKAH · PREMIUM PRODUCTS</p>
+                        <p class="en-text" style="display: none;">VAPE · HOOKAH · PREMIUM PRODUCTS</p>
+                    </div>
+                </div>
+                
+                <!-- زر قائمة الجوال -->
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
                 </button>
-                <button class="lang-btn" data-lang="en">
-                    <i class="fas fa-globe"></i>
-                    <span>English</span>
-                </button>
+                
+                <!-- القائمة الرئيسية -->
+                <nav class="luxury-nav">
+                    <a href="#home" class="nav-link">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span class="ar-text">الرئيسية</span>
+                        <span class="en-text" style="display: none;">Home</span>
+                    </a>
+                    <a href="#products" class="nav-link">
+                        <i class="fas fa-cube nav-icon"></i>
+                        <span class="ar-text">منتجاتنا</span>
+                        <span class="en-text" style="display: none;">Products</span>
+                    </a>
+                    <a href="#services" class="nav-link">
+                        <i class="fas fa-concierge-bell nav-icon"></i>
+                        <span class="ar-text">خدماتنا</span>
+                        <span class="en-text" style="display: none;">Services</span>
+                    </a>
+                    <a href="#contact" class="nav-link">
+                        <i class="fas fa-phone-alt nav-icon"></i>
+                        <span class="ar-text">التواصل</span>
+                        <span class="en-text" style="display: none;">Contact</span>
+                    </a>
+                </nav>
             </div>
-            
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav class="luxury-nav">
-                <a href="#home" class="nav-link">
-                    <i class="fas fa-home nav-icon"></i>
-                    <span class="ar-text">الرئيسية</span>
-                    <span class="en-text" style="display: none;">Home</span>
-                </a>
-                <a href="#products" class="nav-link">
-                    <i class="fas fa-cube nav-icon"></i>
-                    <span class="ar-text">منتجاتنا</span>
-                    <span class="en-text" style="display: none;">Products</span>
-                </a>
-                <a href="#services" class="nav-link">
-                    <i class="fas fa-concierge-bell nav-icon"></i>
-                    <span class="ar-text">خدماتنا</span>
-                    <span class="en-text" style="display: none;">Services</span>
-                </a>
-                <a href="#contact" class="nav-link">
-                    <i class="fas fa-phone-alt nav-icon"></i>
-                    <span class="ar-text">التواصل</span>
-                    <span class="en-text" style="display: none;">Contact</span>
-                </a>
-            </nav>
         </div>
     </header>
-
-    <!-- قسم مواقع التواصل الاجتماعي في الأعلى -->
-    <section class="top-social-section">
-        <div class="top-social-container">
-            <div class="top-social-title">
-                <i class="fas fa-share-alt"></i>
-                <span class="ar-text">تابعنا على وسائل التواصل الاجتماعي</span>
-                <span class="en-text" style="display: none;">Follow us on social media</span>
-            </div>
-            
-            <div class="top-social-grid">
-                <a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" class="top-social-icon facebook" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                
-                <a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" class="top-social-icon instagram" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                
-                <a href="https://wa.me/962770775285" class="top-social-icon whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                
-                <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="top-social-icon nfc" target="_blank">
-                    <i class="fas fa-id-card"></i>
-                    <i class="fas fa-wave-square"></i>
-                </a>
-            </div>
-        </div>
-    </section>
 
     <!-- البانر الفاخر -->
     <section class="luxury-hero" id="home">
@@ -1712,7 +1741,7 @@
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 110,
+                            top: targetElement.offsetTop - 160,
                             behavior: 'smooth'
                         });
                         
