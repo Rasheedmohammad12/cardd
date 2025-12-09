@@ -43,7 +43,7 @@
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -106,35 +106,6 @@
         nav a:hover {
             background-color: var(--secondary-color);
             color: var(--primary-color);
-        }
-
-        .lang-switch {
-            display: flex;
-            margin-right: 20px;
-        }
-
-        .lang-btn {
-            background: none;
-            border: 1px solid #ddd;
-            padding: 5px 12px;
-            cursor: pointer;
-            font-family: 'Cairo', sans-serif;
-            transition: var(--transition);
-            color: var(--text-color);
-        }
-
-        .lang-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .lang-btn:first-child {
-            border-radius: 4px 0 0 4px;
-        }
-
-        .lang-btn:last-child {
-            border-radius: 0 4px 4px 0;
         }
 
         .mobile-menu-btn {
@@ -213,6 +184,134 @@
             background-color: var(--primary-color);
             color: var(--white);
             transform: translateY(-3px);
+        }
+
+        /* Menu Section - NEW DESIGN WITH FULL IMAGES */
+        .menu {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .menu-item-full {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .menu-item-full:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-item-full img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item-full:hover img {
+            transform: scale(1.05);
+        }
+
+        .menu-item-overlay {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 30px;
+            transform: translateY(0);
+            transition: var(--transition);
+        }
+
+        .menu-item-full:hover .menu-item-overlay {
+            padding-bottom: 40px;
+        }
+
+        .menu-item-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .view-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Cairo', sans-serif;
+            margin-top: 15px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .view-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .image-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .image-modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .close-image-modal {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Social Media Section */
@@ -298,7 +397,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
+            margin-top: 40px;
         }
 
         .contact-icon-card {
@@ -341,13 +440,6 @@
             font-weight: 800;
         }
 
-        .contact-icon-card p {
-            color: var(--text-color);
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
         .contact-icon-card .phone-number {
             font-size: 1.4rem;
             font-weight: 900;
@@ -375,96 +467,10 @@
             transform: translateY(-3px);
         }
 
-        .contact-form-container {
-            background-color: var(--secondary-color);
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: var(--shadow);
-            border: 2px solid var(--primary-color);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 800;
-            color: var(--text-color);
-            font-size: 1.1rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-color);
-            outline: none;
-        }
-
-        /* Menu Section */
-        .menu {
-            padding: 100px 0;
-            background-color: var(--secondary-color);
-        }
-
-        .menu-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .menu-item {
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 3px solid transparent;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-color);
-        }
-
-        .menu-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .menu-item-content {
-            padding: 25px;
-        }
-
-        .menu-item h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-            font-weight: 800;
-        }
-
-        .menu-item p {
-            color: var(--text-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
         /* About Section */
         .about {
             padding: 100px 0;
-            background-color: var(--white);
+            background-color: var(--secondary-color);
         }
 
         .about-content {
@@ -513,7 +519,7 @@
         }
 
         .specialty {
-            background-color: var(--secondary-color);
+            background-color: var(--white);
             padding: 25px;
             border-radius: 10px;
             text-align: center;
@@ -753,6 +759,10 @@
             .contact-icons-container {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
@@ -809,6 +819,14 @@
             .contact-icon-card {
                 padding: 30px 20px;
             }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-item-full {
+                height: 350px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -842,6 +860,14 @@
                 height: 70px;
                 font-size: 2rem;
             }
+            
+            .menu-item-full {
+                height: 300px;
+            }
+            
+            .menu-item-title {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
@@ -860,16 +886,11 @@
                 <i class="fas fa-bars"></i>
             </button>
             
-            <div class="lang-switch">
-                <button class="lang-btn active" id="arabicBtn">العربية</button>
-                <button class="lang-btn" id="englishBtn">English</button>
-            </div>
-            
             <nav id="mainNav">
                 <ul>
                     <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#menu">القائمة</a></li>
                     <li><a href="#contact">اتصل بنا</a></li>
-                    <li><a href="#menu">قائمة الطعام</a></li>
                     <li><a href="#about">عن المطعم</a></li>
                 </ul>
             </nav>
@@ -884,11 +905,51 @@
             <p class="en-text english">We offer you the most delicious grills and shawarma prepared on natural charcoal and hot saj. Authentic taste and unforgettable flavor that combines authenticity and quality.</p>
             
             <div class="hero-buttons">
-                <a href="#menu" class="btn btn-primary">استعرض قائمتنا</a>
+                <a href="#menu" class="btn btn-primary">تصفح القائمة</a>
                 <a href="#contact" class="btn btn-secondary">اطلب الآن</a>
             </div>
         </div>
     </section>
+
+    <!-- Menu Section - IMAGES ONLY -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2 class="section-title ar-text">قائمة الطعام</h2>
+            <h2 class="section-title en-text english" style="display:none;">Our Menu</h2>
+            
+            <div class="menu-grid">
+                <!-- Menu Item 1 -->
+                <div class="menu-item-full" onclick="openImageModal('https://i.imgur.com/Cl8TROm.png')">
+                    <img src="https://i.imgur.com/Cl8TROm.png" alt="قائمة الطعام ١">
+                    <div class="menu-item-overlay">
+                        <div class="menu-item-title ar-text">قائمة الطعام ١</div>
+                        <div class="menu-item-title en-text english" style="display:none;">Menu 1</div>
+                        <button class="view-btn ar-text">عرض الصورة</button>
+                        <button class="view-btn en-text english" style="display:none;">View Image</button>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 2 -->
+                <div class="menu-item-full" onclick="openImageModal('https://i.imgur.com/f2YyDCf.png')">
+                    <img src="https://i.imgur.com/f2YyDCf.png" alt="قائمة الطعام ٢">
+                    <div class="menu-item-overlay">
+                        <div class="menu-item-title ar-text">قائمة الطعام ٢</div>
+                        <div class="menu-item-title en-text english" style="display:none;">Menu 2</div>
+                        <button class="view-btn ar-text">عرض الصورة</button>
+                        <button class="view-btn en-text english" style="display:none;">View Image</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <button class="close-image-modal" id="closeImageModal">&times;</button>
+            <img id="modalImage" src="" alt="صورة مكبرة">
+        </div>
+    </div>
 
     <!-- Social Media Section -->
     <section class="social-section">
@@ -969,19 +1030,6 @@
                     <a href="https://maps.google.com" target="_blank" class="action-btn en-text english" style="display:none;">View on Map</a>
                 </div>
                 
-                <!-- Working Hours Card -->
-                <div class="contact-icon-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3 class="ar-text">ساعات العمل</h3>
-                    <h3 class="en-text english" style="display:none;">Working Hours</h3>
-                    <p class="ar-text">كل أيام الأسبوع</p>
-                    <p class="en-text english" style="display:none;">Every day of the week</p>
-                    <p class="ar-text">من ١٠ صباحاً حتى ١٢ منتصف الليل</p>
-                    <p class="en-text english" style="display:none;">From 10 AM to 12 Midnight</p>
-                </div>
-                
                 <!-- WhatsApp Card -->
                 <div class="contact-icon-card">
                     <div class="contact-icon">
@@ -995,76 +1043,6 @@
                         <span class="ar-text">اختر رقم للتواصل</span>
                         <span class="en-text english" style="display:none;">Choose Number</span>
                     </button>
-                </div>
-            </div>
-            
-            <div class="contact-form-container">
-                <h3 class="ar-text" style="margin-bottom:25px; font-size: 1.8rem; text-align:center;">أرسل لنا رسالة</h3>
-                <h3 class="en-text english" style="margin-bottom:25px; font-size: 1.8rem; text-align:center; display:none;">Send us a message</h3>
-                
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name" class="ar-text">الاسم</label>
-                        <label for="name" class="en-text english" style="display:none;">Name</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone" class="ar-text">رقم الهاتف</label>
-                        <label for="phone" class="en-text english" style="display:none;">Phone Number</label>
-                        <input type="tel" id="phone" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message" class="ar-text">الرسالة</label>
-                        <label for="message" class="en-text english" style="display:none;">Message</label>
-                        <textarea id="message" class="form-control" rows="4" required></textarea>
-                    </div>
-                    
-                    <div style="text-align:center;">
-                        <button type="submit" class="btn btn-primary ar-text" style="padding:15px 40px; font-size:1.2rem;">إرسال الرسالة</button>
-                        <button type="submit" class="btn btn-primary en-text english" style="padding:15px 40px; font-size:1.2rem; display:none;">Send Message</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section class="menu" id="menu">
-        <div class="container">
-            <h2 class="section-title ar-text">قائمة الطعام</h2>
-            <h2 class="section-title en-text english" style="display:none;">Our Menu</h2>
-            
-            <div class="menu-items">
-                <div class="menu-item">
-                    <img src="https://i.imgur.com/Cl8TROm.png" alt="شاورما فحم">
-                    <div class="menu-item-content">
-                        <h3 class="ar-text">شاورما فحم</h3>
-                        <h3 class="en-text english" style="display:none;">Charcoal Shawarma</h3>
-                        <p class="ar-text">شاورما لحم ودجاج مطهوة على الفحم الطبيعي لإعطاء نكهة مدخنة مميزة. تُقدم مع خبز طازج وخلطة خضار.</p>
-                        <p class="en-text english" style="display:none;">Meat and chicken shawarma cooked on natural charcoal for a distinctive smoky flavor. Served with fresh bread and vegetable mix.</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <img src="https://i.imgur.com/f2YyDCf.png" alt="شاورما صاج">
-                    <div class="menu-item-content">
-                        <h3 class="ar-text">شاورما صاج</h3>
-                        <h3 class="en-text english" style="display:none;">Saj Shawarma</h3>
-                        <p class="ar-text">شاورما دجاج ولحمة على الصاج الساخن، مقرمشة من الخارج وطرية من الداخل. بنكهات الشرق الأوسطية الأصيلة.</p>
-                        <p class="en-text english" style="display:none;">Chicken and meat shawarma on hot saj, crispy on the outside and tender on the inside. With authentic Middle Eastern flavors.</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="مشاوي">
-                    <div class="menu-item-content">
-                        <h3 class="ar-text">مشاوي متنوعة</h3>
-                        <h3 class="en-text english" style="display:none;">Mixed Grills</h3>
-                        <p class="ar-text">دجاج تركي، دجاج تكا، شيش طاووق، كباب بلدي. جميعها مشوية على الفحم مع الأرص والخضار المشوية.</p>
-                        <p class="en-text english" style="display:none;">Turkish chicken, tikka chicken, shish tawook, local kebab. All grilled on charcoal with rice and grilled vegetables.</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1132,8 +1110,8 @@
                     <h3 class="en-text english" style="display:none;">Quick Links</h3>
                     <ul>
                         <li><a href="#home" class="ar-text">الرئيسية</a><a href="#home" class="en-text english" style="display:none;">Home</a></li>
+                        <li><a href="#menu" class="ar-text">القائمة</a><a href="#menu" class="en-text english" style="display:none;">Menu</a></li>
                         <li><a href="#contact" class="ar-text">اتصل بنا</a><a href="#contact" class="en-text english" style="display:none;">Contact</a></li>
-                        <li><a href="#menu" class="ar-text">قائمة الطعام</a><a href="#menu" class="en-text english" style="display:none;">Menu</a></li>
                         <li><a href="#about" class="ar-text">عن المطعم</a><a href="#about" class="en-text english" style="display:none;">About</a></li>
                     </ul>
                 </div>
@@ -1218,46 +1196,6 @@
             mainNav.classList.toggle('active');
         });
         
-        // Language Switch
-        const arabicBtn = document.getElementById('arabicBtn');
-        const englishBtn = document.getElementById('englishBtn');
-        const arTexts = document.querySelectorAll('.ar-text');
-        const enTexts = document.querySelectorAll('.en-text');
-        
-        arabicBtn.addEventListener('click', function() {
-            arabicBtn.classList.add('active');
-            englishBtn.classList.remove('active');
-            
-            arTexts.forEach(text => {
-                text.style.display = 'block';
-            });
-            
-            enTexts.forEach(text => {
-                text.style.display = 'none';
-            });
-            
-            // Change direction for Arabic
-            document.body.dir = 'rtl';
-            document.body.style.fontFamily = "'Cairo', sans-serif";
-        });
-        
-        englishBtn.addEventListener('click', function() {
-            englishBtn.classList.add('active');
-            arabicBtn.classList.remove('active');
-            
-            arTexts.forEach(text => {
-                text.style.display = 'none';
-            });
-            
-            enTexts.forEach(text => {
-                text.style.display = 'block';
-            });
-            
-            // Change direction for English
-            document.body.dir = 'ltr';
-            document.body.style.fontFamily = "'Poppins', sans-serif";
-        });
-        
         // WhatsApp Modal
         const whatsappBtn = document.getElementById('whatsappBtn');
         const whatsappCardBtn = document.getElementById('whatsappCardBtn');
@@ -1276,10 +1214,27 @@
             whatsappModal.style.display = 'none';
         });
         
-        // Close modal when clicking outside
+        // Image Modal
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeImageModal = document.getElementById('closeImageModal');
+        
+        function openImageModal(imageSrc) {
+            modalImage.src = imageSrc;
+            imageModal.style.display = 'flex';
+        }
+        
+        closeImageModal.addEventListener('click', function() {
+            imageModal.style.display = 'none';
+        });
+        
+        // Close modals when clicking outside
         window.addEventListener('click', function(event) {
             if (event.target === whatsappModal) {
                 whatsappModal.style.display = 'none';
+            }
+            if (event.target === imageModal) {
+                imageModal.style.display = 'none';
             }
         });
         
@@ -1303,28 +1258,6 @@
                 button.style.backgroundColor = '';
             }, 2000);
         }
-        
-        // Contact Form Submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
-            
-            // In a real implementation, you would send this data to a server
-            // For demo purposes, we'll just show an alert
-            const isArabic = arabicBtn.classList.contains('active');
-            
-            if (isArabic) {
-                alert(`شكراً ${name}! تم استلام رسالتك وسنتصل بك على ${phone} قريباً.`);
-            } else {
-                alert(`Thank you ${name}! Your message has been received and we will contact you at ${phone} soon.`);
-            }
-            
-            contactForm.reset();
-        });
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
