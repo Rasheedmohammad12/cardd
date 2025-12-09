@@ -48,73 +48,38 @@
             padding: 0 20px;
         }
 
-        /* Header & Navbar */
+        /* Header - LOGO ONLY */
         header {
             background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: fixed;
+            position: relative;
             width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
+            padding: 40px 0 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--secondary-color);
         }
 
         .logo {
             display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
         .logo-text {
-            font-size: 2rem;
-            font-weight: 800;
+            font-size: 3.5rem;
+            font-weight: 900;
             color: var(--primary-color);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
         }
 
         .logo-text .english {
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             color: var(--text-light);
             display: block;
             font-weight: 600;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav li {
-            margin: 0 10px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 700;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: var(--transition);
-            font-size: 1.1rem;
-        }
-
-        nav a:hover {
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            cursor: pointer;
+            margin-top: 10px;
+            letter-spacing: 1px;
         }
 
         /* Hero Section */
@@ -123,7 +88,7 @@
                         url('https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            padding: 180px 0 100px;
+            padding: 100px 0 100px;
             text-align: center;
         }
 
@@ -763,36 +728,17 @@
             .menu-grid {
                 grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             }
+            
+            .logo-text {
+                font-size: 3rem;
+            }
+            
+            .logo-text .english {
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 768px) {
-            nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                right: 0;
-                width: 100%;
-                background-color: var(--white);
-                box-shadow: var(--shadow);
-                padding: 20px;
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-            
-            nav li {
-                margin: 10px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
             .hero h1 {
                 font-size: 2.8rem;
             }
@@ -827,19 +773,23 @@
             .menu-item-full {
                 height: 350px;
             }
+            
+            .logo-text {
+                font-size: 2.5rem;
+            }
+            
+            .logo-text .english {
+                font-size: 1.3rem;
+            }
+            
+            header {
+                padding: 30px 0 15px;
+            }
         }
 
         @media (max-width: 480px) {
-            .header-container {
-                padding: 10px;
-            }
-            
-            .logo-text {
-                font-size: 1.8rem;
-            }
-            
             .hero {
-                padding: 150px 0 80px;
+                padding: 70px 0 60px;
             }
             
             .hero h1 {
@@ -868,32 +818,31 @@
             .menu-item-title {
                 font-size: 1.6rem;
             }
+            
+            .logo-text {
+                font-size: 2.2rem;
+            }
+            
+            .logo-text .english {
+                font-size: 1.1rem;
+            }
+            
+            header {
+                padding: 25px 0 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
+    <!-- Header - LOGO ONLY -->
     <header>
-        <div class="container header-container">
+        <div class="container">
             <div class="logo">
                 <div class="logo-text">
                     فحم و صاج
                     <span class="english">Coal & Saj</span>
                 </div>
             </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#menu">القائمة</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
-                    <li><a href="#about">عن المطعم</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
@@ -911,7 +860,8 @@
         </div>
     </section>
 
-    <!-- Menu Section - IMAGES ONLY -->
+    <!-- باقي الأقسام تبقى كما هي بدون تغيير -->
+    <!-- Menu Section -->
     <section class="menu" id="menu">
         <div class="container">
             <h2 class="section-title ar-text">قائمة الطعام</h2>
@@ -974,7 +924,7 @@
         </div>
     </section>
 
-    <!-- Contact Section - ICON BASED DESIGN -->
+    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title ar-text">اتصل بنا</h2>
@@ -1188,14 +1138,6 @@
     </div>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        
-        mobileMenuBtn.addEventListener('click', function() {
-            mainNav.classList.toggle('active');
-        });
-        
         // WhatsApp Modal
         const whatsappBtn = document.getElementById('whatsappBtn');
         const whatsappCardBtn = document.getElementById('whatsappCardBtn');
@@ -1273,9 +1215,6 @@
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
-                    // Close mobile menu if open
-                    mainNav.classList.remove('active');
                 }
             });
         });
