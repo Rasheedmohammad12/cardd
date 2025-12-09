@@ -288,54 +288,97 @@
             background-color: #34B7F1;
         }
 
-        /* Contact Section - MOVED TO TOP */
+        /* Contact Section - ICON BASED DESIGN */
         .contact {
             padding: 100px 0;
             background-color: var(--white);
         }
 
-        .contact-content {
+        .contact-icons-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
 
-        .contact-info {
-            background-color: var(--secondary-color);
-            padding: 30px;
-            border-radius: 10px;
-            border: 2px solid var(--primary-color);
+        .contact-icon-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .contact-item {
+        .contact-icon-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-color: rgba(198, 40, 40, 0.1);
             display: flex;
             align-items: center;
+            justify-content: center;
             margin-bottom: 25px;
-        }
-
-        .contact-item i {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             color: var(--primary-color);
-            margin-left: 15px;
-            width: 40px;
         }
 
-        .contact-item h3 {
-            font-size: 1.5rem;
+        .contact-icon-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
             color: var(--text-color);
             font-weight: 800;
         }
 
-        .contact-item p {
+        .contact-icon-card p {
             color: var(--text-color);
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
-        .contact-form {
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 10px;
+        .contact-icon-card .phone-number {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+
+        .contact-icon-card .action-btn {
+            margin-top: 15px;
+            padding: 10px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-icon-card .action-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .contact-form-container {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            padding: 40px;
             box-shadow: var(--shadow);
             border: 2px solid var(--primary-color);
         }
@@ -418,7 +461,7 @@
             font-size: 1.1rem;
         }
 
-        /* About Section - MOVED TO BOTTOM */
+        /* About Section */
         .about {
             padding: 100px 0;
             background-color: var(--white);
@@ -706,6 +749,10 @@
             .hero h1 {
                 font-size: 3.2rem;
             }
+            
+            .contact-icons-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -754,6 +801,14 @@
                 height: 70px;
                 font-size: 1.8rem;
             }
+            
+            .contact-icons-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-icon-card {
+                padding: 30px 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -780,6 +835,12 @@
             .btn {
                 padding: 12px 25px;
                 font-size: 1rem;
+            }
+            
+            .contact-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
             }
         }
     </style>
@@ -852,85 +913,119 @@
         </div>
     </section>
 
-    <!-- Contact Section - NOW AT TOP -->
+    <!-- Contact Section - ICON BASED DESIGN -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title ar-text">اتصل بنا</h2>
             <h2 class="section-title en-text english" style="display:none;">Contact Us</h2>
             
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3 class="ar-text">العنوان</h3>
-                            <h3 class="en-text english" style="display:none;">Address</h3>
-                            <p class="ar-text">مطعم فحم و صاج - الأردن</p>
-                            <p class="en-text english" style="display:none;">Coal & Saj Restaurant - Jordan</p>
-                            <a href="https://maps.google.com" target="_blank" class="ar-text" style="color: var(--primary-color); font-weight: 700;">عرض على خريطة جوجل</a>
-                            <a href="https://maps.google.com" target="_blank" class="en-text english" style="color: var(--primary-color); font-weight: 700; display:none;">View on Google Maps</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
+            <div class="contact-icons-container">
+                <!-- Phone 1 Card -->
+                <div class="contact-icon-card">
+                    <div class="contact-icon">
                         <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <h3 class="ar-text">هواتف التواصل</h3>
-                            <h3 class="en-text english" style="display:none;">Contact Phones</h3>
-                            <p style="font-weight: 800; font-size: 1.2rem;">‎+962 7 7800 1919</p>
-                            <p style="font-weight: 800; font-size: 1.2rem;">‎+962 7 7500 1616</p>
-                        </div>
                     </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-mobile-alt"></i>
-                        <div>
-                            <h3 class="ar-text">خدمة كليك (Qliq)</h3>
-                            <h3 class="en-text english" style="display:none;">Qliq Service</h3>
-                            <p style="font-weight: 800; font-size: 1.2rem;">0799543452</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3 class="ar-text">ساعات العمل</h3>
-                            <h3 class="en-text english" style="display:none;">Working Hours</h3>
-                            <p class="ar-text">كل أيام الأسبوع</p>
-                            <p class="en-text english" style="display:none;">Every day of the week</p>
-                            <p class="ar-text">من ١٠ صباحاً حتى ١٢ منتصف الليل</p>
-                            <p class="en-text english" style="display:none;">From 10 AM to 12 Midnight</p>
-                        </div>
-                    </div>
+                    <h3 class="ar-text">الهاتف الأول</h3>
+                    <h3 class="en-text english" style="display:none;">First Phone</h3>
+                    <div class="phone-number">+962 7 7800 1919</div>
+                    <a href="tel:+962778001919" class="action-btn ar-text">اتصل الآن</a>
+                    <a href="tel:+962778001919" class="action-btn en-text english" style="display:none;">Call Now</a>
                 </div>
                 
-                <div class="contact-form">
-                    <h3 class="ar-text" style="margin-bottom:20px; font-size: 1.8rem;">أرسل لنا رسالة</h3>
-                    <h3 class="en-text english" style="margin-bottom:20px; font-size: 1.8rem; display:none;">Send us a message</h3>
-                    
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="ar-text">الاسم</label>
-                            <label for="name" class="en-text english" style="display:none;">Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone" class="ar-text">رقم الهاتف</label>
-                            <label for="phone" class="en-text english" style="display:none;">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="ar-text">الرسالة</label>
-                            <label for="message" class="en-text english" style="display:none;">Message</label>
-                            <textarea id="message" class="form-control" rows="4" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary ar-text">إرسال الرسالة</button>
-                        <button type="submit" class="btn btn-primary en-text english" style="display:none;">Send Message</button>
-                    </form>
+                <!-- Phone 2 Card -->
+                <div class="contact-icon-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="ar-text">الهاتف الثاني</h3>
+                    <h3 class="en-text english" style="display:none;">Second Phone</h3>
+                    <div class="phone-number">+962 7 7500 1616</div>
+                    <a href="tel:+962775001616" class="action-btn ar-text">اتصل الآن</a>
+                    <a href="tel:+962775001616" class="action-btn en-text english" style="display:none;">Call Now</a>
                 </div>
+                
+                <!-- Qliq Service Card -->
+                <div class="contact-icon-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="ar-text">خدمة كليك (Qliq)</h3>
+                    <h3 class="en-text english" style="display:none;">Qliq Service</h3>
+                    <div class="phone-number">0799543452</div>
+                    <p class="ar-text">للتواصل عبر خدمة كليك</p>
+                    <p class="en-text english" style="display:none;">For contact via Qliq service</p>
+                </div>
+                
+                <!-- Location Card -->
+                <div class="contact-icon-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="ar-text">موقع المطعم</h3>
+                    <h3 class="en-text english" style="display:none;">Restaurant Location</h3>
+                    <p class="ar-text">مطعم فحم و صاج - الأردن</p>
+                    <p class="en-text english" style="display:none;">Coal & Saj Restaurant - Jordan</p>
+                    <a href="https://maps.google.com" target="_blank" class="action-btn ar-text">عرض على الخريطة</a>
+                    <a href="https://maps.google.com" target="_blank" class="action-btn en-text english" style="display:none;">View on Map</a>
+                </div>
+                
+                <!-- Working Hours Card -->
+                <div class="contact-icon-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="ar-text">ساعات العمل</h3>
+                    <h3 class="en-text english" style="display:none;">Working Hours</h3>
+                    <p class="ar-text">كل أيام الأسبوع</p>
+                    <p class="en-text english" style="display:none;">Every day of the week</p>
+                    <p class="ar-text">من ١٠ صباحاً حتى ١٢ منتصف الليل</p>
+                    <p class="en-text english" style="display:none;">From 10 AM to 12 Midnight</p>
+                </div>
+                
+                <!-- WhatsApp Card -->
+                <div class="contact-icon-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="ar-text">الواتساب</h3>
+                    <h3 class="en-text english" style="display:none;">WhatsApp</h3>
+                    <p class="ar-text">تواصل معنا عبر الواتساب</p>
+                    <p class="en-text english" style="display:none;">Contact us via WhatsApp</p>
+                    <button class="action-btn" id="whatsappCardBtn">
+                        <span class="ar-text">اختر رقم للتواصل</span>
+                        <span class="en-text english" style="display:none;">Choose Number</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="contact-form-container">
+                <h3 class="ar-text" style="margin-bottom:25px; font-size: 1.8rem; text-align:center;">أرسل لنا رسالة</h3>
+                <h3 class="en-text english" style="margin-bottom:25px; font-size: 1.8rem; text-align:center; display:none;">Send us a message</h3>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="ar-text">الاسم</label>
+                        <label for="name" class="en-text english" style="display:none;">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="ar-text">رقم الهاتف</label>
+                        <label for="phone" class="en-text english" style="display:none;">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="ar-text">الرسالة</label>
+                        <label for="message" class="en-text english" style="display:none;">Message</label>
+                        <textarea id="message" class="form-control" rows="4" required></textarea>
+                    </div>
+                    
+                    <div style="text-align:center;">
+                        <button type="submit" class="btn btn-primary ar-text" style="padding:15px 40px; font-size:1.2rem;">إرسال الرسالة</button>
+                        <button type="submit" class="btn btn-primary en-text english" style="padding:15px 40px; font-size:1.2rem; display:none;">Send Message</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -975,7 +1070,7 @@
         </div>
     </section>
 
-    <!-- About Section - NOW AT BOTTOM -->
+    <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <h2 class="section-title ar-text">عن مطعمنا</h2>
@@ -1165,10 +1260,15 @@
         
         // WhatsApp Modal
         const whatsappBtn = document.getElementById('whatsappBtn');
+        const whatsappCardBtn = document.getElementById('whatsappCardBtn');
         const whatsappModal = document.getElementById('whatsappModal');
         const closeModal = document.getElementById('closeModal');
         
         whatsappBtn.addEventListener('click', function() {
+            whatsappModal.style.display = 'flex';
+        });
+        
+        whatsappCardBtn.addEventListener('click', function() {
             whatsappModal.style.display = 'flex';
         });
         
