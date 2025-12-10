@@ -179,43 +179,46 @@
             transform: translateY(-3px);
         }
 
-        /* Menu Section - NEW DESIGN WITH FULL IMAGES */
+        /* Menu Section - UPDATED: SINGLE IMAGE CENTERED */
         .menu {
             padding: 100px 0;
             background-color: var(--white);
         }
 
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
+        .menu-single-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-top: 40px;
         }
 
-        .menu-item-full {
+        .menu-item-single {
             position: relative;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            height: 400px;
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
             cursor: pointer;
+            margin: 0 auto;
         }
 
-        .menu-item-full:hover {
+        .menu-item-single:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .menu-item-full img {
+        .menu-item-single img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
 
-        .menu-item-full:hover img {
-            transform: scale(1.05);
+        .menu-item-single:hover img {
+            transform: scale(1.03);
         }
 
         .menu-item-overlay {
@@ -230,12 +233,12 @@
             transition: var(--transition);
         }
 
-        .menu-item-full:hover .menu-item-overlay {
+        .menu-item-single:hover .menu-item-overlay {
             padding-bottom: 40px;
         }
 
         .menu-item-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
             margin-bottom: 10px;
             color: white;
@@ -729,7 +732,7 @@
             border: none;
             padding: 12px 30px;
             border-radius: 5px;
-            cursor: pointer;
+                    cursor: pointer;
             font-family: 'Cairo', sans-serif;
             transition: var(--transition);
             font-weight: 700;
@@ -753,8 +756,9 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .menu-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            .menu-item-single {
+                max-width: 700px;
+                height: 450px;
             }
             
             .logo-text {
@@ -794,12 +798,9 @@
                 padding: 30px 20px;
             }
             
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .menu-item-full {
-                height: 350px;
+            .menu-item-single {
+                max-width: 600px;
+                height: 400px;
             }
             
             .logo-text {
@@ -849,12 +850,12 @@
                 font-size: 2rem;
             }
             
-            .menu-item-full {
-                height: 300px;
+            .menu-item-single {
+                height: 350px;
             }
             
             .menu-item-title {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             
             .logo-text {
@@ -920,30 +921,19 @@
         </div>
     </section>
 
-    <!-- Menu Section -->
+    <!-- Menu Section - UPDATED: SINGLE IMAGE ONLY -->
     <section class="menu" id="menu">
         <div class="container">
             <h2 class="section-title ar-text">قائمة الطعام</h2>
             <h2 class="section-title en-text" style="display:none;">Our Menu</h2>
             
-            <div class="menu-grid">
-                <!-- Menu Item 1 -->
-                <div class="menu-item-full" onclick="openImageModal('https://i.imgur.com/Cl8TROm.png')">
-                    <img src="https://i.imgur.com/Cl8TROm.png" alt="قائمة الطعام ١">
+            <div class="menu-single-container">
+                <!-- Single Menu Item -->
+                <div class="menu-item-single" onclick="openImageModal('https://i.imgur.com/Cl8TROm.png')">
+                    <img src="https://i.imgur.com/Cl8TROm.png" alt="قائمة الطعام">
                     <div class="menu-item-overlay">
-                        <div class="menu-item-title ar-text">قائمة الطعام ١</div>
-                        <div class="menu-item-title en-text" style="display:none;">Menu 1</div>
-                        <button class="view-btn ar-text">عرض الصورة</button>
-                        <button class="view-btn en-text" style="display:none;">View Image</button>
-                    </div>
-                </div>
-                
-                <!-- Menu Item 2 -->
-                <div class="menu-item-full" onclick="openImageModal('https://i.imgur.com/f2YyDCf.png')">
-                    <img src="https://i.imgur.com/f2YyDCf.png" alt="قائمة الطعام ٢">
-                    <div class="menu-item-overlay">
-                        <div class="menu-item-title ar-text">قائمة الطعام ٢</div>
-                        <div class="menu-item-title en-text" style="display:none;">Menu 2</div>
+                        <div class="menu-item-title ar-text">قائمة الطعام</div>
+                        <div class="menu-item-title en-text" style="display:none;">Menu</div>
                         <button class="view-btn ar-text">عرض الصورة</button>
                         <button class="view-btn en-text" style="display:none;">View Image</button>
                     </div>
@@ -1035,8 +1025,8 @@
                     <h3 class="en-text" style="display:none;">Restaurant Location</h3>
                     <p class="ar-text">مطعم فحم و صاج - الأردن</p>
                     <p class="en-text" style="display:none;">Fahem & Saj Restaurant - Jordan</p>
-                    <a href="https://maps.google.com" target="_blank" class="action-btn ar-text">عرض على الخريطة</a>
-                    <a href="https://maps.google.com" target="_blank" class="action-btn en-text" style="display:none;">View on Map</a>
+                    <a href="https://maps.app.goo.gl/jA9gsfWK5oFncUtV9?g_st=iw" target="_blank" class="action-btn ar-text">عرض على الخريطة</a>
+                    <a href="https://maps.app.goo.gl/jA9gsfWK5oFncUtV9?g_st=iw" target="_blank" class="action-btn en-text" style="display:none;">View on Map</a>
                 </div>
                 
                 <!-- WhatsApp Card -->
@@ -1135,6 +1125,8 @@
                     <p class="en-text" style="display:none;"><i class="fas fa-phone" style="margin-right:8px;"></i> +962 7 9780 0191</p>
                     <p class="en-text" style="display:none;"><i class="fas fa-phone" style="margin-right:8px;"></i> +962 7 7500 1616</p>
                     <p><i class="fas fa-mobile-alt" style="margin-left:8px;"></i> Qliq: 0799543452</p>
+                    <p class="ar-text"><i class="fas fa-map-marker-alt" style="margin-left:8px;"></i> <a href="https://maps.app.goo.gl/jA9gsfWK5oFncUtV9?g_st=iw" target="_blank" style="color:#bbb; text-decoration:none;">عرض الموقع على خرائط جوجل</a></p>
+                    <p class="en-text" style="display:none;"><i class="fas fa-map-marker-alt" style="margin-right:8px;"></i> <a href="https://maps.app.goo.gl/jA9gsfWK5oFncUtV9?g_st=iw" target="_blank" style="color:#bbb; text-decoration:none;">View location on Google Maps</a></p>
                 </div>
             </div>
             
