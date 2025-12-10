@@ -172,17 +172,17 @@
             width: 100%;
         }
         
-        /* الشعار على اليسار */
-        .logo-left-section {
+        /* الشعار منفرد على اليسار */
+        .logo-alone-left {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-right: auto;
+            margin-right: 30px;
         }
         
-        body[dir="ltr"] .logo-left-section {
+        body[dir="ltr"] .logo-alone-left {
             margin-right: 0;
-            margin-left: auto;
+            margin-left: 30px;
         }
         
         .logo-frame {
@@ -224,80 +224,17 @@
             padding: 5px;
         }
         
-        .logo-text {
-            text-align: right;
-        }
-        
-        body[dir="ltr"] .logo-text {
-            text-align: left;
-        }
-        
-        .logo-text h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(to right, var(--electric-blue), var(--light-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 800;
-            margin-bottom: 3px;
-            letter-spacing: 1px;
-        }
-        
-        .logo-text p {
-            color: var(--text-gray);
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-        }
-        
-        /* زر تبديل اللغة */
-        .language-switcher {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: auto;
-        }
-        
-        body[dir="ltr"] .language-switcher {
-            margin-left: 0;
-            margin-right: auto;
-        }
-        
-        .lang-btn {
-            background: rgba(45, 156, 219, 0.1);
-            border: 1px solid rgba(45, 156, 219, 0.3);
-            color: var(--text-light);
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.8rem;
-            transition: var(--transition-med);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .lang-btn:hover {
-            background: rgba(45, 156, 219, 0.2);
-            border-color: var(--electric-blue);
-        }
-        
-        .lang-btn.active {
-            background: linear-gradient(to right, var(--electric-blue), var(--neon-blue));
-            color: white;
-        }
-        
         /* القائمة الفخمة */
         .luxury-nav {
             display: flex;
             gap: 30px;
             align-items: center;
-            margin-left: 40px;
+            margin-right: auto;
         }
         
         body[dir="ltr"] .luxury-nav {
-            margin-left: 0;
-            margin-right: 40px;
+            margin-right: 0;
+            margin-left: auto;
         }
         
         .nav-link {
@@ -345,7 +282,55 @@
             font-size: 0.9rem;
         }
         
-        /* البانر الفخم */
+        /* زر تبديل اللغة */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .lang-btn {
+            background: rgba(45, 156, 219, 0.1);
+            border: 1px solid rgba(45, 156, 219, 0.3);
+            color: var(--text-light);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: var(--transition-med);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(45, 156, 219, 0.2);
+            border-color: var(--electric-blue);
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(to right, var(--electric-blue), var(--neon-blue));
+            color: white;
+        }
+        
+        /* العنوان بعد الشعار */
+        .header-title {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--text-light), var(--electric-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            white-space: nowrap;
+        }
+        
+        /* البانر الفاخر */
         .luxury-hero {
             min-height: calc(100vh - 120px);
             display: flex;
@@ -1093,27 +1078,28 @@
                 justify-content: flex-start;
             }
             
-            .logo-left-section {
+            .header-title {
                 position: static;
                 transform: none;
                 margin-right: auto;
+                margin-left: 20px;
+                font-size: 1.5rem;
+                white-space: normal;
+                text-align: right;
             }
             
-            body[dir="ltr"] .logo-left-section {
-                margin-right: 0;
+            body[dir="ltr"] .header-title {
+                text-align: left;
+                margin-right: 20px;
                 margin-left: auto;
+            }
+            
+            .logo-alone-left {
+                margin-right: 0;
             }
             
             .header-container {
                 justify-content: space-between;
-            }
-            
-            .language-switcher {
-                margin-left: 0;
-            }
-            
-            body[dir="ltr"] .language-switcher {
-                margin-right: 0;
             }
         }
         
@@ -1153,8 +1139,8 @@
                 height: 60px;
             }
             
-            .logo-text h1 {
-                font-size: 1.6rem;
+            .header-title {
+                font-size: 1.3rem;
             }
             
             .header-social-icon {
@@ -1211,6 +1197,15 @@
             .click-service {
                 font-size: 0.8rem;
             }
+            
+            .header-title {
+                font-size: 1.1rem;
+                margin-left: 10px;
+            }
+            
+            body[dir="ltr"] .header-title {
+                margin-right: 10px;
+            }
         }
     </style>
 </head>
@@ -1258,20 +1253,20 @@
             </div>
         </div>
         
-        <!-- الجزء الرئيسي: الشعار على اليسار -->
+        <!-- الجزء الرئيسي: الشعار منفرد على اليسار والعنوان في المنتصف -->
         <div class="header-main-section">
             <div class="header-container">
-                <!-- الشعار على اليسار -->
-                <div class="logo-left-section">
+                <!-- الشعار منفرد على اليسار -->
+                <div class="logo-alone-left">
                     <div class="logo-frame">
                         <img src="https://i.imgur.com/kRcHFfU.png" alt="ENG Vape" class="logo-img">
                     </div>
-                    <div class="logo-text">
-                        <h1 class="ar-text">المهندس فيب</h1>
-                        <h1 class="en-text" style="display: none;">ENG Vape</h1>
-                        <p class="ar-text">VAPE · HOOKAH · PREMIUM PRODUCTS</p>
-                        <p class="en-text" style="display: none;">VAPE · HOOKAH · PREMIUM PRODUCTS</p>
-                    </div>
+                </div>
+                
+                <!-- العنوان في المنتصف -->
+                <div class="header-title">
+                    <span class="ar-text">فخامة وجودة في عالم التدخين والرحلات</span>
+                    <span class="en-text" style="display: none;">Luxury & Quality in Smoking & Travel World</span>
                 </div>
                 
                 <!-- زر قائمة الجوال -->
@@ -1325,8 +1320,8 @@
             <div class="hero-grid">
                 <div class="hero-text">
                     <h1 class="hero-title animate__animated animate__fadeInDown">
-                        <span class="ar-text">فخامة وجودة في عالم التدخين والرحلات</span>
-                        <span class="en-text" style="display: none;">Luxury & Quality in Smoking & Travel World</span>
+                        <span class="ar-text">مرحباً بكم في المهندس فيب</span>
+                        <span class="en-text" style="display: none;">Welcome to ENG Vape</span>
                     </h1>
                     <p class="hero-description animate__animated animate__fadeIn animate__delay-1s">
                         <span class="ar-text">نوفّر لكم مجموعة متكاملة من أرقى منتجات التدخين ومستلزمات الرحلات بجودة مضمونة وأسعار منافسة. هدفنا نوفرلكم كل احتياجاتكم بمكان واحد وبأفضل تجربة.</span>
