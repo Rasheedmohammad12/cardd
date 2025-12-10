@@ -172,16 +172,17 @@
             width: 100%;
         }
         
-        /* الشعار في المنتصف */
-        .logo-center-section {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
+        /* الشعار على اليسار */
+        .logo-left-section {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            gap: 15px;
+            margin-right: auto;
+        }
+        
+        body[dir="ltr"] .logo-left-section {
+            margin-right: 0;
+            margin-left: auto;
         }
         
         .logo-frame {
@@ -196,7 +197,6 @@
             box-shadow: var(--shadow-glow);
             position: relative;
             overflow: hidden;
-            margin-bottom: 8px;
         }
         
         .logo-frame::before {
@@ -225,7 +225,11 @@
         }
         
         .logo-text {
-            text-align: center;
+            text-align: right;
+        }
+        
+        body[dir="ltr"] .logo-text {
+            text-align: left;
         }
         
         .logo-text h1 {
@@ -250,12 +254,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-right: auto;
+            margin-left: auto;
         }
         
         body[dir="ltr"] .language-switcher {
-            margin-right: 0;
-            margin-left: auto;
+            margin-left: 0;
+            margin-right: auto;
         }
         
         .lang-btn {
@@ -288,12 +292,12 @@
             display: flex;
             gap: 30px;
             align-items: center;
-            margin-left: auto;
+            margin-left: 40px;
         }
         
         body[dir="ltr"] .luxury-nav {
             margin-left: 0;
-            margin-right: auto;
+            margin-right: 40px;
         }
         
         .nav-link {
@@ -1013,7 +1017,6 @@
             font-size: 1.3rem;
             cursor: pointer;
             padding: 8px;
-            margin-left: 15px;
         }
         
         body[dir="ltr"] .mobile-menu-btn {
@@ -1090,10 +1093,15 @@
                 justify-content: flex-start;
             }
             
-            .logo-center-section {
+            .logo-left-section {
                 position: static;
                 transform: none;
-                margin: 0 auto;
+                margin-right: auto;
+            }
+            
+            body[dir="ltr"] .logo-left-section {
+                margin-right: 0;
+                margin-left: auto;
             }
             
             .header-container {
@@ -1101,6 +1109,10 @@
             }
             
             .language-switcher {
+                margin-left: 0;
+            }
+            
+            body[dir="ltr"] .language-switcher {
                 margin-right: 0;
             }
         }
@@ -1246,24 +1258,11 @@
             </div>
         </div>
         
-        <!-- الجزء الرئيسي: الشعار والقائمة -->
+        <!-- الجزء الرئيسي: الشعار على اليسار -->
         <div class="header-main-section">
             <div class="header-container">
-                <!-- زر تبديل اللغة -->
-                <div class="language-switcher">
-                    <button class="lang-btn active" data-lang="ar">
-                        <i class="fas fa-language"></i>
-                        <span class="ar-text">العربية</span>
-                        <span class="en-text" style="display: none;">Arabic</span>
-                    </button>
-                    <button class="lang-btn" data-lang="en">
-                        <i class="fas fa-globe"></i>
-                        <span>English</span>
-                    </button>
-                </div>
-                
-                <!-- الشعار في المنتصف -->
-                <div class="logo-center-section">
+                <!-- الشعار على اليسار -->
+                <div class="logo-left-section">
                     <div class="logo-frame">
                         <img src="https://i.imgur.com/kRcHFfU.png" alt="ENG Vape" class="logo-img">
                     </div>
@@ -1298,6 +1297,19 @@
                         <span class="en-text" style="display: none;">Contact</span>
                     </a>
                 </nav>
+                
+                <!-- زر تبديل اللغة -->
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ar">
+                        <i class="fas fa-language"></i>
+                        <span class="ar-text">العربية</span>
+                        <span class="en-text" style="display: none;">Arabic</span>
+                    </button>
+                    <button class="lang-btn" data-lang="en">
+                        <i class="fas fa-globe"></i>
+                        <span>English</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
