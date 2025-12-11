@@ -80,7 +80,7 @@
             width: 100%;
         }
         
-        /* خدمة كليك */
+        /* خدمة كليك - تحديث لون الرقم إلى الأبيض */
         .click-service {
             display: flex;
             align-items: center;
@@ -93,6 +93,11 @@
             padding: 8px 15px;
             border-radius: 10px;
             background: rgba(45, 156, 219, 0.1);
+        }
+        
+        .click-service strong {
+            color: var(--text-light) !important; /* تغيير لون الرقم إلى الأبيض */
+            font-weight: 700;
         }
         
         .click-service:hover {
@@ -155,10 +160,9 @@
         
         /* الجزء الرئيسي من الهيدر */
         .header-main-section {
-            padding: 15px 0;
+            padding: 20px 0;
             display: flex;
             align-items: center;
-            justify-content: center;
             position: relative;
         }
         
@@ -172,20 +176,18 @@
             width: 100%;
         }
         
-        /* اللوجو المكبّر على يسار النص بالكامل */
+        /* اللوجو المكبّر على يسار النص بالكامل - تحسين العرض */
         .logo-left-large-container {
+            flex: 1;
             display: flex;
             align-items: center;
-            gap: 25px;
-            margin-right: 30px;
+            gap: 20px;
             text-decoration: none;
-            flex: 0 0 auto;
+            justify-content: flex-start;
         }
         
         body[dir="ltr"] .logo-left-large-container {
-            margin-right: 0;
-            margin-left: 30px;
-            flex-direction: row-reverse;
+            flex-direction: row;
         }
         
         .logo-large-frame {
@@ -248,48 +250,12 @@
             color: transparent;
         }
         
-        /* العنوان الرئيسي في مكانه المناسب */
-        .header-slogan-container {
-            flex: 1;
-            text-align: center;
-            padding: 0 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .header-slogan {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--text-light), var(--electric-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            white-space: nowrap;
-            padding: 12px 30px;
-            border-radius: 15px;
-            background-color: rgba(10, 10, 20, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(45, 156, 219, 0.3);
-            box-shadow: var(--shadow-glow);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header-slogan::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(45, 156, 219, 0.1), transparent);
-            animation: shine 3s infinite;
-        }
-        
-        /* القائمة الفخمة */
+        /* القائمة الفخمة - تحسين العرض */
         .luxury-nav {
+            flex: 2;
             display: flex;
-            gap: 30px;
+            justify-content: center;
+            gap: 40px;
             align-items: center;
             margin-right: 20px;
         }
@@ -344,10 +310,11 @@
             font-size: 0.9rem;
         }
         
-        /* زر تبديل اللغة */
+        /* زر تبديل اللغة - تحسين العرض */
         .language-switcher {
+            flex: 1;
             display: flex;
-            align-items: center;
+            justify-content: flex-end;
             gap: 8px;
         }
         
@@ -355,11 +322,11 @@
             background: rgba(45, 156, 219, 0.1);
             border: 1px solid rgba(45, 156, 219, 0.3);
             color: var(--text-light);
-            padding: 6px 12px;
+            padding: 8px 15px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             transition: var(--transition-med);
             display: flex;
             align-items: center;
@@ -374,6 +341,12 @@
         .lang-btn.active {
             background: linear-gradient(to right, var(--electric-blue), var(--neon-blue));
             color: white;
+        }
+        
+        /* إزالة استايل العنوان المحذوف */
+        .header-slogan-container,
+        .header-slogan {
+            display: none !important;
         }
         
         /* البانر الفاخر */
@@ -1069,10 +1042,6 @@
                 font-size: 2.4rem;
             }
             
-            .header-slogan {
-                font-size: 1.6rem;
-            }
-            
             .logo-large-main-title {
                 font-size: 2.2rem;
             }
@@ -1080,6 +1049,10 @@
             .logo-large-frame {
                 width: 90px;
                 height: 90px;
+            }
+            
+            .luxury-nav {
+                gap: 30px;
             }
         }
         
@@ -1118,6 +1091,8 @@
                 transition: var(--transition-med);
                 z-index: 999;
                 border-left: 1px solid rgba(45, 156, 219, 0.3);
+                flex: none;
+                width: 280px;
             }
             
             body[dir="ltr"] .luxury-nav {
@@ -1137,40 +1112,20 @@
                 justify-content: flex-start;
             }
             
+            .header-container {
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            
             .logo-left-large-container {
+                flex: none;
+                width: auto;
                 margin-right: 0;
             }
             
-            .header-container {
-                justify-content: space-between;
-                flex-wrap: wrap;
-            }
-            
-            .header-slogan-container {
-                order: 3;
-                width: 100%;
-                margin-top: 15px;
-                max-width: 100%;
-            }
-            
-            .header-slogan {
-                font-size: 1.4rem;
-                white-space: normal;
-                text-align: center;
-                padding: 10px 20px;
-            }
-            
-            .logo-large-main-title {
-                font-size: 1.8rem;
-            }
-            
-            .logo-large-subtitle {
-                font-size: 1rem;
-            }
-            
-            .logo-large-frame {
-                width: 80px;
-                height: 80px;
+            .language-switcher {
+                flex: none;
+                width: auto;
             }
         }
         
@@ -1203,11 +1158,6 @@
             .btn-primary, .btn-secondary {
                 padding: 12px 20px;
                 font-size: 0.9rem;
-            }
-            
-            .header-slogan {
-                font-size: 1.2rem;
-                padding: 8px 15px;
             }
             
             .logo-large-frame {
@@ -1291,11 +1241,6 @@
                 height: 60px;
                 border-radius: 15px;
             }
-            
-            .header-slogan {
-                font-size: 1rem;
-                padding: 6px 12px;
-            }
         }
     </style>
 </head>
@@ -1313,7 +1258,7 @@
                     <div>
                         <span class="ar-text">خدمة كليك: </span>
                         <span class="en-text" style="display: none;">Click Service: </span>
-                        <strong style="color: var(--neon-blue);">0770775285</strong>
+                        <strong>0770775285</strong>
                         <small style="display: block; font-size: 0.7rem; color: var(--text-gray); margin-top: 2px;">
                             <i class="fas fa-copy"></i> 
                             <span class="ar-text">انقر لنسخ الرقم</span>
@@ -1362,14 +1307,6 @@
                         </p>
                     </div>
                 </a>
-                
-                <!-- العنوان في المكان المناسب -->
-                <div class="header-slogan-container">
-                    <div class="header-slogan">
-                        <span class="ar-text">فخامة وجودة في عالم التدخين والرحلات</span>
-                        <span class="en-text" style="display: none;">Luxury & Quality in Smoking & Travel World</span>
-                    </div>
-                </div>
                 
                 <!-- زر قائمة الجوال -->
                 <button class="mobile-menu-btn">
