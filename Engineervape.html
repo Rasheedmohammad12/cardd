@@ -48,7 +48,7 @@
             font-family: 'Poppins', 'Tajawal', sans-serif;
         }
         
-        /* الشريط العلوي للتواصل فقط - تعديل للتوافق مع جميع الأجهزة */
+        /* الشريط العلوي للتواصل فقط */
         .contact-top-bar {
             background: linear-gradient(to right, rgba(18, 18, 37, 0.95), rgba(26, 95, 122, 0.95));
             padding: 12px 0;
@@ -70,7 +70,7 @@
             width: 100%;
         }
         
-        /* خدمة كليك - تحسين للهواتف */
+        /* خدمة كليك */
         .click-service {
             display: flex;
             align-items: center;
@@ -110,7 +110,7 @@
             font-size: 16px;
         }
         
-        /* وسائل التواصل في الشريط العلوي - تكبير الأيقونات */
+        /* وسائل التواصل في الشريط العلوي */
         .top-social-grid {
             display: flex;
             gap: 8px;
@@ -177,7 +177,7 @@
             box-shadow: 0 10px 25px rgba(45, 156, 219, 0.4);
         }
         
-        /* القائمة المختصرة - توافق مع الهواتف */
+        /* القائمة المختصرة */
         .mini-nav {
             background: rgba(10, 10, 20, 0.9);
             padding: 10px 0;
@@ -248,7 +248,7 @@
             width: 100%;
         }
         
-        /* زر تبديل اللغة - دائري صغير */
+        /* زر تبديل اللغة */
         .lang-toggle-btn {
             position: fixed;
             top: 85px;
@@ -285,7 +285,7 @@
             background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
         }
         
-        /* قسم الشعار والعنوان - موحد لجميع الأجهزة */
+        /* قسم الشعار والعنوان */
         .hero-logo-section {
             min-height: 60vh;
             display: flex;
@@ -401,9 +401,9 @@
             margin: 0;
         }
         
-        /* البانر الفاخر - موحد */
+        /* البانر الفاخر */
         .luxury-hero {
-            min-height: 70vh;
+            min-height: auto;
             display: flex;
             align-items: center;
             position: relative;
@@ -531,7 +531,7 @@
             font-size: 12px;
         }
         
-        /* أزرار فخمة - موحدة */
+        /* أزرار فخمة */
         .luxury-buttons {
             display: flex;
             flex-direction: column;
@@ -580,7 +580,7 @@
             transform: translateY(-5px);
         }
         
-        /* قسم المنتجات الفاخر - موحد */
+        /* قسم المنتجات الفاخر */
         .luxury-products {
             padding: 50px 0;
             position: relative;
@@ -623,7 +623,7 @@
             max-width: 90%;
         }
         
-        /* شبكة المنتجات - موحدة */
+        /* شبكة المنتجات */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -680,7 +680,7 @@
             line-height: 1.6;
         }
         
-        /* قسم التواصل الفاخر - موحد */
+        /* قسم التواصل الفاخر */
         .luxury-contact {
             padding: 50px 0;
             background: linear-gradient(to bottom, var(--secondary-dark), var(--primary-dark));
@@ -728,7 +728,7 @@
             left: 0;
         }
         
-        /* معلومات التواصل الفاخرة - موحدة */
+        /* معلومات التواصل الفاخرة */
         .contact-info-item {
             display: flex;
             align-items: center;
@@ -786,7 +786,7 @@
             color: var(--electric-blue);
         }
         
-        /* قسم وسائل التواصل - موحد مع أيقونات أكبر */
+        /* قسم وسائل التواصل */
         .social-section {
             margin-top: 20px;
         }
@@ -804,7 +804,7 @@
             color: var(--neon-blue);
         }
         
-        /* شبكة وسائل التواصل - أيقونات كبيرة موحدة */
+        /* شبكة وسائل التواصل */
         .social-grid-updated {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -870,7 +870,7 @@
             margin-top: -5px;
         }
         
-        /* رقم الهاتف المميز - موحد */
+        /* رقم الهاتف المميز */
         .phone-highlight-updated {
             background: linear-gradient(135deg, rgba(45, 156, 219, 0.15), rgba(26, 95, 122, 0.15));
             border-radius: 12px;
@@ -929,7 +929,7 @@
             margin-top: 6px;
         }
         
-        /* الفوتر الفاخر - موحد */
+        /* الفوتر الفاخر */
         .luxury-footer {
             background: linear-gradient(to top, var(--primary-dark), var(--secondary-dark));
             padding: 40px 0 20px;
@@ -1009,7 +1009,7 @@
             font-size: 14px;
         }
         
-        /* تأثيرات إضافية - موحدة */
+        /* تأثيرات إضافية */
         .floating-element {
             position: absolute;
             width: 200px;
@@ -1076,7 +1076,7 @@
             100% { opacity: 0; transform: translateY(-20px); }
         }
         
-        /* تصميم موحد لجميع الأجهزة - لا حاجة لاستعلامات وسائط كثيرة */
+        /* تصميم موحد لجميع الأجهزة */
         @media (min-width: 768px) {
             .contact-top-container {
                 padding: 0 20px;
@@ -1436,7 +1436,7 @@
             
             <!-- بطاقة المنتج 5 -->
             <div class="product-card animate__animated animate__fadeInUp animate__delay-4s">
-                <div class="product-icon {
+                <div class="product-icon">
                     <i class="fas fa-suitcase-rolling"></i>
                 </div>
                 <div class="product-content">
