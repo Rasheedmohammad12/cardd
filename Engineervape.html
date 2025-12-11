@@ -237,35 +237,41 @@
             width: 100%;
         }
         
-        /* زر تبديل اللغة */
-        .language-switcher {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .lang-btn {
-            background: rgba(45, 156, 219, 0.1);
-            border: 1px solid rgba(45, 156, 219, 0.3);
+        /* زر تبديل اللغة - يتم الآن في الزاوية العلوية اليسرى */
+        .lang-toggle-btn {
+            position: fixed;
+            top: 85px;
+            left: 20px;
+            z-index: 1002;
+            background: rgba(45, 156, 219, 0.2);
+            border: 1px solid rgba(45, 156, 219, 0.4);
             color: var(--text-light);
-            padding: 6px 12px;
-            border-radius: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             transition: var(--transition-med);
             display: flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-glow);
         }
         
-        .lang-btn:hover {
-            background: rgba(45, 156, 219, 0.2);
-            border-color: var(--electric-blue);
+        body[dir="rtl"] .lang-toggle-btn {
+            left: auto;
+            right: 20px;
         }
         
-        .lang-btn.active {
-            background: linear-gradient(to right, var(--electric-blue), var(--neon-blue));
-            color: white;
+        .lang-toggle-btn:hover {
+            background: rgba(45, 156, 219, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .lang-toggle-btn.active {
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
         }
         
         /* قسم الشعار والعنوان في المساحة الفارغة - مخصص للصورة */
@@ -1047,17 +1053,6 @@
             100% { opacity: 0; transform: translateY(-20px); }
         }
         
-        /* قائمة الجوال */
-        .mobile-menu-btn {
-            display: none;
-            background: transparent;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.3rem;
-            cursor: pointer;
-            padding: 8px;
-        }
-        
         /* تصميم متجاوب */
         @media (max-width: 1200px) {
             .hero-grid, .contact-grid {
@@ -1203,6 +1198,18 @@
                 padding: 8px 15px;
                 font-size: 0.8rem;
             }
+            
+            .lang-toggle-btn {
+                top: 80px;
+                left: 15px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            body[dir="rtl"] .lang-toggle-btn {
+                left: auto;
+                right: 15px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1280,6 +1287,19 @@
                 min-height: 50vh;
                 padding: 100px 20px 30px;
             }
+            
+            .lang-toggle-btn {
+                top: 85px;
+                left: 10px;
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            
+            body[dir="rtl"] .lang-toggle-btn {
+                left: auto;
+                right: 10px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1311,6 +1331,10 @@
             .save-contact-btn {
                 padding: 6px 12px;
                 font-size: 0.7rem;
+            }
+            
+            .lang-toggle-btn {
+                top: 90px;
             }
         }
     </style>
@@ -1364,6 +1388,12 @@
         </div>
     </div>
     
+    <!-- زر تبديل اللغة الجديد - في الزاوية العلوية -->
+    <button class="lang-toggle-btn active" onclick="toggleLanguage()">
+        <span class="ar-text">ع</span>
+        <span class="en-text" style="display: none;">EN</span>
+    </button>
+    
     <!-- القائمة المختصرة -->
     <nav class="mini-nav">
         <div class="mini-nav-container">
@@ -1382,19 +1412,6 @@
                 <span class="ar-text">التواصل</span>
                 <span class="en-text" style="display: none;">Contact</span>
             </a>
-            
-            <!-- زر تبديل اللغة -->
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang="ar">
-                    <i class="fas fa-language"></i>
-                    <span class="ar-text">عربي</span>
-                    <span class="en-text" style="display: none;">Ar</span>
-                </button>
-                <button class="lang-btn" data-lang="en">
-                    <i class="fas fa-globe"></i>
-                    <span>EN</span>
-                </button>
-            </div>
         </div>
     </nav>
 
@@ -1662,7 +1679,7 @@
                     </div>
                 </div>
                 
-                <div class="contact-info-item">
+                <div class="contact-info-item {
                     <div class="contact-icon-wrapper">
                         <i class="fas fa-shipping-fast"></i>
                     </div>
@@ -1784,32 +1801,35 @@ END:VCARD`;
         }
         
         // دالة تبديل اللغة
-        function switchLanguage(lang) {
-            const isArabic = lang === 'ar';
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            const isArabic = currentLang === 'ar';
+            const newLang = isArabic ? 'en' : 'ar';
             
             // تغيير اتجاه الصفحة
-            document.body.dir = isArabic ? 'rtl' : 'ltr';
+            document.body.dir = isArabic ? 'ltr' : 'rtl';
             
             // إظهار/إخفاء النصوص العربية والإنجليزية
             document.querySelectorAll('.ar-text').forEach(el => {
-                el.style.display = isArabic ? 'inline' : 'none';
-            });
-            
-            document.querySelectorAll('.en-text').forEach(el => {
                 el.style.display = isArabic ? 'none' : 'inline';
             });
             
-            // تحديث أزرار اللغة
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                if (btn.dataset.lang === lang) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
+            document.querySelectorAll('.en-text').forEach(el => {
+                el.style.display = isArabic ? 'inline' : 'none';
             });
             
+            // تحديث زر تبديل اللغة
+            const langBtn = document.querySelector('.lang-toggle-btn');
+            if (newLang === 'ar') {
+                langBtn.classList.add('active');
+            } else {
+                langBtn.classList.remove('active');
+            }
+            
             // حفظ اللغة المختارة
-            localStorage.setItem('preferredLanguage', lang);
+            currentLang = newLang;
+            localStorage.setItem('preferredLanguage', newLang);
         }
         
         // دالة نسخ الرقم
@@ -1855,7 +1875,18 @@ END:VCARD`;
         document.addEventListener('DOMContentLoaded', () => {
             // تحميل اللغة المفضلة
             const preferredLanguage = localStorage.getItem('preferredLanguage') || 'ar';
-            switchLanguage(preferredLanguage);
+            currentLang = preferredLanguage;
+            
+            if (preferredLanguage === 'en') {
+                document.body.dir = 'ltr';
+                document.querySelectorAll('.ar-text').forEach(el => {
+                    el.style.display = 'none';
+                });
+                document.querySelectorAll('.en-text').forEach(el => {
+                    el.style.display = 'inline';
+                });
+                document.querySelector('.lang-toggle-btn').classList.remove('active');
+            }
             
             // إضافة تأثيرات للمنتجات عند التمرير
             const observerOptions = {
@@ -1891,13 +1922,6 @@ END:VCARD`;
                             behavior: 'smooth'
                         });
                     }
-                });
-            });
-            
-            // أحداث أزرار اللغة
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    switchLanguage(btn.dataset.lang);
                 });
             });
             
