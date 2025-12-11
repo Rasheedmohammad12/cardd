@@ -42,35 +42,25 @@
             overflow-x: hidden;
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
             background-attachment: fixed;
-            padding-top: 120px; /* مساحة للهيدر الثابت */
         }
         
         body[dir="ltr"] {
             font-family: 'Poppins', 'Tajawal', sans-serif;
         }
         
-        /* تصميم الهيدر الفخم - ثابت في الأعلى */
-        .luxury-header {
-            background: linear-gradient(to bottom, rgba(10, 10, 20, 0.98) 0%, rgba(18, 18, 37, 0.95) 100%);
-            backdrop-filter: blur(15px);
+        /* الشريط العلوي للتواصل فقط */
+        .contact-top-bar {
+            background: linear-gradient(to right, rgba(18, 18, 37, 0.9), rgba(26, 95, 122, 0.9));
+            padding: 15px 0;
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(45, 156, 219, 0.3);
-            padding: 0;
-            transition: var(--transition-med);
-            height: 120px; /* ارتفاع الهيدر */
+            z-index: 1001;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(45, 156, 219, 0.3);
         }
         
-        /* الجزء العلوي من الهيدر (خدمة كليك ووسائل التواصل) */
-        .header-top-bar {
-            background: rgba(18, 18, 37, 0.9);
-            border-bottom: 1px solid rgba(45, 156, 219, 0.2);
-            padding: 10px 0;
-        }
-        
-        .header-top-container {
+        .contact-top-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -90,7 +80,7 @@
             font-size: 1.1rem;
             cursor: pointer;
             transition: var(--transition-med);
-            padding: 8px 15px;
+            padding: 10px 18px;
             border-radius: 10px;
             background: rgba(45, 156, 219, 0.1);
         }
@@ -117,59 +107,88 @@
             box-shadow: var(--shadow-glow);
         }
         
-        /* وسائل التواصل في الهيدر - تكبير الأيقونات */
-        .header-social-grid {
+        /* وسائل التواصل في الشريط العلوي */
+        .top-social-grid {
             display: flex;
             gap: 15px;
             align-items: center;
         }
         
-        .header-social-icon {
-            width: 50px;
-            height: 50px;
+        .top-social-icon {
+            width: 45px;
+            height: 45px;
             border-radius: 12px;
             background: rgba(18, 18, 37, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--text-light);
             text-decoration: none;
             transition: var(--transition-med);
             border: 1px solid rgba(45, 156, 219, 0.2);
         }
         
-        .header-social-icon:hover {
+        .top-social-icon:hover {
             background: rgba(45, 156, 219, 0.1);
             border-color: var(--electric-blue);
             transform: translateY(-5px);
             box-shadow: var(--shadow-glow);
         }
         
-        .header-social-icon.facebook { color: #1877F2; }
-        .header-social-icon.instagram { 
+        .top-social-icon.facebook { color: #1877F2; }
+        .top-social-icon.instagram { 
             background: linear-gradient(45deg, #405DE6, #833AB4, #F56040, #FFDC80);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        .header-social-icon.whatsapp { color: #25D366; }
-        .header-social-icon.nfc { 
+        .top-social-icon.whatsapp { color: #25D366; }
+        .top-social-icon.nfc { 
             color: #FF6B6B;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
         
-        /* الجزء الرئيسي من الهيدر */
-        .header-main-section {
-            padding: 20px 0;
+        /* زر حفظ جهة الاتصال */
+        .save-contact-btn {
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
             display: flex;
             align-items: center;
-            position: relative;
+            gap: 8px;
+            transition: var(--transition-med);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-glow);
         }
         
-        .header-container {
+        .save-contact-btn:hover {
+            background: linear-gradient(135deg, var(--neon-blue), var(--light-blue));
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(45, 156, 219, 0.4);
+        }
+        
+        /* القائمة المختصرة */
+        .mini-nav {
+            background: rgba(10, 10, 20, 0.8);
+            padding: 12px 0;
+            position: fixed;
+            top: 70px;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(45, 156, 219, 0.2);
+        }
+        
+        .mini-nav-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 40px;
             align-items: center;
             max-width: 1400px;
             margin: 0 auto;
@@ -177,111 +196,11 @@
             width: 100%;
         }
         
-        /* اللوجو المكبّر - تصحيح ليصبح على يسار النص بالكامل */
-        .logo-left-large-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            text-decoration: none;
-            position: relative;
-            margin-right: auto;
-        }
-        
-        body[dir="ltr"] .logo-left-large-container {
-            margin-right: 0;
-            margin-left: auto;
-            flex-direction: row;
-        }
-        
-        .logo-large-frame {
-            width: 120px;
-            height: 120px;
-            background: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 25px;
-            border: 3px solid rgba(45, 156, 219, 0.4);
-            box-shadow: 0 0 30px rgba(45, 156, 219, 0.4);
-            background: rgba(18, 18, 37, 0.6);
-            backdrop-filter: blur(10px);
-            z-index: 2;
-        }
-        
-        .logo-large-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            position: relative;
-            z-index: 2;
-            border-radius: 20px;
-            filter: brightness(1.1) contrast(1.1);
-        }
-        
-        /* نص اللوجو الكبير على اليسار */
-        .logo-large-text-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 8px;
-            margin-right: 15px;
-        }
-        
-        body[dir="ltr"] .logo-large-text-container {
-            margin-right: 0;
-            margin-left: 15px;
-            align-items: flex-end;
-        }
-        
-        .logo-large-main-title {
-            font-size: 3rem;
-            background: linear-gradient(to right, var(--electric-blue), var(--light-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 900;
-            letter-spacing: 2px;
-            white-space: nowrap;
-            text-shadow: 0 5px 20px rgba(45, 156, 219, 0.4);
-            line-height: 1.1;
-        }
-        
-        .logo-large-subtitle {
-            color: var(--text-light);
-            font-size: 1.3rem;
-            letter-spacing: 2px;
-            white-space: nowrap;
-            font-weight: 600;
-            background: linear-gradient(to right, var(--neon-blue), var(--light-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        /* القائمة الفخمة - تحسين العرض */
-        .luxury-nav {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            align-items: center;
-            margin-right: 20px;
-            flex: 1;
-        }
-        
-        body[dir="ltr"] .luxury-nav {
-            margin-right: 0;
-            margin-left: 20px;
-        }
-        
-        .nav-link {
+        .mini-nav-link {
             color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 1rem;
             position: relative;
             padding: 8px 0;
             transition: var(--transition-med);
@@ -290,11 +209,11 @@
             gap: 8px;
         }
         
-        body[dir="ltr"] .nav-link {
+        body[dir="ltr"] .mini-nav-link {
             flex-direction: row-reverse;
         }
         
-        .nav-link::before {
+        .mini-nav-link::before {
             content: '';
             position: absolute;
             bottom: 0;
@@ -305,27 +224,22 @@
             transition: var(--transition-med);
         }
         
-        body[dir="ltr"] .nav-link::before {
+        body[dir="ltr"] .mini-nav-link::before {
             right: auto;
             left: 0;
         }
         
-        .nav-link:hover {
+        .mini-nav-link:hover {
             color: var(--electric-blue);
         }
         
-        .nav-link:hover::before {
+        .mini-nav-link:hover::before {
             width: 100%;
         }
         
-        .nav-icon {
-            font-size: 1rem;
-        }
-        
-        /* زر تبديل اللغة - تحسين العرض */
+        /* زر تبديل اللغة */
         .language-switcher {
             display: flex;
-            justify-content: flex-end;
             gap: 10px;
         }
         
@@ -333,15 +247,15 @@
             background: rgba(45, 156, 219, 0.1);
             border: 1px solid rgba(45, 156, 219, 0.3);
             color: var(--text-light);
-            padding: 10px 18px;
-            border-radius: 20px;
+            padding: 6px 12px;
+            border-radius: 15px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             transition: var(--transition-med);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
         }
         
         .lang-btn:hover {
@@ -354,15 +268,124 @@
             color: white;
         }
         
-        /* إزالة استايل العنوان المحذوف */
-        .header-slogan-container,
-        .header-slogan {
-            display: none !important;
+        /* قسم الشعار والعنوان في المساحة الفارغة - مخصص للصورة */
+        .hero-logo-section {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(10, 10, 20, 0.9), rgba(18, 18, 37, 0.95));
+            padding: 80px 20px 40px;
+            margin-top: 70px;
+            border-bottom: 1px solid rgba(45, 156, 219, 0.2);
+        }
+        
+        .hero-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(18, 18, 37, 0.4);
+            border-radius: 30px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(45, 156, 219, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(45, 156, 219, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-logo-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(45, 156, 219, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hero-logo-frame {
+            width: 180px;
+            height: 180px;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            border: 4px solid rgba(45, 156, 219, 0.5);
+            box-shadow: 0 0 40px rgba(45, 156, 219, 0.5);
+            background: rgba(18, 18, 37, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 2;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(45, 156, 219, 0.5); }
+            50% { box-shadow: 0 0 60px rgba(45, 156, 219, 0.8); }
+        }
+        
+        .hero-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            border-radius: 25px;
+            filter: brightness(1.2) contrast(1.2);
+        }
+        
+        .hero-logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .hero-logo-title {
+            font-size: 3.8rem;
+            background: linear-gradient(to right, var(--electric-blue), var(--neon-blue), var(--light-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-shadow: 0 10px 30px rgba(45, 156, 219, 0.5);
+            line-height: 1.1;
+            margin: 0;
+        }
+        
+        .hero-logo-subtitle {
+            color: var(--text-light);
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            font-weight: 600;
+            background: linear-gradient(to right, var(--neon-blue), var(--light-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
         }
         
         /* البانر الفاخر */
         .luxury-hero {
-            min-height: calc(100vh - 120px);
+            min-height: 70vh;
             display: flex;
             align-items: center;
             position: relative;
@@ -997,7 +1020,7 @@
         /* تأثير النسخ */
         .copy-notification {
             position: fixed;
-            top: 130px;
+            top: 100px;
             right: 20px;
             background: linear-gradient(to right, var(--accent-blue), var(--electric-blue));
             color: white;
@@ -1035,126 +1058,6 @@
             padding: 8px;
         }
         
-        body[dir="ltr"] .mobile-menu-btn {
-            margin-left: 0;
-            margin-right: 15px;
-        }
-        
-        /* قسم الشعار والعنوان في المساحة الفارغة - مخصص للصورة */
-        .hero-logo-section {
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: linear-gradient(135deg, rgba(10, 10, 20, 0.9), rgba(18, 18, 37, 0.95));
-            padding: 40px 20px;
-            margin-top: -1px;
-            border-bottom: 1px solid rgba(45, 156, 219, 0.2);
-        }
-        
-        .hero-logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
-            background: rgba(18, 18, 37, 0.4);
-            border-radius: 30px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(45, 156, 219, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(45, 156, 219, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-logo-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(45, 156, 219, 0.1) 0%, transparent 70%);
-            z-index: -1;
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .hero-logo-frame {
-            width: 180px;
-            height: 180px;
-            background: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 30px;
-            border: 4px solid rgba(45, 156, 219, 0.5);
-            box-shadow: 0 0 40px rgba(45, 156, 219, 0.5);
-            background: rgba(18, 18, 37, 0.7);
-            backdrop-filter: blur(10px);
-            z-index: 2;
-            animation: pulse 4s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 40px rgba(45, 156, 219, 0.5); }
-            50% { box-shadow: 0 0 60px rgba(45, 156, 219, 0.8); }
-        }
-        
-        .hero-logo-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            position: relative;
-            z-index: 2;
-            border-radius: 25px;
-            filter: brightness(1.2) contrast(1.2);
-        }
-        
-        .hero-logo-text {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .hero-logo-title {
-            font-size: 3.8rem;
-            background: linear-gradient(to right, var(--electric-blue), var(--neon-blue), var(--light-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 900;
-            letter-spacing: 3px;
-            text-shadow: 0 10px 30px rgba(45, 156, 219, 0.5);
-            line-height: 1.1;
-            margin: 0;
-        }
-        
-        .hero-logo-subtitle {
-            color: var(--text-light);
-            font-size: 1.8rem;
-            letter-spacing: 4px;
-            font-weight: 600;
-            background: linear-gradient(to right, var(--neon-blue), var(--light-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin: 0;
-        }
-        
         /* تصميم متجاوب */
         @media (max-width: 1200px) {
             .hero-grid, .contact-grid {
@@ -1169,29 +1072,6 @@
                 font-size: 2.4rem;
             }
             
-            .logo-large-main-title {
-                font-size: 2.5rem;
-            }
-            
-            .logo-large-frame {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .luxury-nav {
-                gap: 30px;
-            }
-            
-            .header-social-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.6rem;
-            }
-            
-            .social-icon-updated {
-                font-size: 2.2rem;
-            }
-            
             .hero-logo-title {
                 font-size: 3.2rem;
             }
@@ -1204,6 +1084,16 @@
                 width: 160px;
                 height: 160px;
             }
+            
+            .top-social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
+            }
+            
+            .social-icon-updated {
+                font-size: 2.2rem;
+            }
         }
         
         @media (max-width: 992px) {
@@ -1211,84 +1101,12 @@
                 grid-template-columns: 1fr;
             }
             
-            .luxury-nav {
-                display: none;
-            }
-            
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .header-container, .hero-content, .contact-grid, .header-top-container {
+            .hero-content, .contact-grid, .contact-top-container, .mini-nav-container {
                 padding: 0 25px;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .luxury-nav {
-                position: fixed;
-                top: 120px;
-                right: 0;
-                width: 280px;
-                height: calc(100vh - 120px);
-                background: rgba(10, 10, 20, 0.95);
-                backdrop-filter: blur(15px);
-                flex-direction: column;
-                padding: 30px 15px;
-                transform: translateX(100%);
-                transition: var(--transition-med);
-                z-index: 999;
-                border-left: 1px solid rgba(45, 156, 219, 0.3);
-                flex: none;
-                width: 280px;
-            }
-            
-            body[dir="ltr"] .luxury-nav {
-                right: auto;
-                left: 0;
-                transform: translateX(-100%);
-            }
-            
-            .luxury-nav.active {
-                transform: translateX(0);
-            }
-            
-            .nav-link {
-                font-size: 1.1rem;
-                padding: 12px 0;
-                width: 100%;
-                justify-content: flex-start;
-            }
-            
-            .header-container {
-                flex-wrap: wrap;
-                justify-content: space-between;
-            }
-            
-            .logo-left-large-container {
-                flex: none;
-                width: auto;
-                margin-right: 0;
-            }
-            
-            .language-switcher {
-                flex: none;
-                width: auto;
-            }
-            
-            .logo-large-main-title {
-                font-size: 2rem;
-            }
-            
-            .logo-large-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .logo-large-frame {
-                width: 90px;
-                height: 90px;
             }
             
             .hero-logo-title {
@@ -1304,10 +1122,21 @@
                 width: 140px;
                 height: 140px;
             }
+            
+            .contact-top-container {
+                flex-wrap: wrap;
+                gap: 15px;
+                justify-content: center;
+            }
+            
+            .mini-nav-container {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
         }
         
         @media (max-width: 768px) {
-            .header-container, .hero-content, .contact-grid, .header-top-container {
+            .hero-content, .contact-grid, .contact-top-container, .mini-nav-container {
                 padding: 0 20px;
             }
             
@@ -1337,25 +1166,6 @@
                 font-size: 0.9rem;
             }
             
-            .logo-large-frame {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .logo-large-main-title {
-                font-size: 1.8rem;
-            }
-            
-            .logo-large-subtitle {
-                font-size: 1rem;
-            }
-            
-            .header-social-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
-            }
-            
             .social-icon-updated {
                 font-size: 2rem;
             }
@@ -1368,12 +1178,6 @@
             .click-icon {
                 width: 30px;
                 height: 30px;
-            }
-            
-            .header-top-container {
-                flex-direction: column;
-                gap: 10px;
-                padding: 10px 20px;
             }
             
             .hero-logo-container {
@@ -1393,6 +1197,11 @@
             .hero-logo-frame {
                 width: 120px;
                 height: 120px;
+            }
+            
+            .save-contact-btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
             }
         }
         
@@ -1414,34 +1223,6 @@
                 gap: 10px;
             }
             
-            .header-top-bar {
-                padding: 8px 0;
-            }
-            
-            .header-social-icon {
-                width: 38px;
-                height: 38px;
-                font-size: 1.4rem;
-            }
-            
-            .click-service {
-                font-size: 0.8rem;
-            }
-            
-            .logo-left-large-container {
-                gap: 15px;
-            }
-            
-            .logo-large-text-container {
-                display: none;
-            }
-            
-            .logo-large-frame {
-                width: 70px;
-                height: 70px;
-                border-radius: 20px;
-            }
-            
             .social-card-updated {
                 min-height: 100px;
                 padding: 15px;
@@ -1449,6 +1230,29 @@
             
             .social-icon-updated {
                 font-size: 1.8rem;
+            }
+            
+            .contact-top-bar {
+                padding: 10px 0;
+            }
+            
+            .contact-top-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .mini-nav {
+                top: 120px;
+                padding: 8px 0;
+            }
+            
+            .mini-nav-container {
+                gap: 15px;
+                justify-content: space-around;
+            }
+            
+            .mini-nav-link {
+                font-size: 0.9rem;
             }
             
             .hero-logo-title {
@@ -1471,33 +1275,14 @@
                 gap: 20px;
                 border-radius: 25px;
             }
+            
+            .hero-logo-section {
+                min-height: 50vh;
+                padding: 100px 20px 30px;
+            }
         }
         
         @media (max-width: 480px) {
-            .header-container {
-                justify-content: space-between;
-            }
-            
-            .logo-left-large-container {
-                gap: 10px;
-            }
-            
-            .logo-large-frame {
-                width: 60px;
-                height: 60px;
-                border-radius: 15px;
-            }
-            
-            .header-social-grid {
-                gap: 8px;
-            }
-            
-            .header-social-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 1.3rem;
-            }
-            
             .hero-logo-title {
                 font-size: 1.5rem;
             }
@@ -1511,112 +1296,107 @@
                 height: 90px;
                 border-radius: 20px;
             }
+            
+            .mini-nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .top-social-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+            
+            .save-contact-btn {
+                padding: 6px 12px;
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
 <body dir="rtl">
-    <!-- الهيدر الفاخر - ثابت في الأعلى -->
-    <header class="luxury-header">
-        <!-- الجزء العلوي: خدمة كليك ووسائل التواصل -->
-        <div class="header-top-bar">
-            <div class="header-top-container">
-                <!-- خدمة كليك -->
-                <div class="click-service" onclick="copyPhoneNumber()">
-                    <div class="click-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <div>
-                        <span class="ar-text">خدمة كليك: </span>
-                        <span class="en-text" style="display: none;">Click Service: </span>
-                        <strong>0770775285</strong>
-                        <small style="display: block; font-size: 0.7rem; color: var(--text-gray); margin-top: 2px;">
-                            <i class="fas fa-copy"></i> 
-                            <span class="ar-text">انقر لنسخ الرقم</span>
-                            <span class="en-text" style="display: none;">Click to copy</span>
-                        </small>
-                    </div>
+    <!-- الشريط العلوي للتواصل -->
+    <div class="contact-top-bar">
+        <div class="contact-top-container">
+            <!-- خدمة كليك -->
+            <div class="click-service" onclick="copyPhoneNumber()">
+                <div class="click-icon">
+                    <i class="fas fa-bolt"></i>
                 </div>
-                
-                <!-- وسائل التواصل الاجتماعي - تم تكبير الأيقونات -->
-                <div class="header-social-grid">
-                    <a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" class="header-social-icon facebook" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    
-                    <a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" class="header-social-icon instagram" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    
-                    <a href="https://wa.me/962770775285" class="header-social-icon whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    
-                    <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="header-social-icon nfc" target="_blank">
-                        <i class="fas fa-id-card"></i>
-                    </a>
+                <div>
+                    <span class="ar-text">خدمة كليك: </span>
+                    <span class="en-text" style="display: none;">Click Service: </span>
+                    <strong>0770775285</strong>
+                    <small style="display: block; font-size: 0.7rem; color: var(--text-gray); margin-top: 2px;">
+                        <i class="fas fa-copy"></i> 
+                        <span class="ar-text">انقر لنسخ الرقم</span>
+                        <span class="en-text" style="display: none;">Click to copy</span>
+                    </small>
                 </div>
             </div>
-        </div>
-        
-        <!-- الجزء الرئيسي: اللوجو المكبّر على يسار النص بالكامل -->
-        <div class="header-main-section">
-            <div class="header-container">
-                <!-- اللوجو المكبّر على يسار النص بالكامل - لوقو كبير مع الكلام -->
-                <a href="#home" class="logo-left-large-container">
-                    <div class="logo-large-frame">
-                        <img src="https://i.imgur.com/kRcHFfU.png" alt="ENG Vape" class="logo-large-img">
-                    </div>
-                    <div class="logo-large-text-container">
-                        <h1 class="logo-large-main-title">
-                            <span class="ar-text">المهندس فيب</span>
-                            <span class="en-text" style="display: none;">ENG Vape</span>
-                        </h1>
-                        <p class="logo-large-subtitle">
-                            <span class="ar-text">VAPE · HOOKAH · PREMIUM</span>
-                            <span class="en-text" style="display: none;">VAPE · HOOKAH · PREMIUM</span>
-                        </p>
-                    </div>
+            
+            <!-- زر حفظ جهة الاتصال -->
+            <button class="save-contact-btn" onclick="saveContact()">
+                <i class="fas fa-save"></i>
+                <span class="ar-text">حفظ جهة الاتصال</span>
+                <span class="en-text" style="display: none;">Save Contact</span>
+            </button>
+            
+            <!-- وسائل التواصل الاجتماعي -->
+            <div class="top-social-grid">
+                <a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" class="top-social-icon facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
                 </a>
                 
-                <!-- زر قائمة الجوال -->
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" class="top-social-icon instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
                 
-                <!-- القائمة الرئيسية -->
-                <nav class="luxury-nav">
-                    <a href="#home" class="nav-link">
-                        <i class="fas fa-home nav-icon"></i>
-                        <span class="ar-text">الرئيسية</span>
-                        <span class="en-text" style="display: none;">Home</span>
-                    </a>
-                    <a href="#products" class="nav-link">
-                        <i class="fas fa-cube nav-icon"></i>
-                        <span class="ar-text">منتجاتنا</span>
-                        <span class="en-text" style="display: none;">Products</span>
-                    </a>
-                    <a href="#contact" class="nav-link">
-                        <i class="fas fa-phone-alt nav-icon"></i>
-                        <span class="ar-text">التواصل</span>
-                        <span class="en-text" style="display: none;">Contact</span>
-                    </a>
-                </nav>
+                <a href="https://wa.me/962770775285" class="top-social-icon whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
                 
-                <!-- زر تبديل اللغة -->
-                <div class="language-switcher">
-                    <button class="lang-btn active" data-lang="ar">
-                        <i class="fas fa-language"></i>
-                        <span class="ar-text">العربية</span>
-                        <span class="en-text" style="display: none;">Arabic</span>
-                    </button>
-                    <button class="lang-btn" data-lang="en">
-                        <i class="fas fa-globe"></i>
-                        <span>English</span>
-                    </button>
-                </div>
+                <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="top-social-icon nfc" target="_blank">
+                    <i class="fas fa-id-card"></i>
+                </a>
             </div>
         </div>
-    </header>
+    </div>
+    
+    <!-- القائمة المختصرة -->
+    <nav class="mini-nav">
+        <div class="mini-nav-container">
+            <a href="#home" class="mini-nav-link">
+                <i class="fas fa-home"></i>
+                <span class="ar-text">الرئيسية</span>
+                <span class="en-text" style="display: none;">Home</span>
+            </a>
+            <a href="#products" class="mini-nav-link">
+                <i class="fas fa-cube"></i>
+                <span class="ar-text">منتجاتنا</span>
+                <span class="en-text" style="display: none;">Products</span>
+            </a>
+            <a href="#contact" class="mini-nav-link">
+                <i class="fas fa-phone-alt"></i>
+                <span class="ar-text">التواصل</span>
+                <span class="en-text" style="display: none;">Contact</span>
+            </a>
+            
+            <!-- زر تبديل اللغة -->
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="ar">
+                    <i class="fas fa-language"></i>
+                    <span class="ar-text">عربي</span>
+                    <span class="en-text" style="display: none;">Ar</span>
+                </button>
+                <button class="lang-btn" data-lang="en">
+                    <i class="fas fa-globe"></i>
+                    <span>EN</span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
     <!-- قسم الشعار والعنوان في المساحة الفارغة -->
     <section class="hero-logo-section">
@@ -1821,7 +1601,7 @@
                     </small>
                 </div>
                 
-                <!-- وسائل التواصل الاجتماعي المحدثة - تم تكبير الأيقونات -->
+                <!-- وسائل التواصل الاجتماعي المحدثة -->
                 <div class="social-section">
                     <div class="social-title">
                         <i class="fas fa-share-alt"></i>
@@ -1842,7 +1622,7 @@
                             <i class="fab fa-whatsapp social-icon-updated whatsapp-updated"></i>
                         </a>
                         
-                        <!-- مربع بطاقة NFC مع أيقونتين - تم تكبير الأيقونات -->
+                        <!-- مربع بطاقة NFC مع أيقونتين -->
                         <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="social-card-updated nfc-card-icon" target="_blank">
                             <i class="fas fa-id-card"></i>
                             <i class="fas fa-wave-square"></i>
@@ -1918,8 +1698,8 @@
                 <p class="ar-text">متجر متكامل لأرقى منتجات التدخين والرحلات. جودة مضمونة، أسعار منافسة، خدمة سريعة.</p>
                 <p class="en-text" style="display: none;">A complete store for the finest smoking and travel products. Guaranteed quality, competitive prices, fast service.</p>
                 <div style="margin-top: 15px;">
-                    <div class="logo-large-frame" style="width: 80px; height: 80px;">
-                        <img src="https://i.imgur.com/kRcHFfU.png" alt="ENG Vape" class="logo-large-img">
+                    <div class="hero-logo-frame" style="width: 80px; height: 80px; border-radius: 20px;">
+                        <img src="https://i.imgur.com/kRcHFfU.png" alt="ENG Vape" class="hero-logo-img">
                     </div>
                 </div>
             </div>
@@ -1964,6 +1744,45 @@
     </footer>
 
     <script>
+        // دالة حفظ جهة الاتصال
+        function saveContact() {
+            const contactInfo = {
+                name: "ENG Vape",
+                phone: "0770775285",
+                email: "",
+                company: "المهندس فيب",
+                website: ""
+            };
+            
+            // إنشاء ملف vCard
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:${contactInfo.name}
+ORG:${contactInfo.company}
+TEL;TYPE=CELL,VOICE:${contactInfo.phone}
+EMAIL:${contactInfo.email}
+URL:${contactInfo.website}
+END:VCARD`;
+            
+            // إنشاء ملف للتحميل
+            const blob = new Blob([vCardData], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ENG_Vape.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            // عرض إشعار
+            showNotification(
+                document.body.dir === 'rtl' ? 
+                'تم حفظ جهة الاتصال بنجاح!' : 
+                'Contact saved successfully!'
+            );
+        }
+        
         // دالة تبديل اللغة
         function switchLanguage(lang) {
             const isArabic = lang === 'ar';
@@ -2068,13 +1887,9 @@
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 120,
+                            top: targetElement.offsetTop - 70,
                             behavior: 'smooth'
                         });
-                        
-                        // إغلاق قائمة الجوال إذا كانت مفتوحة
-                        const mobileMenu = document.querySelector('.luxury-nav');
-                        mobileMenu.classList.remove('active');
                     }
                 });
             });
@@ -2084,25 +1899,6 @@
                 btn.addEventListener('click', () => {
                     switchLanguage(btn.dataset.lang);
                 });
-            });
-            
-            // قائمة الجوال
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const mobileMenu = document.querySelector('.luxury-nav');
-            
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('active');
-                });
-            }
-            
-            // إغلاق القائمة عند النقر خارجها
-            document.addEventListener('click', (e) => {
-                if (mobileMenu && mobileMenuBtn && 
-                    !mobileMenu.contains(e.target) && 
-                    !mobileMenuBtn.contains(e.target)) {
-                    mobileMenu.classList.remove('active');
-                }
             });
             
             // إضافة تأثير للعناصر عند تحميل الصفحة
