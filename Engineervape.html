@@ -42,20 +42,26 @@
             overflow-x: hidden;
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
             background-attachment: fixed;
+            padding-top: 140px; /* إضافة padding للتعويض عن الهيدر الثابت */
         }
         
         body[dir="ltr"] {
             font-family: 'Poppins', 'Tajawal', sans-serif;
         }
         
-        /* الشريط العلوي للتواصل فقط */
-        .contact-top-bar {
-            background: linear-gradient(to right, rgba(18, 18, 37, 0.95), rgba(26, 95, 122, 0.95));
-            padding: 12px 0;
+        /* الهيدر الرئيسي مع شريط التواصل والقائمة */
+        .main-header {
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 1001;
+            z-index: 1000;
+        }
+        
+        /* الشريط العلوي للتواصل فقط */
+        .contact-top-bar {
+            background: linear-gradient(to right, rgba(18, 18, 37, 0.95), rgba(26, 95, 122, 0.95));
+            padding: 10px 0;
+            width: 100%;
             backdrop-filter: blur(10px);
             border-bottom: 2px solid rgba(45, 156, 219, 0.3);
         }
@@ -118,14 +124,14 @@
         }
         
         .top-social-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
             background: rgba(18, 18, 37, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
             color: var(--text-light);
             text-decoration: none;
             transition: var(--transition-med);
@@ -149,17 +155,17 @@
         .top-social-icon.whatsapp { color: #25D366; }
         .top-social-icon.nfc { 
             color: #FF6B6B;
-            font-size: 26px;
+            font-size: 22px;
         }
         
         /* زر حفظ جهة الاتصال */
         .save-contact-btn {
             background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
             color: white;
-            padding: 10px 16px;
+            padding: 8px 14px;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -168,7 +174,7 @@
             border: none;
             cursor: pointer;
             box-shadow: var(--shadow-glow);
-            min-width: 150px;
+            min-width: 140px;
         }
         
         .save-contact-btn:hover {
@@ -180,11 +186,7 @@
         /* القائمة المختصرة */
         .mini-nav {
             background: rgba(10, 10, 20, 0.9);
-            padding: 10px 0;
-            position: fixed;
-            top: 72px;
-            width: 100%;
-            z-index: 1000;
+            padding: 12px 0;
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(45, 156, 219, 0.2);
         }
@@ -250,8 +252,8 @@
         
         /* زر تبديل اللغة */
         .lang-toggle-btn {
-            position: fixed;
-            top: 85px;
+            position: absolute;
+            top: 80px;
             left: 15px;
             z-index: 1002;
             background: rgba(45, 156, 219, 0.25);
@@ -287,14 +289,14 @@
         
         /* قسم الشعار والعنوان */
         .hero-logo-section {
-            min-height: 60vh;
+            min-height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             background: linear-gradient(135deg, rgba(10, 10, 20, 0.9), rgba(18, 18, 37, 0.95));
-            padding: 80px 15px 40px;
-            margin-top: 72px;
+            padding: 40px 15px 40px;
+            margin-top: 0;
             border-bottom: 1px solid rgba(45, 156, 219, 0.2);
         }
         
@@ -401,7 +403,7 @@
             margin: 0;
         }
         
-        /* البانر الفاخر */
+        /* باقي الأنماط بدون تغيير */
         .luxury-hero {
             min-height: auto;
             display: flex;
@@ -1077,7 +1079,64 @@
         }
         
         /* تصميم موحد لجميع الأجهزة */
+        @media (max-width: 767px) {
+            body {
+                padding-top: 120px; /* تقليل الـ padding للهواتف */
+            }
+            
+            .contact-top-container {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+            
+            .click-service {
+                order: 1;
+                min-width: 140px;
+                font-size: 12px;
+            }
+            
+            .save-contact-btn {
+                order: 2;
+                min-width: 130px;
+                font-size: 12px;
+            }
+            
+            .top-social-grid {
+                order: 3;
+                margin-top: 5px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .lang-toggle-btn {
+                top: 70px;
+            }
+            
+            .hero-logo-section {
+                min-height: 40vh;
+                padding: 20px 15px;
+            }
+            
+            .hero-logo-frame {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .hero-logo-title {
+                font-size: 26px;
+            }
+            
+            .hero-logo-subtitle {
+                font-size: 16px;
+            }
+        }
+        
         @media (min-width: 768px) {
+            body {
+                padding-top: 140px;
+            }
+            
             .contact-top-container {
                 padding: 0 20px;
             }
@@ -1184,122 +1243,88 @@
                 padding: 0 30px;
             }
         }
-        
-        @media (max-width: 360px) {
-            .click-service {
-                min-width: 150px;
-                font-size: 12px;
-                padding: 6px 10px;
-            }
-            
-            .click-service strong {
-                font-size: 14px;
-            }
-            
-            .top-social-icon {
-                width: 42px;
-                height: 42px;
-                font-size: 20px;
-            }
-            
-            .save-contact-btn {
-                min-width: 130px;
-                padding: 8px 12px;
-                font-size: 12px;
-            }
-            
-            .hero-logo-title {
-                font-size: 28px;
-            }
-            
-            .hero-logo-subtitle {
-                font-size: 16px;
-            }
-            
-            .hero-logo-frame {
-                width: 130px;
-                height: 130px;
-            }
-        }
     </style>
 </head>
 <body dir="rtl">
-    <!-- الشريط العلوي للتواصل -->
-    <div class="contact-top-bar">
-        <div class="contact-top-container">
-            <!-- خدمة كليك -->
-            <div class="click-service" onclick="copyPhoneNumber()">
-                <div class="click-icon">
-                    <i class="fas fa-bolt"></i>
+    <!-- الهيدر الرئيسي -->
+    <header class="main-header">
+        <!-- الشريط العلوي للتواصل -->
+        <div class="contact-top-bar">
+            <div class="contact-top-container">
+                <!-- خدمة كليك -->
+                <div class="click-service" onclick="copyPhoneNumber()">
+                    <div class="click-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <span class="ar-text">خدمة كليك: </span>
+                        <span class="en-text" style="display: none;">Click Service: </span>
+                        <strong>0770775285</strong>
+                        <small style="display: block; font-size: 0.7rem; color: var(--text-gray); margin-top: 2px;">
+                            <i class="fas fa-copy"></i> 
+                            <span class="ar-text">انقر لنسخ الرقم</span>
+                            <span class="en-text" style="display: none;">Click to copy</span>
+                        </small>
+                    </div>
                 </div>
-                <div>
-                    <span class="ar-text">خدمة كليك: </span>
-                    <span class="en-text" style="display: none;">Click Service: </span>
-                    <strong>0770775285</strong>
-                    <small style="display: block; font-size: 0.7rem; color: var(--text-gray); margin-top: 2px;">
-                        <i class="fas fa-copy"></i> 
-                        <span class="ar-text">انقر لنسخ الرقم</span>
-                        <span class="en-text" style="display: none;">Click to copy</span>
-                    </small>
+                
+                <!-- زر حفظ جهة الاتصال -->
+                <button class="save-contact-btn" onclick="saveContact()">
+                    <i class="fas fa-save"></i>
+                    <span class="ar-text">حفظ جهة الاتصال</span>
+                    <span class="en-text" style="display: none;">Save Contact</span>
+                </button>
+                
+                <!-- وسائل التواصل الاجتماعي -->
+                <div class="top-social-grid">
+                    <a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" class="top-social-icon facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" class="top-social-icon instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    
+                    <a href="https://wa.me/962770775285" class="top-social-icon whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="top-social-icon nfc" target="_blank">
+                        <i class="fas fa-id-card"></i>
+                    </a>
                 </div>
             </div>
-            
-            <!-- زر حفظ جهة الاتصال -->
-            <button class="save-contact-btn" onclick="saveContact()">
-                <i class="fas fa-save"></i>
-                <span class="ar-text">حفظ جهة الاتصال</span>
-                <span class="en-text" style="display: none;">Save Contact</span>
-            </button>
-            
-            <!-- وسائل التواصل الاجتماعي - أيقونات كبيرة -->
-            <div class="top-social-grid">
-                <a href="https://www.facebook.com/share/1EzxgsZUyD/?mibextid=wwXIfr" class="top-social-icon facebook" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
+        </div>
+        
+        <!-- زر تبديل اللغة -->
+        <button class="lang-toggle-btn active" onclick="toggleLanguage()">
+            <span class="ar-text">ع</span>
+            <span class="en-text" style="display: none;">EN</span>
+        </button>
+        
+        <!-- القائمة المختصرة -->
+        <nav class="mini-nav">
+            <div class="mini-nav-container">
+                <a href="#home" class="mini-nav-link">
+                    <i class="fas fa-home"></i>
+                    <span class="ar-text">الرئيسية</span>
+                    <span class="en-text" style="display: none;">Home</span>
                 </a>
-                
-                <a href="https://www.instagram.com/eng.vapeforsmoking?igsh=MXNoMXloMW1vNmU3bw%3D%3D&utm_source=qr" class="top-social-icon instagram" target="_blank">
-                    <i class="fab fa-instagram"></i>
+                <a href="#products" class="mini-nav-link">
+                    <i class="fas fa-cube"></i>
+                    <span class="ar-text">منتجاتنا</span>
+                    <span class="en-text" style="display: none;">Products</span>
                 </a>
-                
-                <a href="https://wa.me/962770775285" class="top-social-icon whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                
-                <a href="https://www.instagram.com/futures_journey_programmingin?igsh=Nmt4dTlyem9vMTVm&utm_source=qr" class="top-social-icon nfc" target="_blank">
-                    <i class="fas fa-id-card"></i>
+                <a href="#contact" class="mini-nav-link">
+                    <i class="fas fa-phone-alt"></i>
+                    <span class="ar-text">التواصل</span>
+                    <span class="en-text" style="display: none;">Contact</span>
                 </a>
             </div>
-        </div>
-    </div>
-    
-    <!-- زر تبديل اللغة الجديد - في الزاوية العلوية -->
-    <button class="lang-toggle-btn active" onclick="toggleLanguage()">
-        <span class="ar-text">ع</span>
-        <span class="en-text" style="display: none;">EN</span>
-    </button>
-    
-    <!-- القائمة المختصرة -->
-    <nav class="mini-nav">
-        <div class="mini-nav-container">
-            <a href="#home" class="mini-nav-link">
-                <i class="fas fa-home"></i>
-                <span class="ar-text">الرئيسية</span>
-                <span class="en-text" style="display: none;">Home</span>
-            </a>
-            <a href="#products" class="mini-nav-link">
-                <i class="fas fa-cube"></i>
-                <span class="ar-text">منتجاتنا</span>
-                <span class="en-text" style="display: none;">Products</span>
-            </a>
-            <a href="#contact" class="mini-nav-link">
-                <i class="fas fa-phone-alt"></i>
-                <span class="ar-text">التواصل</span>
-                <span class="en-text" style="display: none;">Contact</span>
-            </a>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- قسم الشعار والعنوان في المساحة الفارغة -->
+    <!-- قسم الشعار والعنوان -->
     <section class="hero-logo-section">
         <div class="hero-logo-container">
             <div class="hero-logo-frame">
@@ -1318,6 +1343,7 @@
         </div>
     </section>
 
+    <!-- باقي المحتوى بدون تغيير -->
     <!-- البانر الفاخر -->
     <section class="luxury-hero" id="home">
         <div class="hero-bg"></div>
@@ -1802,7 +1828,7 @@ END:VCARD`;
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 70,
+                            top: targetElement.offsetTop - 140,
                             behavior: 'smooth'
                         });
                     }
