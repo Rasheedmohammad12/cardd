@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M Beauty Lounge | صالون التجميل الفاخر</title>
+    <title>M Beauty Lounge | صالون تجميل فاخر</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💅</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #b185db;
-            --primary-dark: #9c64ce;
-            --primary-light: #e6d4f7;
-            --secondary: #ff9e6d;
-            --accent: #64b5f6;
-            --gold: #ffd166;
-            --dark: #2a2d43;
-            --light: #f8f7fc;
-            --gray: #8a8da0;
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.12);
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --primary: #9c27b0;
+            --primary-dark: #7b1fa2;
+            --primary-light: #e1bee7;
+            --secondary: #ff9800;
+            --accent: #2196f3;
+            --dark: #2c2c54;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --gold: #FFD700;
+            --silver: #C0C0C0;
+            --bronze: #CD7F32;
+            --success: #4CAF50;
+            --shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             --border-radius: 16px;
         }
 
@@ -39,9 +39,8 @@
 
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: var(--light);
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0e6f5 100%);
             color: var(--dark);
-            overflow-x: hidden;
             line-height: 1.7;
         }
 
@@ -53,28 +52,28 @@
 
         .container {
             width: 90%;
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header & Navigation */
+        /* Header */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 2px solid var(--primary-light);
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 0;
+            padding: 20px 0;
         }
 
         .logo {
@@ -85,14 +84,14 @@
         }
 
         .logo-img {
-            height: 85px;
+            height: 80px;
             width: auto;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
             transition: var(--transition);
         }
 
         .logo-img:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) rotate(-5deg);
         }
 
         .logo-text {
@@ -100,21 +99,23 @@
             flex-direction: column;
         }
 
-        .logo-text .main {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1.1;
-            letter-spacing: -0.5px;
+        .logo-main {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
         }
 
-        .logo-text .sub {
+        .logo-sub {
             font-size: 1rem;
-            font-weight: 500;
             color: var(--secondary);
-            margin-top: 3px;
+            font-weight: 600;
+            margin-top: 5px;
         }
 
+        /* Navigation */
         nav ul {
             display: flex;
             list-style: none;
@@ -126,136 +127,69 @@
             color: var(--dark);
             font-weight: 600;
             font-size: 1.1rem;
-            padding: 10px 18px;
-            border-radius: 50px;
+            padding: 10px 20px;
+            border-radius: 30px;
             transition: var(--transition);
             position: relative;
+            overflow: hidden;
         }
 
-        nav a:before {
+        nav a::before {
             content: '';
             position: absolute;
-            bottom: 5px;
-            right: 18px;
+            bottom: 0;
+            right: 20px;
             width: 0;
             height: 3px;
             background: var(--primary);
-            border-radius: 3px;
             transition: var(--transition);
         }
 
-        nav a:hover:before, nav a.active:before {
-            width: calc(100% - 36px);
+        nav a:hover::before,
+        nav a.active::before {
+            width: calc(100% - 40px);
         }
 
-        nav a:hover, nav a.active {
+        nav a:hover,
+        nav a.active {
             color: var(--primary);
-            background-color: rgba(177, 133, 219, 0.08);
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .lang-switch {
-            display: flex;
-            border: 2px solid var(--primary-light);
-            border-radius: 50px;
-            overflow: hidden;
-            background: white;
-        }
-
-        .lang-btn {
-            padding: 10px 18px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-weight: 700;
-            transition: var(--transition);
-            font-size: 0.95rem;
-        }
-
-        .lang-btn.active {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.6rem;
-            color: var(--primary);
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 10px;
-            transition: var(--transition);
-        }
-
-        .mobile-menu-btn:hover {
-            background-color: var(--primary-light);
+            background: rgba(156, 39, 176, 0.05);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(248, 247, 252, 0.9) 0%, rgba(232, 224, 248, 0.8) 100%), 
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
                         url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
-            color: var(--dark);
-            padding: 200px 0 120px;
+            background-attachment: fixed;
+            color: white;
+            padding: 180px 0 120px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            z-index: 0;
-        }
-
-        .hero .container {
-            position: relative;
-            z-index: 1;
+            margin-top: 80px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
         }
 
         .hero h1 {
-            font-size: 4.2rem;
+            font-size: 4rem;
             margin-bottom: 25px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.1;
-            font-weight: 800;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
         }
 
         .hero p {
             font-size: 1.3rem;
-            max-width: 750px;
+            max-width: 700px;
             margin: 0 auto 40px;
-            color: var(--dark);
             opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 18px 38px;
+            padding: 16px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
@@ -263,43 +197,50 @@
             border: none;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.25);
             position: relative;
             overflow: hidden;
             z-index: 1;
         }
 
-        .btn:before {
+        .btn::before {
             content: '';
             position: absolute;
             top: 0;
             right: 0;
             width: 0;
             height: 100%;
-            background: linear-gradient(135deg, var(--primary-dark), #8a4caf);
+            background: rgba(255, 255, 255, 0.2);
             transition: var(--transition);
             z-index: -1;
         }
 
-        .btn:hover:before {
+        .btn:hover::before {
             width: 100%;
         }
 
-        .btn:hover {
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 8px 25px rgba(156, 39, 176, 0.4);
+        }
+
+        .btn-primary:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(156, 39, 176, 0.35);
+            box-shadow: 0 15px 35px rgba(156, 39, 176, 0.6);
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, var(--secondary), #ff8a50);
-            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.25);
+            background: linear-gradient(135deg, var(--secondary), #ff8a00);
+            color: white;
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
         }
 
-        .btn-secondary:before {
-            background: linear-gradient(135deg, #ff8a50, #ff7740);
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 152, 0, 0.6);
         }
 
-        .hero-buttons {
+        .btn-group {
             display: flex;
             gap: 20px;
             justify-content: center;
@@ -319,64 +260,81 @@
 
         .section-title h2 {
             font-size: 2.8rem;
-            color: var(--dark);
+            color: var(--primary-dark);
             display: inline-block;
-            padding-bottom: 20px;
+            padding-bottom: 15px;
             position: relative;
         }
 
-        .section-title h2:after {
+        .section-title h2::after {
             content: '';
             position: absolute;
-            width: 100px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
             bottom: 0;
             right: 50%;
             transform: translateX(50%);
-            border-radius: 5px;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
         }
 
         .service-card {
             background: white;
             border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
             padding: 40px 30px;
             text-align: center;
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
             position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: translateX(100%);
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: translateX(0);
         }
 
         .service-card:hover {
-            transform: translateY(-12px);
+            transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
+            border-color: var(--primary-light);
         }
 
         .service-icon {
-            width: 90px;
-            height: 90px;
+            width: 100px;
+            height: 100px;
             background: linear-gradient(135deg, var(--primary-light), white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--primary);
-            box-shadow: 0 10px 20px rgba(177, 133, 219, 0.15);
+            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.2);
             transition: var(--transition);
         }
 
         .service-card:hover .service-icon {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(10deg);
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
         }
@@ -385,176 +343,287 @@
             color: var(--dark);
             margin-bottom: 15px;
             font-size: 1.6rem;
-            font-weight: 700;
         }
 
-        .service-content p {
-            color: var(--gray);
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        /* Enhanced Gallery Section */
+        /* Enhanced Gallery with Lightbox */
         .gallery-section {
-            background: linear-gradient(135deg, #f9f7ff 0%, #f0ebfa 100%);
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(135deg, #f9f5ff 0%, #f0e6f5 100%);
         }
 
         .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery-main {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        .main-image-container {
+        .gallery-item {
             position: relative;
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--shadow-hover);
-            height: 500px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            height: 280px;
+            transition: var(--transition);
         }
 
-        .main-image {
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: var(--transition);
         }
 
-        .main-image:hover {
-            transform: scale(1.03);
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
 
-        .image-info {
+        .gallery-overlay {
             position: absolute;
             bottom: 0;
             right: 0;
             left: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
             color: white;
-            padding: 25px;
-            transform: translateY(0);
+            padding: 20px;
+            transform: translateY(100%);
             transition: var(--transition);
         }
 
-        .main-image-container:hover .image-info {
+        .gallery-item:hover .gallery-overlay {
             transform: translateY(0);
         }
 
-        .thumbnail-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            height: 500px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        .thumbnail-container::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .thumbnail-container::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-        }
-
-        .thumbnail-container::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 10px;
-        }
-
-        .thumbnail {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            height: 115px;
-            transition: var(--transition);
-            opacity: 0.7;
-        }
-
-        .thumbnail.active {
-            opacity: 1;
-            transform: scale(1.03);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .thumbnail:hover {
-            opacity: 1;
-            transform: scale(1.03);
-        }
-
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .thumbnail-overlay {
-            position: absolute;
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
             top: 0;
             right: 0;
-            bottom: 0;
-            left: 0;
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            align-items: center;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
             justify-content: center;
+            align-items: center;
             opacity: 0;
-            transition: var(--transition);
+            transition: opacity 0.3s ease;
         }
 
-        .thumbnail:hover .thumbnail-overlay {
+        .lightbox.active {
+            display: flex;
             opacity: 1;
         }
 
-        .gallery-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
         }
 
-        .gallery-btn {
-            background: white;
-            color: var(--primary);
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 30px;
+        }
+
+        .lightbox-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
             border: none;
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            backdrop-filter: blur(10px);
         }
 
-        .gallery-btn:hover {
-            background: var(--primary);
+        .lightbox-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
             color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            right: 50%;
+            transform: translateX(50%);
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Ratings Section */
+        .ratings-section {
+            background: white;
+        }
+
+        .ratings-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .rating-overview {
+            background: linear-gradient(135deg, var(--primary-light), white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .rating-score {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .rating-form {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .rating-form h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .rating-stars-input {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            direction: ltr;
+        }
+
+        .star-input {
+            font-size: 2.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .star-input:hover,
+        .star-input.active {
+            color: var(--gold);
+            transform: scale(1.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--primary-light);
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.1);
+        }
+
+        .submit-rating {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .submit-rating:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(177, 133, 219, 0.3);
+            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.3);
         }
 
         /* Contact Section */
         .contact-section {
-            background-color: white;
+            background: linear-gradient(135deg, var(--dark), #1a1c2f);
+            color: white;
+        }
+
+        .contact-section .section-title h2 {
+            color: white;
+        }
+
+        .contact-section .section-title h2::after {
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
         }
 
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: start;
         }
 
@@ -569,66 +638,40 @@
             align-items: flex-start;
             gap: 20px;
             padding: 25px;
-            background: var(--light);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
             transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .contact-item:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .contact-icon {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
             width: 60px;
             height: 60px;
-            border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             flex-shrink: 0;
-            box-shadow: 0 8px 20px rgba(177, 133, 219, 0.25);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .contact-details h3 {
-            color: var(--dark);
-            margin-bottom: 8px;
-            font-size: 1.3rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            background: var(--light);
-            color: var(--primary);
-            font-size: 1.3rem;
-            text-decoration: none;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .social-icon:hover {
-            background: var(--primary);
+            margin-bottom: 10px;
             color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(177, 133, 219, 0.3);
         }
 
-        /* Contact Buttons */
+        .contact-details p {
+            opacity: 0.9;
+        }
+
         .contact-buttons {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -639,146 +682,191 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 22px;
-            border-radius: 16px;
+            padding: 20px;
+            border-radius: var(--border-radius);
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             transition: var(--transition);
-            justify-content: flex-start;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            color: white;
             position: relative;
             overflow: hidden;
             z-index: 1;
         }
 
-        .contact-btn:before {
+        .contact-btn::before {
             content: '';
             position: absolute;
             top: 0;
             right: 0;
             width: 0;
             height: 100%;
+            background: rgba(255, 255, 255, 0.1);
             transition: var(--transition);
             z-index: -1;
         }
 
-        .contact-btn:hover:before {
+        .contact-btn:hover::before {
             width: 100%;
         }
 
-        .phone-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .phone-btn:before {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .facebook-btn {
-            background-color: #1877F2;
-            color: white;
-        }
-
-        .facebook-btn:before {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .instagram-btn {
-            background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D);
-            color: white;
-        }
-
-        .instagram-btn:before {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .location-btn {
-            background-color: #FF5722;
-            color: white;
-        }
-
-        .location-btn:before {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .nfc-btn {
-            background: linear-gradient(135deg, var(--accent), #2196f3);
-            color: white;
-        }
-
-        .nfc-btn:before {
-            background: rgba(0, 0, 0, 0.1);
-        }
+        .phone-btn { background: linear-gradient(135deg, #4CAF50, #2E7D32); }
+        .facebook-btn { background: linear-gradient(135deg, #1877F2, #0D5DBD); }
+        .instagram-btn { background: linear-gradient(45deg, #405DE6, #833AB4, #C13584); }
+        .location-btn { background: linear-gradient(135deg, #FF5722, #E64A19); }
+        .savecontact-btn { background: linear-gradient(135deg, var(--accent), #1976D2); }
 
         .contact-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .contact-btn i {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
         }
 
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, var(--dark), #1a1c2f);
-            color: white;
-            padding: 80px 0 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer:before {
-            content: '';
-            position: absolute;
+        /* Save Contact Modal */
+        .savecontact-modal {
+            position: fixed;
             top: 0;
             right: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(177,133,219,0.03)"/></svg>');
-            background-size: cover;
-            z-index: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 3000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .savecontact-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .savecontact-content {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlide 0.4s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .savecontact-content h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .savecontact-content p {
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .contact-info-display {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: right;
+        }
+
+        .contact-info-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-info-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .contact-value {
+            color: var(--primary);
+            font-size: 1.1rem;
+            direction: ltr;
+            text-align: center;
+        }
+
+        .savecontact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .savecontact-buttons button {
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .savecontact-buttons .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .savecontact-buttons .btn-secondary {
+            background: var(--light);
+            color: var(--dark);
+            border: 2px solid var(--primary-light);
+        }
+
+        .savecontact-buttons button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1c2f;
+            color: white;
+            padding: 60px 0 30px;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 50px;
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 1;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-logo img {
-            height: 100px;
+            height: 80px;
             margin-bottom: 20px;
             filter: brightness(0) invert(1);
         }
 
-        .footer-logo p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            max-width: 300px;
-        }
-
         .footer-links h3 {
             color: var(--primary-light);
-            margin-bottom: 25px;
-            font-size: 1.4rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-links h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 3px;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
         }
 
         .footer-links ul {
@@ -786,7 +874,7 @@
         }
 
         .footer-links li {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
@@ -800,18 +888,16 @@
 
         .footer-links a:hover {
             color: var(--primary-light);
-            transform: translateX(-5px);
+            transform: translateX(-10px);
         }
 
-        .footer-links a:before {
-            content: '›';
-            font-size: 1.2rem;
-            color: var(--primary);
+        .footer-links a i {
+            font-size: 0.8rem;
             opacity: 0;
             transition: var(--transition);
         }
 
-        .footer-links a:hover:before {
+        .footer-links a:hover i {
             opacity: 1;
         }
 
@@ -820,125 +906,13 @@
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.5);
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 1;
+            font-size: 0.9rem;
         }
 
-        /* Modals */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background-color: white;
-            border-radius: 20px;
-            padding: 40px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
-            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--light);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            color: var(--gray);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .close-modal:hover {
-            background: var(--primary);
-            color: white;
-            transform: rotate(90deg);
-        }
-
-        .modal-title {
-            color: var(--primary);
-            margin-bottom: 25px;
-            text-align: center;
-            font-size: 1.8rem;
-        }
-
-        .modal-options {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .modal-option {
-            display: block;
-            padding: 18px;
-            background-color: var(--light);
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 700;
-            text-align: center;
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-
-        .modal-option:hover {
-            background-color: var(--primary-light);
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 1200px) {
             .hero h1 {
                 font-size: 3.5rem;
-            }
-            
-            .gallery-main {
-                grid-template-columns: 1fr;
-            }
-            
-            .thumbnail-container {
-                grid-template-columns: repeat(4, 1fr);
-                height: auto;
-                max-height: 150px;
-                overflow-x: auto;
-                overflow-y: hidden;
-            }
-            
-            .thumbnail {
-                height: 100px;
             }
         }
 
@@ -958,48 +932,27 @@
         }
 
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            nav {
-                position: fixed;
-                top: 90px;
-                right: 0;
-                width: 280px;
-                background-color: white;
-                padding: 25px;
-                box-shadow: var(--shadow-hover);
-                transform: translateX(100%);
-                opacity: 0;
-                transition: var(--transition);
-                z-index: 999;
-                border-radius: 0 0 0 20px;
-            }
-            
-            nav.active {
-                transform: translateX(0);
-                opacity: 1;
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
             }
             
             nav ul {
-                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
                 gap: 15px;
             }
             
             .hero {
-                padding: 160px 0 80px;
+                padding: 150px 0 80px;
+                margin-top: 120px;
             }
             
             .hero h1 {
                 font-size: 2.5rem;
             }
             
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .hero-buttons {
+            .btn-group {
                 flex-direction: column;
                 align-items: center;
             }
@@ -1007,38 +960,24 @@
             .btn {
                 width: 100%;
                 max-width: 300px;
-                justify-content: center;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
             }
             
             .services-grid {
                 grid-template-columns: 1fr;
             }
             
-            .contact-buttons {
-                grid-template-columns: 1fr;
+            .gallery-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
             
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .savecontact-buttons {
+                flex-direction: column;
             }
         }
 
         @media (max-width: 576px) {
             .hero h1 {
                 font-size: 2.2rem;
-            }
-            
-            .logo-img {
-                height: 70px;
-            }
-            
-            .logo-text .main {
-                font-size: 1.6rem;
             }
             
             .section {
@@ -1049,12 +988,22 @@
                 padding: 30px 20px;
             }
             
-            .main-image-container {
-                height: 350px;
+            .lightbox-nav {
+                padding: 0 15px;
+            }
+            
+            .lightbox-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .savecontact-content {
+                padding: 30px 20px;
             }
         }
 
-        /* Animation for page elements */
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -1066,16 +1015,13 @@
             }
         }
 
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+        .animate {
+            animation: fadeInUp 0.8s ease both;
         }
 
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
@@ -1084,31 +1030,22 @@
         <div class="container">
             <div class="nav-container">
                 <a href="#home" class="logo">
-                    <img src="https://i.imgur.com/iZfhFO1.png" alt="M Beauty Lounge Logo" class="logo-img">
+                    <img src="https://i.imgur.com/iZfhFO1.png" alt="M Beauty Lounge" class="logo-img">
                     <div class="logo-text">
-                        <div class="main">M Beauty Lounge</div>
-                        <div class="sub">صالون التجميل الفاخر</div>
+                        <div class="logo-main">M Beauty Lounge</div>
+                        <div class="logo-sub">صالون التجميل الفاخر</div>
                     </div>
                 </a>
                 
-                <nav id="mainNav">
+                <nav>
                     <ul>
                         <li><a href="#home" class="active">الرئيسية</a></li>
                         <li><a href="#services">خدماتنا</a></li>
-                        <li><a href="#gallery">معرض الصور</a></li>
+                        <li><a href="#gallery">المعرض</a></li>
+                        <li><a href="#ratings">التقييمات</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
                 </nav>
-                
-                <div class="header-actions">
-                    <div class="lang-switch">
-                        <button class="lang-btn active" id="arBtn">عربي</button>
-                        <button class="lang-btn" id="enBtn">English</button>
-                    </div>
-                    <button class="mobile-menu-btn" id="mobileMenuBtn">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </header>
@@ -1116,11 +1053,11 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1 class="hero-title animate-on-scroll">M Beauty Lounge</h1>
-            <p class="hero-subtitle animate-on-scroll">صالون التجميل الفاخر الذي يقدم أحدث خدمات التجميل والعناية بالبشرة بأيدي خبراء متخصصين لتجربة فريدة من نوعها.</p>
-            <div class="hero-buttons">
-                <a href="#services" class="btn animate-on-scroll">استكشف خدماتنا</a>
-                <a href="#contact" class="btn btn-secondary animate-on-scroll">احجز موعدًا</a>
+            <h1 class="animate">M Beauty Lounge</h1>
+            <p class="animate delay-1">صالون تجميل فاخر يقدم أحدث خدمات التجميل والعناية بالبشرة بأيدي خبراء متخصصين لتجربة فريدة من نوعها.</p>
+            <div class="btn-group animate delay-2">
+                <a href="#services" class="btn btn-primary"><i class="fas fa-spa"></i> استكشف خدماتنا</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fas fa-calendar-check"></i> احجز موعدًا</a>
             </div>
         </div>
     </section>
@@ -1128,11 +1065,11 @@
     <!-- Services Section -->
     <section class="section" id="services">
         <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>خدماتنا المميزة</h2>
+            <div class="section-title">
+                <h2 class="animate">خدماتنا المميزة</h2>
             </div>
             <div class="services-grid">
-                <div class="service-card animate-on-scroll">
+                <div class="service-card animate delay-1">
                     <div class="service-icon">
                         <i class="fas fa-spa"></i>
                     </div>
@@ -1141,7 +1078,7 @@
                         <p>جلسات عناية متكاملة للبشرة باستخدام أفضل المنتجات العالمية وأحدث التقنيات لتحقيق بشرة مشرقة وصحية.</p>
                     </div>
                 </div>
-                <div class="service-card animate-on-scroll">
+                <div class="service-card animate delay-2">
                     <div class="service-icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
@@ -1150,7 +1087,7 @@
                         <p>أحدث صيحات الميك أب لأهم المناسبات بإشراف خبراء التجميل المحترفين لتحقيق إطلالة ساحرة.</p>
                     </div>
                 </div>
-                <div class="service-card animate-on-scroll">
+                <div class="service-card animate delay-3">
                     <div class="service-icon">
                         <i class="fas fa-hand-sparkles"></i>
                     </div>
@@ -1163,35 +1100,98 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Gallery Section with Lightbox -->
     <section class="section gallery-section" id="gallery">
         <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>معرض أعمالنا</h2>
+            <div class="section-title">
+                <h2 class="animate">معرض أعمالنا</h2>
             </div>
-            
-            <div class="gallery-container animate-on-scroll">
-                <div class="gallery-main">
-                    <div class="main-image-container">
-                        <img src="https://i.imgur.com/3ZbkeT4.jpg" alt="تصميم داخلي فاخر" class="main-image" id="mainImage">
-                        <div class="image-info">
-                            <h3 id="imageTitle">تصميم داخلي فاخر</h3>
-                            <p id="imageDesc">تصميم أنيق ومريح يوفر أجواء استرخاء فريدة</p>
-                        </div>
-                    </div>
-                    
-                    <div class="thumbnail-container" id="thumbnailContainer">
-                        <!-- تمت إضافة الصور المصغرة عبر JavaScript -->
+            <div class="gallery-container">
+                <div class="gallery-item animate" onclick="openLightbox(0)">
+                    <img src="https://i.imgur.com/3ZbkeT4.jpg" alt="تصميم داخلي فاخر">
+                    <div class="gallery-overlay">
+                        <h3>تصميم داخلي فاخر</h3>
                     </div>
                 </div>
-                
-                <div class="gallery-controls">
-                    <button class="gallery-btn" id="prevBtn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <button class="gallery-btn" id="nextBtn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
+                <div class="gallery-item animate delay-1" onclick="openLightbox(1)">
+                    <img src="https://i.imgur.com/j2JCNMZ.jpg" alt="منتجات العناية">
+                    <div class="gallery-overlay">
+                        <h3>منتجات العناية بالبشرة</h3>
+                    </div>
+                </div>
+                <div class="gallery-item animate delay-2" onclick="openLightbox(2)">
+                    <img src="https://i.imgur.com/buMgKMF.jpg" alt="أجواء الصالون">
+                    <div class="gallery-overlay">
+                        <h3>أجواء الصالون الهادئة</h3>
+                    </div>
+                </div>
+                <div class="gallery-item animate delay-3" onclick="openLightbox(3)">
+                    <img src="https://i.imgur.com/IDCPzh3.jpg" alt="خدمات التجميل">
+                    <div class="gallery-overlay">
+                        <h3>خدمات التجميل المتكاملة</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightbox-img" src="" alt="">
+            <div class="lightbox-nav">
+                <button class="lightbox-btn" onclick="prevImage()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="lightbox-btn" onclick="nextImage()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            <div class="lightbox-counter" id="lightbox-counter">1 / 4</div>
+        </div>
+    </div>
+
+    <!-- Ratings Section -->
+    <section class="section ratings-section" id="ratings">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate">تقييمات العملاء</h2>
+            </div>
+            <div class="ratings-container">
+                <div class="rating-overview animate">
+                    <div class="rating-score">4.8</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>بناءً على 247 تقييمًا من عملائنا الكرام</p>
+                </div>
+                <div class="rating-form animate delay-1">
+                    <h3>شاركنا رأيك</h3>
+                    <div class="rating-stars-input">
+                        <span class="star-input" onclick="setRating(1)">★</span>
+                        <span class="star-input" onclick="setRating(2)">★</span>
+                        <span class="star-input" onclick="setRating(3)">★</span>
+                        <span class="star-input" onclick="setRating(4)">★</span>
+                        <span class="star-input" onclick="setRating(5)">★</span>
+                    </div>
+                    <form id="ratingForm">
+                        <div class="form-group">
+                            <label for="ratingName">اسمك</label>
+                            <input type="text" id="ratingName" class="form-control" placeholder="أدخل اسمك" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ratingComment">تعليقك</label>
+                            <textarea id="ratingComment" class="form-control" rows="4" placeholder="شاركنا تجربتك..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-rating">إرسال التقييم</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1200,12 +1200,11 @@
     <!-- Contact Section -->
     <section class="section contact-section" id="contact">
         <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>تواصل معنا</h2>
+            <div class="section-title">
+                <h2 class="animate">تواصل معنا</h2>
             </div>
-            
             <div class="contact-container">
-                <div class="contact-info animate-on-scroll">
+                <div class="contact-info animate">
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-phone-alt"></i>
@@ -1215,7 +1214,6 @@
                             <p>متاحون لخدمتكم يومياً من 9 صباحاً حتى 10 مساءً</p>
                         </div>
                     </div>
-                    
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
@@ -1225,7 +1223,6 @@
                             <p>M Beauty Lounge - الموقع الأنيق والمريح لتجربة فريدة</p>
                         </div>
                     </div>
-                    
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-clock"></i>
@@ -1235,440 +1232,331 @@
                             <p>الأحد - الخميس: 9 ص - 10 م<br>الجمعة - السبت: 10 ص - 11 م</p>
                         </div>
                     </div>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-icon" id="socialFacebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon" id="socialInstagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon" id="socialLocation">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </a>
-                    </div>
                 </div>
-                
-                <div class="contact-buttons animate-on-scroll">
-                    <a href="#" class="contact-btn phone-btn" id="phoneBtn">
+                <div class="contact-buttons animate delay-1">
+                    <a href="tel:0796281500" class="contact-btn phone-btn">
                         <i class="fas fa-phone-alt"></i>
-                        <span>اتصل بنا</span>
+                        <span>اتصل: 0796281500</span>
                     </a>
-                    
-                    <a href="#" class="contact-btn facebook-btn" id="facebookBtn">
+                    <a href="https://www.facebook.com/share/176ESgwXN2/?mibextid=wwXIfr" target="_blank" class="contact-btn facebook-btn">
                         <i class="fab fa-facebook-f"></i>
                         <span>فيسبوك</span>
                     </a>
-                    
-                    <a href="#" class="contact-btn instagram-btn" id="instagramBtn">
+                    <a href="#" class="contact-btn instagram-btn" onclick="openInstagramModal(event)">
                         <i class="fab fa-instagram"></i>
                         <span>انستقرام</span>
                     </a>
-                    
-                    <a href="#" class="contact-btn location-btn" id="locationBtn">
+                    <a href="https://share.google/ehQYW8vbZsq2x4bFd" target="_blank" class="contact-btn location-btn">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>الموقع</span>
                     </a>
-                    
-                    <a href="#" class="contact-btn nfc-btn" id="nfcBtn">
-                        <i class="fas fa-wifi"></i>
-                        <span>NFC Request</span>
+                    <a href="#" class="contact-btn savecontact-btn" onclick="openSaveContactModal(event)">
+                        <i class="fas fa-save"></i>
+                        <span>Save Contact</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Save Contact Modal -->
+    <div class="savecontact-modal" id="savecontactModal">
+        <div class="savecontact-content">
+            <h3>Save Contact</h3>
+            <p>احفظ معلومات الاتصال الخاصة بنا على هاتفك</p>
+            <div class="contact-info-display">
+                <div class="contact-info-item">
+                    <div class="contact-label">اسم الصالون:</div>
+                    <div class="contact-value">M Beauty Lounge</div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-label">رقم الهاتف:</div>
+                    <div class="contact-value">0796281500</div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-label">رقم بديل:</div>
+                    <div class="contact-value">0792281500</div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-label">البريد الإلكتروني:</div>
+                    <div class="contact-value">info@mbeautylounge.com</div>
+                </div>
+            </div>
+            <div class="savecontact-buttons">
+                <button class="btn-primary" onclick="saveToContacts()">
+                    <i class="fas fa-save"></i> حفظ جهة الاتصال
+                </button>
+                <button class="btn-secondary" onclick="closeSaveContactModal()">
+                    <i class="fas fa-times"></i> إغلاق
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="https://i.imgur.com/iZfhFO1.png" alt="M Beauty Lounge Logo">
-                    <p>M Beauty Lounge هو صالون التجميل الفاخر الذي يوفر أحدث خدمات التجميل والعناية بالبشرة بأيدي خبراء متخصصين لتجربة فريدة لا تنسى.</p>
+                    <img src="https://i.imgur.com/iZfhFO1.png" alt="M Beauty Lounge">
+                    <p>صالون تجميل فاخر يقدم أحدث خدمات التجميل والعناية بالبشرة بأيدي خبراء متخصصين.</p>
                 </div>
-                
                 <div class="footer-links">
                     <h3>روابط سريعة</h3>
                     <ul>
-                        <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#services">خدماتنا</a></li>
-                        <li><a href="#gallery">معرض الصور</a></li>
-                        <li><a href="#contact">اتصل بنا</a></li>
+                        <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-left"></i> المعرض</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-links">
                     <h3>خدماتنا</h3>
                     <ul>
-                        <li><a href="#">العناية بالبشرة</a></li>
-                        <li><a href="#">الميك أب</a></li>
-                        <li><a href="#">العناية بالأظافر</a></li>
-                        <li><a href="#">التدليك والمساج</a></li>
-                        <li><a href="#">إزالة الشعر</a></li>
-                        <li><a href="#">العناية بالشعر</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> العناية بالبشرة</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الميك أب</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> العناية بالأظافر</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> العناية بالشعر</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="copyright">
                 <p>© 2023 M Beauty Lounge. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Phone Modal -->
-    <div class="modal" id="phoneModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closePhoneModal">&times;</button>
-            <h3 class="modal-title">اختر رقم الهاتف للاتصال</h3>
-            <div class="modal-options">
-                <a href="tel:0796281500" class="modal-option">0796281500</a>
-                <a href="tel:0792281500" class="modal-option">0792281500</a>
-            </div>
-        </div>
-    </div>
-
     <!-- Instagram Modal -->
-    <div class="modal" id="instagramModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeInstagramModal">&times;</button>
-            <h3 class="modal-title">اختر حساب الانستقرام</h3>
-            <div class="modal-options">
-                <a href="https://www.instagram.com/mbeautylounge1?igsh=N3I0MWgwbWFxODhz" target="_blank" class="modal-option">mbeautylounge1</a>
-                <a href="https://www.instagram.com/muntaser_makkawi?igsh=cWZsNGFlbXB3YnB6" target="_blank" class="modal-option">muntaser_makkawi</a>
-                <a href="https://www.instagram.com/dmadeeha.makkawi?igsh=MWxhNjhhN2RyZmRhaQ==" target="_blank" class="modal-option">dmadeeha.makkawi</a>
-                <a href="https://www.instagram.com/ahmad_makkawi88?igsh=MWxyZHNxd2l3djk4bA==" target="_blank" class="modal-option">ahmad_makkawi88</a>
+    <div class="modal" id="instagramModal" style="display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 30px; border-radius: 16px; max-width: 500px; width: 90%; text-align: center;">
+            <h3 style="color: var(--primary); margin-bottom: 20px;">اختر حساب الانستقرام</h3>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <a href="https://www.instagram.com/mbeautylounge1?igsh=N3I0MWgwbWFxODhz" target="_blank" style="display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; text-decoration: none; color: var(--dark); font-weight: 600;">mbeautylounge1</a>
+                <a href="https://www.instagram.com/muntaser_makkawi?igsh=cWZsNGFlbXB3YnB6" target="_blank" style="display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; text-decoration: none; color: var(--dark); font-weight: 600;">muntaser_makkawi</a>
+                <a href="https://www.instagram.com/dmadeeha.makkawi?igsh=MWxhNjhhN2RyZmRhaQ==" target="_blank" style="display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; text-decoration: none; color: var(--dark); font-weight: 600;">dmadeeha.makkawi</a>
+                <a href="https://www.instagram.com/ahmad_makkawi88?igsh=MWxyZHNxd2l3djk4bA==" target="_blank" style="display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; text-decoration: none; color: var(--dark); font-weight: 600;">ahmad_makkawi88</a>
             </div>
+            <button onclick="closeInstagramModal()" style="margin-top: 20px; padding: 10px 30px; background: var(--primary); color: white; border: none; border-radius: 30px; cursor: pointer;">إغلاق</button>
         </div>
     </div>
 
     <script>
-        // بيانات الموقع
-        const siteData = {
-            phones: ["0796281500", "0792281500"],
-            facebook: "https://www.facebook.com/share/176ESgwXN2/?mibextid=wwXIfr",
-            instagramAccounts: [
-                {name: "mbeautylounge1", url: "https://www.instagram.com/mbeautylounge1?igsh=N3I0MWgwbWFxODhz"},
-                {name: "muntaser_makkawi", url: "https://www.instagram.com/muntaser_makkawi?igsh=cWZsNGFlbXB3YnB6"},
-                {name: "dmadeeha.makkawi", url: "https://www.instagram.com/dmadeeha.makkawi?igsh=MWxhNjhhN2RyZmRhaQ=="},
-                {name: "ahmad_makkawi88", url: "https://www.instagram.com/ahmad_makkawi88?igsh=MWxyZHNxd2l3djk4bA=="}
-            ],
-            location: "https://share.google/ehQYW8vbZsq2x4bFd",
-            nfc: "https://www.instagram.com/futures_journey_programmingin?igsh=MTdkcXVkcjY3cGpwZA==",
-            galleryImages: [
-                {
-                    url: "https://i.imgur.com/3ZbkeT4.jpg",
-                    title: "تصميم داخلي فاخر",
-                    desc: "تصميم أنيق ومريح يوفر أجواء استرخاء فريدة"
-                },
-                {
-                    url: "https://i.imgur.com/j2JCNMZ.jpg",
-                    title: "منتجات العناية بالبشرة",
-                    desc: "أفضل المنتجات العالمية للعناية بالبشرة"
-                },
-                {
-                    url: "https://i.imgur.com/buMgKMF.jpg",
-                    title: "أجواء الصالون الهادئة",
-                    desc: "بيئة هادئة ومريحة للاسترخاء والجمال"
-                },
-                {
-                    url: "https://i.imgur.com/IDCPzh3.jpg",
-                    title: "خدمات التجميل المتكاملة",
-                    desc: "أحدث تجهيزات التجميل بأيدي خبراء متخصصين"
-                }
-            ]
-        };
-
-        // تهيئة الموقع
-        document.addEventListener('DOMContentLoaded', function() {
-            // تهيئة معرض الصور المحسن
-            initEnhancedGallery();
+        // معرض الصور مع Lightbox
+        const galleryImages = [
+            { src: "https://i.imgur.com/3ZbkeT4.jpg", title: "تصميم داخلي فاخر" },
+            { src: "https://i.imgur.com/j2JCNMZ.jpg", title: "منتجات العناية بالبشرة" },
+            { src: "https://i.imgur.com/buMgKMF.jpg", title: "أجواء الصالون الهادئة" },
+            { src: "https://i.imgur.com/IDCPzh3.jpg", title: "خدمات التجميل المتكاملة" }
+        ];
+        
+        let currentLightboxIndex = 0;
+        
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCounter = document.getElementById('lightbox-counter');
             
-            // تهيئة القائمة المتنقلة
-            initMobileMenu();
+            lightboxImg.src = galleryImages[index].src;
+            lightboxImg.alt = galleryImages[index].title;
+            lightboxCounter.textContent = `${index + 1} / ${galleryImages.length}`;
             
-            // تهيئة تبديل اللغة
-            initLanguageSwitcher();
-            
-            // تهيئة أزرار الاتصال
-            initContactButtons();
-            
-            // تهيئة التمرير السلس
-            initSmoothScroll();
-            
-            // تهيئة رسوميات التمرير
-            initScrollAnimations();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function nextImage() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+            openLightbox(currentLightboxIndex);
+        }
+        
+        function prevImage() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+            openLightbox(currentLightboxIndex);
+        }
+        
+        // إغلاق Lightbox بالضغط على ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            } else if (e.key === 'ArrowLeft') {
+                prevImage();
+            }
         });
-
-        // معرض الصور المحسن
-        let currentGalleryIndex = 0;
-
-        function initEnhancedGallery() {
-            const thumbnailContainer = document.getElementById('thumbnailContainer');
-            const mainImage = document.getElementById('mainImage');
-            const imageTitle = document.getElementById('imageTitle');
-            const imageDesc = document.getElementById('imageDesc');
-            
-            // إضافة الصور المصغرة
-            siteData.galleryImages.forEach((image, index) => {
-                const thumbnail = document.createElement('div');
-                thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-                thumbnail.innerHTML = `
-                    <img src="${image.url}" alt="${image.title}" data-index="${index}">
-                    <div class="thumbnail-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                `;
-                
-                thumbnail.addEventListener('click', () => {
-                    updateMainImage(index);
-                });
-                
-                thumbnailContainer.appendChild(thumbnail);
-            });
-            
-            // تحديث الصورة الرئيسية
-            function updateMainImage(index) {
-                currentGalleryIndex = index;
-                const image = siteData.galleryImages[index];
-                
-                mainImage.src = image.url;
-                mainImage.alt = image.title;
-                imageTitle.textContent = image.title;
-                imageDesc.textContent = image.desc;
-                
-                // تحديث الصور المصغرة النشطة
-                document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-                    thumb.classList.toggle('active', i === index);
-                });
+        
+        // إغلاق Lightbox بالنقر خارج الصورة
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightbox')) {
+                closeLightbox();
             }
-            
-            // أحداث أزرار التنقل
-            document.getElementById('prevBtn').addEventListener('click', () => {
-                let newIndex = currentGalleryIndex - 1;
-                if (newIndex < 0) newIndex = siteData.galleryImages.length - 1;
-                updateMainImage(newIndex);
-            });
-            
-            document.getElementById('nextBtn').addEventListener('click', () => {
-                let newIndex = currentGalleryIndex + 1;
-                if (newIndex >= siteData.galleryImages.length) newIndex = 0;
-                updateMainImage(newIndex);
-            });
-            
-            // التمرير التلقائي
-            let galleryInterval = setInterval(() => {
-                document.getElementById('nextBtn').click();
-            }, 5000);
-            
-            // إيقاف التمرير التلقائي عند التفاعل
-            document.querySelector('.gallery-container').addEventListener('mouseenter', () => {
-                clearInterval(galleryInterval);
-            });
-            
-            document.querySelector('.gallery-container').addEventListener('mouseleave', () => {
-                galleryInterval = setInterval(() => {
-                    document.getElementById('nextBtn').click();
-                }, 5000);
-            });
-        }
-
-        // القائمة المتنقلة
-        function initMobileMenu() {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mainNav = document.getElementById('mainNav');
-            
-            mobileMenuBtn.addEventListener('click', () => {
-                mainNav.classList.toggle('active');
-                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
-                    ? '<i class="fas fa-times"></i>' 
-                    : '<i class="fas fa-bars"></i>';
-            });
-            
-            // إغلاق القائمة عند النقر على رابط
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mainNav.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                });
-            });
-        }
-
-        // تبديل اللغة
-        function initLanguageSwitcher() {
-            const arBtn = document.getElementById('arBtn');
-            const enBtn = document.getElementById('enBtn');
-            const body = document.body;
-            
-            // النصوص العربية
-            const arTexts = {
-                heroTitle: "M Beauty Lounge",
-                heroSubtitle: "صالون التجميل الفاخر الذي يقدم أحدث خدمات التجميل والعناية بالبشرة بأيدي خبراء متخصصين لتجربة فريدة من نوعها.",
-                exploreBtn: "استكشف خدماتنا",
-                bookBtn: "احجز موعدًا",
-                servicesTitle: "خدماتنا المميزة",
-                galleryTitle: "معرض أعمالنا",
-                contactTitle: "تواصل معنا",
-                callUs: "اتصل بنا",
-                visitUs: "زورونا",
-                hoursTitle: "ساعات العمل",
-                hoursText: "الأحد - الخميس: 9 ص - 10 م<br>الجمعة - السبت: 10 ص - 11 م",
-                copyright: "© 2023 M Beauty Lounge. جميع الحقوق محفوظة."
-            };
-            
-            // النصوص الإنجليزية
-            const enTexts = {
-                heroTitle: "M Beauty Lounge",
-                heroSubtitle: "A luxurious beauty salon offering the latest beauty and skincare services by specialized experts for a unique experience.",
-                exploreBtn: "Explore Our Services",
-                bookBtn: "Book an Appointment",
-                servicesTitle: "Our Premium Services",
-                galleryTitle: "Our Work Gallery",
-                contactTitle: "Contact Us",
-                callUs: "Call Us",
-                visitUs: "Visit Us",
-                hoursTitle: "Working Hours",
-                hoursText: "Sun - Thu: 9 AM - 10 PM<br>Fri - Sat: 10 AM - 11 PM",
-                copyright: "© 2023 M Beauty Lounge. All rights reserved."
-            };
-            
-            function switchLanguage(lang) {
-                const texts = lang === 'ar' ? arTexts : enTexts;
-                
-                // تحديث النصوص
-                document.querySelector('.hero-title').textContent = texts.heroTitle;
-                document.querySelector('.hero-subtitle').textContent = texts.heroSubtitle;
-                document.querySelector('.hero-buttons a:first-child').textContent = texts.exploreBtn;
-                document.querySelector('.hero-buttons a:last-child').textContent = texts.bookBtn;
-                document.querySelectorAll('.section-title h2')[0].textContent = texts.servicesTitle;
-                document.querySelectorAll('.section-title h2')[1].textContent = texts.galleryTitle;
-                document.querySelectorAll('.section-title h2')[2].textContent = texts.contactTitle;
-                
-                // تحديث أزرار اللغة
-                if (lang === 'ar') {
-                    body.classList.remove('en-lang');
-                    body.dir = 'rtl';
-                    arBtn.classList.add('active');
-                    enBtn.classList.remove('active');
+        });
+        
+        // نظام التقييمات
+        let userRating = 0;
+        
+        function setRating(rating) {
+            userRating = rating;
+            const stars = document.querySelectorAll('.star-input');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
                 } else {
-                    body.classList.add('en-lang');
-                    body.dir = 'ltr';
-                    arBtn.classList.remove('active');
-                    enBtn.classList.add('active');
+                    star.classList.remove('active');
                 }
+            });
+        }
+        
+        document.getElementById('ratingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (userRating === 0) {
+                alert('الرجاء اختيار تقييم من 1 إلى 5 نجوم');
+                return;
             }
             
-            arBtn.addEventListener('click', () => switchLanguage('ar'));
-            enBtn.addEventListener('click', () => switchLanguage('en'));
+            const name = document.getElementById('ratingName').value;
+            const comment = document.getElementById('ratingComment').value;
+            
+            // هنا يمكنك إرسال البيانات إلى الخادم
+            alert(`شكراً ${name} لتقييمك بـ ${userRating} نجوم!\nسيتم عرض تعليقك قريباً.`);
+            
+            // إعادة تعيين النموذج
+            document.getElementById('ratingForm').reset();
+            setRating(0);
+        });
+        
+        // نظام Save Contact
+        function openSaveContactModal(e) {
+            e.preventDefault();
+            document.getElementById('savecontactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-
-        // أزرار الاتصال
-        function initContactButtons() {
-            const phoneModal = document.getElementById('phoneModal');
-            const instagramModal = document.getElementById('instagramModal');
-            
-            // زر الهاتف
-            document.getElementById('phoneBtn').addEventListener('click', (e) => {
-                e.preventDefault();
-                phoneModal.style.display = 'flex';
-            });
-            
-            // زر الفيسبوك
-            document.getElementById('facebookBtn').addEventListener('click', (e) => {
-                e.preventDefault();
-                window.open(siteData.facebook, '_blank');
-            });
-            
-            document.getElementById('socialFacebook').addEventListener('click', (e) => {
-                e.preventDefault();
-                window.open(siteData.facebook, '_blank');
-            });
-            
-            // زر الانستقرام
-            document.getElementById('instagramBtn').addEventListener('click', (e) => {
-                e.preventDefault();
-                instagramModal.style.display = 'flex';
-            });
-            
-            document.getElementById('socialInstagram').addEventListener('click', (e) => {
-                e.preventDefault();
-                instagramModal.style.display = 'flex';
-            });
-            
-            // زر الموقع
-            document.getElementById('locationBtn').addEventListener('click', (e) => {
-                e.preventDefault();
-                window.open(siteData.location, '_blank');
-            });
-            
-            document.getElementById('socialLocation').addEventListener('click', (e) => {
-                e.preventDefault();
-                window.open(siteData.location, '_blank');
-            });
-            
-            // زر NFC
-            document.getElementById('nfcBtn').addEventListener('click', (e) => {
-                e.preventDefault();
-                window.open(siteData.nfc, '_blank');
-            });
-            
-            // إغلاق النوافذ المنبثقة
-            document.getElementById('closePhoneModal').addEventListener('click', () => {
-                phoneModal.style.display = 'none';
-            });
-            
-            document.getElementById('closeInstagramModal').addEventListener('click', () => {
-                instagramModal.style.display = 'none';
-            });
-            
-            // إغلاق النوافذ عند النقر خارجها
-            window.addEventListener('click', (e) => {
-                if (e.target === phoneModal) phoneModal.style.display = 'none';
-                if (e.target === instagramModal) instagramModal.style.display = 'none';
-            });
+        
+        function closeSaveContactModal() {
+            document.getElementById('savecontactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
-
-        // التمرير السلس
-        function initSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        }
-
-        // رسوميات التمرير
-        function initScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+        
+        function saveToContacts() {
+            const contactData = {
+                name: "M Beauty Lounge",
+                tel: "0796281500",
+                tel2: "0792281500",
+                email: "info@mbeautylounge.com"
             };
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+            // محاولة حفظ جهة الاتصال باستخدام Web Share API
+            if (navigator.share) {
+                navigator.share({
+                    title: 'M Beauty Lounge',
+                    text: `صالون تجميل فاخر\nرقم الهاتف: ${contactData.tel}\nالموقع: https://share.google/ehQYW8vbZsq2x4bFd`,
+                    url: window.location.href
+                })
+                .then(() => {
+                    alert('تم حفظ جهة الاتصال بنجاح!');
+                    closeSaveContactModal();
+                })
+                .catch(error => {
+                    console.error('Error sharing:', error);
+                    fallbackSaveContact(contactData);
                 });
-            }, observerOptions);
-            
-            // مراقبة جميع العناصر ذات الفئة animate-on-scroll
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
+            } else {
+                fallbackSaveContact(contactData);
+            }
         }
+        
+        function fallbackSaveContact(contactData) {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:${contactData.name}
+TEL;TYPE=WORK,VOICE:${contactData.tel}
+TEL;TYPE=CELL,VOICE:${contactData.tel2}
+EMAIL:${contactData.email}
+END:VCARD`;
+            
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'M Beauty Lounge.vcf';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('تم تحميل ملف جهة الاتصال. افتحه لحفظ المعلومات.');
+            closeSaveContactModal();
+        }
+        
+        // Instagram Modal
+        function openInstagramModal(e) {
+            e.preventDefault();
+            document.getElementById('instagramModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeInstagramModal() {
+            document.getElementById('instagramModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // إغلاق النوافذ المنبثقة بالنقر خارجها
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    if (modal.id === 'instagramModal') {
+                        closeInstagramModal();
+                    } else if (modal.id === 'savecontactModal') {
+                        closeSaveContactModal();
+                    }
+                }
+            });
+        });
+        
+        // التنقل السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // تحميل الصور عند التمرير
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.animate').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
