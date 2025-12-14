@@ -14,6 +14,7 @@
             --primary-light: #e1bee7;
             --secondary: #ff9800;
             --accent: #2196f3;
+            --nfc-color: #7b1fa2; /* لون NFC */
             --dark: #2c2c54;
             --light: #f8f9fa;
             --gray: #6c757d;
@@ -672,6 +673,7 @@
             opacity: 0.9;
         }
 
+        /* ✅ Contact Buttons Grid with NFC Button */
         .contact-buttons {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -714,6 +716,8 @@
         .instagram-btn { background: linear-gradient(45deg, #405DE6, #833AB4, #C13584); }
         .location-btn { background: linear-gradient(135deg, #FF5722, #E64A19); }
         .savecontact-btn { background: linear-gradient(135deg, var(--accent), #1976D2); }
+        /* ✅ NFC Button Color */
+        .nfc-btn { background: linear-gradient(135deg, var(--nfc-color), #6a1b9a); }
 
         .contact-btn:hover {
             transform: translateY(-5px);
@@ -973,6 +977,10 @@
             .savecontact-buttons {
                 flex-direction: column;
             }
+            
+            .contact-buttons {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1197,7 +1205,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section with NFC Button -->
     <section class="section contact-section" id="contact">
         <div class="container">
             <div class="section-title">
@@ -1233,23 +1241,42 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Contact Buttons Grid with NFC Button -->
                 <div class="contact-buttons animate delay-1">
+                    <!-- Phone Button -->
                     <a href="tel:0796281500" class="contact-btn phone-btn">
                         <i class="fas fa-phone-alt"></i>
                         <span>اتصل: 0796281500</span>
                     </a>
+                    
+                    <!-- Facebook Button -->
                     <a href="https://www.facebook.com/share/176ESgwXN2/?mibextid=wwXIfr" target="_blank" class="contact-btn facebook-btn">
                         <i class="fab fa-facebook-f"></i>
                         <span>فيسبوك</span>
                     </a>
+                    
+                    <!-- Instagram Button -->
                     <a href="#" class="contact-btn instagram-btn" onclick="openInstagramModal(event)">
                         <i class="fab fa-instagram"></i>
                         <span>انستقرام</span>
                     </a>
-                    <a href="https://share.google/ehQYW8vbZsq2x4bFd" target="_blank" class="contact-btn location-btn">
+                    
+                    <!-- Location Button -->
+                    <a href="https://share.google.com/ehQYW8vbZsq2x4bFd" target="_blank" class="contact-btn location-btn">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>الموقع</span>
                     </a>
+                    
+                    <!-- ✅ NFC Button Added Here -->
+                    <a href="https://www.instagram.com/futures_journey_programmingin?igsh=MTdkcXVkcjY3cGpwZA==" 
+                       target="_blank" 
+                       class="contact-btn nfc-btn">
+                        <i class="fas fa-wifi"></i>
+                        <span>NFC Request</span>
+                    </a>
+                    
+                    <!-- Save Contact Button -->
                     <a href="#" class="contact-btn savecontact-btn" onclick="openSaveContactModal(event)">
                         <i class="fas fa-save"></i>
                         <span>Save Contact</span>
@@ -1556,6 +1583,15 @@ END:VCARD`;
         
         document.querySelectorAll('.animate').forEach(el => {
             observer.observe(el);
+        });
+        
+        // ✅ تأثير إضافي لأزرار NFC
+        document.querySelector('.nfc-btn').addEventListener('mouseenter', function() {
+            this.querySelector('i').style.transform = 'rotate(15deg)';
+        });
+        
+        document.querySelector('.nfc-btn').addEventListener('mouseleave', function() {
+            this.querySelector('i').style.transform = 'rotate(0deg)';
         });
     </script>
 </body>
