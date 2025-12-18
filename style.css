@@ -1,0 +1,24 @@
+body{font-family:Tahoma,Arial;background:#f4f6f8;margin:0;padding:0}
+.container{width:1100px;margin:30px auto}
+.card{background:#fff;padding:20px;margin-bottom:20px;border-radius:12px}
+h2,h3{margin:0 0 12px 0}
+label{display:block;margin-top:10px}
+input{width:100%;padding:10px;margin-top:6px;border:1px solid #ddd;border-radius:10px}
+.btn{background:#0d6efd;color:#fff;border:0;padding:10px 14px;border-radius:10px;cursor:pointer}
+.btn.warn{background:#ffc107;color:#111}
+.btn.danger{background:#dc3545}
+.link{display:block;margin:8px 0;color:#0d6efd;text-decoration:none}
+.link.danger{color:#dc3545}
+.error{color:#dc3545;font-weight:bold;margin-top:12px}
+.ok{color:#198754;font-weight:bold;margin-top:12px}
+.stats{display:flex;gap:20px;flex-wrap:wrap}
+.stat{padding:10px 12px;background:#f8f9fa;border-radius:10px}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{border:1px solid #e5e5e5;padding:10px;text-align:center}
+th{background:#f0f0f0}
+.inline{display:flex;gap:8px;justify-content:center;align-items:center}
+.small{width:90px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.expired{background:#ffe5e5}
+.divider{height:1px;background:#eee;margin:12px 0}
+pre{background:#f8f9fa;padding:10px;border-radius:10px;overflow:auto}
