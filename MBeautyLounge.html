@@ -45,12 +45,6 @@
             line-height: 1.7;
         }
 
-        .en-lang {
-            font-family: 'Poppins', sans-serif;
-            direction: ltr;
-            text-align: left;
-        }
-
         .container {
             width: 90%;
             max-width: 1400px;
@@ -380,46 +374,152 @@
             margin-bottom: 20px;
         }
 
-        /* أنماط إضافية للخدمات الممتدة */
-        .extended-services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+        /* إبداعاتنا - Icons Section (التعديل الجديد) */
+        .creations-section {
+            background: linear-gradient(135deg, #f9f6f2 0%, #f5f0e8 100%);
         }
-        
-        .service-tag {
-            display: inline-block;
-            background: rgba(212, 185, 150, 0.15);
-            color: var(--primary-dark);
-            padding: 8px 15px;
-            border-radius: 20px;
-            margin: 5px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(212, 185, 150, 0.3);
+
+        .creations-icons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .creation-item {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--primary-light);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .creation-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .creation-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: translateX(100%);
             transition: var(--transition);
         }
-        
-        .service-tag:hover {
-            background: rgba(212, 185, 150, 0.25);
-            transform: translateY(-3px);
+
+        .creation-item:hover::after {
+            transform: translateX(0);
         }
-        
-        .service-details-list {
+
+        .creation-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-light), white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            box-shadow: 0 8px 20px rgba(212, 185, 150, 0.2);
+            border: 1px solid var(--primary-light);
+            transition: var(--transition);
+        }
+
+        .creation-item:hover .creation-icon {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .creation-item h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .creation-item p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Lightbox للتفاصيل */
+        .creation-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(93, 76, 60, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .creation-lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .creation-lightbox-content {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(93, 76, 60, 0.4);
+            animation: modalSlide 0.4s ease;
+            border: 1px solid var(--primary-light);
+        }
+
+        .creation-lightbox-content .creation-icon {
+            margin: 0 auto 20px;
+        }
+
+        .creation-lightbox-content h3 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .creation-lightbox-content p {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .creation-features {
             list-style: none;
-            margin-top: 15px;
+            margin: 20px 0;
             text-align: right;
         }
-        
-        .service-details-list li {
-            padding: 8px 0;
-            border-bottom: 1px dashed rgba(212, 185, 150, 0.3);
+
+        .creation-features li {
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--primary-light);
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
-        .service-details-list li:before {
+
+        .creation-features li:before {
             content: "✓";
             color: var(--primary);
             font-weight: bold;
@@ -433,278 +533,27 @@
             font-size: 0.8rem;
         }
 
-        /* Enhanced Gallery with Lightbox */
-        .gallery-section {
-            background: linear-gradient(135deg, #fdfbf8 0%, #f9f6f2 100%);
-        }
-
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            height: 280px;
-            transition: var(--transition);
+        .creation-lightbox-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(212, 185, 150, 0.2);
+            color: var(--primary-dark);
             border: 1px solid var(--primary-light);
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--primary);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
             transition: var(--transition);
-            filter: brightness(0.95);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-            filter: brightness(1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            background: linear-gradient(transparent, rgba(93, 76, 60, 0.8));
-            color: white;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(93, 76, 60, 0.98);
-            z-index: 2000;
-            justify-content: center;
+            display: flex;
             align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            justify-content: center;
         }
 
-        .lightbox.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90vh;
-        }
-
-        .lightbox-img {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: var(--border-radius);
-            box-shadow: 0 20px 60px rgba(93, 76, 60, 0.7);
-            border: 2px solid var(--primary-light);
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 30px;
-        }
-
-        .lightbox-btn {
-            background: rgba(212, 185, 150, 0.2);
-            color: white;
-            border: 1px solid rgba(212, 185, 150, 0.3);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-
-        .lightbox-btn:hover {
-            background: rgba(212, 185, 150, 0.3);
-            transform: scale(1.1);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(212, 185, 150, 0.2);
-            color: white;
-            border: 1px solid rgba(212, 185, 150, 0.3);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-
-        .lightbox-close:hover {
+        .creation-lightbox-close:hover {
             background: rgba(212, 185, 150, 0.3);
             transform: rotate(90deg);
-        }
-
-        .lightbox-counter {
-            position: absolute;
-            bottom: 20px;
-            right: 50%;
-            transform: translateX(50%);
-            color: white;
-            background: rgba(93, 76, 60, 0.5);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            border: 1px solid rgba(212, 185, 150, 0.3);
-        }
-
-        /* Ratings Section */
-        .ratings-section {
-            background: white;
-        }
-
-        .ratings-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .rating-overview {
-            background: linear-gradient(135deg, var(--primary-light), white);
-            border-radius: var(--border-radius);
-            padding: 40px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--primary-light);
-        }
-
-        .rating-score {
-            font-size: 4rem;
-            font-weight: 900;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-        }
-
-        .stars {
-            color: var(--gold);
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .rating-form {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 40px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--primary-light);
-            background: linear-gradient(135deg, #ffffff, #fdfbf8);
-        }
-
-        .rating-form h3 {
-            color: var(--primary-dark);
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .rating-stars-input {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 25px;
-            direction: ltr;
-        }
-
-        .star-input {
-            font-size: 2.5rem;
-            color: #e8e0d5;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .star-input:hover,
-        .star-input.active {
-            color: var(--gold);
-            transform: scale(1.2);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--dark);
-            font-weight: 600;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid var(--primary-light);
-            border-radius: 10px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition);
-            background: #fdfbf8;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(212, 185, 150, 0.1);
-            background: white;
-        }
-
-        .submit-rating {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #5d4c3c;
-            border: none;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: block;
-            margin: 0 auto;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .submit-rating:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(212, 185, 150, 0.3);
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
         }
 
         /* Contact Section */
@@ -775,7 +624,6 @@
             opacity: 0.9;
         }
 
-        /* ✅ Contact Buttons Grid with NFC Button */
         .contact-buttons {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -840,7 +688,6 @@
             color: #5d4c3c;
         }
         
-        /* ✅ NFC Button Color */
         .nfc-btn { 
             background: linear-gradient(135deg, #b8a285, #c5a880);
             color: #5d4c3c;
@@ -854,129 +701,6 @@
 
         .contact-btn i {
             font-size: 1.5rem;
-        }
-
-        /* Save Contact Modal */
-        .savecontact-modal {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(93, 76, 60, 0.95);
-            z-index: 3000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .savecontact-modal.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .savecontact-content {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 40px;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(93, 76, 60, 0.4);
-            animation: modalSlide 0.4s ease;
-            border: 1px solid var(--primary-light);
-            background: linear-gradient(135deg, #ffffff, #fdfbf8);
-        }
-
-        @keyframes modalSlide {
-            from {
-                transform: translateY(-30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .savecontact-content h3 {
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        .savecontact-content p {
-            color: var(--gray);
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .contact-info-display {
-            background: var(--primary-light);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            text-align: right;
-            border: 1px solid var(--accent);
-        }
-
-        .contact-info-item {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(212, 185, 150, 0.3);
-        }
-
-        .contact-info-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .contact-label {
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 5px;
-        }
-
-        .contact-value {
-            color: var(--primary-dark);
-            font-size: 1.1rem;
-            direction: ltr;
-            text-align: center;
-        }
-
-        .savecontact-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .savecontact-buttons button {
-            padding: 12px 30px;
-            border-radius: 50px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .savecontact-buttons .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #5d4c3c;
-            border: 1px solid var(--primary);
-        }
-
-        .savecontact-buttons .btn-secondary {
-            background: var(--primary-light);
-            color: var(--dark);
-            border: 1px solid var(--accent);
-        }
-
-        .savecontact-buttons button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212, 185, 150, 0.3);
         }
 
         /* Footer */
@@ -1102,12 +826,9 @@
                 grid-template-columns: 1fr;
             }
             
-            .gallery-container {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-            
-            .savecontact-buttons {
-                flex-direction: column;
+            .creations-icons {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
             
             .contact-buttons {
@@ -1128,17 +849,15 @@
                 padding: 30px 20px;
             }
             
-            .lightbox-nav {
-                padding: 0 15px;
+            .creations-icons {
+                grid-template-columns: 1fr;
             }
             
-            .lightbox-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+            .creation-item {
+                padding: 25px 15px;
             }
             
-            .savecontact-content {
+            .creation-lightbox-content {
                 padding: 30px 20px;
             }
         }
@@ -1152,6 +871,17 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
             }
         }
 
@@ -1181,8 +911,7 @@
                     <ul>
                         <li><a href="#home" class="active">الرئيسية</a></li>
                         <li><a href="#services">خدماتنا</a></li>
-                        <li><a href="#gallery">المعرض</a></li>
-                        <li><a href="#ratings">التقييمات</a></li>
+                        <li><a href="#creations">إبداعاتنا</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
                 </nav>
@@ -1190,7 +919,7 @@
         </div>
     </header>
 
-    <!-- Hero Section - تم تحديث النص -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <h1 class="animate">M Beauty Lounge</h1>
@@ -1202,7 +931,7 @@
         </div>
     </section>
 
-    <!-- Services Section - تم تحديث الخدمات -->
+    <!-- Services Section -->
     <section class="section" id="services">
         <div class="container">
             <div class="section-title">
@@ -1222,19 +951,6 @@
                     <div class="service-content">
                         <h3>تصفيف الشعر المتكامل</h3>
                         <p>خدمات شاملة للعناية بالشعر بأحدث الصيحات العالمية</p>
-                        <ul class="service-details-list">
-                            <li>قص وتصفيف احترافي</li>
-                            <li>صبغات بأحدث الألوان العالمية</li>
-                            <li>هايلايت وبلوند محترف</li>
-                            <li>تركيبات الشعر بأنواعها</li>
-                            <li>علاجات العناية بالشعر</li>
-                            <li>تسريحات مناسبات</li>
-                        </ul>
-                        <div style="margin-top: 15px;">
-                            <span class="service-tag">كيراتين</span>
-                            <span class="service-tag">بوتكس</span>
-                            <span class="service-tag">صبغات طبيعية</span>
-                        </div>
                     </div>
                 </div>
                 
@@ -1246,19 +962,6 @@
                     <div class="service-content">
                         <h3>العناية بالبشرة والرموش</h3>
                         <p>جلسات متخصصة للعناية بالبشرة وتعزيز جمال الرموش</p>
-                        <ul class="service-details-list">
-                            <li>العناية المتكاملة بالبشرة</li>
-                            <li>تنظيف البشرة العميق</li>
-                            <li>علاجات النضارة والتجديد</li>
-                            <li>تركيب الرموش الاحترافي</li>
-                            <li>الميكروبليدينغ للرموش</li>
-                            <li>صبغ الرموش والحواجب</li>
-                        </ul>
-                        <div style="margin-top: 15px;">
-                            <span class="service-tag">فيشل</span>
-                            <span class="service-tag">ميكروبليدينغ</span>
-                            <span class="service-tag">رموش حجمي</span>
-                        </div>
                     </div>
                 </div>
                 
@@ -1270,184 +973,108 @@
                     <div class="service-content">
                         <h3>الأظافر والميك أب</h3>
                         <p>تصميمات مبتكرة للأظافر ومكياج احترافي للمناسبات</p>
-                        <ul class="service-details-list">
-                            <li>مانيكير وباديكير</li>
-                            <li>أظافر جل وأكريليك</li>
-                            <li>تصميمات الأظافر الفنية</li>
-                            <li>ميك أب احترافي للمناسبات</li>
-                            <li>ميك أب زفاف</li>
-                            <li>دروس الميك أب</li>
-                        </ul>
-                        <div style="margin-top: 15px;">
-                            <span class="service-tag">جل</span>
-                            <span class="service-tag">أكريليك</span>
-                            <span class="service-tag">ميك أب سهرة</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- خدمات إضافية ممتدة -->
-            <div class="extended-services-grid">
-                <div class="service-card animate delay-1">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>تلوين الشعر المتخصص</h3>
-                        <p>أحدث تقنيات التلوين بألوان عالمية</p>
-                        <div style="margin-top: 15px;">
-                            <span class="service-tag">صبغة دائمة</span>
-                            <span class="service-tag">صبغة شبه دائمة</span>
-                            <span class="service-tag">أومبري</span>
-                            <span class="service-tag">باليا</span>
-                            <span class="service-tag">صبغات فورية</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="service-card animate delay-2">
-                    <div class="service-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>تجميل العيون</h3>
-                        <p>خدمات متكاملة لجمال عيونك</p>
-                        <div style="margin-top: 15px;">
-                            <span class="service-tag">رموش حجمي</span>
-                            <span class="service-tag">رموش كلاسيك</span>
-                            <span class="service-tag">صبغ رموش</span>
-                            <span class="service-tag">تحديد حواجب</span>
-                            <span class="service-tag">ميكروبليدينغ</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="service-card animate delay-3">
-                    <div class="service-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>علاجات البشرة</h3>
-                        <p>جلسات متقدمة للعناية بالبشرة</p>
-                        <div style="margin-top: 15px;">
-                            <span class="service-tag">تنظيف عميق</span>
-                            <span class="service-tag">تقشير كيميائي</span>
-                            <span class="service-tag">ماسكات علاجية</span>
-                            <span class="service-tag">علاج حب الشباب</span>
-                            <span class="service-tag">تفتيح البشرة</span>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section with Lightbox -->
-    <section class="section gallery-section" id="gallery">
+    <!-- إبداعاتنا - Icons Section (التعديل الجديد) -->
+    <section class="section creations-section" id="creations">
         <div class="container">
             <div class="section-title">
                 <h2 class="animate">إبداعاتنا في صالون التجميل</h2>
                 <p class="animate delay-1" style="color: var(--gray); max-width: 800px; margin: 20px auto 0;">
-                    تصفح بعضًا من أفضل أعمالنا في تصفيف الشعر والعناية بالبشرة وتجميل الأظافر
+                    اكتشف روائع إبداعاتنا المميزة التي تجعل منكِ الأميرة التي تستحقينها
                 </p>
             </div>
-            <div class="gallery-container">
-                <div class="gallery-item animate" onclick="openLightbox(0)">
-                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="تصفيف الشعر">
-                    <div class="gallery-overlay">
-                        <h3>تصفيف الشعر الحديث</h3>
-                        <p>أحدث قصات وصبغات الشعر</p>
+            
+            <div class="creations-icons">
+                <div class="creation-item animate" onclick="openCreationDetail(0)">
+                    <div class="creation-icon">
+                        <i class="fas fa-cut"></i>
                     </div>
+                    <h3>تصفيف الشعر الفني</h3>
+                    <p>أحدث القصات والتصفيفات التي تناسب كل وجه وشخصية</p>
                 </div>
-                <div class="gallery-item animate delay-1" onclick="openLightbox(1)">
-                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="العناية بالبشرة">
-                    <div class="gallery-overlay">
-                        <h3>جلسات العناية بالبشرة</h3>
-                        <p>تقنيات متقدمة للعناية بالبشرة</p>
+                
+                <div class="creation-item animate delay-1" onclick="openCreationDetail(1)">
+                    <div class="creation-icon">
+                        <i class="fas fa-palette"></i>
                     </div>
+                    <h3>تلوين الشعر الإبداعي</h3>
+                    <p>مزيج من الألوان المبتكرة والصبغات الفريدة</p>
                 </div>
-                <div class="gallery-item animate delay-2" onclick="openLightbox(2)">
-                    <img src="https://images.unsplash.com/photo-1607778833977-9c8ba5e5c3ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="تجميل الأظافر">
-                    <div class="gallery-overlay">
-                        <h3>تصميمات الأظافر</h3>
-                        <p>أجمل وأحدث تصميمات الأظافر</p>
+                
+                <div class="creation-item animate delay-2" onclick="openCreationDetail(2)">
+                    <div class="creation-icon">
+                        <i class="fas fa-eye"></i>
                     </div>
+                    <h3>تجميل العيون الساحر</h3>
+                    <p>رموش وحواجب تزيد من جمال عيونك بطريقة طبيعية</p>
                 </div>
-                <div class="gallery-item animate delay-3" onclick="openLightbox(3)">
-                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="الميكروبليدينغ">
-                    <div class="gallery-overlay">
-                        <h3>الميكروبليدينغ والرموش</h3>
-                        <p>تقنيات متقدمة لتجميل العيون</p>
+                
+                <div class="creation-item animate delay-3" onclick="openCreationDetail(3)">
+                    <div class="creation-icon">
+                        <i class="fas fa-hand-sparkles"></i>
                     </div>
+                    <h3>فن الأظافر المذهل</h3>
+                    <p>تصميمات أظافر فنية تعبر عن شخصيتك وأناقتك</p>
+                </div>
+                
+                <div class="creation-item animate" onclick="openCreationDetail(4)">
+                    <div class="creation-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>العناية الملكية بالبشرة</h3>
+                    <p>علاجات متقدمة لبشرة مشرقة وشابة</p>
+                </div>
+                
+                <div class="creation-item animate delay-1" onclick="openCreationDetail(5)">
+                    <div class="creation-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>ميك أب السهرات</h3>
+                    <p>إطلالات مكياج ملكية للمناسبات الخاصة</p>
+                </div>
+                
+                <div class="creation-item animate delay-2" onclick="openCreationDetail(6)">
+                    <div class="creation-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>تسريحات المناسبات</h3>
+                    <p>تسريحات فنية تليق بالأعراس والمناسبات</p>
+                </div>
+                
+                <div class="creation-item animate delay-3" onclick="openCreationDetail(7)">
+                    <div class="creation-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>تحضيرات العروس</h3>
+                    <p>باقات متكاملة لتجهيز العروس ليومها الخاص</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" onclick="closeLightbox()">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="lightbox-content">
-            <img class="lightbox-img" id="lightbox-img" src="" alt="">
-            <div class="lightbox-nav">
-                <button class="lightbox-btn" onclick="prevImage()">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="lightbox-btn" onclick="nextImage()">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+    <!-- Lightbox للتفاصيل -->
+    <div class="creation-lightbox" id="creationLightbox">
+        <div class="creation-lightbox-content">
+            <button class="creation-lightbox-close" onclick="closeCreationDetail()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="creation-icon" id="creationDetailIcon">
+                <i class="fas fa-cut"></i>
             </div>
-            <div class="lightbox-counter" id="lightbox-counter">1 / 4</div>
+            <h3 id="creationDetailTitle">تصفيف الشعر الفني</h3>
+            <p id="creationDetailDescription">وصف مفصل للإبداع</p>
+            <ul class="creation-features" id="creationDetailFeatures">
+                <!-- سيتم ملؤه بواسطة JavaScript -->
+            </ul>
         </div>
     </div>
 
-    <!-- Ratings Section -->
-    <section class="section ratings-section" id="ratings">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="animate">تقييمات العملاء</h2>
-            </div>
-            <div class="ratings-container">
-                <div class="rating-overview animate">
-                    <div class="rating-score">4.8</div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p>بناءً على 247 تقييمًا من عملائنا الكرام</p>
-                </div>
-                <div class="rating-form animate delay-1">
-                    <h3>شاركنا رأيك</h3>
-                    <div class="rating-stars-input">
-                        <span class="star-input" onclick="setRating(1)">★</span>
-                        <span class="star-input" onclick="setRating(2)">★</span>
-                        <span class="star-input" onclick="setRating(3)">★</span>
-                        <span class="star-input" onclick="setRating(4)">★</span>
-                        <span class="star-input" onclick="setRating(5)">★</span>
-                    </div>
-                    <form id="ratingForm">
-                        <div class="form-group">
-                            <label for="ratingName">اسمك</label>
-                            <input type="text" id="ratingName" class="form-control" placeholder="أدخل اسمك" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="ratingComment">تعليقك</label>
-                            <textarea id="ratingComment" class="form-control" rows="4" placeholder="شاركنا تجربتك..." required></textarea>
-                        </div>
-                        <button type="submit" class="submit-rating">إرسال التقييم</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section with NFC Button -->
+    <!-- Contact Section -->
     <section class="section contact-section" id="contact">
         <div class="container">
             <div class="section-title">
@@ -1484,83 +1111,37 @@
                     </div>
                 </div>
                 
-                <!-- Contact Buttons Grid with NFC Button -->
                 <div class="contact-buttons animate delay-1">
-                    <!-- Phone Button -->
                     <a href="tel:0796281500" class="contact-btn phone-btn">
                         <i class="fas fa-phone-alt"></i>
                         <span>اتصل: 0796281500</span>
                     </a>
                     
-                    <!-- Facebook Button -->
                     <a href="https://www.facebook.com/share/176ESgwXN2/?mibextid=wwXIfr" target="_blank" class="contact-btn facebook-btn">
                         <i class="fab fa-facebook-f"></i>
                         <span>فيسبوك</span>
                     </a>
                     
-                    <!-- Instagram Button -->
                     <a href="#" class="contact-btn instagram-btn" onclick="openInstagramModal(event)">
                         <i class="fab fa-instagram"></i>
                         <span>انستقرام</span>
                     </a>
                     
-                    <!-- Location Button -->
                     <a href="https://share.google.com/ehQYW8vbZsq2x4bFd" target="_blank" class="contact-btn location-btn">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>الموقع</span>
                     </a>
                     
-                    <!-- ✅ NFC Button Added Here -->
                     <a href="https://www.instagram.com/futures_journey_programmingin?igsh=MTdkcXVkcjY3cGpwZA==" 
                        target="_blank" 
                        class="contact-btn nfc-btn">
                         <i class="fas fa-wifi"></i>
                         <span>NFC Request</span>
                     </a>
-                    
-                    <!-- Save Contact Button -->
-                    <a href="#" class="contact-btn savecontact-btn" onclick="openSaveContactModal(event)">
-                        <i class="fas fa-save"></i>
-                        <span>Save Contact</span>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Save Contact Modal -->
-    <div class="savecontact-modal" id="savecontactModal">
-        <div class="savecontact-content">
-            <h3>Save Contact</h3>
-            <p>احفظ معلومات الاتصال الخاصة بنا على هاتفك</p>
-            <div class="contact-info-display">
-                <div class="contact-info-item">
-                    <div class="contact-label">اسم الصالون:</div>
-                    <div class="contact-value">M Beauty Lounge</div>
-                </div>
-                <div class="contact-info-item">
-                    <div class="contact-label">رقم الهاتف:</div>
-                    <div class="contact-value">0796281500</div>
-                </div>
-                <div class="contact-info-item">
-                    <div class="contact-label">رقم بديل:</div>
-                    <div class="contact-value">0792281500</div>
-                </div>
-                <div class="contact-info-item">
-                    <div class="contact-label">البريد الإلكتروني:</div>
-                    <div class="contact-value">info@mbeautylounge.com</div>
-                </div>
-            </div>
-            <div class="savecontact-buttons">
-                <button class="btn-primary" onclick="saveToContacts()">
-                    <i class="fas fa-save"></i> حفظ جهة الاتصال
-                </button>
-                <button class="btn-secondary" onclick="closeSaveContactModal()">
-                    <i class="fas fa-times"></i> إغلاق
-                </button>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer>
@@ -1575,7 +1156,7 @@
                     <ul>
                         <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
                         <li><a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
-                        <li><a href="#gallery"><i class="fas fa-chevron-left"></i> المعرض</a></li>
+                        <li><a href="#creations"><i class="fas fa-chevron-left"></i> إبداعاتنا</a></li>
                         <li><a href="#contact"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
                     </ul>
                 </div>
@@ -1595,219 +1176,171 @@
         </div>
     </footer>
 
-    <!-- Instagram Modal -->
-    <div class="modal" id="instagramModal" style="display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; background: rgba(93, 76, 60, 0.95); z-index: 2000; justify-content: center; align-items: center;">
-        <div style="background: linear-gradient(135deg, #ffffff, #fdfbf8); padding: 30px; border-radius: 16px; max-width: 500px; width: 90%; text-align: center; border: 1px solid var(--primary-light);">
-            <h3 style="color: var(--primary-dark); margin-bottom: 20px;">اختر حساب الانستقرام</h3>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-                <a href="https://www.instagram.com/mbeautylounge1?igsh=N3I0MWgwbWFxODhz" target="_blank" style="display: block; padding: 15px; background: var(--primary-light); border-radius: 8px; text-decoration: none; color: var(--dark); font-weight: 600; border: 1px solid var(--accent);">mbeautylounge1</a>
-                <a href="https://www.instagram.com/muntaser_makkawi?igsh=cWZsNGFlbXB3YnB6" target="_blank" style="display: block; padding: 15px; background: var(--primary-light); border-radius: 8px; text-decoration: none; color: var(--dark); font-weight: 600; border: 1px solid var(--accent);">muntaser_makkawi</a>
-                <a href="https://www.instagram.com/dmadeeha.makkawi?igsh=MWxhNjhhN2RyZmRhaQ==" target="_blank" style="display: block; padding: 15px; background: var(--primary-light); border-radius: 8px; text-decoration: none; color: var(--dark); font-weight: 600; border: 1px solid var(--accent);">dmadeeha.makkawi</a>
-                <a href="https://www.instagram.com/ahmad_makkawi88?igsh=MWxyZHNxd2l3djk4bA==" target="_blank" style="display: block; padding: 15px; background: var(--primary-light); border-radius: 8px; text-decoration: none; color: var(--dark); font-weight: 600; border: 1px solid var(--accent);">ahmad_makkawi88</a>
-            </div>
-            <button onclick="closeInstagramModal()" style="margin-top: 20px; padding: 10px 30px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #5d4c3c; border: none; border-radius: 30px; cursor: pointer; border: 1px solid var(--primary);">إغلاق</button>
-        </div>
-    </div>
-
     <script>
-        // معرض الصور مع Lightbox
-        const galleryImages = [
-            { 
-                src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", 
-                title: "تصفيف الشعر الحديث",
-                description: "أحدث تقنيات قص وتصفيف الشعر" 
+        // بيانات الإبداعات
+        const creationsData = [
+            {
+                icon: "fas fa-cut",
+                title: "تصفيف الشعر الفني",
+                description: "أحدث القصات والتصفيفات التي تناسب كل وجه وشخصية مع استخدام أحدث التقنيات العالمية",
+                features: [
+                    "قصات متنوعة تناسب جميع أشكال الوجه",
+                    "تصفيفات يومية وعصرية",
+                    "تسريحات مناسبات فاخرة",
+                    "استخدام منتجات عالية الجودة",
+                    "تقنيات تصفيف متقدمة"
+                ]
             },
-            { 
-                src: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", 
-                title: "العناية المتكاملة بالبشرة",
-                description: "جلسات تنظيف وعلاج البشرة" 
+            {
+                icon: "fas fa-palette",
+                title: "تلوين الشعر الإبداعي",
+                description: "مزيج إبداعي من الألوان المبتكرة والصبغات الفريدة التي تعبر عن شخصيتك",
+                features: [
+                    "صبغات بأحدث الألوان العالمية",
+                    "تقنية الأومبري والباليا",
+                    "هايلايت محترف",
+                    "صبغات طبيعية وآمنة",
+                    "تلوين متدرج فني"
+                ]
             },
-            { 
-                src: "https://images.unsplash.com/photo-1607778833977-9c8ba5e5c3ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", 
-                title: "تصميمات الأظافر الفاخرة",
-                description: "أحدث صيحات أظافر الجل والأكريليك" 
+            {
+                icon: "fas fa-eye",
+                title: "تجميل العيون الساحر",
+                description: "تقنيات متقدمة لتجميل العيون والرموش للحصول على نظرة ساحرة وجذابة",
+                features: [
+                    "تركيب رموش حجمي وكلاسيك",
+                    "ميكروبليدينغ للحواجب",
+                    "صبغ الرموش والحواجب",
+                    "علاجات تكثيف الرموش",
+                    "تصميم حواجب فني"
+                ]
             },
-            { 
-                src: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", 
-                title: "الميكروبليدينغ والرموش",
-                description: "تقنيات تجميل العيون والرموش" 
+            {
+                icon: "fas fa-hand-sparkles",
+                title: "فن الأظافر المذهل",
+                description: "تصميمات أظافر فنية تعبر عن شخصيتك وأناقتك بأحدث الصيحات العالمية",
+                features: [
+                    "مانيكير وباديكير احترافي",
+                    "أظافر جل وأكريليك",
+                    "تصميمات فنية مبتكرة",
+                    "تطويل الأظافر الطبيعي",
+                    "خدمات العناية الشاملة"
+                ]
+            },
+            {
+                icon: "fas fa-gem",
+                title: "العناية الملكية بالبشرة",
+                description: "علاجات متقدمة ومتكاملة للعناية بالبشرة للحصول على بشرة مشرقة وشابة",
+                features: [
+                    "جلسات تنظيف البشرة العميق",
+                    "علاجات النضارة والتجديد",
+                    "تقشير كيميائي محترف",
+                    "ماسكات علاجية مخصصة",
+                    "برامج العناية الشهرية"
+                ]
+            },
+            {
+                icon: "fas fa-paint-brush",
+                title: "ميك أب السهرات",
+                description: "إطلالات مكياج ملكية للمناسبات الخاصة تعكس جمالك الطبيعي وتضفي لمسة سحرية",
+                features: [
+                    "ميك أب احترافي للمناسبات",
+                    "مكياج عروس متكامل",
+                    "إطلالات سهرة فاخرة",
+                    "استخدام منتجات فاخرة",
+                    "تصميم مكياج مخصص"
+                ]
+            },
+            {
+                icon: "fas fa-star",
+                title: "تسريحات المناسبات",
+                description: "تسريحات فنية تليق بالأعراس والمناسبات الخاصة، تصمم خصيصاً لكل عميلة",
+                features: [
+                    "تسريحات أعراس فاخرة",
+                    "تسريحات مناسبات رسمية",
+                    "تنسيق مع فستان المناسبة",
+                    "استخدام إكسسوارات فاخرة",
+                    "تصميم تسريحة مخصصة"
+                ]
+            },
+            {
+                icon: "fas fa-crown",
+                title: "تحضيرات العروس",
+                description: "باقات متكاملة لتجهيز العروس ليومها الخاص، من العناية بالبشرة حتى المكياج والتسريحة",
+                features: [
+                    "باقة تحضير عروس متكاملة",
+                    "جلسات عناية قبل الزفاف",
+                    "مكياج وتسريحة يوم الزفاف",
+                    "جلسات تصوير احترافية",
+                    "استشارات تجميلية متخصصة"
+                ]
             }
         ];
-        
-        let currentLightboxIndex = 0;
-        
-        function openLightbox(index) {
-            currentLightboxIndex = index;
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxCounter = document.getElementById('lightbox-counter');
+
+        // فتح تفاصيل الإبداع
+        function openCreationDetail(index) {
+            const creation = creationsData[index];
+            const lightbox = document.getElementById('creationLightbox');
+            const icon = document.getElementById('creationDetailIcon');
+            const title = document.getElementById('creationDetailTitle');
+            const description = document.getElementById('creationDetailDescription');
+            const features = document.getElementById('creationDetailFeatures');
             
-            lightboxImg.src = galleryImages[index].src;
-            lightboxImg.alt = galleryImages[index].title;
-            lightboxCounter.textContent = `${index + 1} / ${galleryImages.length}`;
+            // تحديث الأيقونة
+            icon.innerHTML = `<i class="${creation.icon}"></i>`;
             
+            // تحديث النصوص
+            title.textContent = creation.title;
+            description.textContent = creation.description;
+            
+            // تحديث المميزات
+            features.innerHTML = '';
+            creation.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                features.appendChild(li);
+            });
+            
+            // إظهار Lightbox
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
+
+        // إغلاق تفاصيل الإبداع
+        function closeCreationDetail() {
+            const lightbox = document.getElementById('creationLightbox');
             lightbox.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-        
-        function nextImage() {
-            currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
-            openLightbox(currentLightboxIndex);
-        }
-        
-        function prevImage() {
-            currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
-            openLightbox(currentLightboxIndex);
-        }
-        
-        // إغلاق Lightbox بالضغط على ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            } else if (e.key === 'ArrowRight') {
-                nextImage();
-            } else if (e.key === 'ArrowLeft') {
-                prevImage();
+
+        // إغلاق Lightbox بالنقر خارج المحتوى
+        document.getElementById('creationLightbox').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('creationLightbox')) {
+                closeCreationDetail();
             }
         });
-        
-        // إغلاق Lightbox بالنقر خارج الصورة
-        document.getElementById('lightbox').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('lightbox')) {
-                closeLightbox();
-            }
-        });
-        
-        // نظام التقييمات
-        let userRating = 0;
-        
-        function setRating(rating) {
-            userRating = rating;
-            const stars = document.querySelectorAll('.star-input');
-            stars.forEach((star, index) => {
-                if (index < rating) {
-                    star.classList.add('active');
-                } else {
-                    star.classList.remove('active');
-                }
-            });
-        }
-        
-        document.getElementById('ratingForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            if (userRating === 0) {
-                alert('الرجاء اختيار تقييم من 1 إلى 5 نجوم');
-                return;
-            }
-            
-            const name = document.getElementById('ratingName').value;
-            const comment = document.getElementById('ratingComment').value;
-            
-            // هنا يمكنك إرسال البيانات إلى الخادم
-            alert(`شكراً ${name} لتقييمك بـ ${userRating} نجوم!\nسيتم عرض تعليقك قريباً.`);
-            
-            // إعادة تعيين النموذج
-            document.getElementById('ratingForm').reset();
-            setRating(0);
-        });
-        
-        // نظام Save Contact
-        function openSaveContactModal(e) {
-            e.preventDefault();
-            document.getElementById('savecontactModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeSaveContactModal() {
-            document.getElementById('savecontactModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function saveToContacts() {
-            const contactData = {
-                name: "M Beauty Lounge",
-                tel: "0796281500",
-                tel2: "0792281500",
-                email: "info@mbeautylounge.com"
-            };
-            
-            // محاولة حفظ جهة الاتصال باستخدام Web Share API
-            if (navigator.share) {
-                navigator.share({
-                    title: 'M Beauty Lounge',
-                    text: `صالون تجميل فاخر\nرقم الهاتف: ${contactData.tel}\nالموقع: https://share.google/ehQYW8vbZsq2x4bFd`,
-                    url: window.location.href
-                })
-                .then(() => {
-                    alert('تم حفظ جهة الاتصال بنجاح!');
-                    closeSaveContactModal();
-                })
-                .catch(error => {
-                    console.error('Error sharing:', error);
-                    fallbackSaveContact(contactData);
-                });
-            } else {
-                fallbackSaveContact(contactData);
-            }
-        }
-        
-        function fallbackSaveContact(contactData) {
-            const vcard = `BEGIN:VCARD
-VERSION:3.0
-FN:${contactData.name}
-TEL;TYPE=WORK,VOICE:${contactData.tel}
-TEL;TYPE=CELL,VOICE:${contactData.tel2}
-EMAIL:${contactData.email}
-END:VCARD`;
-            
-            const blob = new Blob([vcard], { type: 'text/vcard' });
-            const url = URL.createObjectURL(blob);
-            
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'M Beauty Lounge.vcf';
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            alert('تم تحميل ملف جهة الاتصال. افتحه لحفظ المعلومات.');
-            closeSaveContactModal();
-        }
-        
-        // Instagram Modal
+
+        // Instagram Modal (مبسط)
         function openInstagramModal(e) {
             e.preventDefault();
-            document.getElementById('instagramModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeInstagramModal() {
-            document.getElementById('instagramModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        
-        // إغلاق النوافذ المنبثقة بالنقر خارجها
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    if (modal.id === 'instagramModal') {
-                        closeInstagramModal();
-                    } else if (modal.id === 'savecontactModal') {
-                        closeSaveContactModal();
-                    }
-                }
+            const instagramAccounts = [
+                { name: "mbeautylounge1", url: "https://www.instagram.com/mbeautylounge1" },
+                { name: "muntaser_makkawi", url: "https://www.instagram.com/muntaser_makkawi" },
+                { name: "dmadeeha.makkawi", url: "https://www.instagram.com/dmadeeha.makkawi" },
+                { name: "ahmad_makkawi88", url: "https://www.instagram.com/ahmad_makkawi88" }
+            ];
+            
+            let message = "حسابات الإنستغرام المتاحة:\n\n";
+            instagramAccounts.forEach(account => {
+                message += `- ${account.name}\n`;
             });
-        });
-        
+            message += "\nاضغط OK لفتح الحساب الرئيسي";
+            
+            if (confirm(message)) {
+                window.open(instagramAccounts[0].url, '_blank');
+            }
+        }
+
         // التنقل السلس
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1824,8 +1357,8 @@ END:VCARD`;
                 }
             });
         });
-        
-        // تحميل الصور عند التمرير
+
+        // تأثيرات التمرير
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1842,14 +1375,16 @@ END:VCARD`;
         document.querySelectorAll('.animate').forEach(el => {
             observer.observe(el);
         });
-        
-        // ✅ تأثير إضافي لأزرار NFC
-        document.querySelector('.nfc-btn').addEventListener('mouseenter', function() {
-            this.querySelector('i').style.transform = 'rotate(15deg)';
-        });
-        
-        document.querySelector('.nfc-btn').addEventListener('mouseleave', function() {
-            this.querySelector('i').style.transform = 'rotate(0deg)';
+
+        // تأثير إضافي لأيقونات الإبداعات
+        document.querySelectorAll('.creation-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.querySelector('i').style.transform = 'rotate(15deg) scale(1.2)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.querySelector('i').style.transform = 'rotate(0deg) scale(1)';
+            });
         });
     </script>
 </body>
