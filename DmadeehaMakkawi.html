@@ -66,12 +66,8 @@
             align-items: center;
             z-index: 10000;
             opacity: 1;
+            visibility: visible;
             transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-        
-        .welcome-page.hidden {
-            opacity: 0;
-            visibility: hidden;
         }
         
         .welcome-content {
@@ -79,6 +75,27 @@
             padding: 40px;
             max-width: 800px;
             animation: fadeInUp 1s ease;
+        }
+        
+        .welcome-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            padding: 8px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .welcome-logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.8);
         }
         
         .welcome-title {
@@ -102,6 +119,11 @@
             opacity: 0.9;
         }
         
+        .welcome-subtitle strong {
+            color: var(--text-color);
+            font-weight: 700;
+        }
+        
         .enter-btn {
             background: rgba(255, 255, 255, 0.3);
             color: var(--text-color);
@@ -121,6 +143,41 @@
             border-color: rgba(255, 255, 255, 0.8);
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* زر الإغلاق */
+        .close-welcome {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+        
+        .close-welcome:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        body.english .close-welcome {
+            right: auto;
+            left: 30px;
+        }
+        
+        /* الموقع الرئيسي */
+        #mainSite {
+            display: none;
         }
         
         .container {
@@ -767,6 +824,24 @@
             .welcome-subtitle {
                 font-size: 1.4rem;
             }
+            
+            .welcome-logo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .close-welcome {
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            body.english .close-welcome {
+                right: auto;
+                left: 15px;
+            }
         }
         
         /* Animations */
@@ -817,18 +892,27 @@
     </style>
 </head>
 <body>
-    <!-- صفحة الترحيب -->
+    <!-- صفحة الترحيب الدائمة -->
     <div class="welcome-page" id="welcomePage">
+        <div class="close-welcome" id="closeWelcome">
+            <i class="fas fa-times"></i>
+        </div>
+        
         <div class="welcome-content">
+            <div class="welcome-logo">
+                <img src="https://i.imgur.com/Vc29zG2.png" alt="Dmadeeha Makkawi Logo">
+            </div>
+            
             <h1 class="welcome-title">
                 <span lang="ar">حيث تلتقي العلم والخبرة</span>
                 <span lang="en">Where science and expertise come together</span>
             </h1>
+            
             <p class="welcome-subtitle">
-                <!-- تم التعديل: إزالة "ديما ضيف الله مقدادي" والاحتفاظ بـ Dmadeeha Makkawi فقط -->
                 <span lang="ar"><strong>Dmadeeha Makkawi</strong>، خبيرة تجميل وأخصائية تغذية علاجية، ومدربة دولية معتمدة. أمتلك مركز M Beauty Lounge المتخصص في تقديم خدمات التجميل المتكاملة والتدريب في هذا المجال.</span>
                 <span lang="en"><strong>Dmadeeha Makkawi</strong>, a beauty expert, therapeutic nutrition specialist, and certified international trainer. I own M Beauty Lounge, which specializes in providing integrated beauty services and training in this field.</span>
             </p>
+            
             <button class="enter-btn" id="enterSite">
                 <span lang="ar">ادخل إلى الموقع</span>
                 <span lang="en">Enter Website</span>
@@ -922,7 +1006,6 @@
                         <span lang="en">My Career</span>
                     </h3>
                     <div class="card-content">
-                        <!-- تم التعديل: إزالة "ديما ضيف الله مقدادي" والاحتفاظ بـ Dmadeeha Makkawi فقط -->
                         <p lang="ar"><strong>Dmadeeha Makkawi</strong>، خبيرة تجميل وأخصائية تغذية علاجية، ومدربة دولية معتمدة. أمتلك مركز M Beauty Lounge المتخصص في تقديم خدمات التجميل المتكاملة والتدريب في هذا المجال.</p>
                         <p lang="en"><strong>Dmadeeha Makkawi</strong>, a beauty expert, therapeutic nutrition specialist, and certified international trainer. I own M Beauty Lounge, which specializes in providing integrated beauty services and training in this field.</p>
                     </div>
@@ -1256,31 +1339,41 @@
     </div>
 
     <script>
-        // تحكم بصفحة الترحيب
+        // تحكم بصفحة الترحيب الدائمة
         const welcomePage = document.getElementById('welcomePage');
         const mainSite = document.getElementById('mainSite');
         const enterBtn = document.getElementById('enterSite');
+        const closeWelcome = document.getElementById('closeWelcome');
         
+        // زر الدخول إلى الموقع
         enterBtn.addEventListener('click', () => {
             // إخفاء صفحة الترحيب
-            welcomePage.classList.add('hidden');
+            welcomePage.style.opacity = '0';
+            welcomePage.style.visibility = 'hidden';
             
-            // إظهار الموقع الرئيسي بعد فترة قصيرة
+            // إظهار الموقع الرئيسي
             setTimeout(() => {
                 mainSite.style.display = 'block';
-                // حفظ في localStorage أن المستخدم دخل الموقع
-                localStorage.setItem('hasVisited', 'true');
+                // تحريك إلى أعلى الصفحة
+                window.scrollTo(0, 0);
             }, 800);
         });
         
-        // التحقق إذا كان المستخدم زار الموقع من قبل
-        window.addEventListener('DOMContentLoaded', () => {
-            const hasVisited = localStorage.getItem('hasVisited');
-            if (hasVisited === 'true') {
-                welcomePage.style.display = 'none';
+        // زر الإغلاق (X)
+        closeWelcome.addEventListener('click', () => {
+            // إخفاء صفحة الترحيب
+            welcomePage.style.opacity = '0';
+            welcomePage.style.visibility = 'hidden';
+            
+            // إظهار الموقع الرئيسي
+            setTimeout(() => {
                 mainSite.style.display = 'block';
-            }
+                // تحريك إلى أعلى الصفحة
+                window.scrollTo(0, 0);
+            }, 800);
         });
+        
+        // لا يتم حفظ أي شيء في localStorage - تظهر الصفحة في كل مرة
         
         // Language Switching Functionality
         const arabicBtn = document.getElementById('arabicBtn');
