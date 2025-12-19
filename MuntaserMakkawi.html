@@ -9,8 +9,8 @@
         :root {
             --primary-black: #0a0a0a;
             --secondary-black: #1a1a1a;
-            --accent-burgundy: #800020; /* لون سكني بدلاً من الذهبي */
-            --accent-burgundy-light: #a8324d;
+            --accent-burgundy: #8B0000; /* لون سكني فاخر */
+            --accent-burgundy-light: #A52A2A;
             --accent-cream: #F5F5DC;
             --text-light: #f0f0f0;
             --transition: all 0.3s ease;
@@ -45,7 +45,7 @@
             top: 0;
             z-index: 1000;
             padding: 15px 0;
-            border-bottom: 1px solid rgba(128, 0, 32, 0.3);
+            border-bottom: 1px solid rgba(139, 0, 0, 0.3);
         }
         
         .header-container {
@@ -64,9 +64,9 @@
         }
         
         .lang-btn {
-            background: rgba(128, 0, 32, 0.2);
+            background: rgba(139, 0, 0, 0.2);
             color: var(--accent-cream);
-            border: 1px solid rgba(128, 0, 32, 0.4);
+            border: 1px solid rgba(139, 0, 0, 0.4);
             padding: 5px 15px;
             border-radius: 20px;
             cursor: pointer;
@@ -75,7 +75,7 @@
         }
         
         .lang-btn:hover {
-            background: rgba(128, 0, 32, 0.4);
+            background: rgba(139, 0, 0, 0.4);
         }
         
         nav ul {
@@ -132,8 +132,9 @@
         .hero-content h1 {
             font-size: 3rem;
             margin-bottom: 20px;
-            color: var(--accent-cream);
+            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            font-weight: 700;
         }
         
         .hero-content h1 span {
@@ -150,13 +151,13 @@
         
         .title-badge {
             display: inline-block;
-            background: rgba(128, 0, 32, 0.15);
+            background: rgba(139, 0, 0, 0.15);
             color: var(--accent-burgundy-light);
             padding: 8px 25px;
             border-radius: 30px;
             font-weight: 600;
             margin: 15px 0;
-            border: 1px solid rgba(128, 0, 32, 0.4);
+            border: 1px solid rgba(139, 0, 0, 0.4);
         }
         
         /* About Section */
@@ -168,7 +169,7 @@
             text-align: center;
             font-size: 2.2rem;
             margin-bottom: 50px;
-            color: var(--accent-cream);
+            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
             position: relative;
         }
         
@@ -199,9 +200,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(128, 0, 32, 0.1);
+            background: rgba(139, 0, 0, 0.1);
             padding: 20px;
-            border: 2px solid rgba(128, 0, 32, 0.3);
+            border: 2px solid rgba(139, 0, 0, 0.3);
         }
         
         .about-image img {
@@ -218,7 +219,7 @@
         .about-text h3 {
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--accent-burgundy-light);
+            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
         }
         
         .about-text p {
@@ -236,12 +237,12 @@
         }
         
         .qualification-item {
-            background: rgba(128, 0, 32, 0.1);
+            background: rgba(139, 0, 0, 0.1);
             padding: 12px 25px;
             border-radius: 30px;
             display: flex;
             align-items: center;
-            border: 1px solid rgba(128, 0, 32, 0.2);
+            border: 1px solid rgba(139, 0, 0, 0.2);
         }
         
         .qualification-item i {
@@ -267,12 +268,12 @@
             padding: 35px 25px;
             text-align: center;
             transition: var(--transition);
-            border: 1px solid rgba(128, 0, 32, 0.1);
+            border: 1px solid rgba(139, 0, 0, 0.1);
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(128, 0, 32, 0.3);
+            border-color: rgba(139, 0, 0, 0.3);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
         
@@ -285,7 +286,7 @@
         .service-card h3 {
             font-size: 1.6rem;
             margin-bottom: 15px;
-            color: var(--accent-cream);
+            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
         }
         
         .service-card p {
@@ -312,7 +313,7 @@
         .contact-info h3 {
             font-size: 1.8rem;
             margin-bottom: 25px;
-            color: var(--accent-burgundy-light);
+            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
         }
         
         .contact-details {
@@ -329,11 +330,11 @@
             border-radius: 10px;
             min-width: 200px;
             transition: var(--transition);
-            border: 1px solid rgba(128, 0, 32, 0.1);
+            border: 1px solid rgba(139, 0, 0, 0.1);
         }
         
         .contact-item:hover {
-            border-color: rgba(128, 0, 32, 0.3);
+            border-color: rgba(139, 0, 0, 0.3);
             transform: translateY(-5px);
         }
         
@@ -365,14 +366,14 @@
         .social-section {
             text-align: center;
             padding: 40px 0;
-            border-top: 1px solid rgba(128, 0, 32, 0.2);
-            border-bottom: 1px solid rgba(128, 0, 32, 0.2);
+            border-top: 1px solid rgba(139, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(139, 0, 0, 0.2);
         }
         
         .social-title {
             font-size: 1.8rem;
             margin-bottom: 30px;
-            color: var(--accent-burgundy-light);
+            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
         }
         
         .social-icons {
@@ -396,12 +397,12 @@
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background: rgba(128, 0, 32, 0.1);
+            background: rgba(139, 0, 0, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 10px;
-            border: 1px solid rgba(128, 0, 32, 0.3);
+            border: 1px solid rgba(139, 0, 0, 0.3);
             font-size: 1.8rem;
             transition: var(--transition);
         }
@@ -435,12 +436,12 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 5px 15px rgba(128, 0, 32, 0.3);
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
         }
         
         .save-contact-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(128, 0, 32, 0.4);
+            box-shadow: 0 8px 20px rgba(139, 0, 0, 0.4);
         }
         
         /* Footer */
@@ -448,7 +449,7 @@
             background-color: #080808;
             padding: 40px 0 20px;
             text-align: center;
-            border-top: 1px solid rgba(128, 0, 32, 0.2);
+            border-top: 1px solid rgba(139, 0, 0, 0.2);
         }
         
         .footer-logo img {
@@ -661,7 +662,7 @@
                     <div class="social-icon-circle">
                         <i class="fab fa-instagram"></i>
                     </div>
-                    <div class="social-icon-name" data-arصالون الجمال" data-en="Beauty Lounge">صالون الجمال</div>
+                    <div class="social-icon-name" data-ar="صالون الجمال" data-en="Beauty Lounge">صالون الجمال</div>
                 </a>
                 
                 <a href="https://snapchat.com/t/G442Ud4D" class="social-icon-link" target="_blank">
@@ -808,13 +809,13 @@
             if (lang === 'ar') {
                 body.classList.remove('lang-en');
                 body.classList.add('lang-ar');
-                langArBtn.style.background = 'rgba(128, 0, 32, 0.4)';
-                langEnBtn.style.background = 'rgba(128, 0, 32, 0.2)';
+                langArBtn.style.background = 'rgba(139, 0, 0, 0.4)';
+                langEnBtn.style.background = 'rgba(139, 0, 0, 0.2)';
             } else {
                 body.classList.remove('lang-ar');
                 body.classList.add('lang-en');
-                langArBtn.style.background = 'rgba(128, 0, 32, 0.2)';
-                langEnBtn.style.background = 'rgba(128, 0, 32, 0.4)';
+                langArBtn.style.background = 'rgba(139, 0, 0, 0.2)';
+                langEnBtn.style.background = 'rgba(139, 0, 0, 0.4)';
             }
             
             // Update all elements with data-ar and data-en attributes
