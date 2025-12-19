@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-black: #0a0a0a;
-            --secondary-black: #1a1a1a;
+            --primary-black: #000000;
+            --secondary-black: #0a0a0a;
             --accent-burgundy: #8B0000;
             --accent-burgundy-light: #A52A2A;
-            --text-white: #F8F8F8;
-            --text-light: #E8E8E8;
+            --text-white: #FFFFFF;
+            --text-light: #F0F0F0;
             --transition: all 0.3s ease;
         }
         
@@ -30,6 +30,120 @@
             overflow-x: hidden;
         }
         
+        /* صفحة الترحيب الدائمة */
+        .welcome-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--primary-black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        .welcome-content {
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .welcome-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .welcome-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(1.2);
+        }
+        
+        .welcome-title {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: var(--text-white);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .welcome-subtitle {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+        
+        .enter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 18px 60px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            margin-top: 30px;
+        }
+        
+        .enter-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        /* زر الإغلاق */
+        .close-welcome {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.8rem;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+        
+        .close-welcome:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+        
+        .lang-en .close-welcome {
+            right: auto;
+            left: 40px;
+        }
+        
+        /* الموقع الرئيسي */
+        #mainSite {
+            display: none;
+        }
+        
+        /* بقية الموقع - تضمين الكود السابق */
         .container {
             width: 90%;
             max-width: 1200px;
@@ -39,7 +153,7 @@
         
         /* Header & Navigation */
         header {
-            background-color: rgba(10, 10, 10, 0.95);
+            background-color: rgba(0, 0, 0, 0.95);
             position: fixed;
             width: 100%;
             top: 0;
@@ -125,7 +239,7 @@
         /* Hero Section */
         .hero {
             padding: 160px 0 80px;
-            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(26, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1374&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1374&auto=format&fit=crop') center/cover no-repeat;
             text-align: center;
             position: relative;
         }
@@ -257,7 +371,7 @@
             color: var(--text-white);
         }
         
-        /* Services Section - تم التعديل */
+        /* Services Section */
         .services {
             background-color: var(--secondary-black);
         }
@@ -453,7 +567,7 @@
         
         /* Footer */
         footer {
-            background-color: #080808;
+            background-color: #000000;
             padding: 40px 0 20px;
             text-align: center;
             border-top: 1px solid rgba(139, 0, 0, 0.2);
@@ -477,6 +591,33 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .welcome-title {
+                font-size: 2.5rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .welcome-logo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .close-welcome {
+                top: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .lang-en .close-welcome {
+                right: auto;
+                left: 20px;
+            }
+            
+            /* بقية الستايلات للريسبونسيف */
             .header-container {
                 flex-wrap: wrap;
             }
@@ -541,6 +682,18 @@
             }
         }
         
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         /* Language-specific styles */
         .lang-ar {
             direction: rtl;
@@ -551,216 +704,273 @@
             direction: ltr;
             text-align: left;
         }
-        
-        .hidden {
-            display: none !important;
-        }
     </style>
 </head>
 <body class="lang-ar">
-    <!-- Header & Navigation -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
+    <!-- صفحة الترحيب الدائمة -->
+    <div class="welcome-page" id="welcomePage">
+        <div class="close-welcome" id="closeWelcome">
+            <i class="fas fa-times"></i>
+        </div>
+        
+        <div class="welcome-content">
+            <div class="welcome-logo">
                 <img src="https://i.imgur.com/Vc29zG2.png" alt="Muntaser Makkawi Logo">
             </div>
             
-            <div class="language-switcher">
-                <button class="lang-btn" id="langArBtn">عربي</button>
-                <button class="lang-btn" id="langEnBtn">English</button>
-            </div>
+            <h1 class="welcome-title" id="welcomeTitle">Where science and expertise come together</h1>
             
-            <div class="mobile-menu" id="mobileMenu">
-                <i class="fas fa-bars"></i>
-            </div>
+            <p class="welcome-subtitle" id="welcomeSubtitle">المكان الوحيد الذي يجمع العلم والخبرة</p>
             
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="#home" class="nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
-                    <li><a href="#about" class="nav-link" data-ar="عني" data-en="About">عني</a></li>
-                    <li><a href="#services" class="nav-link" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
-                    <li><a href="#contact" class="nav-link" data-ar="اتصل بي" data-en="Contact">اتصل بي</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section - تم التعديل -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1 class="hero-title" data-ar="مرحباً، أنا <span>منتصر مكاوي</span>" data-en="Hello, I'm <span>Muntaser Makkawi</span>">مرحباً، أنا <span>منتصر مكاوي</span></h1>
-            <div class="title-badge" data-ar="Hair Stylist & International Trainer" data-en="Hair Stylist & International Trainer">Hair Stylist & International Trainer</div>
-            <p class="hero-desc" data-ar="مصمف شعر معتمد، مدرب دولي معتمد، أسعى دائمًا لإبراز جمالك الداخلي من خلال إبداعاتي الفنية." data-en="Certified hair stylist, international certified trainer, always striving to highlight your inner beauty through my artistic creations.">مصمف شعر معتمد، مدرب دولي معتمد، أسعى دائمًا لإبراز جمالك الداخلي من خلال إبداعاتي الفنية.</p>
-        </div>
-    </section>
-
-    <!-- About Section - تم التعديل -->
-    <section class="section" id="about">
-        <div class="container">
-            <h2 class="section-title" data-ar="عني" data-en="About Me">عني</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://i.imgur.com/Vc29zG2.png" alt="Muntaser Makkawi Logo">
-                </div>
-                <div class="about-text">
-                    <h3 class="about-name" data-ar="منتصر مكاوي" data-en="Muntaser Makkawi">منتصر مكاوي</h3>
-                    <p class="about-desc" data-ar="أنا منتصر مكاوي، مصمف شعر مع خبرة واسعة في عالم تصفيف الشعر والأناقة. شغفي هو تحويل الشعر إلى تحفة فنية تعبر عن شخصيتك." data-en="I am Muntaser Makkawi, a hair stylist with extensive experience in the world of hair styling and elegance. My passion is transforming hair into an artistic masterpiece that expresses your personality.">أنا منتصر مكاوي، مصمف شعر مع خبرة واسعة في عالم تصفيف الشعر والأناقة. شغفي هو تحويل الشعر إلى تحفة فنية تعبر عن شخصيتك.</p>
-                    <p class="about-desc2" data-ar="كمدرب دولي معتمد، أسعى لنقل معرفتي وخبرتي للمهتمين بمجال تصفيف الشعر، مع التركيز على أحدث التقنيات والاتجاهات العالمية." data-en="As a certified international trainer, I strive to transfer my knowledge and experience to those interested in the field of hair styling, focusing on the latest techniques and global trends.">كمدرب دولي معتمد، أسعى لنقل معرفتي وخبرتي للمهتمين بمجال تصفيف الشعر، مع التركيز على أحدث التقنيات والاتجاهات العالمية.</p>
-                    
-                    <div class="qualifications">
-                        <div class="qualification-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="qual-text" data-ar="مصمف شعر محترف" data-en="Professional Hair Stylist">مصمف شعر محترف</span>
-                        </div>
-                        <div class="qualification-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="qual-text" data-ar="مدرب دولي معتمد" data-en="Certified International Trainer">مدرب دولي معتمد</span>
-                        </div>
-                        <div class="qualification-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="qual-text" data-ar="خبير في الاتجاهات الحديثة" data-en="Expert in Modern Trends">خبير في الاتجاهات الحديثة</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section - تم التعديل (خدمتين فقط) -->
-    <section class="section services" id="services">
-        <div class="container">
-            <h2 class="section-title" data-ar="الخدمات" data-en="Services">الخدمات</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cut"></i>
-                    </div>
-                    <h3 class="service-title" data-ar="تصفيف الشعر المتكامل" data-en="Complete Hair Styling">تصفيف الشعر المتكامل</h3>
-                    <p class="service-desc" data-ar="تقطيع، تصفيف، تلوين وتنسيق الشعر بأحدث التقنيات العالمية، مع استخدام منتجات عالية الجودة تناسب جميع أنواع الشعر وألوان البشرة." data-en="Cutting, styling, coloring and arranging hair with the latest global techniques, using high-quality products suitable for all hair types and skin tones.">تقطيع، تصفيف، تلوين وتنسيق الشعر بأحدث التقنيات العالمية، مع استخدام منتجات عالية الجودة تناسب جميع أنواع الشعر وألوان البشرة.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h3 class="service-title" data-ar="تدريب دولي معتمد" data-en="Certified International Training">تدريب دولي معتمد</h3>
-                    <p class="service-desc" data-ar="دورات تدريبية معتمدة للمهتمين بمجال تصفيف الشعر، تشمل الجانب النظري والعملي بأحدث المناهج العالمية والتقنيات الحديثة." data-en="Certified training courses for those interested in the field of hair styling, covering both theoretical and practical aspects with the latest global curricula and modern techniques.">دورات تدريبية معتمدة للمهتمين بمجال تصفيف الشعر، تشمل الجانب النظري والعملي بأحدث المناهج العالمية والتقنيات الحديثة.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Icons Section -->
-    <section class="social-section">
-        <div class="container">
-            <h3 class="social-title" data-ar="تواصل معي على" data-en="Connect with me on">تواصل معي على</h3>
-            <div class="social-icons">
-                <a href="https://www.instagram.com/muntaser_makkawi" class="social-icon-link" target="_blank">
-                    <div class="social-icon-circle">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <div class="social-icon-name">Instagram</div>
-                </a>
-                
-                <a href="https://www.instagram.com/mbeautylounge1" class="social-icon-link" target="_blank">
-                    <div class="social-icon-circle">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <div class="social-icon-name" data-ar="صالون الجمال" data-en="Beauty Lounge">صالون الجمال</div>
-                </a>
-                
-                <a href="https://snapchat.com/t/G442Ud4D" class="social-icon-link" target="_blank">
-                    <div class="social-icon-circle">
-                        <i class="fab fa-snapchat"></i>
-                    </div>
-                    <div class="social-icon-name">Snapchat</div>
-                </a>
-                
-                <a href="tel:0796281500" class="social-icon-link">
-                    <div class="social-icon-circle">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="social-icon-name" data-ar="اتصال هاتفي" data-en="Phone Call">اتصال هاتفي</div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <h2 class="section-title" data-ar="اتصل بي" data-en="Contact Me">اتصل بي</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3 class="contact-subtitle" data-ar="ابقى على تواصل" data-en="Stay in Touch">ابقى على تواصل</h3>
-                    <p class="contact-desc" data-ar="أنا دائماً متاح للاستشارات والحجوزات والدورات التدريبية. لا تتردد في التواصل معي عبر أي من الوسائل التالية:" data-en="I am always available for consultations, bookings, and training courses. Don't hesitate to contact me through any of the following means:">أنا دائماً متاح للاستشارات والحجوزات والدورات التدريبية. لا تتردد في التواصل معي عبر أي من الوسائل التالية:</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <h4 data-ar="الهاتف" data-en="Phone">الهاتف</h4>
-                            <a href="tel:0796281500" class="contact-link">0796281500</a>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-instagram"></i>
-                            </div>
-                            <h4 data-ar="إنستغرام الشخصي" data-en="Personal Instagram">إنستغرام الشخصي</h4>
-                            <a href="https://www.instagram.com/muntaser_makkawi" target="_blank" class="contact-link">@muntaser_makkawi</a>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-instagram"></i>
-                            </div>
-                            <h4 data-ar="إنستغرام الصالون" data-en="Beauty Lounge Instagram">إنستغرام الصالون</h4>
-                            <a href="https://www.instagram.com/mbeautylounge1" target="_blank" class="contact-link">@mbeautylounge1</a>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-snapchat"></i>
-                            </div>
-                            <h4 data-ar="سناب شات" data-en="Snapchat">سناب شات</h4>
-                            <a href="https://snapchat.com/t/G442Ud4D" target="_blank" class="contact-link">Snapchat</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Save Contact Section -->
-    <section class="save-contact-section">
-        <div class="container">
-            <button class="save-contact-btn" id="saveContactBtn">
-                <i class="fas fa-save"></i>
-                <span data-ar="حفظ جهة الاتصال" data-en="Save Contact">حفظ جهة الاتصال</span>
+            <button class="enter-btn" id="enterSite">
+                <span id="enterText">ادخل إلى الموقع</span>
             </button>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer - تم التعديل -->
-    <footer>
-        <div class="container">
-            <div class="footer-logo">
-                <img src="https://i.imgur.com/Vc29zG2.png" alt="Muntaser Makkawi Logo">
+    <!-- الموقع الرئيسي -->
+    <div id="mainSite" style="display: none;">
+        <!-- Header & Navigation -->
+        <header>
+            <div class="container header-container">
+                <div class="logo">
+                    <img src="https://i.imgur.com/Vc29zG2.png" alt="Muntaser Makkawi Logo">
+                </div>
+                
+                <div class="language-switcher">
+                    <button class="lang-btn" id="langArBtn">عربي</button>
+                    <button class="lang-btn" id="langEnBtn">English</button>
+                </div>
+                
+                <div class="mobile-menu" id="mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#home" class="nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                        <li><a href="#about" class="nav-link" data-ar="عني" data-en="About">عني</a></li>
+                        <li><a href="#services" class="nav-link" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+                        <li><a href="#contact" class="nav-link" data-ar="اتصل بي" data-en="Contact">اتصل بي</a></li>
+                    </ul>
+                </nav>
             </div>
-            
-            <p class="footer-text" data-ar="منتصر مكاوي - مصمف شعر ومدرب دولي معتمد" data-en="Muntaser Makkawi - Hair Stylist & Certified International Trainer">منتصر مكاوي - مصمف شعر ومدرب دولي معتمد</p>
-            
-            <div class="copyright">
-                © <span id="currentYear">2023</span> Muntaser Makkawi. <span data-ar="جميع الحقوق محفوظة." data-en="All rights reserved.">جميع الحقوق محفوظة.</span>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container hero-content">
+                <h1 class="hero-title" data-ar="مرحباً، أنا <span>منتصر مكاوي</span>" data-en="Hello, I'm <span>Muntaser Makkawi</span>">مرحباً، أنا <span>منتصر مكاوي</span></h1>
+                <div class="title-badge" data-ar="Hair Stylist & International Trainer" data-en="Hair Stylist & International Trainer">Hair Stylist & International Trainer</div>
+                <p class="hero-desc" data-ar="مصمف شعر معتمد، مدرب دولي معتمد، أسعى دائمًا لإبراز جمالك الداخلي من خلال إبداعاتي الفنية." data-en="Certified hair stylist, international certified trainer, always striving to highlight your inner beauty through my artistic creations.">مصمف شعر معتمد، مدرب دولي معتمد، أسعى دائمًا لإبراز جمالك الداخلي من خلال إبداعاتي الفنية.</p>
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <div class="container">
+                <h2 class="section-title" data-ar="عني" data-en="About Me">عني</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://i.imgur.com/Vc29zG2.png" alt="Muntaser Makkawi Logo">
+                    </div>
+                    <div class="about-text">
+                        <h3 class="about-name" data-ar="منتصر مكاوي" data-en="Muntaser Makkawi">منتصر مكاوي</h3>
+                        <p class="about-desc" data-ar="أنا منتصر مكاوي، مصمف شعر مع خبرة واسعة في عالم تصفيف الشعر والأناقة. شغفي هو تحويل الشعر إلى تحفة فنية تعبر عن شخصيتك." data-en="I am Muntaser Makkawi, a hair stylist with extensive experience in the world of hair styling and elegance. My passion is transforming hair into an artistic masterpiece that expresses your personality.">أنا منتصر مكاوي، مصمف شعر مع خبرة واسعة في عالم تصفيف الشعر والأناقة. شغفي هو تحويل الشعر إلى تحفة فنية تعبر عن شخصيتك.</p>
+                        <p class="about-desc2" data-ar="كمدرب دولي معتمد، أسعى لنقل معرفتي وخبرتي للمهتمين بمجال تصفيف الشعر، مع التركيز على أحدث التقنيات والاتجاهات العالمية." data-en="As a certified international trainer, I strive to transfer my knowledge and experience to those interested in the field of hair styling, focusing on the latest techniques and global trends.">كمدرب دولي معتمد، أسعى لنقل معرفتي وخبرتي للمهتمين بمجال تصفيف الشعر، مع التركيز على أحدث التقنيات والاتجاهات العالمية.</p>
+                        
+                        <div class="qualifications">
+                            <div class="qualification-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span class="qual-text" data-ar="مصمف شعر محترف" data-en="Professional Hair Stylist">مصمف شعر محترف</span>
+                            </div>
+                            <div class="qualification-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span class="qual-text" data-ar="مدرب دولي معتمد" data-en="Certified International Trainer">مدرب دولي معتمد</span>
+                            </div>
+                            <div class="qualification-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span class="qual-text" data-ar="خبير في الاتجاهات الحديثة" data-en="Expert in Modern Trends">خبير في الاتجاهات الحديثة</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section services" id="services">
+            <div class="container">
+                <h2 class="section-title" data-ar="الخدمات" data-en="Services">الخدمات</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3 class="service-title" data-ar="تصفيف الشعر المتكامل" data-en="Complete Hair Styling">تصفيف الشعر المتكامل</h3>
+                        <p class="service-desc" data-ar="تقطيع، تصفيف، تلوين وتنسيق الشعر بأحدث التقنيات العالمية، مع استخدام منتجات عالية الجودة تناسب جميع أنواع الشعر وألوان البشرة." data-en="Cutting, styling, coloring and arranging hair with the latest global techniques, using high-quality products suitable for all hair types and skin tones.">تقطيع، تصفيف، تلوين وتنسيق الشعر بأحدث التقنيات العالمية، مع استخدام منتجات عالية الجودة تناسب جميع أنواع الشعر وألوان البشرة.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3 class="service-title" data-ar="تدريب دولي معتمد" data-en="Certified International Training">تدريب دولي معتمد</h3>
+                        <p class="service-desc" data-ar="دورات تدريبية معتمدة للمهتمين بمجال تصفيف الشعر، تشمل الجانب النظري والعملي بأحدث المناهج العالمية والتقنيات الحديثة." data-en="Certified training courses for those interested in the field of hair styling, covering both theoretical and practical aspects with the latest global curricula and modern techniques.">دورات تدريبية معتمدة للمهتمين بمجال تصفيف الشعر، تشمل الجانب النظري والعملي بأحدث المناهج العالمية والتقنيات الحديثة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Icons Section -->
+        <section class="social-section">
+            <div class="container">
+                <h3 class="social-title" data-ar="تواصل معي على" data-en="Connect with me on">تواصل معي على</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/muntaser_makkawi" class="social-icon-link" target="_blank">
+                        <div class="social-icon-circle">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="social-icon-name">Instagram</div>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/mbeautylounge1" class="social-icon-link" target="_blank">
+                        <div class="social-icon-circle">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="social-icon-name" data-ar="صالون الجمال" data-en="Beauty Lounge">صالون الجمال</div>
+                    </a>
+                    
+                    <a href="https://snapchat.com/t/G442Ud4D" class="social-icon-link" target="_blank">
+                        <div class="social-icon-circle">
+                            <i class="fab fa-snapchat"></i>
+                        </div>
+                        <div class="social-icon-name">Snapchat</div>
+                    </a>
+                    
+                    <a href="tel:0796281500" class="social-icon-link">
+                        <div class="social-icon-circle">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="social-icon-name" data-ar="اتصال هاتفي" data-en="Phone Call">اتصال هاتفي</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact" id="contact">
+            <div class="container">
+                <h2 class="section-title" data-ar="اتصل بي" data-en="Contact Me">اتصل بي</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3 class="contact-subtitle" data-ar="ابقى على تواصل" data-en="Stay in Touch">ابقى على تواصل</h3>
+                        <p class="contact-desc" data-ar="أنا دائماً متاح للاستشارات والحجوزات والدورات التدريبية. لا تتردد في التواصل معي عبر أي من الوسائل التالية:" data-en="I am always available for consultations, bookings, and training courses. Don't hesitate to contact me through any of the following means:">أنا دائماً متاح للاستشارات والحجوزات والدورات التدريبية. لا تتردد في التواصل معي عبر أي من الوسائل التالية:</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <h4 data-ar="الهاتف" data-en="Phone">الهاتف</h4>
+                                <a href="tel:0796281500" class="contact-link">0796281500</a>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <h4 data-ar="إنستغرام الشخصي" data-en="Personal Instagram">إنستغرام الشخصي</h4>
+                                <a href="https://www.instagram.com/muntaser_makkawi" target="_blank" class="contact-link">@muntaser_makkawi</a>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <h4 data-ar="إنستغرام الصالون" data-en="Beauty Lounge Instagram">إنستغرام الصالون</h4>
+                                <a href="https://www.instagram.com/mbeautylounge1" target="_blank" class="contact-link">@mbeautylounge1</a>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fab fa-snapchat"></i>
+                                </div>
+                                <h4 data-ar="سناب شات" data-en="Snapchat">سناب شات</h4>
+                                <a href="https://snapchat.com/t/G442Ud4D" target="_blank" class="contact-link">Snapchat</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Save Contact Section -->
+        <section class="save-contact-section">
+            <div class="container">
+                <button class="save-contact-btn" id="saveContactBtn">
+                    <i class="fas fa-save"></i>
+                    <span data-ar="حفظ جهة الاتصال" data-en="Save Contact">حفظ جهة الاتصال</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-logo">
+                    <img src="https://i.imgur.com/Vc29zG2.png" alt="Muntaser Makkawi Logo">
+                </div>
+                
+                <p class="footer-text" data-ar="منتصر مكاوي - مصمف شعر ومدرب دولي معتمد" data-en="Muntaser Makkawi - Hair Stylist & Certified International Trainer">منتصر مكاوي - مصمف شعر ومدرب دولي معتمد</p>
+                
+                <div class="copyright">
+                    © <span id="currentYear">2023</span> Muntaser Makkawi. <span data-ar="جميع الحقوق محفوظة." data-en="All rights reserved.">جميع الحقوق محفوظة.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script>
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // تحكم بصفحة الترحيب الدائمة
+        const welcomePage = document.getElementById('welcomePage');
+        const mainSite = document.getElementById('mainSite');
+        const enterBtn = document.getElementById('enterSite');
+        const closeWelcome = document.getElementById('closeWelcome');
+        const welcomeTitle = document.getElementById('welcomeTitle');
+        const welcomeSubtitle = document.getElementById('welcomeSubtitle');
+        const enterText = document.getElementById('enterText');
+        
+        // زر الدخول إلى الموقع
+        enterBtn.addEventListener('click', () => {
+            // إخفاء صفحة الترحيب
+            welcomePage.style.opacity = '0';
+            welcomePage.style.visibility = 'hidden';
+            
+            // إظهار الموقع الرئيسي
+            setTimeout(() => {
+                mainSite.style.display = 'block';
+                // تحريك إلى أعلى الصفحة
+                window.scrollTo(0, 0);
+            }, 800);
+        });
+        
+        // زر الإغلاق (X)
+        closeWelcome.addEventListener('click', () => {
+            // إخفاء صفحة الترحيب
+            welcomePage.style.opacity = '0';
+            welcomePage.style.visibility = 'hidden';
+            
+            // إظهار الموقع الرئيسي
+            setTimeout(() => {
+                mainSite.style.display = 'block';
+                // تحريك إلى أعلى الصفحة
+                window.scrollTo(0, 0);
+            }, 800);
+        });
         
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobileMenu');
@@ -815,11 +1025,21 @@
                 body.classList.add('lang-ar');
                 langArBtn.style.background = 'rgba(139, 0, 0, 0.4)';
                 langEnBtn.style.background = 'rgba(139, 0, 0, 0.2)';
+                
+                // تحديث نص صفحة الترحيب
+                welcomeTitle.textContent = 'Where science and expertise come together';
+                welcomeSubtitle.textContent = 'المكان الوحيد الذي يجمع العلم والخبرة';
+                enterText.textContent = 'ادخل إلى الموقع';
             } else {
                 body.classList.remove('lang-ar');
                 body.classList.add('lang-en');
                 langArBtn.style.background = 'rgba(139, 0, 0, 0.2)';
                 langEnBtn.style.background = 'rgba(139, 0, 0, 0.4)';
+                
+                // تحديث نص صفحة الترحيب
+                welcomeTitle.textContent = 'Where science and expertise come together';
+                welcomeSubtitle.textContent = 'The only place that combines science and expertise';
+                enterText.textContent = 'Enter Website';
             }
             
             // Update all elements with data-ar and data-en attributes
