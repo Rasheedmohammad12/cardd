@@ -9,10 +9,10 @@
         :root {
             --primary-black: #0a0a0a;
             --secondary-black: #1a1a1a;
-            --accent-burgundy: #8B0000; /* لون سكني فاخر */
+            --accent-burgundy: #8B0000;
             --accent-burgundy-light: #A52A2A;
-            --accent-cream: #F5F5DC;
-            --text-light: #f0f0f0;
+            --text-white: #F8F8F8; /* أبيض فخم بدلاً من الكريمي */
+            --text-light: #E8E8E8;
             --transition: all 0.3s ease;
         }
         
@@ -25,7 +25,7 @@
         
         body {
             background-color: var(--primary-black);
-            color: var(--text-light);
+            color: var(--text-white); /* تغيير النص الرئيسي إلى أبيض فخم */
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -65,7 +65,7 @@
         
         .lang-btn {
             background: rgba(139, 0, 0, 0.2);
-            color: var(--accent-cream);
+            color: var(--text-white); /* أبيض فخم */
             border: 1px solid rgba(139, 0, 0, 0.4);
             padding: 5px 15px;
             border-radius: 20px;
@@ -88,7 +88,7 @@
         }
         
         nav ul li a {
-            color: var(--accent-cream);
+            color: var(--text-white); /* أبيض فخم */
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
@@ -119,6 +119,7 @@
             display: none;
             font-size: 24px;
             cursor: pointer;
+            color: var(--text-white); /* أبيض فخم */
         }
         
         /* Hero Section */
@@ -132,27 +133,28 @@
         .hero-content h1 {
             font-size: 3rem;
             margin-bottom: 20px;
-            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
+            color: var(--text-white); /* أبيض فخم */
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
             font-weight: 700;
         }
         
         .hero-content h1 span {
-            color: var(--accent-burgundy-light);
+            color: var(--text-white); /* أبيض فخم */
             font-weight: 700;
+            font-style: italic;
         }
         
         .hero-content p {
             font-size: 1.3rem;
             max-width: 800px;
             margin: 0 auto 30px;
-            color: var(--accent-cream);
+            color: var(--text-light); /* أبيض فاتح */
         }
         
         .title-badge {
             display: inline-block;
             background: rgba(139, 0, 0, 0.15);
-            color: var(--accent-burgundy-light);
+            color: var(--text-white); /* أبيض فخم */
             padding: 8px 25px;
             border-radius: 30px;
             font-weight: 600;
@@ -169,7 +171,7 @@
             text-align: center;
             font-size: 2.2rem;
             margin-bottom: 50px;
-            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
+            color: var(--text-white); /* أبيض فخم */
             position: relative;
         }
         
@@ -219,13 +221,13 @@
         .about-text h3 {
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
+            color: var(--text-white); /* أبيض فخم */
         }
         
         .about-text p {
             font-size: 1.1rem;
             margin-bottom: 20px;
-            color: #ddd;
+            color: var(--text-light); /* أبيض فاتح */
         }
         
         .qualifications {
@@ -246,9 +248,13 @@
         }
         
         .qualification-item i {
-            color: var(--accent-burgundy);
+            color: var(--text-white); /* أبيض فخم */
             margin-left: 10px;
             font-size: 1rem;
+        }
+        
+        .qualification-item span {
+            color: var(--text-white); /* أبيض فخم */
         }
         
         /* Services Section */
@@ -279,18 +285,18 @@
         
         .service-icon {
             font-size: 2.5rem;
-            color: var(--accent-burgundy);
+            color: var(--text-white); /* أبيض فخم */
             margin-bottom: 20px;
         }
         
         .service-card h3 {
             font-size: 1.6rem;
             margin-bottom: 15px;
-            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
+            color: var(--text-white); /* أبيض فخم */
         }
         
         .service-card p {
-            color: #ccc;
+            color: var(--text-light); /* أبيض فاتح */
         }
         
         /* Contact Section */
@@ -313,7 +319,7 @@
         .contact-info h3 {
             font-size: 1.8rem;
             margin-bottom: 25px;
-            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
+            color: var(--text-white); /* أبيض فخم */
         }
         
         .contact-details {
@@ -340,18 +346,18 @@
         
         .contact-icon {
             font-size: 2rem;
-            color: var(--accent-burgundy);
+            color: var(--text-white); /* أبيض فخم */
             margin-bottom: 15px;
         }
         
         .contact-item h4 {
             font-size: 1rem;
             margin-bottom: 10px;
-            color: #aaa;
+            color: #bbb; /* رمادي فاتح */
         }
         
         .contact-link {
-            color: var(--accent-cream);
+            color: var(--text-white); /* أبيض فخم */
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
@@ -373,7 +379,7 @@
         .social-title {
             font-size: 1.8rem;
             margin-bottom: 30px;
-            color: var(--accent-burgundy); /* تغيير اللون إلى سكني */
+            color: var(--text-white); /* أبيض فخم */
         }
         
         .social-icons {
@@ -388,7 +394,7 @@
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            color: var(--accent-cream);
+            color: var(--text-white); /* أبيض فخم */
             transition: var(--transition);
             width: 100px;
         }
@@ -415,6 +421,7 @@
         .social-icon-name {
             font-size: 0.9rem;
             font-weight: 500;
+            color: var(--text-white); /* أبيض فخم */
         }
         
         /* Save Contact Button */
@@ -425,7 +432,7 @@
         
         .save-contact-btn {
             background: linear-gradient(135deg, var(--accent-burgundy), var(--accent-burgundy-light));
-            color: white;
+            color: var(--text-white); /* أبيض فخم */
             border: none;
             padding: 15px 40px;
             font-size: 1.2rem;
@@ -454,6 +461,11 @@
         
         .footer-logo img {
             height: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-text {
+            color: var(--text-white); /* أبيض فخم */
             margin-bottom: 20px;
         }
         
