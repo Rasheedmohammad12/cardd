@@ -8,13 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Cairo:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-pink: #FFB6C1; /* زهري فاتح */
-            --light-pink: #FFE4E9; /* زهري فاتح جداً */
-            --medium-pink: #FF8FAB; /* زهري متوسط */
-            --dark-pink: #FF6B8B; /* زهري داكن */
-            --text-color: #FFFFFF; /* نص أبيض */
-            --light-text: #F8F8F8; /* أبيض فاتح */
-            --card-bg: rgba(255, 255, 255, 0.15); /* بطاقات شفافة */
+            --primary-pink: #FFB6C1;
+            --light-pink: #FFE4E9;
+            --medium-pink: #FF8FAB;
+            --dark-pink: #FF6B8B;
+            --text-color: #FFFFFF;
+            --light-text: #F8F8F8;
+            --card-bg: rgba(255, 255, 255, 0.15);
             --border-color: rgba(255, 255, 255, 0.3);
             --shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
@@ -33,6 +33,7 @@
             overflow-x: hidden;
             min-height: 100vh;
             position: relative;
+            font-size: 15px; /* تصغير الخط العام */
         }
         
         body:before {
@@ -100,8 +101,8 @@
         
         .welcome-title {
             font-family: 'El Messiri', serif;
-            font-size: 3.5rem;
-            margin-bottom: 30px;
+            font-size: 3rem; /* تصغير الخط */
+            margin-bottom: 25px;
             color: var(--text-color);
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
             line-height: 1.3;
@@ -112,9 +113,9 @@
         }
         
         .welcome-subtitle {
-            font-size: 1.8rem;
+            font-size: 1.5rem; /* تصغير الخط */
             color: var(--light-text);
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             line-height: 1.6;
             opacity: 0.9;
         }
@@ -128,14 +129,14 @@
             background: rgba(255, 255, 255, 0.3);
             color: var(--text-color);
             border: 2px solid rgba(255, 255, 255, 0.5);
-            padding: 18px 50px;
-            font-size: 1.3rem;
+            padding: 16px 45px;
+            font-size: 1.2rem; /* تصغير الخط */
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
             transition: var(--transition);
             backdrop-filter: blur(5px);
-            margin-top: 30px;
+            margin-top: 25px;
         }
         
         .enter-btn:hover {
@@ -225,7 +226,7 @@
         
         /* Header */
         .header {
-            padding: 40px 0 20px;
+            padding: 35px 0 20px; /* تصغير المساحة */
             position: relative;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -236,7 +237,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: 35px; /* تصغير المساحة */
         }
         
         .logo-container {
@@ -246,8 +247,8 @@
         }
         
         .logo-frame {
-            width: 120px;
-            height: 120px;
+            width: 110px; /* تصغير الحجم */
+            height: 110px;
             border-radius: 50%;
             padding: 5px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
@@ -281,7 +282,7 @@
         }
         
         .brand-name h1 {
-            font-size: 3rem;
+            font-size: 2.5rem; /* تصغير الخط */
             font-weight: 700;
             color: var(--text-color);
             letter-spacing: 0.5px;
@@ -290,7 +291,7 @@
         }
         
         .brand-name h2 {
-            font-size: 1.4rem;
+            font-size: 1.2rem; /* تصغير الخط */
             color: var(--light-text);
             font-weight: 500;
             letter-spacing: 2px;
@@ -305,6 +306,7 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
             backdrop-filter: blur(5px);
+            font-size: 0.95rem; /* تصغير الخط */
         }
         
         .header-contact i {
@@ -321,9 +323,9 @@
         
         .main-nav {
             display: flex;
-            gap: 40px;
+            gap: 35px; /* تصغير المسافة */
             background: rgba(255, 255, 255, 0.15);
-            padding: 15px 40px;
+            padding: 14px 35px; /* تصغير المساحة */
             border-radius: 50px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
@@ -333,7 +335,7 @@
         .nav-link {
             color: var(--text-color);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1rem; /* تصغير الخط */
             font-weight: 600;
             padding: 8px 0;
             position: relative;
@@ -369,16 +371,16 @@
         
         /* Hero Section */
         .hero-section {
-            padding: 100px 0;
+            padding: 80px 0; /* تصغير المساحة */
             text-align: center;
             position: relative;
         }
         
         .hero-title {
             font-family: 'El Messiri', serif;
-            font-size: 3.5rem;
+            font-size: 2.8rem; /* تصغير الخط */
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             line-height: 1.2;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
         }
@@ -410,11 +412,11 @@
         }
         
         .hero-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.2rem; /* تصغير الخط */
             color: var(--light-text);
             max-width: 800px;
-            margin: 0 auto 50px;
-            line-height: 1.8;
+            margin: 0 auto 40px;
+            line-height: 1.7;
             opacity: 0.9;
         }
         
@@ -422,14 +424,14 @@
         .cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin: 80px 0;
+            gap: 35px;
+            margin: 70px 0;
         }
         
         .card {
             background: var(--card-bg);
             border-radius: 20px;
-            padding: 40px;
+            padding: 35px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
             transition: var(--transition);
@@ -461,9 +463,9 @@
         }
         
         .card-icon {
-            font-size: 2.8rem;
+            font-size: 2.5rem; /* تصغير الحجم */
             color: var(--text-color);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: inline-block;
             padding: 15px;
             background: rgba(255, 255, 255, 0.2);
@@ -473,8 +475,8 @@
         
         .card-title {
             font-family: 'El Messiri', serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 1.6rem; /* تصغير الخط */
+            margin-bottom: 18px;
             color: var(--text-color);
         }
         
@@ -484,21 +486,21 @@
         
         .card-content {
             color: var(--light-text);
-            line-height: 1.8;
-            font-size: 1.1rem;
+            line-height: 1.7;
+            font-size: 1rem; /* تصغير الخط */
             opacity: 0.9;
         }
         
         /* Specialties */
         .specialties-section {
-            margin: 80px 0;
+            margin: 70px 0;
         }
         
         .section-title {
             font-family: 'El Messiri', serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem; /* تصغير الخط */
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
             color: var(--text-color);
             position: relative;
             display: inline-block;
@@ -531,13 +533,13 @@
         .specialties-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
+            gap: 22px;
+            margin: 35px 0;
         }
         
         .specialty-item {
             background: rgba(255, 255, 255, 0.1);
-            padding: 25px;
+            padding: 22px;
             border-radius: 15px;
             border-left: 4px solid rgba(255, 255, 255, 0.5);
             display: flex;
@@ -547,6 +549,7 @@
             box-shadow: 0 5px 15px rgba(255, 182, 193, 0.2);
             border: 1px solid var(--border-color);
             backdrop-filter: blur(5px);
+            font-size: 0.95rem; /* تصغير الخط */
         }
         
         body.english .specialty-item {
@@ -563,7 +566,7 @@
         
         .specialty-item i {
             color: var(--text-color);
-            font-size: 1.4rem;
+            font-size: 1.3rem; /* تصغير الحجم */
             background: rgba(255, 255, 255, 0.2);
             padding: 12px;
             border-radius: 10px;
@@ -574,8 +577,8 @@
         .contact-section {
             background: rgba(255, 255, 255, 0.15);
             border-radius: 25px;
-            padding: 60px;
-            margin: 80px 0;
+            padding: 50px;
+            margin: 70px 0;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
             backdrop-filter: blur(10px);
@@ -584,11 +587,11 @@
         .contact-form {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 25px;
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
         
         .form-group.full-width {
@@ -597,21 +600,21 @@
         
         .form-label {
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: var(--text-color);
-            font-size: 1.1rem;
+            font-size: 1rem; /* تصغير الخط */
             font-weight: 600;
             opacity: 0.9;
         }
         
         .form-input, .form-textarea, .form-select {
             width: 100%;
-            padding: 18px 25px;
+            padding: 16px 22px;
             background: rgba(255, 255, 255, 0.2);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             color: var(--text-color);
-            font-size: 1.1rem;
+            font-size: 1rem; /* تصغير الخط */
             font-family: 'Cairo', sans-serif;
             transition: var(--transition);
             backdrop-filter: blur(5px);
@@ -639,8 +642,8 @@
             background: rgba(255, 255, 255, 0.3);
             color: var(--text-color);
             border: 2px solid rgba(255, 255, 255, 0.5);
-            padding: 20px 45px;
-            font-size: 1.2rem;
+            padding: 18px 40px;
+            font-size: 1.1rem; /* تصغير الخط */
             font-weight: 600;
             border-radius: 12px;
             cursor: pointer;
@@ -649,7 +652,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 15px;
             width: 100%;
             backdrop-filter: blur(5px);
         }
@@ -663,14 +666,14 @@
         
         /* Social Media */
         .social-section {
-            margin: 60px 0;
+            margin: 50px 0;
         }
         
         .social-icons {
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin-top: 40px;
+            margin-top: 35px;
         }
         
         .social-icon {
@@ -690,6 +693,74 @@
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(5px);
+        }
+        
+        /* Instagram Dropdown Container */
+        .instagram-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Instagram Dropdown Menu */
+        .instagram-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 15px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            min-width: 220px;
+            z-index: 1000;
+            border: 1px solid var(--border-color);
+            margin-top: 15px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        body.english .instagram-menu {
+            right: auto;
+            left: 0;
+        }
+        
+        .instagram-dropdown:hover .instagram-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .instagram-menu a {
+            display: flex;
+            align-items: center;
+            padding: 15px 25px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .instagram-menu a:last-child {
+            border-bottom: none;
+        }
+        
+        .instagram-menu a i {
+            color: #E4405F;
+            margin-left: 12px;
+            font-size: 1.2rem;
+        }
+        
+        body.english .instagram-menu a i {
+            margin-left: 0;
+            margin-right: 12px;
+        }
+        
+        .instagram-menu a:hover {
+            background: rgba(255, 182, 193, 0.15);
+            color: var(--dark-pink);
         }
         
         .social-icon:before {
@@ -724,8 +795,8 @@
         /* Footer */
         .footer {
             background: rgba(255, 255, 255, 0.1);
-            padding: 60px 0 30px;
-            margin-top: 80px;
+            padding: 50px 0 25px;
+            margin-top: 70px;
             border-top: 1px solid var(--border-color);
             backdrop-filter: blur(10px);
         }
@@ -733,14 +804,14 @@
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-            margin-bottom: 50px;
+            gap: 45px;
+            margin-bottom: 45px;
         }
         
         .footer-title {
             font-family: 'El Messiri', serif;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
+            font-size: 1.6rem; /* تصغير الخط */
+            margin-bottom: 20px;
             color: var(--text-color);
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
@@ -751,16 +822,17 @@
         
         .footer-text {
             color: var(--light-text);
-            line-height: 1.8;
+            line-height: 1.7;
             opacity: 0.9;
+            font-size: 0.95rem; /* تصغير الخط */
         }
         
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 25px;
             border-top: 1px solid var(--border-color);
             color: var(--light-text);
-            font-size: 0.9rem;
+            font-size: 0.85rem; /* تصغير الخط */
             opacity: 0.8;
         }
         
@@ -771,15 +843,15 @@
             }
             
             .hero-section {
-                padding: 60px 0;
+                padding: 50px 0;
             }
             
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 2.4rem;
             }
             
             .welcome-title {
-                font-size: 2.8rem;
+                font-size: 2.4rem;
             }
         }
         
@@ -790,22 +862,22 @@
             
             .header-top {
                 flex-direction: column;
-                gap: 30px;
+                gap: 25px;
             }
             
             .brand-name h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .main-nav {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 20px;
-                padding: 15px 20px;
+                gap: 15px;
+                padding: 12px 18px;
             }
             
             .contact-section {
-                padding: 40px 25px;
+                padding: 35px 22px;
             }
             
             .cards-container {
@@ -818,16 +890,16 @@
             }
             
             .welcome-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .welcome-subtitle {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
             
             .welcome-logo {
-                width: 120px;
-                height: 120px;
+                width: 110px;
+                height: 110px;
             }
             
             .close-welcome {
@@ -841,6 +913,16 @@
             body.english .close-welcome {
                 right: auto;
                 left: 15px;
+            }
+            
+            .social-icons {
+                gap: 20px;
+            }
+            
+            .social-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
             }
         }
         
@@ -1145,8 +1227,8 @@
                 <div class="specialty-item animate">
                     <i class="fas fa-paint-brush"></i>
                     <span>
-                        <span lang="ar">ميك أب آرتست محترفة</span>
-                        <span lang="en">Professional Makeup Artist</span>
+                        <span lang="ar">ميك أب آرتست</span> <!-- تمت إزالة كلمة "محترفة" -->
+                        <span lang="en">Makeup Artist</span>
                     </span>
                 </div>
                 <div class="specialty-item animate delay-1">
@@ -1166,8 +1248,8 @@
                 <div class="specialty-item animate">
                     <i class="fas fa-heart"></i>
                     <span>
-                        <span lang="ar">خبيرة عناية وبشرة</span>
-                        <span lang="en">Skin Care & Beauty Expert</span>
+                        <span lang="ar">خبيرة عناية بالبشرة</span> <!-- تم التعديل من "خبيرة عناية وبشرة" -->
+                        <span lang="en">Skin Care Expert</span>
                     </span>
                 </div>
                 <div class="specialty-item animate delay-1">
@@ -1278,12 +1360,25 @@
                 <a href="https://snapchat.com/t/RuUZWoaf" class="social-icon animate" target="_blank">
                     <i class="fab fa-snapchat"></i>
                 </a>
-                <a href="https://www.instagram.com/dmadeeha.makkawi" class="social-icon animate delay-1" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.instagram.com/mbeautylounge1" class="social-icon animate delay-2" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
+                
+                <!-- Instagram Dropdown -->
+                <div class="instagram-dropdown">
+                    <a href="#" class="social-icon animate delay-1">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <div class="instagram-menu">
+                        <a href="https://www.instagram.com/dmadeeha.makkawi" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                            <span lang="ar">dmadeeha.makkawi</span>
+                            <span lang="en">dmadeeha.makkawi</span>
+                        </a>
+                        <a href="https://www.instagram.com/mbeautylounge1" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                            <span lang="ar">mbeautylounge1</span>
+                            <span lang="en">mbeautylounge1</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1318,8 +1413,9 @@
                             <span lang="en">Working Hours</span>
                         </h3>
                         <p class="footer-text">
-                            <span lang="ar">الأحد - الخميس: 9:00 صباحاً - 9:00 مساءً<br>الجمعة: 2:00 ظهراً - 9:00 مساءً<br>السبت: 10:00 صباحاً - 9:00 مساءً</span>
-                            <span lang="en">Sunday - Thursday: 9:00 AM - 9:00 PM<br>Friday: 2:00 PM - 9:00 PM<br>Saturday: 10:00 AM - 9:00 PM</span>
+                            <!-- تم التعديل حسب المطلوب -->
+                            <span lang="ar">السبت - الخميس: 10:00 صباحاً - 7:00 مساءً<br>الأحد: يوم إجازة</span>
+                            <span lang="en">Saturday - Thursday: 10:00 AM - 7:00 PM<br>Sunday: Day off</span>
                         </p>
                     </div>
                 </div>
