@@ -53,6 +53,76 @@
             direction: ltr;
         }
         
+        /* صفحة الترحيب */
+        .welcome-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--medium-pink) 50%, var(--dark-pink) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 1;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        .welcome-page.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .welcome-content {
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .welcome-title {
+            font-family: 'El Messiri', serif;
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+            line-height: 1.3;
+        }
+        
+        body.english .welcome-title {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .welcome-subtitle {
+            font-size: 1.8rem;
+            color: var(--light-text);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .enter-btn {
+            background: rgba(255, 255, 255, 0.3);
+            color: var(--text-color);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            margin-top: 30px;
+        }
+        
+        .enter-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+        }
+        
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -650,6 +720,10 @@
             .hero-title {
                 font-size: 2.8rem;
             }
+            
+            .welcome-title {
+                font-size: 2.8rem;
+            }
         }
         
         @media (max-width: 768px) {
@@ -684,6 +758,14 @@
             .language-switcher {
                 top: 10px;
                 left: 10px;
+            }
+            
+            .welcome-title {
+                font-size: 2.2rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1.4rem;
             }
         }
         
@@ -735,432 +817,471 @@
     </style>
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <button class="lang-btn active" id="arabicBtn">العربية</button>
-        <button class="lang-btn" id="englishBtn">English</button>
+    <!-- صفحة الترحيب -->
+    <div class="welcome-page" id="welcomePage">
+        <div class="welcome-content">
+            <h1 class="welcome-title">
+                <span lang="ar">حيث تلتقي العلم والخبرة</span>
+                <span lang="en">Where science and expertise come together</span>
+            </h1>
+            <p class="welcome-subtitle">
+                <!-- تم التعديل: إزالة "ديما ضيف الله مقدادي" والاحتفاظ بـ Dmadeeha Makkawi فقط -->
+                <span lang="ar"><strong>Dmadeeha Makkawi</strong>، خبيرة تجميل وأخصائية تغذية علاجية، ومدربة دولية معتمدة. أمتلك مركز M Beauty Lounge المتخصص في تقديم خدمات التجميل المتكاملة والتدريب في هذا المجال.</span>
+                <span lang="en"><strong>Dmadeeha Makkawi</strong>, a beauty expert, therapeutic nutrition specialist, and certified international trainer. I own M Beauty Lounge, which specializes in providing integrated beauty services and training in this field.</span>
+            </p>
+            <button class="enter-btn" id="enterSite">
+                <span lang="ar">ادخل إلى الموقع</span>
+                <span lang="en">Enter Website</span>
+            </button>
+        </div>
     </div>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-top">
-                <div class="logo-container animate">
-                    <div class="logo-frame">
-                        <img src="https://i.imgur.com/Vc29zG2.png" alt="Dmadeeha Makkawi Logo" class="logo-img">
+    <!-- الموقع الرئيسي -->
+    <div id="mainSite" style="display: none;">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            <button class="lang-btn active" id="arabicBtn">العربية</button>
+            <button class="lang-btn" id="englishBtn">English</button>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-top">
+                    <div class="logo-container animate">
+                        <div class="logo-frame">
+                            <img src="https://i.imgur.com/Vc29zG2.png" alt="Dmadeeha Makkawi Logo" class="logo-img">
+                        </div>
+                        <div class="brand-name">
+                            <h1>Dmadeeha Makkawi</h1>
+                            <h2 lang="ar">مالكة M Beauty Lounge</h2>
+                            <h2 lang="en">Owner of M Beauty Lounge</h2>
+                        </div>
                     </div>
-                    <div class="brand-name">
-                        <h1>Dmadeeha Makkawi</h1>
-                        <h2 lang="ar">مالكة M Beauty Lounge</h2>
-                        <h2 lang="en">Owner of M Beauty Lounge</h2>
+                    
+                    <div class="header-contact animate delay-1">
+                        <p><i class="fas fa-phone-alt"></i> 0796638663</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 
+                            <span lang="ar">خلدا مقابل مركز الماركات - مجمع 299 - الطابق الاول</span>
+                            <span lang="en">Khalda, opposite Brands Center - Complex 299 - First Floor</span>
+                        </p>
                     </div>
                 </div>
                 
-                <div class="header-contact animate delay-1">
-                    <p><i class="fas fa-phone-alt"></i> 0796638663</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 
-                        <span lang="ar">خلدا مقابل مركز الماركات - مجمع 299 - الطابق الاول</span>
-                        <span lang="en">Khalda, opposite Brands Center - Complex 299 - First Floor</span>
-                    </p>
+                <div class="nav-container">
+                    <nav class="main-nav">
+                        <a href="#about" class="nav-link animate delay-1">
+                            <span lang="ar">من أنا</span>
+                            <span lang="en">About Me</span>
+                        </a>
+                        <a href="#services" class="nav-link animate delay-2">
+                            <span lang="ar">خدماتي</span>
+                            <span lang="en">Services</span>
+                        </a>
+                        <a href="#specialties" class="nav-link animate delay-3">
+                            <span lang="ar">تخصصاتي</span>
+                            <span lang="en">Specialties</span>
+                        </a>
+                        <a href="#contact" class="nav-link animate delay-3">
+                            <span lang="ar">تواصل معي</span>
+                            <span lang="en">Contact Me</span>
+                        </a>
+                    </nav>
                 </div>
             </div>
-            
-            <div class="nav-container">
-                <nav class="main-nav">
-                    <a href="#about" class="nav-link animate delay-1">
-                        <span lang="ar">من أنا</span>
-                        <span lang="en">About Me</span>
-                    </a>
-                    <a href="#services" class="nav-link animate delay-2">
-                        <span lang="ar">خدماتي</span>
-                        <span lang="en">Services</span>
-                    </a>
-                    <a href="#specialties" class="nav-link animate delay-3">
-                        <span lang="ar">تخصصاتي</span>
-                        <span lang="en">Specialties</span>
-                    </a>
-                    <a href="#contact" class="nav-link animate delay-3">
-                        <span lang="ar">تواصل معي</span>
-                        <span lang="en">Contact Me</span>
-                    </a>
-                </nav>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <h1 class="hero-title animate">
-                <span lang="ar">فخامة الجمال وتألقه في مكان واحد</span>
-                <span lang="en">Luxury Beauty & Elegance in One Place</span>
-            </h1>
-            <p class="hero-subtitle animate delay-1">
-                <!-- تم التعديل هنا: تغيير "تغذية إكلينيكية" إلى "تغذية علاجية" -->
-                <span lang="ar">أخصائية تغذية علاجية وخبيرة تجميل ومدربة دولية معتمدة. أقدم لك في M Beauty Lounge تجربة فريدة تجمع بين العلم والفن لتحقيق أقصى درجات الجمال والأناقة.</span>
-                <span lang="en">Therapeutic Nutrition Specialist, Beauty Expert, and Certified International Trainer. At M Beauty Lounge, I offer you a unique experience that combines science and art to achieve the highest levels of beauty and elegance.</span>
-            </p>
-        </div>
-    </section>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <h1 class="hero-title animate">
+                    <span lang="ar">فخامة الجمال وتألقه في مكان واحد</span>
+                    <span lang="en">Luxury Beauty & Elegance in One Place</span>
+                </h1>
+                <p class="hero-subtitle animate delay-1">
+                    <span lang="ar">أخصائية تغذية علاجية وخبيرة تجميل ومدربة دولية معتمدة. أقدم لك في M Beauty Lounge تجربة فريدة تجمع بين العلم والفن لتحقيق أقصى درجات الجمال والأناقة.</span>
+                    <span lang="en">Therapeutic Nutrition Specialist, Beauty Expert, and Certified International Trainer. At M Beauty Lounge, I offer you a unique experience that combines science and art to achieve the highest levels of beauty and elegance.</span>
+                </p>
+            </div>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="container">
-        <h2 class="section-title animate">
-            <span lang="ar">من أنا</span>
-            <span lang="en">About Me</span>
-        </h2>
-        
-        <div class="cards-container">
-            <div class="card animate">
-                <div class="card-icon">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <h3 class="card-title">
-                    <span lang="ar">سيرتي المهنية</span>
-                    <span lang="en">My Career</span>
-                </h3>
-                <div class="card-content">
-                    <!-- تم التعديل هنا: تصحيح الاسم إلى Dmadeeha Makkawi -->
-                    <p lang="ar">ديما ضيف الله مقدادي (Dmadeeha Makkawi)، خبيرة تجميل وأخصائية تغذية علاجية، ومدربة دولية معتمدة. أمتلك مركز M Beauty Lounge المتخصص في تقديم خدمات التجميل المتكاملة والتدريب في هذا المجال.</p>
-                    <p lang="en">Dmadeeha Makkawi, a beauty expert, therapeutic nutrition specialist, and certified international trainer. I own M Beauty Lounge, which specializes in providing integrated beauty services and training in this field.</p>
-                </div>
-            </div>
-            
-            <div class="card animate delay-1">
-                <div class="card-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <h3 class="card-title">
-                    <span lang="ar">فلسفتي في الجمال</span>
-                    <span lang="en">My Beauty Philosophy</span>
-                </h3>
-                <div class="card-content">
-                    <p lang="ar">أؤمن بأن الجمال الحقيقي ينبع من الداخل ويتجلى في الخارج. لذلك أقدم خدمات متكاملة تجمع بين العناية بالبشرة والتغذية السليمة وتقنيات التجميل الحديثة.</p>
-                    <p lang="en">I believe that true beauty comes from within and manifests externally. Therefore, I provide integrated services that combine skincare, proper nutrition, and modern beauty techniques.</p>
-                </div>
-            </div>
-            
-            <div class="card animate delay-2">
-                <div class="card-icon">
-                    <i class="fas fa-award"></i>
-                </div>
-                <h3 class="card-title">
-                    <span lang="ar">الشهادات والخبرات</span>
-                    <span lang="en">Certifications & Experience</span>
-                </h3>
-                <div class="card-content">
-                    <ul style="list-style: none; padding-right: 15px;">
-                        <li style="margin-bottom: 10px;">
-                            <i class="fas fa-certificate" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i>
-                            <!-- تم التعديل هنا: تغيير "تغذية إكلينيكية" إلى "تغذية علاجية" -->
-                            <span lang="ar">أخصائية تغذية علاجية معتمدة</span>
-                            <span lang="en">Certified Therapeutic Nutrition Specialist</span>
-                        </li>
-                        <li style="margin-bottom: 10px;">
-                            <i class="fas fa-certificate" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i>
-                            <span lang="ar">خبيرة تجميل دولية معتمدة</span>
-                            <span lang="en">Certified International Beauty Expert</span>
-                        </li>
-                        <li style="margin-bottom: 10px;">
-                            <i class="fas fa-certificate" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i>
-                            <span lang="ar">مدربة دولية معتمدة</span>
-                            <span lang="en">Certified International Trainer</span>
-                        </li>
-                        <li style="margin-bottom: 10px;">
-                            <i class="fas fa-certificate" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i>
-                            <span lang="ar">خبرة أكثر من 10 سنوات في المجال</span>
-                            <span lang="en">Over 10 years of experience in the field</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="container">
-        <h2 class="section-title animate">
-            <span lang="ar">خدماتي المتخصصة</span>
-            <span lang="en">My Specialized Services</span>
-        </h2>
-        
-        <div class="cards-container">
-            <div class="card animate">
-                <div class="card-icon">
-                    <i class="fas fa-apple-alt"></i>
-                </div>
-                <h3 class="card-title">
-                    <!-- تم التعديل هنا: تغيير "التغذية الإكلينيكية" إلى "التغذية العلاجية" -->
-                    <span lang="ar">استشارات التغذية العلاجية</span>
-                    <span lang="en">Therapeutic Nutrition Consultations</span>
-                </h3>
-                <div class="card-content">
-                    <!-- تم التعديل هنا: تغيير "التغذية الإكلينيكية" إلى "العلاجية" -->
-                    <p lang="ar">برامج تغذية علاجية مخصصة وفقاً لاحتياجاتك الصحية وأهدافك الجمالية. نعمل على تحسين صحة بشرتك وشعرك من الداخل.</p>
-                    <p lang="en">Customized therapeutic nutrition programs according to your health needs and beauty goals. We work on improving your skin and hair health from within.</p>
-                </div>
-            </div>
-            
-            <div class="card animate delay-1">
-                <div class="card-icon">
-                    <i class="fas fa-palette"></i>
-                </div>
-                <h3 class="card-title">
-                    <span lang="ar">خدمات التجميل المتكاملة</span>
-                    <span lang="en">Integrated Beauty Services</span>
-                </h3>
-                <div class="card-content">
-                    <p lang="ar">جلسات ميك أب احترافية، مايكروبليدنغ، لاش اكستنشن، والعناية المتكاملة بالبشرة بأحدث التقنيات العالمية.</p>
-                    <p lang="en">Professional makeup sessions, microblading, lash extensions, and comprehensive skincare with the latest international techniques.</p>
-                </div>
-            </div>
-            
-            <div class="card animate delay-2">
-                <div class="card-icon">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                </div>
-                <h3 class="card-title">
-                    <span lang="ar">التدريب والدورات المتخصصة</span>
-                    <span lang="en">Training & Specialized Courses</span>
-                </h3>
-                <div class="card-content">
-                    <!-- تم التعديل هنا: تغيير "التجميل والتغذية" إلى "التجميل والتغذية العلاجية" -->
-                    <p lang="ar">دورات تدريبية معتمدة في جميع مجالات التجميل والتغذية العلاجية للراغبين في احتراف المجال أو تطوير مهاراتهم.</p>
-                    <p lang="en">Certified training courses in all areas of beauty and therapeutic nutrition for those wishing to professionalize in the field or develop their skills.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Specialties Section -->
-    <section id="specialties" class="container specialties-section">
-        <h2 class="section-title animate">
-            <span lang="ar">مجالات تخصصي</span>
-            <span lang="en">My Specializations</span>
-        </h2>
-        
-        <div class="specialties-grid">
-            <div class="specialty-item animate">
-                <i class="fas fa-user-md"></i>
-                <span>
-                    <!-- تم التعديل هنا: تغيير "تغذية إكلينيكية" إلى "تغذية علاجية" -->
-                    <span lang="ar">أخصائية تغذية علاجية</span>
-                    <span lang="en">Therapeutic Nutrition Specialist</span>
-                </span>
-            </div>
-            <div class="specialty-item animate delay-1">
-                <i class="fas fa-spa"></i>
-                <span>
-                    <span lang="ar">خبيرة تجميل معتمدة</span>
-                    <span lang="en">Certified Beauty Expert</span>
-                </span>
-            </div>
-            <div class="specialty-item animate delay-2">
-                <i class="fas fa-graduation-cap"></i>
-                <span>
-                    <span lang="ar">مدرب دولي معتمد</span>
-                    <span lang="en">Certified International Trainer</span>
-                </span>
-            </div>
-            <div class="specialty-item animate">
-                <i class="fas fa-paint-brush"></i>
-                <span>
-                    <span lang="ar">ميك أب آرتست محترفة</span>
-                    <span lang="en">Professional Makeup Artist</span>
-                </span>
-            </div>
-            <div class="specialty-item animate delay-1">
-                <i class="fas fa-eye"></i>
-                <span>
-                    <span lang="ar">خبيرة مايكروبليدنغ</span>
-                    <span lang="en">Microblading Expert</span>
-                </span>
-            </div>
-            <div class="specialty-item animate delay-2">
-                <i class="fas fa-eye-lash"></i>
-                <span>
-                    <span lang="ar">خبيرة لاش اكستنشن</span>
-                    <span lang="en">Lash Extension Expert</span>
-                </span>
-            </div>
-            <div class="specialty-item animate">
-                <i class="fas fa-heart"></i>
-                <span>
-                    <!-- تم التعديل هنا: تغيير "خبيرة بشرة وعناية" إلى "خبيرة عناية وبشرة" -->
-                    <span lang="ar">خبيرة عناية وبشرة</span>
-                    <span lang="en">Skin Care & Beauty Expert</span>
-                </span>
-            </div>
-            <div class="specialty-item animate delay-1">
-                <i class="fas fa-book-open"></i>
-                <span>
-                    <!-- تم التعديل هنا: إضافة "العلاجية" -->
-                    <span lang="ar">تدريب لجميع مجالات التجميل والتغذية العلاجية</span>
-                    <span lang="en">Training in All Beauty & Therapeutic Nutrition Fields</span>
-                </span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form -->
-    <section id="contact" class="container">
-        <div class="contact-section animate">
-            <h2 class="section-title">
-                <span lang="ar">تواصل معي للحجز أو الاستفسار</span>
-                <span lang="en">Contact Me for Booking or Inquiry</span>
+        <!-- About Section -->
+        <section id="about" class="container">
+            <h2 class="section-title animate">
+                <span lang="ar">من أنا</span>
+                <span lang="en">About Me</span>
             </h2>
             
-            <form id="contactForm" class="contact-form">
-                <div class="form-group">
-                    <label class="form-label">
-                        <span lang="ar">الاسم الكامل *</span>
-                        <span lang="en">Full Name *</span>
-                    </label>
-                    <input type="text" class="form-input" required placeholder=" " style="color: white;">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">
-                        <span lang="ar">رقم الهاتف *</span>
-                        <span lang="en">Phone Number *</span>
-                    </label>
-                    <input type="tel" class="form-input" required placeholder=" " style="color: white;">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">
-                        <span lang="ar">البريد الإلكتروني</span>
-                        <span lang="en">Email Address</span>
-                    </label>
-                    <input type="email" class="form-input" placeholder=" " style="color: white;">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">
-                        <span lang="ar">نوع الخدمة المطلوبة</span>
-                        <span lang="en">Requested Service Type</span>
-                    </label>
-                    <select class="form-select" style="color: white;">
-                        <option value="" style="color: #333;">
-                            <span lang="ar">اختر الخدمة</span>
-                            <span lang="en">Select Service</span>
-                        </option>
-                        <!-- تم التعديل هنا: تغيير "استشارة تغذية" إلى "استشارة تغذية علاجية" -->
-                        <option value="nutrition" style="color: #333;">
-                            <span lang="ar">استشارة تغذية علاجية</span>
-                            <span lang="en">Therapeutic Nutrition Consultation</span>
-                        </option>
-                        <option value="makeup" style="color: #333;">
-                            <span lang="ar">جلسة ميك أب</span>
-                            <span lang="en">Makeup Session</span>
-                        </option>
-                        <option value="microblading" style="color: #333;">
-                            <span lang="ar">مايكروبليدنغ</span>
-                            <span lang="en">Microblading</span>
-                        </option>
-                        <option value="lashes" style="color: #333;">
-                            <span lang="ar">لاش اكستنشن</span>
-                            <span lang="en">Lash Extensions</span>
-                        </option>
-                        <option value="training" style="color: #333;">
-                            <span lang="ar">تدريب ودورات</span>
-                            <span lang="en">Training & Courses</span>
-                        </option>
-                        <option value="other" style="color: #333;">
-                            <span lang="ar">خدمة أخرى</span>
-                            <span lang="en">Other Service</span>
-                        </option>
-                    </select>
-                </div>
-                
-                <div class="form-group full-width">
-                    <label class="form-label">
-                        <span lang="ar">الرسالة *</span>
-                        <span lang="en">Message *</span>
-                    </label>
-                    <textarea class="form-textarea" rows="5" required placeholder=" " style="color: white;"></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i>
-                    <span lang="ar">إرسال الرسالة</span>
-                    <span lang="en">Send Message</span>
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Social Media -->
-    <section class="container social-section">
-        <h2 class="section-title animate">
-            <span lang="ar">تابعني على وسائل التواصل</span>
-            <span lang="en">Follow Me on Social Media</span>
-        </h2>
-        
-        <div class="social-icons">
-            <a href="https://snapchat.com/t/RuUZWoaf" class="social-icon animate" target="_blank">
-                <i class="fab fa-snapchat"></i>
-            </a>
-            <a href="https://www.instagram.com/dmadeeha.makkawi" class="social-icon animate delay-1" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.instagram.com/mbeautylounge1" class="social-icon animate delay-2" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section animate">
-                    <h3 class="footer-title">M Beauty Lounge</h3>
-                    <p class="footer-text">
-                        <span lang="ar">مركز متكامل للجمال والتجميل يقدم خدمات عالية الجودة تحت إشراف خبيرة متخصصة. نقدم تجربة فاخرة تجمع بين أحدث التقنيات والرعاية الشخصية.</span>
-                        <span lang="en">An integrated beauty center offering high-quality services under the supervision of a specialized expert. We provide a luxurious experience combining the latest techniques with personal care.</span>
-                    </p>
-                </div>
-                
-                <div class="footer-section animate delay-1">
-                    <h3 class="footer-title">
-                        <span lang="ar">معلومات الاتصال</span>
-                        <span lang="en">Contact Information</span>
+            <div class="cards-container">
+                <div class="card animate">
+                    <div class="card-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="card-title">
+                        <span lang="ar">سيرتي المهنية</span>
+                        <span lang="en">My Career</span>
                     </h3>
-                    <p class="footer-text">
-                        <i class="fas fa-phone" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i> 0796638663<br><br>
-                        <i class="fas fa-map-marker-alt" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i> 
-                        <span lang="ar">خلدا مقابل مركز الماركات - مجمع 299 - الطابق الاول</span>
-                        <span lang="en">Khalda, opposite Brands Center - Complex 299 - First Floor</span>
-                    </p>
+                    <div class="card-content">
+                        <!-- تم التعديل: إزالة "ديما ضيف الله مقدادي" والاحتفاظ بـ Dmadeeha Makkawi فقط -->
+                        <p lang="ar"><strong>Dmadeeha Makkawi</strong>، خبيرة تجميل وأخصائية تغذية علاجية، ومدربة دولية معتمدة. أمتلك مركز M Beauty Lounge المتخصص في تقديم خدمات التجميل المتكاملة والتدريب في هذا المجال.</p>
+                        <p lang="en"><strong>Dmadeeha Makkawi</strong>, a beauty expert, therapeutic nutrition specialist, and certified international trainer. I own M Beauty Lounge, which specializes in providing integrated beauty services and training in this field.</p>
+                    </div>
                 </div>
                 
-                <div class="footer-section animate delay-2">
-                    <h3 class="footer-title">
-                        <span lang="ar">ساعات العمل</span>
-                        <span lang="en">Working Hours</span>
+                <div class="card animate delay-1">
+                    <div class="card-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="card-title">
+                        <span lang="ar">فلسفتي في الجمال</span>
+                        <span lang="en">My Beauty Philosophy</span>
                     </h3>
-                    <p class="footer-text">
-                        <span lang="ar">الأحد - الخميس: 9:00 صباحاً - 9:00 مساءً<br>الجمعة: 2:00 ظهراً - 9:00 مساءً<br>السبت: 10:00 صباحاً - 9:00 مساءً</span>
-                        <span lang="en">Sunday - Thursday: 9:00 AM - 9:00 PM<br>Friday: 2:00 PM - 9:00 PM<br>Saturday: 10:00 AM - 9:00 PM</span>
-                    </p>
+                    <div class="card-content">
+                        <p lang="ar">أؤمن بأن الجمال الحقيقي ينبع من الداخل ويتجلى في الخارج. لذلك أقدم خدمات متكاملة تجمع بين العناية بالبشرة والتغذية السليمة وتقنيات التجميل الحديثة.</p>
+                        <p lang="en">I believe that true beauty comes from within and manifests externally. Therefore, I provide integrated services that combine skincare, proper nutrition, and modern beauty techniques.</p>
+                    </div>
+                </div>
+                
+                <div class="card animate delay-2">
+                    <div class="card-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="card-title">
+                        <span lang="ar">الشهادات والخبرات</span>
+                        <span lang="en">Certifications & Experience</span>
+                    </h3>
+                    <div class="card-content">
+                        <ul style="list-style: none; padding-right: 15px;">
+                            <li style="margin-bottom: 10px;">
+                                <i class="fas fa-certificate" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i>
+                                <span lang="ar">أخصائية تغذية علاجية معتمدة</span>
+                                <span lang="en">Certified Therapeutic Nutrition Specialist</span>
+                            </li>
+                            <li style="margin-bottom: 10px;">
+                                <i class="fas fa-certificate" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i>
+                                <span lang="ar">خبيرة تجميل دولية معتمدة</span>
+                                <span lang="en">Certified International Beauty Expert</span>
+                            </li>
+                            <li style="margin-bottom: 10px;">
+                                <i class="fas fa-certificate" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i>
+                                <span lang="ar">مدربة دولية معتمدة</span>
+                                <span lang="en">Certified International Trainer</span>
+                            </li>
+                            <li style="margin-bottom: 10px;">
+                                <i class="fas fa-certificate" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i>
+                                <span lang="ar">خبرة أكثر من 10 سنوات في المجال</span>
+                                <span lang="en">Over 10 years of experience in the field</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="container">
+            <h2 class="section-title animate">
+                <span lang="ar">خدماتي المتخصصة</span>
+                <span lang="en">My Specialized Services</span>
+            </h2>
             
-            <div class="copyright animate delay-3">
-                <p>© 2023 Dmadeeha Makkawi - M Beauty Lounge. 
-                    <span lang="ar">جميع الحقوق محفوظة.</span>
-                    <span lang="en">All rights reserved.</span>
-                </p>
-                <p style="margin-top: 10px; color: var(--light-text); opacity: 0.9;">
-                    <span lang="ar">تصميم فاخر بروح الجمال والأناقة</span>
-                    <span lang="en">Luxury design with the spirit of beauty and elegance</span>
-                </p>
+            <div class="cards-container">
+                <div class="card animate">
+                    <div class="card-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3 class="card-title">
+                        <span lang="ar">استشارات التغذية العلاجية</span>
+                        <span lang="en">Therapeutic Nutrition Consultations</span>
+                    </h3>
+                    <div class="card-content">
+                        <p lang="ar">برامج تغذية علاجية مخصصة وفقاً لاحتياجاتك الصحية وأهدافك الجمالية. نعمل على تحسين صحة بشرتك وشعرك من الداخل.</p>
+                        <p lang="en">Customized therapeutic nutrition programs according to your health needs and beauty goals. We work on improving your skin and hair health from within.</p>
+                    </div>
+                </div>
+                
+                <div class="card animate delay-1">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="card-title">
+                        <span lang="ar">خدمات التجميل المتكاملة</span>
+                        <span lang="en">Integrated Beauty Services</span>
+                    </h3>
+                    <div class="card-content">
+                        <p lang="ar">جلسات ميك أب احترافية، مايكروبليدنغ، لاش اكستنشن، والعناية المتكاملة بالبشرة بأحدث التقنيات العالمية.</p>
+                        <p lang="en">Professional makeup sessions, microblading, lash extensions, and comprehensive skincare with the latest international techniques.</p>
+                    </div>
+                </div>
+                
+                <div class="card animate delay-2">
+                    <div class="card-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="card-title">
+                        <span lang="ar">التدريب والدورات المتخصصة</span>
+                        <span lang="en">Training & Specialized Courses</span>
+                    </h3>
+                    <div class="card-content">
+                        <p lang="ar">دورات تدريبية معتمدة في جميع مجالات التجميل والتغذية العلاجية للراغبين في احتراف المجال أو تطوير مهاراتهم.</p>
+                        <p lang="en">Certified training courses in all areas of beauty and therapeutic nutrition for those wishing to professionalize in the field or develop their skills.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <!-- Specialties Section -->
+        <section id="specialties" class="container specialties-section">
+            <h2 class="section-title animate">
+                <span lang="ar">مجالات تخصصي</span>
+                <span lang="en">My Specializations</span>
+            </h2>
+            
+            <div class="specialties-grid">
+                <div class="specialty-item animate">
+                    <i class="fas fa-user-md"></i>
+                    <span>
+                        <span lang="ar">أخصائية تغذية علاجية</span>
+                        <span lang="en">Therapeutic Nutrition Specialist</span>
+                    </span>
+                </div>
+                <div class="specialty-item animate delay-1">
+                    <i class="fas fa-spa"></i>
+                    <span>
+                        <span lang="ar">خبيرة تجميل معتمدة</span>
+                        <span lang="en">Certified Beauty Expert</span>
+                    </span>
+                </div>
+                <div class="specialty-item animate delay-2">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>
+                        <span lang="ar">مدرب دولي معتمد</span>
+                        <span lang="en">Certified International Trainer</span>
+                    </span>
+                </div>
+                <div class="specialty-item animate">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>
+                        <span lang="ar">ميك أب آرتست محترفة</span>
+                        <span lang="en">Professional Makeup Artist</span>
+                    </span>
+                </div>
+                <div class="specialty-item animate delay-1">
+                    <i class="fas fa-eye"></i>
+                    <span>
+                        <span lang="ar">خبيرة مايكروبليدنغ</span>
+                        <span lang="en">Microblading Expert</span>
+                    </span>
+                </div>
+                <div class="specialty-item animate delay-2">
+                    <i class="fas fa-eye-lash"></i>
+                    <span>
+                        <span lang="ar">خبيرة لاش اكستنشن</span>
+                        <span lang="en">Lash Extension Expert</span>
+                    </span>
+                </div>
+                <div class="specialty-item animate">
+                    <i class="fas fa-heart"></i>
+                    <span>
+                        <span lang="ar">خبيرة عناية وبشرة</span>
+                        <span lang="en">Skin Care & Beauty Expert</span>
+                    </span>
+                </div>
+                <div class="specialty-item animate delay-1">
+                    <i class="fas fa-book-open"></i>
+                    <span>
+                        <span lang="ar">تدريب لجميع مجالات التجميل والتغذية العلاجية</span>
+                        <span lang="en">Training in All Beauty & Therapeutic Nutrition Fields</span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="contact" class="container">
+            <div class="contact-section animate">
+                <h2 class="section-title">
+                    <span lang="ar">تواصل معي للحجز أو الاستفسار</span>
+                    <span lang="en">Contact Me for Booking or Inquiry</span>
+                </h2>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span lang="ar">الاسم الكامل *</span>
+                            <span lang="en">Full Name *</span>
+                        </label>
+                        <input type="text" class="form-input" required placeholder=" " style="color: white;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span lang="ar">رقم الهاتف *</span>
+                            <span lang="en">Phone Number *</span>
+                        </label>
+                        <input type="tel" class="form-input" required placeholder=" " style="color: white;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span lang="ar">البريد الإلكتروني</span>
+                            <span lang="en">Email Address</span>
+                        </label>
+                        <input type="email" class="form-input" placeholder=" " style="color: white;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span lang="ar">نوع الخدمة المطلوبة</span>
+                            <span lang="en">Requested Service Type</span>
+                        </label>
+                        <select class="form-select" style="color: white;">
+                            <option value="" style="color: #333;">
+                                <span lang="ar">اختر الخدمة</span>
+                                <span lang="en">Select Service</span>
+                            </option>
+                            <option value="nutrition" style="color: #333;">
+                                <span lang="ar">استشارة تغذية علاجية</span>
+                                <span lang="en">Therapeutic Nutrition Consultation</span>
+                            </option>
+                            <option value="makeup" style="color: #333;">
+                                <span lang="ar">جلسة ميك أب</span>
+                                <span lang="en">Makeup Session</span>
+                            </option>
+                            <option value="microblading" style="color: #333;">
+                                <span lang="ar">مايكروبليدنغ</span>
+                                <span lang="en">Microblading</span>
+                            </option>
+                            <option value="lashes" style="color: #333;">
+                                <span lang="ar">لاش اكستنشن</span>
+                                <span lang="en">Lash Extensions</span>
+                            </option>
+                            <option value="training" style="color: #333;">
+                                <span lang="ar">تدريب ودورات</span>
+                                <span lang="en">Training & Courses</span>
+                            </option>
+                            <option value="other" style="color: #333;">
+                                <span lang="ar">خدمة أخرى</span>
+                                <span lang="en">Other Service</span>
+                            </option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label">
+                            <span lang="ar">الرسالة *</span>
+                            <span lang="en">Message *</span>
+                        </label>
+                        <textarea class="form-textarea" rows="5" required placeholder=" " style="color: white;"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        <span lang="ar">إرسال الرسالة</span>
+                        <span lang="en">Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Social Media -->
+        <section class="container social-section">
+            <h2 class="section-title animate">
+                <span lang="ar">تابعني على وسائل التواصل</span>
+                <span lang="en">Follow Me on Social Media</span>
+            </h2>
+            
+            <div class="social-icons">
+                <a href="https://snapchat.com/t/RuUZWoaf" class="social-icon animate" target="_blank">
+                    <i class="fab fa-snapchat"></i>
+                </a>
+                <a href="https://www.instagram.com/dmadeeha.makkawi" class="social-icon animate delay-1" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.instagram.com/mbeautylounge1" class="social-icon animate delay-2" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section animate">
+                        <h3 class="footer-title">M Beauty Lounge</h3>
+                        <p class="footer-text">
+                            <span lang="ar">مركز متكامل للجمال والتجميل يقدم خدمات عالية الجودة تحت إشراف خبيرة متخصصة. نقدم تجربة فاخرة تجمع بين أحدث التقنيات والرعاية الشخصية.</span>
+                            <span lang="en">An integrated beauty center offering high-quality services under the supervision of a specialized expert. We provide a luxurious experience combining the latest techniques with personal care.</span>
+                        </p>
+                    </div>
+                    
+                    <div class="footer-section animate delay-1">
+                        <h3 class="footer-title">
+                            <span lang="ar">معلومات الاتصال</span>
+                            <span lang="en">Contact Information</span>
+                        </h3>
+                        <p class="footer-text">
+                            <i class="fas fa-phone" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i> 0796638663<br><br>
+                            <i class="fas fa-map-marker-alt" style="color: var(--text-color); margin-left: 10px; opacity: 0.8;"></i> 
+                            <span lang="ar">خلدا مقابل مركز الماركات - مجمع 299 - الطابق الاول</span>
+                            <span lang="en">Khalda, opposite Brands Center - Complex 299 - First Floor</span>
+                        </p>
+                    </div>
+                    
+                    <div class="footer-section animate delay-2">
+                        <h3 class="footer-title">
+                            <span lang="ar">ساعات العمل</span>
+                            <span lang="en">Working Hours</span>
+                        </h3>
+                        <p class="footer-text">
+                            <span lang="ar">الأحد - الخميس: 9:00 صباحاً - 9:00 مساءً<br>الجمعة: 2:00 ظهراً - 9:00 مساءً<br>السبت: 10:00 صباحاً - 9:00 مساءً</span>
+                            <span lang="en">Sunday - Thursday: 9:00 AM - 9:00 PM<br>Friday: 2:00 PM - 9:00 PM<br>Saturday: 10:00 AM - 9:00 PM</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="copyright animate delay-3">
+                    <p>© 2023 Dmadeeha Makkawi - M Beauty Lounge. 
+                        <span lang="ar">جميع الحقوق محفوظة.</span>
+                        <span lang="en">All rights reserved.</span>
+                    </p>
+                    <p style="margin-top: 10px; color: var(--light-text); opacity: 0.9;">
+                        <span lang="ar">تصميم فاخر بروح الجمال والأناقة</span>
+                        <span lang="en">Luxury design with the spirit of beauty and elegance</span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script>
+        // تحكم بصفحة الترحيب
+        const welcomePage = document.getElementById('welcomePage');
+        const mainSite = document.getElementById('mainSite');
+        const enterBtn = document.getElementById('enterSite');
+        
+        enterBtn.addEventListener('click', () => {
+            // إخفاء صفحة الترحيب
+            welcomePage.classList.add('hidden');
+            
+            // إظهار الموقع الرئيسي بعد فترة قصيرة
+            setTimeout(() => {
+                mainSite.style.display = 'block';
+                // حفظ في localStorage أن المستخدم دخل الموقع
+                localStorage.setItem('hasVisited', 'true');
+            }, 800);
+        });
+        
+        // التحقق إذا كان المستخدم زار الموقع من قبل
+        window.addEventListener('DOMContentLoaded', () => {
+            const hasVisited = localStorage.getItem('hasVisited');
+            if (hasVisited === 'true') {
+                welcomePage.style.display = 'none';
+                mainSite.style.display = 'block';
+            }
+        });
+        
         // Language Switching Functionality
         const arabicBtn = document.getElementById('arabicBtn');
         const englishBtn = document.getElementById('englishBtn');
