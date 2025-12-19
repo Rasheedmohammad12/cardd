@@ -556,41 +556,40 @@
             opacity: 0.9;
         }
         
-        /* Specialties */
-        .specialties-section {
-            margin: 50px 0;
-        }
-        
-        .section-title {
+        /* عناوين الأقسام - جميعها في المنتصف */
+        .section-title, .contact-title {
             font-family: 'El Messiri', serif;
             font-size: 1.8rem;
             text-align: center;
             margin-bottom: 35px;
             color: var(--text-color);
             position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            display: block;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 0 20px;
             width: 100%;
+            padding: 0 10px;
         }
         
-        body.english .section-title {
+        body.english .section-title, body.english .contact-title {
             font-family: 'Poppins', sans-serif;
         }
         
-        .section-title:after {
+        .section-title:after, .contact-title:after {
             content: '';
             position: absolute;
             bottom: -8px;
             right: 50%;
             transform: translateX(50%);
-            width: 80px;
+            width: 100px;
             height: 3px;
             background: var(--text-color);
             border-radius: 2px;
             opacity: 0.7;
+        }
+        
+        /* Specialties */
+        .specialties-section {
+            margin: 50px 0;
         }
         
         .specialties-grid {
@@ -646,41 +645,6 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
             backdrop-filter: blur(10px);
-        }
-        
-        .contact-title {
-            font-family: 'El Messiri', serif;
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 35px;
-            color: var(--text-color);
-            position: relative;
-            display: block;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            padding: 0 10px;
-        }
-        
-        body.english .contact-title {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .contact-title:after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 100px;
-            height: 3px;
-            background: var(--text-color);
-            border-radius: 2px;
-            opacity: 0.7;
-        }
-        
-        body.english .contact-title:after {
-            right: 50%;
-            transform: translateX(50%);
         }
         
         .contact-form {
@@ -914,10 +878,27 @@
             margin-bottom: 15px;
             color: var(--text-color);
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            display: block;
+            width: 100%;
         }
         
         body.english .footer-title {
             font-family: 'Poppins', sans-serif;
+        }
+        
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background: var(--text-color);
+            border-radius: 2px;
+            opacity: 0.7;
         }
         
         .footer-text {
@@ -925,6 +906,7 @@
             line-height: 1.6;
             opacity: 0.9;
             font-size: 0.9rem;
+            text-align: center;
         }
         
         .copyright {
@@ -997,8 +979,12 @@
                 font-size: 1.6rem;
             }
             
-            .section-title, .contact-title {
+            .section-title, .contact-title, .footer-title {
                 font-size: 1.6rem;
+            }
+            
+            .section-title:after, .contact-title:after, .footer-title:after {
+                width: 80px;
             }
         }
         
@@ -1047,7 +1033,7 @@
                 font-size: 2.2rem;
             }
             
-            .section-title, .contact-title {
+            .section-title, .contact-title, .footer-title {
                 font-size: 2rem;
             }
             
@@ -1057,6 +1043,22 @@
             
             .contact-form {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-text {
+                text-align: right;
+            }
+            
+            body.english .footer-text {
+                text-align: left;
+            }
+            
+            .footer-title {
+                text-align: right;
+            }
+            
+            body.english .footer-title {
+                text-align: left;
             }
         }
         
@@ -1078,7 +1080,7 @@
                 font-size: 2.5rem;
             }
             
-            .section-title, .contact-title {
+            .section-title, .contact-title, .footer-title {
                 font-size: 2.2rem;
             }
         }
