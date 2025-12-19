@@ -377,6 +377,60 @@
 
         .service-content p {
             color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        /* أنماط إضافية للخدمات الممتدة */
+        .extended-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .service-tag {
+            display: inline-block;
+            background: rgba(212, 185, 150, 0.15);
+            color: var(--primary-dark);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(212, 185, 150, 0.3);
+            transition: var(--transition);
+        }
+        
+        .service-tag:hover {
+            background: rgba(212, 185, 150, 0.25);
+            transform: translateY(-3px);
+        }
+        
+        .service-details-list {
+            list-style: none;
+            margin-top: 15px;
+            text-align: right;
+        }
+        
+        .service-details-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(212, 185, 150, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-details-list li:before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            background: rgba(212, 185, 150, 0.1);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
         }
 
         /* Enhanced Gallery with Lightbox */
@@ -1136,11 +1190,11 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - تم تحديث النص -->
     <section class="hero" id="home">
         <div class="container">
             <h1 class="animate">M Beauty Lounge</h1>
-            <p class="animate delay-1">صالون تجميل فاخر يقدم أحدث خدمات التجميل والعناية بالبشرة بأيدي خبراء متخصصين لتجربة فريدة من نوعها.</p>
+            <p class="animate delay-1">صالون تجميل فاخر يقدم أحدث خدمات التجميل والعناية بالشعر (صبغات وقص وأحدث الألوان والهايلايت وجميع أنواع تركيبات الشعر) والأظافر والميكروبليدينغ والرموش والبشرة بأيدي خبراء متخصصين لتجربة فريدة من نوعها.</p>
             <div class="btn-group animate delay-2">
                 <a href="#services" class="btn btn-primary"><i class="fas fa-spa"></i> استكشف خدماتنا</a>
                 <a href="#contact" class="btn btn-secondary"><i class="fas fa-calendar-check"></i> احجز موعدًا</a>
@@ -1148,38 +1202,141 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section - تم تحديث الخدمات -->
     <section class="section" id="services">
         <div class="container">
             <div class="section-title">
-                <h2 class="animate">خدماتنا المميزة</h2>
+                <h2 class="animate">خدماتنا المتكاملة</h2>
+                <p class="animate delay-1" style="color: var(--gray); max-width: 800px; margin: 20px auto 0;">
+                    نقدم مجموعة متكاملة من خدمات التجميل والعناية بأحدث التقنيات العالمية
+                </p>
             </div>
+            
+            <!-- الخدمات الرئيسية -->
             <div class="services-grid">
+                <!-- خدمة الشعر -->
                 <div class="service-card animate delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>تصفيف الشعر المتكامل</h3>
+                        <p>خدمات شاملة للعناية بالشعر بأحدث الصيحات العالمية</p>
+                        <ul class="service-details-list">
+                            <li>قص وتصفيف احترافي</li>
+                            <li>صبغات بأحدث الألوان العالمية</li>
+                            <li>هايلايت وبلوند محترف</li>
+                            <li>تركيبات الشعر بأنواعها</li>
+                            <li>علاجات العناية بالشعر</li>
+                            <li>تسريحات مناسبات</li>
+                        </ul>
+                        <div style="margin-top: 15px;">
+                            <span class="service-tag">كيراتين</span>
+                            <span class="service-tag">بوتكس</span>
+                            <span class="service-tag">صبغات طبيعية</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- خدمة البشرة والرموش -->
+                <div class="service-card animate delay-2">
                     <div class="service-icon">
                         <i class="fas fa-spa"></i>
                     </div>
                     <div class="service-content">
-                        <h3>العناية المتكاملة بالبشرة</h3>
-                        <p>جلسات عناية متكاملة للبشرة باستخدام أفضل المنتجات العالمية وأحدث التقنيات لتحقيق بشرة مشرقة وصحية.</p>
+                        <h3>العناية بالبشرة والرموش</h3>
+                        <p>جلسات متخصصة للعناية بالبشرة وتعزيز جمال الرموش</p>
+                        <ul class="service-details-list">
+                            <li>العناية المتكاملة بالبشرة</li>
+                            <li>تنظيف البشرة العميق</li>
+                            <li>علاجات النضارة والتجديد</li>
+                            <li>تركيب الرموش الاحترافي</li>
+                            <li>الميكروبليدينغ للرموش</li>
+                            <li>صبغ الرموش والحواجب</li>
+                        </ul>
+                        <div style="margin-top: 15px;">
+                            <span class="service-tag">فيشل</span>
+                            <span class="service-tag">ميكروبليدينغ</span>
+                            <span class="service-tag">رموش حجمي</span>
+                        </div>
                     </div>
                 </div>
-                <div class="service-card animate delay-2">
-                    <div class="service-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>الميك أب الاحترافي</h3>
-                        <p>أحدث صيحات الميك أب لأهم المناسبات بإشراف خبراء التجميل المحترفين لتحقيق إطلالة ساحرة.</p>
-                    </div>
-                </div>
+                
+                <!-- خدمة الأظافر والميك أب -->
                 <div class="service-card animate delay-3">
                     <div class="service-icon">
                         <i class="fas fa-hand-sparkles"></i>
                     </div>
                     <div class="service-content">
-                        <h3>تصميمات الأظافر المبتكرة</h3>
-                        <p>تصميمات مبتكرة للأظافر مع استخدام منتجات عالية الجودة وآمنة تمامًا لتزيين يديك بأجمل الأشكال.</p>
+                        <h3>الأظافر والميك أب</h3>
+                        <p>تصميمات مبتكرة للأظافر ومكياج احترافي للمناسبات</p>
+                        <ul class="service-details-list">
+                            <li>مانيكير وباديكير</li>
+                            <li>أظافر جل وأكريليك</li>
+                            <li>تصميمات الأظافر الفنية</li>
+                            <li>ميك أب احترافي للمناسبات</li>
+                            <li>ميك أب زفاف</li>
+                            <li>دروس الميك أب</li>
+                        </ul>
+                        <div style="margin-top: 15px;">
+                            <span class="service-tag">جل</span>
+                            <span class="service-tag">أكريليك</span>
+                            <span class="service-tag">ميك أب سهرة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- خدمات إضافية ممتدة -->
+            <div class="extended-services-grid">
+                <div class="service-card animate delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>تلوين الشعر المتخصص</h3>
+                        <p>أحدث تقنيات التلوين بألوان عالمية</p>
+                        <div style="margin-top: 15px;">
+                            <span class="service-tag">صبغة دائمة</span>
+                            <span class="service-tag">صبغة شبه دائمة</span>
+                            <span class="service-tag">أومبري</span>
+                            <span class="service-tag">باليا</span>
+                            <span class="service-tag">صبغات فورية</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card animate delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>تجميل العيون</h3>
+                        <p>خدمات متكاملة لجمال عيونك</p>
+                        <div style="margin-top: 15px;">
+                            <span class="service-tag">رموش حجمي</span>
+                            <span class="service-tag">رموش كلاسيك</span>
+                            <span class="service-tag">صبغ رموش</span>
+                            <span class="service-tag">تحديد حواجب</span>
+                            <span class="service-tag">ميكروبليدينغ</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card animate delay-3">
+                    <div class="service-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>علاجات البشرة</h3>
+                        <p>جلسات متقدمة للعناية بالبشرة</p>
+                        <div style="margin-top: 15px;">
+                            <span class="service-tag">تنظيف عميق</span>
+                            <span class="service-tag">تقشير كيميائي</span>
+                            <span class="service-tag">ماسكات علاجية</span>
+                            <span class="service-tag">علاج حب الشباب</span>
+                            <span class="service-tag">تفتيح البشرة</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1190,31 +1347,38 @@
     <section class="section gallery-section" id="gallery">
         <div class="container">
             <div class="section-title">
-                <h2 class="animate">معرض أعمالنا</h2>
+                <h2 class="animate">إبداعاتنا في صالون التجميل</h2>
+                <p class="animate delay-1" style="color: var(--gray); max-width: 800px; margin: 20px auto 0;">
+                    تصفح بعضًا من أفضل أعمالنا في تصفيف الشعر والعناية بالبشرة وتجميل الأظافر
+                </p>
             </div>
             <div class="gallery-container">
                 <div class="gallery-item animate" onclick="openLightbox(0)">
-                    <img src="https://i.imgur.com/3ZbkeT4.jpg" alt="تصميم داخلي فاخر">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="تصفيف الشعر">
                     <div class="gallery-overlay">
-                        <h3>تصميم داخلي فاخر</h3>
+                        <h3>تصفيف الشعر الحديث</h3>
+                        <p>أحدث قصات وصبغات الشعر</p>
                     </div>
                 </div>
                 <div class="gallery-item animate delay-1" onclick="openLightbox(1)">
-                    <img src="https://i.imgur.com/j2JCNMZ.jpg" alt="منتجات العناية">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="العناية بالبشرة">
                     <div class="gallery-overlay">
-                        <h3>منتجات العناية بالبشرة</h3>
+                        <h3>جلسات العناية بالبشرة</h3>
+                        <p>تقنيات متقدمة للعناية بالبشرة</p>
                     </div>
                 </div>
                 <div class="gallery-item animate delay-2" onclick="openLightbox(2)">
-                    <img src="https://i.imgur.com/buMgKMF.jpg" alt="أجواء الصالون">
+                    <img src="https://images.unsplash.com/photo-1607778833977-9c8ba5e5c3ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="تجميل الأظافر">
                     <div class="gallery-overlay">
-                        <h3>أجواء الصالون الهادئة</h3>
+                        <h3>تصميمات الأظافر</h3>
+                        <p>أجمل وأحدث تصميمات الأظافر</p>
                     </div>
                 </div>
                 <div class="gallery-item animate delay-3" onclick="openLightbox(3)">
-                    <img src="https://i.imgur.com/IDCPzh3.jpg" alt="خدمات التجميل">
+                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="الميكروبليدينغ">
                     <div class="gallery-overlay">
-                        <h3>خدمات التجميل المتكاملة</h3>
+                        <h3>الميكروبليدينغ والرموش</h3>
+                        <p>تقنيات متقدمة لتجميل العيون</p>
                     </div>
                 </div>
             </div>
@@ -1418,10 +1582,10 @@
                 <div class="footer-links">
                     <h3>خدماتنا</h3>
                     <ul>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> تصفيف الشعر</a></li>
                         <li><a href="#"><i class="fas fa-chevron-left"></i> العناية بالبشرة</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> الميك أب</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> العناية بالأظافر</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> العناية بالشعر</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> تجميل الأظافر</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الميك أب والرموش</a></li>
                     </ul>
                 </div>
             </div>
@@ -1448,10 +1612,26 @@
     <script>
         // معرض الصور مع Lightbox
         const galleryImages = [
-            { src: "https://i.imgur.com/3ZbkeT4.jpg", title: "تصميم داخلي فاخر" },
-            { src: "https://i.imgur.com/j2JCNMZ.jpg", title: "منتجات العناية بالبشرة" },
-            { src: "https://i.imgur.com/buMgKMF.jpg", title: "أجواء الصالون الهادئة" },
-            { src: "https://i.imgur.com/IDCPzh3.jpg", title: "خدمات التجميل المتكاملة" }
+            { 
+                src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", 
+                title: "تصفيف الشعر الحديث",
+                description: "أحدث تقنيات قص وتصفيف الشعر" 
+            },
+            { 
+                src: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", 
+                title: "العناية المتكاملة بالبشرة",
+                description: "جلسات تنظيف وعلاج البشرة" 
+            },
+            { 
+                src: "https://images.unsplash.com/photo-1607778833977-9c8ba5e5c3ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", 
+                title: "تصميمات الأظافر الفاخرة",
+                description: "أحدث صيحات أظافر الجل والأكريليك" 
+            },
+            { 
+                src: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", 
+                title: "الميكروبليدينغ والرموش",
+                description: "تقنيات تجميل العيون والرموش" 
+            }
         ];
         
         let currentLightboxIndex = 0;
