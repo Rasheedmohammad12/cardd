@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dmadeeha Makkawi | M Beauty Lounge</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Cairo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Cairo:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #DFBOBO;
-            --secondary-color: #0a0a0a;
-            --accent-color: #d4af37;
-            --text-color: #ffffff;
-            --light-text: #f0f0f0;
-            --card-bg: rgba(223, 176, 176, 0.08);
-            --border-color: rgba(255, 255, 255, 0.1);
+            --primary-color: #FFB6C1; /* زهري فاتح */
+            --secondary-color: #FFF0F5; /* زهري فاتح جداً */
+            --accent-color: #FF69B4; /* زهري متوسط */
+            --dark-accent: #DB7093; /* زهري داكن */
+            --text-color: #333333; /* نص داكن */
+            --light-text: #666666;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --border-color: rgba(255, 182, 193, 0.3);
+            --shadow: 0 10px 30px rgba(255, 182, 193, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
         
         * {
@@ -29,23 +32,65 @@
             font-family: 'Cairo', sans-serif;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 20% 80%, rgba(223, 176, 176, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+                radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 105, 180, 0.1) 0%, transparent 40%);
+            transition: var(--transition);
         }
         
-        .luxury-container {
+        body.english {
+            font-family: 'Poppins', sans-serif;
+            direction: ltr;
+        }
+        
+        .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 40px;
         }
         
-        /* Luxury Header */
-        .luxury-header {
-            padding: 40px 0;
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--card-bg);
+            border-radius: 50px;
+            padding: 8px;
+            box-shadow: var(--shadow);
+            display: flex;
+            border: 1px solid var(--border-color);
+        }
+        
+        .lang-btn {
+            padding: 10px 20px;
+            border: none;
+            background: transparent;
+            color: var(--text-color);
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        body.english .lang-btn {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Header */
+        .header {
+            padding: 40px 0 20px;
             position: relative;
-            border-bottom: 1px solid var(--border-color);
-            background: rgba(10, 10, 10, 0.9);
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,240,245,0.9) 100%);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
         }
         
         .header-top {
@@ -55,7 +100,7 @@
             margin-bottom: 40px;
         }
         
-        .brand-logo {
+        .logo-container {
             display: flex;
             align-items: center;
             gap: 25px;
@@ -65,12 +110,17 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            padding: 8px;
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            padding: 5px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .logo-frame:hover {
+            transform: rotate(10deg) scale(1.05);
         }
         
         .logo-img {
@@ -78,29 +128,33 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--secondary-color);
+            border: 3px solid white;
         }
         
         .brand-name {
             font-family: 'El Messiri', serif;
         }
         
+        body.english .brand-name {
+            font-family: 'Poppins', sans-serif;
+        }
+        
         .brand-name h1 {
-            font-size: 3.2rem;
+            font-size: 3rem;
             font-weight: 700;
-            background: linear-gradient(to right, #ffffff, #f0f0f0);
+            background: linear-gradient(135deg, var(--accent-color), var(--dark-accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             margin-bottom: 8px;
         }
         
         .brand-name h2 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
+            font-size: 1.4rem;
+            color: var(--dark-accent);
             font-weight: 500;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
         
         .header-contact {
@@ -108,6 +162,7 @@
             padding: 15px 25px;
             background: var(--card-bg);
             border-radius: 15px;
+            box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
         
@@ -116,56 +171,59 @@
             margin-left: 10px;
         }
         
-        /* Luxury Navigation */
-        .luxury-nav {
+        /* Navigation */
+        .nav-container {
             display: flex;
             justify-content: center;
-            gap: 50px;
-            padding: 25px 0;
-            position: relative;
         }
         
-        .luxury-nav:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        .main-nav {
+            display: flex;
+            gap: 40px;
+            background: var(--card-bg);
+            padding: 15px 40px;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
         }
         
-        .nav-item {
-            color: var(--light-text);
+        .nav-link {
+            color: var(--text-color);
             text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 500;
-            padding: 10px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 8px 0;
             position: relative;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
-        .nav-item:after {
+        .nav-link:after {
             content: '';
             position: absolute;
             bottom: 0;
             right: 0;
             width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: width 0.3s ease;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: var(--transition);
+            border-radius: 3px;
         }
         
-        .nav-item:hover {
+        .nav-link:hover {
             color: var(--accent-color);
         }
         
-        .nav-item:hover:after {
+        .nav-link:hover:after {
             width: 100%;
         }
         
+        body.english .nav-link:after {
+            right: auto;
+            left: 0;
+        }
+        
         /* Hero Section */
-        .luxury-hero {
+        .hero-section {
             padding: 100px 0;
             text-align: center;
             position: relative;
@@ -173,15 +231,20 @@
         
         .hero-title {
             font-family: 'El Messiri', serif;
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 30px;
             line-height: 1.2;
         }
         
+        body.english .hero-title {
+            font-family: 'Poppins', sans-serif;
+        }
+        
         .hero-title span {
-            color: var(--primary-color);
+            color: var(--accent-color);
             position: relative;
+            display: inline-block;
         }
         
         .hero-title span:after {
@@ -190,62 +253,73 @@
             bottom: -5px;
             right: 0;
             width: 100%;
-            height: 3px;
+            height: 4px;
             background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        body.english .hero-title span:after {
+            right: auto;
+            left: 0;
         }
         
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--light-text);
             max-width: 800px;
             margin: 0 auto 50px;
             line-height: 1.8;
         }
         
-        /* Luxury Cards */
-        .luxury-cards {
+        /* Cards */
+        .cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
             margin: 80px 0;
         }
         
-        .luxury-card {
+        .card {
             background: var(--card-bg);
             border-radius: 20px;
             padding: 40px;
+            box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
-            transition: all 0.4s ease;
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
         
-        .luxury-card:before {
+        .card:before {
             content: '';
             position: absolute;
             top: 0;
             right: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+            background: linear-gradient(135deg, transparent, rgba(255, 182, 193, 0.1), transparent);
             transform: translateX(-100%);
-            transition: transform 0.6s ease;
+            transition: transform 0.8s ease;
         }
         
-        .luxury-card:hover:before {
+        .card:hover:before {
             transform: translateX(100%);
         }
         
-        .luxury-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--accent-color);
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(255, 182, 193, 0.2);
+            border-color: var(--primary-color);
         }
         
         .card-icon {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--accent-color);
             margin-bottom: 25px;
+            display: inline-block;
+            padding: 15px;
+            background: rgba(255, 182, 193, 0.1);
+            border-radius: 15px;
         }
         
         .card-title {
@@ -255,59 +329,104 @@
             color: var(--text-color);
         }
         
+        body.english .card-title {
+            font-family: 'Poppins', sans-serif;
+        }
+        
         .card-content {
             color: var(--light-text);
             line-height: 1.8;
             font-size: 1.1rem;
         }
         
-        /* Specialties Grid */
-        .specialties-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-        
-        .specialty-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 3px solid var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .specialty-item:hover {
-            background: rgba(223, 176, 176, 0.1);
-            transform: translateX(-10px);
-        }
-        
-        .specialty-item i {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-        }
-        
-        /* Luxury Form */
-        .luxury-form-section {
-            background: var(--card-bg);
-            border-radius: 25px;
-            padding: 60px;
+        /* Specialties */
+        .specialties-section {
             margin: 80px 0;
-            border: 1px solid var(--border-color);
         }
         
-        .form-title {
+        .section-title {
             font-family: 'El Messiri', serif;
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 50px;
             color: var(--text-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
-        .luxury-form {
+        body.english .section-title {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        body.english .section-title:after {
+            right: auto;
+            left: 0;
+        }
+        
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .specialty-item {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.1);
+            border: 1px solid var(--border-color);
+        }
+        
+        body.english .specialty-item {
+            border-left: none;
+            border-right: 4px solid var(--primary-color);
+        }
+        
+        .specialty-item:hover {
+            background: white;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 182, 193, 0.2);
+            border-color: var(--accent-color);
+        }
+        
+        .specialty-item i {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            background: rgba(255, 182, 193, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+        }
+        
+        /* Contact Form */
+        .contact-section {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 60px;
+            margin: 80px 0;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        
+        .contact-form {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
@@ -324,57 +443,68 @@
         .form-label {
             display: block;
             margin-bottom: 12px;
-            color: var(--light-text);
+            color: var(--text-color);
             font-size: 1.1rem;
+            font-weight: 600;
         }
         
-        .form-input, .form-textarea {
+        .form-input, .form-textarea, .form-select {
             width: 100%;
             padding: 18px 25px;
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             border: 1px solid var(--border-color);
             border-radius: 12px;
             color: var(--text-color);
             font-size: 1.1rem;
             font-family: 'Cairo', sans-serif;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
-        .form-input:focus, .form-textarea:focus {
+        body.english .form-input, 
+        body.english .form-textarea, 
+        body.english .form-select {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
             outline: none;
             border-color: var(--accent-color);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.2);
         }
         
-        .luxury-btn {
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-            color: var(--secondary-color);
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
             border: none;
             padding: 20px 45px;
             font-size: 1.2rem;
             font-weight: 600;
             border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
+            width: 100%;
         }
         
-        .luxury-btn:hover {
+        .submit-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3);
         }
         
-        /* Social Lux */
-        .social-lux {
+        /* Social Media */
+        .social-section {
+            margin: 60px 0;
+        }
+        
+        .social-icons {
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin: 60px 0;
+            margin-top: 40px;
         }
         
         .social-icon {
@@ -388,8 +518,9 @@
             color: var(--text-color);
             font-size: 1.8rem;
             text-decoration: none;
+            box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -401,7 +532,7 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             transform: translateY(100%);
             transition: transform 0.3s ease;
             z-index: 1;
@@ -419,11 +550,12 @@
         .social-icon:hover {
             border-color: transparent;
             transform: translateY(-10px);
+            color: white;
         }
         
         /* Footer */
-        .luxury-footer {
-            background: rgba(0, 0, 0, 0.8);
+        .footer {
+            background: white;
             padding: 60px 0 30px;
             margin-top: 80px;
             border-top: 1px solid var(--border-color);
@@ -443,6 +575,10 @@
             color: var(--text-color);
         }
         
+        body.english .footer-title {
+            font-family: 'Poppins', sans-serif;
+        }
+        
         .footer-text {
             color: var(--light-text);
             line-height: 1.8;
@@ -458,21 +594,21 @@
         
         /* Responsive */
         @media (max-width: 1100px) {
-            .luxury-form {
+            .contact-form {
                 grid-template-columns: 1fr;
             }
             
-            .luxury-hero {
+            .hero-section {
                 padding: 60px 0;
             }
             
             .hero-title {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
         }
         
         @media (max-width: 768px) {
-            .luxury-container {
+            .container {
                 padding: 0 20px;
             }
             
@@ -482,20 +618,27 @@
             }
             
             .brand-name h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
-            .luxury-nav {
+            .main-nav {
                 flex-wrap: wrap;
+                justify-content: center;
                 gap: 20px;
+                padding: 15px 20px;
             }
             
-            .luxury-form-section {
+            .contact-section {
                 padding: 40px 25px;
             }
             
-            .luxury-cards {
+            .cards-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .language-switcher {
+                top: 10px;
+                left: 10px;
             }
         }
         
@@ -511,95 +654,175 @@
             }
         }
         
-        .animate-fade {
+        .animate {
             animation: fadeInUp 0.8s ease forwards;
         }
         
         .delay-1 { animation-delay: 0.2s; opacity: 0; }
         .delay-2 { animation-delay: 0.4s; opacity: 0; }
         .delay-3 { animation-delay: 0.6s; opacity: 0; }
-        .delay-4 { animation-delay: 0.8s; opacity: 0; }
+        
+        /* Language-specific */
+        [lang="en"] {
+            display: none;
+        }
+        
+        body.english [lang="ar"] {
+            display: none;
+        }
+        
+        body.english [lang="en"] {
+            display: block;
+        }
+        
+        body.english .header-contact {
+            text-align: right;
+        }
+        
+        body.english .header-contact i {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+        
+        body.english .specialty-item {
+            flex-direction: row-reverse;
+        }
     </style>
 </head>
 <body>
-    <!-- Luxury Header -->
-    <header class="luxury-header">
-        <div class="luxury-container">
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" id="arabicBtn">العربية</button>
+        <button class="lang-btn" id="englishBtn">English</button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
             <div class="header-top">
-                <div class="brand-logo animate-fade">
+                <div class="logo-container animate">
                     <div class="logo-frame">
                         <img src="https://i.imgur.com/Vc29zG2.png" alt="Dmadeeha Makkawi Logo" class="logo-img">
                     </div>
                     <div class="brand-name">
                         <h1>Dmadeeha Makkawi</h1>
-                        <h2>M BEAUTY LOUNGE</h2>
+                        <h2 lang="ar">مالكة M Beauty Lounge</h2>
+                        <h2 lang="en">Owner of M Beauty Lounge</h2>
                     </div>
                 </div>
                 
-                <div class="header-contact animate-fade delay-1">
+                <div class="header-contact animate delay-1">
                     <p><i class="fas fa-phone-alt"></i> 0796638663</p>
-                    <p><i class="fas fa-map-marker-alt"></i> خلدا مقابل مركز الماركات - مجمع 299 - الطابق الاول</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 
+                        <span lang="ar">خلدا مقابل مركز الماركات - مجمع 299 - الطابق الاول</span>
+                        <span lang="en">Khalda, opposite Brands Center - Complex 299 - First Floor</span>
+                    </p>
                 </div>
             </div>
             
-            <nav class="luxury-nav">
-                <a href="#about" class="nav-item animate-fade delay-1">من أنا</a>
-                <a href="#services" class="nav-item animate-fade delay-2">خدماتي</a>
-                <a href="#specialties" class="nav-item animate-fade delay-3">تخصصاتي</a>
-                <a href="#contact" class="nav-item animate-fade delay-4">تواصل معي</a>
-            </nav>
+            <div class="nav-container">
+                <nav class="main-nav">
+                    <a href="#about" class="nav-link animate delay-1">
+                        <span lang="ar">من أنا</span>
+                        <span lang="en">About Me</span>
+                    </a>
+                    <a href="#services" class="nav-link animate delay-2">
+                        <span lang="ar">خدماتي</span>
+                        <span lang="en">Services</span>
+                    </a>
+                    <a href="#specialties" class="nav-link animate delay-3">
+                        <span lang="ar">تخصصاتي</span>
+                        <span lang="en">Specialties</span>
+                    </a>
+                    <a href="#contact" class="nav-link animate delay-3">
+                        <span lang="ar">تواصل معي</span>
+                        <span lang="en">Contact Me</span>
+                    </a>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <!-- Luxury Hero -->
-    <section class="luxury-hero">
-        <div class="luxury-container">
-            <h1 class="hero-title animate-fade">
-                فخامة <span>الجمال</span> وتألقه في مكان واحد
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title animate">
+                <span lang="ar">فخامة الجمال وتألقه في مكان واحد</span>
+                <span lang="en">Luxury Beauty & Elegance in One Place</span>
             </h1>
-            <p class="hero-subtitle animate-fade delay-1">
-                أخصائية تغذية إكلينيكية وخبيرة تجميل ومدربة دولية معتمدة. 
-                أقدم لك في M Beauty Lounge تجربة فريدة تجمع بين العلم والفن لتحقيق أقصى درجات الجمال والأناقة.
+            <p class="hero-subtitle animate delay-1">
+                <span lang="ar">أخصائية تغذية إكلينيكية وخبيرة تجميل ومدربة دولية معتمدة. أقدم لك في M Beauty Lounge تجربة فريدة تجمع بين العلم والفن لتحقيق أقصى درجات الجمال والأناقة.</span>
+                <span lang="en">Clinical Dietitian, Beauty Expert, and Certified International Trainer. At M Beauty Lounge, I offer you a unique experience that combines science and art to achieve the highest levels of beauty and elegance.</span>
             </p>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="luxury-container">
-        <div class="luxury-cards">
-            <div class="luxury-card animate-fade">
+    <section id="about" class="container">
+        <h2 class="section-title animate">
+            <span lang="ar">من أنا</span>
+            <span lang="en">About Me</span>
+        </h2>
+        
+        <div class="cards-container">
+            <div class="card animate">
                 <div class="card-icon">
                     <i class="fas fa-gem"></i>
                 </div>
-                <h3 class="card-title">سيرتي المهنية</h3>
+                <h3 class="card-title">
+                    <span lang="ar">سيرتي المهنية</span>
+                    <span lang="en">My Career</span>
+                </h3>
                 <div class="card-content">
-                    <p>ديما ضيف الله مقدادي، خبيرة تجميل وأخصائية تغذية إكلينيكية، ومدربة دولية معتمدة. أمتلك مركز M Beauty Lounge المتخصص في تقديم خدمات التجميل المتكاملة والتدريب في هذا المجال.</p>
-                    <p>حاصلة على العديد من الشهادات الدولية في مجال التجميل والتغذية، وأعمل على دمج العلم والفن لتحقيق أفضل النتائج لعملائي.</p>
+                    <p lang="ar">ديما ضيف الله مقدادي، خبيرة تجميل وأخصائية تغذية إكلينيكية، ومدربة دولية معتمدة. أمتلك مركز M Beauty Lounge المتخصص في تقديم خدمات التجميل المتكاملة والتدريب في هذا المجال.</p>
+                    <p lang="en">Dima Dhaifallah Maqdad, a beauty expert, clinical dietitian, and certified international trainer. I own M Beauty Lounge, which specializes in providing integrated beauty services and training in this field.</p>
                 </div>
             </div>
             
-            <div class="luxury-card animate-fade delay-1">
+            <div class="card animate delay-1">
                 <div class="card-icon">
                     <i class="fas fa-crown"></i>
                 </div>
-                <h3 class="card-title">فلسفتي في الجمال</h3>
+                <h3 class="card-title">
+                    <span lang="ar">فلسفتي في الجمال</span>
+                    <span lang="en">My Beauty Philosophy</span>
+                </h3>
                 <div class="card-content">
-                    <p>أؤمن بأن الجمال الحقيقي ينبع من الداخل ويتجلى في الخارج. لذلك أقدم خدمات متكاملة تجمع بين العناية بالبشرة والتغذية السليمة وتقنيات التجميل الحديثة.</p>
-                    <p>هدفي هو تعزيز ثقتك بنفسك من خلال إبراز جمالك الطبيعي بأسلوب راقٍ وأنيق يناسب شخصيتك.</p>
+                    <p lang="ar">أؤمن بأن الجمال الحقيقي ينبع من الداخل ويتجلى في الخارج. لذلك أقدم خدمات متكاملة تجمع بين العناية بالبشرة والتغذية السليمة وتقنيات التجميل الحديثة.</p>
+                    <p lang="en">I believe that true beauty comes from within and manifests externally. Therefore, I provide integrated services that combine skincare, proper nutrition, and modern beauty techniques.</p>
                 </div>
             </div>
             
-            <div class="luxury-card animate-fade delay-2">
+            <div class="card animate delay-2">
                 <div class="card-icon">
                     <i class="fas fa-award"></i>
                 </div>
-                <h3 class="card-title">الشهادات والخبرات</h3>
+                <h3 class="card-title">
+                    <span lang="ar">الشهادات والخبرات</span>
+                    <span lang="en">Certifications & Experience</span>
+                </h3>
                 <div class="card-content">
                     <ul style="list-style: none; padding-right: 15px;">
-                        <li style="margin-bottom: 10px;"><i class="fas fa-certificate" style="color: var(--accent-color); margin-left: 10px;"></i> أخصائية تغذية إكلينيكية معتمدة</li>
-                        <li style="margin-bottom: 10px;"><i class="fas fa-certificate" style="color: var(--accent-color); margin-left: 10px;"></i> خبيرة تجميل دولية معتمدة</li>
-                        <li style="margin-bottom: 10px;"><i class="fas fa-certificate" style="color: var(--accent-color); margin-left: 10px;"></i> مدربة دولية معتمدة</li>
-                        <li style="margin-bottom: 10px;"><i class="fas fa-certificate" style="color: var(--accent-color); margin-left: 10px;"></i> خبرة أكثر من 10 سنوات في المجال</li>
+                        <li style="margin-bottom: 10px;">
+                            <i class="fas fa-certificate" style="color: var(--accent-color); margin-left: 10px;"></i>
+                            <span lang="ar">أخصائية تغذية إكلينيكية معتمدة</span>
+                            <span lang="en">Certified Clinical Dietitian</span>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <i class="fas fa-certificate" style="color: var(--accent-color); margin-left: 10px;"></i>
+                            <span lang="ar">خبيرة تجميل دولية معتمدة</span>
+                            <span lang="en">Certified International Beauty Expert</span>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <i class="fas fa-certificate" style="color: var(--accent-color); margin-left: 10px;"></i>
+                            <span lang="ar">مدربة دولية معتمدة</span>
+                            <span lang="en">Certified International Trainer</span>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <i class="fas fa-certificate" style="color: var(--accent-color); margin-left: 10px;"></i>
+                            <span lang="ar">خبرة أكثر من 10 سنوات في المجال</span>
+                            <span lang="en">Over 10 years of experience in the field</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -607,183 +830,309 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="luxury-container">
-        <h2 class="form-title animate-fade">خدماتي المتخصصة</h2>
+    <section id="services" class="container">
+        <h2 class="section-title animate">
+            <span lang="ar">خدماتي المتخصصة</span>
+            <span lang="en">My Specialized Services</span>
+        </h2>
         
-        <div class="luxury-cards">
-            <div class="luxury-card animate-fade">
+        <div class="cards-container">
+            <div class="card animate">
                 <div class="card-icon">
                     <i class="fas fa-apple-alt"></i>
                 </div>
-                <h3 class="card-title">استشارات التغذية الإكلينيكية</h3>
+                <h3 class="card-title">
+                    <span lang="ar">استشارات التغذية الإكلينيكية</span>
+                    <span lang="en">Clinical Nutrition Consultations</span>
+                </h3>
                 <div class="card-content">
-                    <p>برامج تغذية مخصصة وفقاً لاحتياجاتك الصحية وأهدافك الجمالية. نعمل على تحسين صحة بشرتك وشعرك من الداخل.</p>
+                    <p lang="ar">برامج تغذية مخصصة وفقاً لاحتياجاتك الصحية وأهدافك الجمالية. نعمل على تحسين صحة بشرتك وشعرك من الداخل.</p>
+                    <p lang="en">Customized nutrition programs according to your health needs and beauty goals. We work on improving your skin and hair health from within.</p>
                 </div>
             </div>
             
-            <div class="luxury-card animate-fade delay-1">
+            <div class="card animate delay-1">
                 <div class="card-icon">
                     <i class="fas fa-palette"></i>
                 </div>
-                <h3 class="card-title">خدمات التجميل المتكاملة</h3>
+                <h3 class="card-title">
+                    <span lang="ar">خدمات التجميل المتكاملة</span>
+                    <span lang="en">Integrated Beauty Services</span>
+                </h3>
                 <div class="card-content">
-                    <p>جلسات ميك أب احترافية، مايكروبليدنغ، لاش اكستنشن، والعناية المتكاملة بالبشرة بأحدث التقنيات العالمية.</p>
+                    <p lang="ar">جلسات ميك أب احترافية، مايكروبليدنغ، لاش اكستنشن، والعناية المتكاملة بالبشرة بأحدث التقنيات العالمية.</p>
+                    <p lang="en">Professional makeup sessions, microblading, lash extensions, and comprehensive skincare with the latest international techniques.</p>
                 </div>
             </div>
             
-            <div class="luxury-card animate-fade delay-2">
+            <div class="card animate delay-2">
                 <div class="card-icon">
                     <i class="fas fa-chalkboard-teacher"></i>
                 </div>
-                <h3 class="card-title">التدريب والدورات المتخصصة</h3>
+                <h3 class="card-title">
+                    <span lang="ar">التدريب والدورات المتخصصة</span>
+                    <span lang="en">Training & Specialized Courses</span>
+                </h3>
                 <div class="card-content">
-                    <p>دورات تدريبية معتمدة في جميع مجالات التجميل والتغذية للراغبين في احتراف المجال أو تطوير مهاراتهم.</p>
+                    <p lang="ar">دورات تدريبية معتمدة في جميع مجالات التجميل والتغذية للراغبين في احتراف المجال أو تطوير مهاراتهم.</p>
+                    <p lang="en">Certified training courses in all areas of beauty and nutrition for those wishing to professionalize in the field or develop their skills.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Specialties Section -->
-    <section id="specialties" class="luxury-container">
-        <h2 class="form-title animate-fade">مجالات تخصصي</h2>
+    <section id="specialties" class="container specialties-section">
+        <h2 class="section-title animate">
+            <span lang="ar">مجالات تخصصي</span>
+            <span lang="en">My Specializations</span>
+        </h2>
         
         <div class="specialties-grid">
-            <div class="specialty-item animate-fade">
+            <div class="specialty-item animate">
                 <i class="fas fa-user-md"></i>
-                <span>أخصائية تغذية إكلينيكية</span>
+                <span>
+                    <span lang="ar">أخصائية تغذية إكلينيكية</span>
+                    <span lang="en">Clinical Dietitian</span>
+                </span>
             </div>
-            <div class="specialty-item animate-fade delay-1">
+            <div class="specialty-item animate delay-1">
                 <i class="fas fa-spa"></i>
-                <span>خبيرة تجميل معتمدة</span>
+                <span>
+                    <span lang="ar">خبيرة تجميل معتمدة</span>
+                    <span lang="en">Certified Beauty Expert</span>
+                </span>
             </div>
-            <div class="specialty-item animate-fade delay-2">
+            <div class="specialty-item animate delay-2">
                 <i class="fas fa-graduation-cap"></i>
-                <span>مدرب دولي معتمد</span>
+                <span>
+                    <span lang="ar">مدرب دولي معتمد</span>
+                    <span lang="en">Certified International Trainer</span>
+                </span>
             </div>
-            <div class="specialty-item animate-fade">
+            <div class="specialty-item animate">
                 <i class="fas fa-paint-brush"></i>
-                <span>ميك أب آرتست محترفة</span>
+                <span>
+                    <span lang="ar">ميك أب آرتست محترفة</span>
+                    <span lang="en">Professional Makeup Artist</span>
+                </span>
             </div>
-            <div class="specialty-item animate-fade delay-1">
+            <div class="specialty-item animate delay-1">
                 <i class="fas fa-eye"></i>
-                <span>خبيرة مايكروبليدنغ</span>
+                <span>
+                    <span lang="ar">خبيرة مايكروبليدنغ</span>
+                    <span lang="en">Microblading Expert</span>
+                </span>
             </div>
-            <div class="specialty-item animate-fade delay-2">
+            <div class="specialty-item animate delay-2">
                 <i class="fas fa-eye-lash"></i>
-                <span>خبيرة لاش اكستنشن</span>
+                <span>
+                    <span lang="ar">خبيرة لاش اكستنشن</span>
+                    <span lang="en">Lash Extension Expert</span>
+                </span>
             </div>
-            <div class="specialty-item animate-fade">
+            <div class="specialty-item animate">
                 <i class="fas fa-heart"></i>
-                <span>خبيرة بشرة وعناية</span>
+                <span>
+                    <span lang="ar">خبيرة بشرة وعناية</span>
+                    <span lang="en">Skin Care Expert</span>
+                </span>
             </div>
-            <div class="specialty-item animate-fade delay-1">
+            <div class="specialty-item animate delay-1">
                 <i class="fas fa-book-open"></i>
-                <span>تدريب لجميع المجالات</span>
+                <span>
+                    <span lang="ar">تدريب لجميع المجالات</span>
+                    <span lang="en">Training in All Fields</span>
+                </span>
             </div>
         </div>
     </section>
 
     <!-- Contact Form -->
-    <section id="contact" class="luxury-container">
-        <div class="luxury-form-section animate-fade">
-            <h2 class="form-title">تواصل معي للحجز أو الاستفسار</h2>
+    <section id="contact" class="container">
+        <div class="contact-section animate">
+            <h2 class="section-title">
+                <span lang="ar">تواصل معي للحجز أو الاستفسار</span>
+                <span lang="en">Contact Me for Booking or Inquiry</span>
+            </h2>
             
-            <form id="contactForm" class="luxury-form">
+            <form id="contactForm" class="contact-form">
                 <div class="form-group">
-                    <label class="form-label">الاسم الكامل *</label>
+                    <label class="form-label">
+                        <span lang="ar">الاسم الكامل *</span>
+                        <span lang="en">Full Name *</span>
+                    </label>
                     <input type="text" class="form-input" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">رقم الهاتف *</label>
+                    <label class="form-label">
+                        <span lang="ar">رقم الهاتف *</span>
+                        <span lang="en">Phone Number *</span>
+                    </label>
                     <input type="tel" class="form-input" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">البريد الإلكتروني</label>
+                    <label class="form-label">
+                        <span lang="ar">البريد الإلكتروني</span>
+                        <span lang="en">Email Address</span>
+                    </label>
                     <input type="email" class="form-input">
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">نوع الخدمة المطلوبة</label>
-                    <select class="form-input">
-                        <option value="">اختر الخدمة</option>
-                        <option value="nutrition">استشارة تغذية</option>
-                        <option value="makeup">جلسة ميك أب</option>
-                        <option value="microblading">مايكروبليدنغ</option>
-                        <option value="lashes">لاش اكستنشن</option>
-                        <option value="training">تدريب ودورات</option>
-                        <option value="other">خدمة أخرى</option>
+                    <label class="form-label">
+                        <span lang="ar">نوع الخدمة المطلوبة</span>
+                        <span lang="en">Requested Service Type</span>
+                    </label>
+                    <select class="form-select">
+                        <option value="">
+                            <span lang="ar">اختر الخدمة</span>
+                            <span lang="en">Select Service</span>
+                        </option>
+                        <option value="nutrition">
+                            <span lang="ar">استشارة تغذية</span>
+                            <span lang="en">Nutrition Consultation</span>
+                        </option>
+                        <option value="makeup">
+                            <span lang="ar">جلسة ميك أب</span>
+                            <span lang="en">Makeup Session</span>
+                        </option>
+                        <option value="microblading">
+                            <span lang="ar">مايكروبليدنغ</span>
+                            <span lang="en">Microblading</span>
+                        </option>
+                        <option value="lashes">
+                            <span lang="ar">لاش اكستنشن</span>
+                            <span lang="en">Lash Extensions</span>
+                        </option>
+                        <option value="training">
+                            <span lang="ar">تدريب ودورات</span>
+                            <span lang="en">Training & Courses</span>
+                        </option>
+                        <option value="other">
+                            <span lang="ar">خدمة أخرى</span>
+                            <span lang="en">Other Service</span>
+                        </option>
                     </select>
                 </div>
                 
                 <div class="form-group full-width">
-                    <label class="form-label">الرسالة *</label>
+                    <label class="form-label">
+                        <span lang="ar">الرسالة *</span>
+                        <span lang="en">Message *</span>
+                    </label>
                     <textarea class="form-textarea" rows="5" required></textarea>
                 </div>
                 
-                <button type="submit" class="luxury-btn full-width">
-                    <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    <span lang="ar">إرسال الرسالة</span>
+                    <span lang="en">Send Message</span>
                 </button>
             </form>
         </div>
     </section>
 
     <!-- Social Media -->
-    <section class="luxury-container">
-        <h2 class="form-title animate-fade">تابعني على وسائل التواصل</h2>
+    <section class="container social-section">
+        <h2 class="section-title animate">
+            <span lang="ar">تابعني على وسائل التواصل</span>
+            <span lang="en">Follow Me on Social Media</span>
+        </h2>
         
-        <div class="social-lux">
-            <a href="https://snapchat.com/t/RuUZWoaf" class="social-icon animate-fade" target="_blank">
+        <div class="social-icons">
+            <a href="https://snapchat.com/t/RuUZWoaf" class="social-icon animate" target="_blank">
                 <i class="fab fa-snapchat"></i>
             </a>
-            <a href="https://www.instagram.com/dmadeeha.makkawi" class="social-icon animate-fade delay-1" target="_blank">
+            <a href="https://www.instagram.com/dmadeeha.makkawi" class="social-icon animate delay-1" target="_blank">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.instagram.com/mbeautylounge1" class="social-icon animate-fade delay-2" target="_blank">
+            <a href="https://www.instagram.com/mbeautylounge1" class="social-icon animate delay-2" target="_blank">
                 <i class="fab fa-instagram"></i>
             </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="luxury-footer">
-        <div class="luxury-container">
+    <footer class="footer">
+        <div class="container">
             <div class="footer-content">
-                <div class="footer-section animate-fade">
+                <div class="footer-section animate">
                     <h3 class="footer-title">M Beauty Lounge</h3>
                     <p class="footer-text">
-                        مركز متكامل للجمال والتجميل يقدم خدمات عالية الجودة تحت إشراف خبيرة متخصصة. نقدم تجربة فاخرة تجمع بين أحدث التقنيات والرعاية الشخصية.
+                        <span lang="ar">مركز متكامل للجمال والتجميل يقدم خدمات عالية الجودة تحت إشراف خبيرة متخصصة. نقدم تجربة فاخرة تجمع بين أحدث التقنيات والرعاية الشخصية.</span>
+                        <span lang="en">An integrated beauty center offering high-quality services under the supervision of a specialized expert. We provide a luxurious experience combining the latest techniques with personal care.</span>
                     </p>
                 </div>
                 
-                <div class="footer-section animate-fade delay-1">
-                    <h3 class="footer-title">معلومات الاتصال</h3>
+                <div class="footer-section animate delay-1">
+                    <h3 class="footer-title">
+                        <span lang="ar">معلومات الاتصال</span>
+                        <span lang="en">Contact Information</span>
+                    </h3>
                     <p class="footer-text">
                         <i class="fas fa-phone" style="color: var(--accent-color); margin-left: 10px;"></i> 0796638663<br><br>
                         <i class="fas fa-map-marker-alt" style="color: var(--accent-color); margin-left: 10px;"></i> 
-                        خلدا مقابل مركز الماركات - مجمع 299 - الطابق الاول
+                        <span lang="ar">خلدا مقابل مركز الماركات - مجمع 299 - الطابق الاول</span>
+                        <span lang="en">Khalda, opposite Brands Center - Complex 299 - First Floor</span>
                     </p>
                 </div>
                 
-                <div class="footer-section animate-fade delay-2">
-                    <h3 class="footer-title">ساعات العمل</h3>
+                <div class="footer-section animate delay-2">
+                    <h3 class="footer-title">
+                        <span lang="ar">ساعات العمل</span>
+                        <span lang="en">Working Hours</span>
+                    </h3>
                     <p class="footer-text">
-                        الأحد - الخميس: 9:00 صباحاً - 9:00 مساءً<br>
-                        الجمعة: 2:00 ظهراً - 9:00 مساءً<br>
-                        السبت: 10:00 صباحاً - 9:00 مساءً
+                        <span lang="ar">الأحد - الخميس: 9:00 صباحاً - 9:00 مساءً<br>الجمعة: 2:00 ظهراً - 9:00 مساءً<br>السبت: 10:00 صباحاً - 9:00 مساءً</span>
+                        <span lang="en">Sunday - Thursday: 9:00 AM - 9:00 PM<br>Friday: 2:00 PM - 9:00 PM<br>Saturday: 10:00 AM - 9:00 PM</span>
                     </p>
                 </div>
             </div>
             
-            <div class="copyright animate-fade delay-3">
-                <p>© 2023 Dmadeeha Makkawi - M Beauty Lounge. جميع الحقوق محفوظة.</p>
-                <p style="margin-top: 10px; color: var(--primary-color);">تصميم فاخر بروح الجمال والأناقة</p>
+            <div class="copyright animate delay-3">
+                <p>© 2023 Dmadeeha Makkawi - M Beauty Lounge. 
+                    <span lang="ar">جميع الحقوق محفوظة.</span>
+                    <span lang="en">All rights reserved.</span>
+                </p>
+                <p style="margin-top: 10px; color: var(--accent-color);">
+                    <span lang="ar">تصميم فاخر بروح الجمال والأناقة</span>
+                    <span lang="en">Luxury design with the spirit of beauty and elegance</span>
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Language Switching Functionality
+        const arabicBtn = document.getElementById('arabicBtn');
+        const englishBtn = document.getElementById('englishBtn');
+        const body = document.body;
+        
+        arabicBtn.addEventListener('click', () => {
+            body.classList.remove('english');
+            arabicBtn.classList.add('active');
+            englishBtn.classList.remove('active');
+            localStorage.setItem('language', 'arabic');
+        });
+        
+        englishBtn.addEventListener('click', () => {
+            body.classList.add('english');
+            englishBtn.classList.add('active');
+            arabicBtn.classList.remove('active');
+            localStorage.setItem('language', 'english');
+        });
+        
+        // Check saved language preference
+        const savedLanguage = localStorage.getItem('language');
+        if (savedLanguage === 'english') {
+            body.classList.add('english');
+            englishBtn.classList.add('active');
+            arabicBtn.classList.remove('active');
+        }
+        
         // Form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -799,27 +1148,85 @@
             console.log('Contact saved:', { name, phone, email, service, message });
             
             // Show success message
+            const isEnglish = body.classList.contains('english');
+            
             const serviceNames = {
-                'nutrition': 'استشارة تغذية',
-                'makeup': 'جلسة ميك أب',
-                'microblading': 'مايكروبليدنغ',
-                'lashes': 'لاش اكستنشن',
-                'training': 'تدريب ودورات',
-                'other': 'خدمة أخرى'
+                'nutrition': isEnglish ? 'Nutrition Consultation' : 'استشارة تغذية',
+                'makeup': isEnglish ? 'Makeup Session' : 'جلسة ميك أب',
+                'microblading': isEnglish ? 'Microblading' : 'مايكروبليدنغ',
+                'lashes': isEnglish ? 'Lash Extensions' : 'لاش اكستنشن',
+                'training': isEnglish ? 'Training & Courses' : 'تدريب ودورات',
+                'other': isEnglish ? 'Other Service' : 'خدمة أخرى'
             };
             
-            const serviceText = serviceNames[service] || 'خدمة';
+            const serviceText = serviceNames[service] || (isEnglish ? 'service' : 'خدمة');
+            const successTitle = isEnglish ? 'Message Sent Successfully!' : 'تم إرسال رسالتك بنجاح!';
+            const successText = isEnglish 
+                ? `Thank you ${name}, we will contact you soon regarding ${serviceText}`
+                : `شكراً ${name}، سنتواصل معك قريباً بخصوص ${serviceText}`;
+            const okText = isEnglish ? 'OK' : 'حسناً';
             
-            Swal.fire({
-                icon: 'success',
-                title: 'تم إرسال رسالتك بنجاح!',
-                text: `شكراً ${name}، سنتواصل معك قريباً بخصوص ${serviceText}`,
-                confirmButtonText: 'حسناً',
-                confirmButtonColor: '#DFBOBO'
-            });
+            // Create and show custom alert
+            const alertDiv = document.createElement('div');
+            alertDiv.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+                z-index: 10000;
+                max-width: 500px;
+                width: 90%;
+                text-align: center;
+                border-top: 5px solid var(--accent-color);
+            `;
             
-            // Reset form
-            this.reset();
+            alertDiv.innerHTML = `
+                <div style="font-size: 4rem; color: var(--accent-color); margin-bottom: 20px;">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 style="margin-bottom: 15px; color: var(--text-color); font-size: 1.5rem;">${successTitle}</h3>
+                <p style="color: var(--light-text); margin-bottom: 30px; line-height: 1.6;">${successText}</p>
+                <button id="closeAlert" style="
+                    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+                    color: white;
+                    border: none;
+                    padding: 15px 40px;
+                    border-radius: 50px;
+                    font-size: 1.1rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                ">${okText}</button>
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            // Add overlay
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 9999;
+            `;
+            document.body.appendChild(overlay);
+            
+            // Close alert function
+            const closeAlert = () => {
+                document.body.removeChild(alertDiv);
+                document.body.removeChild(overlay);
+                // Reset form
+                this.reset();
+            };
+            
+            alertDiv.querySelector('#closeAlert').addEventListener('click', closeAlert);
+            overlay.addEventListener('click', closeAlert);
         });
         
         // Animation on scroll
@@ -831,18 +1238,18 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade');
+                    entry.target.classList.add('animate');
                 }
             });
         }, observerOptions);
         
         // Observe all elements with animation classes
-        document.querySelectorAll('.animate-fade, .delay-1, .delay-2, .delay-3, .delay-4').forEach(el => {
+        document.querySelectorAll('.animate, .delay-1, .delay-2, .delay-3').forEach(el => {
             observer.observe(el);
         });
         
         // Smooth scrolling for navigation
-        document.querySelectorAll('.nav-item').forEach(link => {
+        document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
@@ -855,8 +1262,5 @@
             });
         });
     </script>
-    
-    <!-- SweetAlert for beautiful alerts -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
