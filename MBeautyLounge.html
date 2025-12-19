@@ -374,7 +374,7 @@
             margin-bottom: 20px;
         }
 
-        /* إبداعاتنا - Icons Section (التعديل الجديد) */
+        /* إبداعاتنا - Icons Section */
         .creations-section {
             background: linear-gradient(135deg, #f9f6f2 0%, #f5f0e8 100%);
         }
@@ -554,6 +554,125 @@
         .creation-lightbox-close:hover {
             background: rgba(212, 185, 150, 0.3);
             transform: rotate(90deg);
+        }
+
+        /* Ratings Section (معادتة) */
+        .ratings-section {
+            background: white;
+        }
+
+        .ratings-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .rating-overview {
+            background: linear-gradient(135deg, var(--primary-light), white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--primary-light);
+        }
+
+        .rating-score {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .rating-form {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--primary-light);
+            background: linear-gradient(135deg, #ffffff, #fdfbf8);
+        }
+
+        .rating-form h3 {
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .rating-stars-input {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            direction: ltr;
+        }
+
+        .star-input {
+            font-size: 2.5rem;
+            color: #e8e0d5;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .star-input:hover,
+        .star-input.active {
+            color: var(--gold);
+            transform: scale(1.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--primary-light);
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: #fdfbf8;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(212, 185, 150, 0.1);
+            background: white;
+        }
+
+        .submit-rating {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #5d4c3c;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .submit-rating:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 185, 150, 0.3);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
         }
 
         /* Contact Section */
@@ -912,6 +1031,7 @@
                         <li><a href="#home" class="active">الرئيسية</a></li>
                         <li><a href="#services">خدماتنا</a></li>
                         <li><a href="#creations">إبداعاتنا</a></li>
+                        <li><a href="#ratings">التقييمات</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
                 </nav>
@@ -979,7 +1099,7 @@
         </div>
     </section>
 
-    <!-- إبداعاتنا - Icons Section (التعديل الجديد) -->
+    <!-- إبداعاتنا - Icons Section -->
     <section class="section creations-section" id="creations">
         <div class="container">
             <div class="section-title">
@@ -1074,6 +1194,49 @@
         </div>
     </div>
 
+    <!-- Ratings Section (معادة) -->
+    <section class="section ratings-section" id="ratings">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate">تقييمات العملاء</h2>
+            </div>
+            <div class="ratings-container">
+                <div class="rating-overview animate">
+                    <div class="rating-score">4.8</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>بناءً على 247 تقييمًا من عملائنا الكرام</p>
+                </div>
+                <div class="rating-form animate delay-1">
+                    <h3>شاركنا رأيك</h3>
+                    <div class="rating-stars-input">
+                        <span class="star-input" onclick="setRating(1)">★</span>
+                        <span class="star-input" onclick="setRating(2)">★</span>
+                        <span class="star-input" onclick="setRating(3)">★</span>
+                        <span class="star-input" onclick="setRating(4)">★</span>
+                        <span class="star-input" onclick="setRating(5)">★</span>
+                    </div>
+                    <form id="ratingForm">
+                        <div class="form-group">
+                            <label for="ratingName">اسمك</label>
+                            <input type="text" id="ratingName" class="form-control" placeholder="أدخل اسمك" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ratingComment">تعليقك</label>
+                            <textarea id="ratingComment" class="form-control" rows="4" placeholder="شاركنا تجربتك..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-rating">إرسال التقييم</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="section contact-section" id="contact">
         <div class="container">
@@ -1157,6 +1320,7 @@
                         <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
                         <li><a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
                         <li><a href="#creations"><i class="fas fa-chevron-left"></i> إبداعاتنا</a></li>
+                        <li><a href="#ratings"><i class="fas fa-chevron-left"></i> التقييمات</a></li>
                         <li><a href="#contact"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
                     </ul>
                 </div>
@@ -1318,6 +1482,40 @@
             if (e.target === document.getElementById('creationLightbox')) {
                 closeCreationDetail();
             }
+        });
+
+        // نظام التقييمات
+        let userRating = 0;
+        
+        function setRating(rating) {
+            userRating = rating;
+            const stars = document.querySelectorAll('.star-input');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+        
+        document.getElementById('ratingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (userRating === 0) {
+                alert('الرجاء اختيار تقييم من 1 إلى 5 نجوم');
+                return;
+            }
+            
+            const name = document.getElementById('ratingName').value;
+            const comment = document.getElementById('ratingComment').value;
+            
+            // هنا يمكنك إرسال البيانات إلى الخادم
+            alert(`شكراً ${name} لتقييمك بـ ${userRating} نجوم!\nسيتم عرض تعليقك قريباً.`);
+            
+            // إعادة تعيين النموذج
+            document.getElementById('ratingForm').reset();
+            setRating(0);
         });
 
         // Instagram Modal (مبسط)
