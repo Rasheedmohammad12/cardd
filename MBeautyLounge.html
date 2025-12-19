@@ -8,121 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* صفحة الترحيب الدائمة */
-        .welcome-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .welcome-content {
-            text-align: center;
-            padding: 40px;
-            max-width: 800px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .welcome-logo {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .welcome-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: brightness(1.2) drop-shadow(0 0 20px rgba(212, 185, 150, 0.3));
-        }
-
-        .welcome-title {
-            font-size: 3.5rem;
-            margin-bottom: 30px;
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(212, 185, 150, 0.5);
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .welcome-subtitle {
-            font-size: 2.2rem;
-            color: #d4b996;
-            margin-bottom: 50px;
-            line-height: 1.5;
-            opacity: 0.9;
-            font-weight: 600;
-        }
-
-        .enter-btn {
-            background: rgba(212, 185, 150, 0.2);
-            color: #ffffff;
-            border: 2px solid rgba(212, 185, 150, 0.4);
-            padding: 18px 60px;
-            font-size: 1.4rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(5px);
-            margin-top: 30px;
-            font-family: 'Cairo', sans-serif;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .enter-btn:hover {
-            background: rgba(212, 185, 150, 0.3);
-            border-color: rgba(212, 185, 150, 0.7);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212, 185, 150, 0.3);
-        }
-
-        .enter-btn i {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* إخفاء الصفحة الرئيسية في البداية */
-        body {
-            display: none;
-        }
-
-        body.loaded {
-            display: block;
-        }
-
-        /* بقية الموقع مع الألوان البيج */
         :root {
             --primary: #d4b996; /* بيج فاخر */
             --primary-dark: #b89a7a;
@@ -153,7 +38,7 @@
             scroll-behavior: smooth;
         }
 
-        .loaded body {
+        body {
             font-family: 'Cairo', sans-serif;
             background: linear-gradient(135deg, #fdfbf8 0%, #f9f6f2 100%);
             color: var(--dark);
@@ -1008,27 +893,11 @@
             .hero h1 {
                 font-size: 3.5rem;
             }
-            
-            .welcome-title {
-                font-size: 3rem;
-            }
-            
-            .welcome-subtitle {
-                font-size: 1.8rem;
-            }
         }
 
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 3rem;
-            }
-            
-            .welcome-title {
-                font-size: 2.5rem;
-            }
-            
-            .welcome-subtitle {
-                font-size: 1.5rem;
             }
             
             .contact-container {
@@ -1051,24 +920,6 @@
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 15px;
-            }
-            
-            .welcome-logo {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .welcome-title {
-                font-size: 2.2rem;
-            }
-            
-            .welcome-subtitle {
-                font-size: 1.3rem;
-            }
-            
-            .enter-btn {
-                padding: 15px 40px;
-                font-size: 1.2rem;
             }
             
             .hero {
@@ -1113,19 +964,6 @@
                 padding: 70px 0;
             }
             
-            .welcome-title {
-                font-size: 1.8rem;
-            }
-            
-            .welcome-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .welcome-logo {
-                width: 120px;
-                height: 120px;
-            }
-            
             .service-card {
                 padding: 30px 20px;
             }
@@ -1144,6 +982,17 @@
         }
 
         /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @keyframes modalSlide {
             from {
                 transform: translateY(-30px);
@@ -1165,375 +1014,333 @@
     </style>
 </head>
 <body>
-    <!-- صفحة الترحيب الدائمة -->
-    <div class="welcome-overlay" id="welcomeOverlay">
-        <div class="welcome-content">
-            <div class="welcome-logo">
-                <img src="https://i.imgur.com/iZfhFO1.png" alt="M Beauty Lounge Logo">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#home" class="logo">
+                    <img src="https://i.imgur.com/iZfhFO1.png" alt="M Beauty Lounge" class="logo-img">
+                    <div class="logo-text">
+                        <div class="logo-main">M Beauty Lounge</div>
+                        <div class="logo-sub">صالون التجميل الفاخر</div>
+                    </div>
+                </a>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="active">الرئيسية</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#creations">إبداعاتنا</a></li>
+                        <li><a href="#ratings">التقييمات</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="animate">M Beauty Lounge</h1>
+            <p class="animate delay-1">صالون تجميل فاخر يقدم أحدث خدمات التجميل والعناية بالشعر (صبغات وقص وأحدث الألوان والهايلايت وجميع أنواع تركيبات الشعر) والأظافر والميكروبليدينغ والرموش والبشرة بأيدي خبراء متخصصين لتجربة فريدة من نوعها.</p>
+            <div class="btn-group animate delay-2">
+                <a href="#services" class="btn btn-primary"><i class="fas fa-spa"></i> استكشف خدماتنا</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fas fa-calendar-check"></i> احجز موعدًا</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate">خدماتنا المتكاملة</h2>
+                <p class="animate delay-1" style="color: var(--gray); max-width: 800px; margin: 20px auto 0;">
+                    نقدم مجموعة متكاملة من خدمات التجميل والعناية بأحدث التقنيات العالمية
+                </p>
             </div>
             
-            <h1 class="welcome-title">Where science and expertise come together</h1>
+            <!-- الخدمات الرئيسية -->
+            <div class="services-grid">
+                <!-- خدمة الشعر -->
+                <div class="service-card animate delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>تصفيف الشعر المتكامل</h3>
+                        <p>خدمات شاملة للعناية بالشعر بأحدث الصيحات العالمية</p>
+                    </div>
+                </div>
+                
+                <!-- خدمة البشرة والرموش -->
+                <div class="service-card animate delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>العناية بالبشرة والرموش</h3>
+                        <p>جلسات متخصصة للعناية بالبشرة وتعزيز جمال الرموش</p>
+                    </div>
+                </div>
+                
+                <!-- خدمة الأظافر والميك أب -->
+                <div class="service-card animate delay-3">
+                    <div class="service-icon">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>الأظافر والميك أب</h3>
+                        <p>تصميمات مبتكرة للأظافر ومكياج احترافي للمناسبات</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- إبداعاتنا - Icons Section -->
+    <section class="section creations-section" id="creations">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate">إبداعاتنا في صالون التجميل</h2>
+                <p class="animate delay-1" style="color: var(--gray); max-width: 800px; margin: 20px auto 0;">
+                    اكتشف روائع إبداعاتنا المميزة التي تجعل منكِ الأميرة التي تستحقينها
+                </p>
+            </div>
             
-            <p class="welcome-subtitle">المكان الوحيد الذي يجمع العلم والخبرة</p>
-            
-            <button class="enter-btn" id="enterSiteBtn">
-                <i class="fas fa-spa"></i>
-                <span>ادخل إلى صالون الجمال</span>
+            <div class="creations-icons">
+                <div class="creation-item animate" onclick="openCreationDetail(0)">
+                    <div class="creation-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>تصفيف الشعر الفني</h3>
+                    <p>أحدث القصات والتصفيفات التي تناسب كل وجه وشخصية</p>
+                </div>
+                
+                <div class="creation-item animate delay-1" onclick="openCreationDetail(1)">
+                    <div class="creation-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>تلوين الشعر الإبداعي</h3>
+                    <p>مزيج من الألوان المبتكرة والصبغات الفريدة</p>
+                </div>
+                
+                <div class="creation-item animate delay-2" onclick="openCreationDetail(2)">
+                    <div class="creation-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>تجميل العيون الساحر</h3>
+                    <p>رموش وحواجب تزيد من جمال عيونك بطريقة طبيعية</p>
+                </div>
+                
+                <div class="creation-item animate delay-3" onclick="openCreationDetail(3)">
+                    <div class="creation-icon">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3>فن الأظافر المذهل</h3>
+                    <p>تصميمات أظافر فنية تعبر عن شخصيتك وأناقتك</p>
+                </div>
+                
+                <div class="creation-item animate" onclick="openCreationDetail(4)">
+                    <div class="creation-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>العناية الملكية بالبشرة</h3>
+                    <p>علاجات متقدمة لبشرة مشرقة وشابة</p>
+                </div>
+                
+                <div class="creation-item animate delay-1" onclick="openCreationDetail(5)">
+                    <div class="creation-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>ميك أب السهرات</h3>
+                    <p>إطلالات مكياج ملكية للمناسبات الخاصة</p>
+                </div>
+                
+                <div class="creation-item animate delay-2" onclick="openCreationDetail(6)">
+                    <div class="creation-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>تسريحات المناسبات</h3>
+                    <p>تسريحات فنية تليق بالأعراس والمناسبات</p>
+                </div>
+                
+                <div class="creation-item animate delay-3" onclick="openCreationDetail(7)">
+                    <div class="creation-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>تحضيرات العروس</h3>
+                    <p>باقات متكاملة لتجهيز العروس ليومها الخاص</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox للتفاصيل -->
+    <div class="creation-lightbox" id="creationLightbox">
+        <div class="creation-lightbox-content">
+            <button class="creation-lightbox-close" onclick="closeCreationDetail()">
+                <i class="fas fa-times"></i>
             </button>
+            <div class="creation-icon" id="creationDetailIcon">
+                <i class="fas fa-cut"></i>
+            </div>
+            <h3 id="creationDetailTitle">تصفيف الشعر الفني</h3>
+            <p id="creationDetailDescription">وصف مفصل للإبداع</p>
+            <ul class="creation-features" id="creationDetailFeatures">
+                <!-- سيتم ملؤه بواسطة JavaScript -->
+            </ul>
         </div>
     </div>
 
-    <!-- الموقع الرئيسي (مخفي في البداية) -->
-    <div id="mainSite" style="display: none;">
-        <!-- Header -->
-        <header>
-            <div class="container">
-                <div class="nav-container">
-                    <a href="#home" class="logo">
-                        <img src="https://i.imgur.com/iZfhFO1.png" alt="M Beauty Lounge" class="logo-img">
-                        <div class="logo-text">
-                            <div class="logo-main">M Beauty Lounge</div>
-                            <div class="logo-sub">صالون التجميل الفاخر</div>
+    <!-- Ratings Section (معادة) -->
+    <section class="section ratings-section" id="ratings">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate">تقييمات العملاء</h2>
+            </div>
+            <div class="ratings-container">
+                <div class="rating-overview animate">
+                    <div class="rating-score">4.8</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>بناءً على 247 تقييمًا من عملائنا الكرام</p>
+                </div>
+                <div class="rating-form animate delay-1">
+                    <h3>شاركنا رأيك</h3>
+                    <div class="rating-stars-input">
+                        <span class="star-input" onclick="setRating(1)">★</span>
+                        <span class="star-input" onclick="setRating(2)">★</span>
+                        <span class="star-input" onclick="setRating(3)">★</span>
+                        <span class="star-input" onclick="setRating(4)">★</span>
+                        <span class="star-input" onclick="setRating(5)">★</span>
+                    </div>
+                    <form id="ratingForm">
+                        <div class="form-group">
+                            <label for="ratingName">اسمك</label>
+                            <input type="text" id="ratingName" class="form-control" placeholder="أدخل اسمك" required>
                         </div>
+                        <div class="form-group">
+                            <label for="ratingComment">تعليقك</label>
+                            <textarea id="ratingComment" class="form-control" rows="4" placeholder="شاركنا تجربتك..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-rating">إرسال التقييم</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate">تواصل معنا</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info animate">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>اتصل بنا</h3>
+                            <p>متاحون لخدمتكم يومياً من 9 صباحاً حتى 10 مساءً</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>زورونا</h3>
+                            <p>M Beauty Lounge - الموقع الأنيق والمريح لتجربة فريدة</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>ساعات العمل</h3>
+                            <p>الأحد - الخميس: 9 ص - 10 م<br>الجمعة - السبت: 10 ص - 11 م</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-buttons animate delay-1">
+                    <a href="tel:0796281500" class="contact-btn phone-btn">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>اتصل: 0796281500</span>
                     </a>
                     
-                    <nav>
-                        <ul>
-                            <li><a href="#home" class="active">الرئيسية</a></li>
-                            <li><a href="#services">خدماتنا</a></li>
-                            <li><a href="#creations">إبداعاتنا</a></li>
-                            <li><a href="#ratings">التقييمات</a></li>
-                            <li><a href="#contact">اتصل بنا</a></li>
-                        </ul>
-                    </nav>
+                    <a href="https://www.facebook.com/share/176ESgwXN2/?mibextid=wwXIfr" target="_blank" class="contact-btn facebook-btn">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>فيسبوك</span>
+                    </a>
+                    
+                    <a href="#" class="contact-btn instagram-btn" onclick="openInstagramModal(event)">
+                        <i class="fab fa-instagram"></i>
+                        <span>انستقرام</span>
+                    </a>
+                    
+                    <a href="https://share.google.com/ehQYW8vbZsq2x4bFd" target="_blank" class="contact-btn location-btn">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>الموقع</span>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/futures_journey_programmingin?igsh=MTdkcXVkcjY3cGpwZA==" 
+                       target="_blank" 
+                       class="contact-btn nfc-btn">
+                        <i class="fas fa-wifi"></i>
+                        <span>NFC Request</span>
+                    </a>
                 </div>
-            </div>
-        </header>
-
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="container">
-                <h1 class="animate">M Beauty Lounge</h1>
-                <p class="animate delay-1">صالون تجميل فاخر يقدم أحدث خدمات التجميل والعناية بالشعر (صبغات وقص وأحدث الألوان والهايلايت وجميع أنواع تركيبات الشعر) والأظافر والميكروبليدينغ والرموش والبشرة بأيدي خبراء متخصصين لتجربة فريدة من نوعها.</p>
-                <div class="btn-group animate delay-2">
-                    <a href="#services" class="btn btn-primary"><i class="fas fa-spa"></i> استكشف خدماتنا</a>
-                    <a href="#contact" class="btn btn-secondary"><i class="fas fa-calendar-check"></i> احجز موعدًا</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section class="section" id="services">
-            <div class="container">
-                <div class="section-title">
-                    <h2 class="animate">خدماتنا المتكاملة</h2>
-                    <p class="animate delay-1" style="color: var(--gray); max-width: 800px; margin: 20px auto 0;">
-                        نقدم مجموعة متكاملة من خدمات التجميل والعناية بأحدث التقنيات العالمية
-                    </p>
-                </div>
-                
-                <!-- الخدمات الرئيسية -->
-                <div class="services-grid">
-                    <!-- خدمة الشعر -->
-                    <div class="service-card animate delay-1">
-                        <div class="service-icon">
-                            <i class="fas fa-cut"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>تصفيف الشعر المتكامل</h3>
-                            <p>خدمات شاملة للعناية بالشعر بأحدث الصيحات العالمية</p>
-                        </div>
-                    </div>
-                    
-                    <!-- خدمة البشرة والرموش -->
-                    <div class="service-card animate delay-2">
-                        <div class="service-icon">
-                            <i class="fas fa-spa"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>العناية بالبشرة والرموش</h3>
-                            <p>جلسات متخصصة للعناية بالبشرة وتعزيز جمال الرموش</p>
-                        </div>
-                    </div>
-                    
-                    <!-- خدمة الأظافر والميك أب -->
-                    <div class="service-card animate delay-3">
-                        <div class="service-icon">
-                            <i class="fas fa-hand-sparkles"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>الأظافر والميك أب</h3>
-                            <p>تصميمات مبتكرة للأظافر ومكياج احترافي للمناسبات</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- إبداعاتنا - Icons Section -->
-        <section class="section creations-section" id="creations">
-            <div class="container">
-                <div class="section-title">
-                    <h2 class="animate">إبداعاتنا في صالون التجميل</h2>
-                    <p class="animate delay-1" style="color: var(--gray); max-width: 800px; margin: 20px auto 0;">
-                        اكتشف روائع إبداعاتنا المميزة التي تجعل منكِ الأميرة التي تستحقينها
-                    </p>
-                </div>
-                
-                <div class="creations-icons">
-                    <div class="creation-item animate" onclick="openCreationDetail(0)">
-                        <div class="creation-icon">
-                            <i class="fas fa-cut"></i>
-                        </div>
-                        <h3>تصفيف الشعر الفني</h3>
-                        <p>أحدث القصات والتصفيفات التي تناسب كل وجه وشخصية</p>
-                    </div>
-                    
-                    <div class="creation-item animate delay-1" onclick="openCreationDetail(1)">
-                        <div class="creation-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h3>تلوين الشعر الإبداعي</h3>
-                        <p>مزيج من الألوان المبتكرة والصبغات الفريدة</p>
-                    </div>
-                    
-                    <div class="creation-item animate delay-2" onclick="openCreationDetail(2)">
-                        <div class="creation-icon">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <h3>تجميل العيون الساحر</h3>
-                        <p>رموش وحواجب تزيد من جمال عيونك بطريقة طبيعية</p>
-                    </div>
-                    
-                    <div class="creation-item animate delay-3" onclick="openCreationDetail(3)">
-                        <div class="creation-icon">
-                            <i class="fas fa-hand-sparkles"></i>
-                        </div>
-                        <h3>فن الأظافر المذهل</h3>
-                        <p>تصميمات أظافر فنية تعبر عن شخصيتك وأناقتك</p>
-                    </div>
-                    
-                    <div class="creation-item animate" onclick="openCreationDetail(4)">
-                        <div class="creation-icon">
-                            <i class="fas fa-gem"></i>
-                        </div>
-                        <h3>العناية الملكية بالبشرة</h3>
-                        <p>علاجات متقدمة لبشرة مشرقة وشابة</p>
-                    </div>
-                    
-                    <div class="creation-item animate delay-1" onclick="openCreationDetail(5)">
-                        <div class="creation-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h3>ميك أب السهرات</h3>
-                        <p>إطلالات مكياج ملكية للمناسبات الخاصة</p>
-                    </div>
-                    
-                    <div class="creation-item animate delay-2" onclick="openCreationDetail(6)">
-                        <div class="creation-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h3>تسريحات المناسبات</h3>
-                        <p>تسريحات فنية تليق بالأعراس والمناسبات</p>
-                    </div>
-                    
-                    <div class="creation-item animate delay-3" onclick="openCreationDetail(7)">
-                        <div class="creation-icon">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                        <h3>تحضيرات العروس</h3>
-                        <p>باقات متكاملة لتجهيز العروس ليومها الخاص</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Lightbox للتفاصيل -->
-        <div class="creation-lightbox" id="creationLightbox">
-            <div class="creation-lightbox-content">
-                <button class="creation-lightbox-close" onclick="closeCreationDetail()">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="creation-icon" id="creationDetailIcon">
-                    <i class="fas fa-cut"></i>
-                </div>
-                <h3 id="creationDetailTitle">تصفيف الشعر الفني</h3>
-                <p id="creationDetailDescription">وصف مفصل للإبداع</p>
-                <ul class="creation-features" id="creationDetailFeatures">
-                    <!-- سيتم ملؤه بواسطة JavaScript -->
-                </ul>
             </div>
         </div>
+    </section>
 
-        <!-- Ratings Section (معادة) -->
-        <section class="section ratings-section" id="ratings">
-            <div class="container">
-                <div class="section-title">
-                    <h2 class="animate">تقييمات العملاء</h2>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://i.imgur.com/iZfhFO1.png" alt="M Beauty Lounge">
+                    <p>صالون تجميل فاخر يقدم أحدث خدمات التجميل والعناية بالبشرة بأيدي خبراء متخصصين.</p>
                 </div>
-                <div class="ratings-container">
-                    <div class="rating-overview animate">
-                        <div class="rating-score">4.8</div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <p>بناءً على 247 تقييمًا من عملائنا الكرام</p>
-                    </div>
-                    <div class="rating-form animate delay-1">
-                        <h3>شاركنا رأيك</h3>
-                        <div class="rating-stars-input">
-                            <span class="star-input" onclick="setRating(1)">★</span>
-                            <span class="star-input" onclick="setRating(2)">★</span>
-                            <span class="star-input" onclick="setRating(3)">★</span>
-                            <span class="star-input" onclick="setRating(4)">★</span>
-                            <span class="star-input" onclick="setRating(5)">★</span>
-                        </div>
-                        <form id="ratingForm">
-                            <div class="form-group">
-                                <label for="ratingName">اسمك</label>
-                                <input type="text" id="ratingName" class="form-control" placeholder="أدخل اسمك" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="ratingComment">تعليقك</label>
-                                <textarea id="ratingComment" class="form-control" rows="4" placeholder="شاركنا تجربتك..." required></textarea>
-                            </div>
-                            <button type="submit" class="submit-rating">إرسال التقييم</button>
-                        </form>
-                    </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
+                        <li><a href="#creations"><i class="fas fa-chevron-left"></i> إبداعاتنا</a></li>
+                        <li><a href="#ratings"><i class="fas fa-chevron-left"></i> التقييمات</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>خدماتنا</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> تصفيف الشعر</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> العناية بالبشرة</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> تجميل الأظافر</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الميك أب والرموش</a></li>
+                    </ul>
                 </div>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="section contact-section" id="contact">
-            <div class="container">
-                <div class="section-title">
-                    <h2 class="animate">تواصل معنا</h2>
-                </div>
-                <div class="contact-container">
-                    <div class="contact-info animate">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>اتصل بنا</h3>
-                                <p>متاحون لخدمتكم يومياً من 9 صباحاً حتى 10 مساءً</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>زورونا</h3>
-                                <p>M Beauty Lounge - الموقع الأنيق والمريح لتجربة فريدة</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>ساعات العمل</h3>
-                                <p>الأحد - الخميس: 9 ص - 10 م<br>الجمعة - السبت: 10 ص - 11 م</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-buttons animate delay-1">
-                        <a href="tel:0796281500" class="contact-btn phone-btn">
-                            <i class="fas fa-phone-alt"></i>
-                            <span>اتصل: 0796281500</span>
-                        </a>
-                        
-                        <a href="https://www.facebook.com/share/176ESgwXN2/?mibextid=wwXIfr" target="_blank" class="contact-btn facebook-btn">
-                            <i class="fab fa-facebook-f"></i>
-                            <span>فيسبوك</span>
-                        </a>
-                        
-                        <a href="#" class="contact-btn instagram-btn" onclick="openInstagramModal(event)">
-                            <i class="fab fa-instagram"></i>
-                            <span>انستقرام</span>
-                        </a>
-                        
-                        <a href="https://share.google.com/ehQYW8vbZsq2x4bFd" target="_blank" class="contact-btn location-btn">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>الموقع</span>
-                        </a>
-                        
-                        <a href="https://www.instagram.com/futures_journey_programmingin?igsh=MTdkcXVkcjY3cGpwZA==" 
-                           target="_blank" 
-                           class="contact-btn nfc-btn">
-                            <i class="fas fa-wifi"></i>
-                            <span>NFC Request</span>
-                        </a>
-                    </div>
-                </div>
+            <div class="copyright">
+                <p>© 2023 M Beauty Lounge. جميع الحقوق محفوظة.</p>
             </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-logo">
-                        <img src="https://i.imgur.com/iZfhFO1.png" alt="M Beauty Lounge">
-                        <p>صالون تجميل فاخر يقدم أحدث خدمات التجميل والعناية بالبشرة بأيدي خبراء متخصصين.</p>
-                    </div>
-                    <div class="footer-links">
-                        <h3>روابط سريعة</h3>
-                        <ul>
-                            <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
-                            <li><a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
-                            <li><a href="#creations"><i class="fas fa-chevron-left"></i> إبداعاتنا</a></li>
-                            <li><a href="#ratings"><i class="fas fa-chevron-left"></i> التقييمات</a></li>
-                            <li><a href="#contact"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links">
-                        <h3>خدماتنا</h3>
-                        <ul>
-                            <li><a href="#"><i class="fas fa-chevron-left"></i> تصفيف الشعر</a></li>
-                            <li><a href="#"><i class="fas fa-chevron-left"></i> العناية بالبشرة</a></li>
-                            <li><a href="#"><i class="fas fa-chevron-left"></i> تجميل الأظافر</a></li>
-                            <li><a href="#"><i class="fas fa-chevron-left"></i> الميك أب والرموش</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="copyright">
-                    <p>© 2023 M Beauty Lounge. جميع الحقوق محفوظة.</p>
-                </div>
-            </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
     <script>
-        // تحكم بصفحة الترحيب الدائمة
-        const welcomeOverlay = document.getElementById('welcomeOverlay');
-        const mainSite = document.getElementById('mainSite');
-        const enterSiteBtn = document.getElementById('enterSiteBtn');
-        const body = document.body;
-
-        // زر الدخول إلى الموقع
-        enterSiteBtn.addEventListener('click', () => {
-            // إخفاء صفحة الترحيب
-            welcomeOverlay.style.opacity = '0';
-            welcomeOverlay.style.visibility = 'hidden';
-            
-            // إظهار الموقع الرئيسي
-            setTimeout(() => {
-                mainSite.style.display = 'block';
-                body.classList.add('loaded');
-                // تحريك إلى أعلى الصفحة
-                window.scrollTo(0, 0);
-            }, 800);
-        });
-
         // بيانات الإبداعات
         const creationsData = [
             {
