@@ -38,12 +38,15 @@
             color: var(--pure-white);
             line-height: 1.8;
             overflow-x: hidden;
+            direction: ltr;
+            text-align: left;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             margin-bottom: 1.5rem;
+            text-align: left;
         }
 
         .container {
@@ -153,7 +156,7 @@
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            text-align: center;
+            text-align: left;
             position: relative;
             z-index: 2;
         }
@@ -168,6 +171,7 @@
             background-clip: text;
             color: transparent;
             animation: fadeInUp 1s ease;
+            text-align: left;
         }
 
         .hero-subtitle {
@@ -176,6 +180,7 @@
             margin-bottom: 2.5rem;
             font-weight: 300;
             animation: fadeInUp 1s ease 0.2s both;
+            text-align: left;
         }
 
         .hero-description {
@@ -184,8 +189,7 @@
             color: #cccccc;
             margin-bottom: 3rem;
             max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            text-align: left;
             animation: fadeInUp 1s ease 0.4s both;
         }
 
@@ -201,6 +205,7 @@
             transition: var(--transition);
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
             animation: fadeInUp 1s ease 0.6s both;
+            text-align: center;
         }
 
         .cta-button:hover {
@@ -253,12 +258,14 @@
             font-size: 2.2rem;
             margin-bottom: 2rem;
             color: var(--gold);
+            text-align: left;
         }
 
         .about-text p {
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
             color: var(--platinum);
+            text-align: left;
         }
 
         .about-features {
@@ -274,6 +281,7 @@
             border-radius: 12px;
             border-left: 4px solid var(--gold);
             transition: var(--transition);
+            text-align: left;
         }
 
         .feature:hover {
@@ -290,6 +298,11 @@
         .feature h4 {
             font-size: 1.4rem;
             margin-bottom: 0.8rem;
+            text-align: left;
+        }
+
+        .feature p {
+            text-align: left;
         }
 
         /* Products Section */
@@ -330,15 +343,22 @@
         .product-title {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
+            text-align: center;
         }
 
         .product-body {
             padding: 2rem;
         }
 
+        .product-body p {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
         .product-features {
             list-style: none;
             margin-bottom: 2rem;
+            text-align: left;
         }
 
         .product-features li {
@@ -346,6 +366,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
             padding-left: 1.8rem;
+            text-align: left;
         }
 
         .product-features li:before {
@@ -356,7 +377,7 @@
             font-weight: bold;
         }
 
-        /* Contact & Info Section */
+        /* Contact & Info Section - UPDATED */
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -369,6 +390,7 @@
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition);
+            text-align: left;
         }
 
         .info-card:hover {
@@ -383,6 +405,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            text-align: left;
         }
 
         .info-card h3 i {
@@ -393,6 +416,7 @@
             margin-bottom: 1.2rem;
             padding-bottom: 1.2rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
         }
 
         .info-label {
@@ -400,17 +424,94 @@
             color: var(--platinum);
             margin-bottom: 0.3rem;
             display: block;
+            text-align: left;
         }
 
         .info-value {
             font-size: 1.2rem;
             color: var(--pure-white);
+            text-align: left;
+            word-break: break-all;
+        }
+
+        /* Phone Actions Container - NEW */
+        .phone-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .phone-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .phone-action-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .phone-action-btn i {
+            font-size: 1.2rem;
+        }
+
+        .copy-btn {
+            position: relative;
+        }
+
+        .copy-notification {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--deep-black);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .copy-notification.show {
+            opacity: 1;
+        }
+
+        /* Email link specific styling */
+        .email-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-block;
+            word-break: break-all;
+            max-width: 100%;
+            transition: var(--transition);
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+            color: var(--gold-dark);
         }
 
         .social-links {
             display: flex;
             gap: 1.5rem;
             margin-top: 2rem;
+            justify-content: flex-start;
         }
 
         .social-link {
@@ -433,11 +534,12 @@
             transform: translateY(-3px);
         }
 
-        /* Footer */
+        /* Footer - UPDATED */
         footer {
             background-color: var(--deep-black);
             padding: 4rem 0 2rem;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
+            text-align: left;
         }
 
         .footer-content {
@@ -445,6 +547,11 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .footer-content > div {
+            text-align: left;
         }
 
         .footer-logo {
@@ -452,10 +559,60 @@
             font-weight: 800;
             color: var(--pure-white);
             margin-bottom: 1.5rem;
+            text-align: left;
         }
 
         .footer-logo span {
             color: var(--gold);
+        }
+
+        .footer-content p {
+            text-align: left;
+            color: #cccccc;
+        }
+
+        .footer-content h4 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .footer-content ul {
+            text-align: left;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .footer-content ul li {
+            margin-bottom: 0.8rem;
+            text-align: left;
+        }
+
+        .footer-content ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-content ul li a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .footer-contact-info {
+            margin-top: 1rem;
+        }
+
+        .footer-contact-info p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact-info i {
+            color: var(--gold);
+            width: 20px;
         }
 
         .copyright {
@@ -475,15 +632,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
             }
         }
 
@@ -507,13 +655,14 @@
                 display: none;
                 position: absolute;
                 top: 100%;
-                right: 0;
+                left: 0;
                 width: 100%;
                 background: var(--primary-black);
                 flex-direction: column;
                 padding: 2rem;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
                 border-top: 1px solid rgba(212, 175, 55, 0.2);
+                text-align: left;
             }
             
             nav ul.active {
@@ -535,6 +684,15 @@
             .about-features {
                 grid-template-columns: 1fr;
             }
+            
+            .phone-actions {
+                flex-direction: column;
+            }
+            
+            .phone-action-btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -548,6 +706,14 @@
             
             .info-card {
                 padding: 1.8rem;
+            }
+            
+            .info-value {
+                font-size: 1rem;
+            }
+            
+            .email-link {
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -641,8 +807,22 @@
                         <div class="info-detail">
                             <span class="info-label">Direct Phone:</span>
                             <div class="info-value">
-                                <a href="tel:0798457949" style="color: var(--gold); text-decoration: none;">0798457949</a>
+                                <a href="tel:0798457949" class="email-link">0798457949</a>
                             </div>
+                        </div>
+                        
+                        <!-- Phone Actions - NEW -->
+                        <div class="phone-actions">
+                            <a href="tel:0798457949" class="phone-action-btn">
+                                <i class="fas fa-phone"></i> Call Now
+                            </a>
+                            <button class="phone-action-btn copy-btn" id="copyPhoneBtn">
+                                <i class="far fa-copy"></i> Copy Number
+                                <span class="copy-notification" id="copyNotification">Copied!</span>
+                            </button>
+                            <a href="#" class="phone-action-btn" id="saveContactBtn">
+                                <i class="fas fa-address-book"></i> Save Contact
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -780,7 +960,7 @@
         </div>
     </section>
 
-    <!-- Contact & Info Section -->
+    <!-- Contact & Info Section - UPDATED -->
     <section class="section section-charcoal" id="contact">
         <div class="container">
             <h2 class="section-title">Contact Information</h2>
@@ -802,7 +982,7 @@
                     <div class="info-detail">
                         <span class="info-label">Email Address:</span>
                         <div class="info-value">
-                            <a href="mailto:futuresjourneyprogrammingin@gmail.com" style="color: var(--gold); text-decoration: none;">futuresjourneyprogrammingin@gmail.com</a>
+                            <a href="mailto:futuresjourneyprogrammingin@gmail.com" class="email-link">futuresjourneyprogrammingin@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -812,12 +992,26 @@
                     <div class="info-detail">
                         <span class="info-label">Institution Phone:</span>
                         <div class="info-value">
-                            <a href="tel:0798457949" style="color: var(--gold); text-decoration: none;">0798457949</a>
+                            <a href="tel:0798457949" class="email-link">0798457949</a>
                         </div>
                     </div>
                     <div class="info-detail">
                         <span class="info-label">Working Hours:</span>
                         <div class="info-value">Sunday - Thursday: 9 AM - 5 PM</div>
+                    </div>
+                    
+                    <!-- Phone Actions - NEW -->
+                    <div class="phone-actions">
+                        <a href="tel:0798457949" class="phone-action-btn">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                        <button class="phone-action-btn copy-btn" id="copyPhoneBtn2">
+                            <i class="far fa-copy"></i> Copy Number
+                            <span class="copy-notification" id="copyNotification2">Copied!</span>
+                        </button>
+                        <a href="#" class="phone-action-btn" id="saveContactBtn2">
+                            <i class="fas fa-address-book"></i> Save Contact
+                        </a>
                     </div>
                     
                     <div class="social-links">
@@ -859,7 +1053,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - UPDATED -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -870,19 +1064,19 @@
                 
                 <div>
                     <h4>Quick Links</h4>
-                    <ul style="list-style: none; padding-left: 0;">
-                        <li style="margin-bottom: 0.8rem;"><a href="#home" style="color: #ccc; text-decoration: none;">Home</a></li>
-                        <li style="margin-bottom: 0.8rem;"><a href="#about" style="color: #ccc; text-decoration: none;">About</a></li>
-                        <li style="margin-bottom: 0.8rem;"><a href="#products" style="color: #ccc; text-decoration: none;">Products</a></li>
-                        <li style="margin-bottom: 0.8rem;"><a href="#contact" style="color: #ccc; text-decoration: none;">Contact</a></li>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 
-                <div>
+                <div class="footer-contact-info">
                     <h4>Get in Touch</h4>
-                    <p><i class="fas fa-map-marker-alt" style="color: var(--gold); margin-right: 8px;"></i> Amman – Sweileh</p>
-                    <p><i class="fas fa-phone" style="color: var(--gold); margin-right: 8px;"></i> 0798457949</p>
-                    <p><i class="fas fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> futuresjourneyprogrammingin@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Amman – Sweileh</p>
+                    <p><i class="fas fa-phone"></i> 0798457949</p>
+                    <p><i class="fas fa-envelope"></i> futuresjourneyprogrammingin@gmail.com</p>
                 </div>
             </div>
             
@@ -964,6 +1158,101 @@
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(el);
+        });
+
+        // Copy Phone Number Functionality
+        function copyPhoneNumber(notificationId) {
+            const phoneNumber = '0798457949';
+            
+            // Use the modern Clipboard API
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    // Show notification
+                    const notification = document.getElementById(notificationId);
+                    notification.classList.add('show');
+                    
+                    // Hide notification after 2 seconds
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = phoneNumber;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    // Show notification
+                    const notification = document.getElementById(notificationId);
+                    notification.classList.add('show');
+                    
+                    // Hide notification after 2 seconds
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 2000);
+                });
+        }
+
+        // Save Contact Functionality (vCard download)
+        function saveContact() {
+            // Create vCard content
+            const vCardContent = `BEGIN:VCARD
+VERSION:3.0
+FN:Abd Al Malek Al Shareff
+ORG:Future's Journey Software Institution
+TITLE:Managing Director
+TEL;TYPE=WORK,VOICE:0798457949
+EMAIL:futuresjourneyprogrammingin@gmail.com
+ADR;TYPE=WORK:;;Amman – Sweileh;;;
+URL:https://www.facebook.com/share/1AF1XGGBy1/
+NOTE:Smart Solutions for an Evolving World
+END:VCARD`;
+
+            // Create blob and download link
+            const blob = new Blob([vCardContent], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            // Create temporary link for download
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Abd_Al_Malek_Al_Shareff.vcf';
+            link.style.display = 'none';
+            
+            document.body.appendChild(link);
+            link.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }, 100);
+            
+            // Show alert
+            alert('Contact card has been downloaded. Open the file to save to your contacts.');
+        }
+
+        // Add event listeners for copy buttons
+        document.getElementById('copyPhoneBtn').addEventListener('click', () => {
+            copyPhoneNumber('copyNotification');
+        });
+
+        document.getElementById('copyPhoneBtn2').addEventListener('click', () => {
+            copyPhoneNumber('copyNotification2');
+        });
+
+        // Add event listeners for save contact buttons
+        document.getElementById('saveContactBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            saveContact();
+        });
+
+        document.getElementById('saveContactBtn2').addEventListener('click', (e) => {
+            e.preventDefault();
+            saveContact();
         });
     </script>
 </body>
