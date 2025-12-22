@@ -1491,6 +1491,46 @@
             </div>
         </div>
 
+        <!-- =============================== -->
+        <!-- NEW: Save Contact Section - Added -->
+        <!-- =============================== -->
+        <div class="contact-section fade-in delay-3">
+            <h2 class="section-title" data-ar="احفظ معلومات التواصل" data-en="Save Contact Info">احفظ معلومات التواصل</h2>
+            <div class="about-text" data-ar="انقر على الزر أدناه لإضافة نور إلى جهات الاتصال على هاتفك بسهولة" data-en="Click the button below to easily add Noor to your phone's contacts">
+                انقر على الزر أدناه لإضافة نور إلى جهات الاتصال على هاتفك بسهولة
+            </div>
+
+            <!-- VCF Download Button -->
+            <div class="action-buttons" style="margin-top: 50px;">
+                <a href="#" class="action-button primary" id="saveContactBtn">
+                    <i class="fas fa-address-book"></i>
+                    <span data-ar="إضافة إلى جهات الاتصال" data-en="Add to Contacts">إضافة إلى جهات الاتصال</span>
+                </a>
+            </div>
+
+            <!-- Instructions for iOS and Android -->
+            <div class="highlight-box" style="margin-top: 40px;">
+                <div class="highlight-title">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span data-ar="كيفية الإضافة على هاتفك" data-en="How to Add on Your Phone">كيفية الإضافة على هاتفك</span>
+                </div>
+                <div class="about-text" style="text-align: right; font-size: 1.1rem;">
+                    <p><strong data-ar="على أجهزة آيفون (iOS):" data-en="On iPhone (iOS):">على أجهزة آيفون (iOS):</strong><br>
+                    <span data-ar="1. انقر على الزر أعلاه لتحميل ملف جهة الاتصال" data-en="1. Click the button above to download the contact file">1. انقر على الزر أعلاه لتحميل ملف جهة الاتصال</span><br>
+                    <span data-ar="2. سيظهر لك خيار 'إنشاء جهة اتصال جديدة'" data-en="2. You'll see an option to 'Create New Contact'">2. سيظهر لك خيار 'إنشاء جهة اتصال جديدة'</span><br>
+                    <span data-ar="3. انقر على 'إضافة إلى جهات الاتصال'" data-en="3. Click 'Add to Contacts'">3. انقر على 'إضافة إلى جهات الاتصال'</span></p>
+
+                    <p style="margin-top: 20px;"><strong data-ar="على أجهزة أندرويد (Android):" data-en="On Android devices:">على أجهزة أندرويد (Android):</strong><br>
+                    <span data-ar="1. انقر على الزر أعلاه لتحميل الملف" data-en="1. Click the button above to download the file">1. انقر على الزر أعلاه لتحميل الملف</span><br>
+                    <span data-ar="2. افتح ملف 'noor-contact.vcf'" data-en="2. Open the 'noor-contact.vcf' file">2. افتح ملف 'noor-contact.vcf'</span><br>
+                    <span data-ar="3. ستظهر نافذة تلقائياً، اختر 'إضافة إلى جهات الاتصال'" data-en="3. A window will appear automatically, select 'Add to Contacts'">3. ستظهر نافذة تلقائياً، اختر 'إضافة إلى جهات الاتصال'</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- =============================== -->
+        <!-- END: Save Contact Section -->
+        <!-- =============================== -->
+
         <!-- Action Buttons -->
         <div class="action-buttons fade-in delay-3">
             <a href="https://wa.me/962775250597" class="action-button primary" target="_blank">
@@ -1572,6 +1612,63 @@
         const lightboxImage = document.getElementById('lightboxImage');
         const lightboxTitle = document.getElementById('lightboxTitle');
         const lightboxCounter = document.getElementById('lightboxCounter');
+        
+        // =============================================
+        // NEW: Save Contact Functionality
+        // =============================================
+        document.getElementById('saveContactBtn')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Contact information
+            const contactData = {
+                name: 'Noor Photography',
+                phone: '0775250597',
+                whatsapp: '0775250597',
+                email: 'contact@noor-photography.com',
+                website: window.location.hostname,
+                note: currentLang === 'ar' 
+                    ? 'مصورة احترافية - تخصص في تصوير المناسبات والأفراد' 
+                    : 'Professional Photographer - Specializing in events and portrait photography'
+            };
+            
+            // Create VCF content
+            const vcfContent = 
+`BEGIN:VCARD
+VERSION:3.0
+FN:${contactData.name}
+TEL;TYPE=CELL,VOICE:${contactData.phone}
+TEL;TYPE=WHATSAPP:${contactData.whatsapp}
+EMAIL:${contactData.email}
+URL:${contactData.website}
+NOTE:${contactData.note}
+END:VCARD`;
+            
+            // Create Blob and download link
+            const blob = new Blob([vcfContent], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'noor-photography-contact.vcf';
+            link.style.display = 'none';
+            
+            document.body.appendChild(link);
+            link.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                
+                // Show confirmation message
+                alert(currentLang === 'ar' 
+                    ? 'تم تحميل ملف جهة الاتصال. يرجى فتحه لإضافة المعلومات إلى هاتفك.' 
+                    : 'Contact file downloaded. Please open it to add the information to your phone.');
+            }, 100);
+        });
+        // =============================================
+        // END: Save Contact Functionality
+        // =============================================
         
         // Create gallery grid
         function createGalleryGrid() {
