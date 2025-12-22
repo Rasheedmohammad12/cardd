@@ -25,8 +25,6 @@
             --platinum: #e6e6e6;
             --gold: #D4AF37;
             --gold-dark: #b8941f;
-            --green: #27ae60;
-            --green-dark: #219653;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -248,161 +246,138 @@
             background-color: var(--charcoal);
         }
 
-        /* Money Transfer Section - NEW */
-        .money-transfer-section {
-            background: linear-gradient(135deg, var(--charcoal), #0d1b2a);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 4rem 0;
-            border: 1px solid rgba(39, 174, 96, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .money-transfer-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .money-transfer-header h3 {
-            font-size: 2.2rem;
-            color: var(--green);
-            margin-bottom: 1rem;
-        }
-
-        .money-transfer-header p {
-            color: var(--platinum);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .transfer-methods {
+        /* About Section */
+        .about-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+            text-align: left;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--platinum);
+            text-align: left;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .transfer-method {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--gold);
             transition: var(--transition);
+            text-align: left;
         }
 
-        .transfer-method:hover {
+        .feature:hover {
             transform: translateY(-5px);
-            border-color: rgba(39, 174, 96, 0.3);
-            box-shadow: 0 10px 25px rgba(39, 174, 96, 0.1);
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        .transfer-icon {
-            font-size: 3rem;
-            color: var(--green);
-            margin-bottom: 1.5rem;
-        }
-
-        .transfer-method h4 {
-            font-size: 1.5rem;
+        .feature i {
+            font-size: 2.2rem;
+            color: var(--gold);
             margin-bottom: 1rem;
-            color: var(--pure-white);
         }
 
-        .transfer-method p {
-            color: #b0b0b0;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+        .feature h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            text-align: left;
         }
 
-        /* Quick Transfer Icons - NEW */
-        .quick-transfer {
+        .feature p {
+            text-align: left;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: linear-gradient(145deg, var(--light-black), var(--charcoal));
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .product-header {
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .quick-transfer h4 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--platinum);
+        .product-icon {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
         }
 
-        .transfer-icons {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .transfer-icon-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            transition: var(--transition);
-            width: 100px;
-        }
-
-        .transfer-icon-circle {
-            width: 70px;
-            height: 70px;
-            background: rgba(39, 174, 96, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-            border: 2px solid rgba(39, 174, 96, 0.3);
-            transition: var(--transition);
-        }
-
-        .transfer-icon-btn:hover .transfer-icon-circle {
-            background: rgba(39, 174, 96, 0.2);
-            border-color: var(--green);
-            transform: scale(1.1);
-        }
-
-        .transfer-icon-btn i {
+        .product-title {
             font-size: 1.8rem;
-            color: var(--green);
+            margin-bottom: 0.5rem;
+            text-align: center;
         }
 
-        .transfer-icon-btn span {
-            color: var(--platinum);
-            font-size: 0.9rem;
-            font-weight: 500;
+        .product-body {
+            padding: 2rem;
         }
 
-        /* Payment Notification - NEW */
-        .payment-notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--green);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: transform 0.5s, opacity 0.5s;
-            max-width: 300px;
+        .product-body p {
+            text-align: left;
+            margin-bottom: 1.5rem;
         }
 
-        .payment-notification.show {
-            transform: translateY(0);
-            opacity: 1;
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
         }
 
-        .payment-notification i {
-            margin-right: 10px;
-            font-size: 1.2rem;
+        .product-features li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            padding-left: 1.8rem;
+            text-align: left;
         }
 
-        /* Contact & Info Section */
+        .product-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Contact & Info Section - UPDATED */
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -459,7 +434,7 @@
             word-break: break-all;
         }
 
-        /* Phone Actions */
+        /* Phone Actions Container - NEW */
         .phone-actions {
             display: flex;
             gap: 1rem;
@@ -559,7 +534,7 @@
             transform: translateY(-3px);
         }
 
-        /* Footer */
+        /* Footer - UPDATED */
         footer {
             background-color: var(--deep-black);
             padding: 4rem 0 2rem;
@@ -660,18 +635,6 @@
             }
         }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero-title {
@@ -684,10 +647,6 @@
             
             .section-title {
                 font-size: 2.5rem;
-            }
-            
-            .money-transfer-section {
-                padding: 2rem;
             }
         }
 
@@ -734,19 +693,6 @@
                 width: 100%;
                 justify-content: center;
             }
-            
-            .transfer-icons {
-                gap: 1.5rem;
-            }
-            
-            .transfer-icon-btn {
-                width: 80px;
-            }
-            
-            .transfer-icon-circle {
-                width: 60px;
-                height: 60px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -769,24 +715,6 @@
             .email-link {
                 font-size: 0.95rem;
             }
-            
-            .money-transfer-section {
-                padding: 1.5rem;
-                margin: 2rem 0;
-            }
-            
-            .transfer-icons {
-                gap: 1rem;
-            }
-            
-            .transfer-icon-btn {
-                width: 70px;
-            }
-            
-            .transfer-icon-circle {
-                width: 50px;
-                height: 50px;
-            }
         }
     </style>
 </head>
@@ -808,7 +736,6 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#products">Products</a></li>
-                    <li><a href="#money-transfer">Money Transfer</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -824,7 +751,7 @@
             <p class="hero-description">
                 An innovative company specializing in modern smart solutions. We offer smart cards and stands that support QR Code and NFC technologies, making information sharing and communication easier than ever — with just one touch! Our products are valid for a lifetime and come with a guaranteed warranty, along with two free edits after purchase. With a simple tap of your phone on the card or stand, your experience begins instantly — no setup required.
             </p>
-            <a href="#money-transfer" class="cta-button">Quick Money Transfer</a>
+            <a href="#contact" class="cta-button">Contact Us Now</a>
         </div>
     </section>
 
@@ -884,7 +811,7 @@
                             </div>
                         </div>
                         
-                        <!-- Phone Actions -->
+                        <!-- Phone Actions - NEW -->
                         <div class="phone-actions">
                             <a href="tel:0798457949" class="phone-action-btn">
                                 <i class="fas fa-phone"></i> Call Now
@@ -893,6 +820,9 @@
                                 <i class="far fa-copy"></i> Copy Number
                                 <span class="copy-notification" id="copyNotification">Copied!</span>
                             </button>
+                            <a href="#" class="phone-action-btn" id="saveContactBtn">
+                                <i class="fas fa-address-book"></i> Save Contact
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -965,118 +895,8 @@
         </div>
     </section>
 
-    <!-- Money Transfer Section - NEW -->
-    <section class="section section-dark" id="money-transfer">
-        <div class="container">
-            <h2 class="section-title">Quick Money Transfer</h2>
-            
-            <div class="money-transfer-section">
-                <div class="money-transfer-header">
-                    <h3>Transfer Money Instantly</h3>
-                    <p>Send money directly to our account using the phone number below. Fast, secure, and convenient transfers available 24/7.</p>
-                </div>
-                
-                <div class="info-card" style="background: rgba(39, 174, 96, 0.05); border-color: rgba(39, 174, 96, 0.2);">
-                    <h3 style="color: var(--green);"><i class="fas fa-money-bill-wave"></i> Transfer Details</h3>
-                    
-                    <div class="info-detail">
-                        <span class="info-label">Recipient Name:</span>
-                        <div class="info-value">Abd Al Malek Al Shareff</div>
-                    </div>
-                    
-                    <div class="info-detail">
-                        <span class="info-label">Transfer Number:</span>
-                        <div class="info-value" style="color: var(--green); font-weight: 600; font-size: 1.5rem;">
-                            0798457949
-                        </div>
-                    </div>
-                    
-                    <div class="info-detail">
-                        <span class="info-label">Institution:</span>
-                        <div class="info-value">Future's Journey Software Institution</div>
-                    </div>
-                    
-                    <!-- Quick Transfer Icons - ONLY ICONS -->
-                    <div class="quick-transfer">
-                        <h4>Click to Transfer</h4>
-                        <div class="transfer-icons">
-                            <!-- Zain Cash -->
-                            <a href="tel:*141*0798457949#" class="transfer-icon-btn" title="Transfer via Zain Cash">
-                                <div class="transfer-icon-circle">
-                                    <i class="fas fa-mobile-alt"></i>
-                                </div>
-                                <span>Zain Cash</span>
-                            </a>
-                            
-                            <!-- Orange Money -->
-                            <a href="tel:*140*0798457949#" class="transfer-icon-btn" title="Transfer via Orange Money">
-                                <div class="transfer-icon-circle">
-                                    <i class="fas fa-money-bill-wave"></i>
-                                </div>
-                                <span>Orange Money</span>
-                            </a>
-                            
-                            <!-- Umniah -->
-                            <a href="tel:*144*0798457949#" class="transfer-icon-btn" title="Transfer via Umniah">
-                                <div class="transfer-icon-circle">
-                                    <i class="fas fa-wallet"></i>
-                                </div>
-                                <span>Umniah</span>
-                            </a>
-                            
-                            <!-- Bank Transfer -->
-                            <a href="tel:0798457949" class="transfer-icon-btn" title="Call for Bank Details">
-                                <div class="transfer-icon-circle">
-                                    <i class="fas fa-university"></i>
-                                </div>
-                                <span>Bank Transfer</span>
-                            </a>
-                            
-                            <!-- Western Union -->
-                            <a href="tel:0798457949" class="transfer-icon-btn" title="Western Union Transfer">
-                                <div class="transfer-icon-circle">
-                                    <i class="fas fa-globe"></i>
-                                </div>
-                                <span>Western Union</span>
-                            </a>
-                            
-                            <!-- PayPal -->
-                            <a href="mailto:futuresjourneyprogrammingin@gmail.com?subject=Money Transfer&body=I want to transfer money to 0798457949" class="transfer-icon-btn" title="PayPal Transfer">
-                                <div class="transfer-icon-circle">
-                                    <i class="fab fa-paypal"></i>
-                                </div>
-                                <span>PayPal</span>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Important Notes -->
-                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 10px; border-left: 4px solid var(--green);">
-                        <h4 style="color: var(--green); margin-bottom: 1rem; font-size: 1.2rem;">
-                            <i class="fas fa-exclamation-circle"></i> Important Notes
-                        </h4>
-                        <ul style="list-style: none; color: #b0b0b0;">
-                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
-                                <i class="fas fa-check-circle" style="color: var(--green); position: absolute; left: 0;"></i>
-                                Always confirm recipient details before transferring
-                            </li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
-                                <i class="fas fa-check-circle" style="color: var(--green); position: absolute; left: 0;"></i>
-                                Keep transaction receipts for reference
-                            </li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
-                                <i class="fas fa-check-circle" style="color: var(--green); position: absolute; left: 0;"></i>
-                                Contact us after transfer for confirmation
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Services Section -->
-    <section class="section section-charcoal" id="services">
+    <section class="section section-dark" id="services">
         <div class="container">
             <h2 class="section-title">Our Systems & Services</h2>
             <div class="products-grid">
@@ -1140,8 +960,8 @@
         </div>
     </section>
 
-    <!-- Contact & Info Section -->
-    <section class="section section-dark" id="contact">
+    <!-- Contact & Info Section - UPDATED -->
+    <section class="section section-charcoal" id="contact">
         <div class="container">
             <h2 class="section-title">Contact Information</h2>
             <div class="contact-info">
@@ -1180,7 +1000,7 @@
                         <div class="info-value">Sunday - Thursday: 9 AM - 5 PM</div>
                     </div>
                     
-                    <!-- Phone Actions -->
+                    <!-- Phone Actions - NEW -->
                     <div class="phone-actions">
                         <a href="tel:0798457949" class="phone-action-btn">
                             <i class="fas fa-phone"></i> Call Now
@@ -1189,6 +1009,9 @@
                             <i class="far fa-copy"></i> Copy Number
                             <span class="copy-notification" id="copyNotification2">Copied!</span>
                         </button>
+                        <a href="#" class="phone-action-btn" id="saveContactBtn2">
+                            <i class="fas fa-address-book"></i> Save Contact
+                        </a>
                     </div>
                     
                     <div class="social-links">
@@ -1230,7 +1053,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - UPDATED -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1245,7 +1068,6 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#products">Products</a></li>
-                        <li><a href="#money-transfer">Money Transfer</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -1263,12 +1085,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Payment Notification -->
-    <div class="payment-notification" id="paymentNotification">
-        <i class="fas fa-check-circle"></i>
-        <span>Transfer number copied! Redirecting to payment app...</span>
-    </div>
 
     <!-- JavaScript -->
     <script>
@@ -1337,7 +1153,7 @@
         }, observerOptions);
         
         // Observe elements for animation
-        document.querySelectorAll('.product-card, .feature, .info-card, .transfer-method').forEach(el => {
+        document.querySelectorAll('.product-card, .feature, .info-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -1348,17 +1164,21 @@
         function copyPhoneNumber(notificationId) {
             const phoneNumber = '0798457949';
             
+            // Use the modern Clipboard API
             navigator.clipboard.writeText(phoneNumber)
                 .then(() => {
+                    // Show notification
                     const notification = document.getElementById(notificationId);
                     notification.classList.add('show');
                     
+                    // Hide notification after 2 seconds
                     setTimeout(() => {
                         notification.classList.remove('show');
                     }, 2000);
                 })
                 .catch(err => {
                     console.error('Failed to copy: ', err);
+                    // Fallback for older browsers
                     const textArea = document.createElement('textarea');
                     textArea.value = phoneNumber;
                     document.body.appendChild(textArea);
@@ -1366,54 +1186,54 @@
                     document.execCommand('copy');
                     document.body.removeChild(textArea);
                     
+                    // Show notification
                     const notification = document.getElementById(notificationId);
                     notification.classList.add('show');
                     
+                    // Hide notification after 2 seconds
                     setTimeout(() => {
                         notification.classList.remove('show');
                     }, 2000);
                 });
         }
 
-        // Money Transfer Click Handler
-        document.querySelectorAll('.transfer-icon-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                // Copy number to clipboard first
-                const phoneNumber = '0798457949';
-                navigator.clipboard.writeText(phoneNumber).then(() => {
-                    // Show payment notification
-                    const paymentNotification = document.getElementById('paymentNotification');
-                    paymentNotification.classList.add('show');
-                    
-                    // Hide notification after 3 seconds
-                    setTimeout(() => {
-                        paymentNotification.classList.remove('show');
-                    }, 3000);
-                    
-                    // If it's a tel: link, let it proceed naturally
-                    if (this.href.startsWith('tel:')) {
-                        // Let the default action proceed
-                    } else if (this.href.startsWith('mailto:')) {
-                        // Let the default action proceed for email
-                    } else {
-                        e.preventDefault();
-                        // For other links, redirect after a delay
-                        setTimeout(() => {
-                            window.location.href = this.href;
-                        }, 1000);
-                    }
-                }).catch(err => {
-                    console.error('Failed to copy number: ', err);
-                    // Show notification anyway
-                    const paymentNotification = document.getElementById('paymentNotification');
-                    paymentNotification.classList.add('show');
-                    
-                    setTimeout(() => {
-                        paymentNotification.classList.remove('show');
-                    }, 3000);
-                });
-            });
-        });
+        // Save Contact Functionality (vCard download)
+        function saveContact() {
+            // Create vCard content
+            const vCardContent = `BEGIN:VCARD
+VERSION:3.0
+FN:Abd Al Malek Al Shareff
+ORG:Future's Journey Software Institution
+TITLE:Managing Director
+TEL;TYPE=WORK,VOICE:0798457949
+EMAIL:futuresjourneyprogrammingin@gmail.com
+ADR;TYPE=WORK:;;Amman – Sweileh;;;
+URL:https://www.facebook.com/share/1AF1XGGBy1/
+NOTE:Smart Solutions for an Evolving World
+END:VCARD`;
+
+            // Create blob and download link
+            const blob = new Blob([vCardContent], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            // Create temporary link for download
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Abd_Al_Malek_Al_Shareff.vcf';
+            link.style.display = 'none';
+            
+            document.body.appendChild(link);
+            link.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }, 100);
+            
+            // Show alert
+            alert('Contact card has been downloaded. Open the file to save to your contacts.');
+        }
 
         // Add event listeners for copy buttons
         document.getElementById('copyPhoneBtn').addEventListener('click', () => {
@@ -1424,15 +1244,15 @@
             copyPhoneNumber('copyNotification2');
         });
 
-        // Add animation to transfer icons on hover
-        document.querySelectorAll('.transfer-icon-circle').forEach(icon => {
-            icon.addEventListener('mouseenter', function() {
-                this.style.animation = 'pulse 0.5s ease';
-            });
-            
-            icon.addEventListener('mouseleave', function() {
-                this.style.animation = '';
-            });
+        // Add event listeners for save contact buttons
+        document.getElementById('saveContactBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            saveContact();
+        });
+
+        document.getElementById('saveContactBtn2').addEventListener('click', (e) => {
+            e.preventDefault();
+            saveContact();
         });
     </script>
 </body>
