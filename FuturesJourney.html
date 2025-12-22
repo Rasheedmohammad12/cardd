@@ -693,6 +693,16 @@
                 width: 100%;
                 justify-content: center;
             }
+            
+            .fixed-transfer-widget > div {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .fixed-transfer-widget > div > div:last-child {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -738,6 +748,8 @@
                     <li><a href="#products">Products</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <!-- New link added -->
+                    <li><a href="#money-transfer">Money Transfer</a></li>
                 </ul>
             </nav>
         </div>
@@ -1053,6 +1065,87 @@
         </div>
     </section>
 
+    <!-- Money Transfer Service - NEW -->
+    <section class="section section-dark" id="money-transfer">
+        <div class="container">
+            <h2 class="section-title">Money Transfer Service</h2>
+            <div class="contact-info">
+                <div class="info-card" style="max-width: 600px; margin: 0 auto;">
+                    <h3><i class="fas fa-exchange-alt"></i> Click to Transfer</h3>
+                    <div class="info-detail">
+                        <span class="info-label">Service Name:</span>
+                        <div class="info-value">Instant Money Transfer via Click</div>
+                    </div>
+                    <div class="info-detail">
+                        <span class="info-label">Transfer Number:</span>
+                        <div class="info-value">
+                            <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(212, 175, 55, 0.1); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+                                <span style="font-size: 1.5rem; font-weight: 700; color: var(--gold);">0798457949</span>
+                                <div class="transfer-actions">
+                                    <button class="phone-action-btn copy-btn" id="copyTransferBtn">
+                                        <i class="far fa-copy"></i> Copy
+                                        <span class="copy-notification" id="copyTransferNotification">Copied!</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-detail">
+                        <span class="info-label">Service Description:</span>
+                        <div class="info-value">Instant money transfer service via Click application. Send money directly to our number using the Click app on your smartphone.</div>
+                    </div>
+                    
+                    <!-- Fixed Icon with Number -->
+                    <div class="fixed-transfer-widget" style="margin-top: 2rem; padding: 1.5rem; background: rgba(212, 175, 55, 0.05); border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-money-bill-transfer" style="font-size: 1.8rem; color: var(--deep-black);"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.3rem; color: var(--gold);">Click to Transfer</h4>
+                                    <p style="color: var(--platinum); font-size: 1.1rem; font-weight: 600;">0798457949</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="phone-action-btn copy-btn" id="copyFixedTransferBtn" style="background: rgba(212, 175, 55, 0.2);">
+                                    <i class="far fa-copy"></i> Copy
+                                    <span class="copy-notification" id="copyFixedNotification">Copied!</span>
+                                </button>
+                                <a href="#" class="phone-action-btn" id="saveTransferContactBtn" style="background: rgba(212, 175, 55, 0.2);">
+                                    <i class="fas fa-address-book"></i> Save
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Instructions -->
+                    <div style="margin-top: 2rem;">
+                        <h4 style="color: var(--gold); margin-bottom: 1rem; text-align: left;"><i class="fas fa-info-circle"></i> How to Transfer:</h4>
+                        <ol style="padding-left: 1.5rem; text-align: left;">
+                            <li style="margin-bottom: 0.8rem;">Open the Click app on your phone</li>
+                            <li style="margin-bottom: 0.8rem;">Select "Send Money" or "Transfer" option</li>
+                            <li style="margin-bottom: 0.8rem;">Enter the number: <strong>0798457949</strong></li>
+                            <li style="margin-bottom: 0.8rem;">Enter the amount you wish to transfer</li>
+                            <li style="margin-bottom: 0.8rem;">Confirm the transaction with your PIN</li>
+                        </ol>
+                    </div>
+                    
+                    <!-- Important Notes -->
+                    <div style="margin-top: 2rem; padding: 1.2rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px; border-left: 4px solid var(--gold);">
+                        <h4 style="color: var(--gold); margin-bottom: 0.8rem; text-align: left;"><i class="fas fa-exclamation-triangle"></i> Important Notes:</h4>
+                        <ul style="padding-left: 1.5rem; text-align: left;">
+                            <li style="margin-bottom: 0.5rem;">Ensure you have sufficient balance in your Click account</li>
+                            <li style="margin-bottom: 0.5rem;">Double-check the number before confirming</li>
+                            <li style="margin-bottom: 0.5rem;">Keep the transaction receipt for reference</li>
+                            <li style="margin-bottom: 0.5rem;">Contact us immediately if you encounter any issues</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer - UPDATED -->
     <footer>
         <div class="container">
@@ -1068,7 +1161,10 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#products">Products</a></li>
+                        <li><a href="#services">Services</a></li>
                         <li><a href="#contact">Contact</a></li>
+                        <!-- New link added -->
+                        <li><a href="#money-transfer">Money Transfer</a></li>
                     </ul>
                 </div>
                 
@@ -1253,6 +1349,80 @@ END:VCARD`;
         document.getElementById('saveContactBtn2').addEventListener('click', (e) => {
             e.preventDefault();
             saveContact();
+        });
+
+        // Copy Transfer Number Functionality
+        function copyTransferNumber(notificationId) {
+            const transferNumber = '0798457949';
+            
+            navigator.clipboard.writeText(transferNumber)
+                .then(() => {
+                    const notification = document.getElementById(notificationId);
+                    notification.classList.add('show');
+                    
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                    const textArea = document.createElement('textarea');
+                    textArea.value = transferNumber;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    const notification = document.getElementById(notificationId);
+                    notification.classList.add('show');
+                    
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 2000);
+                });
+        }
+
+        // Save Transfer Contact Functionality
+        function saveTransferContact() {
+            const vCardContent = `BEGIN:VCARD
+VERSION:3.0
+FN:Future's Journey - Money Transfer
+ORG:Future's Journey Software Institution
+TEL;TYPE=TRANSFER,VOICE:0798457949
+NOTE:Click to Transfer Service - Money transfer number for Future's Journey Software Institution
+END:VCARD`;
+
+            const blob = new Blob([vCardContent], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Futures_Journey_Transfer.vcf';
+            link.style.display = 'none';
+            
+            document.body.appendChild(link);
+            link.click();
+            
+            setTimeout(() => {
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }, 100);
+            
+            alert('Transfer contact card has been downloaded. Open the file to save to your contacts.');
+        }
+
+        // Add event listeners for transfer service buttons
+        document.getElementById('copyTransferBtn').addEventListener('click', () => {
+            copyTransferNumber('copyTransferNotification');
+        });
+
+        document.getElementById('copyFixedTransferBtn').addEventListener('click', () => {
+            copyTransferNumber('copyFixedNotification');
+        });
+
+        document.getElementById('saveTransferContactBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            saveTransferContact();
         });
     </script>
 </body>
