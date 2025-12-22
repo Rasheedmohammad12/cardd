@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
     <style>
         :root {
             --white: #FFFFFF;
@@ -346,7 +345,7 @@
             font-size: 1.5rem;
         }
         
-        /* Gallery Section */
+        /* Gallery Section - UPDATED with icons */
         .gallery-section {
             background: var(--light-card);
             margin: 80px auto;
@@ -373,19 +372,24 @@
             position: relative;
             background: var(--white);
             border: var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            text-align: center;
         }
         
-        .gallery-main img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: var(--white);
-            transition: transform 0.5s ease;
-            cursor: pointer;
+        .portfolio-icon-main {
+            font-size: 8rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+            transition: all 0.5s ease;
         }
         
-        .gallery-main img:hover {
-            transform: scale(1.01);
+        .gallery-main:hover .portfolio-icon-main {
+            transform: scale(1.1);
+            color: var(--accent-dark);
         }
         
         .gallery-overlay {
@@ -451,6 +455,12 @@
             box-shadow: var(--shadow);
             background: var(--white);
             border: var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
         }
         
         .gallery-item:hover {
@@ -459,15 +469,22 @@
             border-color: var(--accent);
         }
         
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        .portfolio-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            transition: all 0.5s ease;
         }
         
-        .gallery-item:hover img {
-            transform: scale(1.1);
+        .gallery-item:hover .portfolio-icon {
+            transform: rotateY(360deg);
+            color: var(--accent-dark);
+        }
+        
+        .portfolio-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-text);
         }
         
         .gallery-btn {
@@ -503,102 +520,6 @@
         
         .gallery-btn.next {
             left: -35px;
-        }
-        
-        /* Custom Lightbox Styling */
-        .lightbox-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .lightbox-overlay.active {
-            display: flex;
-        }
-        
-        .lightbox-container {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            width: auto;
-            height: auto;
-        }
-        
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-        
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--gradient);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10001;
-        }
-        
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 20px;
-            transform: translateY(-50%);
-            z-index: 10001;
-        }
-        
-        .lightbox-nav-btn {
-            background: var(--gradient);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .lightbox-info {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: white;
-            padding: 20px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-        
-        .lightbox-counter {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-top: 5px;
         }
         
         /* Services Section */
@@ -1081,6 +1002,10 @@
             .gallery-main {
                 height: 550px;
             }
+            
+            .portfolio-icon-main {
+                font-size: 7rem;
+            }
         }
         
         @media (max-width: 992px) {
@@ -1109,12 +1034,21 @@
                 height: 500px;
             }
             
+            .portfolio-icon-main {
+                font-size: 6rem;
+            }
+            
             .gallery-grid {
                 grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             }
             
             .gallery-item {
                 height: 180px;
+                padding: 20px;
+            }
+            
+            .portfolio-icon {
+                font-size: 3.5rem;
             }
             
             .gallery-btn {
@@ -1129,12 +1063,6 @@
             
             .gallery-btn.next {
                 left: -25px;
-            }
-            
-            .lightbox-nav-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
             }
         }
         
@@ -1174,6 +1102,10 @@
             
             .gallery-main {
                 height: 400px;
+            }
+            
+            .portfolio-icon-main {
+                font-size: 5rem;
             }
             
             .gallery-overlay {
@@ -1219,18 +1151,6 @@
                 text-align: center;
             }
             
-            .lightbox-nav-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            
-            .lightbox-close {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            
             .about-section,
             .gallery-section,
             .services-section,
@@ -1266,6 +1186,15 @@
             
             .gallery-item {
                 height: 150px;
+                padding: 15px;
+            }
+            
+            .portfolio-icon {
+                font-size: 2.8rem;
+            }
+            
+            .portfolio-title {
+                font-size: 1rem;
             }
             
             .services-grid {
@@ -1318,8 +1247,8 @@
         <!-- About Section -->
         <div class="about-section fade-in delay-1">
             <h2 class="section-title" data-ar="مرحباً بكم" data-en="Welcome">مرحباً بكم</h2>
-            <div class="about-text" data-ar="أنا تالا إسماعيل، طالبة هندسة حاسوب في الجامعة الهاشمية، ومتخصصة في تصميم وتطوير الويب. أعمل كمدربة برمجة في معهد Future's Journey Programming حيث أساعد الآخرين على اكتشاف عالم البرمجة." data-en="I'm Tala Ismail, a computer engineering student at Hashemite University, specializing in web design and development. I work as a programming trainer at Future's Journey Programming Institute, where I help others discover the world of programming.">
-                أنا تالا إسماعيل، طالبة هندسة حاسوب في الجامعة الهاشمية، ومتخصصة في تصميم وتطوير الويب. أعمل كمدربة برمجة في معهد Future's Journey Programming حيث أساعد الآخرين على اكتشاف عالم البرمجة.
+            <div class="about-text" data-ar="أنا تالا إسماعيل، طالبة هندسة حاسوب في جامعة البلقاء التطبيقية، ومتخصصة في تصميم وتطوير الويب. أعمل كمدربة برمجة في معهد Future's Journey Programming حيث أساعد الآخرين على اكتشاف عالم البرمجة." data-en="I'm Tala Ismail, a computer engineering student at Al-Balqa Applied University, specializing in web design and development. I work as a programming trainer at Future's Journey Programming Institute, where I help others discover the world of programming.">
+                أنا تالا إسماعيل، طالبة هندسة حاسوب في جامعة البلقاء التطبيقية، ومتخصصة في تصميم وتطوير الويب. أعمل كمدربة برمجة في معهد Future's Journey Programming حيث أساعد الآخرين على اكتشاف عالم البرمجة.
             </div>
             
             <div class="highlight-box">
@@ -1333,7 +1262,7 @@
             </div>
         </div>
 
-        <!-- Gallery Section -->
+        <!-- Gallery Section - UPDATED with icons -->
         <div class="gallery-section fade-in delay-2" id="gallery-section">
             <h2 class="section-title" data-ar="معرض أعمالي" data-en="My Portfolio">معرض أعمالي</h2>
             <div class="gallery-container">
@@ -1344,47 +1273,27 @@
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="gallery-main">
-                    <a href="javascript:void(0);" onclick="openLightbox(currentImageIndex)" id="mainImageLink">
-                        <img id="mainImage" src="https://i.imgur.com/mYIzH9K.png" alt="Tala Ismail">
-                    </a>
+                    <div class="portfolio-icon-main" id="mainIcon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 id="mainPortfolioTitle" data-ar="تصميم وتطوير الويب" data-en="Web Design & Development">تصميم وتطوير الويب</h3>
+                    <p id="mainPortfolioDesc" data-ar="تصميم وتطوير مواقع ويب احترافية متجاوبة مع أحدث التقنيات" data-en="Professional responsive web design and development with latest technologies" style="margin-top: 20px; max-width: 600px; font-size: 1.2rem; color: var(--medium-text);">
+                        تصميم وتطوير مواقع ويب احترافية متجاوبة مع أحدث التقنيات
+                    </p>
                     <div class="gallery-overlay">
                         <div>
-                            <div class="image-info" id="imageInfo" data-ar="تالا إسماعيل" data-en="Tala Ismail">تالا إسماعيل</div>
-                            <div class="image-counter" id="imageCounter">1 / 4</div>
+                            <div class="image-info" id="imageInfo" data-ar="تصميم وتطوير الويب" data-en="Web Design & Development">تصميم وتطوير الويب</div>
+                            <div class="image-counter" id="imageCounter">1 / 6</div>
                         </div>
-                        <button class="fullscreen-btn" onclick="openLightbox(currentImageIndex)">
-                            <i class="fas fa-expand"></i>
-                            <span data-ar="عرض كامل الشاشة" data-en="Full Screen">عرض كامل الشاشة</span>
+                        <button class="fullscreen-btn" onclick="viewPortfolioDetails(currentPortfolioIndex)">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span data-ar="عرض التفاصيل" data-en="View Details">عرض التفاصيل</span>
                         </button>
                     </div>
                 </div>
                 
                 <div class="gallery-grid" id="galleryGrid">
-                    <!-- Gallery items will be added by JavaScript -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Custom Lightbox -->
-        <div class="lightbox-overlay" id="lightboxOverlay">
-            <button class="lightbox-close" onclick="closeLightbox()">
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <div class="lightbox-nav">
-                <button class="lightbox-nav-btn" onclick="lightboxPrev()">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="lightbox-nav-btn" onclick="lightboxNext()">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-            </div>
-            
-            <div class="lightbox-container">
-                <img id="lightboxImage" class="lightbox-image" src="" alt="">
-                <div class="lightbox-info">
-                    <div id="lightboxTitle"></div>
-                    <div class="lightbox-counter" id="lightboxCounter"></div>
+                    <!-- Portfolio items will be added by JavaScript -->
                 </div>
             </div>
         </div>
@@ -1549,63 +1458,92 @@
                 <img src="https://i.imgur.com/mYIzH9K.png" alt="Tala Ismail Photo">
             </div>
             <p class="footer-text" data-ar="تالا إسماعيل - مصممة ويب ومبرمجة" data-en="Tala Ismail - Web Designer & Developer">تالا إسماعيل - مصممة ويب ومبرمجة</p>
-            <p class="footer-text" data-ar="طالبة هندسة حاسوب | مدربة برمجة" data-en="Computer Engineering Student | Programming Trainer">طالبة هندسة حاسوب | مدربة برمجة</p>
+            <p class="footer-text" data-ar="طالبة هندسة حاسوب | جامعة البلقاء التطبيقية" data-en="Computer Engineering Student | Al-Balqa Applied University">طالبة هندسة حاسوب | جامعة البلقاء التطبيقية</p>
             <p class="footer-text">© 2023 <span data-ar="جميع الحقوق محفوظة" data-en="All Rights Reserved">جميع الحقوق محفوظة</span></p>
         </div>
     </footer>
 
     <script>
-        // Gallery functionality
-        const images = [
+        // Portfolio functionality with icons
+        const portfolioItems = [
             { 
-                src: "https://i.imgur.com/mYIzH9K.png", 
-                alt: "تالا إسماعيل",
+                icon: "fas fa-laptop-code",
                 title: {
-                    ar: "تالا إسماعيل - مصممة ويب ومبرمجة",
-                    en: "Tala Ismail - Web Designer & Developer"
+                    ar: "تصميم وتطوير الويب",
+                    en: "Web Design & Development"
+                },
+                description: {
+                    ar: "تصميم وتطوير مواقع ويب احترافية متجاوبة مع أحدث التقنيات",
+                    en: "Professional responsive web design and development with latest technologies"
                 }
             },
             { 
-                src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
-                alt: "مشروع برمجة",
+                icon: "fas fa-palette",
                 title: {
-                    ar: "مشروع برمجة متقدم",
-                    en: "Advanced Programming Project"
+                    ar: "تصميم واجهات المستخدم",
+                    en: "UI/UX Design"
+                },
+                description: {
+                    ar: "تصميم واجهات مستخدم جذابة وسهلة الاستخدام تحسن تجربة المستخدم",
+                    en: "Designing attractive and user-friendly interfaces that enhance user experience"
                 }
             },
             { 
-                src: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80", 
-                alt: "تصميم واجهات",
+                icon: "fas fa-mobile-alt",
                 title: {
-                    ar: "تصميم واجهات مستخدم احترافية",
-                    en: "Professional UI Design"
+                    ar: "تطبيقات الجوال",
+                    en: "Mobile Applications"
+                },
+                description: {
+                    ar: "تطوير تطبيقات جوال متجاوبة تعمل على مختلف المنصات بأداء عالي",
+                    en: "Developing responsive mobile applications that work on various platforms with high performance"
                 }
             },
             { 
-                src: "https://images.unsplash.com/photo-1517697471339-4aa32003c11a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
-                alt: "تدريب برمجة",
+                icon: "fas fa-chart-line",
                 title: {
-                    ar: "جلسة تدريب برمجة",
-                    en: "Programming Training Session"
+                    ar: "تحسين محركات البحث",
+                    en: "SEO Optimization"
+                },
+                description: {
+                    ar: "تحسين مواقع الويب لتحقيق ترتيب أفضل في محركات البحث",
+                    en: "Optimizing websites to achieve better search engine rankings"
+                }
+            },
+            { 
+                icon: "fas fa-database",
+                title: {
+                    ar: "قواعد البيانات",
+                    en: "Database Design"
+                },
+                description: {
+                    ar: "تصميم وإدارة قواعد البيانات بكفاءة وأمان عالي",
+                    en: "Designing and managing databases with high efficiency and security"
+                }
+            },
+            { 
+                icon: "fas fa-cogs",
+                title: {
+                    ar: "حلول برمجية مخصصة",
+                    en: "Custom Software Solutions"
+                },
+                description: {
+                    ar: "تطوير حلول برمجية مخصصة تلبي احتياجات العمل الفريدة",
+                    en: "Developing custom software solutions that meet unique business needs"
                 }
             }
         ];
         
-        let currentImageIndex = 0;
+        let currentPortfolioIndex = 0;
         let currentLang = 'ar';
-        const mainImage = document.querySelector('#mainImage');
-        const mainImageLink = document.querySelector('#mainImageLink');
+        const mainIcon = document.querySelector('#mainIcon');
+        const mainPortfolioTitle = document.getElementById('mainPortfolioTitle');
+        const mainPortfolioDesc = document.getElementById('mainPortfolioDesc');
         const imageInfo = document.getElementById('imageInfo');
         const imageCounter = document.getElementById('imageCounter');
         const galleryGrid = document.getElementById('galleryGrid');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        
-        // Lightbox elements
-        const lightboxOverlay = document.getElementById('lightboxOverlay');
-        const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxTitle = document.getElementById('lightboxTitle');
-        const lightboxCounter = document.getElementById('lightboxCounter');
         
         // Save Contact Functionality
         document.getElementById('saveContactBtn')?.addEventListener('click', function(e) {
@@ -1621,8 +1559,8 @@
                 email: 'toto622009@gmail.com',
                 website: window.location.hostname,
                 note: currentLang === 'ar' 
-                    ? 'طالبة هندسة حاسوب - مدربة برمجة - مصممة ويب ومبرمجة' 
-                    : 'Computer Engineering Student - Programming Trainer - Web Designer & Developer',
+                    ? 'طالبة هندسة حاسوب - جامعة البلقاء التطبيقية - مدربة برمجة - مصممة ويب ومبرمجة' 
+                    : 'Computer Engineering Student - Al-Balqa Applied University - Programming Trainer - Web Designer & Developer',
                 jobTitle: currentLang === 'ar' 
                     ? 'مصممة ويب ومبرمجة' 
                     : 'Web Designer & Developer',
@@ -1668,105 +1606,93 @@ END:VCARD`;
             }, 100);
         });
         
-        // Create gallery grid
-        function createGalleryGrid() {
+        // Create gallery grid with icons
+        function createPortfolioGrid() {
             galleryGrid.innerHTML = '';
-            images.forEach((image, index) => {
+            portfolioItems.forEach((item, index) => {
                 const galleryItem = document.createElement('div');
                 galleryItem.className = 'gallery-item';
                 
                 galleryItem.innerHTML = `
-                    <img src="${image.src}" alt="${image.alt}" loading="lazy" data-index="${index}">
+                    <div class="portfolio-icon">
+                        <i class="${item.icon}"></i>
+                    </div>
+                    <div class="portfolio-title">${currentLang === 'ar' ? item.title.ar : item.title.en}</div>
                 `;
                 
                 galleryItem.addEventListener('click', () => {
-                    changeImage(index);
-                    openLightbox(index);
+                    changePortfolioItem(index);
                 });
                 
                 galleryGrid.appendChild(galleryItem);
             });
         }
         
-        // Change main image
-        function changeImage(index) {
-            currentImageIndex = index;
-            const image = images[index];
-            mainImage.src = image.src;
-            mainImage.alt = image.alt;
+        // Change main portfolio item
+        function changePortfolioItem(index) {
+            currentPortfolioIndex = index;
+            const item = portfolioItems[index];
+            
+            // Update main icon and text
+            mainIcon.innerHTML = `<i class="${item.icon}"></i>`;
+            mainPortfolioTitle.textContent = currentLang === 'ar' ? item.title.ar : item.title.en;
+            mainPortfolioTitle.setAttribute('data-ar', item.title.ar);
+            mainPortfolioTitle.setAttribute('data-en', item.title.en);
+            
+            mainPortfolioDesc.textContent = currentLang === 'ar' ? item.description.ar : item.description.en;
+            mainPortfolioDesc.setAttribute('data-ar', item.description.ar);
+            mainPortfolioDesc.setAttribute('data-en', item.description.en);
             
             // Update image info and counter
-            updateImageInfo();
+            updatePortfolioInfo();
             
             // Highlight active thumbnail
-            document.querySelectorAll('.gallery-item').forEach((item, i) => {
+            document.querySelectorAll('.gallery-item').forEach((galleryItem, i) => {
                 if (i === index) {
-                    item.style.borderColor = 'var(--accent)';
-                    item.style.transform = 'translateY(-5px)';
-                    item.style.boxShadow = 'var(--shadow-hover)';
+                    galleryItem.style.borderColor = 'var(--accent)';
+                    galleryItem.style.transform = 'translateY(-5px)';
+                    galleryItem.style.boxShadow = 'var(--shadow-hover)';
+                    galleryItem.querySelector('.portfolio-icon').style.color = 'var(--accent-dark)';
                 } else {
-                    item.style.borderColor = '';
-                    item.style.transform = '';
-                    item.style.boxShadow = '';
+                    galleryItem.style.borderColor = '';
+                    galleryItem.style.transform = '';
+                    galleryItem.style.boxShadow = '';
+                    galleryItem.querySelector('.portfolio-icon').style.color = '';
                 }
             });
         }
         
-        // Update image info and counter
-        function updateImageInfo() {
-            const image = images[currentImageIndex];
-            const title = currentLang === 'ar' ? image.title.ar : image.title.en;
+        // Update portfolio info and counter
+        function updatePortfolioInfo() {
+            const item = portfolioItems[currentPortfolioIndex];
+            const title = currentLang === 'ar' ? item.title.ar : item.title.en;
             
             imageInfo.textContent = title;
-            imageInfo.setAttribute('data-ar', image.title.ar);
-            imageInfo.setAttribute('data-en', image.title.en);
+            imageInfo.setAttribute('data-ar', item.title.ar);
+            imageInfo.setAttribute('data-en', item.title.en);
             
             // Update counter
-            imageCounter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+            imageCounter.textContent = `${currentPortfolioIndex + 1} / ${portfolioItems.length}`;
         }
         
-        // Open lightbox
-        function openLightbox(index) {
-            const image = images[index];
-            const title = currentLang === 'ar' ? image.title.ar : image.title.en;
+        // View portfolio details
+        function viewPortfolioDetails(index) {
+            const item = portfolioItems[index];
+            const title = currentLang === 'ar' ? item.title.ar : item.title.en;
+            const description = currentLang === 'ar' ? item.description.ar : item.description.en;
             
-            lightboxImage.src = image.src;
-            lightboxImage.alt = image.alt;
-            lightboxTitle.textContent = title;
-            lightboxCounter.textContent = `${index + 1} / ${images.length}`;
-            
-            lightboxOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            alert(`${title}\n\n${description}`);
         }
         
-        // Close lightbox
-        function closeLightbox() {
-            lightboxOverlay.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
+        // Portfolio navigation
+        function nextPortfolioItem() {
+            currentPortfolioIndex = (currentPortfolioIndex + 1) % portfolioItems.length;
+            changePortfolioItem(currentPortfolioIndex);
         }
         
-        // Lightbox navigation
-        function lightboxNext() {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            openLightbox(currentImageIndex);
-            changeImage(currentImageIndex);
-        }
-        
-        function lightboxPrev() {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-            openLightbox(currentImageIndex);
-            changeImage(currentImageIndex);
-        }
-        
-        // Gallery navigation
-        function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            changeImage(currentImageIndex);
-        }
-        
-        function prevImage() {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-            changeImage(currentImageIndex);
+        function prevPortfolioItem() {
+            currentPortfolioIndex = (currentPortfolioIndex - 1 + portfolioItems.length) % portfolioItems.length;
+            changePortfolioItem(currentPortfolioIndex);
         }
         
         // Language switching functionality
@@ -1797,61 +1723,30 @@ END:VCARD`;
                 }
             });
             
-            // Update gallery titles
-            updateImageInfo();
-            createGalleryGrid();
-            changeImage(currentImageIndex);
-            
-            // Update lightbox if open
-            if (lightboxOverlay.classList.contains('active')) {
-                openLightbox(currentImageIndex);
-            }
+            // Update portfolio
+            updatePortfolioInfo();
+            createPortfolioGrid();
+            changePortfolioItem(currentPortfolioIndex);
         }
         
         // Event listeners
-        prevBtn.addEventListener('click', prevImage);
-        nextBtn.addEventListener('click', nextImage);
-        
-        // Close lightbox on overlay click
-        lightboxOverlay.addEventListener('click', function(e) {
-            if (e.target === this || e.target.classList.contains('lightbox-overlay')) {
-                closeLightbox();
-            }
-        });
+        prevBtn.addEventListener('click', prevPortfolioItem);
+        nextBtn.addEventListener('click', nextPortfolioItem);
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            // Gallery navigation
+            // Portfolio navigation
             if (e.key === 'ArrowRight' || e.key === 'Right') {
                 if (currentLang === 'ar') {
-                    prevImage();
+                    prevPortfolioItem();
                 } else {
-                    nextImage();
+                    nextPortfolioItem();
                 }
             } else if (e.key === 'ArrowLeft' || e.key === 'Left') {
                 if (currentLang === 'ar') {
-                    nextImage();
+                    nextPortfolioItem();
                 } else {
-                    prevImage();
-                }
-            }
-            
-            // Lightbox navigation
-            if (lightboxOverlay.classList.contains('active')) {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                } else if (e.key === 'ArrowRight' || e.key === 'Right') {
-                    if (currentLang === 'ar') {
-                        lightboxPrev();
-                    } else {
-                        lightboxNext();
-                    }
-                } else if (e.key === 'ArrowLeft' || e.key === 'Left') {
-                    if (currentLang === 'ar') {
-                        lightboxNext();
-                    } else {
-                        lightboxPrev();
-                    }
+                    prevPortfolioItem();
                 }
             }
         });
@@ -1866,17 +1761,17 @@ END:VCARD`;
         
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            createGalleryGrid();
-            changeImage(0);
+            createPortfolioGrid();
+            changePortfolioItem(0);
             
             // Auto slide every 5 seconds
-            let slideInterval = setInterval(nextImage, 5000);
+            let slideInterval = setInterval(nextPortfolioItem, 5000);
             
             // Pause auto slide on hover
             const galleryContainer = document.querySelector('.gallery-container');
             galleryContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
             galleryContainer.addEventListener('mouseleave', () => {
-                slideInterval = setInterval(nextImage, 5000);
+                slideInterval = setInterval(nextPortfolioItem, 5000);
             });
             
             // Touch/swipe support for mobile
@@ -1900,16 +1795,16 @@ END:VCARD`;
                     if (diff > 0) {
                         // Swipe left
                         if (currentLang === 'ar') {
-                            nextImage();
+                            nextPortfolioItem();
                         } else {
-                            prevImage();
+                            prevPortfolioItem();
                         }
                     } else {
                         // Swipe right
                         if (currentLang === 'ar') {
-                            prevImage();
+                            prevPortfolioItem();
                         } else {
-                            nextImage();
+                            nextPortfolioItem();
                         }
                     }
                 }
