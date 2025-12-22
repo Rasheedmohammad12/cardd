@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Binary Establishment - الثنائية الطبية</title>
+    <meta name="description" content="Medical Binary Establishment - متخصصون في المستلزمات الطبية والمستهلكات الجراحية">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1A5276;
+            --primary-light: #2E86C1;
+            --primary-dark: #154360;
+            --accent: #28B463;
+            --gradient: linear-gradient(135deg, #1A5276 0%, #154360 100%);
+            --gradient-accent: linear-gradient(135deg, #1A5276 0%, #28B463 100%);
+            --light-bg: #F0F8FF;
+            --light-card: #FFFFFF;
+            --dark-text: #1C2833;
+            --light-text: #5D6D7E;
+            --shadow: 0 10px 30px rgba(26, 82, 118, 0.2);
+            --shadow-lg: 0 20px 40px rgba(26, 82, 118, 0.3);
+            --border: 1px solid #D6EAF8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        body {
+            background: var(--light-bg);
+            color: var(--dark-text);
+            min-height: 100vh;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .lang-btn {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Header */
+        .profile-header {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--light-card);
+        }
+        
+        .cover-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .cover-logo {
+            max-width: 90%;
+            max-height: 280px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .profile-info {
+            position: relative;
+            padding: 40px 20px 30px;
+            text-align: center;
+            z-index: 2;
+            background: white;
+        }
+        
+        .profile-image-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            background-color: white;
+            display: block;
+            border-radius: 20px;
+            border: 3px solid var(--accent);
+            padding: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .verified-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: var(--accent);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            border: 2px solid white;
+        }
+        
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .profile-username {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Click Section */
+        .click-section {
+            background: var(--gradient-accent);
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .click-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+        
+        .click-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-30%, 30%);
+        }
+        
+        .click-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .click-code {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 20px 0;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: inline-block;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .click-instruction {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .click-copy-btn {
+            background: white;
+            color: var(--accent);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .click-copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .copy-success {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: var(--accent);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            font-weight: 600;
+            z-index: 1001;
+            transition: transform 0.5s ease;
+        }
+        
+        .copy-success.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        /* About Section */
+        .about-section {
+            background: var(--light-card);
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: var(--border);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--dark-text);
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--light-text);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: rgba(40, 180, 99, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-right: 4px solid var(--accent);
+        }
+        
+        .highlight-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            background: var(--light-card);
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 1200px;
+            box-shadow: var(--shadow);
+            border: var(--border);
+            position: relative;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 50px 0 20px;
+            color: var(--primary);
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .category-title:first-child {
+            margin-top: 20px;
+        }
+        
+        .category-note {
+            font-size: 1rem;
+            color: var(--light-text);
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .slider-container {
+            position: relative;
+            margin: 30px 0 50px;
+        }
+        
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 20px;
+            padding: 10px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .slider::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .gallery-item {
+            min-width: 280px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: var(--border);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .item-category {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .slider-btn:hover {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .slider-btn.prev {
+            right: -25px;
+        }
+        
+        .slider-btn.next {
+            left: -25px;
+        }
+        
+        /* Services Section */
+        .services-section {
+            background: var(--light-card);
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 1200px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: var(--border);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .service-card {
+            background: rgba(40, 180, 99, 0.1);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: var(--border);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(40, 180, 99, 0.15);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .service-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+        
+        .service-desc {
+            font-size: 0.95rem;
+            color: var(--light-text);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: var(--light-card);
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: var(--border);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            padding: 15px;
+            background: rgba(40, 180, 99, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            color: var(--dark-text);
+        }
+        
+        .contact-item:hover {
+            background: rgba(40, 180, 99, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .contact-item i {
+            color: var(--accent);
+            font-size: 1.3rem;
+            width: 30px;
+        }
+        
+        .business-contact {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            box-shadow: var(--shadow);
+        }
+        
+        .business-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .business-number {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .action-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 32px;
+            background: white;
+            color: var(--dark-text);
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+        }
+        
+        .action-button.primary {
+            background: var(--gradient-accent);
+            color: white;
+            border: 2px solid var(--accent);
+        }
+        
+        .action-button:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .action-button i {
+            font-size: 1.3rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+            color: white;
+        }
+        
+        .footer-logo-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 0 auto 30px;
+            max-width: 300px;
+            box-shadow: var(--shadow);
+        }
+        
+        .footer-logo {
+            max-width: 100%;
+            max-height: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .footer-text {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Modal for Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; }
+        
+        /* Language specific styles */
+        .lang-ar {
+            display: block;
+        }
+        
+        .lang-en {
+            display: none;
+        }
+        
+        body[dir="ltr"] .lang-ar {
+            display: none;
+        }
+        
+        body[dir="ltr"] .lang-en {
+            display: block;
+        }
+        
+        body[dir="ltr"] .highlight-box {
+            border-right: none;
+            border-left: 4px solid var(--accent);
+        }
+        
+        body[dir="ltr"] .slider-btn.prev {
+            right: auto;
+            left: -25px;
+        }
+        
+        body[dir="ltr"] .slider-btn.next {
+            left: auto;
+            right: -25px;
+        }
+        
+        body[dir="ltr"] .slider-btn.prev i {
+            transform: rotate(180deg);
+        }
+        
+        body[dir="ltr"] .slider-btn.next i {
+            transform: rotate(180deg);
+        }
+        
+        body[dir="ltr"] .contact-item,
+        body[dir="ltr"] .service-card,
+        body[dir="ltr"] .gallery-item-content {
+            text-align: left;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .lang-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .profile-name {
+                font-size: 2rem;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .cover-container {
+                height: 250px;
+            }
+            
+            .cover-logo {
+                max-height: 200px;
+            }
+            
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .slider-btn.prev {
+                right: -20px;
+            }
+            
+            .slider-btn.next {
+                left: -20px;
+            }
+            
+            body[dir="ltr"] .slider-btn.prev {
+                left: -20px;
+            }
+            
+            body[dir="ltr"] .slider-btn.next {
+                right: -20px;
+            }
+            
+            .gallery-item {
+                min-width: 250px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-logo-container {
+                max-width: 250px;
+            }
+            
+            .click-title {
+                font-size: 1.5rem;
+            }
+            
+            .click-code {
+                font-size: 2rem;
+                padding: 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn" onclick="toggleLanguage()">
+            <i class="fas fa-language"></i>
+            <span id="langText">English</span>
+        </button>
+    </div>
+
+    <!-- Header Section -->
+    <header class="profile-header fade-in">
+        <div class="cover-container">
+            <img src="https://imgur.com/hu0YIa4.png" alt="Medical Binary Logo" class="cover-logo">
+        </div>
+        <div class="profile-info">
+            <div class="profile-image-container">
+                <img src="https://imgur.com/hu0YIa4.png" alt="Medical Binary" class="profile-image">
+                <div class="verified-badge">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
+            <h1 class="profile-name">Medical Binary Establishment</h1>
+            <div class="profile-username">AMERRAMAHA</div>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label lang-ar">تخصصات</span>
+                    <span class="stat-label lang-en">Specialties</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label lang-ar">خدمة</span>
+                    <span class="stat-label lang-en">Service</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">⭐</span>
+                    <span class="stat-label lang-ar">تميز</span>
+                    <span class="stat-label lang-en">Excellence</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Click Section -->
+        <div class="click-section fade-in delay-1">
+            <h2 class="click-title lang-ar">Medical Binary Click</h2>
+            <h2 class="click-title lang-en">Medical Binary Click</h2>
+            <div class="click-code" id="clickCode">AMERRAMAHA</div>
+            <p class="click-instruction lang-ar">انقر على الزر أدناه لنسخ الكود</p>
+            <p class="click-instruction lang-en">Click the button below to copy the code</p>
+            <button class="click-copy-btn" onclick="copyClickCode()">
+                <i class="far fa-copy"></i>
+                <span class="lang-ar">نسخ الكود</span>
+                <span class="lang-en">Copy Code</span>
+            </button>
+        </div>
+
+        <!-- About Section -->
+        <div class="about-section fade-in delay-1">
+            <h2 class="section-title lang-ar">مرحباً بكم</h2>
+            <h2 class="section-title lang-en">Welcome</h2>
+            <div class="about-text lang-ar">متخصصون في المستلزمات الطبية والمستهلكات الجراحية</div>
+            <div class="about-text lang-en">Specialists in medical supplies and surgical consumables</div>
+            
+            <div class="highlight-box">
+                <div class="highlight-title lang-ar">عن الثنائية الطبية</div>
+                <div class="highlight-title lang-en">About Medical Binary</div>
+                <div class="about-text lang-ar" style="text-align: center;">
+                    Medical Binary Establishment، متخصصون في المستلزمات الطبية والمستهلكات الجراحية، 
+                    بما في ذلك كل ما يلزم لجراحة العظام، مثل المواد القابلة للزرع التي يتم الحصول عليها من 
+                    وكالات دولية مثل Austofix (أستراليا) و Ortho-Trauma (إنجلترا)، بالإضافة إلى 
+                    مجموعة كاملة من أدوات جراحة العظام، وأنظمة التثبيت الخارجي، ومجموعة متنوعة من الأجهزة الطبية، 
+                    ومستلزمات المستشفيات، ومعدات غرفة العمليات.
+                    بالإضافة إلى مخزن أدوية شامل مخزون بوكالات الأدوية والمكملات الغذائية من جميع أنحاء العالم.
+                    كما لدينا صيدليتنا الخاصة لبيع المنتجات الطبية والأدوية.
+                    نحن نوفر أيضًا الرعاية الصحية للمرضى القادمين من الخارج للعلاج، مما يسهل الأمر من خلال تعاوننا مع الأطباء والمستشفيات والصيدليات والمختبرات ومراكز الأشعة والتشخيص ومؤسسات الرعاية الصحية الأخرى.
+                    نسهل إجراءاتهم الجراحية والعلاجات الطبية اللازمة في المستشفيات داخل المملكة الأردنية الهاشمية.
+                </div>
+                <div class="about-text lang-en" style="text-align: center;">
+                    Medical Binary Establishment specializes in medical supplies and surgical consumables, 
+                    including all necessities for orthopedic surgery, such as implantable materials obtained from 
+                    international agencies like Austofix (Australia) and Ortho-Trauma (England), in addition to 
+                    a complete range of orthopedic surgical instruments, external fixation systems, various medical devices, 
+                    hospital supplies, and operating room equipment.
+                    Additionally, we have a comprehensive drug warehouse stocked with pharmaceutical and nutritional supplement agencies from around the world.
+                    We also have our own pharmacy for selling medical products and medicines.
+                    We provide healthcare for patients coming from abroad for treatment, facilitating the process through our cooperation with doctors, hospitals, pharmacies, laboratories, radiology and diagnostic centers, and other healthcare institutions.
+                    We facilitate their surgical procedures and necessary medical treatments in hospitals within the Hashemite Kingdom of Jordan.
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="gallery-section fade-in delay-2">
+            <h2 class="section-title lang-ar">معرض منتجاتنا</h2>
+            <h2 class="section-title lang-en">Our Products Gallery</h2>
+            <p class="category-note lang-ar">تصفح كتالوجات منتجاتنا المتخصصة في مختلف المجالات الطبية</p>
+            <p class="category-note lang-en">Browse our specialized product catalogs in various medical fields</p>
+            
+            <!-- Catalogue Lenses Section -->
+            <h3 class="category-title">Catalogue Lenses</h3>
+            <div class="slider-container">
+                <button class="slider-btn prev" onclick="scrollSlider('lensesSlider', -1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="slider-btn next" onclick="scrollSlider('lensesSlider', 1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider" id="lensesSlider">
+                    <!-- Lenses images will be added by JavaScript -->
+                </div>
+            </div>
+
+            <!-- AUSTOFIX Ortho Pedic Section -->
+            <h3 class="category-title">AUSTOFIX Ortho Pedic</h3>
+            <div class="slider-container">
+                <button class="slider-btn prev" onclick="scrollSlider('austofixSlider', -1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="slider-btn next" onclick="scrollSlider('austofixSlider', 1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider" id="austofixSlider">
+                    <!-- AUSTOFIX images will be added by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Catalog D.C.Tuna Section -->
+            <h3 class="category-title">Catalog D.C.Tuna</h3>
+            <div class="slider-container">
+                <button class="slider-btn prev" onclick="scrollSlider('tunaSlider', -1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="slider-btn next" onclick="scrollSlider('tunaSlider', 1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider" id="tunaSlider">
+                    <!-- Tuna images will be added by JavaScript -->
+                </div>
+            </div>
+
+            <!-- NIMO TURKEY Section -->
+            <h3 class="category-title">NIMO TURKEY</h3>
+            <div class="slider-container">
+                <button class="slider-btn prev" onclick="scrollSlider('nimoSlider', -1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="slider-btn next" onclick="scrollSlider('nimoSlider', 1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider" id="nimoSlider">
+                    <!-- NIMO images will be added by JavaScript -->
+                </div>
+            </div>
+
+            <!-- OHO Cataloge Section -->
+            <h3 class="category-title">OHO Cataloge</h3>
+            <div class="slider-container">
+                <button class="slider-btn prev" onclick="scrollSlider('ohoSlider', -1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="slider-btn next" onclick="scrollSlider('ohoSlider', 1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider" id="ohoSlider">
+                    <!-- OHO images will be added by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Ortho Pedic Section -->
+            <h3 class="category-title">Ortho Pedic</h3>
+            <div class="slider-container">
+                <button class="slider-btn prev" onclick="scrollSlider('orthoSlider', -1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="slider-btn next" onclick="scrollSlider('orthoSlider', 1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider" id="orthoSlider">
+                    <!-- Ortho Pedic images will be added by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Conwe PDF Section -->
+            <h3 class="category-title">Conwe PDF</h3>
+            <div class="slider-container">
+                <button class="slider-btn prev" onclick="scrollSlider('conweSlider', -1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="slider-btn next" onclick="scrollSlider('conweSlider', 1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider" id="conweSlider">
+                    <!-- Conwe PDF images will be added by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Farmasi Catalogue Section -->
+            <h3 class="category-title">Farmasi Catalogue</h3>
+            <div class="slider-container">
+                <button class="slider-btn prev" onclick="scrollSlider('farmasiSlider', -1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="slider-btn next" onclick="scrollSlider('farmasiSlider', 1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider" id="farmasiSlider">
+                    <!-- Farmasi Catalogue images will be added by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Pharmacy Lemas Section -->
+            <h3 class="category-title">Pharmacy Lemas</h3>
+            <div class="slider-container">
+                <button class="slider-btn prev" onclick="scrollSlider('pharmacyLemasSlider', -1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="slider-btn next" onclick="scrollSlider('pharmacyLemasSlider', 1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider" id="pharmacyLemasSlider">
+                    <!-- Pharmacy Lemas images will be added by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="services-section fade-in delay-2">
+            <h2 class="section-title lang-ar">خدماتنا</h2>
+            <h2 class="section-title lang-en">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h3 class="service-name lang-ar">مستلزمات جراحة العظام</h3>
+                    <h3 class="service-name lang-en">Orthopedic Surgery Supplies</h3>
+                    <p class="service-desc lang-ar">مواد قابلة للزرع وأدوات جراحية متخصصة</p>
+                    <p class="service-desc lang-en">Implantable materials and specialized surgical instruments</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3 class="service-name lang-ar">مستودع أدوية شامل</h3>
+                    <h3 class="service-name lang-en">Comprehensive Drug Warehouse</h3>
+                    <p class="service-desc lang-ar">وكالات أدوية ومكملات غذائية عالمية</p>
+                    <p class="service-desc lang-en">International drug and supplement agencies</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3 class="service-name lang-ar">مستلزمات المستشفيات</h3>
+                    <h3 class="service-name lang-en">Hospital Supplies</h3>
+                    <p class="service-desc lang-ar">أجهزة طبية ومعدات غرف عمليات</p>
+                    <p class="service-desc lang-en">Medical devices and operating room equipment</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="service-name lang-ar">عدسات طبية</h3>
+                    <h3 class="service-name lang-en">Medical Lenses</h3>
+                    <p class="service-desc lang-ar">تشكيلة واسعة من العدسات الطبية المتخصصة</p>
+                    <p class="service-desc lang-en">Wide range of specialized medical lenses</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-prescription-bottle-medical"></i>
+                    </div>
+                    <h3 class="service-name lang-ar">صيدلية أدوية</h3>
+                    <h3 class="service-name lang-en">Pharmacy</h3>
+                    <p class="service-desc lang-ar">صيدليتنا المتخصصة لبيع الأدوية والمنتجات الطبية</p>
+                    <p class="service-desc lang-en">Our specialized pharmacy for selling medicines and medical products</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 class="service-name lang-ar">خدمات المرضى الدوليين</h3>
+                    <h3 class="service-name lang-en">International Patient Services</h3>
+                    <p class="service-desc lang-ar">تسهيل العلاج للمرضى القادمين من الخارج</p>
+                    <p class="service-desc lang-en">Facilitating treatment for patients coming from abroad</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section fade-in delay-3">
+            <h2 class="section-title lang-ar">تواصل معنا</h2>
+            <h2 class="section-title lang-en">Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span class="lang-ar">الهاتف الأرضي: 065692727</span>
+                    <span class="lang-en">Landline: 065692727</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span class="lang-ar">الجوال: 0790408227</span>
+                    <span class="lang-en">Mobile: 0790408227</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="lang-ar">العنوان: جبل الحسين - مقابل مستشفى هبة، مجمع لؤلؤات القريني ١٩٨</span>
+                    <span class="lang-en">Address: Jabal Al Hussein - Opposite Hiba Hospital, Lu'lu'at Al-Qarini Complex 198</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="lang-ar">الموقع: <a href="https://maps.google.com/maps?q=31.968494415283203%2C35.91759490966797&z=17&hl=en" target="_blank">اضغط هنا للوصول للموقع</a></span>
+                    <span class="lang-en">Location: <a href="https://maps.google.com/maps?q=31.968494415283203%2C35.91759490966797&z=17&hl=en" target="_blank">Click here to access location</a></span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>البريد الإلكتروني: Rammaha@medical-binary.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>البريد الإلكتروني: Medical.Binary@yahoo.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <span class="lang-ar">الكود الخاص: AMERRAMAHA</span>
+                    <span class="lang-en">Special Code: AMERRAMAHA</span>
+                </div>
+            </div>
+            
+            <div class="business-contact">
+                <div class="business-title lang-ar">للطلبات والاستفسارات</div>
+                <div class="business-title lang-en">For Orders and Inquiries</div>
+                <div class="business-number">0790408227</div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons fade-in delay-3">
+            <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AN:Medical Binary Establishment%0ATEL:0790408227%0AEMAIL:Rammaha@medical-binary.com%0AEND:VCARD" 
+               download="medical-binary.vcf" 
+               class="action-button primary">
+                <i class="fas fa-download"></i>
+                <span class="lang-ar">حفظ جهة الاتصال</span>
+                <span class="lang-en">Save Contact</span>
+            </a>
+            <a href="tel:0790408227" class="action-button" target="_blank">
+                <i class="fas fa-phone"></i>
+                <span class="lang-ar">اتصل الآن</span>
+                <span class="lang-en">Call Now</span>
+            </a>
+            <a href="tel:065692727" class="action-button">
+                <i class="fas fa-phone-alt"></i>
+                <span class="lang-ar">الهاتف الأرضي</span>
+                <span class="lang-en">Landline</span>
+            </a>
+            <a href="https://maps.google.com/maps?q=31.968494415283203%2C35.91759490966797&z=17&hl=en" class="action-button" target="_blank">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="lang-ar">الموقع</span>
+                <span class="lang-en">Location</span>
+            </a>
+            <a href="https://wa.me/962790408227" class="action-button" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span class="lang-ar">واتساب</span>
+                <span class="lang-en">WhatsApp</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal for Gallery -->
+    <div class="modal" id="imageModal">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Copy Success Message -->
+    <div class="copy-success" id="copySuccess">
+        <span class="lang-ar">تم نسخ الكود بنجاح! ✓</span>
+        <span class="lang-en">Code copied successfully! ✓</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo-container">
+                <img src="https://imgur.com/hu0YIa4.png" alt="Medical Binary Logo" class="footer-logo">
+            </div>
+            <p class="footer-text lang-ar">Medical Binary Establishment - الثنائية الطبية</p>
+            <p class="footer-text lang-en">Medical Binary Establishment</p>
+            <p class="footer-text lang-ar">متخصصون في المستلزمات الطبية والمستهلكات الجراحية • جودة عالمية • خدمة متميزة</p>
+            <p class="footer-text lang-en">Specialists in medical supplies and surgical consumables • Global quality • Premium service</p>
+            <p class="footer-text" style="margin-top: 15px;">جميع الحقوق محفوظة © 2024 الثنائية الطبية</p>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery images categorized
+        const galleryData = {
+            "catalogueLenses": {
+                title: "Catalogue Lenses",
+                sliderId: "lensesSlider",
+                images: [
+                    "https://imgur.com/onK5wb8.png",
+                    "https://imgur.com/80P2Wth.png",
+                    "https://imgur.com/nnDT2oO.png",
+                    "https://imgur.com/FlJhxK0.png",
+                    "https://imgur.com/sCsA8KU.png",
+                    "https://imgur.com/YAibzBU.png",
+                    "https://imgur.com/f5iS98L.png"
+                ]
+            },
+            "austofixOrthoPedic": {
+                title: "AUSTOFIX Ortho Pedic",
+                sliderId: "austofixSlider",
+                images: [
+                    "https://imgur.com/kcerskG.png",
+                    "https://imgur.com/xziqaJl.png",
+                    "https://imgur.com/jB3CNx3.png",
+                    "https://imgur.com/E2TC67H.png",
+                    "https://imgur.com/bdHIwJW.png",
+                    "https://imgur.com/rQllPJj.png",
+                    "https://imgur.com/uov4j5j.png",
+                    "https://imgur.com/DrYrKX4.png",
+                    "https://imgur.com/2P7lKZI.png",
+                    "https://imgur.com/2KKVEfa.png",
+                    "https://imgur.com/PpWFrb4.png"
+                ]
+            },
+            "catalogDCTuna": {
+                title: "Catalog D.C.Tuna",
+                sliderId: "tunaSlider",
+                images: [
+                    "https://imgur.com/P6UwufU.png",
+                    "https://imgur.com/TpPZdDH.png",
+                    "https://imgur.com/rmJnYwo.png",
+                    "https://imgur.com/hiEkC01.png",
+                    "https://imgur.com/RZP5ojl.png",
+                    "https://imgur.com/cXvbLPT.png",
+                    "https://imgur.com/J9H6lVA.png",
+                    "https://imgur.com/OPQzgkO.png",
+                    "https://imgur.com/8NKjf4T.png",
+                    "https://imgur.com/8Dy2fir.png",
+                    "https://imgur.com/pwduu7o.png",
+                    "https://imgur.com/fZtnhkP.png",
+                    "https://imgur.com/6tD94u5.png",
+                    "https://imgur.com/LN65cjQ.png",
+                    "https://imgur.com/JTUWYm4.png",
+                    "https://imgur.com/ggmMP86.png",
+                    "https://imgur.com/8cE1pgc.png"
+                ]
+            },
+            "nimoTurkey": {
+                title: "NIMO TURKEY",
+                sliderId: "nimoSlider",
+                images: [
+                    "https://imgur.com/elxjh91.png",
+                    "https://imgur.com/1ZRY6lF.png",
+                    "https://imgur.com/Dx4CL5v.png",
+                    "https://imgur.com/DgLCFV3.png",
+                    "https://imgur.com/vMSzP9N.png",
+                    "https://imgur.com/p55vgZQ.png",
+                    "https://imgur.com/ru8XnGy.png",
+                    "https://imgur.com/h0MGsKj.png",
+                    "https://imgur.com/3whhVaM.png",
+                    "https://imgur.com/rSNFh5u.png"
+                ]
+            },
+            "ohoCataloge": {
+                title: "OHO Cataloge",
+                sliderId: "ohoSlider",
+                images: [
+                    "https://imgur.com/Ytz2pXT.png",
+                    "https://imgur.com/POWP8lM.png",
+                    "https://imgur.com/1WlnkPo.png",
+                    "https://imgur.com/KwJFSuT.png",
+                    "https://imgur.com/loqECwV.png",
+                    "https://imgur.com/nuWcit0.png",
+                    "https://imgur.com/hAx9wxG.png"
+                ]
+            },
+            "orthoPedic": {
+                title: "Ortho Pedic",
+                sliderId: "orthoSlider",
+                images: [
+                    "https://imgur.com/tbxB4lW.png",
+                    "https://imgur.com/6fQV82p.png",
+                    "https://imgur.com/POhN2Aw.png"
+                ]
+            },
+            "conwePDF": {
+                title: "Conwe PDF",
+                sliderId: "conweSlider",
+                images: [
+                    "https://imgur.com/cJ12heT.png",
+                    "https://imgur.com/m35wviO.png"
+                ]
+            },
+            "farmasiCatalogue": {
+                title: "Farmasi Catalogue",
+                sliderId: "farmasiSlider",
+                images: [
+                    "https://imgur.com/4Vgtcb6.png",
+                    "https://imgur.com/2unW8Mu.png",
+                    "https://imgur.com/yPaDvVd.png",
+                    "https://imgur.com/pw4b1Ui.png",
+                    "https://imgur.com/fpG5TmX.png",
+                    "https://imgur.com/3YjPjfv.png",
+                    "https://imgur.com/cQZUleN.png",
+                    "https://imgur.com/iWw3BgR.png",
+                    "https://imgur.com/g7tG4k4.png",
+                    "https://imgur.com/l2WadZJ.png",
+                    "https://imgur.com/8xM3aXi.png",
+                    "https://imgur.com/dz8C5b0.png",
+                    "https://imgur.com/vZxxQFT.png",
+                    "https://imgur.com/U5l32Ju.png",
+                    "https://imgur.com/zMPPson.png",
+                    "https://imgur.com/fx84wVP.png"
+                ]
+            },
+            "pharmacyLemas": {
+                title: "Pharmacy Lemas",
+                sliderId: "pharmacyLemasSlider",
+                images: [
+                    "https://imgur.com/A6a7YH1.png",
+                    "https://imgur.com/Dz59zze.png",
+                    "https://imgur.com/G3wYswN.png",
+                    "https://imgur.com/1tuDJyg.png",
+                    "https://imgur.com/unZX5tC.png"
+                ]
+            }
+        };
+
+        // Language management
+        let currentLang = 'ar';
+        
+        function toggleLanguage() {
+            const body = document.body;
+            const langText = document.getElementById('langText');
+            
+            if (currentLang === 'ar') {
+                // Switch to English
+                body.dir = 'ltr';
+                currentLang = 'en';
+                langText.textContent = 'العربية';
+                
+                // Update page title
+                document.title = 'Medical Binary Establishment - Medical Supplies Specialists';
+                
+                // Update meta description
+                document.querySelector('meta[name="description"]').content = 'Medical Binary Establishment - Specialists in medical supplies and surgical consumables';
+            } else {
+                // Switch to Arabic
+                body.dir = 'rtl';
+                currentLang = 'ar';
+                langText.textContent = 'English';
+                
+                // Update page title
+                document.title = 'Medical Binary Establishment - الثنائية الطبية';
+                
+                // Update meta description
+                document.querySelector('meta[name="description"]').content = 'Medical Binary Establishment - متخصصون في المستلزمات الطبية والمستهلكات الجراحية';
+            }
+        }
+
+        // Copy Click Code function
+        function copyClickCode() {
+            const clickCode = document.getElementById('clickCode');
+            const textToCopy = clickCode.textContent;
+            
+            // Create a temporary textarea element
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+            
+            // Select and copy the text
+            textarea.select();
+            document.execCommand('copy');
+            
+            // Remove the temporary textarea
+            document.body.removeChild(textarea);
+            
+            // Show success message
+            const successMsg = document.getElementById('copySuccess');
+            successMsg.classList.add('show');
+            
+            // Change button text temporarily
+            const copyBtn = event.currentTarget;
+            const originalHtml = copyBtn.innerHTML;
+            
+            if (currentLang === 'ar') {
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> تم النسخ!';
+            } else {
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            }
+            
+            copyBtn.style.backgroundColor = '#2ECC71';
+            copyBtn.style.color = 'white';
+            
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                copyBtn.innerHTML = originalHtml;
+                copyBtn.style.backgroundColor = '';
+                copyBtn.style.color = '';
+            }, 2000);
+            
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialize galleries
+        function initializeGalleries() {
+            // Loop through all categories and create galleries
+            for (const categoryKey in galleryData) {
+                const category = galleryData[categoryKey];
+                const slider = document.getElementById(category.sliderId);
+                
+                if (slider) {
+                    category.images.forEach((imgSrc, index) => {
+                        const galleryItem = createGalleryItem(imgSrc, category.title, index + 1);
+                        slider.appendChild(galleryItem);
+                    });
+                }
+            }
+        }
+
+        function createGalleryItem(imgSrc, category, index) {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            
+            let imgLabel = currentLang === 'ar' ? `صورة ${index}` : `Image ${index}`;
+            
+            galleryItem.innerHTML = `
+                <img src="${imgSrc}" alt="${category} ${index}" onclick="openModal('${imgSrc}')">
+                <div class="gallery-item-content">
+                    <div class="item-category">${category}</div>
+                    <p class="lang-ar">صورة ${index}</p>
+                    <p class="lang-en">Image ${index}</p>
+                </div>
+            `;
+            return galleryItem;
+        }
+
+        // Slider functionality
+        function scrollSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const scrollAmount = 300;
+            if (slider) {
+                slider.scrollLeft += direction * scrollAmount;
+            }
+        }
+
+        // Modal functions
+        function openModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'flex';
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeGalleries();
+            
+            // Add click effects
+            const buttons = document.querySelectorAll('.action-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
