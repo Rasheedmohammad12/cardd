@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Future’s Journey Programming Institution</title>
+    <title>Future's Journey | Smart NFC & QR Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #0a2c5a;
-            --primary-light: #1a5fb4;
-            --accent-gold: #d4af37;
-            --accent-silver: #c0c0c0;
-            --light-bg: #f8f9fa;
-            --text-dark: #222;
-            --text-light: #f8f9fa;
-            --transition: all 0.3s ease;
+            --navy-deep: #0a1a2d;
+            --navy-medium: #1a3357;
+            --gold-primary: #d4af37;
+            --gold-light: #f4e4b8;
+            --platinum: #e5e4e2;
+            --charcoal: #2a2d34;
+            --white-pure: #ffffff;
+            --white-off: #f8f9fa;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow-subtle: 0 10px 30px rgba(10, 26, 45, 0.08);
+            --shadow-elevated: 0 20px 60px rgba(10, 26, 45, 0.12);
         }
         
         * {
@@ -24,337 +29,517 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: 'Tajawal', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--light-bg);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--charcoal);
+            background-color: var(--white-off);
             overflow-x: hidden;
         }
         
-        h1, h2, h3, h4 {
-            font-family: 'Cairo', sans-serif;
-            font-weight: 700;
-            margin-bottom: 1rem;
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--navy-deep);
+            line-height: 1.3;
         }
         
         .container {
-            width: 90%;
-            max-width: 1200px;
+            width: 100%;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
         }
         
-        /* Header Styles */
-        header {
-            background: linear-gradient(to right, var(--primary-dark), var(--primary-light));
-            color: var(--text-light);
-            padding: 1.5rem 0;
+        /* Enhanced Header */
+        .luxury-header {
+            background-color: rgba(10, 26, 45, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            transition: var(--transition-smooth);
         }
         
-        .header-content {
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
-        .logo {
+        .logo-wrapper {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
         
-        .logo img {
+        .logo-img {
             height: 60px;
             width: auto;
             filter: brightness(0) invert(1);
+            transition: var(--transition-smooth);
         }
         
         .logo-text {
             display: flex;
             flex-direction: column;
+            border-left: 1px solid rgba(212, 175, 55, 0.3);
+            padding-left: 20px;
         }
         
-        .logo h1 {
-            font-size: 1.6rem;
-            margin-bottom: 0.2rem;
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: var(--white-pure);
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
         }
         
-        .logo p {
-            font-size: 0.9rem;
-            opacity: 0.9;
+        .logo-text p {
+            font-size: 0.85rem;
+            color: var(--platinum);
+            opacity: 0.8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         
-        nav ul {
+        .luxury-nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 40px;
         }
         
-        nav a {
-            color: var(--text-light);
+        .luxury-nav a {
+            color: var(--white-pure);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
-            transition: var(--transition);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
             position: relative;
+            padding: 8px 0;
+            transition: var(--transition-smooth);
         }
         
-        nav a:hover {
-            color: var(--accent-gold);
-        }
-        
-        nav a::after {
+        .luxury-nav a::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
-            background: var(--accent-gold);
-            bottom: -5px;
-            right: 0;
-            transition: var(--transition);
+            background: var(--gold-primary);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition-smooth);
         }
         
-        nav a:hover::after {
+        .luxury-nav a:hover {
+            color: var(--gold-light);
+        }
+        
+        .luxury-nav a:hover::after {
             width: 100%;
         }
         
-        .mobile-menu {
+        .mobile-toggle {
             display: none;
             font-size: 1.5rem;
+            color: var(--white-pure);
             cursor: pointer;
+            background: none;
+            border: none;
         }
         
-        /* Hero Section */
-        .hero {
-            padding: 180px 0 100px;
-            background: linear-gradient(rgba(10, 44, 90, 0.85), rgba(26, 95, 180, 0.8)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+        /* Enhanced Hero Section */
+        .luxury-hero {
+            padding: 220px 0 150px;
+            background: linear-gradient(135deg, rgba(10, 26, 45, 0.92) 0%, rgba(26, 51, 87, 0.88) 100%), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
-            color: var(--text-light);
-            text-align: center;
+            background-attachment: fixed;
+            color: var(--white-pure);
+            position: relative;
+            overflow: hidden;
         }
         
-        .hero h2 {
-            font-size: 3.2rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .hero p {
-            font-size: 1.4rem;
+        .hero-content {
             max-width: 800px;
-            margin: 0 auto 2rem;
-            line-height: 1.8;
+            position: relative;
+            z-index: 2;
         }
         
-        .highlight {
-            color: var(--accent-gold);
-            font-weight: 700;
+        .hero-tag {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-light);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
         
-        /* Sections Common Styles */
-        section {
-            padding: 80px 0;
+        .hero-title {
+            font-size: 4rem;
+            color: var(--white-pure);
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+        
+        .hero-highlight {
+            color: var(--gold-primary);
+            position: relative;
+        }
+        
+        .hero-highlight::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            background: rgba(212, 175, 55, 0.2);
+            bottom: 5px;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--platinum);
+            margin-bottom: 40px;
+            max-width: 700px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+        .executive-card {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 30px;
+        }
+        
+        .executive-card h3 {
+            color: var(--white-pure);
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+        
+        .executive-card p {
+            color: var(--gold-light);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+        
+        /* Section Styling */
+        .luxury-section {
+            padding: 120px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-subtitle {
+            color: var(--gold-primary);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
         }
         
         .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
+            font-size: 3rem;
+            color: var(--navy-deep);
             position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary-dark);
             display: inline-block;
-            position: relative;
-            padding-bottom: 15px;
+            margin-bottom: 20px;
         }
         
-        .section-title h2::after {
+        .section-title::after {
             content: '';
             position: absolute;
-            width: 70px;
+            width: 80px;
             height: 4px;
-            background: var(--accent-gold);
-            bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
+            background: var(--gold-primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-intro {
+            font-size: 1.2rem;
+            color: var(--navy-medium);
+            max-width: 700px;
+            margin: 30px auto 0;
+            line-height: 1.6;
         }
         
         /* About Section */
         .about-content {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
             align-items: center;
-            gap: 50px;
-        }
-        
-        .about-text {
-            flex: 1;
         }
         
         .about-text p {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: var(--charcoal);
             line-height: 1.8;
         }
         
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .company-details {
+            background: var(--white-pure);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-subtle);
+            margin-top: 40px;
+            border-top: 4px solid var(--gold-primary);
         }
         
-        .about-image img {
+        .detail-item {
+            display: flex;
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(42, 45, 52, 0.08);
+        }
+        
+        .detail-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .detail-icon {
+            color: var(--gold-primary);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            min-width: 24px;
+        }
+        
+        .about-visual {
+            position: relative;
+        }
+        
+        .visual-main {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 500px;
+            background: linear-gradient(135deg, var(--navy-deep), var(--navy-medium));
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-elevated);
+            position: relative;
+        }
+        
+        .visual-overlay {
+            position: absolute;
+            width: 80%;
+            height: 300px;
+            background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') center/cover;
+            border-radius: 12px;
+            bottom: -40px;
+            right: -40px;
+            box-shadow: var(--shadow-elevated);
+            border: 8px solid var(--white-pure);
         }
         
         /* Products Section */
-        .products {
-            background-color: #f0f4f8;
+        .products-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%);
         }
         
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
         }
         
         .product-card {
-            background: white;
-            border-radius: 10px;
+            background: var(--white-pure);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition-smooth);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-elevated);
+        }
+        
+        .product-header {
+            background: linear-gradient(135deg, var(--navy-deep), var(--navy-medium));
+            color: var(--white-pure);
+            padding: 35px 30px;
+            text-align: center;
         }
         
         .product-icon {
-            background: linear-gradient(to right, var(--primary-dark), var(--primary-light));
-            color: white;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--gold-primary);
         }
         
-        .product-content {
-            padding: 25px;
-        }
-        
-        .product-content h3 {
-            color: var(--primary-dark);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        /* Features Section */
-        .features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-        
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            background: var(--primary-light);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-        
-        .feature-text h3 {
-            color: var(--primary-dark);
+        .product-header h3 {
+            color: var(--white-pure);
+            font-size: 1.8rem;
             margin-bottom: 10px;
         }
         
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(to right, var(--primary-dark), var(--primary-light));
-            color: var(--text-light);
+        .product-body {
+            padding: 35px 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
-        .contact .section-title h2 {
-            color: var(--text-light);
+        .product-features {
+            list-style: none;
+            margin: 20px 0 30px;
+            flex-grow: 1;
         }
         
-        .contact .section-title h2::after {
-            background: var(--accent-gold);
+        .product-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(42, 45, 52, 0.08);
+            position: relative;
+            padding-left: 30px;
         }
         
-        .contact-content {
+        .product-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold-primary);
+            font-weight: bold;
+        }
+        
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Technology Section */
+        .tech-highlights {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .tech-item {
+            text-align: center;
+            padding: 40px 25px;
+            background: var(--white-pure);
+            border-radius: 12px;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition-smooth);
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-elevated);
+        }
+        
+        .tech-icon {
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+        }
+        
+        .tech-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-medium) 100%);
+            color: var(--white-pure);
+        }
+        
+        .contact-section .section-title {
+            color: var(--white-pure);
+        }
+        
+        .contact-section .section-title::after {
+            background: var(--gold-primary);
+        }
+        
+        .contact-section .section-subtitle {
+            color: var(--gold-light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
         }
         
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 35px;
         }
         
         .contact-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
         }
         
-        .contact-icon {
-            background: rgba(255, 255, 255, 0.1);
+        .contact-icon-wrapper {
+            background: rgba(212, 175, 55, 0.15);
             width: 60px;
             height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             flex-shrink: 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--gold-primary);
         }
         
         .contact-details h3 {
-            margin-bottom: 5px;
+            color: var(--white-pure);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
         }
         
-        .social-links {
+        .contact-details p, .contact-details a {
+            color: var(--platinum);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        
+        .contact-details a:hover {
+            color: var(--gold-primary);
+        }
+        
+        .social-elegant {
             display: flex;
             gap: 15px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
         
         .social-link {
@@ -365,30 +550,29 @@
             height: 50px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: white;
+            color: var(--white-pure);
             font-size: 1.3rem;
-            transition: var(--transition);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
         
         .social-link:hover {
-            background: var(--accent-gold);
+            background: var(--gold-primary);
             transform: translateY(-5px);
         }
         
         /* Footer */
-        footer {
-            background: #0a1a36;
-            color: var(--text-light);
-            padding: 40px 0 20px;
+        .luxury-footer {
+            background: var(--navy-deep);
+            color: var(--platinum);
+            padding: 60px 0 30px;
         }
         
-        .footer-content {
+        .footer-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            padding-bottom: 30px;
+            padding-bottom: 40px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
@@ -400,280 +584,396 @@
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             font-size: 0.9rem;
-            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.5px;
         }
         
         /* Responsive Design */
-        @media (max-width: 992px) {
+        @media (max-width: 1100px) {
+            .hero-title {
+                font-size: 3.2rem;
+            }
+            
             .about-content {
-                flex-direction: column;
+                gap: 50px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .container {
+                padding: 0 30px;
             }
             
-            .hero h2 {
-                font-size: 2.5rem;
+            .luxury-nav ul {
+                gap: 25px;
             }
             
-            .hero p {
-                font-size: 1.2rem;
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .visual-overlay {
+                display: none;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
             }
         }
         
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-            
-            .mobile-menu {
+            .mobile-toggle {
                 display: block;
             }
             
-            .hero {
-                padding: 150px 0 80px;
+            .luxury-nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--navy-deep);
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                border-top: 1px solid rgba(212, 175, 55, 0.2);
             }
             
-            .hero h2 {
-                font-size: 2rem;
+            .luxury-nav.active ul {
+                display: flex;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .hero-title {
+                font-size: 2.5rem;
             }
             
-            .section-title h2 {
-                font-size: 2rem;
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
             
-            .features-list {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .luxury-section {
+                padding: 80px 0;
+            }
+            
+            .products-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
             }
         }
         
         @media (max-width: 576px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
+            .container {
+                padding: 0 20px;
             }
             
-            .logo {
-                flex-direction: column;
-                text-align: center;
+            .hero-title {
+                font-size: 2.2rem;
             }
             
-            .hero {
-                padding: 180px 0 60px;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-            
-            .footer-content {
+            .executive-card {
                 flex-direction: column;
                 text-align: center;
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .product-header, .product-body {
+                padding: 25px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <img src="https://imgur.com/bYSajP0.png" alt="Future's Journey Logo">
+    <!-- Luxury Header -->
+    <header class="luxury-header">
+        <div class="container header-container">
+            <div class="logo-wrapper">
+                <!-- Replace with actual logo when you have the correct link -->
+                <img src="https://imgur.com/bYSajP0.png" alt="Future's Journey Logo" class="logo-img">
                 <div class="logo-text">
-                    <h1>Future’s Journey Programming Institution</h1>
-                    <p>شركة مبتكرة متخصصة في الحلول الذكية الحديثة</p>
+                    <h1>Future's Journey</h1>
+                    <p>Programming Institution</p>
                 </div>
             </div>
             
-            <nav>
+            <nav class="luxury-nav">
                 <ul>
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#about">عن الشركة</a></li>
-                    <li><a href="#products">منتجاتنا</a></li>
-                    <li><a href="#features">مميزاتنا</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#technology">Technology</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="mobile-menu">
+                <button class="mobile-toggle">
                     <i class="fas fa-bars"></i>
-                </div>
+                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <!-- Luxury Hero Section -->
+    <section class="luxury-hero" id="home">
         <div class="container">
-            <h2>مستقبل الاتصال في <span class="highlight">لمسة واحدة</span></h2>
-            <p>نقدم بطاقات وستاندات ذكية تدعم تقنيات QR Code و NFC، مما يجعل مشاركة المعلومات والاتصال أسهل من أي وقت مضى - بلمسة واحدة فقط!</p>
-            <h3>Abd Al Malek Al Shareff</h3>
-            <p>المدير التنفيذي</p>
+            <div class="hero-content">
+                <span class="hero-tag">Innovative Smart Solutions</span>
+                <h1 class="hero-title">The Future of Connection <br>in <span class="hero-highlight">One Touch</span></h1>
+                <p class="hero-subtitle">
+                    We offer smart cards and stands that support QR Code and NFC technologies, making information sharing and communication easier than ever. Experience elegance, high quality, and cutting-edge technology combined.
+                </p>
+                
+                <div class="executive-card">
+                    <div>
+                        <h3>Abd Al Malek Al Shareff</h3>
+                        <p>Managing Director</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="luxury-section" id="about">
         <div class="container">
-            <div class="section-title">
-                <h2>عن شركتنا</h2>
+            <div class="section-header">
+                <span class="section-subtitle">About Our Company</span>
+                <h2 class="section-title">Future's Journey Programming Institution</h2>
+                <p class="section-intro">An innovative company specializing in modern smart solutions that bridge the physical and digital worlds with elegance and advanced technology.</p>
             </div>
             
             <div class="about-content">
                 <div class="about-text">
-                    <p>Future’s Journey Programming Institution هي شركة مبتكرة متخصصة في تقديم الحلول الذكية الحديثة. نحن نركز على دمج الأناقة والجودة العالية مع أحدث التقنيات لجعل اتصالك أسهل وأسرع وأذكى من أي وقت مضى.</p>
+                    <p>We are dedicated to transforming how businesses and individuals share information and connect with their audiences. Our products are designed with both aesthetics and functionality in mind, creating seamless experiences that leave lasting impressions.</p>
                     
-                    <p>نحن نقدم منتجات صالحة مدى الحياة ومضمونة بالكامل، مع تحريرين مجانيين بعد الشراء. منتجاتنا تجمع بين الأناقة والجودة العالية والتقنية المتطورة.</p>
+                    <p>Each of our smart cards and stands comes with lifetime validity and a guaranteed warranty, along with two free edits after purchase. We believe in creating lasting partnerships with our clients, which is why we offer continued support for our products.</p>
                     
-                    <p>مع نقرة بسيطة من هاتفك على البطاقة أو الحامل، تبدأ تجربتك على الفور - بدون حاجة لإعدادات معقدة.</p>
+                    <p>With a simple tap of your phone on our card or stand, your experience begins instantly — no complicated setup or technical knowledge required. We've eliminated the barriers to smart technology adoption.</p>
                     
                     <div class="company-details">
-                        <p><strong>الرقم الوطني للشركة:</strong> 101052944</p>
-                        <p><strong>الموقع:</strong> عمان - صويلح</p>
-                        <p><strong>المدير العام والمسؤول:</strong> عبدالمالك محمود شريف ناصر</p>
+                        <div class="detail-item">
+                            <div class="detail-icon"><i class="fas fa-building"></i></div>
+                            <div>
+                                <strong>Company Name:</strong> Future's Journey Programming Institution
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon"><i class="fas fa-hashtag"></i></div>
+                            <div>
+                                <strong>National Company Number:</strong> 101052944
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <strong>Location:</strong> Amman – Sweileh
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon"><i class="fas fa-user-tie"></i></div>
+                            <div>
+                                <strong>General Manager & Responsible Officer:</strong> Abdulmalik Mahmoud Sharif Nasser
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="تقنيات اتصال ذكية">
+                <div class="about-visual">
+                    <div class="visual-main"></div>
+                    <div class="visual-overlay"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Products Section -->
-    <section class="products" id="products">
+    <section class="luxury-section products-section" id="products">
         <div class="container">
-            <div class="section-title">
-                <h2>منتجاتنا</h2>
+            <div class="section-header">
+                <span class="section-subtitle">Our Premium Products</span>
+                <h2 class="section-title">Smart Solutions for Modern Needs</h2>
+                <p class="section-intro">Discover our range of elegantly designed smart products that combine cutting-edge technology with luxurious aesthetics.</p>
             </div>
             
             <div class="products-grid">
                 <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-id-card"></i>
+                    <div class="product-header">
+                        <div class="product-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <h3>Smart Cards</h3>
+                        <p>NFC & QR Technology</p>
                     </div>
-                    <div class="product-content">
-                        <h3>البطاقات الذكية</h3>
-                        <p>بطاقات ذكية تدعم تقنيات QR Code و NFC للاتصال الفوري بمعلوماتك. مثالية للشركات والمهنيين.</p>
+                    <div class="product-body">
+                        <p>Premium smart cards that instantly share your contact information, portfolio, or business details with a simple tap or scan.</p>
+                        
+                        <ul class="product-features">
+                            <li>Instant information sharing</li>
+                            <li>Elegant, durable design</li>
+                            <li>Compatible with all smartphones</li>
+                            <li>Customizable with your branding</li>
+                            <li>Lifetime validity</li>
+                        </ul>
+                        
+                        <div class="product-footer">
+                            <p><strong>Perfect for:</strong> Professionals, executives, and businesses</p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-desktop"></i>
+                    <div class="product-header">
+                        <div class="product-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Smart Stands</h3>
+                        <p>Interactive Display Solutions</p>
                     </div>
-                    <div class="product-content">
-                        <h3>الستاندات الذكية</h3>
-                        <p>ستاندات ذكية تتيح مشاركة المعلومات بسهولة في المعارض والمؤتمرات والفعاليات المختلفة.</p>
+                    <div class="product-body">
+                        <p>Sophisticated stands that showcase your products, services, or information in an interactive, engaging format.</p>
+                        
+                        <ul class="product-features">
+                            <li>Interactive information displays</li>
+                            <li>High-quality construction</li>
+                            <li>Easy to update content</li>
+                            <li>Ideal for events and offices</li>
+                            <li>Wireless technology</li>
+                        </ul>
+                        
+                        <div class="product-footer">
+                            <p><strong>Perfect for:</strong> Exhibitions, reception areas, retail spaces</p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-qrcode"></i>
+                    <div class="product-header">
+                        <div class="product-icon">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <h3>QR Solutions</h3>
+                        <p>Complete Digital Integration</p>
                     </div>
-                    <div class="product-content">
-                        <h3>حلول QR Code متكاملة</h3>
-                        <p>أنظمة متكاملة تعتمد على تقنية QR Code لربط العالم الرقمي بالمادي بسهولة.</p>
+                    <div class="product-body">
+                        <p>Comprehensive QR code solutions that bridge physical and digital experiences seamlessly.</p>
+                        
+                        <ul class="product-features">
+                            <li>Custom QR code designs</li>
+                            <li>Dynamic content management</li>
+                            <li>Analytics and tracking</li>
+                            <li>Secure and reliable</li>
+                            <li>Easy integration</li>
+                        </ul>
+                        
+                        <div class="product-footer">
+                            <p><strong>Perfect for:</strong> Marketing materials, products, signage</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features">
+    <!-- Technology Section -->
+    <section class="luxury-section" id="technology">
         <div class="container">
-            <div class="section-title">
-                <h2>مميزاتنا</h2>
+            <div class="section-header">
+                <span class="section-subtitle">Our Technology</span>
+                <h2 class="section-title">Innovation at Your Fingertips</h2>
+                <p class="section-intro">We utilize the latest technologies to create seamless, intuitive experiences that require no technical expertise from users.</p>
             </div>
             
-            <div class="features-list">
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-infinity"></i>
-                    </div>
-                    <div class="feature-text">
-                        <h3>صلاحية مدى الحياة</h3>
-                        <p>منتجاتنا صالحة للاستخدام مدى الحياة مع ضمان كامل على الجودة والأداء.</p>
-                    </div>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-edit"></i>
-                    </div>
-                    <div class="feature-text">
-                        <h3>تعديلات مجانية</h3>
-                        <p>نوفر تحريرين مجانيين بعد الشراء لضمان مواكبة معلوماتك لأحدث التحديثات.</p>
-                    </div>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon">
+            <div class="tech-highlights">
+                <div class="tech-item">
+                    <div class="tech-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <div class="feature-text">
-                        <h3>سهولة الاستخدام</h3>
-                        <p>بمجرد لمس هاتفك للبطاقة أو الحامل، تبدأ تجربتك فوراً دون حاجة لإعدادات.</p>
-                    </div>
+                    <h4>Instant Activation</h4>
+                    <p>No setup required. Works immediately with a simple tap or scan.</p>
                 </div>
                 
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-gem"></i>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-infinity"></i>
                     </div>
-                    <div class="feature-text">
-                        <h3>تصميم فاخر</h3>
-                        <p>منتجاتنا تجمع بين الأناقة والجودة العالية مع أحدث التقنيات المتطورة.</p>
+                    <h4>Lifetime Validity</h4>
+                    <p>Our products are designed to last forever with guaranteed warranty.</p>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-edit"></i>
                     </div>
+                    <h4>Free Updates</h4>
+                    <p>Two free edits after purchase to keep your information current.</p>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Secure & Reliable</h4>
+                    <p>Enterprise-grade security with reliable performance you can trust.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="luxury-section contact-section" id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>اتصل بنا</h2>
+            <div class="section-header">
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Connect With Us</h2>
+                <p class="section-intro" style="color: var(--platinum);">Reach out to discuss how our smart solutions can transform your communication and information sharing.</p>
             </div>
             
-            <div class="contact-content">
+            <div class="contact-container">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                        <div class="contact-icon-wrapper">
+                            <i class="fas fa-phone contact-icon"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>رقم الهاتف</h3>
-                            <p>0798457949</p>
+                            <h3>Phone Number</h3>
+                            <p><a href="tel:0798457949">0798457949</a></p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-icon-wrapper">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>الموقع</h3>
-                            <p>عمان - صويلح</p>
+                            <h3>Location</h3>
+                            <p>Amman – Sweileh</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                        <div class="contact-icon-wrapper">
+                            <i class="fas fa-envelope contact-icon"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>البريد الإلكتروني</h3>
-                            <p>futuresjourneyprogrammingin@gmail.com</p>
+                            <h3>Email Address</h3>
+                            <p><a href="mailto:futuresjourneyprogrammingin@gmail.com">futuresjourneyprogrammingin@gmail.com</a></p>
                         </div>
                     </div>
                     
-                    <div class="social-links">
+                    <div class="social-elegant">
                         <a href="https://www.facebook.com/share/1AF1XGGBy1/?mibextid=wwXIfr" class="social-link" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
@@ -690,63 +990,79 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="luxury-footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-container">
                 <div class="footer-logo">
                     <img src="https://imgur.com/bYSajP0.png" alt="Future's Journey Logo">
                 </div>
                 
                 <div class="footer-text">
-                    <h3>Future’s Journey Programming Institution</h3>
-                    <p>شركة مبتكرة متخصصة في الحلول الذكية الحديثة</p>
+                    <h3>Future's Journey Programming Institution</h3>
+                    <p>An innovative company specializing in modern smart solutions</p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>جميع الحقوق محفوظة &copy; 2023 Future’s Journey Programming Institution</p>
+                <p>&copy; 2023 Future's Journey Programming Institution. All rights reserved. | National Company Number: 101052944</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const navUl = document.querySelector('nav ul');
-            navUl.style.display = navUl.style.display === 'flex' ? 'none' : 'flex';
+        // Mobile navigation toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.luxury-nav').classList.toggle('active');
         });
         
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if(window.innerWidth <= 768) {
-                        document.querySelector('nav ul').style.display = 'none';
-                    }
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.luxury-nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.luxury-nav').classList.remove('active');
                 }
             });
         });
         
         // Header background on scroll
         window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if(window.scrollY > 50) {
-                header.style.backgroundColor = 'rgba(10, 44, 90, 0.95)';
+            const header = document.querySelector('.luxury-header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(10, 26, 45, 0.98)';
+                header.style.backdropFilter = 'blur(15px)';
             } else {
-                header.style.backgroundColor = '';
+                header.style.backgroundColor = 'rgba(10, 26, 45, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
             }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Product card hover effects enhancement
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
         });
     </script>
 </body>
