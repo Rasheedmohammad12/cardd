@@ -100,12 +100,11 @@
             margin-bottom: 40px;
         }
         
-        .logo-arabic {
-            font-size: 3.5rem;
-            color: var(--gold-primary);
-            margin-bottom: 20px;
-            font-weight: 700;
-            font-family: 'Playfair Display', serif;
+        .welcome-logo-img {
+            width: 180px;
+            height: auto;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 5px 15px rgba(212, 175, 55, 0.3));
         }
         
         .logo-english {
@@ -187,44 +186,11 @@
             position: relative;
         }
         
-        .logo-symbol {
-            width: 65px;
+        .logo-img {
             height: 65px;
-            background: linear-gradient(135deg, var(--gold-primary), #b8941f);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
+            width: auto;
+            filter: brightness(0) invert(1);
             transition: var(--transition-smooth);
-        }
-        
-        .logo-symbol:hover {
-            transform: rotate(5deg) scale(1.05);
-            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
-        }
-        
-        .logo-symbol::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
-            animation: logo-shine 4s infinite linear;
-        }
-        
-        @keyframes logo-shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        .logo-icon {
-            font-size: 28px;
-            color: var(--white-pure);
-            z-index: 2;
-            position: relative;
         }
         
         .logo-text {
@@ -318,7 +284,7 @@
             border: none;
         }
         
-        /* Enhanced Hero Section */
+        /* Enhanced Hero Section with Statistics */
         .luxury-hero {
             padding: 220px 0 150px;
             background: linear-gradient(135deg, rgba(10, 26, 45, 0.92) 0%, rgba(26, 51, 87, 0.88) 100%), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
@@ -334,6 +300,24 @@
             max-width: 800px;
             position: relative;
             z-index: 2;
+        }
+        
+        .stats-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            color: var(--gold-light);
+        }
+        
+        .stats-badge i {
+            color: var(--gold-primary);
+            margin-right: 8px;
         }
         
         .hero-tag {
@@ -418,6 +402,96 @@
             color: var(--gold-light);
             font-size: 0.95rem;
             letter-spacing: 1px;
+        }
+        
+        /* Statistics Section */
+        .stats-section {
+            background: linear-gradient(135deg, #f0f4f9 0%, #e6ecf5 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-card {
+            background: var(--white-pure);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-elevated);
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--gold-primary), var(--navy-medium));
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+        }
+        
+        .stat-value {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--navy-deep);
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stat-value .plus {
+            color: var(--gold-primary);
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--navy-medium);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .stat-subtext {
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+        }
+        
+        .stats-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .stats-title {
+            font-size: 2.5rem;
+            color: var(--navy-deep);
+            margin-bottom: 15px;
+        }
+        
+        .stats-description {
+            font-size: 1.1rem;
+            color: var(--navy-medium);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
         
         /* Inquiry Form Section */
@@ -878,33 +952,10 @@
             gap: 25px;
         }
         
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .footer-logo-arabic {
-            font-size: 2rem;
-            color: var(--gold-primary);
-            font-weight: 700;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .footer-logo-english {
-            font-size: 1.5rem;
-            color: var(--white-pure);
-            text-align: center;
-            line-height: 1.2;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .footer-logo-subtitle {
-            font-size: 0.9rem;
-            color: var(--platinum);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+        .footer-logo-img {
+            width: 120px;
+            height: auto;
+            filter: brightness(0) invert(1);
         }
         
         /* Footer */
@@ -966,6 +1017,10 @@
                 grid-template-columns: 1fr;
                 gap: 50px;
             }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (max-width: 768px) {
@@ -1020,12 +1075,12 @@
                 text-align: center;
             }
             
-            .logo-arabic {
-                font-size: 2.8rem;
+            .stats-container {
+                grid-template-columns: 1fr;
             }
             
-            .logo-english {
-                font-size: 1.8rem;
+            .stat-value {
+                font-size: 2.2rem;
             }
         }
         
@@ -1060,14 +1115,6 @@
                 font-size: 2rem;
             }
             
-            .logo-arabic {
-                font-size: 2.2rem;
-            }
-            
-            .logo-english {
-                font-size: 1.5rem;
-            }
-            
             .welcome-content {
                 padding: 30px 20px;
             }
@@ -1079,8 +1126,9 @@
     <div class="welcome-overlay" id="welcomePage">
         <div class="welcome-content">
             <div class="welcome-logo">
-                <div class="logo-arabic">مؤسسة رحلة المستقبل للبرمجة</div>
-                <div class="logo-english">FUTURE'S JOURNEY PROGRAMMING<br>INSTITUTIONS</div>
+                <!-- Logo from https://imgur.com/bYSajP0 -->
+                <img src="https://i.imgur.com/bYSajP0.png" alt="Future's Journey Programming Institution" class="welcome-logo-img">
+                <div class="logo-english">Future's Journey<br>PROGRAMMING INSTITUTION</div>
                 <div class="logo-subtitle">Smart NFC & QR Solutions</div>
             </div>
             
@@ -1099,12 +1147,11 @@
     <header class="luxury-header">
         <div class="container header-container">
             <div class="logo-container">
-                <div class="logo-symbol">
-                    <i class="fas fa-bolt logo-icon"></i>
-                </div>
+                <!-- Logo from https://imgur.com/bYSajP0 -->
+                <img src="https://i.imgur.com/bYSajP0.png" alt="Future's Journey Programming Institution" class="logo-img">
                 <div class="logo-text">
                     <h1>Future's Journey</h1>
-                    <p>Programming Institution</p>
+                    <p>PROGRAMMING INSTITUTION</p>
                 </div>
             </div>
             
@@ -1127,7 +1174,11 @@
     <section class="luxury-hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-tag">Innovative Smart Solutions</span>
+                <div class="stats-badge">
+                    <i class="fas fa-users"></i> USERS LAST 7 DAYS USING MEDIAN
+                </div>
+                
+                <span class="hero-tag">INNOVATIVE SMART SOLUTIONS</span>
                 <h1 class="hero-title">The Future of Connection <br>in <span class="hero-highlight">One Touch</span></h1>
                 <p class="hero-subtitle">
                     We offer smart cards and stands that support QR Code and NFC technologies, making information sharing and communication easier than ever. Experience elegance, high quality, and cutting-edge technology combined.
@@ -1138,6 +1189,54 @@
                         <h3>Abd Al Malek Al Shareff</h3>
                         <p>Managing Director</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-header">
+                <h2 class="stats-title">Our Impact in Numbers</h2>
+                <p class="stats-description">Real-time statistics showing our growth and user engagement metrics.</p>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-value" id="bounceRate">40.6<span class="plus">%</span></div>
+                    <div class="stat-label">Bounce Rate (LUX)</div>
+                    <div class="stat-subtext">Lower than industry average</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-signal"></i>
+                    </div>
+                    <div class="stat-value" id="sessionsCount">479<span class="plus">K</span></div>
+                    <div class="stat-label">Sessions (LUX)</div>
+                    <div class="stat-subtext">Active user sessions</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-value" id="sessionLength">17<span class="plus">min</span></div>
+                    <div class="stat-label">Session Length (LUX)</div>
+                    <div class="stat-subtext">Average duration</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="stat-value" id="pageViews">2<span class="plus">pvs</span></div>
+                    <div class="stat-label">PVs Per Session (LUX)</div>
+                    <div class="stat-subtext">Page views per session</div>
                 </div>
             </div>
         </div>
@@ -1428,10 +1527,11 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-logo-container">
-                    <div class="footer-logo">
-                        <div class="footer-logo-arabic">مؤسسة رحلة المستقبل للبرمجة</div>
-                        <div class="footer-logo-english">FUTURE'S JOURNEY PROGRAMMING<br>INSTITUTIONS</div>
-                        <div class="footer-logo-subtitle">Smart NFC & QR Solutions</div>
+                    <!-- Logo from https://imgur.com/bYSajP0 -->
+                    <img src="https://i.imgur.com/bYSajP0.png" alt="Future's Journey Programming Institution" class="footer-logo-img">
+                    <div style="text-align: center;">
+                        <h3 style="color: var(--white-pure); margin-bottom: 10px;">Future's Journey</h3>
+                        <p style="color: var(--platinum);">PROGRAMMING INSTITUTION</p>
                     </div>
                 </div>
                 
@@ -1473,7 +1573,63 @@
                 // User has visited before, hide welcome page immediately
                 welcomePage.style.display = 'none';
             }
+            
+            // Initialize animated statistics
+            animateStatistics();
         });
+        
+        // Animated Statistics
+        function animateStatistics() {
+            const statistics = [
+                { id: 'bounceRate', target: 40.6, suffix: '%', duration: 2000 },
+                { id: 'sessionsCount', target: 479, suffix: 'K', duration: 2500 },
+                { id: 'sessionLength', target: 17, suffix: 'min', duration: 1800 },
+                { id: 'pageViews', target: 2, suffix: 'pvs', duration: 1500 }
+            ];
+            
+            statistics.forEach(stat => {
+                const element = document.getElementById(stat.id);
+                if (!element) return;
+                
+                const startValue = 0;
+                const endValue = stat.target;
+                const duration = stat.duration;
+                const startTime = Date.now();
+                
+                function updateNumber() {
+                    const currentTime = Date.now();
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Easing function for smooth animation
+                    const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                    const currentValue = startValue + (endValue - startValue) * easeOutQuart;
+                    
+                    // Format the number (remove decimals for whole numbers)
+                    const displayValue = stat.suffix === '%' 
+                        ? currentValue.toFixed(1)
+                        : Math.floor(currentValue);
+                    
+                    element.innerHTML = `${displayValue}<span class="plus">${stat.suffix}</span>`;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateNumber);
+                    }
+                }
+                
+                // Start animation when element is in viewport
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateNumber();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(element);
+            });
+        }
         
         // Inquiry Form Submission
         const inquiryForm = document.getElementById('inquiryForm');
@@ -1575,18 +1731,6 @@
                 }
             });
         });
-        
-        // Logo shine animation control
-        const logoShine = document.querySelector('.logo-symbol');
-        if (logoShine) {
-            logoShine.addEventListener('mouseenter', function() {
-                this.style.animationPlayState = 'running';
-            });
-            
-            logoShine.addEventListener('mouseleave', function() {
-                this.style.animationPlayState = 'paused';
-            });
-        }
     </script>
 </body>
 </html>
