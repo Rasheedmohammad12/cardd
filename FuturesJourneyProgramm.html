@@ -55,6 +55,130 @@
             padding: 0 40px;
         }
         
+        /* Welcome Page Overlay */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-medium) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        .welcome-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .welcome-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo-arabic {
+            font-size: 3.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo-english {
+            font-size: 2.2rem;
+            color: var(--white-pure);
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo-subtitle {
+            font-size: 1.2rem;
+            color: var(--platinum);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        
+        .welcome-tagline {
+            font-size: 1.4rem;
+            color: var(--platinum);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .enter-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(to right, var(--gold-primary), #c19a2b);
+            color: var(--navy-deep);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .enter-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+        
+        .enter-button:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .enter-button:hover:after {
+            transform: translateX(100%);
+        }
+        
+        .welcome-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
         /* Enhanced Logo Design */
         .logo-container {
             display: flex;
@@ -296,115 +420,156 @@
             letter-spacing: 1px;
         }
         
-        /* Logo Enhancement Section */
-        .logo-showcase {
-            padding: 100px 0;
-            background: linear-gradient(to bottom, var(--white-off), #f0f3f7);
-            text-align: center;
+        /* Inquiry Form Section */
+        .inquiry-section {
+            background: linear-gradient(135deg, #f0f4f9 0%, #e6ecf5 100%);
+            padding: 120px 0;
         }
         
-        .logo-showcase .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 50px;
+        .inquiry-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
         }
         
-        .logo-presentation {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-        
-        .logo-version {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .logo-box {
-            width: 180px;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .inquiry-form-container {
+            background: var(--white-pure);
+            padding: 50px;
             border-radius: 24px;
             box-shadow: var(--shadow-elevated);
-            transition: var(--transition-smooth);
+            border-top: 4px solid var(--gold-primary);
         }
         
-        .logo-box:hover {
-            transform: scale(1.05) rotate(2deg);
+        .form-header {
+            margin-bottom: 40px;
         }
         
-        .logo-dark {
-            background: var(--navy-deep);
+        .form-header h2 {
+            font-size: 2.5rem;
+            color: var(--navy-deep);
+            margin-bottom: 15px;
         }
         
-        .logo-light {
-            background: var(--white-pure);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .logo-gold {
-            background: linear-gradient(135deg, var(--gold-primary), #b8941f);
-        }
-        
-        .logo-label {
-            font-weight: 600;
-            color: var(--navy-medium);
+        .form-header p {
+            color: var(--charcoal);
             font-size: 1.1rem;
+            line-height: 1.6;
         }
         
-        /* Footer Logo */
-        .footer-logo-container {
+        .inquiry-form {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 25px;
         }
         
-        .footer-logo {
+        .form-group {
             display: flex;
-            align-items: center;
-            gap: 15px;
+            flex-direction: column;
+            gap: 8px;
         }
         
-        .footer-logo-symbol {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--gold-primary), #b8941f);
+        .form-group label {
+            font-weight: 600;
+            color: var(--navy-medium);
+            font-size: 1rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 16px 20px;
+            border: 2px solid rgba(42, 45, 52, 0.1);
             border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--charcoal);
+            background: var(--white-pure);
+            transition: var(--transition-smooth);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            padding: 18px 30px;
+            background: linear-gradient(to right, var(--navy-deep), var(--navy-medium));
+            color: var(--white-pure);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            margin-top: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
         }
         
-        .footer-logo-icon {
-            font-size: 22px;
-            color: var(--white-pure);
+        .submit-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(10, 26, 45, 0.2);
         }
         
-        .footer-logo-text h3 {
-            color: var(--white-pure);
-            font-size: 1.6rem;
-            margin-bottom: 5px;
-            background: linear-gradient(to right, var(--white-pure), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .inquiry-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
         
-        .footer-logo-text p {
-            color: var(--platinum);
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+        .info-card {
+            background: var(--white-pure);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-subtle);
+            border-left: 4px solid var(--gold-primary);
         }
         
-        /* بقية الأنماط من الكود السابق تبقى كما هي */
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--navy-deep);
+        }
+        
+        .info-card p {
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        .form-message {
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .form-success {
+            background: rgba(46, 204, 113, 0.1);
+            color: #27ae60;
+            border: 2px solid #27ae60;
+        }
+        
+        .form-error {
+            background: rgba(231, 76, 60, 0.1);
+            color: #c0392b;
+            border: 2px solid #c0392b;
+        }
+        
+        /* بقية الأنماط من الكود السابق */
         /* Section Styling */
         .luxury-section {
             padding: 120px 0;
@@ -508,18 +673,6 @@
             position: relative;
         }
         
-        .visual-overlay {
-            position: absolute;
-            width: 80%;
-            height: 300px;
-            background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') center/cover;
-            border-radius: 12px;
-            bottom: -40px;
-            right: -40px;
-            box-shadow: var(--shadow-elevated);
-            border: 8px solid var(--white-pure);
-        }
-        
         /* Products Section */
         .products-section {
             background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%);
@@ -594,10 +747,6 @@
             font-weight: bold;
         }
         
-        .product-features li:last-child {
-            border-bottom: none;
-        }
-        
         /* Technology Section */
         .tech-highlights {
             display: grid;
@@ -624,11 +773,6 @@
             font-size: 2.5rem;
             color: var(--gold-primary);
             margin-bottom: 20px;
-        }
-        
-        .tech-item h4 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
         }
         
         /* Contact Section */
@@ -726,6 +870,43 @@
             transform: translateY(-5px);
         }
         
+        /* Footer Logo */
+        .footer-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-logo-arabic {
+            font-size: 2rem;
+            color: var(--gold-primary);
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .footer-logo-english {
+            font-size: 1.5rem;
+            color: var(--white-pure);
+            text-align: center;
+            line-height: 1.2;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .footer-logo-subtitle {
+            font-size: 0.9rem;
+            color: var(--platinum);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        
         /* Footer */
         .luxury-footer {
             background: var(--navy-deep);
@@ -759,8 +940,8 @@
                 gap: 50px;
             }
             
-            .logo-presentation {
-                gap: 40px;
+            .inquiry-container {
+                gap: 50px;
             }
         }
         
@@ -777,18 +958,13 @@
                 grid-template-columns: 1fr;
             }
             
-            .visual-overlay {
-                display: none;
+            .inquiry-container {
+                grid-template-columns: 1fr;
             }
             
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 50px;
-            }
-            
-            .logo-presentation {
-                flex-direction: column;
-                gap: 40px;
             }
         }
         
@@ -834,10 +1010,22 @@
                 grid-template-columns: 1fr;
             }
             
+            .inquiry-form-container {
+                padding: 30px;
+            }
+            
             .footer-container {
                 flex-direction: column;
                 gap: 30px;
                 text-align: center;
+            }
+            
+            .logo-arabic {
+                font-size: 2.8rem;
+            }
+            
+            .logo-english {
+                font-size: 1.8rem;
             }
         }
         
@@ -864,15 +1052,50 @@
                 padding: 25px 20px;
             }
             
-            .logo-box {
-                width: 150px;
-                height: 150px;
+            .inquiry-form-container {
+                padding: 25px;
+            }
+            
+            .form-header h2 {
+                font-size: 2rem;
+            }
+            
+            .logo-arabic {
+                font-size: 2.2rem;
+            }
+            
+            .logo-english {
+                font-size: 1.5rem;
+            }
+            
+            .welcome-content {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Luxury Header with Enhanced Logo -->
+    <!-- Welcome Page Overlay -->
+    <div class="welcome-overlay" id="welcomePage">
+        <div class="welcome-content">
+            <div class="welcome-logo">
+                <div class="logo-arabic">مؤسسة رحلة المستقبل للبرمجة</div>
+                <div class="logo-english">FUTURE'S JOURNEY PROGRAMMING<br>INSTITUTIONS</div>
+                <div class="logo-subtitle">Smart NFC & QR Solutions</div>
+            </div>
+            
+            <p class="welcome-tagline">
+                Experience the future of communication with our innovative smart cards and stands. 
+                One touch is all it takes to share information instantly.
+            </p>
+            
+            <button class="enter-button" id="enterSite">
+                Enter Website <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Luxury Header -->
     <header class="luxury-header">
         <div class="container header-container">
             <div class="logo-container">
@@ -890,7 +1113,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#products">Products</a></li>
-                    <li><a href="#technology">Technology</a></li>
+                    <li><a href="#inquiry">Inquiry</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <button class="mobile-toggle">
@@ -920,65 +1143,6 @@
         </div>
     </section>
 
-    <!-- Logo Showcase Section -->
-    <section class="logo-showcase">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Our Brand Identity</span>
-                <h2 class="section-title">Premium Logo Design</h2>
-                <p class="section-intro">A sophisticated logo representing innovation, technology, and elegance.</p>
-            </div>
-            
-            <div class="logo-presentation">
-                <div class="logo-version">
-                    <div class="logo-box logo-dark">
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <div style="width: 50px; height: 50px; background: var(--gold-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-bolt" style="color: white; font-size: 22px;"></i>
-                            </div>
-                            <div style="text-align: left;">
-                                <div style="color: white; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600;">Future's Journey</div>
-                                <div style="color: rgba(255,255,255,0.8); font-size: 10px; letter-spacing: 1px;">PROGRAMMING INSTITUTION</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="logo-label">Dark Version</div>
-                </div>
-                
-                <div class="logo-version">
-                    <div class="logo-box logo-light">
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <div style="width: 50px; height: 50px; background: var(--navy-deep); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-bolt" style="color: var(--gold-primary); font-size: 22px;"></i>
-                            </div>
-                            <div style="text-align: left;">
-                                <div style="color: var(--navy-deep); font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600;">Future's Journey</div>
-                                <div style="color: var(--navy-medium); font-size: 10px; letter-spacing: 1px;">PROGRAMMING INSTITUTION</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="logo-label">Light Version</div>
-                </div>
-                
-                <div class="logo-version">
-                    <div class="logo-box logo-gold">
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <div style="width: 50px; height: 50px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-bolt" style="color: var(--navy-deep); font-size: 22px;"></i>
-                            </div>
-                            <div style="text-align: left;">
-                                <div style="color: white; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600;">Future's Journey</div>
-                                <div style="color: rgba(255,255,255,0.9); font-size: 10px; letter-spacing: 1px;">PROGRAMMING INSTITUTION</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="logo-label">Gold Version</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- بقية أقسام الموقع تبقى كما هي -->
     <!-- About Section -->
     <section class="luxury-section" id="about">
         <div class="container">
@@ -1026,7 +1190,6 @@
                 
                 <div class="about-visual">
                     <div class="visual-main"></div>
-                    <div class="visual-overlay"></div>
                 </div>
             </div>
         </div>
@@ -1120,46 +1283,84 @@
         </div>
     </section>
 
-    <!-- Technology Section -->
-    <section class="luxury-section" id="technology">
+    <!-- Inquiry Section -->
+    <section class="luxury-section inquiry-section" id="inquiry">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Our Technology</span>
-                <h2 class="section-title">Innovation at Your Fingertips</h2>
-                <p class="section-intro">We utilize the latest technologies to create seamless, intuitive experiences that require no technical expertise from users.</p>
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Send Us Your Inquiry</h2>
+                <p class="section-intro">Have questions about our products? Send us your inquiry and we'll get back to you through Instagram.</p>
             </div>
             
-            <div class="tech-highlights">
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fas fa-bolt"></i>
+            <div class="inquiry-container">
+                <div class="inquiry-form-container">
+                    <div class="form-header">
+                        <h2>Inquiry Form</h2>
+                        <p>Fill out the form below and we'll contact you through Instagram with the details you provide.</p>
                     </div>
-                    <h4>Instant Activation</h4>
-                    <p>No setup required. Works immediately with a simple tap or scan.</p>
+                    
+                    <form class="inquiry-form" id="inquiryForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="instagramHandle">Instagram Username *</label>
+                            <input type="text" id="instagramHandle" name="instagramHandle" required placeholder="@username">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="optional">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="optional">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inquiryType">Type of Inquiry *</label>
+                            <select id="inquiryType" name="inquiryType" required>
+                                <option value="">Select an option</option>
+                                <option value="product-info">Product Information</option>
+                                <option value="pricing">Pricing & Quotation</option>
+                                <option value="custom-order">Custom Order</option>
+                                <option value="technical-support">Technical Support</option>
+                                <option value="partnership">Business Partnership</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Inquiry *</label>
+                            <textarea id="message" name="message" required placeholder="Please provide details about your inquiry..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <i class="fab fa-instagram"></i> Send via Instagram
+                        </button>
+                        
+                        <div id="formMessage" class="form-message"></div>
+                    </form>
                 </div>
                 
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fas fa-infinity"></i>
+                <div class="inquiry-info">
+                    <div class="info-card">
+                        <h3><i class="fas fa-info-circle" style="color: var(--gold-primary); margin-right: 10px;"></i> How It Works</h3>
+                        <p>After submitting your inquiry, we will contact you through Instagram using the username you provided. Make sure your Instagram account is active and accessible.</p>
                     </div>
-                    <h4>Lifetime Validity</h4>
-                    <p>Our products are designed to last forever with guaranteed warranty.</p>
-                </div>
-                
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fas fa-edit"></i>
+                    
+                    <div class="info-card">
+                        <h3><i class="fas fa-clock" style="color: var(--gold-primary); margin-right: 10px;"></i> Response Time</h3>
+                        <p>We typically respond within 24-48 hours. For urgent inquiries, please include "URGENT" in your message.</p>
                     </div>
-                    <h4>Free Updates</h4>
-                    <p>Two free edits after purchase to keep your information current.</p>
-                </div>
-                
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fas fa-shield-alt"></i>
+                    
+                    <div class="info-card">
+                        <h3><i class="fas fa-shield-alt" style="color: var(--gold-primary); margin-right: 10px;"></i> Privacy Assurance</h3>
+                        <p>Your information is secure and will only be used to respond to your inquiry. We do not share your details with third parties.</p>
                     </div>
-                    <h4>Secure & Reliable</h4>
-                    <p>Enterprise-grade security with reliable performance you can trust.</p>
                 </div>
             </div>
         </div>
@@ -1169,9 +1370,9 @@
     <section class="luxury-section contact-section" id="contact">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Get In Touch</span>
+                <span class="section-subtitle">Contact Information</span>
                 <h2 class="section-title">Connect With Us</h2>
-                <p class="section-intro" style="color: var(--platinum);">Reach out to discuss how our smart solutions can transform your communication and information sharing.</p>
+                <p class="section-intro" style="color: var(--platinum);">Reach out through any of our official channels.</p>
             </div>
             
             <div class="contact-container">
@@ -1222,19 +1423,15 @@
         </div>
     </section>
 
-    <!-- Footer with Enhanced Logo -->
+    <!-- Footer -->
     <footer class="luxury-footer">
         <div class="container">
             <div class="footer-container">
                 <div class="footer-logo-container">
                     <div class="footer-logo">
-                        <div class="footer-logo-symbol">
-                            <i class="fas fa-bolt footer-logo-icon"></i>
-                        </div>
-                        <div class="footer-logo-text">
-                            <h3>Future's Journey</h3>
-                            <p>Programming Institution</p>
-                        </div>
+                        <div class="footer-logo-arabic">مؤسسة رحلة المستقبل للبرمجة</div>
+                        <div class="footer-logo-english">FUTURE'S JOURNEY PROGRAMMING<br>INSTITUTIONS</div>
+                        <div class="footer-logo-subtitle">Smart NFC & QR Solutions</div>
                     </div>
                 </div>
                 
@@ -1251,6 +1448,90 @@
     </footer>
 
     <script>
+        // Welcome Page Functionality
+        const welcomePage = document.getElementById('welcomePage');
+        const enterButton = document.getElementById('enterSite');
+        
+        enterButton.addEventListener('click', function() {
+            // Add fade out class to welcome page
+            welcomePage.classList.add('welcome-hidden');
+            
+            // Remove welcome page from DOM after animation completes
+            setTimeout(function() {
+                welcomePage.style.display = 'none';
+            }, 800);
+            
+            // Store in localStorage that user has visited before
+            localStorage.setItem('futureJourneyVisited', 'true');
+        });
+        
+        // Check if user has visited before
+        window.addEventListener('load', function() {
+            const hasVisited = localStorage.getItem('futureJourneyVisited');
+            
+            if (hasVisited === 'true') {
+                // User has visited before, hide welcome page immediately
+                welcomePage.style.display = 'none';
+            }
+        });
+        
+        // Inquiry Form Submission
+        const inquiryForm = document.getElementById('inquiryForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        inquiryForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                instagramHandle: document.getElementById('instagramHandle').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                inquiryType: document.getElementById('inquiryType').value,
+                message: document.getElementById('message').value,
+                date: new Date().toLocaleString()
+            };
+            
+            // Validate Instagram handle
+            if (!formData.instagramHandle.startsWith('@')) {
+                formData.instagramHandle = '@' + formData.instagramHandle;
+            }
+            
+            // Create Instagram message
+            const instagramMessage = `New Inquiry from ${formData.fullName}%0A%0A` +
+                                   `Instagram: ${formData.instagramHandle}%0A` +
+                                   `Email: ${formData.email || 'Not provided'}%0A` +
+                                   `Phone: ${formData.phone || 'Not provided'}%0A` +
+                                   `Inquiry Type: ${formData.inquiryType}%0A` +
+                                   `Message: ${formData.message}%0A%0A` +
+                                   `Submitted: ${formData.date}`;
+            
+            // Create Instagram DM link
+            const instagramURL = `https://www.instagram.com/direct/new/?text=${instagramMessage}`;
+            
+            // Open Instagram in new tab
+            window.open(instagramURL, '_blank');
+            
+            // Show success message
+            formMessage.textContent = 'Opening Instagram to send your inquiry... Please complete the send process in the new tab.';
+            formMessage.className = 'form-message form-success';
+            formMessage.style.display = 'block';
+            
+            // Reset form
+            inquiryForm.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(function() {
+                formMessage.style.display = 'none';
+            }, 5000);
+            
+            // Store inquiry in localStorage (optional)
+            const inquiries = JSON.parse(localStorage.getItem('futureJourneyInquiries') || '[]');
+            inquiries.push({...formData, timestamp: new Date().toISOString()});
+            localStorage.setItem('futureJourneyInquiries', JSON.stringify(inquiries));
+        });
+        
         // Mobile navigation toggle
         document.querySelector('.mobile-toggle').addEventListener('click', function() {
             document.querySelector('.luxury-nav').classList.toggle('active');
@@ -1297,13 +1578,15 @@
         
         // Logo shine animation control
         const logoShine = document.querySelector('.logo-symbol');
-        logoShine.addEventListener('mouseenter', function() {
-            this.style.animationPlayState = 'running';
-        });
-        
-        logoShine.addEventListener('mouseleave', function() {
-            this.style.animationPlayState = 'paused';
-        });
+        if (logoShine) {
+            logoShine.addEventListener('mouseenter', function() {
+                this.style.animationPlayState = 'running';
+            });
+            
+            logoShine.addEventListener('mouseleave', function() {
+                this.style.animationPlayState = 'paused';
+            });
+        }
     </script>
 </body>
 </html>
