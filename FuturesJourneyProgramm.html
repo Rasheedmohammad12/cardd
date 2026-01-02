@@ -55,17 +55,92 @@
             padding: 0 40px;
         }
         
+        /* Enhanced Logo Design */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            position: relative;
+        }
+        
+        .logo-symbol {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, var(--gold-primary), #b8941f);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
+            transition: var(--transition-smooth);
+        }
+        
+        .logo-symbol:hover {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .logo-symbol::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            animation: logo-shine 4s infinite linear;
+        }
+        
+        @keyframes logo-shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+            color: var(--white-pure);
+            z-index: 2;
+            position: relative;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            padding-left: 18px;
+            border-left: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.9rem;
+            color: var(--white-pure);
+            margin-bottom: 4px;
+            letter-spacing: 0.8px;
+            background: linear-gradient(to right, var(--white-pure), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo-text p {
+            font-size: 0.85rem;
+            color: var(--platinum);
+            opacity: 0.9;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+        
         /* Enhanced Header */
         .luxury-header {
-            background-color: rgba(10, 26, 45, 0.95);
-            backdrop-filter: blur(10px);
+            background-color: rgba(10, 26, 45, 0.97);
+            backdrop-filter: blur(12px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             transition: var(--transition-smooth);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
         
         .header-container {
@@ -74,45 +149,10 @@
             align-items: center;
         }
         
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .logo-img {
-            height: 60px;
-            width: auto;
-            filter: brightness(0) invert(1);
-            transition: var(--transition-smooth);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            border-left: 1px solid rgba(212, 175, 55, 0.3);
-            padding-left: 20px;
-        }
-        
-        .logo-text h1 {
-            font-size: 1.8rem;
-            color: var(--white-pure);
-            margin-bottom: 4px;
-            letter-spacing: 0.5px;
-        }
-        
-        .logo-text p {
-            font-size: 0.85rem;
-            color: var(--platinum);
-            opacity: 0.8;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        
         .luxury-nav ul {
             display: flex;
             list-style: none;
-            gap: 40px;
+            gap: 42px;
         }
         
         .luxury-nav a {
@@ -131,7 +171,7 @@
             position: absolute;
             width: 0;
             height: 2px;
-            background: var(--gold-primary);
+            background: linear-gradient(to right, var(--gold-primary), var(--gold-light));
             bottom: 0;
             left: 0;
             transition: var(--transition-smooth);
@@ -176,13 +216,20 @@
             display: inline-block;
             background: rgba(212, 175, 55, 0.15);
             color: var(--gold-light);
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 30px;
             font-size: 0.9rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             margin-bottom: 30px;
             border: 1px solid rgba(212, 175, 55, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
         
         .hero-title {
@@ -195,6 +242,7 @@
         .hero-highlight {
             color: var(--gold-primary);
             position: relative;
+            display: inline-block;
         }
         
         .hero-highlight::after {
@@ -202,10 +250,11 @@
             position: absolute;
             width: 100%;
             height: 8px;
-            background: rgba(212, 175, 55, 0.2);
+            background: rgba(212, 175, 55, 0.25);
             bottom: 5px;
             left: 0;
             z-index: -1;
+            border-radius: 4px;
         }
         
         .hero-subtitle {
@@ -220,12 +269,19 @@
         .executive-card {
             display: inline-flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
-            padding: 20px 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 22px 32px;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
             margin-top: 30px;
+            transition: var(--transition-smooth);
+        }
+        
+        .executive-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-5px);
         }
         
         .executive-card h3 {
@@ -240,6 +296,115 @@
             letter-spacing: 1px;
         }
         
+        /* Logo Enhancement Section */
+        .logo-showcase {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, var(--white-off), #f0f3f7);
+            text-align: center;
+        }
+        
+        .logo-showcase .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .logo-presentation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .logo-version {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo-box {
+            width: 180px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 24px;
+            box-shadow: var(--shadow-elevated);
+            transition: var(--transition-smooth);
+        }
+        
+        .logo-box:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        
+        .logo-dark {
+            background: var(--navy-deep);
+        }
+        
+        .logo-light {
+            background: var(--white-pure);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo-gold {
+            background: linear-gradient(135deg, var(--gold-primary), #b8941f);
+        }
+        
+        .logo-label {
+            font-weight: 600;
+            color: var(--navy-medium);
+            font-size: 1.1rem;
+        }
+        
+        /* Footer Logo */
+        .footer-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .footer-logo-symbol {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold-primary), #b8941f);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-logo-icon {
+            font-size: 22px;
+            color: var(--white-pure);
+        }
+        
+        .footer-logo-text h3 {
+            color: var(--white-pure);
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, var(--white-pure), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .footer-logo-text p {
+            color: var(--platinum);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        /* بقية الأنماط من الكود السابق تبقى كما هي */
         /* Section Styling */
         .luxury-section {
             padding: 120px 0;
@@ -576,12 +741,6 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .footer-logo img {
-            height: 70px;
-            width: auto;
-            filter: brightness(0) invert(1);
-        }
-        
         .copyright {
             text-align: center;
             padding-top: 30px;
@@ -598,6 +757,10 @@
             
             .about-content {
                 gap: 50px;
+            }
+            
+            .logo-presentation {
+                gap: 40px;
             }
         }
         
@@ -621,6 +784,11 @@
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 50px;
+            }
+            
+            .logo-presentation {
+                flex-direction: column;
+                gap: 40px;
             }
         }
         
@@ -647,7 +815,7 @@
             }
             
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .hero-subtitle {
@@ -679,7 +847,7 @@
             }
             
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
             
             .executive-card {
@@ -695,16 +863,22 @@
             .product-header, .product-body {
                 padding: 25px 20px;
             }
+            
+            .logo-box {
+                width: 150px;
+                height: 150px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Luxury Header -->
+    <!-- Luxury Header with Enhanced Logo -->
     <header class="luxury-header">
         <div class="container header-container">
-            <div class="logo-wrapper">
-                <!-- Replace with actual logo when you have the correct link -->
-                <img src="https://imgur.com/bYSajP0.png" alt="Future's Journey Logo" class="logo-img">
+            <div class="logo-container">
+                <div class="logo-symbol">
+                    <i class="fas fa-bolt logo-icon"></i>
+                </div>
                 <div class="logo-text">
                     <h1>Future's Journey</h1>
                     <p>Programming Institution</p>
@@ -746,6 +920,65 @@
         </div>
     </section>
 
+    <!-- Logo Showcase Section -->
+    <section class="logo-showcase">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Brand Identity</span>
+                <h2 class="section-title">Premium Logo Design</h2>
+                <p class="section-intro">A sophisticated logo representing innovation, technology, and elegance.</p>
+            </div>
+            
+            <div class="logo-presentation">
+                <div class="logo-version">
+                    <div class="logo-box logo-dark">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; background: var(--gold-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-bolt" style="color: white; font-size: 22px;"></i>
+                            </div>
+                            <div style="text-align: left;">
+                                <div style="color: white; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600;">Future's Journey</div>
+                                <div style="color: rgba(255,255,255,0.8); font-size: 10px; letter-spacing: 1px;">PROGRAMMING INSTITUTION</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-label">Dark Version</div>
+                </div>
+                
+                <div class="logo-version">
+                    <div class="logo-box logo-light">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; background: var(--navy-deep); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-bolt" style="color: var(--gold-primary); font-size: 22px;"></i>
+                            </div>
+                            <div style="text-align: left;">
+                                <div style="color: var(--navy-deep); font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600;">Future's Journey</div>
+                                <div style="color: var(--navy-medium); font-size: 10px; letter-spacing: 1px;">PROGRAMMING INSTITUTION</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-label">Light Version</div>
+                </div>
+                
+                <div class="logo-version">
+                    <div class="logo-box logo-gold">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-bolt" style="color: var(--navy-deep); font-size: 22px;"></i>
+                            </div>
+                            <div style="text-align: left;">
+                                <div style="color: white; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600;">Future's Journey</div>
+                                <div style="color: rgba(255,255,255,0.9); font-size: 10px; letter-spacing: 1px;">PROGRAMMING INSTITUTION</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-label">Gold Version</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بقية أقسام الموقع تبقى كما هي -->
     <!-- About Section -->
     <section class="luxury-section" id="about">
         <div class="container">
@@ -989,12 +1222,20 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer with Enhanced Logo -->
     <footer class="luxury-footer">
         <div class="container">
             <div class="footer-container">
-                <div class="footer-logo">
-                    <img src="https://imgur.com/bYSajP0.png" alt="Future's Journey Logo">
+                <div class="footer-logo-container">
+                    <div class="footer-logo">
+                        <div class="footer-logo-symbol">
+                            <i class="fas fa-bolt footer-logo-icon"></i>
+                        </div>
+                        <div class="footer-logo-text">
+                            <h3>Future's Journey</h3>
+                            <p>Programming Institution</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="footer-text">
@@ -1054,15 +1295,14 @@
             });
         });
         
-        // Product card hover effects enhancement
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+        // Logo shine animation control
+        const logoShine = document.querySelector('.logo-symbol');
+        logoShine.addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'running';
+        });
+        
+        logoShine.addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'paused';
         });
     </script>
 </body>
