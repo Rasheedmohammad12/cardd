@@ -202,6 +202,23 @@
             padding-bottom: 15px;
         }
 
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        body.lang-en .section-title h2::after {
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         /* About Section */
         .about-content {
             display: flex;
@@ -222,6 +239,12 @@
             font-size: 2rem;
             color: var(--primary-color);
             margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #555;
         }
 
         .features {
@@ -250,6 +273,11 @@
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 15px;
+        }
+
+        .feature h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
         }
 
         /* Reviews Section */
@@ -300,8 +328,19 @@
             margin-right: 15px;
         }
 
+        .review-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
         .stars {
             color: var(--gold-color);
+        }
+
+        .review-text {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
         }
 
         .review-form-container {
@@ -341,6 +380,13 @@
             transition: var(--transition);
         }
 
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
         .star-rating {
             display: flex;
             justify-content: center;
@@ -372,6 +418,10 @@
             transition: var(--transition);
         }
 
+        .submit-btn:hover {
+            background-color: #7a6448;
+        }
+
         /* Contact Section */
         .contact-content {
             display: flex;
@@ -396,8 +446,12 @@
 
         .contact-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 25px;
+        }
+
+        body.lang-en .contact-item {
+            flex-direction: row;
         }
 
         .contact-item i {
@@ -411,6 +465,7 @@
             font-size: 1.2rem;
             color: var(--primary-color);
             margin-left: 15px;
+            flex-shrink: 0;
         }
 
         body.lang-en .contact-item i {
@@ -418,10 +473,77 @@
             margin-right: 15px;
         }
 
+        .contact-item .contact-content-wrapper {
+            flex: 1;
+        }
+
         .contact-item a {
             color: var(--dark-color);
             text-decoration: none;
             transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+        }
+
+        /* تصميم جديد للأرقام مع أيقونات */
+        .phone-numbers {
+            margin-top: 10px;
+        }
+
+        .phone-number-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background-color: rgba(139, 115, 85, 0.05);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .phone-number-item:hover {
+            background-color: rgba(139, 115, 85, 0.1);
+        }
+
+        .phone-number-item i {
+            width: 36px;
+            height: 36px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .phone-number-item .number-info {
+            flex: 1;
+        }
+
+        .phone-number-item .number-label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 2px;
+        }
+
+        .phone-number-item .number {
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 1rem;
+        }
+
+        .phone-number-item .number-type {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            background-color: rgba(139, 115, 85, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 4px;
         }
 
         .save-contact-btn {
@@ -432,14 +554,18 @@
             border-radius: 5px;
             font-size: 1rem;
             cursor: pointer;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: 15px;
             transition: var(--transition);
         }
 
-        /* خريطة محسنة */
+        .save-contact-btn:hover {
+            background-color: #7a6448;
+        }
+
+        /* خريطة محسنة مع رابط مباشر للموقع الحقيقي */
         .map-container {
             flex: 1;
             min-width: 300px;
@@ -462,7 +588,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(139, 115, 85, 0.9), rgba(139, 115, 85, 0.9)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover;
+            background: linear-gradient(rgba(139, 115, 85, 0.95), rgba(139, 115, 85, 0.95)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -508,6 +634,7 @@
 
         .location-btn:hover {
             background-color: var(--light-color);
+            transform: translateY(-3px);
         }
 
         /* Footer */
@@ -534,6 +661,28 @@
             font-size: 1.5rem;
             margin-bottom: 25px;
             color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            right: 0;
+        }
+
+        body.lang-en .footer-column h3::after {
+            right: auto;
+            left: 0;
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            color: #bbb;
         }
 
         .social-links {
@@ -553,6 +702,35 @@
             color: white;
             text-decoration: none;
             transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-right: 10px;
+        }
+
+        body.lang-en .footer-links a:hover {
+            padding-right: 0;
+            padding-left: 10px;
         }
 
         .copyright {
@@ -587,10 +765,56 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
+        .modal-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .contact-details-modal {
+            text-align: right;
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        body.lang-en .contact-details-modal {
+            text-align: left;
+        }
+
         .modal-buttons {
             display: flex;
             gap: 15px;
             justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .modal-btn.confirm {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .modal-btn.confirm:hover {
+            background-color: #7a6448;
+        }
+
+        .modal-btn.cancel {
+            background-color: #f1f1f1;
+            color: #333;
         }
 
         /* Responsive */
@@ -630,6 +854,10 @@
             body.lang-en .nav-links.active {
                 left: 0;
                 right: auto;
+            }
+            
+            .nav-links li {
+                margin: 0 0 25px 0;
             }
             
             .hero h2 {
@@ -774,21 +1002,51 @@
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <div>
+                            <div class="contact-content-wrapper">
                                 <h4>هاتف</h4>
-                                <a href="tel:+962799562220">+962 7 9956 2220</a>
-                                <button class="save-contact-btn" data-contact="Pure Furniture" data-phone="+962799562220">
-                                    <i class="fas fa-save"></i> حفظ جهة الاتصال
+                                
+                                <!-- تصميم جديد للأرقام مع أيقونات -->
+                                <div class="phone-numbers">
+                                    <div class="phone-number-item">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <div class="number-info">
+                                            <div class="number-label">رقم الهاتف الرئيسي</div>
+                                            <a href="tel:+962799562220" class="number">+962 7 9956 2220</a>
+                                            <div class="number-type">واتساب / اتصال</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="phone-number-item">
+                                        <i class="fas fa-phone"></i>
+                                        <div class="number-info">
+                                            <div class="number-label">رقم أرضي</div>
+                                            <a href="tel:+96265556789" class="number">+962 6 555 6789</a>
+                                            <div class="number-type">هاتف متجر</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="phone-number-item">
+                                        <i class="fab fa-whatsapp"></i>
+                                        <div class="number-info">
+                                            <div class="number-label">واتساب</div>
+                                            <a href="https://wa.me/962799562220" target="_blank" class="number">+962 7 9956 2220</a>
+                                            <div class="number-type">مراسلة مباشرة</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button class="save-contact-btn" id="saveAllNumbers">
+                                    <i class="fas fa-save"></i> حفظ جميع الأرقام
                                 </button>
                             </div>
                         </div>
                         
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <div>
+                            <div class="contact-content-wrapper">
                                 <h4>الموقع</h4>
                                 <p>الأردن - عمان</p>
-                                <button class="save-contact-btn" data-contact="Pure Furniture Location" data-address="الأردن - عمان">
+                                <button class="save-contact-btn" id="saveLocationBtn">
                                     <i class="fas fa-map-pin"></i> حفظ الموقع
                                 </button>
                             </div>
@@ -796,7 +1054,7 @@
                         
                         <div class="contact-item">
                             <i class="fas fa-share-alt"></i>
-                            <div>
+                            <div class="contact-content-wrapper">
                                 <h4>وسائل التواصل الاجتماعي</h4>
                                 <div class="social-links">
                                     <a href="https://www.facebook.com/share/1BnFsg56Cp/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -807,26 +1065,30 @@
                     </div>
                 </div>
                 
-                <!-- خريطة محسنة مع حل بديل -->
+                <!-- خريطة مع رابط مباشر للموقع الحقيقي -->
                 <div class="map-container">
                     <div class="map-placeholder" id="mapPlaceholder">
                         <i class="fas fa-map-marked-alt"></i>
                         <h3>موقع بيور للأثاث</h3>
                         <p>الأردن - عمان</p>
-                        <button class="location-btn" id="openLocationBtn">
+                        <!-- رابط مباشر لخرائط جوجل مع إحداثيات محددة -->
+                        <a href="https://www.google.com/maps/place/Amman,+Jordan/@31.9565783,35.9456951,12z/data=!3m1!4b1!4m6!3m5!1s0x151b5f8e0b8b3a9f:0x3a9b0b0b0b0b0b0b!8m2!3d31.9539494!4d35.910635!16zL20vMDQ5c20?entry=ttu" 
+                           target="_blank" 
+                           class="location-btn">
                             <i class="fas fa-external-link-alt"></i> افتح في خرائط جوجل
-                        </button>
-                        <p style="margin-top: 15px; font-size: 0.9rem;">أو انظر أدناه للخريطة التفاعلية</p>
+                        </a>
+                        <p style="margin-top: 15px; font-size: 0.9rem;">انقر على الزر لفتح موقعنا في خرائط جوجل</p>
                     </div>
                     
-                    <!-- رابط خرائط جوجل احتياطي -->
+                    <!-- خريطة جوجل مباشرة -->
                     <iframe 
                         class="map-frame" 
                         id="googleMap"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3387.2729978168965!2d35.93081531514285!3d31.953888781246896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151b5f8e0b8b3a9f%3A0x3a9b0b0b0b0b0b0b!2sAmman%2C%20Jordan!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
                         allowfullscreen="" 
                         loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="موقع بيور للأثاث في عمان، الأردن">
                     </iframe>
                 </div>
             </div>
@@ -860,11 +1122,15 @@
                     <h3>معلومات الاتصال</h3>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <a href="tel:+962799562220">+962 7 9956 2220</a>
+                        <div>
+                            <a href="tel:+962799562220">+962 7 9956 2220</a>
+                        </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>الأردن - عمان</p>
+                        <div>
+                            <p>الأردن - عمان</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -879,7 +1145,7 @@
     <div class="modal" id="contactModal">
         <div class="modal-content">
             <h3 id="modalTitle">حفظ جهة الاتصال</h3>
-            <p id="modalMessage">هل تريد حفظ جهة الاتصال هذه في هاتفك؟</p>
+            <p id="modalMessage" id="modalMessageText">هل تريد حفظ جهة الاتصال هذه في هاتفك؟</p>
             <div class="contact-details-modal" id="contactDetailsModal">
                 <!-- تفاصيل جهة الاتصال -->
             </div>
@@ -902,6 +1168,7 @@
             arabicBtn.classList.add('active');
             englishBtn.classList.remove('active');
             updateContentToArabic();
+            updateReviewsLanguage('ar');
         });
         
         englishBtn.addEventListener('click', () => {
@@ -910,6 +1177,7 @@
             englishBtn.classList.add('active');
             arabicBtn.classList.remove('active');
             updateContentToEnglish();
+            updateReviewsLanguage('en');
         });
         
         function updateContentToArabic() {
@@ -943,17 +1211,28 @@
             document.querySelector('#reviewForm .submit-btn').textContent = 'إرسال التقييم';
             
             document.querySelector('.contact-info h3').textContent = 'تواصل معنا';
+            
+            // تحديث تسميات الأرقام
             document.querySelectorAll('.contact-item h4')[0].textContent = 'هاتف';
+            document.querySelectorAll('.number-label')[0].textContent = 'رقم الهاتف الرئيسي';
+            document.querySelectorAll('.number-type')[0].textContent = 'واتساب / اتصال';
+            document.querySelectorAll('.number-label')[1].textContent = 'رقم أرضي';
+            document.querySelectorAll('.number-type')[1].textContent = 'هاتف متجر';
+            document.querySelectorAll('.number-label')[2].textContent = 'واتساب';
+            document.querySelectorAll('.number-type')[2].textContent = 'مراسلة مباشرة';
+            
+            document.querySelector('#saveAllNumbers').innerHTML = '<i class="fas fa-save"></i> حفظ جميع الأرقام';
+            
             document.querySelectorAll('.contact-item h4')[1].textContent = 'الموقع';
-            document.querySelectorAll('.contact-item h4')[2].textContent = 'وسائل التواصل الاجتماعي';
             document.querySelectorAll('.contact-item p')[0].textContent = 'الأردن - عمان';
-            document.querySelectorAll('.save-contact-btn')[0].innerHTML = '<i class="fas fa-save"></i> حفظ جهة الاتصال';
-            document.querySelectorAll('.save-contact-btn')[1].innerHTML = '<i class="fas fa-map-pin"></i> حفظ الموقع';
+            document.querySelector('#saveLocationBtn').innerHTML = '<i class="fas fa-map-pin"></i> حفظ الموقع';
+            
+            document.querySelectorAll('.contact-item h4')[2].textContent = 'وسائل التواصل الاجتماعي';
             
             document.querySelector('#mapPlaceholder h3').textContent = 'موقع بيور للأثاث';
             document.querySelector('#mapPlaceholder p').textContent = 'الأردن - عمان';
-            document.querySelector('#openLocationBtn').innerHTML = '<i class="fas fa-external-link-alt"></i> افتح في خرائط جوجل';
-            document.querySelectorAll('#mapPlaceholder p')[1].textContent = 'أو انظر أدناه للخريطة التفاعلية';
+            document.querySelector('#mapPlaceholder .location-btn').innerHTML = '<i class="fas fa-external-link-alt"></i> افتح في خرائط جوجل';
+            document.querySelectorAll('#mapPlaceholder p')[1].textContent = 'انقر على الزر لفتح موقعنا في خرائط جوجل';
             
             document.querySelectorAll('.footer-column h3')[0].textContent = 'بيور للأثاث';
             document.querySelectorAll('.footer-column p')[0].textContent = 'أثاث فاخر مصمم خصيصًا لك. جودة تحس، وفخامة ترى، وتفاصيل تحكى.';
@@ -966,7 +1245,7 @@
             document.querySelector('.copyright p').textContent = '© 2023 بيور للأثاث. جميع الحقوق محفوظة.';
             
             document.getElementById('modalTitle').textContent = 'حفظ جهة الاتصال';
-            document.getElementById('modalMessage').textContent = 'هل تريد حفظ جهة الاتصال هذه في هاتفك؟';
+            document.getElementById('modalMessageText').textContent = 'هل تريد حفظ جهة الاتصال هذه في هاتفك؟';
             document.getElementById('confirmSave').textContent = 'نعم، احفظها';
             document.getElementById('cancelSave').textContent = 'إلغاء';
         }
@@ -1002,17 +1281,28 @@
             document.querySelector('#reviewForm .submit-btn').textContent = 'Submit Review';
             
             document.querySelector('.contact-info h3').textContent = 'Contact Us';
+            
+            // Update phone number labels
             document.querySelectorAll('.contact-item h4')[0].textContent = 'Phone';
+            document.querySelectorAll('.number-label')[0].textContent = 'Main Phone Number';
+            document.querySelectorAll('.number-type')[0].textContent = 'WhatsApp / Call';
+            document.querySelectorAll('.number-label')[1].textContent = 'Landline';
+            document.querySelectorAll('.number-type')[1].textContent = 'Store Phone';
+            document.querySelectorAll('.number-label')[2].textContent = 'WhatsApp';
+            document.querySelectorAll('.number-type')[2].textContent = 'Direct Messaging';
+            
+            document.querySelector('#saveAllNumbers').innerHTML = '<i class="fas fa-save"></i> Save All Numbers';
+            
             document.querySelectorAll('.contact-item h4')[1].textContent = 'Location';
-            document.querySelectorAll('.contact-item h4')[2].textContent = 'Social Media';
             document.querySelectorAll('.contact-item p')[0].textContent = 'Jordan - Amman';
-            document.querySelectorAll('.save-contact-btn')[0].innerHTML = '<i class="fas fa-save"></i> Save Contact';
-            document.querySelectorAll('.save-contact-btn')[1].innerHTML = '<i class="fas fa-map-pin"></i> Save Location';
+            document.querySelector('#saveLocationBtn').innerHTML = '<i class="fas fa-map-pin"></i> Save Location';
+            
+            document.querySelectorAll('.contact-item h4')[2].textContent = 'Social Media';
             
             document.querySelector('#mapPlaceholder h3').textContent = 'Pure Furniture Location';
             document.querySelector('#mapPlaceholder p').textContent = 'Jordan - Amman';
-            document.querySelector('#openLocationBtn').innerHTML = '<i class="fas fa-external-link-alt"></i> Open in Google Maps';
-            document.querySelectorAll('#mapPlaceholder p')[1].textContent = 'Or view the interactive map below';
+            document.querySelector('#mapPlaceholder .location-btn').innerHTML = '<i class="fas fa-external-link-alt"></i> Open in Google Maps';
+            document.querySelectorAll('#mapPlaceholder p')[1].textContent = 'Click the button to open our location in Google Maps';
             
             document.querySelectorAll('.footer-column h3')[0].textContent = 'Pure Furniture';
             document.querySelectorAll('.footer-column p')[0].textContent = 'Luxury furniture designed specifically for you. Quality you feel, luxury you see, details that tell a story.';
@@ -1025,9 +1315,26 @@
             document.querySelector('.copyright p').textContent = '© 2023 Pure Furniture. All rights reserved.';
             
             document.getElementById('modalTitle').textContent = 'Save Contact';
-            document.getElementById('modalMessage').textContent = 'Do you want to save this contact to your phone?';
+            document.getElementById('modalMessageText').textContent = 'Do you want to save this contact to your phone?';
             document.getElementById('confirmSave').textContent = 'Yes, Save It';
             document.getElementById('cancelSave').textContent = 'Cancel';
+        }
+        
+        function updateReviewsLanguage(lang) {
+            if (lang === 'en') {
+                reviews = [
+                    { id: 1, name: 'Ahmed Mohamed', rating: 5, text: 'Amazing experience with Pure! The piece I ordered was better than expected. Exceptional quality and elegant design.', date: '2023-10-15' },
+                    { id: 2, name: 'Sarah Abdullah', rating: 4, text: 'Excellent customer service and delivery on time. Beautiful design and precise execution.', date: '2023-09-22' },
+                    { id: 3, name: 'Khaled Al-Zoubi', rating: 5, text: 'I recommend everyone to try it. The furniture is luxurious and adds a sophisticated touch to the home. Thanks to the Pure team for their attention to detail.', date: '2023-08-30' }
+                ];
+            } else {
+                reviews = [
+                    { id: 1, name: 'أحمد محمد', rating: 5, text: 'تجربة رائعة مع بيور! القطعة التي طلبتها كانت أفضل مما توقعت. الجودة فائقة والتصميم أنيق جداً.', date: '2023-10-15' },
+                    { id: 2, name: 'سارة عبدالله', rating: 4, text: 'خدمة عملاء ممتازة وتوصيل في الوقت المحدد. التصميم جميل والتنفيذ دقيق.', date: '2023-09-22' },
+                    { id: 3, name: 'خالد الزعبي', rating: 5, text: 'أنصح الجميع بالتجربة. الأثاث فخم ويضيف لمسة راقية للمنزل. الشكر لطاقم بيور على الاهتمام بالتفاصيل.', date: '2023-08-30' }
+                ];
+            }
+            loadReviews();
         }
         
         // Mobile Menu
@@ -1039,6 +1346,14 @@
             mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
                 ? '<i class="fas fa-times"></i>' 
                 : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
         });
         
         // Star Rating
@@ -1147,10 +1462,9 @@
                 : 'شكراً لك على تقييمك! تم إرسال التقييم بنجاح.');
         });
         
-        // Location System - حل محسّن
+        // Location System - رابط مباشر لموقع المحل
         const mapPlaceholder = document.getElementById('mapPlaceholder');
         const googleMap = document.getElementById('googleMap');
-        const openLocationBtn = document.getElementById('openLocationBtn');
         
         // اخفاء البداية المميزة بعد تحميل الخريطة
         googleMap.addEventListener('load', function() {
@@ -1159,37 +1473,26 @@
             }, 2000);
         });
         
-        // فتح خرائط جوجل في نافذة جديدة
-        openLocationBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const address = "Amman, Jordan";
-            const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-            window.open(mapsUrl, '_blank');
-        });
-        
         // بديل إذا فشلت الخريطة في التحميل
         setTimeout(() => {
             if (googleMap.offsetParent === null || googleMap.clientHeight === 0) {
-                console.log("الخريطة لم تحمل، عرض البديل");
                 mapPlaceholder.classList.remove('hidden');
                 
-                // تحديث نص البديل
                 if (body.classList.contains('lang-en')) {
                     mapPlaceholder.querySelector('h3').textContent = 'Map Loading Failed';
-                    mapPlaceholder.querySelectorAll('p')[0].textContent = 'Jordan - Amman';
                     mapPlaceholder.querySelector('.location-btn').innerHTML = '<i class="fas fa-external-link-alt"></i> Open in Google Maps';
-                    mapPlaceholder.querySelectorAll('p')[1].textContent = 'Click the button above to open location in maps';
+                    mapPlaceholder.querySelectorAll('p')[1].textContent = 'Click the button above to open our store location';
                 } else {
                     mapPlaceholder.querySelector('h3').textContent = 'فشل تحميل الخريطة';
-                    mapPlaceholder.querySelectorAll('p')[0].textContent = 'الأردن - عمان';
                     mapPlaceholder.querySelector('.location-btn').innerHTML = '<i class="fas fa-external-link-alt"></i> افتح في خرائط جوجل';
-                    mapPlaceholder.querySelectorAll('p')[1].textContent = 'انقر على الزر أعلاه لفتح الموقع في الخرائط';
+                    mapPlaceholder.querySelectorAll('p')[1].textContent = 'انقر على الزر لفتح موقع متجرنا';
                 }
             }
         }, 5000);
         
         // Save Contact System
-        const saveContactBtns = document.querySelectorAll('.save-contact-btn');
+        const saveAllNumbersBtn = document.getElementById('saveAllNumbers');
+        const saveLocationBtn = document.getElementById('saveLocationBtn');
         const contactModal = document.getElementById('contactModal');
         const contactDetailsModal = document.getElementById('contactDetailsModal');
         const confirmSave = document.getElementById('confirmSave');
@@ -1197,37 +1500,97 @@
         
         let currentContactData = {};
         
-        saveContactBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const contactName = this.getAttribute('data-contact');
-                const phone = this.getAttribute('data-phone');
-                const address = this.getAttribute('data-address');
+        // حفظ جميع الأرقام
+        saveAllNumbersBtn.addEventListener('click', function() {
+            const contactName = "Pure Furniture";
+            const phone1 = "+962 7 9956 2220";
+            const phone2 = "+962 6 555 6789";
+            const whatsapp = "+962 7 9956 2220";
+            
+            currentContactData = { 
+                contactName, 
+                phone1, 
+                phone2, 
+                whatsapp,
+                type: "all_numbers"
+            };
+            
+            if (body.classList.contains('lang-en')) {
+                document.getElementById('modalTitle').textContent = 'Save All Phone Numbers';
+                document.getElementById('modalMessageText').textContent = 'Do you want to save all phone numbers to your contacts?';
                 
-                currentContactData = { contactName, phone, address };
+                let detailsHTML = `<p><strong>Contact Name:</strong> ${contactName}</p>`;
+                detailsHTML += `<p><strong>Main Phone:</strong> ${phone1}</p>`;
+                detailsHTML += `<p><strong>Landline:</strong> ${phone2}</p>`;
+                detailsHTML += `<p><strong>WhatsApp:</strong> ${whatsapp}</p>`;
                 
-                if (body.classList.contains('lang-en')) {
-                    let detailsHTML = `<p><strong>Name:</strong> ${contactName}</p>`;
-                    if (phone) detailsHTML += `<p><strong>Phone:</strong> ${phone}</p>`;
-                    if (address) detailsHTML += `<p><strong>Address:</strong> ${address}</p>`;
-                    contactDetailsModal.innerHTML = detailsHTML;
-                } else {
-                    let detailsHTML = `<p><strong>الاسم:</strong> ${contactName}</p>`;
-                    if (phone) detailsHTML += `<p><strong>الهاتف:</strong> ${phone}</p>`;
-                    if (address) detailsHTML += `<p><strong>العنوان:</strong> ${address}</p>`;
-                    contactDetailsModal.innerHTML = detailsHTML;
-                }
+                contactDetailsModal.innerHTML = detailsHTML;
+            } else {
+                document.getElementById('modalTitle').textContent = 'حفظ جميع أرقام الهاتف';
+                document.getElementById('modalMessageText').textContent = 'هل تريد حفظ جميع أرقام الهاتف في جهات اتصالك؟';
                 
-                contactModal.style.display = 'flex';
-            });
+                let detailsHTML = `<p><strong>اسم جهة الاتصال:</strong> ${contactName}</p>`;
+                detailsHTML += `<p><strong>الهاتف الرئيسي:</strong> ${phone1}</p>`;
+                detailsHTML += `<p><strong>الهاتف الأرضي:</strong> ${phone2}</p>`;
+                detailsHTML += `<p><strong>واتساب:</strong> ${whatsapp}</p>`;
+                
+                contactDetailsModal.innerHTML = detailsHTML;
+            }
+            
+            contactModal.style.display = 'flex';
         });
         
+        // حفظ الموقع
+        saveLocationBtn.addEventListener('click', function() {
+            const contactName = "Pure Furniture Location";
+            const address = "الأردن - عمان";
+            
+            currentContactData = { 
+                contactName, 
+                address,
+                type: "location"
+            };
+            
+            if (body.classList.contains('lang-en')) {
+                document.getElementById('modalTitle').textContent = 'Save Location';
+                document.getElementById('modalMessageText').textContent = 'Do you want to save this location to your contacts?';
+                
+                let detailsHTML = `<p><strong>Location Name:</strong> ${contactName}</p>`;
+                detailsHTML += `<p><strong>Address:</strong> ${address}</p>`;
+                
+                contactDetailsModal.innerHTML = detailsHTML;
+            } else {
+                document.getElementById('modalTitle').textContent = 'حفظ الموقع';
+                document.getElementById('modalMessageText').textContent = 'هل تريد حفظ هذا الموقع في جهات اتصالك؟';
+                
+                let detailsHTML = `<p><strong>اسم الموقع:</strong> ${contactName}</p>`;
+                detailsHTML += `<p><strong>العنوان:</strong> ${address}</p>`;
+                
+                contactDetailsModal.innerHTML = detailsHTML;
+            }
+            
+            contactModal.style.display = 'flex';
+        });
+        
+        // تأكيد الحفظ
         confirmSave.addEventListener('click', function() {
-            const vCardData = `BEGIN:VCARD
+            let vCardData = '';
+            
+            if (currentContactData.type === "all_numbers") {
+                vCardData = `BEGIN:VCARD
 VERSION:3.0
 FN:${currentContactData.contactName}
-TEL:${currentContactData.phone || ''}
-ADR:${currentContactData.address || ''}
+TEL;TYPE=WORK,VOICE:${currentContactData.phone1.replace(/\s+/g, '')}
+TEL;TYPE=WORK,VOICE:${currentContactData.phone2.replace(/\s+/g, '')}
+TEL;TYPE=WORK,CELL:${currentContactData.whatsapp.replace(/\s+/g, '')}
 END:VCARD`;
+            } else if (currentContactData.type === "location") {
+                vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:${currentContactData.contactName}
+ADR:${currentContactData.address}
+END:VCARD`;
+            }
             
             const blob = new Blob([vCardData], { type: 'text/vcard' });
             const url = URL.createObjectURL(blob);
@@ -1240,9 +1603,9 @@ END:VCARD`;
             document.body.removeChild(a);
             
             if (body.classList.contains('lang-en')) {
-                alert('Contact saved successfully! A vCard file has been downloaded.');
+                alert('Saved successfully! A vCard file has been downloaded.');
             } else {
-                alert('تم حفظ جهة الاتصال بنجاح! تم تحميل ملف vCard.');
+                alert('تم الحفظ بنجاح! تم تحميل ملف vCard.');
             }
             
             contactModal.style.display = 'none';
@@ -1252,19 +1615,16 @@ END:VCARD`;
             contactModal.style.display = 'none';
         });
         
+        // إغلاق المودال عند النقر خارجها
+        contactModal.addEventListener('click', function(e) {
+            if (e.target === contactModal) {
+                contactModal.style.display = 'none';
+            }
+        });
+        
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             loadReviews();
-            
-            // إضافة بعض التقييمات الافتراضية باللغة الإنجليزية
-            if (body.classList.contains('lang-en')) {
-                reviews = [
-                    { id: 1, name: 'Ahmed Mohamed', rating: 5, text: 'Amazing experience with Pure! The piece I ordered was better than expected. Exceptional quality and elegant design.', date: '2023-10-15' },
-                    { id: 2, name: 'Sarah Abdullah', rating: 4, text: 'Excellent customer service and delivery on time. Beautiful design and precise execution.', date: '2023-09-22' },
-                    { id: 3, name: 'Khaled Al-Zoubi', rating: 5, text: 'I recommend everyone to try it. The furniture is luxurious and adds a sophisticated touch to the home. Thanks to the Pure team for their attention to detail.', date: '2023-08-30' }
-                ];
-                loadReviews();
-            }
         });
     </script>
 </body>
