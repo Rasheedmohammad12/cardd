@@ -6,7 +6,6 @@
     <title>بيور للأثاث - أثاث فاخر مصمم خصيصًا لك</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #8B7355;
@@ -41,27 +40,6 @@
             direction: ltr;
         }
 
-        body.lang-en .hero-content {
-            text-align: left;
-        }
-
-        body.lang-en .section-title,
-        body.lang-en .about-content,
-        body.lang-en .contact-info,
-        body.lang-en .footer-content,
-        body.lang-en .review-card,
-        body.lang-en .form-group label {
-            text-align: left;
-        }
-
-        body.lang-en .nav-links {
-            text-align: left;
-        }
-
-        body.lang-en .about-text {
-            text-align: left;
-        }
-
         .container {
             width: 90%;
             max-width: 1200px;
@@ -93,17 +71,6 @@
             width: auto;
         }
 
-        .logo h1 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .logo span {
-            color: var(--dark-color);
-            font-weight: 400;
-        }
-
         .nav-links {
             display: flex;
             list-style: none;
@@ -131,26 +98,6 @@
             color: var(--primary-color);
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            left: 0;
-            bottom: -5px;
-            transition: var(--transition);
-        }
-
-        body.lang-en .nav-links a::after {
-            left: auto;
-            right: 0;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
         .language-switcher {
             display: flex;
             align-items: center;
@@ -169,11 +116,6 @@
         }
 
         .lang-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .lang-btn:hover {
             background-color: var(--primary-color);
             color: white;
         }
@@ -260,23 +202,6 @@
             padding-bottom: 15px;
         }
 
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 70px;
-            height: 3px;
-            background-color: var(--primary-color);
-            bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
-        }
-
-        body.lang-en .section-title h2::after {
-            right: auto;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
         /* About Section */
         .about-content {
             display: flex;
@@ -297,12 +222,6 @@
             font-size: 2rem;
             color: var(--primary-color);
             margin-bottom: 20px;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: #555;
         }
 
         .features {
@@ -331,11 +250,6 @@
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 15px;
-        }
-
-        .feature h4 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
         }
 
         /* Reviews Section */
@@ -386,19 +300,8 @@
             margin-right: 15px;
         }
 
-        .review-info h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
         .stars {
             color: var(--gold-color);
-        }
-
-        .review-text {
-            font-size: 1rem;
-            color: #555;
-            line-height: 1.7;
         }
 
         .review-form-container {
@@ -438,13 +341,6 @@
             transition: var(--transition);
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
         .star-rating {
             display: flex;
             justify-content: center;
@@ -476,10 +372,6 @@
             transition: var(--transition);
         }
 
-        .submit-btn:hover {
-            background-color: #7a6448;
-        }
-
         /* Contact Section */
         .contact-content {
             display: flex;
@@ -508,10 +400,6 @@
             margin-bottom: 25px;
         }
 
-        body.lang-en .contact-item {
-            flex-direction: row;
-        }
-
         .contact-item i {
             width: 50px;
             height: 50px;
@@ -536,10 +424,6 @@
             transition: var(--transition);
         }
 
-        .contact-item a:hover {
-            color: var(--primary-color);
-        }
-
         .save-contact-btn {
             background-color: var(--primary-color);
             color: white;
@@ -555,22 +439,75 @@
             transition: var(--transition);
         }
 
-        .save-contact-btn:hover {
-            background-color: #7a6448;
-        }
-
+        /* خريطة محسنة */
         .map-container {
             flex: 1;
             min-width: 300px;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            position: relative;
+            height: 400px;
         }
 
-        .map-container iframe {
+        .map-frame {
             width: 100%;
-            height: 400px;
+            height: 100%;
             border: none;
+        }
+
+        .map-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(139, 115, 85, 0.9), rgba(139, 115, 85, 0.9)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .map-placeholder.hidden {
+            display: none;
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .map-placeholder h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .map-placeholder p {
+            margin-bottom: 20px;
+        }
+
+        .location-btn {
+            background-color: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .location-btn:hover {
+            background-color: var(--light-color);
         }
 
         /* Footer */
@@ -597,28 +534,6 @@
             font-size: 1.5rem;
             margin-bottom: 25px;
             color: var(--secondary-color);
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 2px;
-            background-color: var(--primary-color);
-            bottom: 0;
-            right: 0;
-        }
-
-        body.lang-en .footer-column h3::after {
-            right: auto;
-            left: 0;
-        }
-
-        .footer-column p {
-            margin-bottom: 20px;
-            color: #bbb;
         }
 
         .social-links {
@@ -640,35 +555,6 @@
             transition: var(--transition);
         }
 
-        .social-links a:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-5px);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #bbb;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary-color);
-            padding-right: 10px;
-        }
-
-        body.lang-en .footer-links a:hover {
-            padding-right: 0;
-            padding-left: 10px;
-        }
-
         .copyright {
             text-align: center;
             padding-top: 30px;
@@ -677,7 +563,7 @@
             font-size: 0.9rem;
         }
 
-        /* Modal for save contact */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -701,77 +587,13 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .modal-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .modal-content p {
-            margin-bottom: 25px;
-            color: #555;
-        }
-
-        .contact-details-modal {
-            text-align: right;
-            background-color: var(--light-color);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-        }
-
-        body.lang-en .contact-details-modal {
-            text-align: left;
-        }
-
         .modal-buttons {
             display: flex;
             gap: 15px;
             justify-content: center;
         }
 
-        .modal-btn {
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            font-size: 1rem;
-        }
-
-        .modal-btn.confirm {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .modal-btn.confirm:hover {
-            background-color: #7a6448;
-        }
-
-        .modal-btn.cancel {
-            background-color: #f1f1f1;
-            color: #333;
-        }
-
-        .modal-btn.cancel:hover {
-            background-color: #ddd;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero h2 {
-                font-size: 2.8rem;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .contact-content {
-                flex-direction: column;
-            }
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
@@ -810,10 +632,6 @@
                 right: auto;
             }
             
-            .nav-links li {
-                margin: 0 0 25px 0;
-            }
-            
             .hero h2 {
                 font-size: 2.2rem;
             }
@@ -821,29 +639,15 @@
             section {
                 padding: 70px 0;
             }
-        }
-
-        @media (max-width: 576px) {
-            .hero h2 {
-                font-size: 1.8rem;
-            }
             
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .review-form-container {
-                padding: 25px;
-            }
-            
-            .modal-content {
-                padding: 30px 20px;
+            .contact-content {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body class="lang-ar">
-    <!-- Header & Navigation -->
+    <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
@@ -890,7 +694,6 @@
                 <div class="about-text">
                     <h3>بيور للأثاث الفاخر</h3>
                     <p>نحن نؤمن أن الأثاث ليس مجرد قطع لتزيين المنزل، بل هو تعبير عن شخصيتك وذوقك الفريد. كل قطعة نصنعها تحمل روحًا خاصة، وتفاصيل مدروسة بعناية، وجودة لا تتكرر.</p>
-                    <p>نحن في بيور نخصص كل جهدنا لتحويل رؤيتك إلى واقع ملموس، حيث تكون كل قطعة أثاث انعكاسًا لأسلوبك وذوقك الرفيع.</p>
                     
                     <div class="features">
                         <div class="feature">
@@ -922,7 +725,7 @@
             </div>
             
             <div class="reviews-container" id="reviewsContainer">
-                <!-- Reviews will be loaded here dynamically -->
+                <!-- سيتم تحميل التقييمات هنا -->
             </div>
             
             <div class="review-form-container">
@@ -992,20 +795,39 @@
                         </div>
                         
                         <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-share-alt"></i>
                             <div>
                                 <h4>وسائل التواصل الاجتماعي</h4>
                                 <div class="social-links">
-                                    <a href="https://www.facebook.com/share/1BnFsg56Cp/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://www.instagram.com/purefurniturejo?igsh=Z3hobTlxN25zbWM3" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.facebook.com/share/1BnFsg56Cp/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.instagram.com/purefurniturejo?igsh=Z3hobTlxN25zbWM3" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
+                <!-- خريطة محسنة مع حل بديل -->
                 <div class="map-container">
-                    <iframe src="https://maps.app.goo.gl/HXZ9xUBYED2QYj" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="map-placeholder" id="mapPlaceholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>موقع بيور للأثاث</h3>
+                        <p>الأردن - عمان</p>
+                        <button class="location-btn" id="openLocationBtn">
+                            <i class="fas fa-external-link-alt"></i> افتح في خرائط جوجل
+                        </button>
+                        <p style="margin-top: 15px; font-size: 0.9rem;">أو انظر أدناه للخريطة التفاعلية</p>
+                    </div>
+                    
+                    <!-- رابط خرائط جوجل احتياطي -->
+                    <iframe 
+                        class="map-frame" 
+                        id="googleMap"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3387.2729978168965!2d35.93081531514285!3d31.953888781246896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151b5f8e0b8b3a9f%3A0x3a9b0b0b0b0b0b0b!2sAmman%2C%20Jordan!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -1059,7 +881,7 @@
             <h3 id="modalTitle">حفظ جهة الاتصال</h3>
             <p id="modalMessage">هل تريد حفظ جهة الاتصال هذه في هاتفك؟</p>
             <div class="contact-details-modal" id="contactDetailsModal">
-                <!-- Contact details will be inserted here -->
+                <!-- تفاصيل جهة الاتصال -->
             </div>
             <div class="modal-buttons">
                 <button class="modal-btn confirm" id="confirmSave">نعم، احفظها</button>
@@ -1079,8 +901,6 @@
             body.classList.add('lang-ar');
             arabicBtn.classList.add('active');
             englishBtn.classList.remove('active');
-            
-            // Update text content to Arabic
             updateContentToArabic();
         });
         
@@ -1089,34 +909,26 @@
             body.classList.add('lang-en');
             englishBtn.classList.add('active');
             arabicBtn.classList.remove('active');
-            
-            // Update text content to English
             updateContentToEnglish();
         });
         
         function updateContentToArabic() {
-            // Update navigation
+            // تحديث النصوص للعربية
             document.querySelectorAll('.nav-links a')[0].textContent = 'الرئيسية';
             document.querySelectorAll('.nav-links a')[1].textContent = 'من نحن';
             document.querySelectorAll('.nav-links a')[2].textContent = 'التقييمات';
             document.querySelectorAll('.nav-links a')[3].textContent = 'اتصل بنا';
             
-            // Update hero section
             document.querySelector('.hero h2').innerHTML = 'هنا تصنع القطعة <span class="highlight">كأنها تصمم لك وحدك</span>';
             document.querySelector('.hero p').textContent = 'جودة تحس، وفخامة ترى، وتفاصيل تحكى. أثاث يرتقي بمكانك…. ويوقع حضورك.';
             document.querySelector('.cta-btn').textContent = 'اطلب تصميمك الآن';
             
-            // Update section titles
             document.querySelectorAll('.section-title h2')[0].textContent = 'من نحن';
             document.querySelectorAll('.section-title h2')[1].textContent = 'تقييمات العملاء';
             document.querySelectorAll('.section-title h2')[2].textContent = 'اتصل بنا';
             
-            // Update about section
             document.querySelector('.about-text h3').textContent = 'بيور للأثاث الفاخر';
-            document.querySelectorAll('.about-text p')[0].textContent = 'نحن نؤمن أن الأثاث ليس مجرد قطع لتزيين المنزل، بل هو تعبير عن شخصيتك وذوقك الفريد. كل قطعة نصنعها تحمل روحًا خاصة، وتفاصيل مدروسة بعناية، وجودة لا تتكرر.';
-            document.querySelectorAll('.about-text p')[1].textContent = 'نحن في بيور نخصص كل جهدنا لتحويل رؤيتك إلى واقع ملموس، حيث تكون كل قطعة أثاث انعكاسًا لأسلوبك وذوقك الرفيع.';
             
-            // Update feature titles
             document.querySelectorAll('.feature h4')[0].textContent = 'تصميم خاص';
             document.querySelectorAll('.feature p')[0].textContent = 'تصميم مخصص يناسب ذوقك ومساحتك';
             document.querySelectorAll('.feature h4')[1].textContent = 'جودة فاخرة';
@@ -1124,16 +936,13 @@
             document.querySelectorAll('.feature h4')[2].textContent = 'تفاصيل فنية';
             document.querySelectorAll('.feature p')[2].textContent = 'اهتمام بالتفاصيل الدقيقة واللمسات الفنية';
             
-            // Update review form
             document.querySelector('.review-form-container h3').textContent = 'أضف تقييمك';
             document.querySelector('label[for="reviewName"]').textContent = 'الاسم';
             document.querySelector('label[for="reviewRating"]').textContent = 'التقييم';
             document.querySelector('label[for="reviewText"]').textContent = 'التعليق';
             document.querySelector('#reviewForm .submit-btn').textContent = 'إرسال التقييم';
             
-            // Update contact section
             document.querySelector('.contact-info h3').textContent = 'تواصل معنا';
-            document.querySelector('.contact-info p').textContent = 'نحن هنا لمساعدتك في تصميم قطعة الأثاث المثالية التي تناسب ذوقك ومساحتك. لا تتردد في التواصل معنا لأي استفسار.';
             document.querySelectorAll('.contact-item h4')[0].textContent = 'هاتف';
             document.querySelectorAll('.contact-item h4')[1].textContent = 'الموقع';
             document.querySelectorAll('.contact-item h4')[2].textContent = 'وسائل التواصل الاجتماعي';
@@ -1141,7 +950,11 @@
             document.querySelectorAll('.save-contact-btn')[0].innerHTML = '<i class="fas fa-save"></i> حفظ جهة الاتصال';
             document.querySelectorAll('.save-contact-btn')[1].innerHTML = '<i class="fas fa-map-pin"></i> حفظ الموقع';
             
-            // Update footer
+            document.querySelector('#mapPlaceholder h3').textContent = 'موقع بيور للأثاث';
+            document.querySelector('#mapPlaceholder p').textContent = 'الأردن - عمان';
+            document.querySelector('#openLocationBtn').innerHTML = '<i class="fas fa-external-link-alt"></i> افتح في خرائط جوجل';
+            document.querySelectorAll('#mapPlaceholder p')[1].textContent = 'أو انظر أدناه للخريطة التفاعلية';
+            
             document.querySelectorAll('.footer-column h3')[0].textContent = 'بيور للأثاث';
             document.querySelectorAll('.footer-column p')[0].textContent = 'أثاث فاخر مصمم خصيصًا لك. جودة تحس، وفخامة ترى، وتفاصيل تحكى.';
             document.querySelectorAll('.footer-column h3')[1].textContent = 'روابط سريعة';
@@ -1152,7 +965,6 @@
             document.querySelectorAll('.footer-column h3')[2].textContent = 'معلومات الاتصال';
             document.querySelector('.copyright p').textContent = '© 2023 بيور للأثاث. جميع الحقوق محفوظة.';
             
-            // Update modal
             document.getElementById('modalTitle').textContent = 'حفظ جهة الاتصال';
             document.getElementById('modalMessage').textContent = 'هل تريد حفظ جهة الاتصال هذه في هاتفك؟';
             document.getElementById('confirmSave').textContent = 'نعم، احفظها';
@@ -1160,28 +972,22 @@
         }
         
         function updateContentToEnglish() {
-            // Update navigation
+            // Update to English
             document.querySelectorAll('.nav-links a')[0].textContent = 'Home';
             document.querySelectorAll('.nav-links a')[1].textContent = 'About Us';
             document.querySelectorAll('.nav-links a')[2].textContent = 'Reviews';
             document.querySelectorAll('.nav-links a')[3].textContent = 'Contact Us';
             
-            // Update hero section
             document.querySelector('.hero h2').innerHTML = 'Here, each piece is crafted <span class="highlight">as if designed just for you</span>';
             document.querySelector('.hero p').textContent = 'Quality you feel, luxury you see, details that tell a story. Furniture that elevates your space… and makes your presence known.';
             document.querySelector('.cta-btn').textContent = 'Order Your Design Now';
             
-            // Update section titles
             document.querySelectorAll('.section-title h2')[0].textContent = 'About Us';
             document.querySelectorAll('.section-title h2')[1].textContent = 'Customer Reviews';
             document.querySelectorAll('.section-title h2')[2].textContent = 'Contact Us';
             
-            // Update about section
             document.querySelector('.about-text h3').textContent = 'Pure Luxury Furniture';
-            document.querySelectorAll('.about-text p')[0].textContent = 'We believe that furniture is not just pieces to decorate your home, but an expression of your unique personality and taste. Every piece we create carries a special soul, carefully considered details, and unparalleled quality.';
-            document.querySelectorAll('.about-text p')[1].textContent = 'At Pure, we dedicate all our efforts to transform your vision into tangible reality, where each piece of furniture reflects your style and refined taste.';
             
-            // Update feature titles
             document.querySelectorAll('.feature h4')[0].textContent = 'Custom Design';
             document.querySelectorAll('.feature p')[0].textContent = 'Custom design that suits your taste and space';
             document.querySelectorAll('.feature h4')[1].textContent = 'Luxury Quality';
@@ -1189,16 +995,13 @@
             document.querySelectorAll('.feature h4')[2].textContent = 'Artistic Details';
             document.querySelectorAll('.feature p')[2].textContent = 'Attention to fine details and artistic touches';
             
-            // Update review form
             document.querySelector('.review-form-container h3').textContent = 'Add Your Review';
             document.querySelector('label[for="reviewName"]').textContent = 'Name';
             document.querySelector('label[for="reviewRating"]').textContent = 'Rating';
             document.querySelector('label[for="reviewText"]').textContent = 'Comment';
             document.querySelector('#reviewForm .submit-btn').textContent = 'Submit Review';
             
-            // Update contact section
             document.querySelector('.contact-info h3').textContent = 'Contact Us';
-            document.querySelector('.contact-info p').textContent = 'We are here to help you design the perfect piece of furniture that suits your taste and space. Do not hesitate to contact us for any inquiries.';
             document.querySelectorAll('.contact-item h4')[0].textContent = 'Phone';
             document.querySelectorAll('.contact-item h4')[1].textContent = 'Location';
             document.querySelectorAll('.contact-item h4')[2].textContent = 'Social Media';
@@ -1206,7 +1009,11 @@
             document.querySelectorAll('.save-contact-btn')[0].innerHTML = '<i class="fas fa-save"></i> Save Contact';
             document.querySelectorAll('.save-contact-btn')[1].innerHTML = '<i class="fas fa-map-pin"></i> Save Location';
             
-            // Update footer
+            document.querySelector('#mapPlaceholder h3').textContent = 'Pure Furniture Location';
+            document.querySelector('#mapPlaceholder p').textContent = 'Jordan - Amman';
+            document.querySelector('#openLocationBtn').innerHTML = '<i class="fas fa-external-link-alt"></i> Open in Google Maps';
+            document.querySelectorAll('#mapPlaceholder p')[1].textContent = 'Or view the interactive map below';
+            
             document.querySelectorAll('.footer-column h3')[0].textContent = 'Pure Furniture';
             document.querySelectorAll('.footer-column p')[0].textContent = 'Luxury furniture designed specifically for you. Quality you feel, luxury you see, details that tell a story.';
             document.querySelectorAll('.footer-column h3')[1].textContent = 'Quick Links';
@@ -1217,14 +1024,13 @@
             document.querySelectorAll('.footer-column h3')[2].textContent = 'Contact Info';
             document.querySelector('.copyright p').textContent = '© 2023 Pure Furniture. All rights reserved.';
             
-            // Update modal
             document.getElementById('modalTitle').textContent = 'Save Contact';
             document.getElementById('modalMessage').textContent = 'Do you want to save this contact to your phone?';
             document.getElementById('confirmSave').textContent = 'Yes, Save It';
             document.getElementById('cancelSave').textContent = 'Cancel';
         }
         
-        // Mobile Menu Toggle
+        // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
         
@@ -1235,15 +1041,7 @@
                 : '<i class="fas fa-bars"></i>';
         });
         
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-        
-        // Star Rating System
+        // Star Rating
         const stars = document.querySelectorAll('.star-rating i');
         const ratingValue = document.getElementById('reviewRatingValue');
         
@@ -1264,18 +1062,16 @@
             });
         });
         
-        // Review System
+        // Reviews System
         const reviewsContainer = document.getElementById('reviewsContainer');
         const reviewForm = document.getElementById('reviewForm');
         
-        // Sample reviews data
         let reviews = [
             { id: 1, name: 'أحمد محمد', rating: 5, text: 'تجربة رائعة مع بيور! القطعة التي طلبتها كانت أفضل مما توقعت. الجودة فائقة والتصميم أنيق جداً.', date: '2023-10-15' },
             { id: 2, name: 'سارة عبدالله', rating: 4, text: 'خدمة عملاء ممتازة وتوصيل في الوقت المحدد. التصميم جميل والتنفيذ دقيق.', date: '2023-09-22' },
             { id: 3, name: 'خالد الزعبي', rating: 5, text: 'أنصح الجميع بالتجربة. الأثاث فخم ويضيف لمسة راقية للمنزل. الشكر لطاقم بيور على الاهتمام بالتفاصيل.', date: '2023-08-30' }
         ];
         
-        // Load reviews on page load
         function loadReviews() {
             reviewsContainer.innerHTML = '';
             
@@ -1283,7 +1079,6 @@
                 const reviewCard = document.createElement('div');
                 reviewCard.className = 'review-card';
                 
-                // Generate star HTML
                 let starsHTML = '';
                 for (let i = 1; i <= 5; i++) {
                     if (i <= review.rating) {
@@ -1293,7 +1088,6 @@
                     }
                 }
                 
-                // Get first letter of name for avatar
                 const firstLetter = review.name.charAt(0);
                 
                 reviewCard.innerHTML = `
@@ -1313,7 +1107,6 @@
             });
         }
         
-        // Handle review form submission
         reviewForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1326,7 +1119,6 @@
                 return;
             }
             
-            // Create new review object
             const newReview = {
                 id: reviews.length + 1,
                 name: name,
@@ -1335,16 +1127,10 @@
                 date: new Date().toISOString().split('T')[0]
             };
             
-            // Add to reviews array
             reviews.unshift(newReview);
-            
-            // Reload reviews
             loadReviews();
-            
-            // Reset form
             reviewForm.reset();
             
-            // Reset stars to default
             stars.forEach(star => {
                 if (star.getAttribute('data-rating') <= 5) {
                     star.classList.remove('far');
@@ -1356,17 +1142,55 @@
             });
             ratingValue.value = 5;
             
-            // Show success message
             alert(body.classList.contains('lang-en') 
                 ? 'Thank you for your review! It has been submitted successfully.' 
                 : 'شكراً لك على تقييمك! تم إرسال التقييم بنجاح.');
         });
         
+        // Location System - حل محسّن
+        const mapPlaceholder = document.getElementById('mapPlaceholder');
+        const googleMap = document.getElementById('googleMap');
+        const openLocationBtn = document.getElementById('openLocationBtn');
+        
+        // اخفاء البداية المميزة بعد تحميل الخريطة
+        googleMap.addEventListener('load', function() {
+            setTimeout(() => {
+                mapPlaceholder.classList.add('hidden');
+            }, 2000);
+        });
+        
+        // فتح خرائط جوجل في نافذة جديدة
+        openLocationBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const address = "Amman, Jordan";
+            const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+            window.open(mapsUrl, '_blank');
+        });
+        
+        // بديل إذا فشلت الخريطة في التحميل
+        setTimeout(() => {
+            if (googleMap.offsetParent === null || googleMap.clientHeight === 0) {
+                console.log("الخريطة لم تحمل، عرض البديل");
+                mapPlaceholder.classList.remove('hidden');
+                
+                // تحديث نص البديل
+                if (body.classList.contains('lang-en')) {
+                    mapPlaceholder.querySelector('h3').textContent = 'Map Loading Failed';
+                    mapPlaceholder.querySelectorAll('p')[0].textContent = 'Jordan - Amman';
+                    mapPlaceholder.querySelector('.location-btn').innerHTML = '<i class="fas fa-external-link-alt"></i> Open in Google Maps';
+                    mapPlaceholder.querySelectorAll('p')[1].textContent = 'Click the button above to open location in maps';
+                } else {
+                    mapPlaceholder.querySelector('h3').textContent = 'فشل تحميل الخريطة';
+                    mapPlaceholder.querySelectorAll('p')[0].textContent = 'الأردن - عمان';
+                    mapPlaceholder.querySelector('.location-btn').innerHTML = '<i class="fas fa-external-link-alt"></i> افتح في خرائط جوجل';
+                    mapPlaceholder.querySelectorAll('p')[1].textContent = 'انقر على الزر أعلاه لفتح الموقع في الخرائط';
+                }
+            }
+        }, 5000);
+        
         // Save Contact System
         const saveContactBtns = document.querySelectorAll('.save-contact-btn');
         const contactModal = document.getElementById('contactModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalMessage = document.getElementById('modalMessage');
         const contactDetailsModal = document.getElementById('contactDetailsModal');
         const confirmSave = document.getElementById('confirmSave');
         const cancelSave = document.getElementById('cancelSave');
@@ -1381,24 +1205,15 @@
                 
                 currentContactData = { contactName, phone, address };
                 
-                // Update modal content based on language
                 if (body.classList.contains('lang-en')) {
-                    modalTitle.textContent = 'Save Contact';
-                    modalMessage.textContent = 'Do you want to save this contact to your phone?';
-                    
                     let detailsHTML = `<p><strong>Name:</strong> ${contactName}</p>`;
                     if (phone) detailsHTML += `<p><strong>Phone:</strong> ${phone}</p>`;
                     if (address) detailsHTML += `<p><strong>Address:</strong> ${address}</p>`;
-                    
                     contactDetailsModal.innerHTML = detailsHTML;
                 } else {
-                    modalTitle.textContent = 'حفظ جهة الاتصال';
-                    modalMessage.textContent = 'هل تريد حفظ جهة الاتصال هذه في هاتفك؟';
-                    
                     let detailsHTML = `<p><strong>الاسم:</strong> ${contactName}</p>`;
                     if (phone) detailsHTML += `<p><strong>الهاتف:</strong> ${phone}</p>`;
                     if (address) detailsHTML += `<p><strong>العنوان:</strong> ${address}</p>`;
-                    
                     contactDetailsModal.innerHTML = detailsHTML;
                 }
                 
@@ -1406,10 +1221,7 @@
             });
         });
         
-        // Confirm save contact
         confirmSave.addEventListener('click', function() {
-            // In a real implementation, this would use the Contacts API or trigger a download
-            // For this example, we'll simulate saving contact
             const vCardData = `BEGIN:VCARD
 VERSION:3.0
 FN:${currentContactData.contactName}
@@ -1417,7 +1229,6 @@ TEL:${currentContactData.phone || ''}
 ADR:${currentContactData.address || ''}
 END:VCARD`;
             
-            // Create a blob and download link
             const blob = new Blob([vCardData], { type: 'text/vcard' });
             const url = URL.createObjectURL(blob);
             
@@ -1428,7 +1239,6 @@ END:VCARD`;
             a.click();
             document.body.removeChild(a);
             
-            // Show success message
             if (body.classList.contains('lang-en')) {
                 alert('Contact saved successfully! A vCard file has been downloaded.');
             } else {
@@ -1438,21 +1248,23 @@ END:VCARD`;
             contactModal.style.display = 'none';
         });
         
-        // Cancel save contact
         cancelSave.addEventListener('click', function() {
             contactModal.style.display = 'none';
         });
         
-        // Close modal when clicking outside
-        contactModal.addEventListener('click', function(e) {
-            if (e.target === contactModal) {
-                contactModal.style.display = 'none';
-            }
-        });
-        
-        // Initialize reviews on page load
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             loadReviews();
+            
+            // إضافة بعض التقييمات الافتراضية باللغة الإنجليزية
+            if (body.classList.contains('lang-en')) {
+                reviews = [
+                    { id: 1, name: 'Ahmed Mohamed', rating: 5, text: 'Amazing experience with Pure! The piece I ordered was better than expected. Exceptional quality and elegant design.', date: '2023-10-15' },
+                    { id: 2, name: 'Sarah Abdullah', rating: 4, text: 'Excellent customer service and delivery on time. Beautiful design and precise execution.', date: '2023-09-22' },
+                    { id: 3, name: 'Khaled Al-Zoubi', rating: 5, text: 'I recommend everyone to try it. The furniture is luxurious and adds a sophisticated touch to the home. Thanks to the Pure team for their attention to detail.', date: '2023-08-30' }
+                ];
+                loadReviews();
+            }
         });
     </script>
 </body>
