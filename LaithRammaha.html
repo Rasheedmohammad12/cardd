@@ -76,14 +76,16 @@
         .order-container {
             background: white;
             border-radius: 25px;
-            padding: 50px;
-            max-width: 500px;
+            padding: 40px;
+            max-width: 900px;
             width: 100%;
             text-align: center;
             box-shadow: var(--shadow-lg);
             animation: slideUp 0.8s ease 0.3s forwards;
             opacity: 0;
             transform: translateY(30px);
+            overflow-y: auto;
+            max-height: 90vh;
         }
         
         .pharmacy-logo {
@@ -104,18 +106,18 @@
             background: var(--gradient-accent);
             color: white;
             border: none;
-            padding: 20px 40px;
+            padding: 18px 35px;
             border-radius: 15px;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin: 30px auto;
+            margin: 20px auto;
             width: 100%;
-            max-width: 300px;
+            max-width: 280px;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
         }
@@ -125,17 +127,85 @@
             box-shadow: var(--shadow-lg);
         }
         
-        .order-info {
-            background: rgba(40, 180, 99, 0.1);
+        .order-now-btn.small {
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            max-width: 200px;
+        }
+        
+        .sales-team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0 30px;
+        }
+        
+        .sales-person-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
             padding: 25px;
-            border-radius: 15px;
-            margin-top: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sales-person-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .sales-person-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-accent);
+        }
+        
+        .person-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .person-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .person-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .person-info {
+            background: rgba(40, 180, 99, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
             text-align: right;
         }
         
         .info-item {
-            margin: 15px 0;
-            font-size: 1.1rem;
+            margin: 10px 0;
+            font-size: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -144,28 +214,55 @@
         .info-label {
             font-weight: 600;
             color: var(--primary);
+            font-size: 0.95rem;
         }
         
         .info-value {
             color: var(--dark-text);
+            font-weight: 500;
         }
         
         .enter-site-btn {
             background: transparent;
             color: var(--primary);
             border: 2px solid var(--primary);
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 1.1rem;
+            padding: 15px 35px;
+            border-radius: 12px;
+            font-size: 1.2rem;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 30px;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .enter-site-btn:hover {
             background: var(--primary);
             color: white;
+            transform: translateY(-3px);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--dark-text);
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
         }
         
         /* Language Switcher */
@@ -430,27 +527,6 @@
             text-align: center;
             box-shadow: var(--shadow);
             border: var(--border);
-        }
-        
-        .section-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            color: var(--dark-text);
-            font-family: 'Playfair Display', serif;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 2px;
-            background: var(--accent);
         }
         
         .about-text {
@@ -909,7 +985,7 @@
             text-align: left;
         }
         
-        body[dir="ltr"] .order-info {
+        body[dir="ltr"] .person-info {
             text-align: left;
         }
         
@@ -920,16 +996,37 @@
         /* Responsive */
         @media (max-width: 768px) {
             .order-container {
-                padding: 30px 20px;
+                padding: 25px 15px;
+                max-width: 95%;
             }
             
             .pharmacy-name {
                 font-size: 2rem;
             }
             
+            .sales-team-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .sales-person-card {
+                padding: 20px;
+            }
+            
+            .person-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .person-name {
+                font-size: 1.3rem;
+            }
+            
             .order-now-btn {
-                padding: 15px 30px;
-                font-size: 1.2rem;
+                padding: 15px 25px;
+                font-size: 1.1rem;
+                max-width: 250px;
             }
             
             .language-switcher {
@@ -1006,11 +1103,29 @@
         
         @media (max-width: 480px) {
             .order-container {
-                padding: 20px 15px;
+                padding: 20px 12px;
             }
             
             .pharmacy-name {
                 font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .sales-person-card {
+                padding: 15px;
+            }
+            
+            .person-avatar {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+            
+            .person-name {
+                font-size: 1.2rem;
             }
             
             .info-item {
@@ -1031,32 +1146,96 @@
         <div class="order-container">
             <img src="https://imgur.com/hu0YIa4.png" alt="Pharmacy Logo" class="pharmacy-logo">
             <h1 class="pharmacy-name">Medical Binary</h1>
+            <h2 class="section-title lang-ar">فريق المبيعات</h2>
+            <h2 class="section-title lang-en">Sales Team</h2>
             
-            <button class="order-now-btn" onclick="goToWhatsApp()">
-                <i class="fab fa-whatsapp"></i>
-                <span class="lang-ar">اطلب الان</span>
-                <span class="lang-en">Order Now</span>
-            </button>
-            
-            <div class="order-info">
-                <div class="info-item">
-                    <span class="info-label lang-ar">الاسم:</span>
-                    <span class="info-value">Laith Rammaha</span>
+            <div class="sales-team-container">
+                <!-- Sales Manager -->
+                <div class="sales-person-card">
+                    <div class="person-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="person-name">Laith Rammaha</h3>
+                    <div class="person-title lang-ar">مدير المبيعات</div>
+                    <div class="person-title lang-en">Sales Manager</div>
+                    
+                    <div class="person-info">
+                        <div class="info-item">
+                            <span class="info-label lang-ar">رقم الهاتف:</span>
+                            <span class="info-value">0790407768</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label lang-ar">البريد الإلكتروني:</span>
+                            <span class="info-value">Laith@medical-binary.com</span>
+                        </div>
+                    </div>
+                    
+                    <button class="order-now-btn small" onclick="goToWhatsApp('0790407768', 'Laith Rammaha')">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="lang-ar">اطلب الان</span>
+                        <span class="lang-en">Order Now</span>
+                    </button>
                 </div>
-                <div class="info-item">
-                    <span class="info-label lang-ar">الوظيفة:</span>
-                    <span class="info-value lang-ar">مدير المبيعات</span>
-                    <span class="info-value lang-en">Sales Manager</span>
+
+                <!-- Sales Supervisor 1 -->
+                <div class="sales-person-card">
+                    <div class="person-avatar">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="person-name">Hussein Al-Ghazlan</h3>
+                    <div class="person-title lang-ar">مشرف مبيعات</div>
+                    <div class="person-title lang-en">Sales Supervisor</div>
+                    
+                    <div class="person-info">
+                        <div class="info-item">
+                            <span class="info-label lang-ar">رقم الهاتف:</span>
+                            <span class="info-value">0777848587</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label lang-ar">البريد الإلكتروني:</span>
+                            <span class="info-value">Hussein@medical-binary.com</span>
+                        </div>
+                    </div>
+                    
+                    <button class="order-now-btn small" onclick="goToWhatsApp('0777848587', 'Hussein Al-Ghazlan')">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="lang-ar">اطلب الان</span>
+                        <span class="lang-en">Order Now</span>
+                    </button>
                 </div>
-                <div class="info-item">
-                    <span class="info-label lang-ar">رقم الهاتف:</span>
-                    <span class="info-value">0790407768</span>
+
+                <!-- Sales Supervisor 2 -->
+                <div class="sales-person-card">
+                    <div class="person-avatar">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="person-name">Shadi Qabouq</h3>
+                    <div class="person-title lang-ar">مشرف مبيعات</div>
+                    <div class="person-title lang-en">Sales Supervisor</div>
+                    
+                    <div class="person-info">
+                        <div class="info-item">
+                            <span class="info-label lang-ar">رقم الهاتف:</span>
+                            <span class="info-value">0790719098</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label lang-ar">البريد الإلكتروني:</span>
+                            <span class="info-value">Shadi@medical-binary.com</span>
+                        </div>
+                    </div>
+                    
+                    <button class="order-now-btn small" onclick="goToWhatsApp('0790719098', 'Shadi Qabouq')">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="lang-ar">اطلب الان</span>
+                        <span class="lang-en">Order Now</span>
+                    </button>
                 </div>
             </div>
             
             <button class="enter-site-btn" onclick="enterWebsite()">
-                <span class="lang-ar">الدخول إلى الموقع</span>
-                <span class="lang-en">Enter Website</span>
+                <i class="fas fa-arrow-left"></i>
+                <span class="lang-ar">الدخول إلى الموقع الرئيسي</span>
+                <span class="lang-en">Enter Main Website</span>
             </button>
         </div>
     </div>
@@ -1489,10 +1668,10 @@
 
     <script>
         // Order Page Functions
-        function goToWhatsApp() {
-            const phoneNumber = "962790407768";
-            const message = "مرحباً، أود طلب منتجات من Medical Binary";
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        function goToWhatsApp(phoneNumber, personName) {
+            const message = `مرحباً ${personName}، أود طلب منتجات من Medical Binary`;
+            const formattedNumber = phoneNumber.startsWith('962') ? phoneNumber : `962${phoneNumber.substring(1)}`;
+            const whatsappURL = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
         }
 
