@@ -505,6 +505,7 @@
 
         .phone-number-item:hover {
             background-color: rgba(139, 115, 85, 0.1);
+            transform: translateY(-2px);
         }
 
         .phone-number-item i {
@@ -534,6 +535,8 @@
             font-weight: 600;
             color: var(--dark-color);
             font-size: 1rem;
+            display: block;
+            margin-bottom: 4px;
         }
 
         .phone-number-item .number-type {
@@ -543,7 +546,6 @@
             padding: 2px 8px;
             border-radius: 4px;
             display: inline-block;
-            margin-top: 4px;
         }
 
         .save-contact-btn {
@@ -563,9 +565,10 @@
 
         .save-contact-btn:hover {
             background-color: #7a6448;
+            transform: translateY(-2px);
         }
 
-        /* خريطة محسنة مع رابط مباشر للموقع الحقيقي */
+        /* خريطة مع رابط مباشر للموقع الحقيقي */
         .map-container {
             flex: 1;
             min-width: 300px;
@@ -615,6 +618,7 @@
 
         .map-placeholder p {
             margin-bottom: 20px;
+            font-size: 1.1rem;
         }
 
         .location-btn {
@@ -630,11 +634,41 @@
             align-items: center;
             gap: 10px;
             transition: var(--transition);
+            text-decoration: none;
         }
 
         .location-btn:hover {
             background-color: var(--light-color);
             transform: translateY(-3px);
+        }
+
+        /* خيارات فتح الخريطة */
+        .map-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .map-option-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .map-option-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -871,6 +905,11 @@
             .contact-content {
                 flex-direction: column;
             }
+            
+            .map-options {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -1046,8 +1085,17 @@
                             <div class="contact-content-wrapper">
                                 <h4>الموقع</h4>
                                 <p>الأردن - عمان</p>
+                                
+                                <!-- زر يفتح الرابط المباشر للمحل -->
+                                <a href="https://maps.apple/p/HXZ9xUBYED2QYj" 
+                                   target="_blank" 
+                                   class="save-contact-btn" 
+                                   id="openStoreLocation">
+                                    <i class="fas fa-external-link-alt"></i> افتح موقع المحل على الخريطة
+                                </a>
+                                
                                 <button class="save-contact-btn" id="saveLocationBtn">
-                                    <i class="fas fa-map-pin"></i> حفظ الموقع
+                                    <i class="fas fa-map-pin"></i> حفظ الموقع في جهات الاتصال
                                 </button>
                             </div>
                         </div>
@@ -1069,18 +1117,42 @@
                 <div class="map-container">
                     <div class="map-placeholder" id="mapPlaceholder">
                         <i class="fas fa-map-marked-alt"></i>
-                        <h3>موقع بيور للأثاث</h3>
+                        <h3>موقع متجر بيور للأثاث</h3>
                         <p>الأردن - عمان</p>
-                        <!-- رابط مباشر لخرائط جوجل مع إحداثيات محددة -->
-                        <a href="https://www.google.com/maps/place/Amman,+Jordan/@31.9565783,35.9456951,12z/data=!3m1!4b1!4m6!3m5!1s0x151b5f8e0b8b3a9f:0x3a9b0b0b0b0b0b0b!8m2!3d31.9539494!4d35.910635!16zL20vMDQ5c20?entry=ttu" 
+                        
+                        <!-- زر رئيسي يفتح الرابط المباشر للمحل -->
+                        <a href="https://maps.apple/p/HXZ9xUBYED2QYj" 
                            target="_blank" 
-                           class="location-btn">
-                            <i class="fas fa-external-link-alt"></i> افتح في خرائط جوجل
+                           class="location-btn"
+                           id="mainMapButton">
+                            <i class="fas fa-store"></i> افتح موقع المحل على الخريطة
                         </a>
-                        <p style="margin-top: 15px; font-size: 0.9rem;">انقر على الزر لفتح موقعنا في خرائط جوجل</p>
+                        
+                        <div class="map-options">
+                            <!-- روابط بديلة للخريطة -->
+                            <a href="https://maps.app.goo.gl/HXZ9xUBYED2QYj" 
+                               target="_blank" 
+                               class="map-option-btn">
+                                <i class="fab fa-google"></i> Google Maps
+                            </a>
+                            
+                            <a href="https://www.google.com/maps/search/?api=1&query=31.953949,35.910635" 
+                               target="_blank" 
+                               class="map-option-btn">
+                                <i class="fas fa-map"></i> إحداثيات الموقع
+                            </a>
+                            
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=31.953949,35.910635" 
+                               target="_blank" 
+                               class="map-option-btn">
+                                <i class="fas fa-directions"></i> إرشادات الوصول
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 15px; font-size: 0.9rem;">انقر على أي زر لفتح موقعنا في خرائط جوجل أو أبل</p>
                     </div>
                     
-                    <!-- خريطة جوجل مباشرة -->
+                    <!-- خريطة جوجل احتياطية -->
                     <iframe 
                         class="map-frame" 
                         id="googleMap"
@@ -1225,14 +1297,18 @@
             
             document.querySelectorAll('.contact-item h4')[1].textContent = 'الموقع';
             document.querySelectorAll('.contact-item p')[0].textContent = 'الأردن - عمان';
-            document.querySelector('#saveLocationBtn').innerHTML = '<i class="fas fa-map-pin"></i> حفظ الموقع';
+            document.querySelector('#openStoreLocation').innerHTML = '<i class="fas fa-external-link-alt"></i> افتح موقع المحل على الخريطة';
+            document.querySelector('#saveLocationBtn').innerHTML = '<i class="fas fa-map-pin"></i> حفظ الموقع في جهات الاتصال';
             
             document.querySelectorAll('.contact-item h4')[2].textContent = 'وسائل التواصل الاجتماعي';
             
-            document.querySelector('#mapPlaceholder h3').textContent = 'موقع بيور للأثاث';
+            document.querySelector('#mapPlaceholder h3').textContent = 'موقع متجر بيور للأثاث';
             document.querySelector('#mapPlaceholder p').textContent = 'الأردن - عمان';
-            document.querySelector('#mapPlaceholder .location-btn').innerHTML = '<i class="fas fa-external-link-alt"></i> افتح في خرائط جوجل';
-            document.querySelectorAll('#mapPlaceholder p')[1].textContent = 'انقر على الزر لفتح موقعنا في خرائط جوجل';
+            document.querySelector('#mainMapButton').innerHTML = '<i class="fas fa-store"></i> افتح موقع المحل على الخريطة';
+            document.querySelectorAll('#mapPlaceholder .map-option-btn')[0].innerHTML = '<i class="fab fa-google"></i> Google Maps';
+            document.querySelectorAll('#mapPlaceholder .map-option-btn')[1].innerHTML = '<i class="fas fa-map"></i> إحداثيات الموقع';
+            document.querySelectorAll('#mapPlaceholder .map-option-btn')[2].innerHTML = '<i class="fas fa-directions"></i> إرشادات الوصول';
+            document.querySelectorAll('#mapPlaceholder p')[1].textContent = 'انقر على أي زر لفتح موقعنا في خرائط جوجل أو أبل';
             
             document.querySelectorAll('.footer-column h3')[0].textContent = 'بيور للأثاث';
             document.querySelectorAll('.footer-column p')[0].textContent = 'أثاث فاخر مصمم خصيصًا لك. جودة تحس، وفخامة ترى، وتفاصيل تحكى.';
@@ -1295,14 +1371,18 @@
             
             document.querySelectorAll('.contact-item h4')[1].textContent = 'Location';
             document.querySelectorAll('.contact-item p')[0].textContent = 'Jordan - Amman';
-            document.querySelector('#saveLocationBtn').innerHTML = '<i class="fas fa-map-pin"></i> Save Location';
+            document.querySelector('#openStoreLocation').innerHTML = '<i class="fas fa-external-link-alt"></i> Open Store Location on Map';
+            document.querySelector('#saveLocationBtn').innerHTML = '<i class="fas fa-map-pin"></i> Save Location to Contacts';
             
             document.querySelectorAll('.contact-item h4')[2].textContent = 'Social Media';
             
-            document.querySelector('#mapPlaceholder h3').textContent = 'Pure Furniture Location';
+            document.querySelector('#mapPlaceholder h3').textContent = 'Pure Furniture Store Location';
             document.querySelector('#mapPlaceholder p').textContent = 'Jordan - Amman';
-            document.querySelector('#mapPlaceholder .location-btn').innerHTML = '<i class="fas fa-external-link-alt"></i> Open in Google Maps';
-            document.querySelectorAll('#mapPlaceholder p')[1].textContent = 'Click the button to open our location in Google Maps';
+            document.querySelector('#mainMapButton').innerHTML = '<i class="fas fa-store"></i> Open Store Location on Map';
+            document.querySelectorAll('#mapPlaceholder .map-option-btn')[0].innerHTML = '<i class="fab fa-google"></i> Google Maps';
+            document.querySelectorAll('#mapPlaceholder .map-option-btn')[1].innerHTML = '<i class="fas fa-map"></i> Coordinates';
+            document.querySelectorAll('#mapPlaceholder .map-option-btn')[2].innerHTML = '<i class="fas fa-directions"></i> Get Directions';
+            document.querySelectorAll('#mapPlaceholder p')[1].textContent = 'Click any button to open our location in Google Maps or Apple Maps';
             
             document.querySelectorAll('.footer-column h3')[0].textContent = 'Pure Furniture';
             document.querySelectorAll('.footer-column p')[0].textContent = 'Luxury furniture designed specifically for you. Quality you feel, luxury you see, details that tell a story.';
@@ -1465,12 +1545,19 @@
         // Location System - رابط مباشر لموقع المحل
         const mapPlaceholder = document.getElementById('mapPlaceholder');
         const googleMap = document.getElementById('googleMap');
+        const mainMapButton = document.getElementById('mainMapButton');
         
-        // اخفاء البداية المميزة بعد تحميل الخريطة
+        // إخفاء البداية المميزة بعد تحميل الخريطة
         googleMap.addEventListener('load', function() {
             setTimeout(() => {
                 mapPlaceholder.classList.add('hidden');
             }, 2000);
+        });
+        
+        // زر الخريطة الرئيسي
+        mainMapButton.addEventListener('click', function(e) {
+            // تم ترك الرابط الأصلي كما هو
+            console.log("Opening store location on map...");
         });
         
         // بديل إذا فشلت الخريطة في التحميل
@@ -1480,12 +1567,12 @@
                 
                 if (body.classList.contains('lang-en')) {
                     mapPlaceholder.querySelector('h3').textContent = 'Map Loading Failed';
-                    mapPlaceholder.querySelector('.location-btn').innerHTML = '<i class="fas fa-external-link-alt"></i> Open in Google Maps';
-                    mapPlaceholder.querySelectorAll('p')[1].textContent = 'Click the button above to open our store location';
+                    mapPlaceholder.querySelector('.location-btn').innerHTML = '<i class="fas fa-store"></i> Open Store Location on Map';
+                    mapPlaceholder.querySelectorAll('p')[1].textContent = 'Click the button above to open our store location directly';
                 } else {
                     mapPlaceholder.querySelector('h3').textContent = 'فشل تحميل الخريطة';
-                    mapPlaceholder.querySelector('.location-btn').innerHTML = '<i class="fas fa-external-link-alt"></i> افتح في خرائط جوجل';
-                    mapPlaceholder.querySelectorAll('p')[1].textContent = 'انقر على الزر لفتح موقع متجرنا';
+                    mapPlaceholder.querySelector('.location-btn').innerHTML = '<i class="fas fa-store"></i> افتح موقع المحل على الخريطة';
+                    mapPlaceholder.querySelectorAll('p')[1].textContent = 'انقر على الزر لفتح موقع متجرنا مباشرة';
                 }
             }
         }, 5000);
@@ -1625,6 +1712,13 @@ END:VCARD`;
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             loadReviews();
+            
+            // التأكد من أن جميع روابط الخريطة تفتح في نافذة جديدة
+            document.querySelectorAll('a[href*="maps"], a[href*="wa.me"], a[href*="facebook"], a[href*="instagram"]').forEach(link => {
+                if (!link.getAttribute('target')) {
+                    link.setAttribute('target', '_blank');
+                }
+            });
         });
     </script>
 </body>
