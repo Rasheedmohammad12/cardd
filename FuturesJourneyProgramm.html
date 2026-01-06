@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1059,6 +1059,28 @@
                 margin-bottom: 20px;
             }
         }
+        
+        /* Form Message Styling */
+        .form-message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .form-success {
+            background-color: rgba(46, 204, 113, 0.15);
+            color: #27ae60;
+            border: 1px solid #2ecc71;
+        }
+        
+        .form-error {
+            background-color: rgba(231, 76, 60, 0.15);
+            color: #c0392b;
+            border: 1px solid #e74c3c;
+        }
     </style>
 </head>
 <body>
@@ -1066,8 +1088,8 @@
     <div class="welcome-overlay" id="welcomePage">
         <div class="welcome-content">
             <div class="welcome-logo">
-                <!-- Logo from https://imgur.com/bYSajP0 - SAME LOGO EVERYWHERE -->
-                <img src="https://i.imgur.com/bYSajP0.png" alt="Future's Journey Programming Institution" class="welcome-logo-img">
+                <!-- الشعار الجديد - https://imgur.com/xCugPFl -->
+                <img src="https://i.imgur.com/xCugPFl.png" alt="Future's Journey Programming Institution" class="welcome-logo-img">
                 <div class="logo-english">Future's Journey<br>PROGRAMMING INSTITUTION</div>
                 <div class="logo-subtitle">Smart NFC & QR Solutions</div>
             </div>
@@ -1090,8 +1112,8 @@
         <header class="luxury-header">
             <div class="container header-container">
                 <div class="logo-container">
-                    <!-- SAME LOGO as welcome page -->
-                    <img src="https://i.imgur.com/bYSajP0.png" alt="Future's Journey Programming Institution" class="logo-img">
+                    <!-- الشعار الجديد - https://imgur.com/xCugPFl -->
+                    <img src="https://i.imgur.com/xCugPFl.png" alt="Future's Journey Programming Institution" class="logo-img">
                     <div class="logo-text">
                         <h1>Future's Journey</h1>
                         <p>PROGRAMMING INSTITUTION</p>
@@ -1418,8 +1440,8 @@
             <div class="container">
                 <div class="footer-container">
                     <div class="footer-logo-container">
-                        <!-- SAME LOGO as everywhere -->
-                        <img src="https://i.imgur.com/bYSajP0.png" alt="Future's Journey Programming Institution" class="footer-logo-img">
+                        <!-- الشعار الجديد - https://imgur.com/xCugPFl -->
+                        <img src="https://i.imgur.com/xCugPFl.png" alt="Future's Journey Programming Institution" class="footer-logo-img">
                         <div style="text-align: center;">
                             <h3 style="color: var(--white-pure); margin-bottom: 10px; font-size: clamp(1.2rem, 2.5vw, 1.8rem);">Future's Journey</h3>
                             <p style="color: var(--platinum); font-size: clamp(0.8rem, 1.8vw, 1.1rem); letter-spacing: clamp(1px, 0.5vw, 1.5px);">PROGRAMMING INSTITUTION</p>
@@ -1465,7 +1487,7 @@
             }, 800);
         });
         
-        // Inquiry Form Submission
+        // Inquiry Form Submission - UPDATED FOR NEW INSTAGRAM ACCOUNT
         const inquiryForm = document.getElementById('inquiryForm');
         const formMessage = document.getElementById('formMessage');
         
@@ -1485,27 +1507,28 @@
                 };
                 
                 // Validate Instagram handle
-                if (!formData.instagramHandle.startsWith('@')) {
-                    formData.instagramHandle = '@' + formData.instagramHandle;
+                let instagramHandle = formData.instagramHandle.trim();
+                if (!instagramHandle.startsWith('@')) {
+                    instagramHandle = '@' + instagramHandle;
                 }
                 
                 // Create Instagram message
-                const instagramMessage = `New Inquiry from ${formData.fullName}%0A%0A` +
-                                       `Instagram: ${formData.instagramHandle}%0A` +
-                                       `Email: ${formData.email || 'Not provided'}%0A` +
-                                       `Phone: ${formData.phone || 'Not provided'}%0A` +
-                                       `Inquiry Type: ${formData.inquiryType}%0A` +
-                                       `Message: ${formData.message}%0A%0A` +
-                                       `Submitted: ${formData.date}`;
+                const instagramMessage = `استفسار جديد من ${formData.fullName}%0A%0A` +
+                                       `حساب الإنستغرام: ${instagramHandle}%0A` +
+                                       `البريد الإلكتروني: ${formData.email || 'لم يتم تقديمه'}%0A` +
+                                       `رقم الهاتف: ${formData.phone || 'لم يتم تقديمه'}%0A` +
+                                       `نوع الاستفسار: ${formData.inquiryType}%0A` +
+                                       `الرسالة: ${formData.message}%0A%0A` +
+                                       `تم الإرسال: ${formData.date}`;
                 
-                // Create Instagram DM link
-                const instagramURL = `https://www.instagram.com/direct/new/?text=${instagramMessage}`;
+                // Create Instagram DM link - UPDATED TO NEW ACCOUNT
+                const instagramURL = `https://www.instagram.com/futures_journey_programmingin/direct/new/?text=${instagramMessage}`;
                 
                 // Open Instagram in new tab
                 window.open(instagramURL, '_blank');
                 
                 // Show success message
-                formMessage.textContent = 'Opening Instagram to send your inquiry... Please complete the send process in the new tab.';
+                formMessage.textContent = 'جاري فتح الإنستغرام لإرسال استفسارك... يرجى إتمام عملية الإرسال في النافذة الجديدة.';
                 formMessage.className = 'form-message form-success';
                 formMessage.style.display = 'block';
                 
