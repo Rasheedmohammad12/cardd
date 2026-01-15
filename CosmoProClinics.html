@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دكتور علي القماز | عيادة التجميل والليزر</title>
+    <title>Cosmo Pro Clinics | عيادة الدكتور علي القماز</title>
     <style>
         /* إعادة الضبط والأساسيات */
         * {
@@ -95,23 +95,36 @@
         }
 
         .logo {
-            height: 65px;
+            height: 70px;
             width: auto;
-            border-radius: 8px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .clinic-name {
+            text-align: right;
         }
 
         .clinic-name h1 {
-            font-size: 1.9rem;
+            font-size: 1.8rem;
             margin: 0;
             line-height: 1.2;
             color: #1a472a;
+            font-weight: 700;
+        }
+
+        .doctor-name {
+            font-size: 1.1rem;
+            color: #b8860b;
+            font-weight: 600;
+            margin-top: 5px;
         }
 
         .tagline {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #666;
-            letter-spacing: 0.5px;
             margin: 0;
+            letter-spacing: 0.5px;
         }
 
         /* التنقل */
@@ -677,14 +690,25 @@
             gap: 50px;
         }
 
+        .footer-logo {
+            text-align: right;
+        }
+
         .footer-logo-img {
-            height: 70px;
-            margin-bottom: 18px;
-            border-radius: 8px;
+            height: 80px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-logo h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
         }
 
         .footer-logo p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1.7;
             color: #ccc;
         }
@@ -879,9 +903,19 @@
                 display: block;
             }
             
+            .logo-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .logo {
+                height: 60px;
+            }
+            
             .hero {
                 height: 75vh;
-                margin-top: 85px;
+                margin-top: 120px;
             }
             
             .hero h2 {
@@ -917,6 +951,10 @@
         }
 
         @media (max-width: 576px) {
+            .hero {
+                margin-top: 130px;
+            }
+            
             .hero h2 {
                 font-size: 2.2rem;
             }
@@ -936,6 +974,10 @@
             
             .modal-content {
                 padding: 25px;
+            }
+            
+            .footer-logo-img {
+                height: 70px;
             }
         }
 
@@ -964,6 +1006,32 @@
         html {
             scroll-padding-top: 100px;
         }
+
+        /* شعار النص البديل */
+        .text-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1a472a, #2a6e3a);
+            color: white;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .text-logo span:first-child {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+        
+        .text-logo span:last-child {
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="logo.png">
@@ -973,9 +1041,14 @@
     <header class="main-header">
         <div class="container header-container">
             <div class="logo-container">
-                <img src="logo.png" alt="شعار دكتور علي القماز" class="logo" onerror="this.src='https://via.placeholder.com/65x65/1a472a/ffffff?text=DR+ALI'">
+                <div class="text-logo" id="textLogo">
+                    <span>C</span>
+                    <span>PC</span>
+                </div>
+                <img src="https://imgur.com/xbdnq1v" alt="شعار Cosmo Pro Clinics" class="logo" id="mainLogo" style="display: none;">
                 <div class="clinic-name">
-                    <h1>دكتور علي القماز</h1>
+                    <h1>Cosmo Pro Clinics</h1>
+                    <div class="doctor-name">دكتور علي القماز</div>
                     <p class="tagline">عيادة التجميل والليزر المتخصصة</p>
                 </div>
             </div>
@@ -1000,7 +1073,7 @@
         <div class="hero-overlay"></div>
         <div class="container hero-content">
             <h2>دقة. فن. جمال.</h2>
-            <p>مرحباً بكم في ملاذ متقدم للعناية التجميلية، حيث تلتقي الخبرة الطبية بالفن لتكشف عن أفضل نسخة منك.</p>
+            <p>مرحباً بكم في Cosmo Pro Clinics - ملاذ متقدم للعناية التجميلية، حيث تلتقي الخبرة الطبية بالفن لتكشف عن أفضل نسخة منك.</p>
             <a href="#contact" class="btn btn-primary">احجز استشارة</a>
         </div>
     </section>
@@ -1082,7 +1155,7 @@
                                         <a href="tel:+962791102233" class="phone-link">
                                             <i class="fas fa-phone"></i> 00962 7 9110 2233
                                         </a>
-                                        <button class="save-contact-btn" data-phone="00962791102233" data-name="عيادة د. علي القماز (الرئيسي)">
+                                        <button class="save-contact-btn" data-phone="00962791102233" data-name="Cosmo Pro Clinics - د. علي القماز (الرئيسي)">
                                             <i class="far fa-address-book"></i> حفظ الرقم
                                         </button>
                                     </div>
@@ -1091,7 +1164,7 @@
                                         <a href="tel:+962791102244" class="phone-link">
                                             <i class="fas fa-phone"></i> 00962 7 9110 2244
                                         </a>
-                                        <button class="save-contact-btn" data-phone="00962791102244" data-name="عيادة د. علي القماز (الثانوي)">
+                                        <button class="save-contact-btn" data-phone="00962791102244" data-name="Cosmo Pro Clinics - د. علي القماز (الثانوي)">
                                             <i class="far fa-address-book"></i> حفظ الرقم
                                         </button>
                                     </div>
@@ -1162,7 +1235,7 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="review-content">خدمة استثنائية ونتائج رائعة! إزالة الشعر بالليزر كانت غير مؤلمة وفعالة. أوصي بشدة بعيادة الدكتور علي.</p>
+                            <p class="review-content">خدمة استثنائية ونتائج رائعة في Cosmo Pro Clinics! إزالة الشعر بالليزر كانت غير مؤلمة وفعالة. أوصي بشدة بالعيادة.</p>
                             <span class="review-date">١٠ يناير ٢٠٢٦</span>
                         </div>
                         <!-- تقييم نموذجي 2 -->
@@ -1177,7 +1250,7 @@
                                     <i class="far fa-star"></i>
                                 </div>
                             </div>
-                            <p class="review-content">طاقم محترف وأجهزة حديثة. خطة علاج البشرة أحدثت فرقاً ملحوظاً.</p>
+                            <p class="review-content">طاقم محترف وأجهزة حديثة في Cosmo Pro. خطة علاج البشرة أحدثت فرقاً ملحوظاً.</p>
                             <span class="review-date">٢٨ ديسمبر ٢٠٢٥</span>
                         </div>
                     </div>
@@ -1200,8 +1273,13 @@
     <footer class="main-footer">
         <div class="container footer-container">
             <div class="footer-logo">
-                <img src="logo.png" alt="شعار دكتور علي القماز" class="footer-logo-img" onerror="this.src='https://via.placeholder.com/70x70/1a472a/ffffff?text=DR+ALI'">
-                <p>دكتور علي القماز<br>عيادة التجميل والجمال</p>
+                <div class="text-logo" id="footerTextLogo">
+                    <span>C</span>
+                    <span>PC</span>
+                </div>
+                <img src="https://imgur.com/xbdnq1v" alt="شعار Cosmo Pro Clinics" class="footer-logo-img" id="footerLogo" style="display: none;">
+                <h3>Cosmo Pro Clinics</h3>
+                <p>دكتور علي القماز<br>عيادة التجميل والجمال المتخصصة</p>
             </div>
             <div class="footer-links">
                 <h4>روابط سريعة</h4>
@@ -1219,9 +1297,9 @@
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/962791102233" target="_blank" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
                 </div>
-                <p class="copyright">© <span id="currentYear">٢٠٢٦</span> عيادة دكتور علي القماز. جميع الحقوق محفوظة.</p>
+                <p class="copyright">© <span id="currentYear">٢٠٢٦</span> Cosmo Pro Clinics. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
@@ -1245,6 +1323,39 @@
         document.addEventListener('DOMContentLoaded', function() {
             // تعيين السنة الحالية في الفوتر
             document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // محاولة تحميل الشعار
+            const mainLogo = document.getElementById('mainLogo');
+            const footerLogo = document.getElementById('footerLogo');
+            const textLogo = document.getElementById('textLogo');
+            const footerTextLogo = document.getElementById('footerTextLogo');
+            
+            // تحقق من تحميل الشعار
+            if (mainLogo) {
+                mainLogo.onload = function() {
+                    // إذا تم تحميل الشعار بنجاح، إظهاره وإخفاء الشعار النصي
+                    mainLogo.style.display = 'block';
+                    textLogo.style.display = 'none';
+                    
+                    if (footerLogo) {
+                        footerLogo.style.display = 'block';
+                        footerTextLogo.style.display = 'none';
+                    }
+                };
+                
+                mainLogo.onerror = function() {
+                    // إذا فشل تحميل الشعار، البقاء على الشعار النصي
+                    mainLogo.style.display = 'none';
+                    textLogo.style.display = 'flex';
+                    
+                    if (footerLogo) {
+                        footerLogo.style.display = 'none';
+                        footerTextLogo.style.display = 'flex';
+                    }
+                    
+                    console.log('لم يتم تحميل الشعار، استخدام الشعار النصي بدلاً من ذلك.');
+                };
+            }
             
             // تبديل قائمة الجوال
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -1512,10 +1623,10 @@
                 
                 // إنشاء محتوى vCard
                 const vCardData = `BEGIN:VCARD
-        VERSION:3.0
-        FN:${currentContactName}
-        TEL;TYPE=WORK,VOICE:${currentPhoneToSave}
-        END:VCARD`;
+VERSION:3.0
+FN:${currentContactName}
+TEL;TYPE=WORK,VOICE:${currentPhoneToSave}
+END:VCARD`;
                 
                 // إنشاء ملف vCard للتحميل
                 const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
@@ -1610,7 +1721,7 @@
             });
             
             // التهيئة
-            console.log('تم تحميل موقع عيادة الدكتور علي القماز بنجاح.');
+            console.log('تم تحميل موقع Cosmo Pro Clinics بنجاح.');
         });
     </script>
 </body>
