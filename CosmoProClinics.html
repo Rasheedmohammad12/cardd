@@ -99,6 +99,7 @@
             width: auto;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
         }
 
         .clinic-name {
@@ -127,11 +128,47 @@
             letter-spacing: 0.5px;
         }
 
+        /* أزرار اللغة */
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .lang-btn {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .lang-btn:hover {
+            background: #e9e9e9;
+        }
+
+        .lang-btn.active {
+            background: #b8860b;
+            color: white;
+            border-color: #b8860b;
+        }
+
         /* التنقل */
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
         .main-nav ul {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 25px;
         }
 
         .main-nav a {
@@ -699,6 +736,7 @@
             margin-bottom: 15px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
         }
 
         .footer-logo h3 {
@@ -904,8 +942,8 @@
             }
             
             .logo-container {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: row;
+                align-items: center;
                 gap: 10px;
             }
             
@@ -948,11 +986,17 @@
             .section-title {
                 font-size: 1.9rem;
             }
+            
+            .language-switcher {
+                margin-left: 0;
+                margin-top: 10px;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 576px) {
             .hero {
-                margin-top: 130px;
+                margin-top: 140px;
             }
             
             .hero h2 {
@@ -1007,30 +1051,51 @@
             scroll-padding-top: 100px;
         }
 
-        /* شعار النص البديل */
-        .text-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #1a472a, #2a6e3a);
-            color: white;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        /* النصوص المخفية للترجمة */
+        .lang-en {
+            display: none;
         }
-        
-        .text-logo span:first-child {
-            font-size: 1.4rem;
-            line-height: 1;
+
+        body[dir="ltr"] .lang-ar {
+            display: none;
         }
-        
-        .text-logo span:last-child {
-            font-size: 0.8rem;
-            margin-top: 2px;
+
+        body[dir="ltr"] .lang-en {
+            display: block;
+        }
+
+        body[dir="ltr"] {
+            direction: ltr;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body[dir="ltr"] .section-title::after {
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+        }
+
+        body[dir="ltr"] .contact-item,
+        body[dir="ltr"] .location-box h3,
+        body[dir="ltr"] .contact-box h3 {
+            justify-content: left;
+        }
+
+        body[dir="ltr"] .review-item {
+            border-left: 5px solid #b8860b;
+            border-right: none;
+        }
+
+        body[dir="ltr"] .review-item:hover {
+            transform: translateX(5px);
+        }
+
+        body[dir="ltr"] .review-date {
+            text-align: right;
+        }
+
+        body[dir="ltr"] .char-count {
+            text-align: right;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1041,26 +1106,33 @@
     <header class="main-header">
         <div class="container header-container">
             <div class="logo-container">
-                <div class="text-logo" id="textLogo">
-                    <span>C</span>
-                    <span>PC</span>
-                </div>
-                <img src="https://imgur.com/xbdnq1v" alt="شعار Cosmo Pro Clinics" class="logo" id="mainLogo" style="display: none;">
+                <img src="https://i.imgur.com/xbdnq1v.png" alt="Cosmo Pro Clinics Logo" class="logo">
                 <div class="clinic-name">
-                    <h1>Cosmo Pro Clinics</h1>
-                    <div class="doctor-name">دكتور علي القماز</div>
-                    <p class="tagline">عيادة التجميل والليزر المتخصصة</p>
+                    <h1 class="lang-ar">Cosmo Pro Clinics</h1>
+                    <h1 class="lang-en">Cosmo Pro Clinics</h1>
+                    <div class="doctor-name lang-ar">دكتور علي القماز</div>
+                    <div class="doctor-name lang-en">Dr. Ali Al Qammaz</div>
+                    <p class="tagline lang-ar">عيادة التجميل والليزر المتخصصة</p>
+                    <p class="tagline lang-en">Specialized Beauty & Laser Clinic</p>
                 </div>
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#services">الخدمات</a></li>
-                    <li><a href="#about">عن العيادة</a></li>
-                    <li><a href="#location">الموقع</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
-                    <li><a href="#reviews" class="review-btn">التقييمات</a></li>
+                    <li><a href="#home" class="nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                    <li><a href="#services" class="nav-link" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+                    <li><a href="#about" class="nav-link" data-ar="عن العيادة" data-en="About">عن العيادة</a></li>
+                    <li><a href="#location" class="nav-link" data-ar="الموقع" data-en="Location">الموقع</a></li>
+                    <li><a href="#contact" class="nav-link" data-ar="اتصل بنا" data-en="Contact">اتصل بنا</a></li>
+                    <li><a href="#reviews" class="review-btn nav-link" data-ar="التقييمات" data-en="Reviews">التقييمات</a></li>
                 </ul>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ar">
+                        <i class="fas fa-language"></i> عربي
+                    </button>
+                    <button class="lang-btn" data-lang="en">
+                        <i class="fas fa-language"></i> English
+                    </button>
+                </div>
             </nav>
             <button class="mobile-menu-btn" aria-label="قائمة الجوال">
                 <i class="fas fa-bars"></i>
@@ -1072,41 +1144,57 @@
     <section class="hero" id="home">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h2>دقة. فن. جمال.</h2>
-            <p>مرحباً بكم في Cosmo Pro Clinics - ملاذ متقدم للعناية التجميلية، حيث تلتقي الخبرة الطبية بالفن لتكشف عن أفضل نسخة منك.</p>
-            <a href="#contact" class="btn btn-primary">احجز استشارة</a>
+            <h2 class="lang-ar">دقة. فن. جمال.</h2>
+            <h2 class="lang-en">Precision. Art. Beauty.</h2>
+            <p class="lang-ar">مرحباً بكم في Cosmo Pro Clinics - ملاذ متقدم للعناية التجميلية، حيث تلتقي الخبرة الطبية بالفن لتكشف عن أفضل نسخة منك.</p>
+            <p class="lang-en">Welcome to Cosmo Pro Clinics - an advanced sanctuary for aesthetic care, where medical expertise meets art to reveal your best self.</p>
+            <a href="#contact" class="btn btn-primary lang-ar">احجز استشارة</a>
+            <a href="#contact" class="btn btn-primary lang-en">Book a Consultation</a>
         </div>
     </section>
 
     <!-- قسم الخدمات -->
     <section class="section services" id="services">
         <div class="container">
-            <h2 class="section-title">خدمات<span class="highlight">نا</span></h2>
+            <h2 class="section-title">
+                <span class="lang-ar">خدمات<span class="highlight">نا</span></span>
+                <span class="lang-en">Our <span class="highlight">Services</span></span>
+            </h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-spa"></i></div>
-                    <h3>إزالة الشعر بالليزر</h3>
-                    <p>أحدث تقنيات الليزر لنتائج ناعمة ودائمة.</p>
+                    <h3 class="lang-ar">إزالة الشعر بالليزر</h3>
+                    <h3 class="lang-en">Laser Hair Removal</h3>
+                    <p class="lang-ar">أحدث تقنيات الليزر لنتائج ناعمة ودائمة.</p>
+                    <p class="lang-en">State-of-the-art laser technology for smooth, lasting results.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
-                    <h3>عناية بالبشرة</h3>
-                    <p>برامج عناية شخصية، تقشير، وعناية يومية لبشرة مشرقة.</p>
+                    <h3 class="lang-ar">عناية بالبشرة</h3>
+                    <h3 class="lang-en">Skincare Treatments</h3>
+                    <p class="lang-ar">برامج عناية شخصية، تقشير، وعناية يومية لبشرة مشرقة.</p>
+                    <p class="lang-en">Personalized facials, peels, and daily care for radiant skin.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-user-md"></i></div>
-                    <h3>تشكيل الجسم</h3>
-                    <p>حلول غير جراحية لتنحيف وتشكيل الجسم.</p>
+                    <h3 class="lang-ar">تشكيل الجسم</h3>
+                    <h3 class="lang-en">Body Shaping</h3>
+                    <p class="lang-ar">حلول غير جراحية لتنحيف وتشكيل الجسم.</p>
+                    <p class="lang-en">Non-invasive solutions for body contouring and shaping.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-syringe"></i></div>
-                    <h3>بوتوكس وفلر</h3>
-                    <p>حقن احترافية لمظهر شبابي طبيعي.</p>
+                    <h3 class="lang-ar">بوتوكس وفلر</h3>
+                    <h3 class="lang-en">Botox & Filler</h3>
+                    <p class="lang-ar">حقن احترافية لمظهر شبابي طبيعي.</p>
+                    <p class="lang-en">Professional injections for natural-looking rejuvenation.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-plus-circle"></i></div>
-                    <h3>خدمات تجميل أخرى</h3>
-                    <p>مجموعة شاملة من خدمات التجميل المتقدمة.</p>
+                    <h3 class="lang-ar">خدمات تجميل أخرى</h3>
+                    <h3 class="lang-en">Other Aesthetic Services</h3>
+                    <p class="lang-ar">مجموعة شاملة من خدمات التجميل المتقدمة.</p>
+                    <p class="lang-en">Comprehensive range of advanced aesthetic treatments.</p>
                 </div>
             </div>
         </div>
@@ -1115,39 +1203,57 @@
     <!-- قسم الموقع والاتصال -->
     <section class="section contact-location" id="location">
         <div class="container">
-            <h2 class="section-title">معلومات<span class="highlight"> الاتصال</span></h2>
+            <h2 class="section-title">
+                <span class="lang-ar">معلومات<span class="highlight"> الاتصال</span></span>
+                <span class="lang-en">Contact <span class="highlight">Information</span></span>
+            </h2>
             <div class="contact-wrapper">
                 <!-- خريطة الموقع -->
                 <div class="location-box">
-                    <h3><i class="fas fa-map-marker-alt"></i> موقع العيادة</h3>
-                    <p class="address">الأردن، عمان، شارع المدينة المنورة</p>
+                    <h3>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span class="lang-ar">موقع العيادة</span>
+                        <span class="lang-en">Clinic Location</span>
+                    </h3>
+                    <p class="address lang-ar">الأردن، عمان، شارع المدينة المنورة</p>
+                    <p class="address lang-en">Jordan, Amman, Al Medina Street</p>
                     <div class="map-container">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3383.962031737743!2d35.934106315161174!3d31.963961781224324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca05c8cee0c1f%3A0x7ac8e6f5d3a9b4d2!2sAmman%2C%20Jordan!5e0!3m2!1sen!2sus!4v1641234567890!5m2!1sen!2sus"
                             width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                         <a href="https://maps.app.goo.gl/SZTou4umRgSs5XR5A?g_st=ipc" target="_blank" class="btn btn-map">
-                            <i class="fas fa-directions"></i> افتح في خرائط جوجل
+                            <i class="fas fa-directions"></i>
+                            <span class="lang-ar">افتح في خرائط جوجل</span>
+                            <span class="lang-en">Open in Google Maps</span>
                         </a>
                     </div>
                 </div>
 
                 <!-- معلومات الاتصال -->
                 <div class="contact-box" id="contact">
-                    <h3><i class="fas fa-phone-alt"></i> اتصل بنا</h3>
+                    <h3>
+                        <i class="fas fa-phone-alt"></i>
+                        <span class="lang-ar">اتصل بنا</span>
+                        <span class="lang-en">Contact Us</span>
+                    </h3>
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-clock"></i>
                             <div>
-                                <strong>ساعات العمل</strong>
-                                <p>الأحد - الخميس: 9:00 صباحاً - 7:00 مساءً</p>
-                                <p>الجمعة - السبت: 10:00 صباحاً - 4:00 مساءً</p>
+                                <strong class="lang-ar">ساعات العمل</strong>
+                                <strong class="lang-en">Opening Hours</strong>
+                                <p class="lang-ar">الأحد - الخميس: 9:00 صباحاً - 7:00 مساءً</p>
+                                <p class="lang-ar">الجمعة - السبت: 10:00 صباحاً - 4:00 مساءً</p>
+                                <p class="lang-en">Sunday - Thursday: 9:00 AM - 7:00 PM</p>
+                                <p class="lang-en">Friday - Saturday: 10:00 AM - 4:00 PM</p>
                             </div>
                         </div>
                         <div class="contact-item phone-item">
                             <i class="fas fa-mobile-alt"></i>
                             <div>
-                                <strong>أرقام الهواتف</strong>
+                                <strong class="lang-ar">أرقام الهواتف</strong>
+                                <strong class="lang-en">Phone Numbers</strong>
                                 <!-- أزرار حفظ جهة الاتصال -->
                                 <div class="phone-buttons">
                                     <!-- الهاتف الأول -->
@@ -1155,8 +1261,12 @@
                                         <a href="tel:+962791102233" class="phone-link">
                                             <i class="fas fa-phone"></i> 00962 7 9110 2233
                                         </a>
-                                        <button class="save-contact-btn" data-phone="00962791102233" data-name="Cosmo Pro Clinics - د. علي القماز (الرئيسي)">
-                                            <i class="far fa-address-book"></i> حفظ الرقم
+                                        <button class="save-contact-btn" data-phone="00962791102233" 
+                                                data-ar="Cosmo Pro Clinics - د. علي القماز (الرئيسي)"
+                                                data-en="Cosmo Pro Clinics - Dr. Ali Al Qammaz (Primary)">
+                                            <i class="far fa-address-book"></i>
+                                            <span class="lang-ar">حفظ الرقم</span>
+                                            <span class="lang-en">Save Contact</span>
                                         </button>
                                     </div>
                                     <!-- الهاتف الثاني -->
@@ -1164,8 +1274,12 @@
                                         <a href="tel:+962791102244" class="phone-link">
                                             <i class="fas fa-phone"></i> 00962 7 9110 2244
                                         </a>
-                                        <button class="save-contact-btn" data-phone="00962791102244" data-name="Cosmo Pro Clinics - د. علي القماز (الثانوي)">
-                                            <i class="far fa-address-book"></i> حفظ الرقم
+                                        <button class="save-contact-btn" data-phone="00962791102244"
+                                                data-ar="Cosmo Pro Clinics - د. علي القماز (الثانوي)"
+                                                data-en="Cosmo Pro Clinics - Dr. Ali Al Qammaz (Secondary)">
+                                            <i class="far fa-address-book"></i>
+                                            <span class="lang-ar">حفظ الرقم</span>
+                                            <span class="lang-en">Save Contact</span>
                                         </button>
                                     </div>
                                 </div>
@@ -1173,12 +1287,17 @@
                         </div>
                     </div>
                     <div class="contact-form-container">
-                        <h4>أرسل رسالة</h4>
+                        <h4 class="lang-ar">أرسل رسالة</h4>
+                        <h4 class="lang-en">Send a Message</h4>
                         <form id="contactForm">
-                            <input type="text" placeholder="اسمك الكريم" required>
-                            <input type="tel" placeholder="رقم الهاتف" required>
-                            <textarea placeholder="رسالتك..." rows="4" required></textarea>
-                            <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
+                            <input type="text" class="lang-ar" placeholder="اسمك الكريم" required>
+                            <input type="text" class="lang-en" placeholder="Your Name" required>
+                            <input type="tel" class="lang-ar" placeholder="رقم الهاتف" required>
+                            <input type="tel" class="lang-en" placeholder="Phone Number" required>
+                            <textarea class="lang-ar" placeholder="رسالتك..." rows="4" required></textarea>
+                            <textarea class="lang-en" placeholder="Your Message..." rows="4" required></textarea>
+                            <button type="submit" class="btn btn-primary lang-ar">إرسال الرسالة</button>
+                            <button type="submit" class="btn btn-primary lang-en">Send Message</button>
                         </form>
                     </div>
                 </div>
@@ -1189,18 +1308,25 @@
     <!-- نظام التقييمات -->
     <section class="section reviews" id="reviews">
         <div class="container">
-            <h2 class="section-title">تقييمات<span class="highlight"> المرضى</span></h2>
+            <h2 class="section-title">
+                <span class="lang-ar">تقييمات<span class="highlight"> المرضى</span></span>
+                <span class="lang-en">Patient <span class="highlight">Reviews</span></span>
+            </h2>
             <div class="reviews-container">
                 <!-- نموذج التقييم -->
                 <div class="review-form-container">
-                    <h3>شاركنا تجربتك</h3>
+                    <h3 class="lang-ar">شاركنا تجربتك</h3>
+                    <h3 class="lang-en">Share Your Experience</h3>
                     <form id="reviewForm">
                         <div class="form-group">
-                            <label for="reviewerName">اسمك (اختياري)</label>
-                            <input type="text" id="reviewerName" placeholder="اختياري" maxlength="50">
+                            <label for="reviewerName" class="lang-ar">اسمك (اختياري)</label>
+                            <label for="reviewerName" class="lang-en">Your Name (Optional)</label>
+                            <input type="text" id="reviewerName" class="lang-ar" placeholder="اختياري" maxlength="50">
+                            <input type="text" id="reviewerName" class="lang-en" placeholder="Optional" maxlength="50">
                         </div>
                         <div class="form-group">
-                            <label for="reviewRating">التقييم</label>
+                            <label class="lang-ar">التقييم</label>
+                            <label class="lang-en">Rating</label>
                             <div class="star-rating">
                                 <i class="far fa-star" data-rating="1"></i>
                                 <i class="far fa-star" data-rating="2"></i>
@@ -1211,22 +1337,27 @@
                             <input type="hidden" id="reviewRating" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="reviewText">تقييمك</label>
-                            <textarea id="reviewText" placeholder="أخبرنا عن تجربتك..." required maxlength="500"></textarea>
+                            <label for="reviewText" class="lang-ar">تقييمك</label>
+                            <label for="reviewText" class="lang-en">Your Review</label>
+                            <textarea id="reviewText" class="lang-ar" placeholder="أخبرنا عن تجربتك..." required maxlength="500"></textarea>
+                            <textarea id="reviewText" class="lang-en" placeholder="Tell us about your experience..." required maxlength="500"></textarea>
                             <span class="char-count">0/500</span>
                         </div>
-                        <button type="submit" class="btn btn-primary">إرسال التقييم</button>
+                        <button type="submit" class="btn btn-primary lang-ar">إرسال التقييم</button>
+                        <button type="submit" class="btn btn-primary lang-en">Submit Review</button>
                     </form>
                 </div>
 
                 <!-- عرض التقييمات -->
                 <div class="reviews-display">
-                    <h3>آراء مرضانا</h3>
+                    <h3 class="lang-ar">آراء مرضانا</h3>
+                    <h3 class="lang-en">What Our Patients Say</h3>
                     <div class="reviews-list" id="reviewsList">
                         <!-- تقييم نموذجي 1 -->
                         <div class="review-item">
                             <div class="review-header">
-                                <span class="reviewer">سارة محمد</span>
+                                <span class="reviewer lang-ar">سارة محمد</span>
+                                <span class="reviewer lang-en">Sarah M.</span>
                                 <div class="review-stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -1235,13 +1366,16 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="review-content">خدمة استثنائية ونتائج رائعة في Cosmo Pro Clinics! إزالة الشعر بالليزر كانت غير مؤلمة وفعالة. أوصي بشدة بالعيادة.</p>
-                            <span class="review-date">١٠ يناير ٢٠٢٦</span>
+                            <p class="review-content lang-ar">خدمة استثنائية ونتائج رائعة في Cosmo Pro Clinics! إزالة الشعر بالليزر كانت غير مؤلمة وفعالة. أوصي بشدة بالعيادة.</p>
+                            <p class="review-content lang-en">Exceptional service and amazing results at Cosmo Pro Clinics! Laser hair removal was painless and effective. Highly recommend the clinic.</p>
+                            <span class="review-date lang-ar">١٠ يناير ٢٠٢٦</span>
+                            <span class="review-date lang-en">Jan 10, 2026</span>
                         </div>
                         <!-- تقييم نموذجي 2 -->
                         <div class="review-item">
                             <div class="review-header">
-                                <span class="reviewer">عمر توفيق</span>
+                                <span class="reviewer lang-ar">عمر توفيق</span>
+                                <span class="reviewer lang-en">Omar T.</span>
                                 <div class="review-stars">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -1250,18 +1384,22 @@
                                     <i class="far fa-star"></i>
                                 </div>
                             </div>
-                            <p class="review-content">طاقم محترف وأجهزة حديثة في Cosmo Pro. خطة علاج البشرة أحدثت فرقاً ملحوظاً.</p>
-                            <span class="review-date">٢٨ ديسمبر ٢٠٢٥</span>
+                            <p class="review-content lang-ar">طاقم محترف وأجهزة حديثة في Cosmo Pro. خطة علاج البشرة أحدثت فرقاً ملحوظاً.</p>
+                            <p class="review-content lang-en">Professional staff and modern equipment at Cosmo Pro. The skincare treatment plan made a noticeable difference.</p>
+                            <span class="review-date lang-ar">٢٨ ديسمبر ٢٠٢٥</span>
+                            <span class="review-date lang-en">Dec 28, 2025</span>
                         </div>
                     </div>
                     <div class="reviews-stats">
                         <div class="stat-item">
                             <span class="stat-value">٤.٨</span>
-                            <span class="stat-label">متوسط التقييم</span>
+                            <span class="stat-label lang-ar">متوسط التقييم</span>
+                            <span class="stat-label lang-en">Average Rating</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-value">١٢٧</span>
-                            <span class="stat-label">عدد التقييمات</span>
+                            <span class="stat-label lang-ar">عدد التقييمات</span>
+                            <span class="stat-label lang-en">Total Reviews</span>
                         </div>
                     </div>
                 </div>
@@ -1273,25 +1411,24 @@
     <footer class="main-footer">
         <div class="container footer-container">
             <div class="footer-logo">
-                <div class="text-logo" id="footerTextLogo">
-                    <span>C</span>
-                    <span>PC</span>
-                </div>
-                <img src="https://imgur.com/xbdnq1v" alt="شعار Cosmo Pro Clinics" class="footer-logo-img" id="footerLogo" style="display: none;">
+                <img src="https://i.imgur.com/xbdnq1v.png" alt="Cosmo Pro Clinics Logo" class="footer-logo-img">
                 <h3>Cosmo Pro Clinics</h3>
-                <p>دكتور علي القماز<br>عيادة التجميل والجمال المتخصصة</p>
+                <p class="lang-ar">دكتور علي القماز<br>عيادة التجميل والجمال المتخصصة</p>
+                <p class="lang-en">Dr. Ali Al Qammaz<br>Specialized Beauty & Aesthetic Clinic</p>
             </div>
             <div class="footer-links">
-                <h4>روابط سريعة</h4>
+                <h4 class="lang-ar">روابط سريعة</h4>
+                <h4 class="lang-en">Quick Links</h4>
                 <ul>
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#services">الخدمات</a></li>
-                    <li><a href="#about">عن العيادة</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
+                    <li><a href="#home" class="nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                    <li><a href="#services" class="nav-link" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+                    <li><a href="#about" class="nav-link" data-ar="عن العيادة" data-en="About">عن العيادة</a></li>
+                    <li><a href="#contact" class="nav-link" data-ar="اتصل بنا" data-en="Contact">اتصل بنا</a></li>
                 </ul>
             </div>
             <div class="footer-social">
-                <h4>تابعنا</h4>
+                <h4 class="lang-ar">تابعنا</h4>
+                <h4 class="lang-en">Follow Us</h4>
                 <div class="social-icons">
                     <a href="https://www.instagram.com/dralialqammaz" target="_blank" aria-label="إنستغرام">
                         <i class="fab fa-instagram"></i>
@@ -1299,7 +1436,7 @@
                     <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://wa.me/962791102233" target="_blank" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
                 </div>
-                <p class="copyright">© <span id="currentYear">٢٠٢٦</span> Cosmo Pro Clinics. جميع الحقوق محفوظة.</p>
+                <p class="copyright">© <span id="currentYear">٢٠٢٦</span> Cosmo Pro Clinics. <span class="lang-ar">جميع الحقوق محفوظة.</span><span class="lang-en">All rights reserved.</span></p>
             </div>
         </div>
     </footer>
@@ -1308,11 +1445,14 @@
     <div class="modal" id="contactModal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h3>حفظ جهة الاتصال</h3>
+            <h3 class="lang-ar">حفظ جهة الاتصال</h3>
+            <h3 class="lang-en">Save Contact</h3>
             <p id="modalText">حفظ هذا الرقم في جهات اتصالك؟</p>
             <div class="modal-actions">
-                <button class="btn btn-secondary" id="cancelSave">إلغاء</button>
-                <button class="btn btn-primary" id="confirmSave">حفظ</button>
+                <button class="btn btn-secondary lang-ar" id="cancelSave">إلغاء</button>
+                <button class="btn btn-secondary lang-en" id="cancelSave">Cancel</button>
+                <button class="btn btn-primary lang-ar" id="confirmSave">حفظ</button>
+                <button class="btn btn-primary lang-en" id="confirmSave">Save</button>
             </div>
         </div>
     </div>
@@ -1324,38 +1464,65 @@
             // تعيين السنة الحالية في الفوتر
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
-            // محاولة تحميل الشعار
-            const mainLogo = document.getElementById('mainLogo');
-            const footerLogo = document.getElementById('footerLogo');
-            const textLogo = document.getElementById('textLogo');
-            const footerTextLogo = document.getElementById('footerTextLogo');
+            // تبديل اللغة
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const currentLang = localStorage.getItem('preferredLang') || 'ar';
             
-            // تحقق من تحميل الشعار
-            if (mainLogo) {
-                mainLogo.onload = function() {
-                    // إذا تم تحميل الشعار بنجاح، إظهاره وإخفاء الشعار النصي
-                    mainLogo.style.display = 'block';
-                    textLogo.style.display = 'none';
+            // تطبيق اللغة المحفوظة
+            setLanguage(currentLang);
+            
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
                     
-                    if (footerLogo) {
-                        footerLogo.style.display = 'block';
-                        footerTextLogo.style.display = 'none';
-                    }
-                };
+                    // تحديث أزرار اللغة النشطة
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // حفظ التفضيل
+                    localStorage.setItem('preferredLang', lang);
+                });
+            });
+            
+            function setLanguage(lang) {
+                // تغيير اتجاه الصفحة
+                document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                document.documentElement.lang = lang;
                 
-                mainLogo.onerror = function() {
-                    // إذا فشل تحميل الشعار، البقاء على الشعار النصي
-                    mainLogo.style.display = 'none';
-                    textLogo.style.display = 'flex';
-                    
-                    if (footerLogo) {
-                        footerLogo.style.display = 'none';
-                        footerTextLogo.style.display = 'flex';
+                // إظهار/إخفاء النصوص
+                document.querySelectorAll('.lang-ar').forEach(el => {
+                    el.style.display = lang === 'ar' ? 'block' : 'none';
+                });
+                
+                document.querySelectorAll('.lang-en').forEach(el => {
+                    el.style.display = lang === 'en' ? 'block' : 'none';
+                });
+                
+                // تحديث الروابط التنقل
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.textContent = link.getAttribute(`data-${lang}`);
+                });
+                
+                // تحديث أزرار حفظ جهة الاتصال
+                document.querySelectorAll('.save-contact-btn').forEach(btn => {
+                    const arText = btn.querySelector('.lang-ar');
+                    const enText = btn.querySelector('.lang-en');
+                    if (arText && enText) {
+                        arText.style.display = lang === 'ar' ? 'inline' : 'none';
+                        enText.style.display = lang === 'en' ? 'inline' : 'none';
                     }
-                    
-                    console.log('لم يتم تحميل الشعار، استخدام الشعار النصي بدلاً من ذلك.');
-                };
+                });
             }
+            
+            // تحديث أزرار اللغة النشطة
+            langButtons.forEach(btn => {
+                if (btn.getAttribute('data-lang') === currentLang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
             
             // تبديل قائمة الجوال
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -1462,13 +1629,17 @@
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
+                    const currentLang = localStorage.getItem('preferredLang') || 'ar';
+                    const successMsgAr = 'شكراً لك! تم إرسال رسالتك بنجاح. سنتواصل معك قريباً.';
+                    const successMsgEn = 'Thank you! Your message has been sent successfully. We will contact you soon.';
+                    
                     // عرض رسالة نجاح
                     const successMsg = document.createElement('div');
                     successMsg.className = 'success-message';
                     successMsg.innerHTML = `
-                        <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; border: 1px solid #c3e6cb; margin-top: 15px; text-align: right;">
-                            <i class="fas fa-check-circle" style="color: #28a745; margin-left: 10px;"></i>
-                            شكراً لك! تم إرسال رسالتك بنجاح. سنتواصل معك قريباً.
+                        <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; border: 1px solid #c3e6cb; margin-top: 15px; text-align: ${currentLang === 'ar' ? 'right' : 'left'};">
+                            <i class="fas fa-check-circle" style="color: #28a745; ${currentLang === 'ar' ? 'margin-left: 10px;' : 'margin-right: 10px;'}"></i>
+                            ${currentLang === 'ar' ? successMsgAr : successMsgEn}
                         </div>
                     `;
                     
@@ -1492,17 +1663,18 @@
                 reviewForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    const name = document.getElementById('reviewerName').value || 'مجهول';
+                    const currentLang = localStorage.getItem('preferredLang') || 'ar';
+                    const name = document.getElementById('reviewerName').value || (currentLang === 'ar' ? 'مجهول' : 'Anonymous');
                     const rating = parseInt(ratingInput.value);
                     const text = document.getElementById('reviewText').value.trim();
                     
                     if (rating === 0) {
-                        alert('الرجاء اختيار تقييم.');
+                        alert(currentLang === 'ar' ? 'الرجاء اختيار تقييم.' : 'Please select a rating.');
                         return;
                     }
                     
                     if (text.length < 10) {
-                        alert('الرجاء كتابة تقييم أكثر تفصيلاً (على الأقل 10 أحرف).');
+                        alert(currentLang === 'ar' ? 'الرجاء كتابة تقييم أكثر تفصيلاً (على الأقل 10 أحرف).' : 'Please write a more detailed review (at least 10 characters).');
                         return;
                     }
                     
@@ -1519,19 +1691,28 @@
                     }
                     
                     const now = new Date();
-                    const dateStr = now.toLocaleDateString('ar-SA', { 
+                    const dateAr = now.toLocaleDateString('ar-SA', { 
                         day: 'numeric',
                         month: 'long', 
                         year: 'numeric' 
                     });
                     
+                    const dateEn = now.toLocaleDateString('en-US', { 
+                        month: 'short', 
+                        day: 'numeric', 
+                        year: 'numeric' 
+                    });
+                    
                     reviewItem.innerHTML = `
                         <div class="review-header">
-                            <span class="reviewer">${name}</span>
+                            <span class="reviewer lang-ar">${name}</span>
+                            <span class="reviewer lang-en">${name}</span>
                             <div class="review-stars">${starsHtml}</div>
                         </div>
-                        <p class="review-content">${text}</p>
-                        <span class="review-date">${dateStr}</span>
+                        <p class="review-content lang-ar">${text}</p>
+                        <p class="review-content lang-en">${text}</p>
+                        <span class="review-date lang-ar">${dateAr}</span>
+                        <span class="review-date lang-en">${dateEn}</span>
                     `;
                     
                     // إضافة في بداية قائمة التقييمات
@@ -1554,12 +1735,15 @@
                     }
                     
                     // عرض رسالة نجاح
+                    const successMsgAr = 'شكراً لك على تقييمك! تم نشر تقييمك بنجاح.';
+                    const successMsgEn = 'Thank you for your review! Your review has been published successfully.';
+                    
                     const successReviewMsg = document.createElement('div');
                     successReviewMsg.className = 'success-message';
                     successReviewMsg.innerHTML = `
-                        <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; border: 1px solid #c3e6cb; margin-top: 15px; text-align: right;">
-                            <i class="fas fa-check-circle" style="color: #28a745; margin-left: 10px;"></i>
-                            شكراً لك على تقييمك! تم نشر تقييمك بنجاح.
+                        <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; border: 1px solid #c3e6cb; margin-top: 15px; text-align: ${currentLang === 'ar' ? 'right' : 'left'};">
+                            <i class="fas fa-check-circle" style="color: #28a745; ${currentLang === 'ar' ? 'margin-left: 10px;' : 'margin-right: 10px;'}"></i>
+                            ${currentLang === 'ar' ? successMsgAr : successMsgEn}
                         </div>
                     `;
                     
@@ -1595,10 +1779,14 @@
             // النقر على زر حفظ جهة الاتصال
             saveContactButtons.forEach(button => {
                 button.addEventListener('click', function() {
+                    const currentLang = localStorage.getItem('preferredLang') || 'ar';
                     currentPhoneToSave = this.getAttribute('data-phone');
-                    currentContactName = this.getAttribute('data-name');
+                    currentContactName = this.getAttribute(`data-${currentLang}`);
                     
-                    modalText.innerHTML = `هل تريد حفظ الرقم <strong dir="ltr">${currentPhoneToSave}</strong><br>(${currentContactName}) في جهات اتصالك؟`;
+                    modalText.innerHTML = currentLang === 'ar' 
+                        ? `هل تريد حفظ الرقم <strong dir="ltr">${currentPhoneToSave}</strong><br>(${currentContactName}) في جهات اتصالك؟`
+                        : `Save number <strong dir="ltr">${currentPhoneToSave}</strong><br>(${currentContactName}) to your contacts?`;
+                    
                     contactModal.style.display = 'flex';
                 });
             });
@@ -1610,7 +1798,9 @@
                 currentContactName = '';
                 
                 // إعادة تعيين زر التأكيد
-                confirmSaveBtn.innerHTML = '<i class="fas fa-save"></i> حفظ';
+                confirmSaveBtn.innerHTML = currentLang === 'ar' 
+                    ? '<i class="fas fa-save"></i> حفظ'
+                    : '<i class="fas fa-save"></i> Save';
                 confirmSaveBtn.onclick = saveContactHandler;
             }
             
@@ -1620,6 +1810,8 @@
             // معالج حفظ جهة الاتصال
             function saveContactHandler() {
                 if (!currentPhoneToSave) return;
+                
+                const currentLang = localStorage.getItem('preferredLang') || 'ar';
                 
                 // إنشاء محتوى vCard
                 const vCardData = `BEGIN:VCARD
@@ -1646,16 +1838,23 @@ END:VCARD`;
                 }, 100);
                 
                 // عرض رسالة النجاح
+                const successMsgAr = 'تم حفظ جهة الاتصال بنجاح!';
+                const successMsgEn = 'Contact saved successfully!';
+                const fileMsgAr = 'تم تحميل الملف:';
+                const fileMsgEn = 'File downloaded:';
+                
                 modalText.innerHTML = `
                     <div style="text-align: center; padding: 10px 0;">
                         <i class="fas fa-check-circle" style="color:#4CAF50; font-size: 3rem; margin-bottom: 15px;"></i>
-                        <div style="color: #2a2a2a; font-weight: 500; margin-bottom: 5px;">تم حفظ جهة الاتصال بنجاح!</div>
-                        <div style="color: #666; font-size: 0.95rem;">تم تحميل الملف: ${currentContactName}.vcf</div>
+                        <div style="color: #2a2a2a; font-weight: 500; margin-bottom: 5px;">${currentLang === 'ar' ? successMsgAr : successMsgEn}</div>
+                        <div style="color: #666; font-size: 0.95rem;">${currentLang === 'ar' ? fileMsgAr : fileMsgEn} ${currentContactName}.vcf</div>
                     </div>
                 `;
                 
                 // تغيير نص الزر مؤقتاً
-                confirmSaveBtn.innerHTML = '<i class="fas fa-check"></i> تم';
+                confirmSaveBtn.innerHTML = currentLang === 'ar' 
+                    ? '<i class="fas fa-check"></i> تم'
+                    : '<i class="fas fa-check"></i> Done';
                 confirmSaveBtn.onclick = closeContactModal;
                 
                 // إغلاق النافذة تلقائياً بعد 3 ثوانٍ
