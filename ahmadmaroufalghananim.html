@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>المحامي أحمد معروف الغنانيم | ماجستير في التحكيم بالعقود الإنشائية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,25 +14,36 @@
         }
         
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #d4af37;
-            --accent-color: #2d4a7c;
-            --light-color: #f8f9fa;
-            --dark-color: #333;
-            --gray-color: #6c757d;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --primary-color: #8B0000;
+            --secondary-color: #D4AF37;
+            --accent-color: #B22222;
+            --light-color: #F8F5F0;
+            --dark-color: #2C1810;
+            --gray-color: #7A6A5C;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s ease;
+            --border-radius: 12px;
         }
         
         body {
-            font-family: 'Tajawal', sans-serif;
-            line-height: 1.6;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            line-height: 1.7;
             color: var(--dark-color);
-            background-color: #f5f7fa;
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        body.lang-en {
+            font-family: 'Segoe UI', 'Playfair Display', serif;
+            direction: ltr;
+        }
+        
+        body.lang-en .container {
+            direction: ltr;
         }
         
         h1, h2, h3, h4 {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Playfair Display', 'Cairo', serif;
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--primary-color);
@@ -40,20 +51,55 @@
         
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
+            direction: rtl;
+        }
+        
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background-color: var(--primary-color);
+            border-radius: 30px;
+            padding: 8px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 5px;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .lang-btn.active {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
         }
         
         /* Header Styles */
         header {
-            background-color: var(--primary-color);
+            background-color: rgba(44, 24, 16, 0.95);
             color: white;
-            padding: 1.5rem 0;
-            position: sticky;
+            padding: 1.8rem 0;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
         }
         
         .header-content {
@@ -65,36 +111,39 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         
         .logo img {
-            height: 60px;
+            height: 70px;
             width: auto;
-            border-radius: 5px;
+            border-radius: 8px;
+            border: 2px solid var(--secondary-color);
+            padding: 3px;
+            background-color: white;
         }
         
         .logo-text h1 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 0.2rem;
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
         }
         
         .logo-text p {
-            color: var(--secondary-color);
-            font-size: 0.9rem;
+            color: #E8DECD;
+            font-size: 1rem;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
         
         nav a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 1.1rem;
             transition: var(--transition);
             padding: 0.5rem 0;
@@ -109,7 +158,7 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            right: 0;
             width: 0;
             height: 2px;
             background-color: var(--secondary-color);
@@ -125,31 +174,33 @@
             background: none;
             border: none;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background: linear-gradient(rgba(44, 24, 16, 0.85), rgba(44, 24, 16, 0.85)), url('https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 5rem 0;
+            padding: 12rem 0 6rem;
             text-align: center;
+            margin-top: 80px;
         }
         
         .hero-content h2 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 1rem;
+            font-size: 3.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
         
         .hero-content p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            color: #e9ecef;
+            font-size: 1.3rem;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            color: #E8DECD;
         }
         
         .hero-content .highlight {
@@ -159,20 +210,20 @@
         
         /* About Section */
         .section {
-            padding: 5rem 0;
+            padding: 6rem 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
         }
         
         .section-title h2 {
             display: inline-block;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             position: relative;
-            padding-bottom: 1rem;
+            padding-bottom: 1.2rem;
         }
         
         .section-title h2::after {
@@ -180,91 +231,141 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 70px;
-            height: 3px;
+            width: 100px;
+            height: 4px;
             background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        .section-title[dir="ltr"] h2::after {
+            right: auto;
+            left: 0;
         }
         
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
         }
         
         .about-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 1.8rem;
+            font-size: 1.15rem;
             color: var(--gray-color);
         }
         
         .specialties {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.2rem;
+            margin-top: 2.5rem;
         }
         
         .specialty {
-            background-color: var(--light-color);
-            padding: 0.8rem 1.5rem;
+            background-color: white;
+            padding: 0.9rem 1.8rem;
             border-radius: 30px;
             font-weight: 600;
             color: var(--primary-color);
-            border-right: 3px solid var(--secondary-color);
+            border-right: 4px solid var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .specialty:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
         .about-image {
             position: relative;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
+            border: 8px solid white;
         }
         
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
         }
         
         /* Contact Section */
         .contact-section {
-            background-color: var(--light-color);
+            background-color: white;
+            border-radius: var(--border-radius);
+            margin: 0 2rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
         
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
         }
         
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 2.5rem;
         }
         
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 1rem;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            background-color: var(--light-color);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
         
         .contact-icon {
             background-color: var(--primary-color);
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             flex-shrink: 0;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover .contact-icon {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            transform: rotate(15deg);
         }
         
         .contact-details h4 {
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
         }
         
         .contact-details p {
@@ -272,19 +373,19 @@
         }
         
         .contact-form {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 10px;
+            background-color: var(--light-color);
+            padding: 3rem;
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow);
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.7rem;
             font-weight: 600;
             color: var(--primary-color);
         }
@@ -292,124 +393,159 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: 'Tajawal', sans-serif;
+            padding: 1rem 1.2rem;
+            border: 2px solid #E8DECD;
+            border-radius: 8px;
+            font-family: inherit;
             font-size: 1rem;
             transition: var(--transition);
+            background-color: white;
         }
         
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
         }
         
         .btn {
             display: inline-block;
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2.5rem;
             border: none;
-            border-radius: 5px;
-            font-family: 'Cairo', sans-serif;
+            border-radius: 8px;
+            font-family: inherit;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 0;
         }
         
         .btn:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 0, 0, 0.3);
         }
         
         .btn-gold {
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
+            background: linear-gradient(135deg, var(--secondary-color), #E8C547);
+            color: var(--dark-color);
         }
         
-        .btn-gold:hover {
-            background-color: #e0b12c;
+        .btn-gold::before {
+            background: linear-gradient(135deg, #E8C547, var(--secondary-color));
         }
         
         /* Save Contact Section */
         .save-contact-section {
             text-align: center;
-            padding: 3rem 0;
-            background-color: var(--primary-color);
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
             color: white;
+            border-radius: var(--border-radius);
+            margin: 2rem;
+            box-shadow: var(--shadow);
         }
         
         .save-contact-section h3 {
-            color: white;
-            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
         }
         
         .save-contact-section p {
-            margin-bottom: 2rem;
-            max-width: 600px;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 1.1rem;
+            color: #E8DECD;
         }
         
         .contact-cards {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
         
         .contact-card {
             background-color: white;
             color: var(--dark-color);
-            padding: 1.5rem;
-            border-radius: 10px;
-            width: 250px;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            width: 280px;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
         
         .contact-card h4 {
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
         }
         
         .contact-card p {
             color: var(--gray-color);
-            margin-bottom: 0;
-            direction: ltr;
-            text-align: center;
+            margin-bottom: 1.5rem;
         }
         
         /* Footer */
         footer {
-            background-color: #1a1f36;
-            color: #adb5bd;
-            padding: 3rem 0 1.5rem;
+            background-color: var(--dark-color);
+            color: #E8DECD;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-bottom: 2rem;
+            gap: 4rem;
+            margin-bottom: 3rem;
         }
         
         .footer-logo img {
-            height: 70px;
+            height: 80px;
             width: auto;
-            margin-bottom: 1rem;
-            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--secondary-color);
+            padding: 3px;
+            background-color: white;
         }
         
         .footer-links h4,
         .footer-contact h4 {
-            color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
         }
         
         .footer-links ul {
@@ -417,28 +553,44 @@
         }
         
         .footer-links li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
         
         .footer-links a {
-            color: #adb5bd;
+            color: #E8DECD;
             text-decoration: none;
             transition: var(--transition);
+            display: inline-block;
         }
         
         .footer-links a:hover {
             color: var(--secondary-color);
-            padding-right: 5px;
+            transform: translateX(5px);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid #2d3748;
-            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid #5A4A3C;
+            font-size: 0.95rem;
+            color: #B8A99A;
         }
         
         /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+            
+            .contact-section {
+                margin: 0 1rem;
+            }
+            
+            .save-contact-section {
+                margin: 2rem 1rem;
+            }
+        }
+        
         @media (max-width: 992px) {
             .about-content,
             .contact-content {
@@ -447,6 +599,10 @@
             
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-content h2 {
+                font-size: 2.5rem;
             }
         }
         
@@ -457,10 +613,11 @@
                 top: 100%;
                 right: 0;
                 width: 100%;
-                background-color: var(--primary-color);
+                background-color: rgba(44, 24, 16, 0.98);
                 flex-direction: column;
-                padding: 1rem;
+                padding: 2rem;
                 box-shadow: var(--shadow);
+                backdrop-filter: blur(10px);
             }
             
             nav.active ul {
@@ -472,58 +629,113 @@
             }
             
             .hero-content h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .section-title h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+            
+            .contact-form {
+                padding: 2rem;
             }
             
             .footer-content {
                 grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .lang-switcher {
+                top: 15px;
+                left: 15px;
             }
         }
         
         @media (max-width: 576px) {
             .hero {
-                padding: 3rem 0;
+                padding: 10rem 0 4rem;
             }
             
             .section {
-                padding: 3rem 0;
-            }
-            
-            .contact-form {
-                padding: 1.5rem;
+                padding: 4rem 0;
             }
             
             .contact-cards {
                 flex-direction: column;
                 align-items: center;
             }
+            
+            .contact-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .logo {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
         }
         
         /* Animation for save contact */
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
         }
         
         .save-btn {
-            animation: pulse 2s infinite;
+            animation: pulse 3s infinite;
+        }
+        
+        /* Language-specific styles */
+        .lang-ar {
+            display: block;
+        }
+        
+        .lang-en {
+            display: none;
+        }
+        
+        body.lang-en .lang-ar {
+            display: none;
+        }
+        
+        body.lang-en .lang-en {
+            display: block;
+        }
+        
+        /* Decorative elements */
+        .decorative-line {
+            height: 3px;
+            width: 100px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 1.5rem auto;
+            border-radius: 2px;
         }
     </style>
 </head>
-<body>
+<body class="lang-ar">
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" id="arBtn">عربي</button>
+        <button class="lang-btn" id="enBtn">English</button>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-content">
             <div class="logo">
                 <img src="https://imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم">
                 <div class="logo-text">
-                    <h1>المحامي أحمد معروف الغنانيم</h1>
-                    <p>ماجستير في التحكيم بالعقود الإنشائية</p>
+                    <h1 class="lang-ar">المحامي أحمد معروف الغنانيم</h1>
+                    <h1 class="lang-en">Lawyer Ahmad Ma'rouf Al-Ghananim</h1>
+                    <p class="lang-ar">ماجستير في التحكيم بالعقود الإنشائية</p>
+                    <p class="lang-en">Master's in Construction Contracts Arbitration</p>
                 </div>
             </div>
             
@@ -533,10 +745,10 @@
             
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#about">عن المحامي</a></li>
-                    <li><a href="#specialties">التخصصات</a></li>
-                    <li><a href="#contact">اتصل بي</a></li>
+                    <li><a href="#home" class="lang-ar">الرئيسية</a><a href="#home" class="lang-en">Home</a></li>
+                    <li><a href="#about" class="lang-ar">عن المحامي</a><a href="#about" class="lang-en">About</a></li>
+                    <li><a href="#specialties" class="lang-ar">التخصصات</a><a href="#specialties" class="lang-en">Specialties</a></li>
+                    <li><a href="#contact" class="lang-ar">اتصل بي</a><a href="#contact" class="lang-en">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -545,9 +757,13 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h2>المحامي أحمد معروف الغنانيم</h2>
-            <p>مستشار قانوني متخصص في <span class="highlight">التحكيم بالعقود الإنشائية</span>، مع خبرة واسعة في المجالات <span class="highlight">النظامية والتحكيمية وقانون الشركات</span>. نقدم استشارات قانونية متكاملة لحماية مصالحكم القانونية.</p>
-            <a href="#contact" class="btn btn-gold">اتصل بي الآن</a>
+            <h2 class="lang-ar">المحامي أحمد معروف الغنانيم</h2>
+            <h2 class="lang-en">Lawyer Ahmad Ma'rouf Al-Ghananim</h2>
+            <div class="decorative-line"></div>
+            <p class="lang-ar">مستشار قانوني متخصص في <span class="highlight">التحكيم بالعقود الإنشائية</span>، مع خبرة واسعة في المجالات <span class="highlight">النظامية والتحكيمية وقانون الشركات</span>. نقدم استشارات قانونية متكاملة لحماية مصالحكم القانونية.</p>
+            <p class="lang-en">Legal consultant specialized in <span class="highlight">Construction Contracts Arbitration</span>, with extensive experience in <span class="highlight">Regulatory, Arbitration, and Corporate Law</span>. We provide comprehensive legal consultations to protect your legal interests.</p>
+            <a href="#contact" class="btn btn-gold lang-ar">اتصل بي الآن</a>
+            <a href="#contact" class="btn btn-gold lang-en">Contact Me Now</a>
         </div>
     </section>
 
@@ -555,106 +771,131 @@
     <section class="section" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>عن المحامي</h2>
+                <h2 class="lang-ar">عن المحامي</h2>
+                <h2 class="lang-en" dir="ltr">About the Lawyer</h2>
             </div>
             
             <div class="about-content">
                 <div class="about-text">
-                    <p>المحامي <strong>أحمد معروف الغنانيم</strong> يحمل درجة الماجستير في التحكيم بالعقود الإنشائية، ويتمتع بخبرة واسعة في الممارسة القانونية تمتد لسنوات عديدة.</p>
-                    <p>يتخصص المحامي أحمد في مجال التحكيم التجاري والدولي، خاصة في المنازعات الناشئة عن العقود الإنشائية، بالإضافة إلى تقديم الاستشارات القانونية في المجالات النظامية وقانون الشركات.</p>
-                    <p>يتميز بأسلوب مهني احترافي، مع الالتزام التام بأخلاقيات مهنة المحاماة، والعمل على تحقيق أفضل النتائج للعملاء من خلال فهم عمق لطبيعة النزاعات والقدرة على تقديم الحلول القانونية المناسبة.</p>
+                    <p class="lang-ar"><strong>المحامي أحمد معروف الغنانيم</strong> يحمل درجة الماجستير في التحكيم بالعقود الإنشائية، ويتمتع بخبرة واسعة في الممارسة القانونية تمتد لسنوات عديدة.</p>
+                    <p class="lang-en"><strong>Lawyer Ahmad Ma'rouf Al-Ghananim</strong> holds a Master's degree in Construction Contracts Arbitration and has extensive experience in legal practice spanning many years.</p>
+                    
+                    <p class="lang-ar">يتخصص المحامي أحمد في مجال التحكيم التجاري والدولي، خاصة في المنازعات الناشئة عن العقود الإنشائية، بالإضافة إلى تقديم الاستشارات القانونية في المجالات النظامية وقانون الشركات.</p>
+                    <p class="lang-en">Lawyer Ahmad specializes in commercial and international arbitration, particularly in disputes arising from construction contracts, in addition to providing legal consultations in regulatory fields and corporate law.</p>
+                    
+                    <p class="lang-ar">يتميز بأسلوب مهني احترافي، مع الالتزام التام بأخلاقيات مهنة المحاماة، والعمل على تحقيق أفضل النتائج للعملاء من خلال فهم عمق لطبيعة النزاعات والقدرة على تقديم الحلول القانونية المناسبة.</p>
+                    <p class="lang-en">He is distinguished by a professional style, with full commitment to the ethics of the legal profession, and works to achieve the best results for clients through a deep understanding of the nature of disputes and the ability to provide appropriate legal solutions.</p>
                     
                     <div id="specialties" class="specialties">
-                        <div class="specialty">النظامي</div>
-                        <div class="specialty">التحكيم</div>
-                        <div class="specialty">قانون الشركات</div>
-                        <div class="specialty">العقود الإنشائية</div>
-                        <div class="specialty">الاستشارات القانونية</div>
+                        <div class="specialty lang-ar">النظامي</div>
+                        <div class="specialty lang-en">Regulatory</div>
+                        <div class="specialty lang-ar">التحكيم</div>
+                        <div class="specialty lang-en">Arbitration</div>
+                        <div class="specialty lang-ar">قانون الشركات</div>
+                        <div class="specialty lang-en">Corporate Law</div>
+                        <div class="specialty lang-ar">العقود الإنشائية</div>
+                        <div class="specialty lang-en">Construction Contracts</div>
+                        <div class="specialty lang-ar">الاستشارات القانونية</div>
+                        <div class="specialty lang-en">Legal Consultations</div>
                     </div>
                 </div>
                 
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="صورة مكتب المحاماة">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="صورة مكتب المحاماة">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
+    <section class="section" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>اتصل بي</h2>
+                <h2 class="lang-ar">اتصل بي</h2>
+                <h2 class="lang-en" dir="ltr">Contact Me</h2>
             </div>
             
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+            <div class="contact-section">
+                <div class="container contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4 class="lang-ar">العنوان</h4>
+                                <h4 class="lang-en">Address</h4>
+                                <p>Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 206</p>
+                            </div>
                         </div>
-                        <div class="contact-details">
-                            <h4>العنوان</h4>
-                            <p>عمان - دابوق - شارع الملك عبدالله الثاني - مجمع الفردوس - مكتب ٢٠٦</p>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4 class="lang-ar">هاتف</h4>
+                                <h4 class="lang-en">Phone</h4>
+                                <p dir="ltr">00962777511141</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4 class="lang-ar">البريد الإلكتروني</h4>
+                                <h4 class="lang-en">Email</h4>
+                                <p dir="ltr">ahmadabbadii2017@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4 class="lang-ar">المؤهل العلمي</h4>
+                                <h4 class="lang-en">Qualification</h4>
+                                <p class="lang-ar">ماجستير في التحكيم بالعقود الإنشائية</p>
+                                <p class="lang-en">Master's in Construction Contracts Arbitration</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>هاتف</h4>
-                            <p>00962777511141</p>
-                        </div>
+                    <div class="contact-form">
+                        <h3 class="lang-ar">أرسل رسالة</h3>
+                        <h3 class="lang-en">Send a Message</h3>
+                        <form id="messageForm">
+                            <div class="form-group">
+                                <label for="name" class="lang-ar">الاسم الكامل</label>
+                                <label for="name" class="lang-en">Full Name</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="lang-ar">رقم الهاتف</label>
+                                <label for="phone" class="lang-en">Phone Number</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="lang-ar">البريد الإلكتروني</label>
+                                <label for="email" class="lang-en">Email Address</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="lang-ar">الرسالة</label>
+                                <label for="message" class="lang-en">Message</label>
+                                <textarea id="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn lang-ar" style="width: 100%;">إرسال الرسالة</button>
+                            <button type="submit" class="btn lang-en" style="width: 100%;">Send Message</button>
+                        </form>
                     </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>البريد الإلكتروني</h4>
-                            <p>ahmadabbadii2017@gmail.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>المؤهل العلمي</h4>
-                            <p>ماجستير في التحكيم بالعقود الإنشائية</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3>أرسل رسالة</h3>
-                    <form id="messageForm">
-                        <div class="form-group">
-                            <label for="name">الاسم الكامل</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">رقم الهاتف</label>
-                            <input type="tel" id="phone" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">البريد الإلكتروني</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">الرسالة</label>
-                            <textarea id="message" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn" style="width: 100%;">إرسال الرسالة</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -663,20 +904,32 @@
     <!-- Save Contact Section -->
     <section class="save-contact-section">
         <div class="container">
-            <h3>حفظ معلومات الاتصال</h3>
-            <p>يمكنك حفظ معلومات الاتصال الخاصة بي لاستخدامها لاحقاً</p>
+            <h3 class="lang-ar">حفظ معلومات الاتصال</h3>
+            <h3 class="lang-en">Save Contact Information</h3>
+            <p class="lang-ar">يمكنك حفظ معلومات الاتصال الخاصة بي لاستخدامها لاحقاً</p>
+            <p class="lang-en">You can save my contact information for later use</p>
             
             <div class="contact-cards">
                 <div class="contact-card">
-                    <h4>حفظ كملف VCF</h4>
-                    <p>معلومات الاتصال بصيغة vCard</p>
-                    <button class="btn btn-gold save-btn" id="saveVcf" style="margin-top: 1rem;">حفظ VCF</button>
+                    <h4 class="lang-ar">حفظ كملف VCF</h4>
+                    <h4 class="lang-en">Save as VCF File</h4>
+                    <p class="lang-ar">معلومات الاتصال بصيغة vCard</p>
+                    <p class="lang-en">Contact information in vCard format</p>
+                    <button class="btn btn-gold save-btn" id="saveVcf" style="margin-top: 1rem;">
+                        <span class="lang-ar">حفظ VCF</span>
+                        <span class="lang-en">Save VCF</span>
+                    </button>
                 </div>
                 
                 <div class="contact-card">
-                    <h4>نسخ المعلومات</h4>
-                    <p>نسخ جميع معلومات الاتصال</p>
-                    <button class="btn btn-gold save-btn" id="copyInfo" style="margin-top: 1rem;">نسخ المعلومات</button>
+                    <h4 class="lang-ar">نسخ المعلومات</h4>
+                    <h4 class="lang-en">Copy Information</h4>
+                    <p class="lang-ar">نسخ جميع معلومات الاتصال</p>
+                    <p class="lang-en">Copy all contact information</p>
+                    <button class="btn btn-gold save-btn" id="copyInfo" style="margin-top: 1rem;">
+                        <span class="lang-ar">نسخ المعلومات</span>
+                        <span class="lang-en">Copy Information</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -688,34 +941,57 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <img src="https://imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم">
-                    <p>المحامي أحمد معروف الغنانيم<br>ماجستير في التحكيم بالعقود الإنشائية</p>
+                    <p class="lang-ar">المحامي أحمد معروف الغنانيم<br>ماجستير في التحكيم بالعقود الإنشائية</p>
+                    <p class="lang-en">Lawyer Ahmad Ma'rouf Al-Ghananim<br>Master's in Construction Contracts Arbitration</p>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>روابط سريعة</h4>
+                    <h4 class="lang-ar">روابط سريعة</h4>
+                    <h4 class="lang-en">Quick Links</h4>
                     <ul>
-                        <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#about">عن المحامي</a></li>
-                        <li><a href="#specialties">التخصصات</a></li>
-                        <li><a href="#contact">اتصل بي</a></li>
+                        <li><a href="#home" class="lang-ar">الرئيسية</a><a href="#home" class="lang-en">Home</a></li>
+                        <li><a href="#about" class="lang-ar">عن المحامي</a><a href="#about" class="lang-en">About</a></li>
+                        <li><a href="#specialties" class="lang-ar">التخصصات</a><a href="#specialties" class="lang-en">Specialties</a></li>
+                        <li><a href="#contact" class="lang-ar">اتصل بي</a><a href="#contact" class="lang-en">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
-                    <h4>معلومات الاتصال</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> عمان - دابوق - شارع الملك عبدالله الثاني - مجمع الفردوس - مكتب ٢٠٦</p>
+                    <h4 class="lang-ar">معلومات الاتصال</h4>
+                    <h4 class="lang-en">Contact Information</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 206</p>
                     <p><i class="fas fa-phone"></i> 00962777511141</p>
                     <p><i class="fas fa-envelope"></i> ahmadabbadii2017@gmail.com</p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>جميع الحقوق محفوظة &copy; <span id="currentYear"></span> - المحامي أحمد معروف الغنانيم</p>
+                <p class="lang-ar">جميع الحقوق محفوظة &copy; <span id="currentYear"></span> - المحامي أحمد معروف الغنانيم</p>
+                <p class="lang-en">All rights reserved &copy; <span id="currentYearEn"></span> - Lawyer Ahmad Ma'rouf Al-Ghananim</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Language Switching
+        const arBtn = document.getElementById('arBtn');
+        const enBtn = document.getElementById('enBtn');
+        const body = document.body;
+        
+        arBtn.addEventListener('click', function() {
+            body.classList.remove('lang-en');
+            body.classList.add('lang-ar');
+            arBtn.classList.add('active');
+            enBtn.classList.remove('active');
+        });
+        
+        enBtn.addEventListener('click', function() {
+            body.classList.remove('lang-ar');
+            body.classList.add('lang-en');
+            enBtn.classList.add('active');
+            arBtn.classList.remove('active');
+        });
+        
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
@@ -749,7 +1025,13 @@
         const messageForm = document.getElementById('messageForm');
         messageForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('تم إرسال رسالتك بنجاح! سنقوم بالرد عليك في أقرب وقت ممكن.');
+            
+            if (body.classList.contains('lang-en')) {
+                alert('Your message has been sent successfully! We will respond to you as soon as possible.');
+            } else {
+                alert('تم إرسال رسالتك بنجاح! سنقوم بالرد عليك في أقرب وقت ممكن.');
+            }
+            
             messageForm.reset();
         });
         
@@ -759,12 +1041,16 @@
             const vcfData = `BEGIN:VCARD
 VERSION:3.0
 FN:أحمد معروف الغنانيم
+FN;LANG=en:Ahmad Ma'rouf Al-Ghananim
 ORG:المحامي أحمد معروف الغنانيم
+ORG;LANG=en:Lawyer Ahmad Ma'rouf Al-Ghananim
 TITLE:ماجستير في التحكيم بالعقود الإنشائية
+TITLE;LANG=en:Master's in Construction Contracts Arbitration
 TEL;TYPE=WORK,VOICE:00962777511141
 EMAIL;TYPE=PREF,INTERNET:ahmadabbadii2017@gmail.com
-ADR;TYPE=WORK:;;عمان - دابوق - شارع الملك عبدالله الثاني - مجمع الفردوس - مكتب ٢٠٦;;;
-NOTE:تخصصات: نظامي - تحكيم - شركات
+ADR;TYPE=WORK:;;Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 206;;;
+NOTE;LANG=ar:تخصصات: نظامي - تحكيم - شركات
+NOTE;LANG=en:Specialties: Regulatory - Arbitration - Corporate Law
 END:VCARD`;
             
             const blob = new Blob([vcfData], { type: 'text/vcard' });
@@ -772,28 +1058,51 @@ END:VCARD`;
             
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'المحامي_أحمد_معروف_الغنانيم.vcf';
+            if (body.classList.contains('lang-en')) {
+                a.download = 'Lawyer_Ahmad_Ma\'rouf_Al-Ghananim.vcf';
+            } else {
+                a.download = 'المحامي_أحمد_معروف_الغنانيم.vcf';
+            }
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
             
-            alert('تم حفظ معلومات الاتصال كملف VCF بنجاح!');
+            if (body.classList.contains('lang-en')) {
+                alert('Contact information has been saved as a VCF file successfully!');
+            } else {
+                alert('تم حفظ معلومات الاتصال كملف VCF بنجاح!');
+            }
         });
         
         // Copy Contact Info
         const copyInfoBtn = document.getElementById('copyInfo');
         copyInfoBtn.addEventListener('click', function() {
-            const contactInfo = `المحامي أحمد معروف الغنانيم
+            let contactInfo;
+            
+            if (body.classList.contains('lang-en')) {
+                contactInfo = `Lawyer Ahmad Ma'rouf Al-Ghananim
+Master's in Construction Contracts Arbitration
+Specialties: Regulatory - Arbitration - Corporate Law
+Phone: 00962777511141
+Email: ahmadabbadii2017@gmail.com
+Address: Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 206`;
+            } else {
+                contactInfo = `المحامي أحمد معروف الغنانيم
 ماجستير في التحكيم بالعقود الإنشائية
 التخصصات: نظامي - تحكيم - شركات
 هاتف: 00962777511141
 البريد الإلكتروني: ahmadabbadii2017@gmail.com
 العنوان: عمان - دابوق - شارع الملك عبدالله الثاني - مجمع الفردوس - مكتب ٢٠٦`;
+            }
             
             navigator.clipboard.writeText(contactInfo)
                 .then(() => {
-                    alert('تم نسخ معلومات الاتصال إلى الحافظة!');
+                    if (body.classList.contains('lang-en')) {
+                        alert('Contact information has been copied to clipboard!');
+                    } else {
+                        alert('تم نسخ معلومات الاتصال إلى الحافظة!');
+                    }
                 })
                 .catch(err => {
                     console.error('Error copying text: ', err);
@@ -804,12 +1113,19 @@ END:VCARD`;
                     textArea.select();
                     document.execCommand('copy');
                     document.body.removeChild(textArea);
-                    alert('تم نسخ معلومات الاتصال إلى الحافظة!');
+                    
+                    if (body.classList.contains('lang-en')) {
+                        alert('Contact information has been copied to clipboard!');
+                    } else {
+                        alert('تم نسخ معلومات الاتصال إلى الحافظة!');
+                    }
                 });
         });
         
         // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const currentYear = new Date().getFullYear();
+        document.getElementById('currentYear').textContent = currentYear;
+        document.getElementById('currentYearEn').textContent = currentYear;
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -822,7 +1138,7 @@ END:VCARD`;
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
