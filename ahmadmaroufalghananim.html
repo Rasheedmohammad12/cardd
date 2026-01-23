@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحامي أحمد معروف الغنانيم | ماجستير في التحكيم بالعقود الإنشائية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #d4af37;
+            --accent-color: #2d4a7c;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+            --gray-color: #6c757d;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo img {
+            height: 60px;
+            width: auto;
+            border-radius: 5px;
+        }
+        
+        .logo-text h1 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .logo-text p {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero-content h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #e9ecef;
+        }
+        
+        .hero-content .highlight {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            display: inline-block;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--gray-color);
+        }
+        
+        .specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .specialty {
+            background-color: var(--light-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            color: var(--primary-color);
+            border-right: 3px solid var(--secondary-color);
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--light-color);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h4 {
+            margin-bottom: 0.3rem;
+        }
+        
+        .contact-details p {
+            color: var(--gray-color);
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-gold {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-gold:hover {
+            background-color: #e0b12c;
+        }
+        
+        /* Save Contact Section */
+        .save-contact-section {
+            text-align: center;
+            padding: 3rem 0;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .save-contact-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .save-contact-section p {
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            color: var(--dark-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            width: 250px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-card p {
+            color: var(--gray-color);
+            margin-bottom: 0;
+            direction: ltr;
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1f36;
+            color: #adb5bd;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo img {
+            height: 70px;
+            width: auto;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+        
+        .footer-links h4,
+        .footer-contact h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-right: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2d3748;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+            
+            nav.active ul {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .contact-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Animation for save contact */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .save-btn {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم">
+                <div class="logo-text">
+                    <h1>المحامي أحمد معروف الغنانيم</h1>
+                    <p>ماجستير في التحكيم بالعقود الإنشائية</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">عن المحامي</a></li>
+                    <li><a href="#specialties">التخصصات</a></li>
+                    <li><a href="#contact">اتصل بي</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>المحامي أحمد معروف الغنانيم</h2>
+            <p>مستشار قانوني متخصص في <span class="highlight">التحكيم بالعقود الإنشائية</span>، مع خبرة واسعة في المجالات <span class="highlight">النظامية والتحكيمية وقانون الشركات</span>. نقدم استشارات قانونية متكاملة لحماية مصالحكم القانونية.</p>
+            <a href="#contact" class="btn btn-gold">اتصل بي الآن</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>عن المحامي</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>المحامي <strong>أحمد معروف الغنانيم</strong> يحمل درجة الماجستير في التحكيم بالعقود الإنشائية، ويتمتع بخبرة واسعة في الممارسة القانونية تمتد لسنوات عديدة.</p>
+                    <p>يتخصص المحامي أحمد في مجال التحكيم التجاري والدولي، خاصة في المنازعات الناشئة عن العقود الإنشائية، بالإضافة إلى تقديم الاستشارات القانونية في المجالات النظامية وقانون الشركات.</p>
+                    <p>يتميز بأسلوب مهني احترافي، مع الالتزام التام بأخلاقيات مهنة المحاماة، والعمل على تحقيق أفضل النتائج للعملاء من خلال فهم عمق لطبيعة النزاعات والقدرة على تقديم الحلول القانونية المناسبة.</p>
+                    
+                    <div id="specialties" class="specialties">
+                        <div class="specialty">النظامي</div>
+                        <div class="specialty">التحكيم</div>
+                        <div class="specialty">قانون الشركات</div>
+                        <div class="specialty">العقود الإنشائية</div>
+                        <div class="specialty">الاستشارات القانونية</div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="صورة مكتب المحاماة">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>اتصل بي</h2>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>العنوان</h4>
+                            <p>عمان - دابوق - شارع الملك عبدالله الثاني - مجمع الفردوس - مكتب ٢٠٦</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>هاتف</h4>
+                            <p>00962777511141</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>البريد الإلكتروني</h4>
+                            <p>ahmadabbadii2017@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>المؤهل العلمي</h4>
+                            <p>ماجستير في التحكيم بالعقود الإنشائية</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>أرسل رسالة</h3>
+                    <form id="messageForm">
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">الرسالة</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Save Contact Section -->
+    <section class="save-contact-section">
+        <div class="container">
+            <h3>حفظ معلومات الاتصال</h3>
+            <p>يمكنك حفظ معلومات الاتصال الخاصة بي لاستخدامها لاحقاً</p>
+            
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <h4>حفظ كملف VCF</h4>
+                    <p>معلومات الاتصال بصيغة vCard</p>
+                    <button class="btn btn-gold save-btn" id="saveVcf" style="margin-top: 1rem;">حفظ VCF</button>
+                </div>
+                
+                <div class="contact-card">
+                    <h4>نسخ المعلومات</h4>
+                    <p>نسخ جميع معلومات الاتصال</p>
+                    <button class="btn btn-gold save-btn" id="copyInfo" style="margin-top: 1rem;">نسخ المعلومات</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم">
+                    <p>المحامي أحمد معروف الغنانيم<br>ماجستير في التحكيم بالعقود الإنشائية</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">عن المحامي</a></li>
+                        <li><a href="#specialties">التخصصات</a></li>
+                        <li><a href="#contact">اتصل بي</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>معلومات الاتصال</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> عمان - دابوق - شارع الملك عبدالله الثاني - مجمع الفردوس - مكتب ٢٠٦</p>
+                    <p><i class="fas fa-phone"></i> 00962777511141</p>
+                    <p><i class="fas fa-envelope"></i> ahmadabbadii2017@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; <span id="currentYear"></span> - المحامي أحمد معروف الغنانيم</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // Form Submission
+        const messageForm = document.getElementById('messageForm');
+        messageForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم إرسال رسالتك بنجاح! سنقوم بالرد عليك في أقرب وقت ممكن.');
+            messageForm.reset();
+        });
+        
+        // Save VCF Contact
+        const saveVcfBtn = document.getElementById('saveVcf');
+        saveVcfBtn.addEventListener('click', function() {
+            const vcfData = `BEGIN:VCARD
+VERSION:3.0
+FN:أحمد معروف الغنانيم
+ORG:المحامي أحمد معروف الغنانيم
+TITLE:ماجستير في التحكيم بالعقود الإنشائية
+TEL;TYPE=WORK,VOICE:00962777511141
+EMAIL;TYPE=PREF,INTERNET:ahmadabbadii2017@gmail.com
+ADR;TYPE=WORK:;;عمان - دابوق - شارع الملك عبدالله الثاني - مجمع الفردوس - مكتب ٢٠٦;;;
+NOTE:تخصصات: نظامي - تحكيم - شركات
+END:VCARD`;
+            
+            const blob = new Blob([vcfData], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'المحامي_أحمد_معروف_الغنانيم.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('تم حفظ معلومات الاتصال كملف VCF بنجاح!');
+        });
+        
+        // Copy Contact Info
+        const copyInfoBtn = document.getElementById('copyInfo');
+        copyInfoBtn.addEventListener('click', function() {
+            const contactInfo = `المحامي أحمد معروف الغنانيم
+ماجستير في التحكيم بالعقود الإنشائية
+التخصصات: نظامي - تحكيم - شركات
+هاتف: 00962777511141
+البريد الإلكتروني: ahmadabbadii2017@gmail.com
+العنوان: عمان - دابوق - شارع الملك عبدالله الثاني - مجمع الفردوس - مكتب ٢٠٦`;
+            
+            navigator.clipboard.writeText(contactInfo)
+                .then(() => {
+                    alert('تم نسخ معلومات الاتصال إلى الحافظة!');
+                })
+                .catch(err => {
+                    console.error('Error copying text: ', err);
+                    // Fallback method
+                    const textArea = document.createElement('textarea');
+                    textArea.value = contactInfo;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('تم نسخ معلومات الاتصال إلى الحافظة!');
+                });
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
