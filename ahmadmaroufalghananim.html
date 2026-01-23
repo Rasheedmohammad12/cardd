@@ -33,14 +33,11 @@
             color: var(--text-color);
             background-color: var(--dark-color);
             overflow-x: hidden;
+            transition: var(--transition);
         }
         
         body.lang-en {
             font-family: 'EB Garamond', 'Playfair Display', serif;
-            direction: ltr;
-        }
-        
-        body.lang-en .container {
             direction: ltr;
         }
         
@@ -59,7 +56,6 @@
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 20px;
-            direction: rtl;
         }
         
         /* Language Switcher */
@@ -133,6 +129,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            flex-shrink: 0;
         }
         
         .logo-img-container img {
@@ -144,13 +141,8 @@
         }
         
         .logo-text h1 {
-            color: var(--secondary-color);
             font-size: 1.8rem;
             margin-bottom: 0.3rem;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .logo-text p {
@@ -182,11 +174,18 @@
             content: '';
             position: absolute;
             bottom: 0;
-            right: 0;
             width: 0;
             height: 2px;
             background: var(--gold-gradient);
             transition: var(--transition);
+        }
+        
+        .lang-ar nav a::after {
+            right: 0;
+        }
+        
+        .lang-en nav a::after {
+            left: 0;
         }
         
         nav a:hover::after {
@@ -266,15 +265,17 @@
             content: '';
             position: absolute;
             bottom: 0;
-            right: 0;
             width: 100px;
             height: 4px;
             background: var(--gold-gradient);
             border-radius: 2px;
         }
         
-        .section-title[dir="ltr"] h2::after {
-            right: auto;
+        .lang-ar .section-title h2::after {
+            right: 0;
+        }
+        
+        .lang-en .section-title h2::after {
             left: 0;
         }
         
@@ -351,8 +352,8 @@
             content: '';
             position: absolute;
             top: 0;
+            left: 0;
             right: 0;
-            width: 100%;
             height: 5px;
             background: var(--gold-gradient);
         }
@@ -380,8 +381,15 @@
             border: 1px solid rgba(212, 175, 55, 0.1);
         }
         
-        .contact-item:hover {
+        .lang-ar .contact-item:hover {
             transform: translateX(10px);
+        }
+        
+        .lang-en .contact-item:hover {
+            transform: translateX(-10px);
+        }
+        
+        .contact-item:hover {
             border-color: rgba(212, 175, 55, 0.3);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
@@ -595,7 +603,14 @@
         
         .footer-links a:hover {
             color: var(--secondary-color);
+        }
+        
+        .lang-ar .footer-links a:hover {
             transform: translateX(5px);
+        }
+        
+        .lang-en .footer-links a:hover {
+            transform: translateX(-5px);
         }
         
         .copyright {
@@ -641,6 +656,7 @@
                 display: none;
                 position: absolute;
                 top: 100%;
+                left: 0;
                 right: 0;
                 width: 100%;
                 background-color: rgba(0, 0, 0, 0.98);
@@ -727,21 +743,21 @@
             animation: pulse 3s infinite;
         }
         
-        /* Language-specific styles */
-        .lang-ar {
-            display: block;
-        }
-        
+        /* Language-specific styles - FIXED */
         .lang-en {
             display: none;
         }
         
+        .lang-ar {
+            display: block;
+        }
+        
         body.lang-en .lang-ar {
-            display: none;
+            display: none !important;
         }
         
         body.lang-en .lang-en {
-            display: block;
+            display: block !important;
         }
         
         /* Decorative elements */
@@ -759,6 +775,20 @@
             padding: 5px;
             border-radius: 5px;
         }
+        
+        /* Fix for direction issues */
+        .lang-ar {
+            direction: rtl;
+        }
+        
+        .lang-en {
+            direction: ltr;
+        }
+        
+        /* Ensure all text elements show properly */
+        p, span, div, h1, h2, h3, h4, h5, h6, a, li, button, input, textarea, label {
+            display: inline-block;
+        }
     </style>
 </head>
 <body class="lang-ar">
@@ -773,7 +803,7 @@
         <div class="container header-content">
             <div class="logo">
                 <div class="logo-img-container">
-                    <img src="https://i.imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم" class="fixed-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23000\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"40\" fill=\"%23D4AF37\" text-anchor=\"middle\" dy=\".3em\">A</text></svg>'">
+                    <img src="https://i.imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم" class="fixed-logo" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23000\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"40\" fill=\"%23D4AF37\" text-anchor=\"middle\" dy=\".3em\">A</text></svg>';">
                 </div>
                 <div class="logo-text">
                     <h1 class="lang-ar">المحامي أحمد معروف الغنانيم</h1>
@@ -816,7 +846,7 @@
         <div class="container">
             <div class="section-title">
                 <h2 class="lang-ar">عن المحامي</h2>
-                <h2 class="lang-en" dir="ltr">About the Lawyer</h2>
+                <h2 class="lang-en">About the Lawyer</h2>
             </div>
             
             <div class="about-content">
@@ -856,7 +886,7 @@
         <div class="container">
             <div class="section-title">
                 <h2 class="lang-ar">اتصل بي</h2>
-                <h2 class="lang-en" dir="ltr">Contact Me</h2>
+                <h2 class="lang-en">Contact Me</h2>
             </div>
             
             <div class="contact-section">
@@ -869,7 +899,7 @@
                             <div class="contact-details">
                                 <h4 class="lang-ar">العنوان</h4>
                                 <h4 class="lang-en">Address</h4>
-                                <p>Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 206</p>
+                                <p class="lang-ar lang-en">Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 206</p>
                             </div>
                         </div>
                         
@@ -985,7 +1015,7 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <div class="logo-img-container">
-                        <img src="https://i.imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم" class="fixed-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23000\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"40\" fill=\"%23D4AF37\" text-anchor=\"middle\" dy=\".3em\">A</text></svg>'">
+                        <img src="https://i.imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم" class="fixed-logo" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23000\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"40\" fill=\"%23D4AF37\" text-anchor=\"middle\" dy=\".3em\">A</text></svg>';">
                     </div>
                     <p class="lang-ar">المحامي أحمد معروف الغنانيم<br>ماجستير في التحكيم بالعقود الإنشائية</p>
                     <p class="lang-en">Lawyer Ahmad Ma'rouf Al-Ghananim<br>Master's in Construction Contracts Arbitration</p>
@@ -1019,18 +1049,26 @@
     </footer>
 
     <script>
-        // Language Switching
+        // Language Switching - FIXED VERSION
         const arBtn = document.getElementById('arBtn');
         const enBtn = document.getElementById('enBtn');
         const body = document.body;
+        
+        // Initialize with Arabic
+        body.classList.add('lang-ar');
+        body.classList.remove('lang-en');
         
         arBtn.addEventListener('click', function() {
             body.classList.remove('lang-en');
             body.classList.add('lang-ar');
             arBtn.classList.add('active');
             enBtn.classList.remove('active');
-            // Update image for Arabic
-            updateLogoImage('ar');
+            
+            // Update direction
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', 'ar');
+            
+            console.log('Switched to Arabic');
         });
         
         enBtn.addEventListener('click', function() {
@@ -1038,18 +1076,13 @@
             body.classList.add('lang-en');
             enBtn.classList.add('active');
             arBtn.classList.remove('active');
-            // Update image for English
-            updateLogoImage('en');
+            
+            // Update direction
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', 'en');
+            
+            console.log('Switched to English');
         });
-        
-        // Function to update logo image based on language
-        function updateLogoImage(lang) {
-            const logoImages = document.querySelectorAll('.logo-img-container img');
-            logoImages.forEach(img => {
-                // We use the same image for both languages
-                img.src = "https://i.imgur.com/1N54fsr.png";
-            });
-        }
         
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1204,14 +1237,17 @@ Address: Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 
             });
         });
         
-        // Fix for image loading
+        // Force initial language setup
         document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                img.addEventListener('error', function() {
-                    this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23000"/><text x="50" y="50" font-family="Arial" font-size="40" fill="%23D4AF37" text-anchor="middle" dy=".3em">A</text></svg>';
-                });
-            });
+            // Ensure Arabic is active initially
+            body.classList.add('lang-ar');
+            body.classList.remove('lang-en');
+            arBtn.classList.add('active');
+            enBtn.classList.remove('active');
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', 'ar');
+            
+            console.log('Page loaded with Arabic as default');
         });
     </script>
 </body>
