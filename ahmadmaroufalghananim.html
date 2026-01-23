@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>المحامي أحمد معروف الغنانيم | ماجستير في التحكيم بالعقود الإنشائية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&family=Playfair+Display:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,27 +14,29 @@
         }
         
         :root {
-            --primary-color: #8B0000;
+            --primary-color: #000000;
             --secondary-color: #D4AF37;
-            --accent-color: #B22222;
-            --light-color: #F8F5F0;
-            --dark-color: #2C1810;
-            --gray-color: #7A6A5C;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --accent-color: #B8860B;
+            --light-color: #1A1A1A;
+            --dark-color: #0A0A0A;
+            --gray-color: #888888;
+            --text-color: #E8E8E8;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             --transition: all 0.4s ease;
             --border-radius: 12px;
+            --gold-gradient: linear-gradient(135deg, #D4AF37, #FFD700, #B8860B);
         }
         
         body {
             font-family: 'Tajawal', 'Cairo', sans-serif;
             line-height: 1.7;
-            color: var(--dark-color);
-            background-color: var(--light-color);
+            color: var(--text-color);
+            background-color: var(--dark-color);
             overflow-x: hidden;
         }
         
         body.lang-en {
-            font-family: 'Segoe UI', 'Playfair Display', serif;
+            font-family: 'EB Garamond', 'Playfair Display', serif;
             direction: ltr;
         }
         
@@ -43,10 +45,13 @@
         }
         
         h1, h2, h3, h4 {
-            font-family: 'Playfair Display', 'Cairo', serif;
+            font-family: 'Playfair Display', 'EB Garamond', serif;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .container {
@@ -63,7 +68,8 @@
             top: 20px;
             left: 20px;
             z-index: 1001;
-            background-color: var(--primary-color);
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--secondary-color);
             border-radius: 30px;
             padding: 8px;
             box-shadow: var(--shadow);
@@ -74,8 +80,8 @@
         .lang-btn {
             background: transparent;
             border: none;
-            color: white;
-            padding: 8px 16px;
+            color: var(--text-color);
+            padding: 8px 20px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
@@ -84,13 +90,14 @@
         }
         
         .lang-btn.active {
-            background-color: var(--secondary-color);
-            color: var(--dark-color);
+            background: var(--gold-gradient);
+            color: var(--primary-color);
+            font-weight: 700;
         }
         
         /* Header Styles */
         header {
-            background-color: rgba(44, 24, 16, 0.95);
+            background-color: rgba(10, 10, 10, 0.95);
             color: white;
             padding: 1.8rem 0;
             position: fixed;
@@ -100,6 +107,7 @@
             z-index: 1000;
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--secondary-color);
         }
         
         .header-content {
@@ -114,23 +122,39 @@
             gap: 1.5rem;
         }
         
-        .logo img {
-            height: 70px;
-            width: auto;
-            border-radius: 8px;
-            border: 2px solid var(--secondary-color);
-            padding: 3px;
-            background-color: white;
+        .logo-img-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--secondary-color);
+            padding: 5px;
+            background: var(--gold-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .logo-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
         }
         
         .logo-text h1 {
             color: var(--secondary-color);
             font-size: 1.8rem;
             margin-bottom: 0.3rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .logo-text p {
-            color: #E8DECD;
+            color: var(--gray-color);
             font-size: 1rem;
         }
         
@@ -141,7 +165,7 @@
         }
         
         nav a {
-            color: white;
+            color: var(--text-color);
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
@@ -161,7 +185,7 @@
             right: 0;
             width: 0;
             height: 2px;
-            background-color: var(--secondary-color);
+            background: var(--gold-gradient);
             transition: var(--transition);
         }
         
@@ -173,25 +197,36 @@
             display: none;
             background: none;
             border: none;
-            color: white;
+            color: var(--secondary-color);
             font-size: 1.8rem;
             cursor: pointer;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(44, 24, 16, 0.85), rgba(44, 24, 16, 0.85)), url('https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
             color: white;
             padding: 12rem 0 6rem;
             text-align: center;
             margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gold-gradient);
         }
         
         .hero-content h2 {
             font-size: 3.2rem;
-            color: var(--secondary-color);
             margin-bottom: 1.5rem;
             line-height: 1.2;
         }
@@ -200,12 +235,13 @@
             font-size: 1.3rem;
             max-width: 900px;
             margin: 0 auto 3rem;
-            color: #E8DECD;
+            color: var(--gray-color);
         }
         
         .hero-content .highlight {
             color: var(--secondary-color);
             font-weight: 700;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
         
         /* About Section */
@@ -233,7 +269,7 @@
             right: 0;
             width: 100px;
             height: 4px;
-            background-color: var(--secondary-color);
+            background: var(--gold-gradient);
             border-radius: 2px;
         }
         
@@ -263,19 +299,21 @@
         }
         
         .specialty {
-            background-color: white;
+            background-color: rgba(212, 175, 55, 0.1);
             padding: 0.9rem 1.8rem;
             border-radius: 30px;
             font-weight: 600;
-            color: var(--primary-color);
-            border-right: 4px solid var(--secondary-color);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            color: var(--secondary-color);
+            border: 2px solid rgba(212, 175, 55, 0.3);
             transition: var(--transition);
+            backdrop-filter: blur(5px);
         }
         
         .specialty:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: rgba(212, 175, 55, 0.2);
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
         .about-image {
@@ -283,12 +321,13 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            border: 8px solid white;
+            border: 8px solid rgba(212, 175, 55, 0.2);
         }
         
         .about-image img {
             width: 100%;
-            height: auto;
+            height: 400px;
+            object-fit: cover;
             display: block;
             transition: var(--transition);
         }
@@ -299,12 +338,13 @@
         
         /* Contact Section */
         .contact-section {
-            background-color: white;
+            background-color: var(--light-color);
             border-radius: var(--border-radius);
             margin: 0 2rem;
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         .contact-section::before {
@@ -314,7 +354,7 @@
             right: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background: var(--gold-gradient);
         }
         
         .contact-content {
@@ -335,18 +375,20 @@
             gap: 1.5rem;
             padding: 1.5rem;
             border-radius: var(--border-radius);
-            background-color: var(--light-color);
+            background-color: rgba(0, 0, 0, 0.5);
             transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
         
         .contact-item:hover {
             transform: translateX(10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         
         .contact-icon {
-            background-color: var(--primary-color);
-            color: white;
+            background: var(--gold-gradient);
+            color: var(--primary-color);
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -359,9 +401,7 @@
         }
         
         .contact-item:hover .contact-icon {
-            background-color: var(--secondary-color);
-            color: var(--dark-color);
-            transform: rotate(15deg);
+            transform: rotate(15deg) scale(1.1);
         }
         
         .contact-details h4 {
@@ -373,10 +413,11 @@
         }
         
         .contact-form {
-            background-color: var(--light-color);
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 3rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
         
         .form-group {
@@ -387,38 +428,39 @@
             display: block;
             margin-bottom: 0.7rem;
             font-weight: 600;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
         
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 1rem 1.2rem;
-            border: 2px solid #E8DECD;
+            border: 2px solid rgba(212, 175, 55, 0.3);
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
             transition: var(--transition);
-            background-color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: var(--text-color);
         }
         
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
         }
         
         .btn {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: white;
+            background: var(--gold-gradient);
+            color: var(--primary-color);
             padding: 1rem 2.5rem;
             border: none;
             border-radius: 8px;
             font-family: inherit;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
             position: relative;
@@ -433,7 +475,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            background: linear-gradient(135deg, #FFD700, #D4AF37);
             transition: var(--transition);
             z-index: -1;
         }
@@ -444,31 +486,22 @@
         
         .btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(139, 0, 0, 0.3);
-        }
-        
-        .btn-gold {
-            background: linear-gradient(135deg, var(--secondary-color), #E8C547);
-            color: var(--dark-color);
-        }
-        
-        .btn-gold::before {
-            background: linear-gradient(135deg, #E8C547, var(--secondary-color));
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
         }
         
         /* Save Contact Section */
         .save-contact-section {
             text-align: center;
             padding: 4rem 0;
-            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            background: linear-gradient(135deg, #000000, #1A1A1A);
             color: white;
             border-radius: var(--border-radius);
             margin: 2rem;
             box-shadow: var(--shadow);
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         .save-contact-section h3 {
-            color: var(--secondary-color);
             margin-bottom: 1.5rem;
             font-size: 2.2rem;
         }
@@ -479,7 +512,7 @@
             margin-left: auto;
             margin-right: auto;
             font-size: 1.1rem;
-            color: #E8DECD;
+            color: var(--gray-color);
         }
         
         .contact-cards {
@@ -491,22 +524,23 @@
         }
         
         .contact-card {
-            background-color: white;
-            color: var(--dark-color);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: var(--text-color);
             padding: 2rem;
             border-radius: var(--border-radius);
             width: 280px;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
         
         .contact-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary-color);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
         
         .contact-card h4 {
-            color: var(--primary-color);
             margin-bottom: 1rem;
             font-size: 1.4rem;
         }
@@ -518,10 +552,11 @@
         
         /* Footer */
         footer {
-            background-color: var(--dark-color);
-            color: #E8DECD;
+            background-color: #000000;
+            color: var(--gray-color);
             padding: 4rem 0 2rem;
             margin-top: 4rem;
+            border-top: 2px solid var(--secondary-color);
         }
         
         .footer-content {
@@ -531,19 +566,14 @@
             margin-bottom: 3rem;
         }
         
-        .footer-logo img {
-            height: 80px;
-            width: auto;
+        .footer-logo .logo-img-container {
+            width: 90px;
+            height: 90px;
             margin-bottom: 1.5rem;
-            border-radius: 8px;
-            border: 2px solid var(--secondary-color);
-            padding: 3px;
-            background-color: white;
         }
         
         .footer-links h4,
         .footer-contact h4 {
-            color: var(--secondary-color);
             margin-bottom: 1.8rem;
             font-size: 1.3rem;
         }
@@ -557,7 +587,7 @@
         }
         
         .footer-links a {
-            color: #E8DECD;
+            color: var(--gray-color);
             text-decoration: none;
             transition: var(--transition);
             display: inline-block;
@@ -571,9 +601,9 @@
         .copyright {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid #5A4A3C;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
             font-size: 0.95rem;
-            color: #B8A99A;
+            color: #666666;
         }
         
         /* Responsive Styles */
@@ -613,11 +643,12 @@
                 top: 100%;
                 right: 0;
                 width: 100%;
-                background-color: rgba(44, 24, 16, 0.98);
+                background-color: rgba(0, 0, 0, 0.98);
                 flex-direction: column;
                 padding: 2rem;
                 box-shadow: var(--shadow);
                 backdrop-filter: blur(10px);
+                border-top: 2px solid var(--secondary-color);
             }
             
             nav.active ul {
@@ -679,13 +710,17 @@
             .logo-text h1 {
                 font-size: 1.5rem;
             }
+            
+            .about-image img {
+                height: 300px;
+            }
         }
         
         /* Animation for save contact */
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6); }
-            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
+            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); }
         }
         
         .save-btn {
@@ -713,9 +748,16 @@
         .decorative-line {
             height: 3px;
             width: 100px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background: var(--gold-gradient);
             margin: 1.5rem auto;
             border-radius: 2px;
+        }
+        
+        /* Fix for logo image */
+        .fixed-logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -730,7 +772,9 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <img src="https://imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم">
+                <div class="logo-img-container">
+                    <img src="https://i.imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم" class="fixed-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23000\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"40\" fill=\"%23D4AF37\" text-anchor=\"middle\" dy=\".3em\">A</text></svg>'">
+                </div>
                 <div class="logo-text">
                     <h1 class="lang-ar">المحامي أحمد معروف الغنانيم</h1>
                     <h1 class="lang-en">Lawyer Ahmad Ma'rouf Al-Ghananim</h1>
@@ -762,8 +806,8 @@
             <div class="decorative-line"></div>
             <p class="lang-ar">مستشار قانوني متخصص في <span class="highlight">التحكيم بالعقود الإنشائية</span>، مع خبرة واسعة في المجالات <span class="highlight">النظامية والتحكيمية وقانون الشركات</span>. نقدم استشارات قانونية متكاملة لحماية مصالحكم القانونية.</p>
             <p class="lang-en">Legal consultant specialized in <span class="highlight">Construction Contracts Arbitration</span>, with extensive experience in <span class="highlight">Regulatory, Arbitration, and Corporate Law</span>. We provide comprehensive legal consultations to protect your legal interests.</p>
-            <a href="#contact" class="btn btn-gold lang-ar">اتصل بي الآن</a>
-            <a href="#contact" class="btn btn-gold lang-en">Contact Me Now</a>
+            <a href="#contact" class="btn lang-ar">اتصل بي الآن</a>
+            <a href="#contact" class="btn lang-en">Contact Me Now</a>
         </div>
     </section>
 
@@ -915,7 +959,7 @@
                     <h4 class="lang-en">Save as VCF File</h4>
                     <p class="lang-ar">معلومات الاتصال بصيغة vCard</p>
                     <p class="lang-en">Contact information in vCard format</p>
-                    <button class="btn btn-gold save-btn" id="saveVcf" style="margin-top: 1rem;">
+                    <button class="btn save-btn" id="saveVcf" style="margin-top: 1rem;">
                         <span class="lang-ar">حفظ VCF</span>
                         <span class="lang-en">Save VCF</span>
                     </button>
@@ -926,7 +970,7 @@
                     <h4 class="lang-en">Copy Information</h4>
                     <p class="lang-ar">نسخ جميع معلومات الاتصال</p>
                     <p class="lang-en">Copy all contact information</p>
-                    <button class="btn btn-gold save-btn" id="copyInfo" style="margin-top: 1rem;">
+                    <button class="btn save-btn" id="copyInfo" style="margin-top: 1rem;">
                         <span class="lang-ar">نسخ المعلومات</span>
                         <span class="lang-en">Copy Information</span>
                     </button>
@@ -940,7 +984,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="https://imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم">
+                    <div class="logo-img-container">
+                        <img src="https://i.imgur.com/1N54fsr.png" alt="شعار المحامي أحمد معروف الغنانيم" class="fixed-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23000\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"40\" fill=\"%23D4AF37\" text-anchor=\"middle\" dy=\".3em\">A</text></svg>'">
+                    </div>
                     <p class="lang-ar">المحامي أحمد معروف الغنانيم<br>ماجستير في التحكيم بالعقود الإنشائية</p>
                     <p class="lang-en">Lawyer Ahmad Ma'rouf Al-Ghananim<br>Master's in Construction Contracts Arbitration</p>
                 </div>
@@ -983,6 +1029,8 @@
             body.classList.add('lang-ar');
             arBtn.classList.add('active');
             enBtn.classList.remove('active');
+            // Update image for Arabic
+            updateLogoImage('ar');
         });
         
         enBtn.addEventListener('click', function() {
@@ -990,7 +1038,18 @@
             body.classList.add('lang-en');
             enBtn.classList.add('active');
             arBtn.classList.remove('active');
+            // Update image for English
+            updateLogoImage('en');
         });
+        
+        // Function to update logo image based on language
+        function updateLogoImage(lang) {
+            const logoImages = document.querySelectorAll('.logo-img-container img');
+            logoImages.forEach(img => {
+                // We use the same image for both languages
+                img.src = "https://i.imgur.com/1N54fsr.png";
+            });
+        }
         
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1142,6 +1201,16 @@ Address: Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 
                         behavior: 'smooth'
                     });
                 }
+            });
+        });
+        
+        // Fix for image loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23000"/><text x="50" y="50" font-family="Arial" font-size="40" fill="%23D4AF37" text-anchor="middle" dy=".3em">A</text></svg>';
+                });
             });
         });
     </script>
