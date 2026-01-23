@@ -46,6 +46,12 @@
             overflow-x: hidden;
             font-weight: 400;
             font-size: 18px;
+            transition: var(--transition-medium);
+        }
+        
+        /* إصلاح اللغة الإنجليزية - حل نهائي */
+        body:not(.lang-en) {
+            font-family: 'Cormorant Garamond', 'EB Garamond', 'Tajawal', serif;
         }
         
         body.lang-en {
@@ -133,10 +139,6 @@
             transition: var(--transition-medium);
             font-size: 0.9rem;
             font-family: 'Cairo', sans-serif;
-        }
-        
-        body.lang-en .lang-btn {
-            font-family: 'Cormorant Garamond', serif;
         }
         
         .lang-btn.active {
@@ -247,11 +249,11 @@
             transition: var(--transition-medium);
         }
         
-        .lang-ar .nav-links a::before {
+        body:not(.lang-en) .nav-links a::before {
             right: 0;
         }
         
-        .lang-en .nav-links a::before {
+        body.lang-en .nav-links a::before {
             left: 0;
         }
         
@@ -349,11 +351,11 @@
             border-radius: 2px;
         }
         
-        .lang-ar .section-title::after {
+        body:not(.lang-en) .section-title::after {
             right: 0;
         }
         
-        .lang-en .section-title::after {
+        body.lang-en .section-title::after {
             left: 0;
         }
         
@@ -368,7 +370,7 @@
             padding-right: 40px;
         }
         
-        .lang-en .about-text {
+        body.lang-en .about-text {
             padding-right: 0;
             padding-left: 40px;
         }
@@ -462,14 +464,17 @@
             transition: var(--transition-medium);
         }
         
-        .contact-item:hover {
+        body:not(.lang-en) .contact-item:hover {
             transform: translateX(10px);
-            border-color: var(--gold-primary);
-            box-shadow: var(--shadow-medium);
         }
         
-        .lang-en .contact-item:hover {
+        body.lang-en .contact-item:hover {
             transform: translateX(-10px);
+        }
+        
+        .contact-item:hover {
+            border-color: var(--gold-primary);
+            box-shadow: var(--shadow-medium);
         }
         
         .contact-icon-wrapper {
@@ -645,13 +650,16 @@
             display: inline-block;
         }
         
-        .footer-links a:hover {
-            color: var(--gold-primary);
+        body:not(.lang-en) .footer-links a:hover {
             transform: translateX(5px);
         }
         
-        .lang-en .footer-links a:hover {
+        body.lang-en .footer-links a:hover {
             transform: translateX(-5px);
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold-primary);
         }
         
         .footer-contact p {
@@ -673,6 +681,25 @@
             border-top: 1px solid rgba(212, 175, 55, 0.1);
             color: var(--text-dark);
             font-size: 1rem;
+        }
+        
+        /* إصلاح نهائي لعرض العناصر حسب اللغة */
+        /* العناصر العربية تظهر عندما body ليس لديها class lang-en */
+        body:not(.lang-en) .lang-en {
+            display: none !important;
+        }
+        
+        body:not(.lang-en) .lang-ar {
+            display: block !important;
+        }
+        
+        /* العناصر الإنجليزية تظهر عندما body لديها class lang-en */
+        body.lang-en .lang-ar {
+            display: none !important;
+        }
+        
+        body.lang-en .lang-en {
+            display: block !important;
         }
         
         /* Responsive Design */
@@ -713,7 +740,7 @@
                 padding-right: 0;
             }
             
-            .lang-en .about-text {
+            body.lang-en .about-text {
                 padding-left: 0;
             }
             
@@ -782,23 +809,6 @@
             }
         }
         
-        /* Fixes للغة - مصححة بالكامل */
-        .lang-en {
-            display: none !important;
-        }
-        
-        .lang-ar {
-            display: block !important;
-        }
-        
-        body.lang-en .lang-en {
-            display: block !important;
-        }
-        
-        body.lang-en .lang-ar {
-            display: none !important;
-        }
-        
         /* Mobile Menu */
         .mobile-nav {
             position: fixed;
@@ -819,7 +829,7 @@
             transform: translateX(0);
         }
         
-        .lang-en .mobile-nav {
+        body.lang-en .mobile-nav {
             right: auto;
             left: 0;
             transform: translateX(-100%);
@@ -827,7 +837,7 @@
             border-right: 1px solid rgba(212, 175, 55, 0.2);
         }
         
-        .lang-en .mobile-nav.active {
+        body.lang-en .mobile-nav.active {
             transform: translateX(0);
         }
         
@@ -849,14 +859,17 @@
             transition: var(--transition-medium);
         }
         
-        .mobile-nav-links a:hover {
-            color: var(--gold-primary);
+        body:not(.lang-en) .mobile-nav-links a:hover {
             padding-left: 10px;
         }
         
-        .lang-en .mobile-nav-links a:hover {
+        body.lang-en .mobile-nav-links a:hover {
             padding-left: 0;
             padding-right: 10px;
+        }
+        
+        .mobile-nav-links a:hover {
+            color: var(--gold-primary);
         }
         
         .close-menu {
@@ -870,7 +883,7 @@
             cursor: pointer;
         }
         
-        .lang-en .close-menu {
+        body.lang-en .close-menu {
             right: auto;
             left: 30px;
         }
@@ -1013,7 +1026,7 @@
                         <div class="contact-details">
                             <h4 class="lang-ar">العنوان</h4>
                             <h4 class="lang-en">Address</h4>
-                            <p>Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 206</p>
+                            <p class="lang-ar lang-en">Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 206</p>
                         </div>
                     </div>
                     
@@ -1164,17 +1177,24 @@
     </footer>
 
     <script>
-        // ========== إصلاح كامل لتبديل اللغة ==========
+        // ========== إصلاح نهائي لتبديل اللغة ==========
         const arBtn = document.getElementById('arBtn');
         const enBtn = document.getElementById('enBtn');
         const body = document.body;
+        const htmlElement = document.documentElement;
         
         // تأكد من أن الصفحة تبدأ بالعربية
-        document.documentElement.setAttribute('lang', 'ar');
-        document.documentElement.setAttribute('dir', 'rtl');
+        body.classList.remove('lang-en');
+        body.classList.add('lang-ar');
+        htmlElement.setAttribute('lang', 'ar');
+        htmlElement.setAttribute('dir', 'rtl');
+        
+        // تحديث الأزرار
+        arBtn.classList.add('active');
+        enBtn.classList.remove('active');
         
         arBtn.addEventListener('click', function() {
-            // تغيير كلاس الجسم
+            // إزالة class الإنجليزية وإضافة class العربية
             body.classList.remove('lang-en');
             body.classList.add('lang-ar');
             
@@ -1183,8 +1203,8 @@
             enBtn.classList.remove('active');
             
             // تحديث سمات HTML
-            document.documentElement.setAttribute('lang', 'ar');
-            document.documentElement.setAttribute('dir', 'rtl');
+            htmlElement.setAttribute('lang', 'ar');
+            htmlElement.setAttribute('dir', 'rtl');
             
             // إغلاق القائمة المتنقلة إذا كانت مفتوحة
             closeMobileMenu();
@@ -1193,7 +1213,7 @@
         });
         
         enBtn.addEventListener('click', function() {
-            // تغيير كلاس الجسم
+            // إزالة class العربية وإضافة class الإنجليزية
             body.classList.remove('lang-ar');
             body.classList.add('lang-en');
             
@@ -1202,8 +1222,8 @@
             arBtn.classList.remove('active');
             
             // تحديث سمات HTML
-            document.documentElement.setAttribute('lang', 'en');
-            document.documentElement.setAttribute('dir', 'ltr');
+            htmlElement.setAttribute('lang', 'en');
+            htmlElement.setAttribute('dir', 'ltr');
             
             // إغلاق القائمة المتنقلة إذا كانت مفتوحة
             closeMobileMenu();
@@ -1364,7 +1384,7 @@ Address: Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 
         
         // ========== تحميل الصفحة ==========
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('تم تحميل الموقع بنجاح');
+            console.log('تم تحميل الموقع بنجاح - اللغة العربية مفعلة');
         });
     </script>
 </body>
