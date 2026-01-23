@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>المحامي أحمد معروف الغنانيم | ماجستير في التحكيم بالعقود الإنشائية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&family=Playfair+Display:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         
         :root {
@@ -23,9 +24,9 @@
             --gold-secondary: #B8860B;
             --gold-light: #FFD700;
             --gold-gradient: linear-gradient(135deg, #D4AF37, #FFD700, #B8860B);
-            --text-light: #F5F5F5;
-            --text-gray: #AAAAAA;
-            --text-dark: #666666;
+            --text-light: #FFFFFF; /* أبيض نقي */
+            --text-gray: #F0F0F0;  /* أبيض فاتح جداً */
+            --text-dark: #CCCCCC;  /* رمادي فاتح */
             --shadow-heavy: 0 15px 40px rgba(0, 0, 0, 0.5);
             --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.3);
             --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -35,21 +36,28 @@
             --border-radius-lg: 20px;
             --border-radius-md: 12px;
             --border-radius-sm: 8px;
+            --safe-area-top: env(safe-area-inset-top);
+            --safe-area-bottom: env(safe-area-inset-bottom);
+            --safe-area-left: env(safe-area-inset-left);
+            --safe-area-right: env(safe-area-inset-right);
         }
         
         /* Styles الأساسية */
         body {
             font-family: 'Cormorant Garamond', 'EB Garamond', 'Tajawal', serif;
-            line-height: 1.8;
-            color: var(--text-light);
+            line-height: 1.7;
+            color: var(--text-light); /* جميع النصوص باللون الأبيض */
             background-color: var(--primary-black);
             overflow-x: hidden;
             font-weight: 400;
             font-size: 18px;
             transition: var(--transition-medium);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
         
-        /* إصلاح اللغة الإنجليزية - حل نهائي */
+        /* إصلاح اللغة الإنجليزية */
         body:not(.lang-en) {
             font-family: 'Cormorant Garamond', 'EB Garamond', 'Tajawal', serif;
         }
@@ -68,12 +76,14 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: 0.5px;
+            color: var(--text-light); /* إضافة لون أبيض للعناوين */
         }
         
         p {
             margin-bottom: 1.5rem;
-            color: var(--text-gray);
+            color: var(--text-light); /* جميع الفقرات باللون الأبيض */
             font-size: 1.1rem;
+            line-height: 1.8;
         }
         
         .container {
@@ -84,7 +94,7 @@
         }
         
         .section {
-            padding: 100px 0;
+            padding: 80px 0;
         }
         
         .btn {
@@ -105,6 +115,8 @@
             z-index: 1;
             letter-spacing: 1px;
             text-transform: uppercase;
+            -webkit-user-select: none;
+            user-select: none;
         }
         
         .btn:hover {
@@ -112,7 +124,11 @@
             box-shadow: var(--shadow-medium);
         }
         
-        /* Language Switcher - مصحح تماماً */
+        .btn:active {
+            transform: translateY(-1px);
+        }
+        
+        /* Language Switcher */
         .lang-switcher {
             position: fixed;
             top: 30px;
@@ -146,10 +162,10 @@
             color: var(--primary-black);
         }
         
-        /* Header - تصميم فخم */
+        /* Header */
         header {
             background-color: rgba(10, 10, 10, 0.95);
-            padding: 25px 0;
+            padding: 20px 0;
             position: fixed;
             top: 0;
             left: 0;
@@ -169,12 +185,12 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 20px;
         }
         
         .logo-frame {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             border: 3px solid var(--gold-primary);
             padding: 5px;
@@ -185,6 +201,7 @@
             overflow: hidden;
             box-shadow: var(--shadow-medium);
             transition: var(--transition-medium);
+            flex-shrink: 0;
         }
         
         .logo-frame:hover {
@@ -204,19 +221,20 @@
         }
         
         .logo-text h1 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             margin-bottom: 5px;
             line-height: 1.2;
+            color: var(--text-light);
         }
         
         .logo-text .subtitle {
             color: var(--gold-primary);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             letter-spacing: 1px;
         }
         
-        /* Navigation - أنيق */
+        /* Navigation */
         .main-nav {
             display: flex;
             align-items: center;
@@ -225,7 +243,7 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 40px;
+            gap: 30px;
         }
         
         .nav-links a {
@@ -273,9 +291,13 @@
             font-size: 28px;
             cursor: pointer;
             padding: 5px;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
         }
         
-        /* Hero Section - بطولي فخم */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -283,28 +305,30 @@
             background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: scroll;
             position: relative;
-            padding-top: 100px;
+            padding-top: 120px;
+            padding-bottom: 60px;
         }
         
         .hero-content {
             text-align: center;
             max-width: 1000px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
         .hero-title {
-            font-size: 4.5rem;
-            margin-bottom: 30px;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
             line-height: 1.1;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 50px;
-            color: var(--text-gray);
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--text-light); /* أبيض */
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -319,11 +343,11 @@
             width: 150px;
             height: 4px;
             background: var(--gold-gradient);
-            margin: 40px auto;
+            margin: 30px auto;
             border-radius: 2px;
         }
         
-        /* About Section - نظيف ومنظم */
+        /* About Section */
         .about-section {
             background-color: var(--dark-black);
             position: relative;
@@ -331,11 +355,11 @@
         
         .section-header {
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 60px;
         }
         
         .section-title {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             position: relative;
             display: inline-block;
             padding-bottom: 20px;
@@ -362,23 +386,24 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 60px;
             align-items: center;
         }
         
         .about-text {
-            padding-right: 40px;
+            padding-right: 30px;
         }
         
         body.lang-en .about-text {
             padding-right: 0;
-            padding-left: 40px;
+            padding-left: 30px;
         }
         
         .about-text p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             line-height: 1.8;
             margin-bottom: 25px;
+            color: var(--text-light); /* أبيض */
         }
         
         .specialties-grid {
@@ -413,6 +438,7 @@
         .specialty-card h4 {
             font-size: 1.3rem;
             margin-bottom: 10px;
+            color: var(--text-light); /* أبيض */
         }
         
         .about-image {
@@ -430,12 +456,12 @@
         
         .about-image img {
             width: 100%;
-            height: 600px;
+            height: 500px;
             object-fit: cover;
             display: block;
         }
         
-        /* Contact Section - منظم وفعال */
+        /* Contact Section */
         .contact-section {
             background-color: var(--medium-black);
             position: relative;
@@ -444,20 +470,20 @@
         .contact-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 60px;
         }
         
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
         }
         
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 25px;
-            padding: 30px;
+            gap: 20px;
+            padding: 25px;
             background: rgba(0, 0, 0, 0.3);
             border-radius: var(--border-radius-md);
             border: 1px solid rgba(212, 175, 55, 0.1);
@@ -478,15 +504,15 @@
         }
         
         .contact-icon-wrapper {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: var(--gold-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--primary-black);
             transition: var(--transition-medium);
         }
@@ -497,26 +523,27 @@
         
         .contact-details h4 {
             margin-bottom: 10px;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
+            color: var(--text-light); /* أبيض */
         }
         
         .contact-details p {
             margin-bottom: 0;
-            color: var(--text-gray);
+            color: var(--text-light); /* أبيض */
             font-size: 1.1rem;
         }
         
-        /* Contact Form - أنيق */
+        /* Contact Form */
         .contact-form-container {
             background: rgba(0, 0, 0, 0.3);
             border-radius: var(--border-radius-lg);
-            padding: 50px;
+            padding: 40px;
             border: 1px solid rgba(212, 175, 55, 0.1);
             box-shadow: var(--shadow-heavy);
         }
         
         .contact-form-container h3 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 30px;
             text-align: center;
         }
@@ -557,7 +584,7 @@
             resize: vertical;
         }
         
-        /* Save Contact - متميز */
+        /* Save Contact */
         .save-contact-section {
             background: linear-gradient(135deg, var(--primary-black), var(--dark-black));
             text-align: center;
@@ -573,16 +600,16 @@
         .save-contact-cards {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-top: 50px;
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .save-card {
             background: rgba(212, 175, 55, 0.05);
             border: 2px solid rgba(212, 175, 55, 0.1);
             border-radius: var(--border-radius-lg);
-            padding: 40px 30px;
-            width: 320px;
+            padding: 35px 25px;
+            width: 300px;
             transition: var(--transition-medium);
         }
         
@@ -594,44 +621,46 @@
         }
         
         .save-card h4 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
+            color: var(--text-light); /* أبيض */
         }
         
         .save-card p {
             margin-bottom: 25px;
-            color: var(--text-gray);
+            color: var(--text-light); /* أبيض */
         }
         
-        /* Footer - فخم */
+        /* Footer */
         .main-footer {
             background-color: var(--primary-black);
-            padding: 80px 0 40px;
+            padding: 60px 0 30px;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 60px;
-            margin-bottom: 60px;
+            gap: 50px;
+            margin-bottom: 50px;
         }
         
         .footer-logo .logo-frame {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 25px;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
         }
         
         .footer-logo p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             line-height: 1.6;
+            color: var(--text-light); /* أبيض */
         }
         
         .footer-links h4,
         .footer-contact h4 {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
         }
         
         .footer-links ul {
@@ -643,7 +672,7 @@
         }
         
         .footer-links a {
-            color: var(--text-gray);
+            color: var(--text-light); /* أبيض */
             text-decoration: none;
             font-size: 1.1rem;
             transition: var(--transition-medium);
@@ -668,6 +697,7 @@
             gap: 15px;
             margin-bottom: 20px;
             font-size: 1.1rem;
+            color: var(--text-light); /* أبيض */
         }
         
         .footer-contact i {
@@ -677,14 +707,13 @@
         
         .copyright {
             text-align: center;
-            padding-top: 40px;
+            padding-top: 30px;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
-            color: var(--text-dark);
+            color: var(--text-light); /* أبيض */
             font-size: 1rem;
         }
         
-        /* إصلاح نهائي لعرض العناصر حسب اللغة */
-        /* العناصر العربية تظهر عندما body ليس لديها class lang-en */
+        /* إصلاح لعرض العناصر حسب اللغة */
         body:not(.lang-en) .lang-en {
             display: none !important;
         }
@@ -693,7 +722,6 @@
             display: block !important;
         }
         
-        /* العناصر الإنجليزية تظهر عندما body لديها class lang-en */
         body.lang-en .lang-ar {
             display: none !important;
         }
@@ -702,18 +730,23 @@
             display: block !important;
         }
         
-        /* Responsive Design */
+        /* Responsive Design - أجهزة متوسطة (Tablets) */
         @media (max-width: 1200px) {
-            .hero-title {
-                font-size: 3.8rem;
+            .container {
+                width: 95%;
+                max-width: 100%;
             }
             
-            .section-title {
+            .hero-title {
                 font-size: 3rem;
             }
             
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
             .about-image img {
-                height: 500px;
+                height: 450px;
             }
         }
         
@@ -723,17 +756,34 @@
             }
             
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+            }
+            
+            .logo-container {
+                gap: 15px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.6rem;
+            }
+            
+            .logo-frame {
+                width: 70px;
+                height: 70px;
             }
             
             .hero-title {
-                font-size: 3.2rem;
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
             
             .about-content,
             .contact-wrapper {
                 grid-template-columns: 1fr;
-                gap: 60px;
+                gap: 50px;
             }
             
             .about-text {
@@ -745,7 +795,7 @@
             }
             
             .specialties-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .save-contact-cards {
@@ -753,59 +803,213 @@
                 align-items: center;
             }
             
+            .save-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 50px;
+                gap: 40px;
             }
         }
         
+        /* أجهزة صغيرة (Phones) */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.3rem;
+            .container {
+                width: 100%;
+                padding: 0 15px;
             }
             
             .section {
-                padding: 70px 0;
+                padding: 60px 0;
             }
             
-            .logo-text h1 {
-                font-size: 1.8rem;
+            .hero {
+                padding-top: 140px;
+                padding-bottom: 40px;
+                min-height: 90vh;
             }
             
-            .logo-frame {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .contact-form-container {
-                padding: 30px;
-            }
-            
-            .contact-item {
-                padding: 20px;
-            }
-        }
-        
-        @media (max-width: 576px) {
             .hero-title {
-                font-size: 2.3rem;
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+            
+            .hero-divider {
+                margin: 20px auto;
             }
             
             .section-title {
-                font-size: 2.3rem;
+                font-size: 2rem;
             }
             
-            .btn {
-                padding: 14px 30px;
+            .logo-text h1 {
+                font-size: 1.4rem;
+            }
+            
+            .logo-text .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .logo-frame {
+                width: 60px;
+                height: 60px;
             }
             
             .lang-switcher {
                 top: 20px;
                 left: 20px;
+                padding: 4px;
+            }
+            
+            .lang-btn {
+                padding: 6px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .btn {
+                padding: 14px 30px;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .specialties-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .specialty-card {
+                padding: 20px;
+            }
+            
+            .contact-form-container {
+                padding: 30px 20px;
+            }
+            
+            .contact-item {
+                padding: 20px;
+                gap: 15px;
+            }
+            
+            .contact-icon-wrapper {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .about-image img {
+                height: 350px;
+            }
+            
+            .footer-logo .logo-frame {
+                width: 80px;
+                height: 80px;
+            }
+        }
+        
+        /* أجهزة صغيرة جداً (Small Phones) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+            
+            .logo-frame {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .lang-switcher {
+                top: 15px;
+                left: 15px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+            
+            .about-text p,
+            .contact-details p,
+            .footer-logo p,
+            .footer-links a,
+            .footer-contact p {
+                font-size: 1rem;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .contact-icon-wrapper {
+                margin: 0 auto;
+            }
+            
+            .save-card {
+                padding: 25px 20px;
+            }
+            
+            .copyright {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* دعم الأجهزة ذات الشاشات العريضة جداً */
+        @media (min-width: 1920px) {
+            .container {
+                max-width: 1600px;
+            }
+            
+            .hero-title {
+                font-size: 4.5rem;
+            }
+            
+            .section-title {
+                font-size: 3.5rem;
+            }
+        }
+        
+        /* دعم الوضع الأفقي على الهواتف */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: 120vh;
+                padding-top: 100px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
             }
         }
         
@@ -816,13 +1020,15 @@
             right: 0;
             width: 300px;
             height: 100vh;
+            height: 100dvh;
             background: rgba(10, 10, 10, 0.98);
             backdrop-filter: blur(20px);
-            padding: 100px 40px 40px;
+            padding: 100px 30px 40px;
             transform: translateX(100%);
             transition: transform 0.5s ease;
             z-index: 999;
             border-left: 1px solid rgba(212, 175, 55, 0.2);
+            overflow-y: auto;
         }
         
         .mobile-nav.active {
@@ -846,13 +1052,13 @@
         }
         
         .mobile-nav-links li {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .mobile-nav-links a {
             color: var(--text-light);
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             display: block;
             padding: 10px 0;
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
@@ -860,12 +1066,11 @@
         }
         
         body:not(.lang-en) .mobile-nav-links a:hover {
-            padding-left: 10px;
+            padding-right: 10px;
         }
         
         body.lang-en .mobile-nav-links a:hover {
-            padding-left: 0;
-            padding-right: 10px;
+            padding-left: 10px;
         }
         
         .mobile-nav-links a:hover {
@@ -881,11 +1086,63 @@
             color: var(--gold-primary);
             font-size: 28px;
             cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         body.lang-en .close-menu {
             right: auto;
             left: 30px;
+        }
+        
+        /* تحسينات للشاشات التي تدعم hover */
+        @media (hover: hover) and (pointer: fine) {
+            .btn:hover {
+                transform: translateY(-3px);
+            }
+            
+            .specialty-card:hover {
+                transform: translateY(-10px);
+            }
+            
+            .contact-item:hover {
+                transform: translateX(10px);
+            }
+            
+            body.lang-en .contact-item:hover {
+                transform: translateX(-10px);
+            }
+        }
+        
+        /* تحسينات للأجهزة التي لا تدعم hover */
+        @media (hover: none) {
+            .btn:active {
+                transform: scale(0.98);
+            }
+            
+            .specialty-card:active {
+                transform: scale(0.98);
+            }
+            
+            .contact-item:active {
+                transform: scale(0.98);
+            }
+        }
+        
+        /* دعم Safe Area للشاشات ذات النوتش */
+        @supports(padding: max(0px)) {
+            .hero, header {
+                padding-left: max(20px, var(--safe-area-left));
+                padding-right: max(20px, var(--safe-area-right));
+            }
+            
+            .mobile-nav {
+                padding-top: max(100px, var(--safe-area-top));
+                padding-bottom: max(40px, var(--safe-area-bottom));
+            }
         }
     </style>
 </head>
@@ -918,7 +1175,7 @@
                     <li><a href="#contact" class="lang-ar">اتصل بي</a><a href="#contact" class="lang-en">Contact</a></li>
                     <li><a href="#save-contact" class="lang-ar">حفظ الاتصال</a><a href="#save-contact" class="lang-en">Save Contact</a></li>
                 </ul>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
@@ -927,7 +1184,7 @@
 
     <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
-        <button class="close-menu" id="closeMenu">
+        <button class="close-menu" id="closeMenu" aria-label="Close menu">
             <i class="fas fa-times"></i>
         </button>
         <ul class="mobile-nav-links">
@@ -1209,7 +1466,8 @@
             // إغلاق القائمة المتنقلة إذا كانت مفتوحة
             closeMobileMenu();
             
-            console.log('تم التبديل إلى اللغة العربية');
+            // تحديث عنوان الصفحة
+            document.title = "المحامي أحمد معروف الغنانيم | ماجستير في التحكيم بالعقود الإنشائية";
         });
         
         enBtn.addEventListener('click', function() {
@@ -1228,7 +1486,8 @@
             // إغلاق القائمة المتنقلة إذا كانت مفتوحة
             closeMobileMenu();
             
-            console.log('تم التبديل إلى اللغة الإنجليزية');
+            // تحديث عنوان الصفحة
+            document.title = "Lawyer Ahmad Ma'rouf Al-Ghananim | Master's in Construction Contracts Arbitration";
         });
         
         // ========== القائمة المتنقلة ==========
@@ -1239,6 +1498,7 @@
         mobileMenuBtn.addEventListener('click', function() {
             mobileNav.classList.add('active');
             document.body.style.overflow = 'hidden';
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
         });
         
         closeMenuBtn.addEventListener('click', function() {
@@ -1253,10 +1513,25 @@
             });
         });
         
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', function(event) {
+            if (!mobileNav.contains(event.target) && !mobileMenuBtn.contains(event.target) && mobileNav.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+        
         function closeMobileMenu() {
             mobileNav.classList.remove('active');
             document.body.style.overflow = 'auto';
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
         }
+        
+        // إغلاق القائمة بالزر ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && mobileNav.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
         
         // ========== نموذج الاتصال ==========
         const messageForm = document.getElementById('messageForm');
@@ -1333,31 +1608,51 @@ Address: Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 
 العنوان: عمان - دابوق - شارع الملك عبدالله الثاني - مجمع الفردوس - مكتب ٢٠٦`;
             }
             
-            navigator.clipboard.writeText(contactInfo)
-                .then(() => {
-                    if (body.classList.contains('lang-en')) {
-                        alert('Contact information has been copied to clipboard!');
-                    } else {
-                        alert('تم نسخ معلومات الاتصال إلى الحافظة!');
-                    }
-                })
-                .catch(err => {
-                    console.error('Error copying text: ', err);
-                    // طريقة بديلة
-                    const textArea = document.createElement('textarea');
-                    textArea.value = contactInfo;
-                    document.body.appendChild(textArea);
-                    textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
-                    
-                    if (body.classList.contains('lang-en')) {
-                        alert('Contact information has been copied to clipboard!');
-                    } else {
-                        alert('تم نسخ معلومات الاتصال إلى الحافظة!');
-                    }
-                });
+            // استخدام Clipboard API الحديث إن كان متوفراً
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(contactInfo)
+                    .then(() => {
+                        showCopySuccess();
+                    })
+                    .catch(err => {
+                        console.error('Error copying text: ', err);
+                        fallbackCopy(contactInfo);
+                    });
+            } else {
+                fallbackCopy(contactInfo);
+            }
         });
+        
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess();
+            } catch (err) {
+                console.error('Fallback copy failed: ', err);
+                if (body.classList.contains('lang-en')) {
+                    alert('Failed to copy. Please select and copy the text manually.');
+                } else {
+                    alert('فشل النسخ. يرجى تحديد النص ونسخه يدوياً.');
+                }
+            }
+            
+            document.body.removeChild(textArea);
+        }
+        
+        function showCopySuccess() {
+            if (body.classList.contains('lang-en')) {
+                alert('Contact information has been copied to clipboard!');
+            } else {
+                alert('تم نسخ معلومات الاتصال إلى الحافظة!');
+            }
+        }
         
         // ========== السنة الحالية ==========
         const currentYear = new Date().getFullYear();
@@ -1374,18 +1669,58 @@ Address: Amman - Dabouq - King Abdullah II Street - Al-Firdous Complex - Office 
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    // حساب المسافة مع مراعاة الهيدر الثابت
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+                    
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetPosition,
                         behavior: 'smooth'
                     });
+                    
+                    // تحديث URL بدون إعادة تحميل الصفحة
+                    history.pushState(null, null, targetId);
                 }
             });
         });
         
-        // ========== تحميل الصفحة ==========
+        // ========== تحسينات الأداء ==========
+        // إضافة تحميل متأخر للصور
         document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+            
             console.log('تم تحميل الموقع بنجاح - اللغة العربية مفعلة');
         });
+        
+        // إخفاء الهيدر عند التمرير لأسفل وإظهاره عند التمرير لأعلى
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // التمرير لأسفل
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                // التمرير لأعلى
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // إضافة تأثير تحميل ناعم للصفحة
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+        });
+        
+        // تهيئة opacity للجسم
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.3s ease';
     </script>
 </body>
 </html>
