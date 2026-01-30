@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Revan Beauty Clinic - عيادة ليزر طبية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <style>
         /* Reset & Base Styles */
         * {
@@ -14,11 +13,23 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --primary-color: #d32f2f;
+            --secondary-color: #f8f9fa;
+            --accent-color: #25D366;
+            --text-color: #333;
+            --light-color: #fff;
+            --dark-color: #222;
+            --gray-color: #666;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
+            color: var(--text-color);
+            background-color: #f5f5f5;
         }
         
         /* Language Toggle */
@@ -29,71 +40,96 @@
             z-index: 1000;
             display: flex;
             gap: 10px;
+            background: var(--light-color);
+            padding: 8px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
         }
         
         .lang-btn {
-            background: #fff;
-            border: 2px solid #d32f2f;
-            color: #d32f2f;
-            padding: 8px 15px;
-            border-radius: 30px;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 25px;
             cursor: pointer;
             font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: var(--transition);
         }
         
         .lang-btn.active {
-            background: #d32f2f;
-            color: white;
+            background: var(--primary-color);
+            color: var(--light-color);
         }
         
-        .lang-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        .lang-btn:hover:not(.active) {
+            background: rgba(211, 47, 47, 0.1);
         }
         
         /* Header & Navigation */
         header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 120px 0 80px;
+            background: linear-gradient(135deg, var(--primary-color), #b71c1c);
+            color: var(--light-color);
+            padding: 100px 0 60px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
         
         .logo-container {
             margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
         }
         
-        .clinic-logo {
-            max-width: 200px;
-            height: auto;
+        .logo-icon {
+            font-size: 4rem;
+            color: var(--light-color);
+            background: rgba(255, 255, 255, 0.2);
+            width: 120px;
+            height: 120px;
+            line-height: 120px;
             border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            margin: 0 auto 20px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
         }
         
         .clinic-name {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--light-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .clinic-tagline {
             font-size: 1.5rem;
             margin-bottom: 30px;
-            opacity: 0.9;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         /* Contact Bar */
         .contact-bar {
-            background: #d32f2f;
-            color: white;
-            padding: 15px 0;
+            background: var(--dark-color);
+            color: var(--light-color);
+            padding: 20px 0;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         
         .contact-info {
@@ -101,34 +137,64 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 30px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-size: 1.1rem;
         }
         
         .contact-icon {
-            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-size: 1.3rem;
         }
         
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 10px;
+            gap: 25px;
+            margin-top: 15px;
         }
         
         .social-icon {
-            color: white;
+            color: var(--light-color);
             font-size: 1.5rem;
-            transition: transform 0.3s;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .social-icon:hover {
-            transform: scale(1.2);
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .save-contact-btn {
+            background: var(--accent-color);
+            color: var(--light-color);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        
+        .save-contact-btn:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
         }
         
         /* Main Content */
@@ -144,19 +210,20 @@
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
-            color: #d32f2f;
+            margin-bottom: 60px;
+            color: var(--primary-color);
             font-size: 2.5rem;
             position: relative;
+            padding-bottom: 20px;
         }
         
         .section-title:after {
             content: '';
             position: absolute;
-            width: 100px;
+            width: 80px;
             height: 4px;
-            background: #d32f2f;
-            bottom: -15px;
+            background: var(--primary-color);
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -165,27 +232,44 @@
         .about-content {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 60px;
             flex-wrap: wrap;
         }
         
         .about-text {
             flex: 1;
             min-width: 300px;
+            font-size: 1.1rem;
         }
         
-        .about-image {
+        .about-icons {
             flex: 1;
             min-width: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
         }
         
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .about-icon-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--light-color);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            width: 200px;
+            transition: var(--transition);
+        }
+        
+        .about-icon-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .about-icon-item i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
         }
         
         /* Services Section */
@@ -196,136 +280,185 @@
         }
         
         .service-card {
-            background: white;
-            border-radius: 10px;
+            background: var(--light-color);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            padding: 40px 30px;
+            text-align: center;
+            border-top: 5px solid var(--primary-color);
         }
         
         .service-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
         
-        .service-image {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .service-card:hover .service-image img {
-            transform: scale(1.1);
-        }
-        
-        .service-content {
-            padding: 20px;
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .service-title {
-            color: #d32f2f;
-            margin-bottom: 10px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .service-list {
+            list-style: none;
+            text-align: right;
+            margin-top: 20px;
+        }
+        
+        .service-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-list li:before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: bold;
         }
         
         /* Ratings Section */
         .ratings-container {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 40px;
+            background: var(--secondary-color);
+            border-radius: 20px;
+            padding: 50px;
             margin-top: 30px;
         }
         
         .rating-form {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
+            background: var(--light-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-color);
         }
         
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
         }
         
         .stars-rating {
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            justify-content: center;
         }
         
         .star {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #ddd;
             cursor: pointer;
-            transition: color 0.2s;
+            transition: var(--transition);
         }
         
         .star:hover,
         .star.active {
             color: #ffc107;
+            transform: scale(1.2);
         }
         
         .submit-btn {
-            background: #d32f2f;
-            color: white;
+            background: var(--primary-color);
+            color: var(--light-color);
             border: none;
-            padding: 15px 30px;
+            padding: 16px 40px;
             border-radius: 30px;
             cursor: pointer;
             font-size: 1.1rem;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 auto;
         }
         
         .submit-btn:hover {
             background: #b71c1c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(211, 47, 47, 0.3);
         }
         
         .ratings-display {
-            margin-top: 40px;
+            margin-top: 50px;
         }
         
         .rating-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            background: var(--light-color);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border-right: 5px solid var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .rating-card:hover {
+            transform: translateX(-5px);
         }
         
         .rating-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
         
         .rating-stars {
             color: #ffc107;
+            font-size: 1.5rem;
+        }
+        
+        .rating-name {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
         }
         
         .rating-date {
-            color: #666;
+            color: var(--gray-color);
             font-size: 0.9rem;
         }
         
@@ -333,109 +466,219 @@
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 50px;
         }
         
         .contact-form {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: var(--light-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
         }
         
-        .map-container {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: 400px;
+        .contact-info-box {
+            background: var(--light-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
         
-        /* Save Contact Button */
-        .save-contact-btn {
-            display: inline-flex;
+        .info-item {
+            display: flex;
             align-items: center;
-            gap: 10px;
-            background: #25D366;
-            color: white;
+            gap: 20px;
+            padding: 20px;
+            background: var(--secondary-color);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .info-item:hover {
+            background: rgba(211, 47, 47, 0.05);
+            transform: translateX(5px);
+        }
+        
+        .info-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            width: 60px;
+            height: 60px;
+            background: rgba(211, 47, 47, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .location-btn {
+            background: var(--primary-color);
+            color: var(--light-color);
             border: none;
-            padding: 12px 25px;
+            padding: 15px 30px;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 1rem;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-top: 20px;
-            transition: background 0.3s;
+            transition: var(--transition);
+            text-decoration: none;
+            justify-content: center;
         }
         
-        .save-contact-btn:hover {
-            background: #128C7E;
+        .location-btn:hover {
+            background: #b71c1c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(211, 47, 47, 0.3);
         }
         
         /* Footer */
         footer {
-            background: #222;
-            color: white;
-            padding: 50px 0 20px;
-            text-align: center;
+            background: var(--dark-color);
+            color: var(--light-color);
+            padding: 60px 0 30px;
         }
         
         .footer-content {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
+            margin-bottom: 50px;
         }
         
         .footer-section h3 {
-            color: #d32f2f;
-            margin-bottom: 20px;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(211, 47, 47, 0.3);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--light-color);
+            transform: translateX(5px);
+        }
+        
+        .footer-links i {
+            color: var(--primary-color);
         }
         
         .copyright {
-            padding-top: 20px;
+            text-align: center;
+            padding-top: 30px;
             border-top: 1px solid #444;
-            color: #aaa;
+            color: #888;
+            font-size: 0.9rem;
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .clinic-name {
                 font-size: 2.5rem;
-            }
-            
-            .language-switcher {
-                top: 10px;
-                right: 10px;
-            }
-            
-            .lang-btn {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-            }
-            
-            section {
-                padding: 50px 0;
             }
             
             .section-title {
                 font-size: 2rem;
             }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+            }
+            
+            header {
+                padding: 80px 0 40px;
+            }
+            
+            .clinic-name {
+                font-size: 2rem;
+            }
+            
+            .clinic-tagline {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .about-content,
+            .contact-grid {
+                flex-direction: column;
+            }
+            
+            .rating-form,
+            .contact-form {
+                padding: 30px 20px;
+            }
         }
         
         /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .fade-in {
-            animation: fadeIn 0.8s ease-out;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .scroll-top:hover {
+            background: #b71c1c;
+            transform: translateY(-5px);
         }
     </style>
 </head>
@@ -450,10 +693,12 @@
     <header>
         <div class="container">
             <div class="logo-container">
-                <img src="https://i.imgur.com/9JRxSYO.png" alt="Revan Beauty Clinic Logo" class="clinic-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <h1 class="clinic-name" data-i18n="clinic_name">Revan Beauty Clinic</h1>
+                <p class="clinic-tagline" data-i18n="clinic_tagline">عيادة ليزر تحت إشراف كادر طبي وأخصائيات</p>
             </div>
-            <h1 class="clinic-name" data-i18n="clinic_name">Revan Beauty Clinic</h1>
-            <p class="clinic-tagline" data-i18n="clinic_tagline">عيادة ليزر تحت إشراف كادر طبي وأخصائيات</p>
         </div>
     </header>
 
@@ -462,21 +707,23 @@
         <div class="container">
             <div class="contact-info">
                 <div class="contact-item">
-                    <i class="fas fa-phone contact-icon"></i>
+                    <i class="fas fa-phone-alt contact-icon"></i>
                     <span id="contact-phone">0795114546</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt contact-icon"></i>
-                    <a href="https://share.google/tqsxOEOhvvCZiAXsb" target="_blank" style="color: white; text-decoration: none;">
-                        <span data-i18n="view_location">عرض الموقع على الخريطة</span>
-                    </a>
+                    <span data-i18n="location_text">عمان، الأردن</span>
+                </div>
+                <div class="contact-item">
+                    <i class="far fa-clock contact-icon"></i>
+                    <span data-i18n="working_hours">09:00 صباحاً - 08:00 مساءً</span>
                 </div>
             </div>
             <div class="social-icons">
-                <a href="https://www.facebook.com/share/1DCH3HWZdH/?mibextid=wwXIfr" target="_blank" class="social-icon">
-                    <i class="fab fa-facebook"></i>
+                <a href="https://www.facebook.com/share/1DCH3HWZdH/?mibextid=wwXIfr" target="_blank" class="social-icon" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://www.instagram.com/revanbeautyclinic?igsh=dzBya3cwajF5cjJt" target="_blank" class="social-icon">
+                <a href="https://www.instagram.com/revanbeautyclinic?igsh=dzBya3cwajF5cjJt" target="_blank" class="social-icon" title="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
                 <button class="save-contact-btn" id="saveContactBtn">
@@ -493,55 +740,90 @@
             <h2 class="section-title" data-i18n="about_title">عن العيادة</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p data-i18n="about_text1">
+                    <p data-i18n="about_text1" style="margin-bottom: 25px; font-size: 1.1rem;">
                         عيادة ريفان للجمال هي عيادة متخصصة في علاجات الليزر التجميلية تحت إشراف كادر طبي مؤهل وأخصائيات ذوات خبرة عالية. نقدم مجموعة واسعة من العلاجات التجميلية باستخدام أحدث التقنيات العالمية.
                     </p>
-                    <p data-i18n="about_text2">
-                        نسعى دائماً لتقديم أفضل الخدمات الطبية التجميلية في جو من الراحة والخصوصية، مع ضمان أعلى معايير الجودة والأمان.
+                    <p data-i18n="about_text2" style="margin-bottom: 30px;">
+                        نسعى دائماً لتقديم أفضل الخدمات الطبية التجميلية في جو من الراحة والخصوصية، مع ضمان أعلى معايير الجودة والأمان. نؤمن بأن الجمال الحقيقي ينبع من الثقة بالنفس والشعور بالراحة.
                     </p>
-                    <button class="save-contact-btn" onclick="scrollToContact()">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span data-i18n="book_appointment">حجز موعد</span>
-                    </button>
+                    <div class="about-icons">
+                        <div class="about-icon-item">
+                            <i class="fas fa-user-md"></i>
+                            <h4 data-i18n="medical_staff">كادر طبي مؤهل</h4>
+                        </div>
+                        <div class="about-icon-item">
+                            <i class="fas fa-award"></i>
+                            <h4 data-i18n="quality_service">جودة عالية في الخدمة</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Revan Beauty Clinic Interior">
+                <div class="about-icons">
+                    <div class="about-icon-item">
+                        <i class="fas fa-heart"></i>
+                        <h4 data-i18n="patient_care">رعاية متميزة</h4>
+                    </div>
+                    <div class="about-icon-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4 data-i18n="safety_first">السلامة أولاً</h4>
+                    </div>
+                    <div class="about-icon-item">
+                        <i class="fas fa-clock"></i>
+                        <h4 data-i18n="flexible_hours">ساعات عمل مرنة</h4>
+                    </div>
+                    <div class="about-icon-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h4 data-i18n="personalized_care">رعاية شخصية</h4>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" style="background: #f8f9fa;">
+    <section id="services" style="background: var(--secondary-color);">
         <div class="container">
             <h2 class="section-title" data-i18n="services_title">خدماتنا</h2>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Laser Hair Removal">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
                     </div>
-                    <div class="service-content">
-                        <h3 class="service-title" data-i18n="service1_title">إزالة الشعر بالليزر</h3>
-                        <p data-i18n="service1_desc">أحدث تقنيات الليزر لإزالة الشعر بشكل دائم وآمن لجميع مناطق الجسم.</p>
-                    </div>
+                    <h3 class="service-title" data-i18n="service1_title">إزالة الشعر بالليزر</h3>
+                    <p data-i18n="service1_desc">أحدث تقنيات الليزر لإزالة الشعر بشكل دائم وآمن لجميع مناطق الجسم.</p>
+                    <ul class="service-list">
+                        <li data-i18n="service1_item1">ليزر دايود</li>
+                        <li data-i18n="service1_item2">ليزر ألكسندرايت</li>
+                        <li data-i18n="service1_item3">ليزر ND:YAG</li>
+                        <li data-i18n="service1_item4">جميع مناطق الجسم</li>
+                    </ul>
                 </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Skin Treatments">
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
                     </div>
-                    <div class="service-content">
-                        <h3 class="service-title" data-i18n="service2_title">علاجات البشرة</h3>
-                        <p data-i18n="service2_desc">علاج حب الشباب، البقع، التجاعيد، وشد البشرة بأحدث التقنيات.</p>
-                    </div>
+                    <h3 class="service-title" data-i18n="service2_title">علاجات البشرة</h3>
+                    <p data-i18n="service2_desc">علاج حب الشباب، البقع، التجاعيد، وشد البشرة بأحدث التقنيات.</p>
+                    <ul class="service-list">
+                        <li data-i18n="service2_item1">علاج حب الشباب</li>
+                        <li data-i18n="service2_item2">تفتيح البقع</li>
+                        <li data-i18n="service2_item3">علاج التجاعيد</li>
+                        <li data-i18n="service2_item4">شد البشرة</li>
+                    </ul>
                 </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Facial Treatments">
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-face-smile"></i>
                     </div>
-                    <div class="service-content">
-                        <h3 class="service-title" data-i18n="service3_title">العناية بالوجه</h3>
-                        <p data-i18n="service3_desc">جلسات العناية المتكاملة للوجه لتحسين المظهر وإعادة الشباب.</p>
-                    </div>
+                    <h3 class="service-title" data-i18n="service3_title">العناية بالوجه</h3>
+                    <p data-i18n="service3_desc">جلسات العناية المتكاملة للوجه لتحسين المظهر وإعادة الشباب.</p>
+                    <ul class="service-list">
+                        <li data-i18n="service3_item1">تنظيف البشرة</li>
+                        <li data-i18n="service3_item2">التقشير الكريستالي</li>
+                        <li data-i18n="service3_item3">الميزوثيرابي</li>
+                        <li data-i18n="service3_item4">الفيلر والبوتوكس</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -553,7 +835,7 @@
             <h2 class="section-title" data-i18n="ratings_title">تقييمات العملاء</h2>
             <div class="ratings-container">
                 <div class="rating-form">
-                    <h3 data-i18n="add_rating">أضف تقييمك</h3>
+                    <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary-color);" data-i18n="add_rating">أضف تقييمك</h3>
                     <form id="ratingForm">
                         <div class="form-group">
                             <label for="ratingName" data-i18n="your_name">اسمك</label>
@@ -574,12 +856,15 @@
                             <label for="ratingComment" data-i18n="comment">تعليقك</label>
                             <textarea id="ratingComment" rows="4" required></textarea>
                         </div>
-                        <button type="submit" class="submit-btn" data-i18n="submit_rating">إرسال التقييم</button>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span data-i18n="submit_rating">إرسال التقييم</span>
+                        </button>
                     </form>
                 </div>
                 
                 <div class="ratings-display">
-                    <h3 data-i18n="recent_ratings">التقييمات الأخيرة</h3>
+                    <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary-color);" data-i18n="recent_ratings">التقييمات الأخيرة</h3>
                     <div id="ratingsList">
                         <!-- Ratings will be loaded here -->
                     </div>
@@ -615,20 +900,50 @@
                         </div>
                         <div class="form-group">
                             <label for="contactMessage" data-i18n="message">الرسالة</label>
-                            <textarea id="contactMessage" rows="4" required></textarea>
+                            <textarea id="contactMessage" rows="4" required data-i18n="message_placeholder">اكتب رسالتك هنا...</textarea>
                         </div>
-                        <button type="submit" class="submit-btn" data-i18n="send_message">إرسال الرسالة</button>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span data-i18n="send_message">إرسال الرسالة</span>
+                        </button>
                     </form>
                 </div>
-                <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3387.454567893749!2d35.866558315153!3d31.954916781246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDU3JzE3LjciTiAzNcKwNTInMDAuMSJF!5e0!3m2!1sen!2sjo!4v1620000000000!5m2!1sen!2sjo" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
+                
+                <div class="contact-info-box">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="call_us">اتصل بنا</h4>
+                            <p id="contact-phone-info">0795114546</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="our_location">موقعنا</h4>
+                            <p data-i18n="location_full">عمان، الأردن</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="working_hours_title">ساعات العمل</h4>
+                            <p data-i18n="working_hours_full">الأحد - الخميس: 09:00 ص - 08:00 م<br>الجمعة - السبت: 10:00 ص - 06:00 م</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://share.google/tqsxOEOhvvCZiAXsb" target="_blank" class="location-btn">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span data-i18n="view_on_map">عرض على الخريطة</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -640,31 +955,41 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3 data-i18n="clinic_name">Revan Beauty Clinic</h3>
-                    <p data-i18n="footer_tagline">عيادة متخصصة في علاجات الليزر التجميلية تحت إشراف كادر طبي مؤهل</p>
+                    <p data-i18n="footer_description">عيادة متخصصة في علاجات الليزر التجميلية تحت إشراف كادر طبي مؤهل وأخصائيات ذوات خبرة عالية. نقدم أفضل الخدمات بأعلى معايير الجودة والأمان.</p>
                 </div>
+                
                 <div class="footer-section">
                     <h3 data-i18n="quick_links">روابط سريعة</h3>
-                    <ul style="list-style: none;">
-                        <li><a href="#about" style="color: #aaa; text-decoration: none;" data-i18n="about">عن العيادة</a></li>
-                        <li><a href="#services" style="color: #aaa; text-decoration: none;" data-i18n="services">خدماتنا</a></li>
-                        <li><a href="#contact" style="color: #aaa; text-decoration: none;" data-i18n="contact">اتصل بنا</a></li>
+                    <ul class="footer-links">
+                        <li><a href="#about"><i class="fas fa-chevron-left"></i> <span data-i18n="about">عن العيادة</span></a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-left"></i> <span data-i18n="services">خدماتنا</span></a></li>
+                        <li><a href="#ratings"><i class="fas fa-chevron-left"></i> <span data-i18n="ratings">التقييمات</span></a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-left"></i> <span data-i18n="contact">اتصل بنا</span></a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-section">
                     <h3 data-i18n="contact_info">معلومات الاتصال</h3>
-                    <p><i class="fas fa-phone"></i> 0795114546</p>
-                    <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="location">عمان، الأردن</span></p>
+                    <ul class="footer-links">
+                        <li><a href="tel:0795114546"><i class="fas fa-phone-alt"></i> 0795114546</a></li>
+                        <li><a href="https://www.facebook.com/share/1DCH3HWZdH/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="https://www.instagram.com/revanbeautyclinic?igsh=dzBya3cwajF5cjJt" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://share.google/tqsxOEOhvvCZiAXsb" target="_blank"><i class="fas fa-map-marker-alt"></i> <span data-i18n="location">الموقع على الخريطة</span></a></li>
+                    </ul>
                 </div>
             </div>
+            
             <div class="copyright">
                 <p>© 2023 Revan Beauty Clinic. <span data-i18n="rights_reserved">جميع الحقوق محفوظة</span></p>
             </div>
         </div>
     </footer>
 
-    <!-- VCard Generator Script -->
-    <script src="https://cdn.jsdelivr.net/npm/vcard-creator@0.3.0/dist/vcard-creator.min.js"></script>
-    
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop" style="display: none;">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <script>
         // Language Management
         const translations = {
@@ -672,23 +997,41 @@
                 // Header
                 clinic_name: "عيادة ريفان للجمال",
                 clinic_tagline: "عيادة ليزر تحت إشراف كادر طبي وأخصائيات",
-                view_location: "عرض الموقع على الخريطة",
+                location_text: "عمان، الأردن",
+                working_hours: "09:00 صباحاً - 08:00 مساءً",
                 save_contact: "حفظ جهة الاتصال",
                 
                 // About
                 about_title: "عن العيادة",
                 about_text1: "عيادة ريفان للجمال هي عيادة متخصصة في علاجات الليزر التجميلية تحت إشراف كادر طبي مؤهل وأخصائيات ذوات خبرة عالية. نقدم مجموعة واسعة من العلاجات التجميلية باستخدام أحدث التقنيات العالمية.",
-                about_text2: "نسعى دائماً لتقديم أفضل الخدمات الطبية التجميلية في جو من الراحة والخصوصية، مع ضمان أعلى معايير الجودة والأمان.",
-                book_appointment: "حجز موعد",
+                about_text2: "نسعى دائماً لتقديم أفضل الخدمات الطبية التجميلية في جو من الراحة والخصوصية، مع ضمان أعلى معايير الجودة والأمان. نؤمن بأن الجمال الحقيقي ينبع من الثقة بالنفس والشعور بالراحة.",
+                medical_staff: "كادر طبي مؤهل",
+                quality_service: "جودة عالية في الخدمة",
+                patient_care: "رعاية متميزة",
+                safety_first: "السلامة أولاً",
+                flexible_hours: "ساعات عمل مرنة",
+                personalized_care: "رعاية شخصية",
                 
                 // Services
                 services_title: "خدماتنا",
                 service1_title: "إزالة الشعر بالليزر",
                 service1_desc: "أحدث تقنيات الليزر لإزالة الشعر بشكل دائم وآمن لجميع مناطق الجسم.",
+                service1_item1: "ليزر دايود",
+                service1_item2: "ليزر ألكسندرايت",
+                service1_item3: "ليزر ND:YAG",
+                service1_item4: "جميع مناطق الجسم",
                 service2_title: "علاجات البشرة",
                 service2_desc: "علاج حب الشباب، البقع، التجاعيد، وشد البشرة بأحدث التقنيات.",
+                service2_item1: "علاج حب الشباب",
+                service2_item2: "تفتيح البقع",
+                service2_item3: "علاج التجاعيد",
+                service2_item4: "شد البشرة",
                 service3_title: "العناية بالوجه",
                 service3_desc: "جلسات العناية المتكاملة للوجه لتحسين المظهر وإعادة الشباب.",
+                service3_item1: "تنظيف البشرة",
+                service3_item2: "التقشير الكريستالي",
+                service3_item3: "الميزوثيرابي",
+                service3_item4: "الفيلر والبوتوكس",
                 
                 // Ratings
                 ratings_title: "تقييمات العملاء",
@@ -710,39 +1053,65 @@
                 service_facial: "العناية بالوجه",
                 service_consult: "استشارة",
                 message: "الرسالة",
+                message_placeholder: "اكتب رسالتك هنا...",
                 send_message: "إرسال الرسالة",
+                call_us: "اتصل بنا",
+                our_location: "موقعنا",
+                location_full: "عمان، الأردن",
+                working_hours_title: "ساعات العمل",
+                working_hours_full: "الأحد - الخميس: 09:00 ص - 08:00 م\nالجمعة - السبت: 10:00 ص - 06:00 م",
+                view_on_map: "عرض على الخريطة",
                 
                 // Footer
-                footer_tagline: "عيادة متخصصة في علاجات الليزر التجميلية تحت إشراف كادر طبي مؤهل",
+                footer_description: "عيادة متخصصة في علاجات الليزر التجميلية تحت إشراف كادر طبي مؤهل وأخصائيات ذوات خبرة عالية. نقدم أفضل الخدمات بأعلى معايير الجودة والأمان.",
                 quick_links: "روابط سريعة",
                 about: "عن العيادة",
                 services: "خدماتنا",
+                ratings: "التقييمات",
                 contact: "اتصل بنا",
                 contact_info: "معلومات الاتصال",
-                location: "عمان، الأردن",
+                location: "الموقع على الخريطة",
                 rights_reserved: "جميع الحقوق محفوظة"
             },
             en: {
                 // Header
                 clinic_name: "Revan Beauty Clinic",
                 clinic_tagline: "Laser clinic under medical supervision and specialists",
-                view_location: "View Location on Map",
+                location_text: "Amman, Jordan",
+                working_hours: "09:00 AM - 08:00 PM",
                 save_contact: "Save Contact",
                 
                 // About
                 about_title: "About Us",
                 about_text1: "Revan Beauty Clinic is a specialized clinic in cosmetic laser treatments under the supervision of qualified medical staff and experienced specialists. We offer a wide range of cosmetic treatments using the latest global technologies.",
-                about_text2: "We always strive to provide the best medical cosmetic services in an atmosphere of comfort and privacy, while ensuring the highest standards of quality and safety.",
-                book_appointment: "Book Appointment",
+                about_text2: "We always strive to provide the best medical cosmetic services in an atmosphere of comfort and privacy, while ensuring the highest standards of quality and safety. We believe that true beauty comes from self-confidence and feeling comfortable.",
+                medical_staff: "Qualified Medical Staff",
+                quality_service: "High Quality Service",
+                patient_care: "Excellent Patient Care",
+                safety_first: "Safety First",
+                flexible_hours: "Flexible Hours",
+                personalized_care: "Personalized Care",
                 
                 // Services
                 services_title: "Our Services",
                 service1_title: "Laser Hair Removal",
                 service1_desc: "Latest laser technologies for permanent and safe hair removal for all body areas.",
+                service1_item1: "Diode Laser",
+                service1_item2: "Alexandrite Laser",
+                service1_item3: "ND:YAG Laser",
+                service1_item4: "All Body Areas",
                 service2_title: "Skin Treatments",
                 service2_desc: "Treatment of acne, spots, wrinkles, and skin tightening with the latest technologies.",
+                service2_item1: "Acne Treatment",
+                service2_item2: "Spot Lightening",
+                service2_item3: "Wrinkle Treatment",
+                service2_item4: "Skin Tightening",
                 service3_title: "Facial Care",
                 service3_desc: "Comprehensive facial care sessions to improve appearance and restore youth.",
+                service3_item1: "Skin Cleaning",
+                service3_item2: "Crystal Peeling",
+                service3_item3: "Mesotherapy",
+                service3_item4: "Filler & Botox",
                 
                 // Ratings
                 ratings_title: "Customer Ratings",
@@ -764,16 +1133,24 @@
                 service_facial: "Facial Care",
                 service_consult: "Consultation",
                 message: "Message",
+                message_placeholder: "Write your message here...",
                 send_message: "Send Message",
+                call_us: "Call Us",
+                our_location: "Our Location",
+                location_full: "Amman, Jordan",
+                working_hours_title: "Working Hours",
+                working_hours_full: "Sunday - Thursday: 09:00 AM - 08:00 PM\nFriday - Saturday: 10:00 AM - 06:00 PM",
+                view_on_map: "View on Map",
                 
                 // Footer
-                footer_tagline: "Specialized clinic in cosmetic laser treatments under qualified medical supervision",
+                footer_description: "A specialized clinic in cosmetic laser treatments under the supervision of qualified medical staff and experienced specialists. We provide the best services with the highest standards of quality and safety.",
                 quick_links: "Quick Links",
-                about: "About",
+                about: "About Us",
                 services: "Services",
-                contact: "Contact",
-                contact_info: "Contact Info",
-                location: "Amman, Jordan",
+                ratings: "Ratings",
+                contact: "Contact Us",
+                contact_info: "Contact Information",
+                location: "Location on Map",
                 rights_reserved: "All rights reserved"
             }
         };
@@ -796,7 +1173,11 @@
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
                     if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = translations[lang][key];
+                        if (element.id !== 'ratingName' && element.id !== 'ratingComment' && 
+                            element.id !== 'contactName' && element.id !== 'contactPhone' && 
+                            element.id !== 'contactMessage') {
+                            element.placeholder = translations[lang][key];
+                        }
                     } else if (element.tagName === 'OPTION') {
                         element.textContent = translations[lang][key];
                     } else {
@@ -811,6 +1192,9 @@
             
             // Save language preference
             localStorage.setItem('preferredLanguage', lang);
+            
+            // Reload ratings to update language
+            loadRatings();
         }
         
         // Initialize language
@@ -820,6 +1204,9 @@
             
             // Load ratings
             loadRatings();
+            
+            // Initialize scroll to top button
+            initScrollTop();
         });
         
         // Language switcher event
@@ -839,12 +1226,12 @@
 VERSION:3.0
 FN:Revan Beauty Clinic
 ORG:Revan Beauty Clinic
-TEL;TYPE=CELL:0795114546
+TEL;TYPE=CELL,VOICE:0795114546
 URL:https://www.facebook.com/share/1DCH3HWZdH/
 URL:https://www.instagram.com/revanbeautyclinic
 ADR:;;Amman;;Jordan;
 EMAIL:info@revanclinic.com
-NOTE:Laser clinic under medical supervision
+NOTE:Laser clinic under medical supervision and specialists
 END:VCARD`;
             
             const blob = new Blob([vcard], { type: 'text/vcard' });
@@ -859,7 +1246,7 @@ END:VCARD`;
             URL.revokeObjectURL(url);
             
             // Show confirmation
-            alert(currentLang === 'ar' 
+            showNotification(currentLang === 'ar' 
                 ? 'تم حفظ جهة الاتصال بنجاح!' 
                 : 'Contact saved successfully!');
         }
@@ -883,26 +1270,6 @@ END:VCARD`;
                     }
                 });
             });
-            
-            star.addEventListener('mouseover', () => {
-                const value = parseInt(star.dataset.value);
-                stars.forEach(s => {
-                    s.classList.remove('hover');
-                    if (parseInt(s.dataset.value) <= value) {
-                        s.classList.add('hover');
-                    }
-                });
-            });
-        });
-        
-        document.getElementById('starsRating').addEventListener('mouseleave', () => {
-            stars.forEach(s => {
-                s.classList.remove('hover');
-                s.classList.remove('active');
-                if (parseInt(s.dataset.value) <= selectedRating) {
-                    s.classList.add('active');
-                }
-            });
         });
         
         // Rating form submission
@@ -914,16 +1281,25 @@ END:VCARD`;
             const rating = selectedRating;
             
             if (rating === 0) {
-                alert(currentLang === 'ar' ? 'الرجاء اختيار تقييم' : 'Please select a rating');
+                showNotification(currentLang === 'ar' 
+                    ? 'الرجاء اختيار تقييم' 
+                    : 'Please select a rating');
+                return;
+            }
+            
+            if (!name.trim() || !comment.trim()) {
+                showNotification(currentLang === 'ar' 
+                    ? 'الرجاء ملء جميع الحقول' 
+                    : 'Please fill all fields');
                 return;
             }
             
             const newRating = {
                 id: Date.now(),
-                name: name,
+                name: name.trim(),
                 rating: rating,
-                comment: comment,
-                date: new Date().toLocaleDateString('en-GB'),
+                comment: comment.trim(),
+                date: new Date().toLocaleDateString(currentLang === 'ar' ? 'ar-EG' : 'en-US'),
                 lang: currentLang
             };
             
@@ -940,7 +1316,7 @@ END:VCARD`;
             loadRatings();
             
             // Show success message
-            alert(currentLang === 'ar' 
+            showNotification(currentLang === 'ar' 
                 ? 'شكراً لتقييمك! تم إضافة التقييم بنجاح.' 
                 : 'Thank you for your rating! Rating added successfully.');
         });
@@ -950,11 +1326,14 @@ END:VCARD`;
             ratingsList.innerHTML = '';
             
             if (ratings.length === 0) {
-                ratingsList.innerHTML = `<p style="text-align: center; color: #666;">${
-                    currentLang === 'ar' 
-                    ? 'لا توجد تقييمات بعد. كن أول من يقيم!' 
-                    : 'No ratings yet. Be the first to rate!'
-                }</p>`;
+                ratingsList.innerHTML = `
+                    <div class="rating-card" style="text-align: center; color: #666;">
+                        <i class="far fa-star" style="font-size: 3rem; margin-bottom: 20px; display: block; color: #ddd;"></i>
+                        <p>${currentLang === 'ar' 
+                            ? 'لا توجد تقييمات بعد. كن أول من يقيم!' 
+                            : 'No ratings yet. Be the first to rate!'}</p>
+                    </div>
+                `;
                 return;
             }
             
@@ -967,13 +1346,24 @@ END:VCARD`;
                 
                 const starsHTML = '★'.repeat(rating.rating) + '☆'.repeat(5 - rating.rating);
                 
+                // Use the language of the rating or current language
+                const displayName = rating.name;
+                const displayComment = rating.comment;
+                const displayDate = rating.date;
+                
                 ratingCard.innerHTML = `
                     <div class="rating-header">
+                        <div>
+                            <span class="rating-name">${displayName}</span>
+                        </div>
                         <div class="rating-stars">${starsHTML}</div>
-                        <div class="rating-date">${rating.date}</div>
                     </div>
-                    <h4>${rating.name}</h4>
-                    <p>${rating.comment}</p>
+                    <div class="rating-header">
+                        <div class="rating-date">
+                            <i class="far fa-calendar"></i> ${displayDate}
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; line-height: 1.8;">${displayComment}</p>
                 `;
                 
                 ratingsList.appendChild(ratingCard);
@@ -984,27 +1374,34 @@ END:VCARD`;
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const name = document.getElementById('contactName').value;
-            const phone = document.getElementById('contactPhone').value;
+            const name = document.getElementById('contactName').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
             const service = document.getElementById('contactService').value;
-            const message = document.getElementById('contactMessage').value;
+            const message = document.getElementById('contactMessage').value.trim();
             
-            // Here you would typically send this to a server
-            // For demo purposes, we'll just show a success message
-            const serviceText = {
+            if (!name || !phone || !service || !message) {
+                showNotification(currentLang === 'ar' 
+                    ? 'الرجاء ملء جميع الحقول المطلوبة' 
+                    : 'Please fill all required fields');
+                return;
+            }
+            
+            // Map service values to text
+            const serviceTextMap = {
                 hair_removal: currentLang === 'ar' ? 'إزالة الشعر' : 'Hair Removal',
                 skin_treatment: currentLang === 'ar' ? 'علاجات البشرة' : 'Skin Treatments',
                 facial: currentLang === 'ar' ? 'العناية بالوجه' : 'Facial Care',
                 consultation: currentLang === 'ar' ? 'استشارة' : 'Consultation'
-            }[service] || service;
+            };
             
-            const whatsappMessage = `*New Appointment Request*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Service:* ${serviceText}%0A*Message:* ${message}`;
+            const serviceText = serviceTextMap[service] || service;
             
-            const whatsappURL = `https://wa.me/962795114546?text=${whatsappMessage}`;
+            // Create WhatsApp message
+            const whatsappMessage = `*${currentLang === 'ar' ? 'طلب موعد جديد' : 'New Appointment Request'}*%0A%0A*${currentLang === 'ar' ? 'الاسم:' : 'Name:'}* ${name}%0A*${currentLang === 'ar' ? 'الهاتف:' : 'Phone:'}* ${phone}%0A*${currentLang === 'ar' ? 'الخدمة:' : 'Service:'}* ${serviceText}%0A*${currentLang === 'ar' ? 'الرسالة:' : 'Message:'}* ${message}`;
+            
+            // Open WhatsApp
+            const whatsappURL = `https://wa.me/962795114546?text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappURL, '_blank');
-            
-            // Reset form
-            document.getElementById('contactForm').reset();
             
             // Save contact to local storage
             const contacts = JSON.parse(localStorage.getItem('revanContacts')) || [];
@@ -1013,34 +1410,138 @@ END:VCARD`;
                 phone: phone,
                 service: serviceText,
                 message: message,
-                date: new Date().toISOString()
+                date: new Date().toISOString(),
+                lang: currentLang
             });
             localStorage.setItem('revanContacts', JSON.stringify(contacts));
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            // Show confirmation
+            showNotification(currentLang === 'ar' 
+                ? 'تم إرسال طلبك! سيتم فتح واتساب لإتمام العملية.' 
+                : 'Your request has been sent! WhatsApp will open to complete the process.');
         });
         
-        // Scroll to contact function
-        function scrollToContact() {
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        // Scroll to top functionality
+        function initScrollTop() {
+            const scrollTopBtn = document.getElementById('scrollTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.style.display = 'flex';
+                } else {
+                    scrollTopBtn.style.display = 'none';
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         }
         
-        // Add hover effect to service cards
+        // Notification function
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%) translateY(-100px);
+                background: var(--primary-color);
+                color: white;
+                padding: 15px 30px;
+                border-radius: 30px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 10000;
+                transition: transform 0.3s ease;
+                font-weight: bold;
+                text-align: center;
+                min-width: 300px;
+                max-width: 90%;
+            `;
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(-50%) translateY(0)';
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(-50%) translateY(-100px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Add smooth scrolling to anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add hover effects to service cards
         document.querySelectorAll('.service-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
+                this.style.transform = 'translateY(-10px) scale(1.02)';
             });
             
             card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
+                this.style.transform = 'translateY(0) scale(1)';
             });
         });
         
-        // Initialize map with actual location
-        const locationLink = document.querySelector('a[href*="share.google"]');
-        if (locationLink) {
-            locationLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.open('https://share.google/tqsxOEOhvvCZiAXsb', '_blank');
-            });
+        // Initialize with some sample ratings if empty
+        if (ratings.length === 0) {
+            ratings = [
+                {
+                    id: 1,
+                    name: 'سارة أحمد',
+                    rating: 5,
+                    comment: 'خدمة ممتازة وطاقم محترف جداً. أشعر بتحسن كبير في بشرتي بعد الجلسات.',
+                    date: '15/03/2023',
+                    lang: 'ar'
+                },
+                {
+                    id: 2,
+                    name: 'ليلى محمد',
+                    rating: 4,
+                    comment: 'نتائج رائعة لإزالة الشعر، والأهم أن الإجراء آمن تماماً.',
+                    date: '22/03/2023',
+                    lang: 'ar'
+                },
+                {
+                    id: 3,
+                    name: 'Noura Ali',
+                    rating: 5,
+                    comment: 'Professional staff and excellent results. Highly recommended!',
+                    date: '10/04/2023',
+                    lang: 'en'
+                }
+            ];
+            localStorage.setItem('revanRatings', JSON.stringify(ratings));
+            loadRatings();
         }
     </script>
 </body>
