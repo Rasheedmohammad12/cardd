@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revan Beauty Clinic - عيادة ليزر طبية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Language Toggle */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: #fff;
+            border: 2px solid #d32f2f;
+            color: #d32f2f;
+            padding: 8px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .lang-btn.active {
+            background: #d32f2f;
+            color: white;
+        }
+        
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .logo-container {
+            margin-bottom: 30px;
+        }
+        
+        .clinic-logo {
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .clinic-name {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .clinic-tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Contact Bar */
+        .contact-bar {
+            background: #d32f2f;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #d32f2f;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: #d32f2f;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-title {
+            color: #d32f2f;
+            margin-bottom: 10px;
+        }
+        
+        /* Ratings Section */
+        .ratings-container {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+        
+        .rating-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .stars-rating {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .star {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star:hover,
+        .star.active {
+            color: #ffc107;
+        }
+        
+        .submit-btn {
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #b71c1c;
+        }
+        
+        .ratings-display {
+            margin-top: 40px;
+        }
+        
+        .rating-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .rating-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .rating-stars {
+            color: #ffc107;
+        }
+        
+        .rating-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+        
+        /* Save Contact Button */
+        .save-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .save-contact-btn:hover {
+            background: #128C7E;
+        }
+        
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .clinic-name {
+                font-size: 2.5rem;
+            }
+            
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="en">English</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://i.imgur.com/9JRxSYO.png" alt="Revan Beauty Clinic Logo" class="clinic-logo">
+            </div>
+            <h1 class="clinic-name" data-i18n="clinic_name">Revan Beauty Clinic</h1>
+            <p class="clinic-tagline" data-i18n="clinic_tagline">عيادة ليزر تحت إشراف كادر طبي وأخصائيات</p>
+        </div>
+    </header>
+
+    <!-- Contact Bar -->
+    <div class="contact-bar">
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <span id="contact-phone">0795114546</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <a href="https://share.google/tqsxOEOhvvCZiAXsb" target="_blank" style="color: white; text-decoration: none;">
+                        <span data-i18n="view_location">عرض الموقع على الخريطة</span>
+                    </a>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/1DCH3HWZdH/?mibextid=wwXIfr" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/revanbeautyclinic?igsh=dzBya3cwajF5cjJt" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <button class="save-contact-btn" id="saveContactBtn">
+                    <i class="fas fa-save"></i>
+                    <span data-i18n="save_contact">حفظ جهة الاتصال</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title" data-i18n="about_title">عن العيادة</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-i18n="about_text1">
+                        عيادة ريفان للجمال هي عيادة متخصصة في علاجات الليزر التجميلية تحت إشراف كادر طبي مؤهل وأخصائيات ذوات خبرة عالية. نقدم مجموعة واسعة من العلاجات التجميلية باستخدام أحدث التقنيات العالمية.
+                    </p>
+                    <p data-i18n="about_text2">
+                        نسعى دائماً لتقديم أفضل الخدمات الطبية التجميلية في جو من الراحة والخصوصية، مع ضمان أعلى معايير الجودة والأمان.
+                    </p>
+                    <button class="save-contact-btn" onclick="scrollToContact()">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span data-i18n="book_appointment">حجز موعد</span>
+                    </button>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Revan Beauty Clinic Interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title" data-i18n="services_title">خدماتنا</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Laser Hair Removal">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title" data-i18n="service1_title">إزالة الشعر بالليزر</h3>
+                        <p data-i18n="service1_desc">أحدث تقنيات الليزر لإزالة الشعر بشكل دائم وآمن لجميع مناطق الجسم.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Skin Treatments">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title" data-i18n="service2_title">علاجات البشرة</h3>
+                        <p data-i18n="service2_desc">علاج حب الشباب، البقع، التجاعيد، وشد البشرة بأحدث التقنيات.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Facial Treatments">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title" data-i18n="service3_title">العناية بالوجه</h3>
+                        <p data-i18n="service3_desc">جلسات العناية المتكاملة للوجه لتحسين المظهر وإعادة الشباب.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ratings Section -->
+    <section id="ratings">
+        <div class="container">
+            <h2 class="section-title" data-i18n="ratings_title">تقييمات العملاء</h2>
+            <div class="ratings-container">
+                <div class="rating-form">
+                    <h3 data-i18n="add_rating">أضف تقييمك</h3>
+                    <form id="ratingForm">
+                        <div class="form-group">
+                            <label for="ratingName" data-i18n="your_name">اسمك</label>
+                            <input type="text" id="ratingName" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="rating">التقييم</label>
+                            <div class="stars-rating" id="starsRating">
+                                <span class="star" data-value="1">★</span>
+                                <span class="star" data-value="2">★</span>
+                                <span class="star" data-value="3">★</span>
+                                <span class="star" data-value="4">★</span>
+                                <span class="star" data-value="5">★</span>
+                            </div>
+                            <input type="hidden" id="ratingValue" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="ratingComment" data-i18n="comment">تعليقك</label>
+                            <textarea id="ratingComment" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" data-i18n="submit_rating">إرسال التقييم</button>
+                    </form>
+                </div>
+                
+                <div class="ratings-display">
+                    <h3 data-i18n="recent_ratings">التقييمات الأخيرة</h3>
+                    <div id="ratingsList">
+                        <!-- Ratings will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title" data-i18n="contact_title">اتصل بنا</h2>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName" data-i18n="full_name">الاسم الكامل</label>
+                            <input type="text" id="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone" data-i18n="phone_number">رقم الهاتف</label>
+                            <input type="tel" id="contactPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactService" data-i18n="service_type">نوع الخدمة</label>
+                            <select id="contactService" required>
+                                <option value="" data-i18n="select_service">اختر الخدمة</option>
+                                <option value="hair_removal" data-i18n="service_hair">إزالة الشعر</option>
+                                <option value="skin_treatment" data-i18n="service_skin">علاجات البشرة</option>
+                                <option value="facial" data-i18n="service_facial">العناية بالوجه</option>
+                                <option value="consultation" data-i18n="service_consult">استشارة</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage" data-i18n="message">الرسالة</label>
+                            <textarea id="contactMessage" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" data-i18n="send_message">إرسال الرسالة</button>
+                    </form>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3387.454567893749!2d35.866558315153!3d31.954916781246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDU3JzE3LjciTiAzNcKwNTInMDAuMSJF!5e0!3m2!1sen!2sjo!4v1620000000000!5m2!1sen!2sjo" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-i18n="clinic_name">Revan Beauty Clinic</h3>
+                    <p data-i18n="footer_tagline">عيادة متخصصة في علاجات الليزر التجميلية تحت إشراف كادر طبي مؤهل</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="quick_links">روابط سريعة</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#about" style="color: #aaa; text-decoration: none;" data-i18n="about">عن العيادة</a></li>
+                        <li><a href="#services" style="color: #aaa; text-decoration: none;" data-i18n="services">خدماتنا</a></li>
+                        <li><a href="#contact" style="color: #aaa; text-decoration: none;" data-i18n="contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="contact_info">معلومات الاتصال</h3>
+                    <p><i class="fas fa-phone"></i> 0795114546</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="location">عمان، الأردن</span></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023 Revan Beauty Clinic. <span data-i18n="rights_reserved">جميع الحقوق محفوظة</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- VCard Generator Script -->
+    <script src="https://cdn.jsdelivr.net/npm/vcard-creator@0.3.0/dist/vcard-creator.min.js"></script>
+    
+    <script>
+        // Language Management
+        const translations = {
+            ar: {
+                // Header
+                clinic_name: "عيادة ريفان للجمال",
+                clinic_tagline: "عيادة ليزر تحت إشراف كادر طبي وأخصائيات",
+                view_location: "عرض الموقع على الخريطة",
+                save_contact: "حفظ جهة الاتصال",
+                
+                // About
+                about_title: "عن العيادة",
+                about_text1: "عيادة ريفان للجمال هي عيادة متخصصة في علاجات الليزر التجميلية تحت إشراف كادر طبي مؤهل وأخصائيات ذوات خبرة عالية. نقدم مجموعة واسعة من العلاجات التجميلية باستخدام أحدث التقنيات العالمية.",
+                about_text2: "نسعى دائماً لتقديم أفضل الخدمات الطبية التجميلية في جو من الراحة والخصوصية، مع ضمان أعلى معايير الجودة والأمان.",
+                book_appointment: "حجز موعد",
+                
+                // Services
+                services_title: "خدماتنا",
+                service1_title: "إزالة الشعر بالليزر",
+                service1_desc: "أحدث تقنيات الليزر لإزالة الشعر بشكل دائم وآمن لجميع مناطق الجسم.",
+                service2_title: "علاجات البشرة",
+                service2_desc: "علاج حب الشباب، البقع، التجاعيد، وشد البشرة بأحدث التقنيات.",
+                service3_title: "العناية بالوجه",
+                service3_desc: "جلسات العناية المتكاملة للوجه لتحسين المظهر وإعادة الشباب.",
+                
+                // Ratings
+                ratings_title: "تقييمات العملاء",
+                add_rating: "أضف تقييمك",
+                your_name: "اسمك",
+                rating: "التقييم",
+                comment: "تعليقك",
+                submit_rating: "إرسال التقييم",
+                recent_ratings: "التقييمات الأخيرة",
+                
+                // Contact
+                contact_title: "اتصل بنا",
+                full_name: "الاسم الكامل",
+                phone_number: "رقم الهاتف",
+                service_type: "نوع الخدمة",
+                select_service: "اختر الخدمة",
+                service_hair: "إزالة الشعر",
+                service_skin: "علاجات البشرة",
+                service_facial: "العناية بالوجه",
+                service_consult: "استشارة",
+                message: "الرسالة",
+                send_message: "إرسال الرسالة",
+                
+                // Footer
+                footer_tagline: "عيادة متخصصة في علاجات الليزر التجميلية تحت إشراف كادر طبي مؤهل",
+                quick_links: "روابط سريعة",
+                about: "عن العيادة",
+                services: "خدماتنا",
+                contact: "اتصل بنا",
+                contact_info: "معلومات الاتصال",
+                location: "عمان، الأردن",
+                rights_reserved: "جميع الحقوق محفوظة"
+            },
+            en: {
+                // Header
+                clinic_name: "Revan Beauty Clinic",
+                clinic_tagline: "Laser clinic under medical supervision and specialists",
+                view_location: "View Location on Map",
+                save_contact: "Save Contact",
+                
+                // About
+                about_title: "About Us",
+                about_text1: "Revan Beauty Clinic is a specialized clinic in cosmetic laser treatments under the supervision of qualified medical staff and experienced specialists. We offer a wide range of cosmetic treatments using the latest global technologies.",
+                about_text2: "We always strive to provide the best medical cosmetic services in an atmosphere of comfort and privacy, while ensuring the highest standards of quality and safety.",
+                book_appointment: "Book Appointment",
+                
+                // Services
+                services_title: "Our Services",
+                service1_title: "Laser Hair Removal",
+                service1_desc: "Latest laser technologies for permanent and safe hair removal for all body areas.",
+                service2_title: "Skin Treatments",
+                service2_desc: "Treatment of acne, spots, wrinkles, and skin tightening with the latest technologies.",
+                service3_title: "Facial Care",
+                service3_desc: "Comprehensive facial care sessions to improve appearance and restore youth.",
+                
+                // Ratings
+                ratings_title: "Customer Ratings",
+                add_rating: "Add Your Rating",
+                your_name: "Your Name",
+                rating: "Rating",
+                comment: "Your Comment",
+                submit_rating: "Submit Rating",
+                recent_ratings: "Recent Ratings",
+                
+                // Contact
+                contact_title: "Contact Us",
+                full_name: "Full Name",
+                phone_number: "Phone Number",
+                service_type: "Service Type",
+                select_service: "Select Service",
+                service_hair: "Hair Removal",
+                service_skin: "Skin Treatments",
+                service_facial: "Facial Care",
+                service_consult: "Consultation",
+                message: "Message",
+                send_message: "Send Message",
+                
+                // Footer
+                footer_tagline: "Specialized clinic in cosmetic laser treatments under qualified medical supervision",
+                quick_links: "Quick Links",
+                about: "About",
+                services: "Services",
+                contact: "Contact",
+                contact_info: "Contact Info",
+                location: "Amman, Jordan",
+                rights_reserved: "All rights reserved"
+            }
+        };
+
+        let currentLang = 'ar';
+        
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else if (element.tagName === 'OPTION') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // Update direction
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+            
+            // Save language preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ar';
+            setLanguage(savedLang);
+            
+            // Load ratings
+            loadRatings();
+        });
+        
+        // Language switcher event
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.dataset.lang);
+            });
+        });
+        
+        // Save Contact Functionality
+        document.getElementById('saveContactBtn').addEventListener('click', () => {
+            createAndDownloadVCard();
+        });
+        
+        function createAndDownloadVCard() {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Revan Beauty Clinic
+ORG:Revan Beauty Clinic
+TEL;TYPE=CELL:0795114546
+URL:https://www.facebook.com/share/1DCH3HWZdH/
+URL:https://www.instagram.com/revanbeautyclinic
+ADR:;;Amman;;Jordan;
+EMAIL:info@revanclinic.com
+NOTE:Laser clinic under medical supervision
+END:VCARD`;
+            
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Revan Beauty Clinic.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            // Show confirmation
+            alert(currentLang === 'ar' 
+                ? 'تم حفظ جهة الاتصال بنجاح!' 
+                : 'Contact saved successfully!');
+        }
+        
+        // Ratings System
+        let ratings = JSON.parse(localStorage.getItem('revanRatings')) || [];
+        
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star');
+        let selectedRating = 0;
+        
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = parseInt(star.dataset.value);
+                document.getElementById('ratingValue').value = selectedRating;
+                
+                stars.forEach(s => {
+                    s.classList.remove('active');
+                    if (parseInt(s.dataset.value) <= selectedRating) {
+                        s.classList.add('active');
+                    }
+                });
+            });
+            
+            star.addEventListener('mouseover', () => {
+                const value = parseInt(star.dataset.value);
+                stars.forEach(s => {
+                    s.classList.remove('hover');
+                    if (parseInt(s.dataset.value) <= value) {
+                        s.classList.add('hover');
+                    }
+                });
+            });
+        });
+        
+        document.getElementById('starsRating').addEventListener('mouseleave', () => {
+            stars.forEach(s => {
+                s.classList.remove('hover');
+                s.classList.remove('active');
+                if (parseInt(s.dataset.value) <= selectedRating) {
+                    s.classList.add('active');
+                }
+            });
+        });
+        
+        // Rating form submission
+        document.getElementById('ratingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('ratingName').value;
+            const comment = document.getElementById('ratingComment').value;
+            const rating = selectedRating;
+            
+            if (rating === 0) {
+                alert(currentLang === 'ar' ? 'الرجاء اختيار تقييم' : 'Please select a rating');
+                return;
+            }
+            
+            const newRating = {
+                id: Date.now(),
+                name: name,
+                rating: rating,
+                comment: comment,
+                date: new Date().toLocaleDateString('en-GB'),
+                lang: currentLang
+            };
+            
+            ratings.unshift(newRating);
+            localStorage.setItem('revanRatings', JSON.stringify(ratings));
+            
+            // Reset form
+            document.getElementById('ratingForm').reset();
+            selectedRating = 0;
+            document.getElementById('ratingValue').value = 0;
+            stars.forEach(s => s.classList.remove('active'));
+            
+            // Reload ratings
+            loadRatings();
+            
+            // Show success message
+            alert(currentLang === 'ar' 
+                ? 'شكراً لتقييمك! تم إضافة التقييم بنجاح.' 
+                : 'Thank you for your rating! Rating added successfully.');
+        });
+        
+        function loadRatings() {
+            const ratingsList = document.getElementById('ratingsList');
+            ratingsList.innerHTML = '';
+            
+            if (ratings.length === 0) {
+                ratingsList.innerHTML = `<p style="text-align: center; color: #666;">${
+                    currentLang === 'ar' 
+                    ? 'لا توجد تقييمات بعد. كن أول من يقيم!' 
+                    : 'No ratings yet. Be the first to rate!'
+                }</p>`;
+                return;
+            }
+            
+            // Show only recent 5 ratings
+            const recentRatings = ratings.slice(0, 5);
+            
+            recentRatings.forEach(rating => {
+                const ratingCard = document.createElement('div');
+                ratingCard.className = 'rating-card fade-in';
+                
+                const starsHTML = '★'.repeat(rating.rating) + '☆'.repeat(5 - rating.rating);
+                
+                ratingCard.innerHTML = `
+                    <div class="rating-header">
+                        <div class="rating-stars">${starsHTML}</div>
+                        <div class="rating-date">${rating.date}</div>
+                    </div>
+                    <h4>${rating.name}</h4>
+                    <p>${rating.comment}</p>
+                `;
+                
+                ratingsList.appendChild(ratingCard);
+            });
+        }
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('contactName').value;
+            const phone = document.getElementById('contactPhone').value;
+            const service = document.getElementById('contactService').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            // Here you would typically send this to a server
+            // For demo purposes, we'll just show a success message
+            const serviceText = {
+                hair_removal: currentLang === 'ar' ? 'إزالة الشعر' : 'Hair Removal',
+                skin_treatment: currentLang === 'ar' ? 'علاجات البشرة' : 'Skin Treatments',
+                facial: currentLang === 'ar' ? 'العناية بالوجه' : 'Facial Care',
+                consultation: currentLang === 'ar' ? 'استشارة' : 'Consultation'
+            }[service] || service;
+            
+            const whatsappMessage = `*New Appointment Request*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Service:* ${serviceText}%0A*Message:* ${message}`;
+            
+            const whatsappURL = `https://wa.me/962795114546?text=${whatsappMessage}`;
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            // Save contact to local storage
+            const contacts = JSON.parse(localStorage.getItem('revanContacts')) || [];
+            contacts.push({
+                name: name,
+                phone: phone,
+                service: serviceText,
+                message: message,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('revanContacts', JSON.stringify(contacts));
+        });
+        
+        // Scroll to contact function
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Add hover effect to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Initialize map with actual location
+        const locationLink = document.querySelector('a[href*="share.google"]');
+        if (locationLink) {
+            locationLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open('https://share.google/tqsxOEOhvvCZiAXsb', '_blank');
+            });
+        }
+    </script>
+</body>
+</html>
