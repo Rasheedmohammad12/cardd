@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint Shop | متجر الملابس والأحذية الأوروبية الأصلية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========== متغيرات الألوان والأنماط الأساسية ========== */
+        :root {
+            --primary: #2563eb;     /* أزرق */
+            --secondary: #1e40af;   /* أزرق داكن */
+            --accent: #f59e0b;      /* برتقالي ذهبي */
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --text: #334155;
+            --gray: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f1f5f9;
+        }
+
+        /* ========== مبدل اللغة ========== */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 5px;
+            background: white;
+            padding: 8px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .lang-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ========== الهيدر والشعار ========== */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            margin-bottom: 25px;
+        }
+
+        .store-logo {
+            max-width: 180px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background: white;
+            padding: 10px;
+        }
+
+        .store-name {
+            font-size: 3.2rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .store-tagline {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+
+        /* ========== شريط الاتصال ========== */
+        .contact-bar {
+            background: var(--dark);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .phone-number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .phone-icon {
+            color: var(--accent);
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+
+        .save-contact-btn {
+            background: var(--accent);
+            color: white;
+        }
+
+        .whatsapp-btn:hover, .save-contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* ========== المحتوى الرئيسي ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* ========== قسم المنتجات ========== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-icon {
+            height: 180px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #fef3c7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary);
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+        }
+
+        .product-features li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-features li:before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* ========== قسم التقييمات ========== */
+        .ratings-container {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 50px;
+            margin-top: 30px;
+        }
+
+        .rating-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .stars-rating {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .star {
+            font-size: 2.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .star.active, .star:hover {
+            color: #ffc107;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 30px auto 0;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        .ratings-display {
+            margin-top: 50px;
+        }
+
+        .rating-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .rating-card:hover {
+            transform: translateX(5px);
+        }
+
+        .rating-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .rating-stars {
+            color: #ffc107;
+            font-size: 1.5rem;
+        }
+
+        .rating-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .rating-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ========== قسم الاتصال ========== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            background: rgba(37, 99, 235, 0.05);
+            transform: translateX(-5px);
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            width: 60px;
+            height: 60px;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ========== الفوتر ========== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .footer-links i {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #475569;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ========== تصميم متجاوب ========== */
+        @media (max-width: 992px) {
+            .store-name { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            section { padding: 60px 0; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 80px 0 40px; }
+            .store-name { font-size: 2rem; }
+            .store-tagline { font-size: 1.1rem; }
+            .contact-content { flex-direction: column; text-align: center; }
+            .contact-buttons { justify-content: center; }
+            .phone-number { justify-content: center; }
+            .ratings-container, .rating-form, .contact-form { padding: 30px 20px; }
+        }
+
+        /* ========== تأثيرات الحركة ========== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in { animation: fadeInUp 0.8s ease-out; }
+
+        /* ========== زر العودة للأعلى ========== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .scroll-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        /* ========== زر واتساب طافي ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background: #128C7E;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- مبدل اللغة -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="en">English</button>
+    </div>
+
+    <!-- الهيدر الرئيسي -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://i.imgur.com/AiMe8bv.png" alt="Sprint Shop Logo" class="store-logo">
+            </div>
+            <h1 class="store-name" data-i18n="store_name">Sprint Shop</h1>
+            <p class="store-tagline" data-i18n="store_tagline">كل ما يخص عالم الملابس والأحذية الأوروبية الأصلية</p>
+            <p class="store-tagline" style="font-size: 1.2rem; margin-top: 10px;" data-i18n="store_slogan">قطع أصلية 100% | جودة أوروبية | أسعار تنافسية</p>
+        </div>
+    </header>
+
+    <!-- شريط الاتصال -->
+    <div class="contact-bar">
+        <div class="container">
+            <div class="contact-content">
+                <div class="phone-number">
+                    <i class="fas fa-phone-alt phone-icon"></i>
+                    <span id="contact-phone">+962 7 7637 4488</span>
+                </div>
+                
+                <div class="contact-buttons">
+                    <a href="https://wa.me/962776374488" target="_blank" class="contact-btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        <span data-i18n="whatsapp_contact">اطلب عبر واتساب</span>
+                    </a>
+                    <button class="contact-btn save-contact-btn" id="saveContactBtn">
+                        <i class="fas fa-save"></i>
+                        <span data-i18n="save_contact">حفظ جهة الاتصال</span>
+                    </button>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/sprint___shop_jo?igsh=MW93eHhjaW4yZWhiYg==" target="_blank" class="social-icon" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/share/1C5S3tccFw/?mibextid=wwXIfr" target="_blank" class="social-icon" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم المنتجات -->
+    <section id="products">
+        <div class="container">
+            <h2 class="section-title" data-i18n="products_title">منتجاتنا</h2>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title" data-i18n="product1_title">ملابس أوروبية أصلية</h3>
+                        <p data-i18n="product1_desc">تشكيلة واسعة من الملابس الأوروبية عالية الجودة للرجال والنساء.</p>
+                        <ul class="product-features">
+                            <li data-i18n="product1_item1">تيشيرتات وقمصان ماركات عالمية</li>
+                            <li data-i18n="product1_item2">جاكيتات ومعاطف شتوية</li>
+                            <li data-i18n="product1_item3">جينز وبناطيل أصلية</li>
+                            <li data-i18n="product1_item4">ملابس رياضية وترفيهية</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title" data-i18n="product2_title">أحذية أوروبية أصلية</h3>
+                        <p data-i18n="product2_desc">أحذية من أشهر الماركات الأوروبية بجودة عالية وتصاميم حديثة.</p>
+                        <ul class="product-features">
+                            <li data-i18n="product2_item1">أحذية رياضية (سناكَرز)</li>
+                            <li data-i18n="product2_item2">أحذية رسمية وكاجوال</li>
+                            <li data-i18n="product2_item3">أحذية شتوية وعملية</li>
+                            <li data-i18n="product2_item4">أحذية للجنسين</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title" data-i18n="product3_title">عروض خاصة وماركات</h3>
+                        <p data-i18n="product3_desc">عروض مميزة على تشكيلات مختارة وأحدث صيحات الموضة.</p>
+                        <ul class="product-features">
+                            <li data-i18n="product3_item1">عروض موسمية دائمة</li>
+                            <li data-i18n="product3_item2">تخفيضات على مجموعات</li>
+                            <li data-i18n="product3_item3">ماركات أوروبية حصرية</li>
+                            <li data-i18n="product3_item4">قطع محدودة الإصدار</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التقييمات -->
+    <section id="ratings" style="background: var(--light);">
+        <div class="container">
+            <h2 class="section-title" data-i18n="ratings_title">تقييمات العملاء</h2>
+            <div class="ratings-container">
+                <div class="rating-form">
+                    <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary);" data-i18n="add_rating">أضف تقييمك</h3>
+                    <form id="ratingForm">
+                        <div class="form-group">
+                            <label for="ratingName" data-i18n="your_name">اسمك</label>
+                            <input type="text" id="ratingName" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="rating">التقييم</label>
+                            <div class="stars-rating" id="starsRating">
+                                <span class="star" data-value="1">★</span>
+                                <span class="star" data-value="2">★</span>
+                                <span class="star" data-value="3">★</span>
+                                <span class="star" data-value="4">★</span>
+                                <span class="star" data-value="5">★</span>
+                            </div>
+                            <input type="hidden" id="ratingValue" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="ratingComment" data-i18n="comment">تعليقك</label>
+                            <textarea id="ratingComment" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span data-i18n="submit_rating">إرسال التقييم</span>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="ratings-display">
+                    <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary);" data-i18n="recent_ratings">آخر التقييمات</h3>
+                    <div id="ratingsList">
+                        <!-- التقييمات ستظهر هنا -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاتصال -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title" data-i18n="contact_title">تواصل معنا</h2>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName" data-i18n="full_name">الاسم الكامل</label>
+                            <input type="text" id="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone" data-i18n="phone_number">رقم الهاتف</label>
+                            <input type="tel" id="contactPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactProduct" data-i18n="product_interest">المنتج المهتم به</label>
+                            <select id="contactProduct" required>
+                                <option value="" data-i18n="select_product">اختر المنتج</option>
+                                <option value="clothing" data-i18n="product_clothing">ملابس</option>
+                                <option value="shoes" data-i18n="product_shoes">أحذية</option>
+                                <option value="both" data-i18n="product_both">الاثنين معاً</option>
+                                <option value="other" data-i18n="product_other">استفسار عام</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage" data-i18n="message">الرسالة</label>
+                            <textarea id="contactMessage" rows="4" required data-i18n="message_placeholder">اكتب رسالتك هنا...</textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span data-i18n="send_message">إرسال الرسالة</span>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info-box">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="call_us">اتصل بنا</h4>
+                            <p>+962 7 7637 4488</p>
+                            <small data-i18n="available_24">متاح 24 ساعة</small>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="email_us">راسلنا</h4>
+                            <p>alsbbahodai@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="location">موقعنا</h4>
+                            <p data-i18n="city">عمان، الأردن</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="working_hours_title">ساعات العمل</h4>
+                            <p data-i18n="working_hours">24 ساعة / 7 أيام في الأسبوع</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-i18n="store_name">Sprint Shop</h3>
+                    <p data-i18n="footer_description">متجر متخصص في الملابس والأحذية الأوروبية الأصلية، نقدم لكم أفضل الماركات بجودة عالية وأسعار تنافسية.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-i18n="quick_links">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#products"><i class="fas fa-chevron-left"></i> <span data-i18n="products">منتجاتنا</span></a></li>
+                        <li><a href="#ratings"><i class="fas fa-chevron-left"></i> <span data-i18n="ratings">التقييمات</span></a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-left"></i> <span data-i18n="contact">اتصل بنا</span></a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-i18n="contact_info">معلومات الاتصال</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+962776374488"><i class="fas fa-phone-alt"></i> +962 7 7637 4488</a></li>
+                        <li><a href="mailto:alsbbahodai@gmail.com"><i class="fas fa-envelope"></i> alsbbahodai@gmail.com</a></li>
+                        <li><a href="https://www.instagram.com/sprint___shop_jo" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://www.facebook.com/share/1C5S3tccFw" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 Sprint Shop. <span data-i18n="rights_reserved">جميع الحقوق محفوظة</span></p>
+                <p style="margin-top: 10px;" data-i18n="slogan">كل ما يخص عالم الملابس والأحذية الأوروبية الأصلية</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <div class="scroll-top" id="scrollTop" style="display: none;">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- زر واتساب طافي -->
+    <a href="https://wa.me/962776374488" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // ========== إدارة اللغة ==========
+        const translations = {
+            ar: {
+                store_name: "Sprint Shop",
+                store_tagline: "كل ما يخص عالم الملابس والأحذية الأوروبية الأصلية",
+                store_slogan: "قطع أصلية 100% | جودة أوروبية | أسعار تنافسية",
+                whatsapp_contact: "اطلب عبر واتساب",
+                save_contact: "حفظ جهة الاتصال",
+                
+                products_title: "منتجاتنا",
+                product1_title: "ملابس أوروبية أصلية",
+                product1_desc: "تشكيلة واسعة من الملابس الأوروبية عالية الجودة للرجال والنساء.",
+                product1_item1: "تيشيرتات وقمصان ماركات عالمية",
+                product1_item2: "جاكيتات ومعاطف شتوية",
+                product1_item3: "جينز وبناطيل أصلية",
+                product1_item4: "ملابس رياضية وترفيهية",
+                product2_title: "أحذية أوروبية أصلية",
+                product2_desc: "أحذية من أشهر الماركات الأوروبية بجودة عالية وتصاميم حديثة.",
+                product2_item1: "أحذية رياضية (سناكَرز)",
+                product2_item2: "أحذية رسمية وكاجوال",
+                product2_item3: "أحذية شتوية وعملية",
+                product2_item4: "أحذية للجنسين",
+                product3_title: "عروض خاصة وماركات",
+                product3_desc: "عروض مميزة على تشكيلات مختارة وأحدث صيحات الموضة.",
+                product3_item1: "عروض موسمية دائمة",
+                product3_item2: "تخفيضات على مجموعات",
+                product3_item3: "ماركات أوروبية حصرية",
+                product3_item4: "قطع محدودة الإصدار",
+                
+                ratings_title: "تقييمات العملاء",
+                add_rating: "أضف تقييمك",
+                your_name: "اسمك",
+                rating: "التقييم",
+                comment: "تعليقك",
+                submit_rating: "إرسال التقييم",
+                recent_ratings: "آخر التقييمات",
+                
+                contact_title: "تواصل معنا",
+                full_name: "الاسم الكامل",
+                phone_number: "رقم الهاتف",
+                product_interest: "المنتج المهتم به",
+                select_product: "اختر المنتج",
+                product_clothing: "ملابس",
+                product_shoes: "أحذية",
+                product_both: "الاثنين معاً",
+                product_other: "استفسار عام",
+                message: "الرسالة",
+                message_placeholder: "اكتب رسالتك هنا...",
+                send_message: "إرسال الرسالة",
+                call_us: "اتصل بنا",
+                available_24: "متاح 24 ساعة",
+                email_us: "راسلنا",
+                location: "موقعنا",
+                city: "عمان، الأردن",
+                working_hours_title: "ساعات العمل",
+                working_hours: "24 ساعة / 7 أيام في الأسبوع",
+                
+                footer_description: "متجر متخصص في الملابس والأحذية الأوروبية الأصلية، نقدم لكم أفضل الماركات بجودة عالية وأسعار تنافسية.",
+                quick_links: "روابط سريعة",
+                products: "منتجاتنا",
+                ratings: "التقييمات",
+                contact_info: "معلومات الاتصال",
+                rights_reserved: "جميع الحقوق محفوظة",
+                slogan: "كل ما يخص عالم الملابس والأحذية الأوروبية الأصلية"
+            },
+            en: {
+                store_name: "Sprint Shop",
+                store_tagline: "Everything about the world of original European clothing and shoes",
+                store_slogan: "100% Original Pieces | European Quality | Competitive Prices",
+                whatsapp_contact: "Order via WhatsApp",
+                save_contact: "Save Contact",
+                
+                products_title: "Our Products",
+                product1_title: "Original European Clothing",
+                product1_desc: "A wide range of high-quality European clothing for men and women.",
+                product1_item1: "T-shirts and shirts from global brands",
+                product1_item2: "Jackets and winter coats",
+                product1_item3: "Original jeans and trousers",
+                product1_item4: "Sportswear and casual wear",
+                product2_title: "Original European Shoes",
+                product2_desc: "Shoes from the most famous European brands with high quality and modern designs.",
+                product2_item1: "Sports shoes (Sneakers)",
+                product2_item2: "Formal and casual shoes",
+                product2_item3: "Winter and practical shoes",
+                product2_item4: "Shoes for both genders",
+                product3_title: "Special Offers & Brands",
+                product3_desc: "Special offers on selected collections and the latest fashion trends.",
+                product3_item1: "Regular seasonal offers",
+                product3_item2: "Discounts on groups",
+                product3_item3: "Exclusive European brands",
+                product3_item4: "Limited edition pieces",
+                
+                ratings_title: "Customer Ratings",
+                add_rating: "Add Your Rating",
+                your_name: "Your Name",
+                rating: "Rating",
+                comment: "Your Comment",
+                submit_rating: "Submit Rating",
+                recent_ratings: "Recent Ratings",
+                
+                contact_title: "Contact Us",
+                full_name: "Full Name",
+                phone_number: "Phone Number",
+                product_interest: "Product of Interest",
+                select_product: "Select Product",
+                product_clothing: "Clothing",
+                product_shoes: "Shoes",
+                product_both: "Both",
+                product_other: "General Inquiry",
+                message: "Message",
+                message_placeholder: "Write your message here...",
+                send_message: "Send Message",
+                call_us: "Call Us",
+                available_24: "Available 24 hours",
+                email_us: "Email Us",
+                location: "Our Location",
+                city: "Amman, Jordan",
+                working_hours_title: "Working Hours",
+                working_hours: "24 hours / 7 days a week",
+                
+                footer_description: "A store specialized in original European clothing and shoes. We offer you the best brands with high quality and competitive prices.",
+                quick_links: "Quick Links",
+                products: "Our Products",
+                ratings: "Ratings",
+                contact_info: "Contact Information",
+                rights_reserved: "All rights reserved",
+                slogan: "Everything about the world of original European clothing and shoes"
+            }
+        };
+
+        let currentLang = 'ar';
+        
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // تحديث أزرار اللغة
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // تحديث جميع العناصر مع data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        if (!['ratingName', 'ratingComment', 'contactName', 'contactPhone', 'contactMessage'].includes(element.id)) {
+                            element.placeholder = translations[lang][key];
+                        }
+                    } else if (element.tagName === 'OPTION') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // تحديث الاتجاه
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+            
+            // حفظ تفضيل اللغة
+            localStorage.setItem('sprintShopLanguage', lang);
+            
+            // إعادة تحميل التقييمات
+            loadRatings();
+        }
+        
+        // ========== تهيئة اللغة عند التحميل ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('sprintShopLanguage') || 'ar';
+            setLanguage(savedLang);
+            
+            // تحميل التقييمات
+            loadRatings();
+            
+            // تهيئة زر التمرير للأعلى
+            initScrollTop();
+            
+            // التعامل مع خطأ تحميل الصورة
+            document.querySelector('.store-logo').addEventListener('error', function() {
+                this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><rect width="200" height="200" fill="%232563eb" rx="100"/><text x="100" y="110" font-family="Arial" font-size="70" fill="white" text-anchor="middle" font-weight="bold">S</text></svg>';
+            });
+        });
+        
+        // ========== أحداث مبدل اللغة ==========
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.dataset.lang);
+            });
+        });
+        
+        // ========== خاصية حفظ جهة الاتصال ==========
+        document.getElementById('saveContactBtn').addEventListener('click', () => {
+            createAndDownloadVCard();
+        });
+        
+        function createAndDownloadVCard() {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Sprint Shop - European Clothing & Shoes
+ORG:Sprint Shop
+TEL;TYPE=CELL,VOICE:+962776374488
+URL:https://www.instagram.com/sprint___shop_jo
+URL:https://www.facebook.com/share/1C5S3tccFw
+EMAIL:alsbbahodai@gmail.com
+ADR:;;Amman;;Jordan;
+NOTE:Original European clothing and shoes store - 100% authentic pieces
+END:VCARD`;
+            
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Sprint Shop.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            // عرض تأكيد
+            showNotification(currentLang === 'ar' 
+                ? 'تم حفظ جهة الاتصال بنجاح!' 
+                : 'Contact saved successfully!');
+        }
+        
+        // ========== نظام التقييمات ==========
+        let ratings = JSON.parse(localStorage.getItem('sprintShopRatings')) || [];
+        
+        // خاصية النجوم
+        const stars = document.querySelectorAll('.star');
+        let selectedRating = 0;
+        
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = parseInt(star.dataset.value);
+                document.getElementById('ratingValue').value = selectedRating;
+                
+                stars.forEach(s => {
+                    s.classList.remove('active');
+                    if (parseInt(s.dataset.value) <= selectedRating) {
+                        s.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // إرسال نموذج التقييم
+        document.getElementById('ratingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('ratingName').value;
+            const comment = document.getElementById('ratingComment').value;
+            const rating = selectedRating;
+            
+            if (rating === 0) {
+                showNotification(currentLang === 'ar' 
+                    ? 'الرجاء اختيار تقييم' 
+                    : 'Please select a rating');
+                return;
+            }
+            
+            if (!name.trim() || !comment.trim()) {
+                showNotification(currentLang === 'ar' 
+                    ? 'الرجاء ملء جميع الحقول' 
+                    : 'Please fill all fields');
+                return;
+            }
+            
+            const newRating = {
+                id: Date.now(),
+                name: name.trim(),
+                rating: rating,
+                comment: comment.trim(),
+                date: new Date().toLocaleDateString(currentLang === 'ar' ? 'ar-EG' : 'en-US'),
+                lang: currentLang
+            };
+            
+            ratings.unshift(newRating);
+            localStorage.setItem('sprintShopRatings', JSON.stringify(ratings));
+            
+            // إعادة تعيين النموذج
+            document.getElementById('ratingForm').reset();
+            selectedRating = 0;
+            document.getElementById('ratingValue').value = 0;
+            stars.forEach(s => s.classList.remove('active'));
+            
+            // إعادة تحميل التقييمات
+            loadRatings();
+            
+            // عرض رسالة نجاح
+            showNotification(currentLang === 'ar' 
+                ? 'شكراً لتقييمك! تم إضافة التقييم بنجاح.' 
+                : 'Thank you for your rating! Rating added successfully.');
+        });
+        
+        function loadRatings() {
+            const ratingsList = document.getElementById('ratingsList');
+            ratingsList.innerHTML = '';
+            
+            if (ratings.length === 0) {
+                ratingsList.innerHTML = `
+                    <div class="rating-card" style="text-align: center; color: #666;">
+                        <i class="far fa-star" style="font-size: 3rem; margin-bottom: 20px; display: block; color: #ddd;"></i>
+                        <p>${currentLang === 'ar' 
+                            ? 'لا توجد تقييمات بعد. كن أول من يقيم!' 
+                            : 'No ratings yet. Be the first to rate!'}</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // عرض آخر 5 تقييمات فقط
+            const recentRatings = ratings.slice(0, 5);
+            
+            recentRatings.forEach(rating => {
+                const ratingCard = document.createElement('div');
+                ratingCard.className = 'rating-card fade-in';
+                
+                const starsHTML = '★'.repeat(rating.rating) + '☆'.repeat(5 - rating.rating);
+                
+                ratingCard.innerHTML = `
+                    <div class="rating-header">
+                        <div>
+                            <span class="rating-name">${rating.name}</span>
+                        </div>
+                        <div class="rating-stars">${starsHTML}</div>
+                    </div>
+                    <div class="rating-header">
+                        <div class="rating-date">
+                            <i class="far fa-calendar"></i> ${rating.date}
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; line-height: 1.8;">${rating.comment}</p>
+                `;
+                
+                ratingsList.appendChild(ratingCard);
+            });
+        }
+        
+        // ========== نموذج الاتصال ==========
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('contactName').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const product = document.getElementById('contactProduct').value;
+            const message = document.getElementById('contactMessage').value.trim();
+            
+            if (!name || !phone || !product || !message) {
+                showNotification(currentLang === 'ar' 
+                    ? 'الرجاء ملء جميع الحقول المطلوبة' 
+                    : 'Please fill all required fields');
+                return;
+            }
+            
+            // تحويل قيمة المنتج إلى نص
+            const productTextMap = {
+                clothing: currentLang === 'ar' ? 'ملابس' : 'Clothing',
+                shoes: currentLang === 'ar' ? 'أحذية' : 'Shoes',
+                both: currentLang === 'ar' ? 'الاثنين معاً' : 'Both',
+                other: currentLang === 'ar' ? 'استفسار عام' : 'General Inquiry'
+            };
+            
+            const productText = productTextMap[product] || product;
+            
+            // إنشاء رسالة واتساب
+            const whatsappMessage = `*${currentLang === 'ar' ? 'طلب استفسار جديد' : 'New Inquiry Request'}*%0A%0A*${currentLang === 'ar' ? 'الاسم:' : 'Name:'}* ${name}%0A*${currentLang === 'ar' ? 'الهاتف:' : 'Phone:'}* ${phone}%0A*${currentLang === 'ar' ? 'المنتج المهتم به:' : 'Product of Interest:'}* ${productText}%0A*${currentLang === 'ar' ? 'الرسالة:' : 'Message:'}* ${message}`;
+            
+            // فتح واتساب
+            const whatsappURL = `https://wa.me/962776374488?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappURL, '_blank');
+            
+            // حفظ الاستفسار في التخزين المحلي
+            const inquiries = JSON.parse(localStorage.getItem('sprintShopInquiries')) || [];
+            inquiries.push({
+                name: name,
+                phone: phone,
+                product: productText,
+                message: message,
+                date: new Date().toISOString(),
+                lang: currentLang
+            });
+            localStorage.setItem('sprintShopInquiries', JSON.stringify(inquiries));
+            
+            // إعادة تعيين النموذج
+            document.getElementById('contactForm').reset();
+            
+            // عرض تأكيد
+            showNotification(currentLang === 'ar' 
+                ? 'تم إرسال استفسارك! سيتم فتح واتساب لإتمام العملية.' 
+                : 'Your inquiry has been sent! WhatsApp will open to complete the process.');
+        });
+        
+        // ========== زر التمرير للأعلى ==========
+        function initScrollTop() {
+            const scrollTopBtn = document.getElementById('scrollTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.style.display = 'flex';
+                } else {
+                    scrollTopBtn.style.display = 'none';
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // ========== وظيفة الإشعارات ==========
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%) translateY(-100px);
+                background: var(--primary);
+                color: white;
+                padding: 15px 30px;
+                border-radius: 30px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 10000;
+                transition: transform 0.3s ease;
+                font-weight: 600;
+                text-align: center;
+                min-width: 300px;
+                max-width: 90%;
+            `;
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // ظهور الإشعار
+            setTimeout(() => {
+                notification.style.transform = 'translateX(-50%) translateY(0)';
+            }, 10);
+            
+            // إزالة بعد 3 ثوانٍ
+            setTimeout(() => {
+                notification.style.transform = 'translateX(-50%) translateY(-100px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // ========== التمرير السلس للروابط ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // ========== تأثيرات التمرير على بطاقات المنتجات ==========
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // ========== تهيئة بعض التقييمات النموذجية ==========
+        if (ratings.length === 0) {
+            ratings = [
+                {
+                    id: 1,
+                    name: 'محمد أحمد',
+                    rating: 5,
+                    comment: 'جودة ممتازة وأسعار مناسبة. تيشيرتات أوروبية أصلية ومتانة عالية.',
+                    date: '15/03/2023',
+                    lang: 'ar'
+                },
+                {
+                    id: 2,
+                    name: 'سارة خالد',
+                    rating: 4,
+                    comment: 'أحذية رياضية رائعة ومريحة. التوصيل سريع والخدمة ممتازة.',
+                    date: '22/03/2023',
+                    lang: 'ar'
+                },
+                {
+                    id: 3,
+                    name: 'Ali Hassan',
+                    rating: 5,
+                    comment: 'Authentic European brands at reasonable prices. Highly recommended!',
+                    date: '10/04/2023',
+                    lang: 'en'
+                }
+            ];
+            localStorage.setItem('sprintShopRatings', JSON.stringify(ratings));
+            loadRatings();
+        }
+    </script>
+</body>
+</html>
