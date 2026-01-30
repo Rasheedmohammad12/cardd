@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدمة كليك لتحويل الأموال</title>
+    <title>خدمة كليك لتحويل الأموال - التواصل عبر الواتساب</title>
     <style>
         * {
             box-sizing: border-box;
@@ -30,7 +30,7 @@
         }
         
         header {
-            background: linear-gradient(to right, #1a237e, #283593);
+            background: linear-gradient(to right, #075e54, #128c7e);
             color: white;
             padding: 30px;
             text-align: center;
@@ -48,7 +48,7 @@
         
         .logo-icon {
             background-color: white;
-            color: #1a237e;
+            color: #075e54;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -69,48 +69,52 @@
             margin-bottom: 20px;
         }
         
-        .phone-section {
-            background-color: #f8f9fa;
+        .whatsapp-section {
+            background-color: #25D366;
+            color: white;
             padding: 25px;
             text-align: center;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid #1da851;
         }
         
-        .phone-label {
+        .whatsapp-label {
             font-size: 18px;
-            color: #555;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .phone-number {
             font-size: 32px;
             font-weight: bold;
-            color: #1a237e;
             direction: ltr;
             display: inline-block;
             padding: 15px 30px;
             background-color: white;
+            color: #075e54;
             border-radius: 12px;
-            border: 3px solid #1a237e;
+            border: 3px solid white;
             margin: 10px 0;
             letter-spacing: 1px;
             transition: all 0.3s;
         }
         
         .phone-number:hover {
-            background-color: #f0f2ff;
+            background-color: #f0fff4;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
-        .click-instructions {
-            background-color: #e8f5e9;
+        .whatsapp-instructions {
+            background-color: #dcf8c6;
             padding: 25px;
-            border-bottom: 1px solid #c8e6c9;
+            border-bottom: 1px solid #a8e6a3;
         }
         
         .instructions-title {
-            color: #2e7d32;
+            color: #075e54;
             font-size: 22px;
             margin-bottom: 15px;
             display: flex;
@@ -132,11 +136,11 @@
             padding: 15px;
             background-color: white;
             border-radius: 10px;
-            border-right: 4px solid #4caf50;
+            border-right: 4px solid #25D366;
         }
         
         .step-number {
-            background-color: #4caf50;
+            background-color: #25D366;
             color: white;
             width: 35px;
             height: 35px;
@@ -154,7 +158,7 @@
         
         .form-title {
             font-size: 24px;
-            color: #1a237e;
+            color: #075e54;
             margin-bottom: 25px;
             text-align: center;
         }
@@ -178,16 +182,17 @@
             font-size: 16px;
         }
         
-        input, select {
+        input, select, textarea {
             padding: 15px;
             border: 2px solid #ddd;
             border-radius: 8px;
             font-size: 16px;
             transition: border-color 0.3s;
+            font-family: inherit;
         }
         
-        input:focus, select:focus {
-            border-color: #1a237e;
+        input:focus, select:focus, textarea:focus {
+            border-color: #128c7e;
             outline: none;
         }
         
@@ -212,7 +217,8 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
         }
         
         .btn {
@@ -229,15 +235,26 @@
             gap: 10px;
         }
         
-        .btn-primary {
-            background-color: #1a237e;
+        .btn-whatsapp {
+            background-color: #25D366;
             color: white;
         }
         
-        .btn-primary:hover {
-            background-color: #283593;
+        .btn-whatsapp:hover {
+            background-color: #1da851;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-call {
+            background-color: #075e54;
+            color: white;
+        }
+        
+        .btn-call:hover {
+            background-color: #054d44;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(7, 94, 84, 0.3);
         }
         
         .btn-secondary {
@@ -273,16 +290,31 @@
         .feature-icon {
             font-size: 40px;
             margin-bottom: 15px;
-            color: #1a237e;
+        }
+        
+        .whatsapp-feature .feature-icon {
+            color: #25D366;
+        }
+        
+        .security-feature .feature-icon {
+            color: #075e54;
+        }
+        
+        .money-feature .feature-icon {
+            color: #128c7e;
+        }
+        
+        .global-feature .feature-icon {
+            color: #34b7f1;
         }
         
         .feature h3 {
-            color: #1a237e;
+            color: #075e54;
             margin-bottom: 10px;
         }
         
         .contact-info {
-            background-color: #1a237e;
+            background-color: #075e54;
             color: white;
             padding: 30px;
             text-align: center;
@@ -291,6 +323,36 @@
         .contact-title {
             font-size: 22px;
             margin-bottom: 20px;
+        }
+        
+        .whatsapp-qr {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 250px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: #f5f5f5;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .qr-text {
+            font-size: 14px;
+            color: #075e54;
+            font-weight: 600;
         }
         
         .contact-details {
@@ -308,7 +370,7 @@
         }
         
         footer {
-            background-color: #0d153a;
+            background-color: #054d44;
             color: #aaa;
             text-align: center;
             padding: 20px;
@@ -340,24 +402,33 @@
         
         .modal-icon {
             font-size: 60px;
-            color: #4caf50;
+            color: #25D366;
             margin-bottom: 20px;
         }
         
         .modal h2 {
-            color: #1a237e;
+            color: #075e54;
             margin-bottom: 15px;
         }
         
         .modal-close {
             margin-top: 25px;
             padding: 12px 30px;
-            background-color: #1a237e;
+            background-color: #075e54;
             color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
+        }
+        
+        .whatsapp-direct {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
         
         @media (max-width: 768px) {
@@ -382,6 +453,10 @@
                 flex-direction: column;
                 gap: 15px;
             }
+            
+            .whatsapp-direct {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -392,87 +467,100 @@
                 <div class="logo-icon">C</div>
                 <span>خدمة كليك لتحويل الأموال</span>
             </div>
-            <h1>تحويل الأموال بكل سهولة وأمان</h1>
-            <p class="subtitle">خدمة تحويل محلية ودولية سريعة وآمنة</p>
+            <h1>تحويل الأموال عبر الواتساب</h1>
+            <p class="subtitle">أرسل طلبك الآن على الواتساب وسيتم الرد فوراً</p>
         </header>
         
-        <div class="phone-section">
-            <div class="phone-label">للتحويل عبر خدمة كليك، اتصل أو راسل على الرقم التالي:</div>
+        <div class="whatsapp-section">
+            <div class="whatsapp-label">📱 للتحويل عبر خدمة كليك، أرسل طلبك مباشرة على الواتساب:</div>
             <div class="phone-number" id="phoneNumber">+962 7 7637 4488</div>
-            <p>متاح 24/7 لخدمتكم</p>
+            <p>متاح 24/7 لخدمتكم عبر الواتساب</p>
         </div>
         
-        <div class="click-instructions">
-            <h2 class="instructions-title">💡 كيفية استخدام خدمة كليك للتحويل</h2>
+        <div class="whatsapp-instructions">
+            <h2 class="instructions-title">💬 أرسل طلب التحويل على الواتساب في 3 خطوات</h2>
             <div class="instruction-steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <div class="step-content">اتصل أو أرسل رسالة إلى الرقم أعلاه للبدء بطلب التحويل</div>
+                    <div class="step-content">املأ نموذج طلب التحويل أدناه بجميع التفاصيل المطلوبة</div>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <div class="step-content">قدم معلومات المستلم والمبلغ المطلوب تحويله</div>
+                    <div class="step-content">انقر على زر "إرسال طلب التحويل على الواتساب"</div>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <div class="step-content">احصل على رقم عملية التحويل وتفاصيل التحويل</div>
+                    <div class="step-content">سيتم فتح تطبيق الواتساب مع رسالة جاهزة تحتوي على طلبك</div>
                 </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">ادفع المبلغ عبر الوسائل المتاحة (بطاقة، كاش، محفظة إلكترونية)</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">5</div>
-                    <div class="step-content">تصل الأموال إلى المستلم خلال دقائق مع تأكيد فوري</div>
-                </div>
+            </div>
+            
+            <div class="whatsapp-direct">
+                <p>أو يمكنك التواصل مباشرة على الواتساب:</p>
+                <button class="btn btn-whatsapp" id="directWhatsappBtn">
+                    <span>💬 محادثة مباشرة على الواتساب</span>
+                </button>
             </div>
         </div>
         
         <div class="transfer-form">
-            <h2 class="form-title">نموذج طلب التحويل (للتواصل المبدئي)</h2>
+            <h2 class="form-title">نموذج طلب التحويل (يرسل مباشرة على الواتساب)</h2>
             <form id="transferForm">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="senderName">اسم المرسل</label>
+                        <label for="senderName">اسم المرسل *</label>
                         <input type="text" id="senderName" placeholder="أدخل اسمك الكامل" required>
                     </div>
                     <div class="form-group">
-                        <label for="senderPhone">هاتف المرسل</label>
-                        <input type="tel" id="senderPhone" placeholder="أدخل رقم هاتفك" required>
+                        <label for="senderPhone">هاتف المرسل *</label>
+                        <input type="tel" id="senderPhone" placeholder="أدخل رقم هاتفك للتواصل" required>
                     </div>
                     <div class="form-group">
-                        <label for="receiverName">اسم المستلم</label>
-                        <input type="text" id="receiverName" placeholder="أدخل اسم المستلم" required>
+                        <label for="receiverName">اسم المستلم *</label>
+                        <input type="text" id="receiverName" placeholder="أدخل اسم المستلم كاملاً" required>
                     </div>
                     <div class="form-group">
-                        <label for="receiverCountry">دولة المستلم</label>
+                        <label for="receiverPhone">هاتف المستلم *</label>
+                        <input type="tel" id="receiverPhone" placeholder="أدخل رقم هاتف المستلم" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiverCountry">دولة المستلم *</label>
                         <select id="receiverCountry" required>
                             <option value="">اختر الدولة</option>
-                            <option value="JO">الأردن</option>
-                            <option value="SA">السعودية</option>
-                            <option value="AE">الإمارات</option>
-                            <option value="QA">قطر</option>
-                            <option value="KW">الكويت</option>
-                            <option value="BH">البحرين</option>
-                            <option value="OM">عُمان</option>
-                            <option value="EG">مصر</option>
-                            <option value="LB">لبنان</option>
+                            <option value="الأردن">الأردن</option>
+                            <option value="السعودية">السعودية</option>
+                            <option value="الإمارات">الإمارات</option>
+                            <option value="قطر">قطر</option>
+                            <option value="الكويت">الكويت</option>
+                            <option value="البحرين">البحرين</option>
+                            <option value="عُمان">عُمان</option>
+                            <option value="مصر">مصر</option>
+                            <option value="لبنان">لبنان</option>
                             <option value="other">دولة أخرى</option>
                         </select>
                     </div>
                     <div class="form-group amount-input">
-                        <label for="amount">مبلغ التحويل</label>
+                        <label for="amount">مبلغ التحويل ($) *</label>
                         <div class="currency-symbol">$</div>
                         <input type="number" id="amount" min="10" step="0.01" placeholder="0.00" required>
                     </div>
                     <div class="form-group">
-                        <label for="transferType">نوع التحويل</label>
+                        <label for="transferType">نوع التحويل *</label>
                         <select id="transferType" required>
                             <option value="">اختر نوع التحويل</option>
-                            <option value="instant">تحويل فوري</option>
-                            <option value="standard">تحويل عادي</option>
-                            <option value="bank">تحويل بنكي</option>
-                            <option value="wallet">تحويل إلى محفظة</option>
+                            <option value="تحويل فوري">تحويل فوري</option>
+                            <option value="تحويل عادي">تحويل عادي</option>
+                            <option value="تحويل بنكي">تحويل بنكي</option>
+                            <option value="تحويل إلى محفظة">تحويل إلى محفظة</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transferMethod">طريقة الدفع *</label>
+                        <select id="transferMethod" required>
+                            <option value="">اختر طريقة الدفع</option>
+                            <option value="بطاقة ائتمان">بطاقة ائتمان</option>
+                            <option value="نقدي">نقدي</option>
+                            <option value="محفظة إلكترونية">محفظة إلكترونية</option>
+                            <option value="تحويل بنكي">تحويل بنكي</option>
                         </select>
                     </div>
                 </div>
@@ -483,71 +571,82 @@
                 </div>
                 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">
-                        <span>إرسال طلب التحويل</span>
+                    <button type="submit" class="btn btn-whatsapp">
+                        <span>💬 إرسال طلب التحويل على الواتساب</span>
                     </button>
-                    <button type="button" class="btn btn-secondary" id="callNowBtn">
-                        <span>اتصل الآن</span>
+                    <button type="button" class="btn btn-call" id="callNowBtn">
+                        <span>📞 اتصل الآن</span>
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="resetBtn">
+                        <span>🔄 إعادة تعيين النموذج</span>
                     </button>
                 </div>
             </form>
         </div>
         
         <div class="features">
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <h3>سرعة التحويل</h3>
-                <p>وصول الأموال خلال دقائق في التحويلات الفورية</p>
+            <div class="feature whatsapp-feature">
+                <div class="feature-icon">💬</div>
+                <h3>تواصل مباشر</h3>
+                <p>طلب تحويلك يصل مباشرة إلى الواتساب للرد الفوري</p>
             </div>
-            <div class="feature">
+            <div class="feature security-feature">
                 <div class="feature-icon">🛡️</div>
-                <h3>آمن ومضمون</h3>
-                <p>أعلى معايير الأمان والتشفير لحماية معاملاتك</p>
+                <h3>آمن وسري</h3>
+                <p>تحويلات آمنة مع تأمين كامل للمعاملات</p>
             </div>
-            <div class="feature">
+            <div class="feature money-feature">
                 <div class="feature-icon">💵</div>
-                <h3>أسعار تنافسية</h3>
-                <p>رسوم تحويل منخفضة وأسعار صرف مميزة</p>
+                <h3>أسعار مميزة</h3>
+                <p>أفضل أسعار صرف ورسوم منخفضة</p>
             </div>
-            <div class="feature">
+            <div class="feature global-feature">
                 <div class="feature-icon">🌍</div>
                 <h3>تحويلات عالمية</h3>
-                <p>إلى أكثر من 50 دولة حول العالم</p>
+                <p>إلى معظم دول العالم بسرعة فائقة</p>
             </div>
         </div>
         
         <div class="contact-info">
-            <h2 class="contact-title">تواصل معنا على الرقم التالي للتحويل</h2>
-            <div class="phone-number" style="background-color: white; color: #1a237e; border-color: white;">+962 7 7637 4488</div>
+            <h2 class="contact-title">للتواصل عبر الواتساب على الرقم التالي</h2>
+            <div class="phone-number" style="background-color: white; color: #075e54; border-color: white;">+962 7 7637 4488</div>
+            
+            <div class="whatsapp-qr">
+                <div class="qr-placeholder">
+                    مسح رمز QR<br>للتواصل المباشر
+                </div>
+                <div class="qr-text">مسح الكود للدخول إلى محادثة الواتساب</div>
+            </div>
             
             <div class="contact-details">
                 <div class="contact-item">
-                    <span>📞 الدعم الفني: نفس الرقم</span>
+                    <span>💬 الواتساب: نفس الرقم</span>
                 </div>
                 <div class="contact-item">
-                    <span>📧 للاستفسارات: نفس الرقم عبر الواتساب</span>
+                    <span>📞 المكالمات: نفس الرقم</span>
                 </div>
                 <div class="contact-item">
-                    <span>⏰ ساعات العمل: 24 ساعة / 7 أيام</span>
+                    <span>⏰ متوفر: 24 ساعة / 7 أيام</span>
                 </div>
             </div>
         </div>
         
         <footer>
             <p>© 2023 خدمة كليك لتحويل الأموال. جميع الحقوق محفوظة.</p>
-            <p>هذا الموقع للتواصل المبدئي فقط. سيتم تأكيد تفاصيل التحويل عبر الاتصال بالرقم المذكور.</p>
+            <p>يتم إرسال طلب التحويل مباشرة إلى الواتساب للرد الفوري.</p>
         </footer>
     </div>
     
     <!-- نافذة التأكيد -->
     <div class="modal" id="confirmationModal">
         <div class="modal-content">
-            <div class="modal-icon">✓</div>
-            <h2>تم إرسال طلب التحويل بنجاح!</h2>
-            <p>سيتم التواصل معك قريباً على الرقم الذي قدمته لتأكيد تفاصيل التحويل.</p>
-            <p>يمكنك أيضاً الاتصال مباشرة على الرقم التالي:</p>
-            <div class="phone-number" style="margin: 20px auto; font-size: 22px;">+962 7 7637 4488</div>
-            <button class="modal-close" id="modalClose">حسناً</button>
+            <div class="modal-icon">💬</div>
+            <h2>جاهز لإرسال طلبك على الواتساب!</h2>
+            <p>سيتم الآن فتح تطبيق الواتساب مع رسالة تحتوي على تفاصيل طلب التحويل.</p>
+            <p>إذا لم يفتح الواتساب تلقائياً، يمكنك نسخ الرسالة وإرسالها يدوياً.</p>
+            <div id="messagePreview" style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: right; direction: rtl;"></div>
+            <button class="modal-close" id="modalClose">فتح الواتساب</button>
+            <button class="btn-secondary" id="copyMessageBtn" style="margin-top: 10px;">نسخ الرسالة</button>
         </div>
     </div>
 
@@ -556,8 +655,15 @@
         const phoneNumber = document.getElementById('phoneNumber');
         const transferForm = document.getElementById('transferForm');
         const callNowBtn = document.getElementById('callNowBtn');
+        const directWhatsappBtn = document.getElementById('directWhatsappBtn');
+        const resetBtn = document.getElementById('resetBtn');
         const confirmationModal = document.getElementById('confirmationModal');
         const modalClose = document.getElementById('modalClose');
+        const copyMessageBtn = document.getElementById('copyMessageBtn');
+        const messagePreview = document.getElementById('messagePreview');
+        
+        // رقم الواتساب المستهدف
+        const whatsappNumber = "962776374488"; // بدون علامة +
         
         // نسخ الرقم عند النقر عليه
         phoneNumber.addEventListener('click', function() {
@@ -566,13 +672,13 @@
                 .then(() => {
                     const originalText = phoneNumber.textContent;
                     phoneNumber.textContent = 'تم نسخ الرقم!';
-                    phoneNumber.style.backgroundColor = '#e8f5e9';
-                    phoneNumber.style.color = '#2e7d32';
+                    phoneNumber.style.backgroundColor = '#dcf8c6';
+                    phoneNumber.style.color = '#075e54';
                     
                     setTimeout(() => {
                         phoneNumber.textContent = originalText;
                         phoneNumber.style.backgroundColor = 'white';
-                        phoneNumber.style.color = '#1a237e';
+                        phoneNumber.style.color = '#075e54';
                     }, 2000);
                 })
                 .catch(err => {
@@ -586,7 +692,21 @@
             window.open(`tel:${phone}`, '_self');
         });
         
-        // معالجة نموذج التحويل
+        // زر الواتساب المباشر
+        directWhatsappBtn.addEventListener('click', function() {
+            const message = "مرحبًا، أريد الاستفسار عن خدمة تحويل الأموال عبر كليك";
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        });
+        
+        // زر إعادة التعيين
+        resetBtn.addEventListener('click', function() {
+            if (confirm("هل تريد إعادة تعيين النموذج؟")) {
+                transferForm.reset();
+            }
+        });
+        
+        // معالجة نموذج التحويل وإرساله إلى الواتساب
         transferForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -595,32 +715,87 @@
                 senderName: document.getElementById('senderName').value,
                 senderPhone: document.getElementById('senderPhone').value,
                 receiverName: document.getElementById('receiverName').value,
+                receiverPhone: document.getElementById('receiverPhone').value,
                 receiverCountry: document.getElementById('receiverCountry').value,
                 amount: document.getElementById('amount').value,
                 transferType: document.getElementById('transferType').value,
-                notes: document.getElementById('notes').value,
-                timestamp: new Date().toISOString()
+                transferMethod: document.getElementById('transferMethod').value,
+                notes: document.getElementById('notes').value
             };
             
+            // إنشاء رسالة الواتساب
+            const whatsappMessage = `🎯 *طلب تحويل أموال عبر خدمة كليك* 🎯
+            
+👤 *معلومات المرسل:*
+- الاسم: ${formData.senderName}
+- الهاتف: ${formData.senderPhone}
+
+👥 *معلومات المستلم:*
+- الاسم: ${formData.receiverName}
+- الهاتف: ${formData.receiverPhone}
+- الدولة: ${formData.receiverCountry}
+
+💰 *تفاصيل التحويل:*
+- المبلغ: ${formData.amount} دولار
+- نوع التحويل: ${formData.transferType}
+- طريقة الدفع: ${formData.transferMethod}
+
+📝 *ملاحظات إضافية:*
+${formData.notes || "لا توجد ملاحظات إضافية"}
+
+⏰ *وقت الطلب:* ${new Date().toLocaleString('ar-EG')}
+
+شكراً لاختياركم خدمة كليك لتحويل الأموال!`;
+            
+            // عرض معاينة الرسالة
+            messagePreview.textContent = whatsappMessage;
+            
             // حفظ الطلب في التخزين المحلي (محاكاة)
-            const existingRequests = JSON.parse(localStorage.getItem('clickTransferRequests')) || [];
-            existingRequests.push(formData);
-            localStorage.setItem('clickTransferRequests', JSON.stringify(existingRequests));
+            const existingRequests = JSON.parse(localStorage.getItem('whatsappTransferRequests')) || [];
+            const requestData = {
+                ...formData,
+                timestamp: new Date().toISOString(),
+                message: whatsappMessage
+            };
+            existingRequests.push(requestData);
+            localStorage.setItem('whatsappTransferRequests', JSON.stringify(existingRequests));
             
             // إظهار نافذة التأكيد
             confirmationModal.style.display = 'flex';
-            
-            // إعادة تعيين النموذج
-            transferForm.reset();
-            
-            // إرسال إشعار (محاكاة)
-            console.log('تم إرسال طلب التحويل:', formData);
-            console.log('يرجى التواصل مع الرقم +962 7 7637 4488 لإتمام التحويل');
         });
         
-        // إغلاق نافذة التأكيد
+        // فتح الواتساب عند النقر على زر التأكيد
         modalClose.addEventListener('click', function() {
+            const message = messagePreview.textContent;
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
             confirmationModal.style.display = 'none';
+            
+            // إعادة تعيين النموذج بعد الإرسال
+            setTimeout(() => {
+                transferForm.reset();
+            }, 500);
+        });
+        
+        // نسخ الرسالة
+        copyMessageBtn.addEventListener('click', function() {
+            const message = messagePreview.textContent;
+            navigator.clipboard.writeText(message)
+                .then(() => {
+                    copyMessageBtn.textContent = 'تم النسخ!';
+                    copyMessageBtn.style.backgroundColor = '#25D366';
+                    copyMessageBtn.style.color = 'white';
+                    
+                    setTimeout(() => {
+                        copyMessageBtn.textContent = 'نسخ الرسالة';
+                        copyMessageBtn.style.backgroundColor = '';
+                        copyMessageBtn.style.color = '';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('فشل نسخ النص: ', err);
+                    alert('فشل نسخ الرسالة. يرجى المحاولة يدوياً.');
+                });
         });
         
         // إغلاق النافذة بالنقر خارجها
@@ -630,10 +805,29 @@
             }
         });
         
-        // تحميل الطلبات السابقة عند بدء التشغيل (عرض في الكونسول لأغراض التطوير)
+        // تحميل الطلبات السابقة عند بدء التشغيل
         window.addEventListener('load', function() {
-            const savedRequests = JSON.parse(localStorage.getItem('clickTransferRequests')) || [];
-            console.log('طلبات التحويل السابقة:', savedRequests);
+            const savedRequests = JSON.parse(localStorage.getItem('whatsappTransferRequests')) || [];
+            console.log('طلبات التحويل السابقة المحفوظة:', savedRequests.length);
+            
+            // اقتراح تعبئة النموذج تلقائياً إذا كان هناك طلبات سابقة
+            if (savedRequests.length > 0) {
+                const lastRequest = savedRequests[savedRequests.length - 1];
+                document.getElementById('senderName').value = lastRequest.senderName || '';
+                document.getElementById('senderPhone').value = lastRequest.senderPhone || '';
+            }
+        });
+        
+        // إضافة مؤشر تلقائي لرقم الهاتف
+        const phoneInputs = document.querySelectorAll('input[type="tel"]');
+        phoneInputs.forEach(input => {
+            input.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.startsWith('0')) {
+                    value = '962' + value.substring(1);
+                }
+                e.target.value = value;
+            });
         });
     </script>
 </body>
