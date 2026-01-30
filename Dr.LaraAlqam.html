@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>د. لارا القم - أخصائية الطب النفسي وعلاج الإدمان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #6b8cbc;
+            --accent-color: #e63946;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: #f5f7fa;
+        }
+        
+        /* Language Toggle */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+            background: white;
+            padding: 6px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .lang-btn:hover:not(.active) {
+            background: rgba(74, 111, 165, 0.1);
+        }
+        
+        /* Header */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .doctor-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .doctor-name {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .doctor-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .board-certification {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 25px;
+            border-radius: 30px;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Bar */
+        .contact-bar {
+            background: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .contact-numbers {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-icon {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+        }
+        
+        .contact-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(37, 211, 102, 0.3);
+        }
+        
+        .save-contact-btn {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .save-contact-btn:hover {
+            background: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(230, 57, 70, 0.3);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-icon:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Specialties Section */
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .specialty-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .specialty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .specialty-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+        
+        .specialty-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .specialty-list {
+            list-style: none;
+            text-align: right;
+            margin-top: 20px;
+        }
+        
+        .specialty-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .specialty-list li:before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            font-size: 1.1rem;
+        }
+        
+        .about-features {
+            flex: 1;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+        
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Ratings Section */
+        .ratings-container {
+            background: var(--light-color);
+            border-radius: 20px;
+            padding: 50px;
+            margin-top: 30px;
+        }
+        
+        .rating-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+        
+        .stars-rating {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .star {
+            font-size: 2.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .star:hover,
+        .star.active {
+            color: #ffc107;
+            transform: scale(1.2);
+        }
+        
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 auto;
+        }
+        
+        .submit-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(74, 111, 165, 0.3);
+        }
+        
+        .ratings-display {
+            margin-top: 50px;
+        }
+        
+        .rating-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border-right: 5px solid var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .rating-card:hover {
+            transform: translateX(-5px);
+        }
+        
+        .rating-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .rating-stars {
+            color: #ffc107;
+            font-size: 1.5rem;
+        }
+        
+        .rating-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .rating-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-info-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: var(--light-color);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .info-item:hover {
+            background: rgba(74, 111, 165, 0.05);
+            transform: translateX(5px);
+        }
+        
+        .info-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            width: 60px;
+            height: 60px;
+            background: rgba(74, 111, 165, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .location-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            transition: var(--transition);
+            text-decoration: none;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .location-btn:hover {
+            background: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(230, 57, 70, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(230, 57, 70, 0.3);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-links i {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .doctor-name {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+            }
+            
+            header {
+                padding: 100px 0 50px;
+            }
+            
+            .doctor-name {
+                font-size: 1.8rem;
+            }
+            
+            .doctor-title {
+                font-size: 1.2rem;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .contact-numbers {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .contact-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .scroll-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            background: #128C7E;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="en">English</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-pattern"></div>
+        <div class="container">
+            <div class="doctor-profile">
+                <div class="profile-image">
+                    <img src="https://i.imgur.com/K4bi57K.jpg" alt="د. لارا القم" id="doctorImage">
+                </div>
+                <h1 class="doctor-name" data-i18n="doctor_name">د. لارا القم</h1>
+                <p class="doctor-title" data-i18n="doctor_title">اختصاصية الطب النفسي وعلاج الإدمان</p>
+                <div class="board-certification">
+                    <i class="fas fa-certificate"></i>
+                    <span data-i18n="board_cert">البورد الأردني في الطب النفسي</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Bar -->
+    <div class="contact-bar">
+        <div class="container">
+            <div class="contact-numbers">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <span id="contact-phone1">07 9519 0061</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <span id="contact-phone2">0775001533</span>
+                </div>
+            </div>
+            
+            <div class="contact-actions">
+                <a href="https://wa.me/962795190061" target="_blank" class="action-btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-i18n="whatsapp_contact">تواصل عبر واتساب</span>
+                </a>
+                <button class="action-btn save-contact-btn" id="saveContactBtn">
+                    <i class="fas fa-save"></i>
+                    <span data-i18n="save_contact">حفظ جهة الاتصال</span>
+                </button>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/18Q6258wFr/?mibextid=wwXIfr" target="_blank" class="social-icon" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/dr.lara_alqam?igsh=MXJvYWN1MTRxeW1qeA==" target="_blank" class="social-icon" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Specialties Section -->
+    <section id="specialties">
+        <div class="container">
+            <h2 class="section-title" data-i18n="specialties_title">التخصصات</h2>
+            <div class="specialties-grid">
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="specialty-title" data-i18n="specialty1_title">الطب النفسي</h3>
+                    <p data-i18n="specialty1_desc">تشخيص وعلاج الاضطرابات النفسية المختلفة باستخدام أحدث الأساليب العلاجية.</p>
+                    <ul class="specialty-list">
+                        <li data-i18n="specialty1_item1">علاج الاكتئاب والقلق</li>
+                        <li data-i18n="specialty1_item2">اضطرابات المزاج</li>
+                        <li data-i18n="specialty1_item3">اضطرابات الشخصية</li>
+                        <li data-i18n="specialty1_item4">الاضطرابات النفسية الجسدية</li>
+                    </ul>
+                </div>
+                
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3 class="specialty-title" data-i18n="specialty2_title">علاج الإدمان</h3>
+                    <p data-i18n="specialty2_desc">برامج متكاملة لعلاج الإدمان بكافة أنواعه مع متابعة شاملة ودعم نفسي.</p>
+                    <ul class="specialty-list">
+                        <li data-i18n="specialty2_item1">إدمان المواد المخدرة</li>
+                        <li data-i18n="specialty2_item2">إدمان الكحول</li>
+                        <li data-i18n="specialty2_item3">إدمان الأدوية</li>
+                        <li data-i18n="specialty2_item4">الإدمان السلوكي</li>
+                    </ul>
+                </div>
+                
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="specialty-title" data-i18n="specialty3_title">الاستشارات النفسية</h3>
+                    <p data-i18n="specialty3_desc">تقديم الدعم النفسي والاستشارات للأفراد والأسر لتحسين جودة الحياة.</p>
+                    <ul class="specialty-list">
+                        <li data-i18n="specialty3_item1">استشارات أسرية وزوجية</li>
+                        <li data-i18n="specialty3_item2">إرشاد المراهقين</li>
+                        <li data-i18n="specialty3_item3">تطوير المهارات الحياتية</li>
+                        <li data-i18n="specialty3_item4">إدارة الضغوط النفسية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" style="background: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title" data-i18n="about_title">عن الدكتورة</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-i18n="about_text1" style="margin-bottom: 25px; font-size: 1.1rem;">
+                        د. لارا القم هي أخصائية معتمدة في الطب النفسي وعلاج الإدمان، حاصلة على البورد الأردني في الطب النفسي. تتمتع بخبرة واسعة في تشخيص وعلاج الاضطرابات النفسية المختلفة باستخدام أحدث الأساليب العلاجية المبنية على الأدلة العلمية.
+                    </p>
+                    <p data-i18n="about_text2" style="margin-bottom: 30px;">
+                        تلتزم د. لارا بتقديم رعاية نفسية شاملة ومتعاطفة تركز على المريض ككل، مع الحفاظ على أعلى معايير السرية والاحترافية. تهدف إلى مساعدة المرضى على استعادة توازنهم النفسي وتحسين جودة حياتهم.
+                    </p>
+                    <div class="contact-actions">
+                        <a href="#contact" class="action-btn" style="background: var(--primary-color); color: white;">
+                            <i class="fas fa-calendar-check"></i>
+                            <span data-i18n="book_appointment">حجز موعد</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fas fa-user-md"></i>
+                        <h4 data-i18n="feature1_title">خبرة مهنية</h4>
+                        <p data-i18n="feature1_desc">سنوات من الخبرة في مجال الطب النفسي</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-heartbeat"></i>
+                        <h4 data-i18n="feature2_title">نهج متكامل</h4>
+                        <p data-i18n="feature2_desc">علاج يشمل الجوانب النفسية والجسدية</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4 data-i18n="feature3_title">سرية تامة</h4>
+                        <p data-i18n="feature3_desc">الحفاظ على خصوصية المرضى وأسرارهم</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-handshake"></i>
+                        <h4 data-i18n="feature4_title">دعم مستمر</h4>
+                        <p data-i18n="feature4_desc">متابعة دائمة ودعم خلال رحلة العلاج</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ratings Section -->
+    <section id="ratings">
+        <div class="container">
+            <h2 class="section-title" data-i18n="ratings_title">تقييمات المرضى</h2>
+            <div class="ratings-container">
+                <div class="rating-form">
+                    <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary-color);" data-i18n="add_rating">أضف تقييمك</h3>
+                    <form id="ratingForm">
+                        <div class="form-group">
+                            <label for="ratingName" data-i18n="your_name">اسمك</label>
+                            <input type="text" id="ratingName" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="rating">التقييم</label>
+                            <div class="stars-rating" id="starsRating">
+                                <span class="star" data-value="1">★</span>
+                                <span class="star" data-value="2">★</span>
+                                <span class="star" data-value="3">★</span>
+                                <span class="star" data-value="4">★</span>
+                                <span class="star" data-value="5">★</span>
+                            </div>
+                            <input type="hidden" id="ratingValue" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="ratingComment" data-i18n="comment">تعليقك</label>
+                            <textarea id="ratingComment" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span data-i18n="submit_rating">إرسال التقييم</span>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="ratings-display">
+                    <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary-color);" data-i18n="recent_ratings">التقييمات الأخيرة</h3>
+                    <div id="ratingsList">
+                        <!-- Ratings will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title" data-i18n="contact_title">اتصل بنا</h2>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName" data-i18n="full_name">الاسم الكامل</label>
+                            <input type="text" id="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone" data-i18n="phone_number">رقم الهاتف</label>
+                            <input type="tel" id="contactPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactService" data-i18n="service_type">نوع الاستشارة</label>
+                            <select id="contactService" required>
+                                <option value="" data-i18n="select_service">اختر نوع الاستشارة</option>
+                                <option value="psychiatry" data-i18n="service_psych">استشارة نفسية</option>
+                                <option value="addiction" data-i18n="service_add">علاج إدمان</option>
+                                <option value="family" data-i18n="service_family">استشارة أسرية</option>
+                                <option value="followup" data-i18n="service_follow">متابعة حالة</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage" data-i18n="message">الرسالة</label>
+                            <textarea id="contactMessage" rows="4" required data-i18n="message_placeholder">اكتب رسالتك هنا...</textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span data-i18n="send_message">إرسال الرسالة</span>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info-box">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="call_us">اتصل بنا</h4>
+                            <p>07 9519 0061</p>
+                            <p>0775001533</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="our_location">موقع العيادة</h4>
+                            <p data-i18n="location_text">عمان، الأردن</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="working_hours_title">ساعات العمل</h4>
+                            <p data-i18n="working_hours_full">الأحد - الخميس: 09:00 ص - 07:00 م<br>الجمعة: 10:00 ص - 02:00 م<br>السبت: مغلق</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://maps.app.goo.gl/6VpTk7hQg5357fuq7?g_st=ic" target="_blank" class="location-btn">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span data-i18n="view_location">فتح الموقع على الخريطة</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-i18n="doctor_name">د. لارا القم</h3>
+                    <p data-i18n="footer_description">أخصائية الطب النفسي وعلاج الإدمان، حاصلة على البورد الأردني في الطب النفسي. تقدم خدمات تشخيص وعلاج الاضطرابات النفسية وبرامج علاج الإدمان.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-i18n="quick_links">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#specialties"><i class="fas fa-chevron-left"></i> <span data-i18n="specialties">التخصصات</span></a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-left"></i> <span data-i18n="about">عن الدكتورة</span></a></li>
+                        <li><a href="#ratings"><i class="fas fa-chevron-left"></i> <span data-i18n="ratings">التقييمات</span></a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-left"></i> <span data-i18n="contact">اتصل بنا</span></a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-i18n="contact_info">معلومات الاتصال</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:0795190061"><i class="fas fa-phone-alt"></i> 07 9519 0061</a></li>
+                        <li><a href="tel:0775001533"><i class="fas fa-phone-alt"></i> 0775001533</a></li>
+                        <li><a href="https://www.facebook.com/share/18Q6258wFr/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="https://www.instagram.com/dr.lara_alqam?igsh=MXJvYWN1MTRxeW1qeA==" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 د. لارا القم - أخصائية الطب النفسي وعلاج الإدمان. <span data-i18n="rights_reserved">جميع الحقوق محفوظة</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop" style="display: none;">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/962795190061" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Language Management
+        const translations = {
+            ar: {
+                // Header
+                doctor_name: "د. لارا القم",
+                doctor_title: "اختصاصية الطب النفسي وعلاج الإدمان",
+                board_cert: "البورد الأردني في الطب النفسي",
+                
+                // Contact Bar
+                whatsapp_contact: "تواصل عبر واتساب",
+                save_contact: "حفظ جهة الاتصال",
+                
+                // Specialties
+                specialties_title: "التخصصات",
+                specialty1_title: "الطب النفسي",
+                specialty1_desc: "تشخيص وعلاج الاضطرابات النفسية المختلفة باستخدام أحدث الأساليب العلاجية.",
+                specialty1_item1: "علاج الاكتئاب والقلق",
+                specialty1_item2: "اضطرابات المزاج",
+                specialty1_item3: "اضطرابات الشخصية",
+                specialty1_item4: "الاضطرابات النفسية الجسدية",
+                specialty2_title: "علاج الإدمان",
+                specialty2_desc: "برامج متكاملة لعلاج الإدمان بكافة أنواعه مع متابعة شاملة ودعم نفسي.",
+                specialty2_item1: "إدمان المواد المخدرة",
+                specialty2_item2: "إدمان الكحول",
+                specialty2_item3: "إدمان الأدوية",
+                specialty2_item4: "الإدمان السلوكي",
+                specialty3_title: "الاستشارات النفسية",
+                specialty3_desc: "تقديم الدعم النفسي والاستشارات للأفراد والأسر لتحسين جودة الحياة.",
+                specialty3_item1: "استشارات أسرية وزوجية",
+                specialty3_item2: "إرشاد المراهقين",
+                specialty3_item3: "تطوير المهارات الحياتية",
+                specialty3_item4: "إدارة الضغوط النفسية",
+                
+                // About
+                about_title: "عن الدكتورة",
+                about_text1: "د. لارا القم هي أخصائية معتمدة في الطب النفسي وعلاج الإدمان، حاصلة على البورد الأردني في الطب النفسي. تتمتع بخبرة واسعة في تشخيص وعلاج الاضطرابات النفسية المختلفة باستخدام أحدث الأساليب العلاجية المبنية على الأدلة العلمية.",
+                about_text2: "تلتزم د. لارا بتقديم رعاية نفسية شاملة ومتعاطفة تركز على المريض ككل، مع الحفاظ على أعلى معايير السرية والاحترافية. تهدف إلى مساعدة المرضى على استعادة توازنهم النفسي وتحسين جودة حياتهم.",
+                book_appointment: "حجز موعد",
+                feature1_title: "خبرة مهنية",
+                feature1_desc: "سنوات من الخبرة في مجال الطب النفسي",
+                feature2_title: "نهج متكامل",
+                feature2_desc: "علاج يشمل الجوانب النفسية والجسدية",
+                feature3_title: "سرية تامة",
+                feature3_desc: "الحفاظ على خصوصية المرضى وأسرارهم",
+                feature4_title: "دعم مستمر",
+                feature4_desc: "متابعة دائمة ودعم خلال رحلة العلاج",
+                
+                // Ratings
+                ratings_title: "تقييمات المرضى",
+                add_rating: "أضف تقييمك",
+                your_name: "اسمك",
+                rating: "التقييم",
+                comment: "تعليقك",
+                submit_rating: "إرسال التقييم",
+                recent_ratings: "التقييمات الأخيرة",
+                
+                // Contact
+                contact_title: "اتصل بنا",
+                full_name: "الاسم الكامل",
+                phone_number: "رقم الهاتف",
+                service_type: "نوع الاستشارة",
+                select_service: "اختر نوع الاستشارة",
+                service_psych: "استشارة نفسية",
+                service_add: "علاج إدمان",
+                service_family: "استشارة أسرية",
+                service_follow: "متابعة حالة",
+                message: "الرسالة",
+                message_placeholder: "اكتب رسالتك هنا...",
+                send_message: "إرسال الرسالة",
+                call_us: "اتصل بنا",
+                our_location: "موقع العيادة",
+                location_text: "عمان، الأردن",
+                working_hours_title: "ساعات العمل",
+                working_hours_full: "الأحد - الخميس: 09:00 ص - 07:00 م\nالجمعة: 10:00 ص - 02:00 م\nالسبت: مغلق",
+                view_location: "فتح الموقع على الخريطة",
+                
+                // Footer
+                footer_description: "أخصائية الطب النفسي وعلاج الإدمان، حاصلة على البورد الأردني في الطب النفسي. تقدم خدمات تشخيص وعلاج الاضطرابات النفسية وبرامج علاج الإدمان.",
+                quick_links: "روابط سريعة",
+                specialties: "التخصصات",
+                about: "عن الدكتورة",
+                ratings: "التقييمات",
+                contact: "اتصل بنا",
+                contact_info: "معلومات الاتصال",
+                rights_reserved: "جميع الحقوق محفوظة"
+            },
+            en: {
+                // Header
+                doctor_name: "Dr. Lara Al-Qam",
+                doctor_title: "Specialist in Psychiatry & Addiction",
+                board_cert: "Jordanian Board in Psychiatry",
+                
+                // Contact Bar
+                whatsapp_contact: "Contact via WhatsApp",
+                save_contact: "Save Contact",
+                
+                // Specialties
+                specialties_title: "Specialties",
+                specialty1_title: "Psychiatry",
+                specialty1_desc: "Diagnosis and treatment of various mental disorders using the latest therapeutic methods.",
+                specialty1_item1: "Depression and anxiety treatment",
+                specialty1_item2: "Mood disorders",
+                specialty1_item3: "Personality disorders",
+                specialty1_item4: "Psychosomatic disorders",
+                specialty2_title: "Addiction Treatment",
+                specialty2_desc: "Comprehensive programs for treating all types of addiction with full follow-up and psychological support.",
+                specialty2_item1: "Drug addiction",
+                specialty2_item2: "Alcohol addiction",
+                specialty2_item3: "Medication addiction",
+                specialty2_item4: "Behavioral addiction",
+                specialty3_title: "Psychological Counseling",
+                specialty3_desc: "Providing psychological support and counseling for individuals and families to improve quality of life.",
+                specialty3_item1: "Family and marital counseling",
+                specialty3_item2: "Adolescent guidance",
+                specialty3_item3: "Life skills development",
+                specialty3_item4: "Stress management",
+                
+                // About
+                about_title: "About the Doctor",
+                about_text1: "Dr. Lara Al-Qam is a certified specialist in psychiatry and addiction treatment, holding the Jordanian Board in Psychiatry. She has extensive experience in diagnosing and treating various mental disorders using the latest evidence-based therapeutic methods.",
+                about_text2: "Dr. Lara is committed to providing comprehensive and compassionate mental health care that focuses on the patient as a whole, while maintaining the highest standards of confidentiality and professionalism. She aims to help patients restore their psychological balance and improve their quality of life.",
+                book_appointment: "Book Appointment",
+                feature1_title: "Professional Experience",
+                feature1_desc: "Years of experience in psychiatry",
+                feature2_title: "Integrated Approach",
+                feature2_desc: "Treatment covering psychological and physical aspects",
+                feature3_title: "Complete Confidentiality",
+                feature3_desc: "Maintaining patient privacy and secrets",
+                feature4_title: "Continuous Support",
+                feature4_desc: "Ongoing follow-up and support during treatment journey",
+                
+                // Ratings
+                ratings_title: "Patient Ratings",
+                add_rating: "Add Your Rating",
+                your_name: "Your Name",
+                rating: "Rating",
+                comment: "Your Comment",
+                submit_rating: "Submit Rating",
+                recent_ratings: "Recent Ratings",
+                
+                // Contact
+                contact_title: "Contact Us",
+                full_name: "Full Name",
+                phone_number: "Phone Number",
+                service_type: "Consultation Type",
+                select_service: "Select Consultation Type",
+                service_psych: "Psychiatric Consultation",
+                service_add: "Addiction Treatment",
+                service_family: "Family Counseling",
+                service_follow: "Follow-up",
+                message: "Message",
+                message_placeholder: "Write your message here...",
+                send_message: "Send Message",
+                call_us: "Call Us",
+                our_location: "Clinic Location",
+                location_text: "Amman, Jordan",
+                working_hours_title: "Working Hours",
+                working_hours_full: "Sunday - Thursday: 09:00 AM - 07:00 PM\nFriday: 10:00 AM - 02:00 PM\nSaturday: Closed",
+                view_location: "Open Location on Map",
+                
+                // Footer
+                footer_description: "Specialist in Psychiatry and Addiction Treatment, holding the Jordanian Board in Psychiatry. Provides diagnosis and treatment services for mental disorders and addiction treatment programs.",
+                quick_links: "Quick Links",
+                specialties: "Specialties",
+                about: "About the Doctor",
+                ratings: "Ratings",
+                contact: "Contact Us",
+                contact_info: "Contact Information",
+                rights_reserved: "All rights reserved"
+            }
+        };
+
+        let currentLang = 'ar';
+        
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        if (element.id !== 'ratingName' && element.id !== 'ratingComment' && 
+                            element.id !== 'contactName' && element.id !== 'contactPhone' && 
+                            element.id !== 'contactMessage') {
+                            element.placeholder = translations[lang][key];
+                        }
+                    } else if (element.tagName === 'OPTION') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // Update direction
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+            
+            // Save language preference
+            localStorage.setItem('drLaraLanguage', lang);
+            
+            // Reload ratings to update language
+            loadRatings();
+        }
+        
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('drLaraLanguage') || 'ar';
+            setLanguage(savedLang);
+            
+            // Load ratings
+            loadRatings();
+            
+            // Initialize scroll to top button
+            initScrollTop();
+            
+            // Handle image loading error
+            document.getElementById('doctorImage').addEventListener('error', function() {
+                this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="100" fill="%234a6fa5"/><text x="100" y="110" font-family="Arial" font-size="50" fill="white" text-anchor="middle">DR</text></svg>';
+            });
+        });
+        
+        // Language switcher event
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.dataset.lang);
+            });
+        });
+        
+        // Save Contact Functionality
+        document.getElementById('saveContactBtn').addEventListener('click', () => {
+            createAndDownloadVCard();
+        });
+        
+        function createAndDownloadVCard() {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Dr. Lara Al-Qam - Psychiatry & Addiction Specialist
+ORG:Psychiatry & Addiction Clinic
+TEL;TYPE=CELL,VOICE:962795190061
+TEL;TYPE=CELL,VOICE:962775001533
+URL:https://www.facebook.com/share/18Q6258wFr/
+URL:https://www.instagram.com/dr.lara_alqam
+ADR:;;Amman;;Jordan;
+EMAIL:contact@drlara.com
+NOTE:Jordanian Board in Psychiatry - Specialist in Psychiatry & Addiction Treatment
+END:VCARD`;
+            
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Dr. Lara Al-Qam.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            // Show confirmation
+            showNotification(currentLang === 'ar' 
+                ? 'تم حفظ جهة الاتصال بنجاح!' 
+                : 'Contact saved successfully!');
+        }
+        
+        // Ratings System
+        let ratings = JSON.parse(localStorage.getItem('drLaraRatings')) || [];
+        
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star');
+        let selectedRating = 0;
+        
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = parseInt(star.dataset.value);
+                document.getElementById('ratingValue').value = selectedRating;
+                
+                stars.forEach(s => {
+                    s.classList.remove('active');
+                    if (parseInt(s.dataset.value) <= selectedRating) {
+                        s.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // Rating form submission
+        document.getElementById('ratingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('ratingName').value;
+            const comment = document.getElementById('ratingComment').value;
+            const rating = selectedRating;
+            
+            if (rating === 0) {
+                showNotification(currentLang === 'ar' 
+                    ? 'الرجاء اختيار تقييم' 
+                    : 'Please select a rating');
+                return;
+            }
+            
+            if (!name.trim() || !comment.trim()) {
+                showNotification(currentLang === 'ar' 
+                    ? 'الرجاء ملء جميع الحقول' 
+                    : 'Please fill all fields');
+                return;
+            }
+            
+            const newRating = {
+                id: Date.now(),
+                name: name.trim(),
+                rating: rating,
+                comment: comment.trim(),
+                date: new Date().toLocaleDateString(currentLang === 'ar' ? 'ar-EG' : 'en-US'),
+                lang: currentLang
+            };
+            
+            ratings.unshift(newRating);
+            localStorage.setItem('drLaraRatings', JSON.stringify(ratings));
+            
+            // Reset form
+            document.getElementById('ratingForm').reset();
+            selectedRating = 0;
+            document.getElementById('ratingValue').value = 0;
+            stars.forEach(s => s.classList.remove('active'));
+            
+            // Reload ratings
+            loadRatings();
+            
+            // Show success message
+            showNotification(currentLang === 'ar' 
+                ? 'شكراً لتقييمك! تم إضافة التقييم بنجاح.' 
+                : 'Thank you for your rating! Rating added successfully.');
+        });
+        
+        function loadRatings() {
+            const ratingsList = document.getElementById('ratingsList');
+            ratingsList.innerHTML = '';
+            
+            if (ratings.length === 0) {
+                ratingsList.innerHTML = `
+                    <div class="rating-card" style="text-align: center; color: #666;">
+                        <i class="far fa-star" style="font-size: 3rem; margin-bottom: 20px; display: block; color: #ddd;"></i>
+                        <p>${currentLang === 'ar' 
+                            ? 'لا توجد تقييمات بعد. كن أول من يقيم!' 
+                            : 'No ratings yet. Be the first to rate!'}</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Show only recent 5 ratings
+            const recentRatings = ratings.slice(0, 5);
+            
+            recentRatings.forEach(rating => {
+                const ratingCard = document.createElement('div');
+                ratingCard.className = 'rating-card fade-in';
+                
+                const starsHTML = '★'.repeat(rating.rating) + '☆'.repeat(5 - rating.rating);
+                
+                // Use the language of the rating or current language
+                const displayName = rating.name;
+                const displayComment = rating.comment;
+                const displayDate = rating.date;
+                
+                ratingCard.innerHTML = `
+                    <div class="rating-header">
+                        <div>
+                            <span class="rating-name">${displayName}</span>
+                        </div>
+                        <div class="rating-stars">${starsHTML}</div>
+                    </div>
+                    <div class="rating-header">
+                        <div class="rating-date">
+                            <i class="far fa-calendar"></i> ${displayDate}
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; line-height: 1.8;">${displayComment}</p>
+                `;
+                
+                ratingsList.appendChild(ratingCard);
+            });
+        }
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('contactName').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const service = document.getElementById('contactService').value;
+            const message = document.getElementById('contactMessage').value.trim();
+            
+            if (!name || !phone || !service || !message) {
+                showNotification(currentLang === 'ar' 
+                    ? 'الرجاء ملء جميع الحقول المطلوبة' 
+                    : 'Please fill all required fields');
+                return;
+            }
+            
+            // Map service values to text
+            const serviceTextMap = {
+                psychiatry: currentLang === 'ar' ? 'استشارة نفسية' : 'Psychiatric Consultation',
+                addiction: currentLang === 'ar' ? 'علاج إدمان' : 'Addiction Treatment',
+                family: currentLang === 'ar' ? 'استشارة أسرية' : 'Family Counseling',
+                followup: currentLang === 'ar' ? 'متابعة حالة' : 'Follow-up'
+            };
+            
+            const serviceText = serviceTextMap[service] || service;
+            
+            // Create WhatsApp message
+            const whatsappMessage = `*${currentLang === 'ar' ? 'طلب موعد جديد' : 'New Appointment Request'}*%0A%0A*${currentLang === 'ar' ? 'الاسم:' : 'Name:'}* ${name}%0A*${currentLang === 'ar' ? 'الهاتف:' : 'Phone:'}* ${phone}%0A*${currentLang === 'ar' ? 'نوع الاستشارة:' : 'Consultation Type:'}* ${serviceText}%0A*${currentLang === 'ar' ? 'الرسالة:' : 'Message:'}* ${message}`;
+            
+            // Open WhatsApp
+            const whatsappURL = `https://wa.me/962795190061?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappURL, '_blank');
+            
+            // Save contact to local storage
+            const contacts = JSON.parse(localStorage.getItem('drLaraContacts')) || [];
+            contacts.push({
+                name: name,
+                phone: phone,
+                service: serviceText,
+                message: message,
+                date: new Date().toISOString(),
+                lang: currentLang
+            });
+            localStorage.setItem('drLaraContacts', JSON.stringify(contacts));
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            // Show confirmation
+            showNotification(currentLang === 'ar' 
+                ? 'تم إرسال طلبك! سيتم فتح واتساب لإتمام العملية.' 
+                : 'Your request has been sent! WhatsApp will open to complete the process.');
+        });
+        
+        // Scroll to top functionality
+        function initScrollTop() {
+            const scrollTopBtn = document.getElementById('scrollTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.style.display = 'flex';
+                } else {
+                    scrollTopBtn.style.display = 'none';
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Notification function
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%) translateY(-100px);
+                background: var(--primary-color);
+                color: white;
+                padding: 15px 30px;
+                border-radius: 30px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 10000;
+                transition: transform 0.3s ease;
+                font-weight: 600;
+                text-align: center;
+                min-width: 300px;
+                max-width: 90%;
+            `;
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(-50%) translateY(0)';
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(-50%) translateY(-100px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Add smooth scrolling to anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add hover effects to specialty cards
+        document.querySelectorAll('.specialty-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Initialize with some sample ratings if empty
+        if (ratings.length === 0) {
+            ratings = [
+                {
+                    id: 1,
+                    name: 'أحمد محمد',
+                    rating: 5,
+                    comment: 'دكتورة متميزة جداً ومتعاطفة، ساعدتني في تجاوز أزمة الاكتئاب التي مررت بها.',
+                    date: '20/03/2023',
+                    lang: 'ar'
+                },
+                {
+                    id: 2,
+                    name: 'سلمى خالد',
+                    rating: 4,
+                    comment: 'معالجة محترفة، تتابع الحالة بدقة وتقدم النصائح المناسبة.',
+                    date: '15/04/2023',
+                    lang: 'ar'
+                },
+                {
+                    id: 3,
+                    name: 'Omar Ali',
+                    rating: 5,
+                    comment: 'Professional and compassionate doctor. Highly recommended for addiction treatment.',
+                    date: '05/05/2023',
+                    lang: 'en'
+                }
+            ];
+            localStorage.setItem('drLaraRatings', JSON.stringify(ratings));
+            loadRatings();
+        }
+    </script>
+</body>
+</html>
