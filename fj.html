@@ -3,33 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بطاقة NFC 3D</title>
+<title>3D Cards</title>
 
 <style>
-*{box-sizing:border-box}
-body{
+/* لا خلفية نهائيًا */
+html,body{
   margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background: radial-gradient(circle at top,#1d2b52,#0b0f19);
-  overflow:hidden;
-  font-family:Tahoma,Arial;
+  padding:0;
+  background:transparent;
 }
 
-/* ===== SCENE ===== */
+/* container */
+.cards{
+  display:flex;
+  gap:40px;
+  padding:20px;
+}
+
+/* scene */
 .scene{
   perspective:1600px;
 }
 
-/* ===== CARD ===== */
+/* card */
 .card{
   width:320px;
   height:200px;
-  position:relative;
   transform-style:preserve-3d;
-  animation: autoRotate 14s linear infinite;
+  animation:autoRotate 14s linear infinite;
   cursor:grab;
 }
 
@@ -37,10 +38,9 @@ body{
 .card img{
   width:100%;
   height:100%;
-  border-radius:18px;
   object-fit:cover;
-  box-shadow:
-    0 35px 80px rgba(0,0,0,.7);
+  border-radius:18px;
+  box-shadow:0 25px 60px rgba(0,0,0,.45);
 }
 
 /* shine */
@@ -51,73 +51,89 @@ body{
   border-radius:18px;
   background:linear-gradient(
     120deg,
-    transparent 20%,
+    transparent 25%,
     rgba(255,255,255,.35),
-    transparent 80%
+    transparent 75%
   );
-  transform:translateX(-100%);
-  animation: shine 3.5s infinite;
+  transform:translateX(-120%);
+  animation:shine 3.5s infinite;
   pointer-events:none;
 }
 
-/* ===== ANIMATIONS ===== */
+/* animations */
 @keyframes autoRotate{
   from{ transform:rotateY(0deg); }
   to{ transform:rotateY(360deg); }
 }
-
 @keyframes shine{
-  from{ transform:translateX(-100%); }
-  to{ transform:translateX(100%); }
+  from{ transform:translateX(-120%); }
+  to{ transform:translateX(120%); }
 }
 </style>
 </head>
 
 <body>
 
-<div class="scene">
-  <div class="card" id="card">
-    <!-- غيّر رابط الصورة لأي بطاقة -->
-    <img src="https://i.imgur.com/dlMnhHn.png" alt="NFC Card">
+<div class="cards">
+
+  <!-- CARD 1 -->
+  <div class="scene">
+    <div class="card">
+      <img src="https://i.imgur.com/uJFbo0i.png">
+    </div>
   </div>
+
+  <!-- CARD 2 -->
+  <div class="scene">
+    <div class="card">
+      <img src="https://i.imgur.com/esO375h.png">
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="scene">
+    <div class="card">
+      <img src="https://i.imgur.com/xv5IKkY.png">
+    </div>
+  </div>
+
 </div>
 
 <script>
-const card = document.getElementById('card');
-let isDown=false;
-let lastX=0,lastY=0;
-let rotX=0, rotY=0;
+document.querySelectorAll('.card').forEach(card=>{
+  let isDown=false, lastX=0, lastY=0;
+  let rotX=0, rotY=0;
 
-card.addEventListener('pointerdown',e=>{
-  isDown=true;
-  card.style.animationPlayState='paused';
-  lastX=e.clientX;
-  lastY=e.clientY;
-  card.setPointerCapture(e.pointerId);
-});
+  card.addEventListener('pointerdown',e=>{
+    isDown=true;
+    card.style.animationPlayState='paused';
+    lastX=e.clientX;
+    lastY=e.clientY;
+    card.setPointerCapture(e.pointerId);
+  });
 
-window.addEventListener('pointermove',e=>{
-  if(!isDown) return;
+  window.addEventListener('pointermove',e=>{
+    if(!isDown) return;
 
-  const dx = e.clientX - lastX;
-  const dy = e.clientY - lastY;
+    const dx=e.clientX-lastX;
+    const dy=e.clientY-lastY;
 
-  rotY += dx * 0.4;
-  rotX -= dy * 0.3;
+    rotY += dx*0.4;
+    rotX -= dy*0.3;
+    rotX = Math.max(-25,Math.min(25,rotX));
 
-  rotX = Math.max(-25, Math.min(25, rotX));
+    card.style.transform=
+      `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
 
-  card.style.transform =
-    `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    lastX=e.clientX;
+    lastY=e.clientY;
+  });
 
-  lastX=e.clientX;
-  lastY=e.clientY;
-});
-
-window.addEventListener('pointerup',()=>{
-  if(!isDown) return;
-  isDown=false;
-  card.style.animationPlayState='running';
+  window.addEventListener('pointerup',()=>{
+    if(!isDown) return;
+    isDown=false;
+    card.style.animationPlayState='running';
+  });
 });
 </script>
 
