@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بطاقات NFC</title>
+<title>بطاقات NFC الذكية</title>
 
 <style>
 *{box-sizing:border-box}
@@ -13,7 +13,7 @@ html,body{
   font-family:Tahoma,Arial;
 }
 
-/* ===== خلفية خرافية ===== */
+/* ===== خلفية فخمة ===== */
 body{
   min-height:100vh;
   background:
@@ -24,18 +24,19 @@ body{
   color:#fff;
 }
 
-/* ===== عنوان ===== */
+/* ===== العنوان ===== */
 header{
   text-align:center;
-  padding:50px 20px 20px;
+  padding:60px 20px 30px;
 }
 header h1{
   margin:0;
   font-size:32px;
 }
 header p{
-  margin-top:8px;
+  margin-top:10px;
   opacity:.85;
+  font-size:15px;
 }
 
 /* ===== GRID ===== */
@@ -49,13 +50,10 @@ header p{
   perspective:1600px;
 }
 
-/* ===== CARD WRAP ===== */
+/* ===== CARD ===== */
 .card-wrap{
   text-align:center;
-  background:transparent;
 }
-
-/* ===== CARD ===== */
 .card{
   width:300px;
   height:190px;
@@ -64,22 +62,16 @@ header p{
   transform-style:preserve-3d;
   animation:autoRotate 18s linear infinite;
   cursor:grab;
-
-  background:transparent;
   border-radius:18px;
   overflow:hidden;
-
+  background:transparent;
   box-shadow:0 30px 70px rgba(0,0,0,.6);
 }
-
-/* صورة البطاقة */
 .card img{
   width:100%;
   height:100%;
   object-fit:cover;
   display:block;
-
-  /* قص أي أبيض بالحواف */
   transform:scale(1.05);
 }
 
@@ -102,14 +94,14 @@ header p{
 
 /* النص */
 .label{
-  margin-top:16px;
-  font-size:16px;
+  margin-top:18px;
+  font-size:17px;
   font-weight:bold;
 }
 .desc{
-  margin-top:6px;
+  margin-top:8px;
   font-size:14px;
-  line-height:1.7;
+  line-height:1.8;
   opacity:.85;
 }
 
@@ -128,57 +120,62 @@ header p{
 <body>
 
 <header>
-  <h1>مؤسسة رحلة المستقبل للبرمجة</h1>
-  <p>بطاقات NFC ذكية بتصميم عصري ثلاثي الأبعاد</p>
+  <h1>بطاقات NFC الذكية</h1>
+  <p>لمسة واحدة تفتح كل شغلك… بأسلوب فخم واحترافي</p>
 </header>
 
 <section class="cards">
 
-  <!-- بطاقة سوداء -->
+  <!-- بطاقة 1 -->
   <div class="card-wrap">
     <div class="card">
-      <img src="https://i.imgur.com/xv5IKkY.png">
+      <img src="https://i.imgur.com/C9RdPwl.png">
     </div>
     <div class="label">بطاقة NFC سوداء فاخرة</div>
     <div class="desc">
-      لون أسود أنيق بملمس ناعم، تعكس القوة والفخامة
-      وتناسب أصحاب الذوق الرفيع.
+      تصميم أسود أنيق يعكس القوة والفخامة،  
+      مناسبة لرجال الأعمال وأصحاب الذوق الرفيع.  
+      لمسة واحدة تكفي لتفتح كل حساباتك وروابطك باحتراف.
     </div>
   </div>
 
-  <!-- بطاقة خشبية -->
+  <!-- بطاقة 2 -->
   <div class="card-wrap">
     <div class="card">
-      <img src="https://i.imgur.com/esO375h.png">
+      <img src="https://i.imgur.com/ibFHlmI.png">
     </div>
     <div class="label">بطاقة NFC خشبية</div>
     <div class="desc">
-      تصميم طبيعي ودافئ يعكس البساطة والاحتراف،
-      مثالية للعلامات التجارية العصرية.
+      مظهر طبيعي ودافئ يجمع بين البساطة والتميّز،  
+      خيار مثالي للعلامات التجارية العصرية  
+      ولمحبي اللمسة المختلفة.
     </div>
   </div>
 
-  <!-- بطاقة نحاسية -->
+  <!-- بطاقة 3 -->
   <div class="card-wrap">
     <div class="card">
-      <img src="https://i.imgur.com/uJFbo0i.png">
+      <img src="https://i.imgur.com/tiWuVaT.png">
     </div>
     <div class="label">بطاقة NFC نحاسية</div>
     <div class="desc">
-      لمسة نحاسية فاخرة تمنح حضورًا قويًا،
-      مناسبة لرواد الأعمال والشخصيات المؤثرة.
+      لمسة نحاسية فاخرة تمنحك حضورًا قويًا  
+      وتترك انطباعًا لا يُنسى من أول لقاء.  
+      مناسبة للاجتماعات والعلاقات التجارية.
     </div>
   </div>
 
-  <!-- بطاقة معدنية -->
+  <!-- بطاقة المعدن -->
   <div class="card-wrap">
     <div class="card">
       <img src="https://i.imgur.com/dlMnhHn.png">
     </div>
     <div class="label">بطاقة NFC معدنية</div>
     <div class="desc">
-      خامة معدنية عصرية بلمسة تقنية،
-      مثالية للشركات الحديثة ورواد التكنولوجيا.
+      بطاقة معدنية فخمة بسعر مناسب،  
+      لمسة واحدة تخليك تدخل على كل شغلك وحساباتك.  
+      متينة، أنيقة، مع **ضمان مدى الحياة**،  
+      الخيار الأمثل لرواد الأعمال والشركات الحديثة.
     </div>
   </div>
 
