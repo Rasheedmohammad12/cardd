@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>عرض بطاقات NFC</title>
+<title>بطاقات NFC</title>
 
 <style>
 *{box-sizing:border-box}
@@ -15,59 +15,51 @@ html,body{
 
 /* ===== خلفية خرافية ===== */
 body{
+  min-height:100vh;
   background:
     radial-gradient(1200px 600px at 50% -20%, #3b6cff55, transparent 60%),
     radial-gradient(800px 500px at 10% 80%, #00ffd533, transparent 60%),
     radial-gradient(900px 500px at 90% 80%, #ff00cc33, transparent 60%),
     linear-gradient(180deg, #0b0f19, #05070d);
   color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 /* ===== عنوان ===== */
 header{
+  padding:50px 20px 30px;
   text-align:center;
-  padding:50px 20px 20px;
 }
 header h1{
   margin:0;
-  font-size:30px;
+  font-size:32px;
 }
 header p{
   margin-top:8px;
   opacity:.85;
 }
 
-/* ===== GRID ===== */
-.cards{
-  max-width:1200px;
-  margin:0 auto;
-  padding:60px 40px 120px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:60px;
+/* ===== العرض ===== */
+.scene{
   perspective:1600px;
+  padding-bottom:100px;
 }
 
-/* ===== CARD ===== */
-.card-wrap{
-  text-align:center;
-}
 .card{
-  width:320px;
-  height:200px;
-  margin:0 auto;
-  position:relative;
+  width:900px;
+  max-width:95vw;
   transform-style:preserve-3d;
-  animation:autoRotate 16s linear infinite;
+  animation:autoRotate 18s linear infinite;
   cursor:grab;
-  border-radius:18px;
+  border-radius:22px;
   overflow:hidden;
-  box-shadow:0 40px 90px rgba(0,0,0,.65);
+  box-shadow:0 50px 120px rgba(0,0,0,.65);
 }
+
 .card img{
   width:100%;
-  height:100%;
-  object-fit:cover;
   display:block;
 }
 
@@ -76,7 +68,7 @@ header p{
   content:"";
   position:absolute;
   inset:0;
-  border-radius:18px;
+  border-radius:22px;
   background:linear-gradient(
     120deg,
     transparent 30%,
@@ -84,15 +76,8 @@ header p{
     transparent 70%
   );
   transform:translateX(-120%);
-  animation:shine 4s infinite;
+  animation:shine 4.5s infinite;
   pointer-events:none;
-}
-
-/* اسم البطاقة */
-.label{
-  margin-top:16px;
-  font-size:15px;
-  opacity:.9;
 }
 
 /* ===== Animations ===== */
@@ -111,72 +96,42 @@ header p{
 
 <header>
   <h1>مؤسسة رحلة المستقبل للبرمجة</h1>
-  <p>عرض بطاقات NFC ثلاثية الأبعاد</p>
+  <p>تصميم وعرض بطاقات NFC احترافية</p>
 </header>
 
-<section class="cards">
-
-  <!-- بطاقة نحاسية -->
-  <div class="card-wrap">
-    <div class="card">
-      <img src="https://i.imgur.com/uJFbo0i.png">
-    </div>
-    <div class="label">بطاقة NFC نحاسية</div>
+<div class="scene">
+  <div class="card" id="card">
+    <!-- صورة البطاقات الأربع -->
+    <img src="https://i.imgur.com/zfzOg2Q.png" alt="NFC Cards">
   </div>
-
-  <!-- بطاقة خشبية -->
-  <div class="card-wrap">
-    <div class="card">
-      <img src="https://i.imgur.com/esO375h.png">
-    </div>
-    <div class="label">بطاقة NFC خشبية</div>
-  </div>
-
-  <!-- بطاقة سوداء -->
-  <div class="card-wrap">
-    <div class="card">
-      <img src="https://i.imgur.com/xv5IKkY.png">
-    </div>
-    <div class="label">بطاقة NFC سوداء فاخرة</div>
-  </div>
-
-  <!-- بطاقة معدنية -->
-  <div class="card-wrap">
-    <div class="card">
-      <img src="https://i.imgur.com/dlMnhHn.png">
-    </div>
-    <div class="label">بطاقة NFC معدنية</div>
-  </div>
-
-</section>
+</div>
 
 <script>
-document.querySelectorAll('.card').forEach(card=>{
-  let down=false, sx=0, sy=0, rx=0, ry=0;
+const card = document.getElementById('card');
+let down=false, sx=0, sy=0, rx=0, ry=0;
 
-  card.addEventListener('pointerdown',e=>{
-    down=true;
-    card.style.animationPlayState='paused';
-    sx=e.clientX; sy=e.clientY;
-    card.setPointerCapture(e.pointerId);
-  });
+card.addEventListener('pointerdown',e=>{
+  down=true;
+  card.style.animationPlayState='paused';
+  sx=e.clientX; sy=e.clientY;
+  card.setPointerCapture(e.pointerId);
+});
 
-  window.addEventListener('pointermove',e=>{
-    if(!down) return;
-    const dx=e.clientX-sx;
-    const dy=e.clientY-sy;
-    ry+=dx*0.4;
-    rx-=dy*0.3;
-    rx=Math.max(-25,Math.min(25,rx));
-    card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
-    sx=e.clientX; sy=e.clientY;
-  });
+window.addEventListener('pointermove',e=>{
+  if(!down) return;
+  const dx=e.clientX-sx;
+  const dy=e.clientY-sy;
+  ry+=dx*0.35;
+  rx-=dy*0.25;
+  rx=Math.max(-20,Math.min(20,rx));
+  card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+  sx=e.clientX; sy=e.clientY;
+});
 
-  window.addEventListener('pointerup',()=>{
-    if(!down) return;
-    down=false;
-    card.style.animationPlayState='running';
-  });
+window.addEventListener('pointerup',()=>{
+  if(!down) return;
+  down=false;
+  card.style.animationPlayState='running';
 });
 </script>
 
