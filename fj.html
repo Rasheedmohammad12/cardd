@@ -45,36 +45,43 @@ header p{
   padding:60px 40px 120px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:60px;
+  gap:70px;
   perspective:1600px;
 }
 
-/* ===== CARD ===== */
+/* ===== CARD WRAP ===== */
 .card-wrap{
   text-align:center;
+  background:transparent;
 }
+
+/* ===== CARD ===== */
 .card{
   width:300px;
   height:190px;
   margin:0 auto;
   position:relative;
   transform-style:preserve-3d;
-  animation:autoRotate 16s linear infinite;
+  animation:autoRotate 18s linear infinite;
   cursor:grab;
+
+  background:transparent;
   border-radius:18px;
   overflow:hidden;
-  box-shadow:0 40px 90px rgba(0,0,0,.65);
 
-  /* نفس الصورة – قص مختلف */
-  background-image:url("https://i.imgur.com/zfzOg2Q.png");
-  background-size:200% 200%;
+  box-shadow:0 30px 70px rgba(0,0,0,.6);
 }
 
-/* مواضع القص */
-.card.copper { background-position:0% 0%; }
-.card.wood   { background-position:100% 0%; }
-.card.black  { background-position:0% 100%; }
-.card.metal  { background-position:100% 100%; }
+/* صورة البطاقة */
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+
+  /* قص أي أبيض بالحواف */
+  transform:scale(1.05);
+}
 
 /* لمعة */
 .card::after{
@@ -93,15 +100,16 @@ header p{
   pointer-events:none;
 }
 
-/* الشرح */
+/* النص */
 .label{
-  margin-top:14px;
+  margin-top:16px;
+  font-size:16px;
   font-weight:bold;
 }
 .desc{
   margin-top:6px;
   font-size:14px;
-  line-height:1.6;
+  line-height:1.7;
   opacity:.85;
 }
 
@@ -126,43 +134,51 @@ header p{
 
 <section class="cards">
 
-  <!-- نحاسية -->
+  <!-- بطاقة سوداء -->
   <div class="card-wrap">
-    <div class="card copper"></div>
-    <div class="label">بطاقة NFC نحاسية</div>
+    <div class="card">
+      <img src="https://i.imgur.com/xv5IKkY.png">
+    </div>
+    <div class="label">بطاقة NFC سوداء فاخرة</div>
     <div class="desc">
-      تصميم فاخر بلمسة نحاسية أنيقة، مناسبة لأصحاب الأعمال
-      الباحثين عن التميز والحضور القوي.
+      لون أسود أنيق بملمس ناعم، تعكس القوة والفخامة
+      وتناسب أصحاب الذوق الرفيع.
     </div>
   </div>
 
-  <!-- خشبية -->
+  <!-- بطاقة خشبية -->
   <div class="card-wrap">
-    <div class="card wood"></div>
+    <div class="card">
+      <img src="https://i.imgur.com/esO375h.png">
+    </div>
     <div class="label">بطاقة NFC خشبية</div>
     <div class="desc">
-      مظهر طبيعي ودافئ يعكس البساطة والاحتراف،
+      تصميم طبيعي ودافئ يعكس البساطة والاحتراف،
       مثالية للعلامات التجارية العصرية.
     </div>
   </div>
 
-  <!-- سوداء -->
+  <!-- بطاقة نحاسية -->
   <div class="card-wrap">
-    <div class="card black"></div>
-    <div class="label">بطاقة NFC سوداء فاخرة</div>
+    <div class="card">
+      <img src="https://i.imgur.com/uJFbo0i.png">
+    </div>
+    <div class="label">بطاقة NFC نحاسية</div>
     <div class="desc">
-      لون أسود أنيق مع نقش ناعم،
-      تعطي إحساس بالقوة والفخامة والاحتراف العالي.
+      لمسة نحاسية فاخرة تمنح حضورًا قويًا،
+      مناسبة لرواد الأعمال والشخصيات المؤثرة.
     </div>
   </div>
 
-  <!-- معدنية -->
+  <!-- بطاقة معدنية -->
   <div class="card-wrap">
-    <div class="card metal"></div>
+    <div class="card">
+      <img src="https://i.imgur.com/dlMnhHn.png">
+    </div>
     <div class="label">بطاقة NFC معدنية</div>
     <div class="desc">
       خامة معدنية عصرية بلمسة تقنية،
-      مثالية لرواد التكنولوجيا والشركات الحديثة.
+      مثالية للشركات الحديثة ورواد التكنولوجيا.
     </div>
   </div>
 
