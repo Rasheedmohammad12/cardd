@@ -10,14 +10,14 @@
 body{
   margin:0;
   font-family: Tahoma, Arial;
-  background: radial-gradient(circle at top,#162040,#0b0f19);
+  background: radial-gradient(circle at top,#1b2a4a,#0b0f19);
   color:#fff;
   text-align:center;
 }
 
 /* ===== HEADER ===== */
 header{
-  padding:40px 20px;
+  padding:40px 20px 20px;
 }
 header img{
   width:120px;
@@ -25,7 +25,7 @@ header img{
   margin:0 auto 15px;
 }
 header h1{
-  font-size:26px;
+  font-size:28px;
   margin:0;
 }
 
@@ -35,13 +35,12 @@ header h1{
   justify-content:center;
   gap:50px;
   flex-wrap:wrap;
-  perspective:1400px;
-  padding-bottom:80px;
+  perspective:1500px;
+  padding:60px 20px 100px;
 }
 
 .card-box{
   width:260px;
-  position:relative;
 }
 
 /* stand */
@@ -51,7 +50,7 @@ header h1{
   background:#fff;
   margin:0 auto;
   border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,.5);
+  box-shadow:0 12px 25px rgba(0,0,0,.5);
 }
 
 /* card */
@@ -70,17 +69,17 @@ header h1{
   height:100%;
   object-fit:cover;
   border-radius:14px;
-  box-shadow:0 25px 50px rgba(0,0,0,.6);
+  box-shadow:0 25px 55px rgba(0,0,0,.65);
 }
 
 /* text */
 .card-box p{
-  margin-top:16px;
+  margin-top:18px;
   font-size:15px;
   opacity:.9;
 }
 
-/* rotation */
+/* animation */
 @keyframes spin{
   from{ transform:rotateY(0deg); }
   to{ transform:rotateY(360deg); }
@@ -91,7 +90,8 @@ header h1{
 <body>
 
 <header>
-  <img src="images/logo.png" alt="logo">
+  <!-- LOGO -->
+  <img src="https://i.imgur.com/rIOOeOL.png" alt="logo">
   <h1>مؤسسة رحلة المستقبل للبرمجة</h1>
 </header>
 
@@ -99,7 +99,7 @@ header h1{
 
   <div class="card-box">
     <div class="card">
-      <img src="images/card-metal.png">
+      <img src="https://i.imgur.com/dlMnhHn.png">
     </div>
     <div class="stand"></div>
     <p>بطاقة NFC معدنية</p>
@@ -107,7 +107,7 @@ header h1{
 
   <div class="card-box">
     <div class="card">
-      <img src="images/card-copper.png">
+      <img src="https://i.imgur.com/dlMnhHn.png">
     </div>
     <div class="stand"></div>
     <p>بطاقة NFC نحاسية</p>
@@ -115,7 +115,7 @@ header h1{
 
   <div class="card-box">
     <div class="card">
-      <img src="images/card-wood.png">
+      <img src="https://i.imgur.com/dlMnhHn.png">
     </div>
     <div class="stand"></div>
     <p>بطاقة NFC خشبية</p>
@@ -123,7 +123,7 @@ header h1{
 
   <div class="card-box">
     <div class="card">
-      <img src="images/card-black.png">
+      <img src="https://i.imgur.com/dlMnhHn.png">
     </div>
     <div class="stand"></div>
     <p>بطاقة NFC سوداء فاخرة</p>
@@ -144,7 +144,7 @@ document.querySelectorAll('.card').forEach(card=>{
 
   window.addEventListener('pointermove',e=>{
     if(!isDown) return;
-    rot += (e.clientX - startX) * 0.5;
+    rot += (e.clientX - startX) * 0.45;
     card.style.transform = `rotateY(${rot}deg)`;
     startX = e.clientX;
   });
