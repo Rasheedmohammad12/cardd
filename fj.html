@@ -21,7 +21,8 @@ header{
 }
 header img{
   width:120px;
-  margin-bottom:15px;
+  display:block;
+  margin:0 auto 15px;
 }
 header h1{
   font-size:26px;
@@ -32,22 +33,23 @@ header h1{
 .cards{
   display:flex;
   justify-content:center;
-  gap:40px;
+  gap:50px;
   flex-wrap:wrap;
   perspective:1400px;
-  padding-bottom:60px;
+  padding-bottom:80px;
 }
 
 .card-box{
   width:260px;
+  position:relative;
 }
 
 /* stand */
 .stand{
   width:200px;
-  height:18px;
+  height:16px;
   background:#fff;
-  margin:0 auto -12px;
+  margin:0 auto;
   border-radius:20px;
   box-shadow:0 10px 25px rgba(0,0,0,.5);
 }
@@ -56,10 +58,12 @@ header h1{
 .card{
   width:260px;
   height:170px;
-  margin:auto;
+  margin:0 auto -8px;
   transform-style:preserve-3d;
   animation: spin 10s linear infinite;
   cursor:grab;
+  position:relative;
+  z-index:2;
 }
 .card img{
   width:100%;
@@ -71,7 +75,7 @@ header h1{
 
 /* text */
 .card-box p{
-  margin-top:14px;
+  margin-top:16px;
   font-size:15px;
   opacity:.9;
 }
@@ -87,7 +91,6 @@ header h1{
 <body>
 
 <header>
-  <!-- حط اللوقو هون -->
   <img src="images/logo.png" alt="logo">
   <h1>مؤسسة رحلة المستقبل للبرمجة</h1>
 </header>
@@ -95,35 +98,35 @@ header h1{
 <section class="cards">
 
   <div class="card-box">
-    <div class="stand"></div>
     <div class="card">
-      <img src="images/card-black.png">
+      <img src="images/card-metal.png">
     </div>
-    <p>بطاقة NFC سوداء فاخرة</p>
+    <div class="stand"></div>
+    <p>بطاقة NFC معدنية</p>
   </div>
 
   <div class="card-box">
-    <div class="stand"></div>
-    <div class="card">
-      <img src="images/card-wood.png">
-    </div>
-    <p>بطاقة NFC خشبية</p>
-  </div>
-
-  <div class="card-box">
-    <div class="stand"></div>
     <div class="card">
       <img src="images/card-copper.png">
     </div>
+    <div class="stand"></div>
     <p>بطاقة NFC نحاسية</p>
   </div>
 
   <div class="card-box">
-    <div class="stand"></div>
     <div class="card">
-      <img src="images/card-metal.png">
+      <img src="images/card-wood.png">
     </div>
-    <p>بطاقة NFC معدنية</p>
+    <div class="stand"></div>
+    <p>بطاقة NFC خشبية</p>
+  </div>
+
+  <div class="card-box">
+    <div class="card">
+      <img src="images/card-black.png">
+    </div>
+    <div class="stand"></div>
+    <p>بطاقة NFC سوداء فاخرة</p>
   </div>
 
 </section>
