@@ -1,148 +1,1038 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Primecode | حلول ويب احترافية</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Primecode | حلول ويب احترافية</title>
+  <meta name="description" content="Primecode — تصميم مواقع، متاجر إلكترونية، وأنظمة خاصة. سرعة، أمان، وتجربة مستخدم خرافية." />
+  <meta name="theme-color" content="#0b0f2a" />
 
-<style>
-:root{
-  --bg:#070915;
-  --card:rgba(255,255,255,.06);
-  --stroke:rgba(255,255,255,.1);
-  --text:#fff;
-  --muted:rgba(255,255,255,.7);
-  --r:20px;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:system-ui;
-  background:linear-gradient(135deg,#050615,#0b0f2a);
-  color:var(--text);
-}
-.container{width:min(1100px,90%);margin:auto}
-header{
-  padding:20px 0;
-  border-bottom:1px solid var(--stroke);
-}
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.logo{
-  font-size:22px;
-  font-weight:bold;
-  background:linear-gradient(90deg,#5f6fff,#ff3ecf);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.btn{
-  padding:12px 22px;
-  border-radius:50px;
-  border:none;
-  cursor:pointer;
-  font-weight:bold;
-  background:linear-gradient(90deg,#5f6fff,#ff3ecf);
-  color:#fff;
-  text-decoration:none;
-}
-.hero{
-  text-align:center;
-  padding:100px 0;
-}
-.hero h1{
-  font-size:42px;
-  margin-bottom:20px;
-}
-.hero p{
-  color:var(--muted);
-  font-size:18px;
-  margin-bottom:30px;
-}
-.section{
-  padding:80px 0;
-}
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-.card{
-  background:var(--card);
-  padding:30px;
-  border-radius:var(--r);
-  border:1px solid var(--stroke);
-  text-align:center;
-}
-.contact{
-  text-align:center;
-}
-.contact h2{
-  margin-bottom:20px;
-}
-.contact a{
-  display:inline-block;
-  margin:10px;
-}
-footer{
-  text-align:center;
-  padding:30px 0;
-  border-top:1px solid var(--stroke);
-  color:var(--muted);
-}
-</style>
+  <!-- Font (fallback friendly) -->
+  <style>
+    /* -----------------------------
+       Primecode — Premium Landing
+       Single File HTML (Ready)
+       ----------------------------- */
+
+    :root{
+      --bg0:#050615;
+      --bg1:#070915;
+      --bg2:#0b0f2a;
+
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.085);
+      --stroke: rgba(255,255,255,.12);
+
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+
+      --shadow: 0 22px 70px rgba(0,0,0,.45);
+      --r: 22px;
+
+      --p1:#5f6fff;
+      --p2:#ff3ecf;
+      --p3:#00ffd1;
+
+      --ok:#3dff9b;
+      --warn:#ffd36a;
+
+      --container: min(1120px, 92vw);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial;
+      background:
+        radial-gradient(1200px 700px at 70% -10%, rgba(95,111,255,.35), transparent 60%),
+        radial-gradient(900px 600px at 10% 10%, rgba(255,62,207,.28), transparent 55%),
+        radial-gradient(900px 700px at 70% 90%, rgba(0,255,209,.16), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 35%, var(--bg0));
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button{font-family:inherit}
+    .container{width:var(--container); margin-inline:auto}
+
+    /* Subtle grid background */
+    .grid-bg{
+      position:fixed; inset:0; pointer-events:none; opacity:.18;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 70px 70px;
+      mask-image: radial-gradient(700px 520px at 50% 18%, black 45%, transparent 75%);
+    }
+
+    /* Floating blur blobs */
+    .blob{
+      position:fixed; inset:auto;
+      width:420px; height:420px;
+      filter: blur(50px);
+      opacity:.22;
+      pointer-events:none;
+      z-index:-1;
+      animation: floaty 9s ease-in-out infinite;
+    }
+    .b1{top:-140px; left:-140px; background: radial-gradient(circle, rgba(95,111,255,1), transparent 60%)}
+    .b2{bottom:-160px; right:-160px; background: radial-gradient(circle, rgba(255,62,207,1), transparent 60%); animation-delay: -3s}
+    .b3{top:40%; right:-220px; width:520px; height:520px; background: radial-gradient(circle, rgba(0,255,209,1), transparent 60%); animation-delay: -6s}
+
+    @keyframes floaty{
+      0%,100%{transform: translate(0,0) scale(1)}
+      50%{transform: translate(18px,-22px) scale(1.03)}
+    }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,9,21,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.95), transparent 60%),
+        linear-gradient(135deg, rgba(95,111,255,1), rgba(255,62,207,1));
+      box-shadow: 0 18px 60px rgba(0,0,0,.4);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .brand span{
+      font-size:18px;
+      background: linear-gradient(90deg, #fff, rgba(255,255,255,.65));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .menu{
+      display:flex; align-items:center; gap:14px;
+      color:var(--muted);
+      font-weight:650;
+      font-size:14px;
+    }
+    .menu a{
+      padding:10px 10px;
+      border-radius:12px;
+      transition:.2s;
+    }
+    .menu a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .nav-cta{
+      display:flex; align-items:center; gap:10px;
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.085); border-color: rgba(255,255,255,.22)}
+    .btn:active{transform: translateY(0)}
+    .btn.primary{
+      border:none;
+      background: linear-gradient(90deg, var(--p1), var(--p2));
+      box-shadow: 0 18px 50px rgba(95,111,255,.18), 0 18px 50px rgba(255,62,207,.14);
+    }
+    .btn.primary:hover{filter:brightness(1.06)}
+    .btn.ghost{background: transparent}
+
+    /* Hero */
+    .hero{
+      padding: 72px 0 40px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:26px;
+      align-items:center;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.8);
+      font-weight:700;
+      font-size:13px;
+    }
+    .dot{
+      width:9px; height:9px; border-radius:999px;
+      background: radial-gradient(circle, var(--ok), rgba(61,255,155,.2));
+      box-shadow: 0 0 0 4px rgba(61,255,155,.12);
+    }
+    h1{
+      margin:16px 0 12px;
+      font-size: clamp(34px, 3.2vw, 52px);
+      line-height:1.15;
+      letter-spacing:-.4px;
+    }
+    .lead{
+      color:var(--muted);
+      font-size:16.5px;
+      line-height:1.9;
+      margin:0 0 20px;
+    }
+    .hero-actions{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top: 16px;
+    }
+    .mini{
+      margin-top:18px;
+      display:flex; gap:14px; flex-wrap:wrap;
+      color: rgba(255,255,255,.72);
+      font-size:13px;
+    }
+    .mini span{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.04);
+    }
+
+    /* Hero card (right) */
+    .hero-card{
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 240px at 70% 10%, rgba(95,111,255,.35), transparent 60%),
+                  radial-gradient(500px 260px at 20% 80%, rgba(255,62,207,.25), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .hero-card-inner{
+      position:relative;
+      padding:22px;
+    }
+    .stat-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .stat{
+      padding:14px 14px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.12);
+    }
+    .stat b{
+      font-size:22px;
+      display:block;
+      letter-spacing:.3px;
+    }
+    .stat small{color:var(--muted); font-weight:650}
+    .pill{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.12);
+      margin-top:12px;
+    }
+    .pill .tag{
+      font-weight:800;
+      background: linear-gradient(90deg, var(--p3), #fff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .pill .chip{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.8);
+      font-weight:750;
+    }
+
+    /* Section base */
+    section{padding: 56px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:18px;
+      margin-bottom:18px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: clamp(22px, 2.2vw, 30px);
+      letter-spacing:-.2px;
+    }
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+      max-width: 560px;
+      font-weight:600;
+      font-size:14px;
+    }
+
+    /* Cards */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+    .card{
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 18px 60px rgba(0,0,0,.25);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.18);
+    }
+    .card h3{margin:10px 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); line-height:1.85; font-size:14px}
+    .icon{
+      width:44px; height:44px; border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(95,111,255,.25), rgba(255,62,207,.18));
+      display:grid; place-items:center;
+      box-shadow: 0 18px 40px rgba(0,0,0,.22);
+    }
+    .icon svg{opacity:.95}
+
+    /* Steps */
+    .steps{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    .step{
+      display:flex; gap:14px;
+      padding:18px;
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .num{
+      min-width:44px; height:44px;
+      border-radius:16px;
+      display:grid; place-items:center;
+      font-weight:900;
+      background: linear-gradient(90deg, var(--p1), var(--p2));
+    }
+    .step b{display:block; margin-bottom:6px}
+    .step span{color:var(--muted); line-height:1.85; font-weight:600; font-size:14px}
+
+    /* Portfolio */
+    .projects{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+    .project{
+      padding:18px;
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      overflow:hidden;
+      position:relative;
+    }
+    .thumb{
+      height:160px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(300px 160px at 30% 30%, rgba(95,111,255,.35), transparent 60%),
+        radial-gradient(260px 180px at 70% 70%, rgba(255,62,207,.25), transparent 55%),
+        rgba(0,0,0,.16);
+      margin-bottom:12px;
+      position:relative;
+      overflow:hidden;
+    }
+    .thumb::after{
+      content:"";
+      position:absolute; inset:-30%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.12), transparent);
+      transform: rotate(18deg);
+      animation: shine 3.4s ease-in-out infinite;
+      opacity:.6;
+    }
+    @keyframes shine{
+      0%,45%{transform: translateX(-60%) rotate(18deg)}
+      60%,100%{transform: translateX(60%) rotate(18deg)}
+    }
+    .project h4{margin:0 0 6px}
+    .project p{margin:0; color:var(--muted); line-height:1.85; font-size:14px}
+
+    /* FAQ */
+    .faq{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    details{
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding:16px 16px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:800;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.9;
+      font-weight:600;
+      font-size:14px;
+    }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .contact-card{
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding:18px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.25);
+    }
+    .contact-card h3{margin:0 0 8px}
+    .contact-card p{margin:0; color:var(--muted); line-height:1.9; font-weight:600}
+    .contact-actions{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .contact-line{
+      margin-top:14px;
+      display:flex; gap:10px; flex-wrap:wrap;
+      color: rgba(255,255,255,.75);
+      font-weight:700;
+      font-size:14px;
+    }
+    .copy{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 14px;
+      cursor:pointer;
+      transition:.2s;
+      font-weight:800;
+    }
+    .copy:hover{background: rgba(255,255,255,.08)}
+    .form{
+      display:grid; gap:10px;
+      margin-top:12px;
+    }
+    input, textarea{
+      width:100%;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      padding:12px 14px;
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+      transition:.2s;
+    }
+    input:focus, textarea:focus{border-color: rgba(95,111,255,.55)}
+    textarea{min-height:110px; resize:vertical}
+    .note{
+      font-size:12px;
+      color: rgba(255,255,255,.6);
+      line-height:1.7;
+      margin-top:10px;
+      font-weight:650;
+    }
+
+    /* Footer */
+    footer{
+      padding:26px 0 40px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.6);
+    }
+    .foot{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      align-items:center;
+      font-weight:650;
+      font-size:13px;
+    }
+
+    /* WhatsApp floating button */
+    .wa-float{
+      position:fixed;
+      left:18px;
+      bottom:18px;
+      z-index:90;
+      display:flex; align-items:center; gap:10px;
+      padding:12px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      transition:.2s;
+    }
+    .wa-float:hover{transform: translateY(-2px); background: rgba(0,0,0,.45)}
+    .wa{
+      width:38px; height:38px; border-radius:14px;
+      display:grid; place-items:center;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.7), transparent 60%),
+                  linear-gradient(135deg, #1fd47a, #0ea65a);
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .wa-float b{font-size:13px}
+    .wa-float span{font-size:12px; color: rgba(255,255,255,.65); font-weight:650}
+
+    /* Reveal animations */
+    .reveal{opacity:0; transform: translateY(14px); transition: .7s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr; }
+      .cards{grid-template-columns: 1fr}
+      .steps{grid-template-columns: 1fr}
+      .projects{grid-template-columns: 1fr}
+      .faq{grid-template-columns: 1fr}
+      .contact{grid-template-columns: 1fr}
+      .menu{display:none}
+    }
+  </style>
 </head>
 
 <body>
 
+<div class="grid-bg"></div>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="blob b3"></div>
+
 <header>
   <div class="container nav">
-    <div class="logo">Primecode</div>
-    <a href="#contact" class="btn">تواصل معنا</a>
+    <a class="brand" href="#top">
+      <div class="logo" aria-hidden="true"></div>
+      <span>Primecode</span>
+    </a>
+
+    <nav class="menu">
+      <a href="#services">الخدمات</a>
+      <a href="#how">كيف بنشتغل</a>
+      <a href="#work">أعمالنا</a>
+      <a href="#faq">الأسئلة</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn ghost" href="tel:0791806194">📞 اتصال</a>
+      <a class="btn primary" href="#contact">ابدأ مشروعك</a>
+    </div>
   </div>
 </header>
 
-<section class="hero container">
-  <h1>نحوّل أفكارك إلى مواقع احترافية 🔥</h1>
-  <p>تصميم مواقع – متاجر إلكترونية – أنظمة خاصة – حلول رقمية متكاملة</p>
-  <a href="#contact" class="btn">ابدأ مشروعك الآن</a>
-</section>
+<main id="top">
 
-<section class="section container">
-  <div class="cards">
-    <div class="card">
-      <h3>تصميم مواقع</h3>
-      <p>مواقع سريعة، حديثة، ومتجاوبة مع جميع الأجهزة.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+
+      <div class="reveal">
+        <div class="badge">
+          <span class="dot"></span>
+          <span>Primecode — جودة عالية، سرعة تنفيذ، ونتائج واضحة</span>
+        </div>
+
+        <h1>
+          بنبني لك موقع أو نظام
+          <span style="background:linear-gradient(90deg,var(--p1),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+            يخلي مشروعك يبين “فخم”
+          </span>
+          من أول نظرة 🔥
+        </h1>
+
+        <p class="lead">
+          تصميم مواقع احترافية، متاجر إلكترونية، وأنظمة خاصة — بواجهة حديثة، تجربة مستخدم قوية،
+          وسرعة تحميل ممتازة. هدفنا: موقع يبيع عنك ويكبر مشروعك.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">اطلب عرض سعر</a>
+          <a class="btn" href="#services">شوف خدماتنا</a>
+          <a class="btn" href="https://wa.me/962791806194" target="_blank" rel="noopener">واتساب مباشر</a>
+        </div>
+
+        <div class="mini">
+          <span>⚡ سرعة عالية</span>
+          <span>🔒 أمان</span>
+          <span>📱 متجاوب</span>
+          <span>🎯 تصميم يبيع</span>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <div class="hero-card-inner">
+          <div class="pill">
+            <div>
+              <div style="font-weight:900; font-size:15px;">Primecode Studio</div>
+              <div style="color:var(--muted); font-weight:700; font-size:13px; margin-top:3px;">
+                حلول ويب حديثة — من الصفر للنشر
+              </div>
+            </div>
+            <div class="chip">جاهزين نبدأ</div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat">
+              <b id="s1">0</b>
+              <small>مشاريع مكتملة</small>
+            </div>
+            <div class="stat">
+              <b id="s2">0</b>
+              <small>رضا العملاء</small>
+            </div>
+            <div class="stat">
+              <b id="s3">0</b>
+              <small>أيام للتسليم</small>
+            </div>
+            <div class="stat">
+              <b id="s4">0</b>
+              <small>دعم بعد التسليم</small>
+            </div>
+          </div>
+
+          <div class="pill" style="margin-top:14px;">
+            <div class="tag">تصميم + برمجة + SEO</div>
+            <div style="color:rgba(255,255,255,.75); font-weight:750; font-size:13px;">كل شيء بمكان واحد</div>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="card">
-      <h3>متاجر إلكترونية</h3>
-      <p>أنظمة بيع احترافية مع بوابات دفع وإدارة منتجات.</p>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+
+      <div class="section-title reveal">
+        <div>
+          <h2>خدمات Primecode</h2>
+          <p>مش بس “موقع” — إحنا بنعمل تجربة كاملة: شكل + سرعة + نتائج.</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6h16v12H4V6Z" stroke="white" opacity=".9" stroke-width="2"/>
+              <path d="M4 10h16" stroke="white" opacity=".6" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>تصميم مواقع احترافية</h3>
+          <p>واجهة حديثة + تجربة مستخدم ممتازة + متجاوب على كل الأجهزة.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M7 7h14l-2 10H9L7 7Z" stroke="white" opacity=".9" stroke-width="2"/>
+              <path d="M7 7H4" stroke="white" opacity=".6" stroke-width="2"/>
+              <path d="M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="white" opacity=".85"/>
+              <path d="M18 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="white" opacity=".85"/>
+            </svg>
+          </div>
+          <h3>متاجر إلكترونية</h3>
+          <p>متجر سريع مع إدارة منتجات، طلبات، دفع، وشحن — بشكل مرتب.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2v20" stroke="white" opacity=".7" stroke-width="2"/>
+              <path d="M5 7h14" stroke="white" opacity=".9" stroke-width="2"/>
+              <path d="M5 17h14" stroke="white" opacity=".9" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>أنظمة خاصة</h3>
+          <p>نظام إدارة، حجوزات، مخزون، أو CRM حسب شغلك بالضبط.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3l9 4-9 4-9-4 9-4Z" stroke="white" opacity=".9" stroke-width="2"/>
+              <path d="M3 7v10l9 4 9-4V7" stroke="white" opacity=".6" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>SEO + سرعة</h3>
+          <p>تهيئة لمحركات البحث + تحسين سرعة + تجربة ممتازة لزوارك.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2a7 7 0 0 0-7 7c0 6 7 13 7 13s7-7 7-13a7 7 0 0 0-7-7Z" stroke="white" opacity=".9" stroke-width="2"/>
+              <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" fill="white" opacity=".15"/>
+            </svg>
+          </div>
+          <h3>هوية بسيطة للمشروع</h3>
+          <p>لوغو بسيط + ألوان + شكل موحد عشان مشروعك يطلع “براند”.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 12a8 8 0 1 1 16 0 8 8 0 0 1-16 0Z" stroke="white" opacity=".9" stroke-width="2"/>
+              <path d="M12 6v6l4 2" stroke="white" opacity=".6" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>دعم بعد التسليم</h3>
+          <p>مش بنسلم ونختفي — دعم وتعديلات بسيطة حسب الاتفاق.</p>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <h3>أنظمة خاصة</h3>
-      <p>برمجة أنظمة مخصصة حسب احتياجات مشروعك.</p>
+  </section>
+
+  <!-- HOW -->
+  <section id="how">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h2>كيف بنشتغل؟</h2>
+          <p>خطوات واضحة وسريعة — عشان تعرف وين مشروعك بكل لحظة.</p>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">1</div>
+          <div>
+            <b>فهم الفكرة</b>
+            <span>بنسمع فكرتك، هدفك، ونقترح أفضل شكل مناسب للسوق.</span>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="num">2</div>
+          <div>
+            <b>تصميم واجهة</b>
+            <span>تصميم UI/UX مرتب + ألوان وخطوط تليق ببراندك.</span>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="num">3</div>
+          <div>
+            <b>برمجة وتنفيذ</b>
+            <span>نشتغل كود نظيف وسريع، مع مراعاة الأمان والأداء.</span>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="num">4</div>
+          <div>
+            <b>تسليم + نشر</b>
+            <span>تسليم كامل + رفع على الاستضافة + دعم بعد الإطلاق.</span>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section contact container" id="contact">
-  <h2>تواصل مع Primecode</h2>
-  <p>رقم التواصل: <strong>0791806194</strong></p>
+  <!-- WORK -->
+  <section id="work">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h2>أعمال Primecode (نماذج)</h2>
+          <p>هاي مجرد أمثلة شكلية — بنعمل نفس المستوى وأقوى حسب مشروعك.</p>
+        </div>
+      </div>
 
-  <!-- اتصال مباشر -->
-  <a href="tel:0791806194" class="btn">اتصال مباشر</a>
+      <div class="projects">
+        <div class="project reveal">
+          <div class="thumb"></div>
+          <h4>Landing Page لشركة خدمات</h4>
+          <p>صفحة واحدة قوية + CTA + سرعة تحميل ممتازة.</p>
+        </div>
 
-  <!-- واتساب -->
-  <a href="https://wa.me/962791806194" target="_blank" class="btn">
-    مراسلة واتساب
-  </a>
-</section>
+        <div class="project reveal">
+          <div class="thumb"></div>
+          <h4>متجر إلكتروني</h4>
+          <p>تصميم مرتب + صفحات منتجات + طلبات + لوحة إدارة.</p>
+        </div>
+
+        <div class="project reveal">
+          <div class="thumb"></div>
+          <h4>نظام حجوزات</h4>
+          <p>حجوزات + إشعارات + إدارة مواعيد + لوحة تحكم.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h2>أسئلة سريعة</h2>
+          <p>أكثر الأسئلة اللي بتنطرح — وخليها واضحة من البداية.</p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <details class="reveal">
+          <summary>قديش مدة تنفيذ الموقع؟</summary>
+          <p>حسب حجم المشروع، لكن أغلب مواقع الشركات بتكون بين 3 - 7 أيام. المتاجر والأنظمة حسب المتطلبات.</p>
+        </details>
+
+        <details class="reveal">
+          <summary>هل في دعم بعد التسليم؟</summary>
+          <p>نعم. بنقدم دعم وتعديلات بسيطة حسب الاتفاق، وبنكون معك بعد الإطلاق.</p>
+        </details>
+
+        <details class="reveal">
+          <summary>هل الموقع متجاوب للموبايل؟</summary>
+          <p>أكيد. كل مواقع Primecode بتكون Responsive 100%.</p>
+        </details>
+
+        <details class="reveal">
+          <summary>هل في تهيئة لمحركات البحث (SEO)؟</summary>
+          <p>نعم، بنعمل أساسيات SEO + سرعة تحميل + Meta Tags + بنية سليمة.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h2>تواصل معنا</h2>
+          <p>جاهزين نسمع فكرتك ونحولها لموقع “فخم” — ابعتلنا الآن.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="contact-card reveal">
+          <h3>Primecode — تواصل مباشر</h3>
+          <p>
+            📞 رقم التواصل:
+            <b style="color:#fff">0791806194</b>
+          </p>
+
+          <div class="contact-line">
+            <span>⚡ رد سريع</span>
+            <span>🧠 أفكار وتسويق</span>
+            <span>💻 تنفيذ احترافي</span>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn primary" href="tel:0791806194">اتصال مباشر</a>
+            <a class="btn" href="https://wa.me/962791806194" target="_blank" rel="noopener">مراسلة واتساب</a>
+            <button class="copy" onclick="copyNumber()">نسخ الرقم</button>
+          </div>
+
+          <div class="note">
+            * النموذج بالأسفل اختياري. أسرع طريقة: واتساب.
+          </div>
+        </div>
+
+        <div class="contact-card reveal">
+          <h3>ارسل تفاصيل مشروعك</h3>
+          <p>اكتب اسمك وفكرة المشروع، وبنرجعلك بأسرع وقت.</p>
+
+          <form class="form" onsubmit="sendWhatsApp(event)">
+            <input id="name" type="text" placeholder="اسمك" required />
+            <input id="type" type="text" placeholder="نوع المشروع (موقع / متجر / نظام)" required />
+            <textarea id="msg" placeholder="اكتب تفاصيل بسيطة عن مشروعك..." required></textarea>
+            <button class="btn primary" type="submit">إرسال على واتساب</button>
+          </form>
+
+          <div class="note">
+            عند الضغط على “إرسال” سيتم فتح واتساب برسالة جاهزة.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  © 2026 Primecode — جميع الحقوق محفوظة
+  <div class="container foot">
+    <div>© <span id="year"></span> Primecode — جميع الحقوق محفوظة</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <a class="btn" href="#top">⬆️ للأعلى</a>
+      <a class="btn" href="tel:0791806194">📞 0791806194</a>
+    </div>
+  </div>
 </footer>
+
+<!-- WhatsApp Floating -->
+<a class="wa-float" href="https://wa.me/962791806194" target="_blank" rel="noopener">
+  <div class="wa" aria-hidden="true">
+    <!-- WhatsApp icon -->
+    <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+      <path d="M16 3C9.4 3 4 8.2 4 14.7c0 2.4.7 4.7 2 6.7L5 29l7.9-2.6c1.9 1 4 1.5 6.2 1.5 6.6 0 12-5.2 12-11.7S22.6 3 16 3Z" fill="white" opacity=".95"/>
+      <path d="M13.3 11.2c-.2-.5-.4-.5-.7-.5h-.6c-.2 0-.6.1-.9.5-.3.4-1.2 1.2-1.2 3s1.2 3.5 1.4 3.8c.2.2 2.3 3.7 5.7 5c2.8 1.1 3.4.9 4 .8.6-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.7-.5-.4-.2-2-.9-2.3-1-.3-.1-.5-.2-.7.2-.2.4-.9 1-.9 1.2-.2.2-.3.3-.7.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6 0-.2-.7-1.8-1-2.4Z" fill="#0b0f2a" opacity=".9"/>
+    </svg>
+  </div>
+  <div>
+    <b>واتساب Primecode</b><br/>
+    <span>اضغط وراسلنا الآن</span>
+  </div>
+</a>
+
+<script>
+  // Year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Counters (Hero stats)
+  const targets = [
+    { id: "s1", to: 120, suffix: "+" },
+    { id: "s2", to: 98, suffix: "%" },
+    { id: "s3", to: 7, suffix: " أيام" },
+    { id: "s4", to: 30, suffix: " يوم" }
+  ];
+
+  function animateCounters(){
+    targets.forEach(t => {
+      const el = document.getElementById(t.id);
+      let start = 0;
+      const duration = 900;
+      const step = Math.max(1, Math.floor(t.to / 60));
+      const begin = performance.now();
+
+      function tick(now){
+        const p = Math.min(1, (now - begin) / duration);
+        const val = Math.floor(start + (t.to - start) * p);
+        el.textContent = val + (t.suffix || "");
+        if(p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll(".reveal");
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add("show");
+      }
+    });
+  }, {threshold: .12});
+
+  reveals.forEach(r=>io.observe(r));
+
+  // Run counters once when hero card is visible
+  let countersDone = false;
+  const heroCard = document.querySelector(".hero-card");
+  const io2 = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && !countersDone){
+        countersDone = true;
+        animateCounters();
+      }
+    });
+  }, {threshold:.35});
+  io2.observe(heroCard);
+
+  // Copy number
+  function copyNumber(){
+    const number = "0791806194";
+    navigator.clipboard.writeText(number).then(()=>{
+      toast("تم نسخ الرقم ✅");
+    }).catch(()=>{
+      toast("انسخ الرقم يدويًا: " + number);
+    });
+  }
+
+  // Send WhatsApp from form
+  function sendWhatsApp(e){
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const type = document.getElementById("type").value.trim();
+    const msg  = document.getElementById("msg").value.trim();
+
+    const phone = "962791806194"; // WhatsApp (Jordan)
+    const text =
+`مرحبا Primecode 👋
+اسمي: ${name}
+نوع المشروع: ${type}
+
+تفاصيل:
+${msg}`;
+
+    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
+    window.open(url, "_blank");
+  }
+
+  // Tiny toast
+  let toastTimer;
+  function toast(text){
+    let t = document.getElementById("toast");
+    if(!t){
+      t = document.createElement("div");
+      t.id = "toast";
+      t.style.position = "fixed";
+      t.style.top = "18px";
+      t.style.right = "18px";
+      t.style.zIndex = "999";
+      t.style.padding = "12px 14px";
+      t.style.borderRadius = "16px";
+      t.style.border = "1px solid rgba(255,255,255,.14)";
+      t.style.background = "rgba(0,0,0,.45)";
+      t.style.backdropFilter = "blur(12px)";
+      t.style.color = "rgba(255,255,255,.92)";
+      t.style.fontWeight = "800";
+      t.style.boxShadow = "0 18px 60px rgba(0,0,0,.35)";
+      document.body.appendChild(t);
+    }
+    t.textContent = text;
+    t.style.opacity = "1";
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>{ t.style.opacity = "0"; }, 2200);
+  }
+</script>
 
 </body>
 </html>
