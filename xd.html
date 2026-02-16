@@ -1,415 +1,118 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>3D Mystery Box — Reels</title>
-  <style>
-    :root{
-      --bg1:#070A12;
-      --bg2:#140A2A;
-      --card:#0F1324CC;
-      --stroke:#FFFFFF22;
-      --text:#F5F7FF;
-      --muted:#B8C0FF;
-      --accent:#7C5CFF;
-      --accent2:#FF4FD8;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Kufi Arabic", sans-serif;
-      color:var(--text);
-      height:100vh;
-      overflow:hidden;
-      background:
-        radial-gradient(1200px 900px at 15% 20%, #2A1B66 0%, transparent 60%),
-        radial-gradient(900px 700px at 85% 35%, #7C5CFF40 0%, transparent 55%),
-        radial-gradient(800px 800px at 55% 90%, #FF4FD830 0%, transparent 60%),
-        linear-gradient(160deg, var(--bg1), var(--bg2));
-    }
-    .grain{
-      pointer-events:none;
-      position:fixed; inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
-      mix-blend-mode:overlay;
-      opacity:.25;
-    }
-    .wrap{
-      height:100%;
-      display:grid;
-      grid-template-rows:auto 1fr auto;
-      gap:14px;
-      padding:18px;
-    }
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .brand{
-      display:flex; flex-direction:column; gap:2px;
-      padding:12px 14px;
-      background:linear-gradient(180deg,#0F1324AA,#0B0F1E99);
-      border:1px solid var(--stroke);
-      border-radius:18px;
-      backdrop-filter: blur(10px);
-    }
-    .brand b{font-size:16px; letter-spacing:.2px}
-    .brand span{font-size:12px; color:var(--muted)}
-    .ctaRow{
-      display:flex; gap:10px; align-items:center;
-    }
-    .btn{
-      border:1px solid var(--stroke);
-      background:#0F1324AA;
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:16px;
-      font-weight:700;
-      cursor:pointer;
-      transition:transform .15s ease, border-color .15s ease;
-      backdrop-filter: blur(10px);
-    }
-    .btn:hover{transform:translateY(-1px); border-color:#ffffff3a}
-    .btn.primary{
-      border-color:transparent;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:0 16px 40px #00000055;
-    }
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PORTAL DROP</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  height:100vh;
+  overflow:hidden;
+  background:#050510;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:system-ui;
+  color:white;
+}
 
-    main{
-      display:grid;
-      place-items:center;
-      position:relative;
-    }
+/* animated neon background */
+body::before{
+  content:"";
+  position:absolute;
+  width:200%;
+  height:200%;
+  background:
+    radial-gradient(circle at 30% 30%, #6b4bff55, transparent 40%),
+    radial-gradient(circle at 70% 60%, #ff2ea655, transparent 40%);
+  animation:bgmove 8s linear infinite alternate;
+}
+@keyframes bgmove{
+  from{transform:translate(-10%,-10%)}
+  to{transform:translate(10%,10%)}
+}
 
-    /* 3D stage */
-    .stage{
-      width:min(86vw, 420px);
-      aspect-ratio: 1 / 1.05;
-      display:grid;
-      place-items:center;
-      perspective: 1000px;
-      position:relative;
-    }
+/* portal ring */
+.portal{
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  border:6px solid transparent;
+  border-top:6px solid #7c5cff;
+  border-bottom:6px solid #ff2ea6;
+  animation:spin 3s linear infinite;
+  position:relative;
+  box-shadow:0 0 40px #7c5cffaa, 0 0 80px #ff2ea6aa;
+}
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
 
-    .hint{
-      position:absolute;
-      top:10px;
-      right:10px;
-      font-size:12px;
-      color:var(--muted);
-      background:#0F132480;
-      border:1px solid var(--stroke);
-      padding:8px 10px;
-      border-radius:14px;
-      backdrop-filter: blur(10px);
-    }
+.center-text{
+  position:absolute;
+  font-size:20px;
+  letter-spacing:2px;
+  opacity:.7;
+}
 
-    .box{
-      width: 240px;
-      height: 240px;
-      position: relative;
-      transform-style: preserve-3d;
-      transform: rotateX(-16deg) rotateY(22deg);
-      transition: transform .25s ease;
-      cursor:grab;
-      user-select:none;
-      touch-action:none;
-      filter: drop-shadow(0 22px 45px rgba(0,0,0,.55));
-    }
-    .box:active{cursor:grabbing}
+.big-drop{
+  position:absolute;
+  text-align:center;
+  font-size:34px;
+  font-weight:900;
+  opacity:0;
+  transform:scale(.5);
+  transition:.5s ease;
+}
 
-    .face{
-      position:absolute; inset:0;
-      border-radius: 28px;
-      border:1px solid #ffffff26;
-      background: linear-gradient(135deg, #ffffff10, #ffffff04);
-      backdrop-filter: blur(10px);
-    }
-    .front{ transform: translateZ(70px); }
-    .back{ transform: rotateY(180deg) translateZ(70px); }
-    .right{ transform: rotateY(90deg) translateZ(70px); }
-    .left{ transform: rotateY(-90deg) translateZ(70px); }
-    .top{ transform: rotateX(90deg) translateZ(70px); }
-    .bottom{ transform: rotateX(-90deg) translateZ(70px); }
+.show{
+  opacity:1;
+  transform:scale(1);
+}
 
-    .glow{
-      position:absolute; inset:-40px;
-      background:
-        radial-gradient(circle at 30% 25%, #7C5CFF55 0%, transparent 55%),
-        radial-gradient(circle at 70% 60%, #FF4FD855 0%, transparent 60%);
-      filter: blur(18px);
-      transform: translateZ(-20px);
-      opacity:.9;
-      border-radius: 38px;
-      pointer-events:none;
-    }
+.btn{
+  position:absolute;
+  bottom:80px;
+  padding:14px 28px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#7c5cff,#ff2ea6);
+  border:none;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 10px 30px #000;
+  animation:pulse 1.8s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
 
-    .logo{
-      position:absolute;
-      inset:0;
-      display:grid;
-      place-items:center;
-      font-weight:900;
-      font-size: 84px;
-      letter-spacing:-2px;
-      color:#F7F7FF;
-      text-shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    .tag{
-      position:absolute;
-      bottom:20px;
-      width:100%;
-      text-align:center;
-      font-size:14px;
-      color:var(--muted);
-    }
-    .pill{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:10px 12px;
-      border-radius:999px;
-      background:#0F1324AA;
-      border:1px solid var(--stroke);
-      backdrop-filter: blur(10px);
-    }
-    .dot{
-      width:10px;height:10px;border-radius:50%;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:0 0 18px #7C5CFF99;
-    }
-
-    /* Pop cards */
-    .cards{
-      position:absolute;
-      bottom: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width:min(92vw, 520px);
-      display:grid;
-      gap:10px;
-      pointer-events:none;
-    }
-    .card{
-      pointer-events:auto;
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      padding:14px 14px;
-      border-radius:20px;
-      background:linear-gradient(180deg,#0F1324CC,#0B0F1ECC);
-      border:1px solid var(--stroke);
-      backdrop-filter: blur(12px);
-      box-shadow:0 18px 50px rgba(0,0,0,.45);
-      transform: translateY(10px) scale(.98);
-      opacity:0;
-      animation: pop .55s ease forwards;
-    }
-    @keyframes pop{
-      to{ transform: translateY(0) scale(1); opacity:1; }
-    }
-    .ic{
-      width:40px;height:40px;
-      border-radius:14px;
-      display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      color:white;
-      font-size:18px;
-      flex:0 0 auto;
-      box-shadow:0 12px 30px rgba(0,0,0,.35);
-    }
-    .card b{display:block; font-size:14px; margin-bottom:4px}
-    .card p{margin:0; font-size:12px; color:var(--muted); line-height:1.35}
-    .card .mini{
-      margin-top:8px;
-      display:flex; gap:8px; flex-wrap:wrap;
-    }
-    .chip{
-      font-size:11px;
-      padding:7px 10px;
-      border-radius:999px;
-      background:#ffffff10;
-      border:1px solid #ffffff1f;
-      color:#F2F4FF;
-    }
-    .x{
-      margin-inline-start:auto;
-      border:none;
-      width:34px;height:34px;
-      border-radius:12px;
-      background:#ffffff10;
-      color:#fff;
-      cursor:pointer;
-    }
-
-    footer{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:18px;
-      background:#0F132480;
-      border:1px solid var(--stroke);
-      backdrop-filter: blur(10px);
-      font-size:12px;
-      color:var(--muted);
-    }
-    .tap{
-      color:#fff;
-      font-weight:800;
-    }
-  </style>
+</style>
 </head>
 <body>
-  <div class="grain"></div>
 
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <b>اسم البراند هنا</b>
-        <span>اسحب الصندوق 🎁 واضغط لتطلع المفاجآت</span>
-      </div>
-      <div class="ctaRow">
-        <button class="btn" id="igBtn">Instagram</button>
-        <button class="btn primary" id="orderBtn">اطلب الآن</button>
-      </div>
-    </header>
+<div class="portal"></div>
+<div class="center-text">Preparing Drop...</div>
 
-    <main>
-      <div class="stage">
-        <div class="hint">اسحب للتدوير • Tap للمفاجأة ✨</div>
+<div class="big-drop" id="drop">
+🔥 DROP LIVE NOW 🔥
+<br>
+خصم 30% لمدة 24 ساعة
+</div>
 
-        <div class="box" id="box" aria-label="3D box">
-          <div class="glow"></div>
+<button class="btn" onclick="window.location='https://wa.me/XXXXXXXX'">
+اطلب الآن
+</button>
 
-          <div class="face front"></div>
-          <div class="face back"></div>
-          <div class="face right"></div>
-          <div class="face left"></div>
-          <div class="face top"></div>
-          <div class="face bottom"></div>
+<script>
+setTimeout(()=>{
+  document.querySelector(".center-text").style.display="none";
+  document.getElementById("drop").classList.add("show");
+},2500);
+</script>
 
-          <div class="logo">G</div>
-          <div class="tag">
-            <span class="pill"><span class="dot"></span> Mystery Drop</span>
-          </div>
-        </div>
-
-        <div class="cards" id="cards"></div>
-      </div>
-    </main>
-
-    <footer>
-      <div>🎬 جاهز للتصوير كريلز: افتح الصفحة وسجّل الشاشة</div>
-      <div class="tap">Tap = كرت جديد</div>
-    </footer>
-  </div>
-
-  <script>
-    // === Settings you can change quickly ===
-    const LINKS = {
-      instagram: "https://instagram.com/yourpage",
-      order: "https://wa.me/XXXXXXXXXXX?text=مرحبا%20بدي%20اطلب"
-    };
-
-    // Cards content (edit as you like)
-    const DROPS = [
-      { icon:"🔥", title:"عرض اليوم", desc:"خصم لفترة محدودة — احجزه قبل ما يروح!", chips:["خصم 20%","اليوم فقط","كمية محدودة"] },
-      { icon:"✨", title:"وصل جديد", desc:"منتجات جديدة نازلة اليوم — شوفها قبل الكل.", chips:["New Drop","ستايل فخم","جاهز للشحن"] },
-      { icon:"🚚", title:"توصيل سريع", desc:"بنوصلك بسرعة وبأمان — داخل المدينة وخارجها.", chips:["24-48 ساعة","تغليف هدية","تتبع الطلب"] },
-      { icon:"💳", title:"طرق دفع", desc:"ادفع بالطريقة اللي بتريحك.", chips:["كاش","تحويل","الكتروني"] },
-      { icon:"📩", title:"اطلب الآن", desc:"ابعتلنا رسالة وخلال دقيقة بنرد عليك.", chips:["WhatsApp","DM","استفسار سريع"] },
-    ];
-
-    // Buttons
-    document.getElementById("igBtn").onclick = () => window.open(LINKS.instagram, "_blank");
-    document.getElementById("orderBtn").onclick = () => window.open(LINKS.order, "_blank");
-
-    // 3D drag rotate
-    const box = document.getElementById("box");
-    let dragging = false;
-    let lastX = 0, lastY = 0;
-    let rotY = 22, rotX = -16;
-
-    function applyTransform(){
-      box.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-    }
-
-    function onDown(e){
-      dragging = true;
-      const p = getPoint(e);
-      lastX = p.x; lastY = p.y;
-    }
-    function onMove(e){
-      if(!dragging) return;
-      const p = getPoint(e);
-      const dx = p.x - lastX;
-      const dy = p.y - lastY;
-      lastX = p.x; lastY = p.y;
-
-      rotY += dx * 0.35;
-      rotX -= dy * 0.25;
-      rotX = Math.max(-35, Math.min(10, rotX));
-      applyTransform();
-    }
-    function onUp(){
-      dragging = false;
-    }
-    function getPoint(e){
-      if(e.touches && e.touches[0]) return {x:e.touches[0].clientX, y:e.touches[0].clientY};
-      return {x:e.clientX, y:e.clientY};
-    }
-
-    box.addEventListener("pointerdown", onDown);
-    window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerup", onUp);
-
-    box.addEventListener("touchstart", onDown, {passive:true});
-    window.addEventListener("touchmove", onMove, {passive:true});
-    window.addEventListener("touchend", onUp);
-
-    // Tap to drop a card
-    const cards = document.getElementById("cards");
-    let idx = 0;
-
-    function addCard(){
-      const d = DROPS[idx % DROPS.length];
-      idx++;
-
-      const el = document.createElement("div");
-      el.className = "card";
-
-      el.innerHTML = `
-        <div class="ic">${d.icon}</div>
-        <div>
-          <b>${d.title}</b>
-          <p>${d.desc}</p>
-          <div class="mini">${d.chips.map(c=>`<span class="chip">${c}</span>`).join("")}</div>
-        </div>
-        <button class="x" aria-label="close">✕</button>
-      `;
-
-      el.querySelector(".x").onclick = () => el.remove();
-
-      // Keep max 2 cards for clean reels
-      cards.prepend(el);
-      const all = [...cards.querySelectorAll(".card")];
-      all.slice(2).forEach(n => n.remove());
-    }
-
-    box.addEventListener("click", () => {
-      // avoid click after drag
-      if(dragging) return;
-      addCard();
-    });
-
-    // Auto drop at start (nice for video)
-    setTimeout(addCard, 450);
-  </script>
 </body>
 </html>
