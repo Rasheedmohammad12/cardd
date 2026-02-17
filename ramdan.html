@@ -3,87 +3,146 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ramadan Luxury Lights</title>
+<title>Ramadan Luxury Drag</title>
 
 <style>
+:root{
+  --bg1:#05060a; --bg2:#0b0c16;
+  --gold:#f6d365; --mint:#7cf7d4;
+  --glass: rgba(255,255,255,.07);
+  --stroke: rgba(255,255,255,.16);
+}
+
+*{box-sizing:border-box}
+
 body{
-margin:0;
-overflow:hidden;
-background:radial-gradient(circle at 50% 20%,#111633,#03040a 70%);
-font-family:"Noto Kufi Arabic",system-ui;
-color:white;
+  margin:0;
+  overflow:hidden;
+  font-family:"Noto Kufi Arabic",system-ui;
+  color:#fff;
+  background:
+    radial-gradient(1200px 700px at 20% 10%, rgba(246,211,101,.14), transparent 55%),
+    radial-gradient(900px 600px at 80% 25%, rgba(124,247,212,.08), transparent 55%),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
 }
 
 canvas{
-position:fixed;
-inset:0;
-width:100%;
-height:100%;
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
 }
 
 .ui{
-position:fixed;
-inset:0;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-pointer-events:none;
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:18px;
+}
+
+.badge{
+  align-self:flex-start;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid var(--stroke);
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+  font-size:12px;
+}
+
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background: var(--mint);
+  box-shadow: 0 0 18px rgba(124,247,212,.55);
 }
 
 .title{
-text-align:center;
-opacity:0;
-transform:translateY(40px) scale(.95);
-transition:0.7s cubic-bezier(.2,.8,.2,1);
+  text-align:center;
+  margin-bottom:24px;
+  opacity:0;
+  transform: translateY(22px) scale(.98);
+  transition: opacity .15s linear, transform .15s linear;
+  text-shadow: 0 18px 60px rgba(0,0,0,.7);
 }
 
 .title h1{
-font-size:70px;
-margin:0;
-background:linear-gradient(90deg,#f6d365,#fff,#7cf7d4);
--webkit-background-clip:text;
-color:transparent;
-letter-spacing:2px;
+  margin:0;
+  font-size: clamp(30px, 5vw, 74px);
+  background: linear-gradient(90deg, var(--gold), #fff, var(--mint));
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
 .title p{
-margin-top:20px;
-font-size:20px;
-opacity:.85;
+  margin:14px 0 0;
+  font-size: clamp(14px, 2vw, 20px);
+  opacity:.85;
 }
 
-.ropeWrap{
-position:fixed;
-top:0;
-left:50%;
-transform:translateX(-50%);
-height:100vh;
-pointer-events:none;
+.sliderWrap{
+  position:fixed;
+  left:50%;
+  bottom:22px;
+  transform: translateX(-50%);
+  width: min(720px, 92vw);
+  height: 70px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 80px rgba(0,0,0,.55);
+  display:flex;
+  align-items:center;
+  padding: 10px;
+  gap: 12px;
+  pointer-events:auto;
 }
 
-.rope{
-width:6px;
-height:50vh;
-background:linear-gradient(white,transparent);
+.track{
+  position:relative;
+  flex:1;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  overflow:hidden;
 }
 
-.knob{
-position:absolute;
-top:50vh;
-width:64px;
-height:64px;
-border-radius:50%;
-background:radial-gradient(circle at 30% 30%,#f6d365,#fda085);
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:grab;
-pointer-events:auto;
-box-shadow:0 10px 60px rgba(0,0,0,.7);
-font-size:22px;
+.fill{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:0%;
+  background: linear-gradient(90deg, rgba(246,211,101,.95), rgba(124,247,212,.45));
 }
-.knob:active{cursor:grabbing}
+
+.handle{
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.18);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(246,211,101,.95), rgba(253,160,133,.55) 60%, rgba(255,255,255,.05));
+  box-shadow: 0 18px 70px rgba(246,211,101,.15);
+  display:grid;
+  place-items:center;
+  cursor: grab;
+  user-select:none;
+  touch-action:none;
+}
+
+.handle:active{ cursor: grabbing; transform: scale(.98); }
+
+.label{
+  font-size:12px;
+  opacity:.75;
+  white-space:nowrap;
+}
 </style>
 </head>
 
@@ -92,137 +151,279 @@ font-size:22px;
 <canvas id="c"></canvas>
 
 <div class="ui">
-<div class="title" id="title">
-<h1>رمضان كريم</h1>
-<p>نسأل الله أن يملأ أيامكم نورًا ورحمةً وبركة 🌙✨</p>
-</div>
+  <div class="badge">
+    <span class="dot"></span>
+    <span id="status">اسحب المفتاح الذهبي لتشغيل زينة رمضان ✨</span>
+  </div>
+
+  <div class="title" id="title">
+    <h1>رمضان كريم</h1>
+    <p>جعله الله شهر نورٍ ورحمة… وكتب لكم فيه أجمل الأقدار ✨</p>
+  </div>
+
+  <div style="height:1px"></div>
 </div>
 
-<div class="ropeWrap">
-<div class="rope"></div>
-<div class="knob" id="knob">✨</div>
+<div class="sliderWrap" id="slider">
+  <div class="label">تشغيل الزينة</div>
+  <div class="track">
+    <div class="fill" id="fill"></div>
+  </div>
+  <div class="handle" id="handle">✨</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
+/* =========================
+   THREE BASIC SCENE
+========================= */
 
-const scene=new THREE.Scene()
-const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,100)
-camera.position.z=10
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.1, 200);
+camera.position.set(0, 1.0, 9.5);
 
-const renderer=new THREE.WebGLRenderer({canvas:c,alpha:true,antialias:true})
-renderer.setSize(innerWidth,innerHeight)
-renderer.setPixelRatio(devicePixelRatio)
+const renderer = new THREE.WebGLRenderer({ canvas: c, antialias:true, alpha:true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 
-window.addEventListener("resize",()=>{
-renderer.setSize(innerWidth,innerHeight)
-camera.aspect=innerWidth/innerHeight
-camera.updateProjectionMatrix()
-})
+window.addEventListener("resize", ()=>{
+  renderer.setSize(innerWidth, innerHeight);
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+});
 
-/* ---------- Lights ---------- */
+/* =========================
+   LIGHTS
+========================= */
+const ambient = new THREE.AmbientLight(0xffffff, 0.05);
+scene.add(ambient);
 
-const ambient=new THREE.AmbientLight(0xffffff,.05)
-scene.add(ambient)
+const warm = new THREE.PointLight(0xffd88a, 0, 35);
+warm.position.set(0, 3.2, 4);
+scene.add(warm);
 
-const mainLight=new THREE.PointLight(0xffd88a,0,30)
-mainLight.position.set(0,3,3)
-scene.add(mainLight)
+const rim = new THREE.DirectionalLight(0xbfefff, 0);
+rim.position.set(-3, 2, -3);
+scene.add(rim);
 
-/* ---------- Stars ---------- */
-
-const starGeo=new THREE.BufferGeometry()
-const starCount=2000
-const starPos=new Float32Array(starCount*3)
+/* =========================
+   STARS
+========================= */
+const starGeo = new THREE.BufferGeometry();
+const starCount = 2400;
+const starPos = new Float32Array(starCount*3);
 
 for(let i=0;i<starCount;i++){
-starPos[i*3]=(Math.random()-.5)*30
-starPos[i*3+1]=(Math.random()-.5)*20
-starPos[i*3+2]=-Math.random()*40
+  starPos[i*3]   = (Math.random()-0.5)*30;
+  starPos[i*3+1] = (Math.random()-0.5)*18;
+  starPos[i*3+2] = -Math.random()*45;
+}
+starGeo.setAttribute("position", new THREE.BufferAttribute(starPos,3));
+const stars = new THREE.Points(
+  starGeo,
+  new THREE.PointsMaterial({ color:0xffffff, size:0.045, transparent:true, opacity:0.85 })
+);
+scene.add(stars);
+
+/* =========================
+   GOLD DUST
+========================= */
+const dustGeo = new THREE.BufferGeometry();
+const dustCount = 1100;
+const dustPos = new Float32Array(dustCount*3);
+
+for(let i=0;i<dustCount;i++){
+  dustPos[i*3]   = (Math.random()-0.5)*12;
+  dustPos[i*3+1] = (Math.random()-0.5)*10;
+  dustPos[i*3+2] = -Math.random()*12;
+}
+dustGeo.setAttribute("position", new THREE.BufferAttribute(dustPos,3));
+const dust = new THREE.Points(
+  dustGeo,
+  new THREE.PointsMaterial({ color:0xffd88a, size:0.03, transparent:true, opacity:0.0 })
+);
+scene.add(dust);
+
+/* =========================
+   LANTERNS (FANCY)
+========================= */
+
+function metal(hex, rough=0.25, metalness=0.9){
+  return new THREE.MeshStandardMaterial({
+    color: new THREE.Color(hex),
+    roughness: rough,
+    metalness: metalness
+  });
 }
 
-starGeo.setAttribute("position",new THREE.BufferAttribute(starPos,3))
-const starMat=new THREE.PointsMaterial({color:0xffffff,size:.05})
-const stars=new THREE.Points(starGeo,starMat)
-scene.add(stars)
+function createLantern(scale=1){
+  const g = new THREE.Group();
 
-/* ---------- Decorative Hanging Lights ---------- */
+  const body = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.28,0.32,0.70,52,1,true),
+    metal("#fda085", 0.38, 0.85)
+  );
 
-const lightsGroup=new THREE.Group()
+  const ribsMat = metal("#f6d365", 0.20, 1.0);
+  for(let i=0;i<12;i++){
+    const rib = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.006,0.006,0.78,10),
+      ribsMat
+    );
+    const a = (i/12)*Math.PI*2;
+    rib.position.set(Math.cos(a)*0.31, 0, Math.sin(a)*0.31);
+    g.add(rib);
+  }
 
-function bulb(x,y){
-const g=new THREE.Group()
+  const cap = new THREE.Mesh(
+    new THREE.SphereGeometry(0.22,42,30),
+    metal("#f6d365", 0.18, 1.0)
+  );
+  cap.scale.set(1.18,0.68,1.18);
+  cap.position.y = 0.42;
 
-const mesh=new THREE.Mesh(
-new THREE.SphereGeometry(.25,16,16),
-new THREE.MeshStandardMaterial({color:0xf6d365,emissive:0xf6d365,emissiveIntensity:0})
-)
+  const cap2 = cap.clone();
+  cap2.position.y = -0.42;
 
-const glow=new THREE.PointLight(0xffe7b0,0,10)
+  const hook = new THREE.Mesh(
+    new THREE.TorusGeometry(0.12,0.02,18,42),
+    metal("#ffffff", 0.25, 0.95)
+  );
+  hook.position.y = 0.72;
+  hook.rotation.x = Math.PI/2;
 
-g.add(mesh,glow)
-g.position.set(x,y,-5)
-return {g,mesh,glow}
+  const light = new THREE.PointLight(0xffe7b0, 0.0, 10, 2);
+  light.position.set(0,0,0);
+
+  g.add(body, cap, cap2, hook, light);
+  g.scale.setScalar(scale);
+
+  return { g, light };
 }
 
-const bulbs=[]
-for(let i=-4;i<=4;i+=2){
-bulbs.push(bulb(i,3))
+const A = createLantern(1.1);
+const B = createLantern(0.95);
+const Cc = createLantern(0.78);
+
+A.g.position.set(-3.2, 1.2, -10);
+B.g.position.set( 3.2, 0.8, -10);
+Cc.g.position.set(0.0, -0.2, -10);
+
+scene.add(A.g, B.g, Cc.g);
+
+/* =========================
+   REVEAL STATE
+========================= */
+
+let reveal = 0.0;
+let target = 0.0;
+
+/* =========================
+   UI + SLIDER DRAG
+========================= */
+const slider = document.getElementById("slider");
+const handle = document.getElementById("handle");
+const fill = document.getElementById("fill");
+const status = document.getElementById("status");
+const title = document.getElementById("title");
+
+let dragging = false;
+let startX = 0;
+let startVal = 0;
+
+function clamp01(x){ return Math.max(0, Math.min(1, x)); }
+
+function setUI(v){
+  fill.style.width = (v*100).toFixed(1) + "%";
+  title.style.opacity = Math.min(1, Math.max(0, (v - 0.12) / 0.40));
+  title.style.transform = `translateY(${22 - v*22}px) scale(${0.98 + v*0.02})`;
+
+  if(v < 0.05) status.textContent = "اسحب المفتاح الذهبي لتشغيل زينة رمضان ✨";
+  else if(v < 0.75) status.textContent = "واو… الزينة عم تشتغل 😍";
+  else status.textContent = "فخم 🔥 رمضان كريم!";
 }
 
-bulbs.forEach(b=>lightsGroup.add(b.g))
-scene.add(lightsGroup)
+function sliderValueFromX(clientX){
+  const rect = slider.getBoundingClientRect();
+  const left = rect.left + 110; // after label
+  const right = rect.right - 90; // before handle
+  const t = (clientX - left) / (right - left);
+  return clamp01(t);
+}
 
-/* ---------- Pull Logic ---------- */
+handle.addEventListener("pointerdown", (e)=>{
+  dragging = true;
+  startX = e.clientX;
+  startVal = target;
+  handle.setPointerCapture(e.pointerId);
+});
 
-let reveal=0,target=0
-const knob=document.getElementById("knob")
-const title=document.getElementById("title")
+window.addEventListener("pointermove", (e)=>{
+  if(!dragging) return;
+  target = sliderValueFromX(e.clientX);
+  setUI(target);
+}, {passive:true});
 
-let dragging=false,startY=0,startVal=0
+window.addEventListener("pointerup", ()=>{
+  dragging = false;
+}, {passive:true});
 
-knob.addEventListener("pointerdown",e=>{
-dragging=true
-startY=e.clientY
-startVal=target
-knob.setPointerCapture(e.pointerId)
-})
+setUI(0);
 
-window.addEventListener("pointermove",e=>{
-if(!dragging)return
-const delta=(e.clientY-startY)/300
-target=Math.min(1,Math.max(0,startVal+delta))
-})
-
-window.addEventListener("pointerup",()=>dragging=false)
-
-/* ---------- Animate ---------- */
+/* =========================
+   ANIMATION LOOP
+========================= */
+const clock = new THREE.Clock();
 
 function animate(){
-requestAnimationFrame(animate)
+  requestAnimationFrame(animate);
+  const t = clock.getElapsedTime();
 
-reveal+=(target-reveal)*.06
+  reveal = THREE.MathUtils.lerp(reveal, target, 0.07);
 
-ambient.intensity=.05+reveal*.6
-mainLight.intensity=reveal*2
+  // lights (cinematic)
+  ambient.intensity = 0.03 + reveal*0.70;
+  warm.intensity    = reveal*2.4;
+  rim.intensity     = reveal*0.55;
 
-bulbs.forEach(b=>{
-b.mesh.material.emissiveIntensity=reveal*2
-b.glow.intensity=reveal*3
-})
+  // dust
+  dust.material.opacity = reveal*0.55;
+  dust.rotation.y = t*0.08;
 
-lightsGroup.rotation.z=Math.sin(Date.now()*.0005)*.05
-stars.rotation.y+=.0004
+  // lanterns appear
+  A.g.position.z  = THREE.MathUtils.lerp(-10, -0.6, reveal);
+  B.g.position.z  = THREE.MathUtils.lerp(-10, -0.3, reveal);
+  Cc.g.position.z = THREE.MathUtils.lerp(-10, -0.8, reveal);
 
-title.style.opacity=reveal
-title.style.transform=`translateY(${40-40*reveal}px) scale(${.95+reveal*.05})`
+  // lantern glow
+  const glow = 3.4*reveal;
+  A.light.intensity = glow*1.2;
+  B.light.intensity = glow*1.1;
+  Cc.light.intensity = glow*0.95;
 
-renderer.render(scene,camera)
+  // swing
+  const swing = 0.03 + reveal*0.12;
+  A.g.rotation.z = Math.sin(t*0.9) * swing;
+  B.g.rotation.z = Math.sin(t*1.05 + 1.2) * swing*0.92;
+  Cc.g.rotation.z = Math.sin(t*1.1 + 2.2) * swing*0.85;
+
+  A.g.position.y = 1.2 + Math.sin(t*0.7) * (0.04 + reveal*0.08);
+  B.g.position.y = 0.8 + Math.sin(t*0.8 + 0.7) * (0.04 + reveal*0.08);
+  Cc.g.position.y = -0.2 + Math.sin(t*0.85 + 1.1) * (0.03 + reveal*0.06);
+
+  // stars drift
+  stars.rotation.y = t*0.02;
+
+  // camera cinematic drift
+  camera.position.x = Math.sin(t*0.12)*0.18;
+  camera.position.y = 1.0 + Math.sin(t*0.10)*0.10;
+  camera.lookAt(0, 0.5, 0);
+
+  renderer.render(scene, camera);
 }
 
-animate()
-
+animate();
 </script>
 
 </body>
