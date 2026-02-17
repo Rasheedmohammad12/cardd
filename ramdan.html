@@ -3,291 +3,257 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ramadan Luxury Cinematic</title>
+<title>Ramadan Cinematic Ultimate</title>
 
 <style>
 body{
   margin:0;
-  overflow:hidden;
   background:#000;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
   font-family:"Noto Kufi Arabic",system-ui;
-  color:white;
 }
 
-canvas{position:fixed;inset:0;width:100%;height:100%}
-
-.ui{
-  position:fixed; inset:0;
-  display:flex; flex-direction:column;
-  justify-content:space-between;
-  padding:20px;
-  pointer-events:none;
+.wrapper{
+  position:relative;
+  width:390px;      /* عرض ريلز */
+  height:690px;     /* طول ريلز */
+  background:#000;
+  overflow:hidden;
 }
+
+canvas{position:absolute;inset:0}
 
 .title{
+  position:absolute;
+  bottom:90px;
+  width:100%;
   text-align:center;
-  margin-bottom:70px;
+  color:white;
   opacity:0;
-  transform:translateY(50px);
-  transition:.8s cubic-bezier(.2,.8,.2,1);
-  text-shadow:0 0 60px rgba(255,210,140,.4);
+  transform:translateY(40px);
+  transition:.8s;
+  text-shadow:0 0 40px rgba(255,210,140,.4);
 }
 .title.on{opacity:1;transform:translateY(0)}
 
 .title h1{
-  font-size:72px;
+  font-size:38px;
   margin:0;
-  background:linear-gradient(90deg,#f6d365,#ffffff,#f6d365);
+  background:linear-gradient(90deg,#f6d365,#fff,#f6d365);
   -webkit-background-clip:text;
   color:transparent;
 }
-.title p{
-  margin-top:14px;
-  font-size:20px;
-  opacity:.85;
-}
+.title p{font-size:15px;margin-top:10px;opacity:.85}
 
 .pop{
-  position:fixed;
+  position:absolute;
+  bottom:25px;
   left:50%;
-  bottom:36px;
   transform:translateX(-50%);
-  width:90px;
-  height:90px;
+  width:70px;
+  height:70px;
   border-radius:50%;
   background:radial-gradient(circle,#f6d365,#ffb36b);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:26px;
   cursor:pointer;
-  box-shadow:0 0 60px rgba(255,200,120,.95);
-  z-index:20;
+  box-shadow:0 0 40px rgba(255,200,120,.9);
 }
-.pop:active{transform:translateX(-50%) scale(.92)}
 </style>
 </head>
 
 <body>
 
+<div class="wrapper">
 <canvas id="c"></canvas>
 
-<div class="ui">
-  <div></div>
-  <div class="title" id="title">
-    <h1>رمضان كريم</h1>
-    <p>اللهم اجعل هذا الشهر نورًا في قلوبنا… وخيرًا لا ينقطع ✨</p>
-  </div>
-  <div></div>
+<div class="title" id="title">
+<h1>رمضان كريم</h1>
+<p>اللهم اجعل رمضان نورًا في حياتنا… وخيرًا لا ينتهي ✨</p>
 </div>
 
 <div class="pop" id="popBtn">✨</div>
+</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script type="module">
 
-<script>
-const scene = new THREE.Scene();
-scene.fog = new THREE.Fog(0x000000, 25, 90);
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.128/build/three.module.js";
+import { EffectComposer } from "https://cdn.jsdelivr.net/npm/three@0.128/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "https://cdn.jsdelivr.net/npm/three@0.128/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "https://cdn.jsdelivr.net/npm/three@0.128/examples/jsm/postprocessing/UnrealBloomPass.js";
 
-const camera = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.1, 300);
-camera.position.set(0,1.2,26);
+const scene=new THREE.Scene();
+scene.fog=new THREE.Fog(0x000000,15,55);
 
-const renderer = new THREE.WebGLRenderer({canvas:c,antialias:true});
-renderer.setSize(innerWidth,innerHeight);
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const camera=new THREE.PerspectiveCamera(45,390/690,.1,200);
+camera.position.set(0,1.2,16);
 
-window.addEventListener("resize",()=>{
-  renderer.setSize(innerWidth,innerHeight);
-  camera.aspect=innerWidth/innerHeight;
-  camera.updateProjectionMatrix();
-});
+const renderer=new THREE.WebGLRenderer({canvas:c,antialias:true});
+renderer.setSize(390,690);
+renderer.setPixelRatio(2);
+
+/* BLOOM */
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene,camera));
+const bloom=new UnrealBloomPass(
+  new THREE.Vector2(390,690),
+  1.5,
+  0.4,
+  0.85
+);
+composer.addPass(bloom);
 
 /* Lights */
-const ambient = new THREE.AmbientLight(0xffe7b0,0.02);
+const ambient=new THREE.AmbientLight(0xffe7b0,.02);
 scene.add(ambient);
 
-const warm = new THREE.PointLight(0xffd88a,0,200);
-warm.position.set(0,10,10);
+const warm=new THREE.PointLight(0xffd88a,0,120);
+warm.position.set(0,8,8);
 scene.add(warm);
 
 /* Stars */
 const starGeo=new THREE.BufferGeometry();
-const starCount=12000;
+const starCount=7000;
 const starPos=new Float32Array(starCount*3);
 for(let i=0;i<starCount;i++){
-  starPos[i*3]=(Math.random()-.5)*200;
-  starPos[i*3+1]=(Math.random()-.5)*140;
-  starPos[i*3+2]=-Math.random()*260;
+ starPos[i*3]=(Math.random()-.5)*60;
+ starPos[i*3+1]=(Math.random()-.5)*100;
+ starPos[i*3+2]=-Math.random()*120;
 }
 starGeo.setAttribute("position",new THREE.BufferAttribute(starPos,3));
 const stars=new THREE.Points(
-  starGeo,
-  new THREE.PointsMaterial({
-    color:0xffffff,
-    size:.12,
-    transparent:true,
-    opacity:.9,
-    depthWrite:false
-  })
+ starGeo,
+ new THREE.PointsMaterial({color:0xffffff,size:.1})
 );
 scene.add(stars);
 
-/* Luxury Gold Rope */
-function ropeMat(){
-  return new THREE.MeshStandardMaterial({
-    color:0xd4af37,
-    metalness:1,
-    roughness:0.15,
+/* Garland */
+function garland(){
+ const pts=[];
+ for(let i=0;i<=50;i++){
+  const x=(i/50-.5)*8;
+  const y=5+Math.sin(i/50*Math.PI)*.8;
+  pts.push(new THREE.Vector3(x,y,-8));
+ }
+ const curve=new THREE.CatmullRomCurve3(pts);
+
+ const rope=new THREE.Mesh(
+  new THREE.TubeGeometry(curve,120,.05,12,false),
+  new THREE.MeshStandardMaterial({
+   color:0xd4af37,
+   metalness:1,
+   roughness:.15,
+   transparent:true,
+   opacity:0
+  })
+ );
+ scene.add(rope);
+
+ const bulbs=[];
+ for(let i=0;i<16;i++){
+  const p=curve.getPoint(i/15);
+  const bulb=new THREE.Mesh(
+   new THREE.SphereGeometry(.18,16,16),
+   new THREE.MeshStandardMaterial({
+    color:0xfff0c0,
+    emissive:0xffd88a,
+    emissiveIntensity:0,
     transparent:true,
     opacity:0
-  });
-}
-
-/* Garland */
-function makeTopGarland(){
-  const pts=[];
-  for(let i=0;i<=90;i++){
-    const x=(i/90-.5)*24;
-    const y=7+Math.sin(i/90*Math.PI)*1.0;
-    pts.push(new THREE.Vector3(x,y,-12));
-  }
-  const curve=new THREE.CatmullRomCurve3(pts);
-  const rope=new THREE.Mesh(
-    new THREE.TubeGeometry(curve,240,.07,16,false),
-    ropeMat()
+   })
   );
-  scene.add(rope);
-
-  const bulbs=[];
-  for(let i=0;i<28;i++){
-    const p=curve.getPoint(i/27);
-    const bulb=new THREE.Mesh(
-      new THREE.SphereGeometry(.25,24,24),
-      new THREE.MeshStandardMaterial({
-        color:0xfff0c0,
-        emissive:0xffd88a,
-        emissiveIntensity:0,
-        transparent:true,
-        opacity:0
-      })
-    );
-    bulb.position.copy(p);
-
-    const light=new THREE.PointLight(0xffd88a,0,35);
-    light.position.copy(p);
-
-    scene.add(bulb);
-    scene.add(light);
-
-    bulbs.push({bulb,light});
-  }
-  return {rope,bulbs};
+  bulb.position.copy(p);
+  const light=new THREE.PointLight(0xffd88a,0,30);
+  light.position.copy(p);
+  scene.add(bulb);
+  scene.add(light);
+  bulbs.push({bulb,light});
+ }
+ return {rope,bulbs};
 }
 
-const G=makeTopGarland();
+const G=garland();
 
-/* Lantern Luxury */
+/* Lantern */
 function lantern(x){
-  const g=new THREE.Group();
-
-  const body=new THREE.Mesh(
-    new THREE.CylinderGeometry(.7,.8,2.2,64,1,true),
-    new THREE.MeshStandardMaterial({
-      color:0xcaa64a,
-      metalness:.95,
-      roughness:.25
-    })
-  );
-
-  const top=new THREE.Mesh(
-    new THREE.SphereGeometry(.6,40,30),
-    new THREE.MeshStandardMaterial({
-      color:0xd4af37,
-      metalness:1,
-      roughness:.2
-    })
-  );
-  top.scale.set(1.4,.6,1.4);
-  top.position.y=1.3;
-
-  const bottom=top.clone();
-  bottom.position.y=-1.3;
-
-  const glow=new THREE.PointLight(0xffd88a,0,80);
-  g.add(body,top,bottom,glow);
-
-  g.position.set(x,0,-28);
-  scene.add(g);
-
-  return {g,glow};
+ const g=new THREE.Group();
+ const body=new THREE.Mesh(
+  new THREE.CylinderGeometry(.4,.5,1.5,32,1,true),
+  new THREE.MeshStandardMaterial({color:0xcaa64a,metalness:.9,roughness:.3})
+ );
+ const light=new THREE.PointLight(0xffd88a,0,60);
+ g.add(body,light);
+ g.position.set(x,0,-18);
+ scene.add(g);
+ return {g,light};
 }
+const L1=lantern(-3);
+const L2=lantern(3);
 
-const L1=lantern(-8);
-const L2=lantern(0);
-const L3=lantern(8);
-
-/* Crescent Luxury */
+/* Crescent */
 const crescent=new THREE.Mesh(
-  new THREE.TorusGeometry(1.8,.28,64,200,Math.PI*1.6),
-  new THREE.MeshStandardMaterial({
-    color:0xffffff,
-    metalness:.2,
-    roughness:.2,
-    emissive:0xffffff,
-    emissiveIntensity:0
-  })
+ new THREE.TorusGeometry(1.2,.2,64,200,Math.PI*1.6),
+ new THREE.MeshStandardMaterial({
+  color:0xffffff,
+  emissive:0xffffff,
+  emissiveIntensity:0
+ })
 );
-crescent.position.set(10,7,-35);
+crescent.position.set(4,6,-25);
 scene.add(crescent);
 
 /* Reveal */
-let reveal=0;
-let target=0;
-
+let reveal=0,target=0;
 const title=document.getElementById("title");
-const popBtn=document.getElementById("popBtn");
+const pop=document.getElementById("popBtn");
 
-popBtn.onclick=()=>{
-  target=1;
-  title.classList.add("on");
-  popBtn.style.display="none";
+pop.onclick=()=>{
+ target=1;
+ title.classList.add("on");
+ pop.style.display="none";
 };
 
 function animate(){
-  requestAnimationFrame(animate);
-  const t=Date.now()*.001;
+ requestAnimationFrame(animate);
+ const t=Date.now()*.001;
 
-  reveal+=(target-reveal)*.05;
+ reveal+=(target-reveal)*.05;
 
-  ambient.intensity=.02+reveal*.6;
-  warm.intensity=reveal*4;
+ ambient.intensity=.02+reveal*.6;
+ warm.intensity=reveal*4;
 
-  G.rope.material.opacity=reveal;
+ G.rope.material.opacity=reveal;
+ G.bulbs.forEach((b,i)=>{
+  const tw=0.6+Math.sin(t*2+i)*0.4;
+  b.bulb.material.opacity=reveal;
+  b.bulb.material.emissiveIntensity=reveal*(2+tw*2);
+  b.light.intensity=reveal*(6+tw*6);
+ });
 
-  G.bulbs.forEach((b,i)=>{
-    const tw=0.6+Math.sin(t*2+i)*0.4;
-    b.bulb.material.opacity=reveal;
-    b.bulb.material.emissiveIntensity=reveal*(3+tw*2);
-    b.light.intensity=reveal*(8+tw*6);
-  });
+ [L1,L2].forEach((L,i)=>{
+  L.g.position.z=-18+reveal*12;
+  L.light.intensity=reveal*15;
+  L.g.rotation.z=Math.sin(t+i)*.15;
+ });
 
-  [L1,L2,L3].forEach((L,i)=>{
-    L.g.position.z=-28+reveal*18;
-    L.glow.intensity=reveal*14;
-    L.g.rotation.z=Math.sin(t+i)*0.12;
-  });
+ crescent.position.z=-25+reveal*12;
+ crescent.rotation.y+=.005;
+ crescent.material.emissiveIntensity=reveal*2;
 
-  crescent.position.z=-35+reveal*18;
-  crescent.rotation.y+=.004;
-  crescent.material.emissiveIntensity=reveal*2;
+ stars.rotation.y+=.0003;
 
-  stars.rotation.y+=.0004;
+ camera.position.x=Math.sin(t*.2)*.3;
+ camera.lookAt(0,1,0);
 
-  camera.lookAt(0,1,0);
-  renderer.render(scene,camera);
+ composer.render();
 }
 animate();
-</script>
 
+</script>
 </body>
 </html>
