@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ramadan Dark Luxury — VIP</title>
+<title>Ramadan Gold Luxury</title>
 
 <style>
 body{
@@ -14,11 +14,18 @@ font-family:"Noto Kufi Arabic",system-ui;
 color:white;
 }
 
-canvas{position:fixed;inset:0;width:100%;height:100%}
+canvas{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+}
 
 .ui{
-position:fixed; inset:0;
-display:flex; flex-direction:column;
+position:fixed;
+inset:0;
+display:flex;
+flex-direction:column;
 justify-content:space-between;
 padding:20px;
 pointer-events:none;
@@ -26,48 +33,59 @@ pointer-events:none;
 
 .title{
 text-align:center;
-margin-bottom:40px;
+margin-bottom:60px;
 opacity:0;
-transform:translateY(40px);
-transition:0.6s cubic-bezier(.2,.8,.2,1);
-text-shadow:0 0 30px rgba(255,215,120,.6);
+transform:translateY(50px);
+transition:.8s cubic-bezier(.2,.8,.2,1);
+text-shadow:0 0 40px rgba(255,200,120,.6);
 }
 
-.title.on{opacity:1; transform:translateY(0)}
+.title.on{
+opacity:1;
+transform:translateY(0);
+}
 
 .title h1{
-font-size:70px;
+font-size:75px;
 margin:0;
 background:linear-gradient(90deg,#f6d365,#ffffff,#f6d365);
 -webkit-background-clip:text;
 color:transparent;
 }
 
-.title p{margin-top:15px;font-size:20px;opacity:.85}
+.title p{
+margin-top:15px;
+font-size:22px;
+opacity:.85;
+}
 
 .pop{
 position:fixed;
-left:50%; top:50%;
-transform:translate(-50%,-50%);
-width:110px; height:110px;
+left:50%;
+bottom:40px;   /* moved down */
+transform:translateX(-50%);
+width:90px;
+height:90px;
 border-radius:50%;
 background:radial-gradient(circle,#f6d365,#ffb36b);
-display:flex; align-items:center; justify-content:center;
-font-size:30px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
 cursor:pointer;
-box-shadow:0 0 50px rgba(255,200,120,.8);
-transition:.15s;
-z-index:10;
+box-shadow:0 0 40px rgba(255,200,120,.8);
+transition:.2s;
+z-index:20;
 }
-.pop:active{transform:translate(-50%,-50%) scale(.9)}
+.pop:active{transform:translateX(-50%) scale(.9)}
 
 .hint{
 position:fixed;
-bottom:20px;
+bottom:10px;
 left:50%;
 transform:translateX(-50%);
-opacity:.6;
-font-size:13px;
+opacity:.5;
+font-size:12px;
 }
 </style>
 </head>
@@ -80,23 +98,20 @@ font-size:13px;
 <div></div>
 <div class="title" id="title">
 <h1>رمضان كريم</h1>
-<p>اللهم اجعل رمضان لنا نورًا في القلوب… وبركةً في الأيام ✨</p>
+<p>اللهم اجعل رمضان نورًا في حياتنا… وبركةً في أرزاقنا ✨</p>
 </div>
 <div></div>
 </div>
 
-<div class="pop" id="popBtn">💥</div>
-<div class="hint">اضغط لتشغيل الزينة ✨</div>
+<div class="pop" id="popBtn">✨</div>
+<div class="hint">اضغط لتشغيل الزينة</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
-/* =========================
-   SCENE
-========================= */
 const scene=new THREE.Scene()
 const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,200)
-camera.position.set(0,1.0,14)
+camera.position.set(0,1.2,16)
 
 const renderer=new THREE.WebGLRenderer({canvas:c,antialias:true})
 renderer.setSize(innerWidth,innerHeight)
@@ -108,25 +123,17 @@ camera.aspect=innerWidth/innerHeight
 camera.updateProjectionMatrix()
 })
 
-/* =========================
-   LIGHTS
-========================= */
-const ambient=new THREE.AmbientLight(0xffffff,.04)
+/* LIGHTS */
+const ambient=new THREE.AmbientLight(0xffffff,.03)
 scene.add(ambient)
 
-const mainLight=new THREE.PointLight(0xffd88a,0,70,2)
+const mainLight=new THREE.PointLight(0xffd88a,0,80)
 mainLight.position.set(0,6,6)
 scene.add(mainLight)
 
-const rim=new THREE.DirectionalLight(0xbfefff,0)
-rim.position.set(-6,2,-6)
-scene.add(rim)
-
-/* =========================
-   STARS
-========================= */
+/* STARS */
 const starGeo=new THREE.BufferGeometry()
-const starCount=7000
+const starCount=6000
 const starPos=new Float32Array(starCount*3)
 
 for(let i=0;i<starCount;i++){
@@ -134,184 +141,71 @@ starPos[i*3]=(Math.random()-.5)*100
 starPos[i*3+1]=(Math.random()-.5)*60
 starPos[i*3+2]=-Math.random()*120
 }
-
 starGeo.setAttribute("position",new THREE.BufferAttribute(starPos,3))
 const stars=new THREE.Points(starGeo,new THREE.PointsMaterial({
-color:0xffffff,
-size:.12,
-transparent:true,
-opacity:.9,
-depthWrite:false
+color:0xffffff,size:.12,transparent:true,opacity:.9
 }))
 scene.add(stars)
 
-/* =========================
-   MATERIAL HELPERS
-========================= */
-function metal(hex, rough=0.22, m=0.95){
-  return new THREE.MeshStandardMaterial({
-    color:new THREE.Color(hex),
-    roughness:rough,
-    metalness:m
-  })
+/* GOLD CHAIN GARLAND */
+function makeGoldGarland(y){
+const group=new THREE.Group()
+
+const pts=[]
+for(let i=0;i<=80;i++){
+const x=(i/80 - .5)*18
+const yy=y + Math.sin(i/80*Math.PI)*0.7
+pts.push(new THREE.Vector3(x,yy,-8))
 }
 
-/* =========================
-   GARLANDS (3 chains)
-========================= */
-const garlandGroup=new THREE.Group()
-scene.add(garlandGroup)
+const curve=new THREE.CatmullRomCurve3(pts)
+const ropeGeo=new THREE.TubeGeometry(curve,200,.05,12,false)
+const ropeMat=new THREE.MeshStandardMaterial({
+color:0xf6d365,
+metalness:1,
+roughness:.2,
+transparent:true,
+opacity:0
+})
+const rope=new THREE.Mesh(ropeGeo,ropeMat)
+group.add(rope)
 
-function makeGarland(y, sag, z, bulbCount){
-  const g=new THREE.Group()
+const bulbs=[]
+for(let i=0;i<20;i++){
+const t=i/19
+const p=curve.getPoint(t)
 
-  // rope curve
-  const pts=[]
-  const W=16
-  for(let i=0;i<=80;i++){
-    const x=(i/80 - 0.5)*W
-    const yy=y + Math.sin(i/80 * Math.PI)*sag
-    pts.push(new THREE.Vector3(x,yy,z))
-  }
-  const curve=new THREE.CatmullRomCurve3(pts)
+const bulb=new THREE.Mesh(
+new THREE.SphereGeometry(.2,20,20),
+new THREE.MeshStandardMaterial({
+color:0xffe7b0,
+emissive:0xffd88a,
+emissiveIntensity:0,
+metalness:.1,
+roughness:.2,
+transparent:true,
+opacity:0
+})
+)
+bulb.position.copy(p)
 
-  const ropeGeo=new THREE.TubeGeometry(curve,260,0.035,10,false)
-  const ropeMat=new THREE.MeshStandardMaterial({
-    color:0xffffff,
-    roughness:0.95,
-    metalness:0.0,
-    transparent:true,
-    opacity:0.0
-  })
-  const rope=new THREE.Mesh(ropeGeo,ropeMat)
-  g.add(rope)
+const light=new THREE.PointLight(0xffd88a,0,15)
+light.position.copy(p)
 
-  const bulbs=[]
-  for(let i=0;i<bulbCount;i++){
-    const t=i/(bulbCount-1)
-    const p=curve.getPoint(t)
+group.add(bulb)
+group.add(light)
 
-    const bulbMesh=new THREE.Mesh(
-      new THREE.SphereGeometry(0.16,18,18),
-      new THREE.MeshStandardMaterial({
-        color:0xffffff,
-        emissive:0xffd88a,
-        emissiveIntensity:0.0,
-        roughness:0.25,
-        metalness:0.0,
-        transparent:true,
-        opacity:0.0
-      })
-    )
-
-    const bulbLight=new THREE.PointLight(0xffe7b0,0.0,10,2)
-    bulbMesh.position.copy(p)
-    bulbLight.position.copy(p)
-
-    g.add(bulbMesh)
-    g.add(bulbLight)
-
-    bulbs.push({bulbMesh,bulbLight})
-  }
-
-  return {g,ropeMat,bulbs}
+bulbs.push({bulb,light})
 }
 
-const G1=makeGarland(4.6,0.65,-6,22)
-const G2=makeGarland(3.8,0.55,-6,18)
-const G3=makeGarland(3.0,0.45,-6,14)
-
-garlandGroup.add(G1.g,G2.g,G3.g)
-
-/* =========================
-   VIP LANTERN 3D
-========================= */
-function createVIPLantern(scale=1){
-  const g=new THREE.Group()
-
-  // body (curved)
-  const body=new THREE.Mesh(
-    new THREE.CylinderGeometry(0.55,0.65,1.7,64,1,true),
-    metal("#fda085",0.35,0.85)
-  )
-
-  // ribs
-  const ribsMat=metal("#f6d365",0.18,1.0)
-  for(let i=0;i<14;i++){
-    const rib=new THREE.Mesh(
-      new THREE.CylinderGeometry(0.01,0.01,1.9,10),
-      ribsMat
-    )
-    const a=(i/14)*Math.PI*2
-    rib.position.set(Math.cos(a)*0.62,0,Math.sin(a)*0.62)
-    g.add(rib)
-  }
-
-  // top cap
-  const top=new THREE.Mesh(
-    new THREE.SphereGeometry(0.42,48,30),
-    metal("#f6d365",0.16,1.0)
-  )
-  top.scale.set(1.35,0.70,1.35)
-  top.position.y=1.02
-
-  // bottom cap
-  const bottom=top.clone()
-  bottom.position.y=-1.02
-
-  // neck ring
-  const ring=new THREE.Mesh(
-    new THREE.TorusGeometry(0.42,0.05,18,60),
-    metal("#ffffff",0.22,0.95)
-  )
-  ring.position.y=1.36
-
-  // hook
-  const hook=new THREE.Mesh(
-    new THREE.TorusGeometry(0.18,0.03,18,60),
-    metal("#ffffff",0.25,0.95)
-  )
-  hook.position.y=1.62
-  hook.rotation.x=Math.PI/2
-
-  // inside glow cylinder (fake glass)
-  const glass=new THREE.Mesh(
-    new THREE.CylinderGeometry(0.35,0.40,1.35,36,1,true),
-    new THREE.MeshStandardMaterial({
-      color:new THREE.Color("#fff3d0"),
-      transparent:true,
-      opacity:0.12,
-      roughness:0.15,
-      metalness:0.0
-    })
-  )
-
-  // light
-  const light=new THREE.PointLight(0xffe7b0,0.0,28,2)
-  light.position.set(0,0,0)
-
-  g.add(body,top,bottom,ring,hook,glass,light)
-  g.scale.setScalar(scale)
-
-  return {g,light}
+scene.add(group)
+return {ropeMat,bulbs}
 }
 
-function placeLantern(x,y,scale){
-  const L=createVIPLantern(scale)
-  L.g.position.set(x,y,-18) // hidden start
-  scene.add(L.g)
-  return L
-}
+const G1=makeGoldGarland(5)
+const G2=makeGoldGarland(4.2)
 
-const L1=placeLantern(-7, 1.4, 1.00)
-const L2=placeLantern(-3.5,-0.8,0.86)
-const L3=placeLantern(0, 0.2, 0.95)
-const L4=placeLantern(3.5,-0.8,0.86)
-const L5=placeLantern(7, 1.4, 1.00)
-
-/* =========================
-   TOGGLE
-========================= */
+/* TOGGLE */
 let on=false
 let reveal=0
 let target=0
@@ -320,59 +214,34 @@ const title=document.getElementById("title")
 const popBtn=document.getElementById("popBtn")
 
 popBtn.onclick=()=>{
-on=!on
-target=on?1:0
-title.classList.toggle("on",on)
+on=true
+target=1
+title.classList.add("on")
+popBtn.style.display="none"  // hide button completely
 }
 
-/* =========================
-   ANIMATE
-========================= */
-const clock=new THREE.Clock()
-
+/* ANIMATE */
 function animate(){
-  requestAnimationFrame(animate)
-  const t=clock.getElapsedTime()
+requestAnimationFrame(animate)
 
-  reveal += (target-reveal)*0.05
+reveal += (target-reveal)*.05
 
-  // scene lights
-  ambient.intensity = 0.03 + reveal*0.70
-  mainLight.intensity = reveal*3.4
-  rim.intensity = reveal*0.55
+ambient.intensity=.03+reveal*.6
+mainLight.intensity=reveal*3
 
-  // garlands reveal + twinkle
-  ;[G1,G2,G3].forEach((G,idx)=>{
-    G.ropeMat.opacity = reveal*0.55
+;[G1,G2].forEach(G=>{
+G.ropeMat.opacity=reveal
 
-    G.bulbs.forEach((b,i)=>{
-      const tw = 0.55 + Math.sin(t*2.2 + i*0.55 + idx)*0.45
-      b.bulbMesh.material.opacity = reveal
-      b.bulbMesh.material.emissiveIntensity = reveal*(2.0 + tw*1.6)
-      b.bulbLight.intensity = reveal*(2.5 + tw*2.4)
-    })
-  })
+G.bulbs.forEach((b,i)=>{
+b.bulb.material.opacity=reveal
+b.bulb.material.emissiveIntensity=reveal*3
+b.light.intensity=reveal*5
+})
+})
 
-  // lanterns appear
-  const arr=[L1,L2,L3,L4,L5]
-  arr.forEach((L,i)=>{
-    L.g.position.z = THREE.MathUtils.lerp(-18, -2.0, reveal)
-    L.light.intensity = reveal*(4.0 + i*0.2)
+stars.rotation.y+=.0005
 
-    const swing = (0.03 + reveal*0.16)
-    L.g.rotation.z = Math.sin(t*0.9 + i*0.7)*swing
-    L.g.rotation.y = Math.sin(t*0.5 + i)*0.08
-  })
-
-  // stars drift
-  stars.rotation.y = t*0.02
-
-  // camera drift
-  camera.position.x = Math.sin(t*0.12)*0.22
-  camera.position.y = 1.0 + Math.sin(t*0.10)*0.12
-  camera.lookAt(0,0.9,0)
-
-  renderer.render(scene,camera)
+renderer.render(scene,camera)
 }
 animate()
 </script>
