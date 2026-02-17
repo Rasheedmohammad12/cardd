@@ -3,252 +3,277 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Ramadan Crescent 3D</title>
+  <title>Ramadan Decor — Pull The Rope</title>
+
   <style>
     :root{
-      --bg1:#05060a; --bg2:#0a0b14;
-      --gold:#f6d365; --mint:#7cf7d4; --text:#f4f6ff;
-      --glass:rgba(255,255,255,.07); --stroke:rgba(255,255,255,.12);
-      --shadow: 0 22px 70px rgba(0,0,0,.55);
-      --radius:22px;
+      --bg1:#05060a; --bg2:#0b0c16;
+      --gold:#f6d365; --gold2:#fda085;
+      --mint:#7cf7d4; --text:#f4f6ff;
+      --stroke:rgba(255,255,255,.14);
+      --glass:rgba(255,255,255,.07);
+      --shadow: 0 24px 80px rgba(0,0,0,.6);
     }
     *{box-sizing:border-box}
     body{
-      margin:0; min-height:100vh; color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Kufi Arabic", Arial;
+      margin:0;
+      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Kufi Arabic", "Noto Sans Arabic", Arial;
+      color:var(--text);
       background:
-        radial-gradient(1100px 700px at 20% 10%, rgba(246,211,101,.16), transparent 55%),
+        radial-gradient(1200px 700px at 20% 10%, rgba(246,211,101,.15), transparent 55%),
         radial-gradient(900px 600px at 80% 25%, rgba(124,247,212,.10), transparent 55%),
+        radial-gradient(1000px 700px at 50% 110%, rgba(253,160,133,.10), transparent 55%),
         linear-gradient(180deg, var(--bg1), var(--bg2));
       overflow:hidden;
-      display:grid;
-      place-items:center;
-      padding:18px;
     }
 
-    .app{
-      width:min(980px, 100%);
-      display:grid;
-      gap:14px;
-      grid-template-columns: 1fr;
-    }
-    header{
-      border:1px solid var(--stroke);
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      padding:14px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .brand{display:flex;gap:10px;align-items:center;min-width:0}
-    .logo{
-      width:40px;height:40px;border-radius:14px;
-      background: radial-gradient(circle at 30% 30%, rgba(246,211,101,.95), rgba(124,247,212,.25) 70%, rgba(255,255,255,.06));
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 12px 30px rgba(246,211,101,.18);
-    }
-    h1{margin:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .sub{margin:2px 0 0;font-size:12px;color:rgba(244,246,255,.72);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
-    .stageCard{
-      border:1px solid var(--stroke);
-      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
-      border-radius: calc(var(--radius) + 6px);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+    /* Fullscreen stage */
+    #stage{
+      position:fixed;
+      inset:0;
       overflow:hidden;
-      position:relative;
+    }
+    canvas{
+      width:100%;
+      height:100%;
+      display:block;
     }
 
-    /* إطار عمودي 9:16 (ريلز) */
-    .frame{
-      width:min(520px, 100%);
-      margin: 14px auto 18px;
-      aspect-ratio: 9 / 16;
-      border-radius: 28px;
-      border:1px solid rgba(255,255,255,.16);
-      overflow:hidden;
-      position:relative;
-      background: radial-gradient(900px 600px at 50% 15%, rgba(246,211,101,.10), transparent 60%),
-                  radial-gradient(900px 700px at 50% 110%, rgba(124,247,212,.08), transparent 60%),
-                  linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.60));
-    }
-    canvas{width:100%;height:100%;display:block}
-
+    /* UI overlay */
     .ui{
-      position:absolute; inset:0;
+      position:absolute;
+      inset:0;
       pointer-events:none;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
-      padding:16px;
+      padding: clamp(14px, 2vw, 22px);
     }
+
     .chip{
       align-self:flex-start;
-      pointer-events:none;
-      display:flex; align-items:center; gap:10px;
-      padding:9px 12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.33);
-      backdrop-filter: blur(8px);
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
       font-size:12px;
-      color:rgba(255,255,255,.92);
+      color: rgba(255,255,255,.92);
     }
-    .dot{width:8px;height:8px;border-radius:999px;background:var(--mint);box-shadow:0 0 18px rgba(124,247,212,.5)}
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, var(--mint), rgba(124,247,212,.2));
+      box-shadow: 0 0 18px rgba(124,247,212,.55);
+    }
 
     .title{
       text-align:center;
-      margin-bottom:8px;
-      text-shadow: 0 12px 36px rgba(0,0,0,.6);
+      margin-bottom: 16px;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: opacity .6s ease, transform .6s ease;
+      text-shadow: 0 18px 55px rgba(0,0,0,.65);
     }
-    .title h2{
+    .title.on{
+      opacity:1;
+      transform: translateY(0);
+    }
+    .title h1{
       margin:0;
-      font-size: clamp(18px, 3vw, 30px);
+      font-size: clamp(26px, 4.2vw, 56px);
+      letter-spacing:.2px;
       background: linear-gradient(90deg, var(--gold), #fff, var(--mint));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-      filter: drop-shadow(0 18px 30px rgba(246,211,101,.12));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      filter: drop-shadow(0 18px 35px rgba(246,211,101,.12));
     }
-    .title p{margin:6px 0 0;font-size:13px;color:rgba(255,255,255,.82)}
-
-    .pull{
-      pointer-events:none;
-      text-align:center;
-      margin: 0 auto 2px;
-      width: 100%;
-      max-width: 420px;
-      font-size: 12px;
-      color: rgba(255,255,255,.78);
-      padding:10px 12px;
-      border-radius: 999px;
-      border: 1px dashed rgba(255,255,255,.22);
-      background: rgba(0,0,0,.20);
-      backdrop-filter: blur(8px);
+    .title p{
+      margin:10px 0 0;
+      font-size: clamp(13px, 1.6vw, 18px);
+      color: rgba(255,255,255,.82);
     }
 
-    .bar{
+    /* Rope */
+    .ropeWrap{
       position:absolute;
-      left: 50%;
+      top:0;
+      left:50%;
       transform: translateX(-50%);
-      bottom: 18px;
-      width: 56%;
-      height: 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      overflow:hidden;
-      pointer-events:none;
-    }
-    .fill{
-      height:100%;
-      width:0%;
-      background: linear-gradient(90deg, rgba(246,211,101,.9), rgba(124,247,212,.55));
-      box-shadow: 0 0 24px rgba(246,211,101,.18);
-    }
-
-    .footer{
-      padding: 0 16px 14px;
-      color: rgba(255,255,255,.60);
-      font-size: 11px;
-      line-height:1.6;
-      text-align:center;
-    }
-
-    .hint{
-      pointer-events:none;
-      position:absolute;
-      inset:auto 16px 16px 16px;
-      text-align:center;
+      width:min(520px, 92vw);
+      height: 100vh;
+      pointer-events:auto;
       display:flex;
       justify-content:center;
     }
 
-    @media (min-width: 980px){
-      .app{ grid-template-columns: 1fr; }
+    .rope{
+      position:absolute;
+      top:0;
+      width: 6px;
+      height: 62vh;
+      border-radius:999px;
+      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 18px 55px rgba(0,0,0,.35);
+    }
+
+    .knob{
+      position:absolute;
+      top: calc(62vh - 16px);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: radial-gradient(circle at 30% 30%, rgba(246,211,101,.95), rgba(253,160,133,.55) 55%, rgba(255,255,255,.05));
+      box-shadow: 0 18px 65px rgba(246,211,101,.15);
+      cursor: grab;
+      pointer-events:auto;
+      display:grid;
+      place-items:center;
+      user-select:none;
+      touch-action:none;
+    }
+    .knob:active{ cursor: grabbing; }
+    .knob svg{ opacity:.9; }
+
+    /* progress */
+    .bar{
+      position:absolute;
+      left:50%;
+      transform: translateX(-50%);
+      bottom: 22px;
+      width: min(520px, 92vw);
+      height: 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      overflow:hidden;
+      backdrop-filter: blur(10px);
+    }
+    .fill{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(246,211,101,.92), rgba(124,247,212,.55));
+      box-shadow: 0 0 30px rgba(246,211,101,.16);
+      transition: width .05s linear;
+    }
+
+    .hint{
+      position:absolute;
+      left:50%;
+      transform: translateX(-50%);
+      bottom: 44px;
+      width: min(520px, 92vw);
+      text-align:center;
+      color: rgba(255,255,255,.75);
+      font-size: 12px;
+      pointer-events:none;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px dashed rgba(255,255,255,.22);
+      background: rgba(0,0,0,.20);
+      backdrop-filter: blur(10px);
+    }
+
+    .pulse{
+      position:absolute;
+      inset:auto auto 22px 22px;
+      width: 10px; height: 10px; border-radius: 999px;
+      background: rgba(124,247,212,.95);
+      box-shadow: 0 0 0 0 rgba(124,247,212,.55);
+      animation: pulse 1.2s infinite;
+      opacity: .0;
+      transition: opacity .3s ease;
+      pointer-events:none;
+    }
+    .pulse.on{ opacity:1; }
+    @keyframes pulse{
+      0%{ box-shadow: 0 0 0 0 rgba(124,247,212,.55); }
+      70%{ box-shadow: 0 0 0 16px rgba(124,247,212,0); }
+      100%{ box-shadow: 0 0 0 0 rgba(124,247,212,0); }
     }
   </style>
 </head>
 
 <body>
-  <div class="app">
-    <header>
-      <div class="brand">
-        <div class="logo"></div>
-        <div style="min-width:0">
-          <h1>Ramadan Crescent — Pull to Reveal</h1>
-          <div class="sub">اسحب داخل الإطار ليطلع الهلال 3D (فخم ✨)</div>
-        </div>
-      </div>
-      <div style="font-size:12px;color:rgba(244,246,255,.7)">3D • تفاعل • 9:16</div>
-    </header>
+  <div id="stage">
+    <canvas id="c"></canvas>
 
-    <section class="stageCard">
-      <div class="frame" id="frame">
-        <canvas id="c"></canvas>
+    <div class="ui">
+      <div class="chip"><span class="dot"></span><span id="status">اسحب الحبل لتشغيل زينة رمضان ✨</span></div>
 
-        <div class="ui">
-          <div class="chip"><span class="dot"></span><span id="status">اسحب لتطلع الهلال</span></div>
-
-          <div class="title">
-            <h2>رمضان كريم</h2>
-            <p>اسحب للأعلى/للأسفل… الهلال رح يطلع قدامك ✨</p>
-          </div>
-
-          <div class="hint">
-            <div class="pull">اسحب داخل الفيديو: <b>Pull</b> لإظهار الهلال — حرّر لتثبيت</div>
-          </div>
-        </div>
-
-        <div class="bar"><div class="fill" id="fill"></div></div>
+      <div class="title" id="title">
+        <h1>رمضان كريم</h1>
+        <p>أضاء الله أيامكم بالخير والبركة</p>
       </div>
 
-      <div class="footer">
-        لو بدك “طلعة” أقوى: زِد السحب للأعلى أكثر. على الموبايل اسحب بإصبعك داخل الإطار.
+      <div style="height:1px"></div>
+    </div>
+
+    <!-- Rope interaction layer -->
+    <div class="ropeWrap" id="ropeWrap">
+      <div class="rope" id="rope"></div>
+      <div class="knob" id="knob" aria-label="Pull">
+        <!-- small lantern icon -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2c1.7 1.2 2.8 2.9 3 5h2v2h-1v2.3c0 2.3-1.2 4.4-3 5.7V21H11v-3.1c-1.8-1.3-3-3.4-3-5.7V9H7V7h2c.2-2.1 1.3-3.8 3-5Z"
+                stroke="rgba(15,10,4,.9)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
-    </section>
+
+      <div class="hint">اسحب المقبض للأسفل… الفوانيس رح تنوّر والهلال يطلع ✨</div>
+      <div class="bar"><div class="fill" id="fill"></div></div>
+    </div>
+
+    <div class="pulse" id="pulse"></div>
   </div>
 
   <script type="module">
     import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
 
+    // ---------- DOM ----------
     const canvas = document.getElementById("c");
-    const frame  = document.getElementById("frame");
-    const fill   = document.getElementById("fill");
     const status = document.getElementById("status");
+    const title  = document.getElementById("title");
+    const knob   = document.getElementById("knob");
+    const rope   = document.getElementById("rope");
+    const fill   = document.getElementById("fill");
+    const pulse  = document.getElementById("pulse");
 
-    // Renderer
+    // ---------- Renderer ----------
     const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.06;
 
-    // Scene + camera
+    // ---------- Scene ----------
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, 9/16, 0.1, 120);
-    camera.position.set(0, 0.85, 6.2);
+    const camera = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.1, 120);
+    camera.position.set(0, 1.0, 7.0);
 
-    // Lights (gold cinematic)
-    const amb = new THREE.AmbientLight(0xffffff, 0.55);
+    // ---------- Lights ----------
+    const amb = new THREE.AmbientLight(0xffffff, 0.22);
     scene.add(amb);
 
-    const key = new THREE.DirectionalLight(0xfff1cf, 1.35);
-    key.position.set(2.8, 3.2, 2.5);
+    const key = new THREE.DirectionalLight(0xfff1cf, 0.35);
+    key.position.set(2.6, 3.2, 2.0);
     scene.add(key);
 
-    const rim = new THREE.DirectionalLight(0xcfefff, 0.85);
-    rim.position.set(-3.2, 1.4, -2.5);
+    const rim = new THREE.DirectionalLight(0xcfefff, 0.22);
+    rim.position.set(-3.2, 1.2, -2.4);
     scene.add(rim);
 
-    // Helpers
+    // ---------- Helpers ----------
     const root = new THREE.Group();
     scene.add(root);
 
-    function makeMetal(hex, rough=0.18, metal=1.0){
+    function makeMetal(hex, rough=0.2, metal=1){
       return new THREE.MeshStandardMaterial({
         color: new THREE.Color(hex),
         roughness: rough,
@@ -256,21 +281,21 @@
       });
     }
 
-    // --------- Stars (particles) ----------
-    const starCount = 800;
+    // ---------- Stars ----------
+    const starCount = 1200;
     const g = new THREE.BufferGeometry();
     const pos = new Float32Array(starCount*3);
     const col = new Float32Array(starCount*3);
 
     for(let i=0;i<starCount;i++){
-      pos[i*3+0] = (Math.random()-0.5)*9.5;
-      pos[i*3+1] = (Math.random()-0.5)*12.0;
-      pos[i*3+2] = -Math.random()*14.0;
+      pos[i*3+0] = (Math.random()-0.5)*12.0;
+      pos[i*3+1] = (Math.random()-0.5)*10.0;
+      pos[i*3+2] = -Math.random()*18.0;
 
       const t = Math.random();
-      const c = new THREE.Color().setHSL(0.12 + 0.2*t, 0.9, 0.65);
+      const c = new THREE.Color().setHSL(0.12 + 0.22*t, 0.9, 0.65);
       if(Math.random()<0.25) c.set("#7cf7d4");
-      if(Math.random()<0.12) c.set("#ffffff");
+      if(Math.random()<0.10) c.set("#ffffff");
       col[i*3+0]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
     }
     g.setAttribute("position", new THREE.BufferAttribute(pos,3));
@@ -283,146 +308,222 @@
       opacity:0.95,
       depthWrite:false
     }));
-    stars.position.z = -3.0;
+    stars.position.z = -4;
     scene.add(stars);
 
-    // --------- Crescent 3D ----------
-    // Premium fake crescent: torus arc + inner dark torus offset + small star
+    // ---------- Crescent ----------
     const crescent = new THREE.Group();
-
-    const arcGeo = new THREE.TorusGeometry(1.2, 0.23, 72, 260, Math.PI * 1.52);
+    const arcGeo = new THREE.TorusGeometry(1.25, 0.24, 72, 260, Math.PI*1.55);
     const arc = new THREE.Mesh(arcGeo, makeMetal("#f6d365", 0.16, 1));
-    arc.rotation.z = Math.PI * 0.18;
-    arc.rotation.x = Math.PI * 0.06;
+    arc.rotation.z = Math.PI*0.18;
+    arc.rotation.x = Math.PI*0.06;
 
-    const cutGeo = new THREE.TorusGeometry(0.98, 0.19, 72, 260, Math.PI * 1.52);
-    const cut = new THREE.Mesh(cutGeo, makeMetal("#0b0c14", 0.85, 0.08));
-    cut.position.set(0.14, -0.03, 0.08);
+    const cutGeo = new THREE.TorusGeometry(1.02, 0.20, 72, 260, Math.PI*1.55);
+    const cut = new THREE.Mesh(cutGeo, makeMetal("#0b0c14", 0.9, 0.06));
+    cut.position.set(0.15, -0.03, 0.08);
     cut.rotation.copy(arc.rotation);
 
     const star = new THREE.Mesh(
       new THREE.IcosahedronGeometry(0.16, 1),
-      makeMetal("#ffffff", 0.28, 0.9)
+      makeMetal("#ffffff", 0.25, 0.9)
     );
-    star.position.set(1.08, 0.88, 0.25);
+    star.position.set(1.12, 0.92, 0.25);
 
     crescent.add(arc, cut, star);
-    crescent.position.set(0, 0.45, 0);
+    crescent.position.set(0, 0.55, -2.2);
+    crescent.scale.setScalar(0.72);
     root.add(crescent);
 
-    // Floor glow (subtle)
-    const glow = new THREE.Mesh(
-      new THREE.RingGeometry(0.8, 2.6, 90),
-      new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#fda085"),
-        transparent:true,
-        opacity:0.10,
-        roughness: 1.0,
-        metalness: 0.0,
-        side: THREE.DoubleSide
-      })
-    );
-    glow.rotation.x = Math.PI/2;
-    glow.position.y = -0.8;
-    root.add(glow);
+    // ---------- Lantern factory ----------
+    function createLantern(scale=1){
+      const group = new THREE.Group();
 
-    // --------- Pull-to-reveal interaction ----------
-    let reveal = 0.0; // 0..1
-    let targetReveal = 0.0;
+      const body = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.22, 0.26, 0.5, 52, 1, true),
+        makeMetal("#fda085", 0.32, 0.85)
+      );
 
-    let isDown = false;
-    let startY = 0;
-    let baseReveal = 0;
+      const ribMat = makeMetal("#f6d365", 0.22, 1);
+      for(let i=0;i<9;i++){
+        const rib = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.005, 0.005, 0.54, 10),
+          ribMat
+        );
+        const a = (i/9) * Math.PI*2;
+        rib.position.set(Math.cos(a)*0.245, 0, Math.sin(a)*0.245);
+        group.add(rib);
+      }
+
+      const cap = new THREE.Mesh(
+        new THREE.SphereGeometry(0.18, 42, 30),
+        makeMetal("#f6d365", 0.18, 1)
+      );
+      cap.scale.set(1.1, 0.65, 1.1);
+      cap.position.y = 0.32;
+
+      const cap2 = cap.clone();
+      cap2.position.y = -0.32;
+
+      const hook = new THREE.Mesh(
+        new THREE.TorusGeometry(0.10, 0.02, 22, 44),
+        makeMetal("#ffffff", 0.25, 0.95)
+      );
+      hook.position.y = 0.56;
+      hook.rotation.x = Math.PI/2;
+
+      // glow light inside
+      const light = new THREE.PointLight(0xffe7b0, 0.0, 6.0, 2.0);
+      light.position.set(0, 0, 0);
+
+      group.add(body, cap, cap2, hook, light);
+      group.scale.setScalar(scale);
+
+      return { group, light };
+    }
+
+    const L1 = createLantern(1.1);
+    const L2 = createLantern(0.95);
+    const L3 = createLantern(0.78);
+
+    L1.group.position.set(-2.0, 0.35, -0.1);
+    L2.group.position.set( 2.1, 0.05,  0.1);
+    L3.group.position.set( 0.0,-0.65, -0.3);
+
+    root.add(L1.group, L2.group, L3.group);
+
+    // ---------- Rope power ----------
+    let power = 0.0;       // 0..1
+    let targetPower = 0.0; // 0..1
 
     function clamp01(x){ return Math.max(0, Math.min(1, x)); }
 
-    function setStatus(){
-      if(reveal < 0.02) status.textContent = "اسحب لتطلع الهلال";
-      else if(reveal < 0.7) status.textContent = "ممتاز… كمل سحب ✨";
-      else status.textContent = "فخم 🔥 ثبتّه أو لفّه";
+    // rope drag
+    let dragging = false;
+    let startY = 0;
+    let base = 0;
+
+    function setKnobY(px){
+      knob.style.transform = `translateY(${px}px)`;
+      // rope height grows
+      rope.style.height = `calc(62vh + ${px}px)`;
     }
 
-    function onDown(clientY){
-      isDown = true;
-      startY = clientY;
-      baseReveal = targetReveal;
+    function updateUI(){
+      fill.style.width = (targetPower*100).toFixed(1) + "%";
+
+      if(power < 0.05){
+        status.textContent = "اسحب الحبل لتشغيل زينة رمضان ✨";
+        title.classList.remove("on");
+        pulse.classList.remove("on");
+      } else if(power < 0.75){
+        status.textContent = "واو… الزينة عم تشتغل 😍";
+        title.classList.add("on");
+        pulse.classList.add("on");
+      } else {
+        status.textContent = "فخم 🔥 رمضان كريم!";
+        title.classList.add("on");
+        pulse.classList.add("on");
+      }
     }
-    function onMove(clientY){
-      if(!isDown) return;
-      const rect = frame.getBoundingClientRect();
-      const dy = (startY - clientY); // up = positive
-      // normalize by frame height
-      const delta = dy / rect.height; // ~ -1..1
-      targetReveal = clamp01(baseReveal + delta * 1.35);
-      fill.style.width = (targetReveal*100).toFixed(1) + "%";
+
+    function onDown(e){
+      dragging = true;
+      startY = e.clientY;
+      base = targetPower;
+      knob.setPointerCapture(e.pointerId);
+    }
+    function onMove(e){
+      if(!dragging) return;
+      const dy = (e.clientY - startY); // down positive
+      const maxPull = innerHeight * 0.38;
+      const delta = dy / maxPull;
+      targetPower = clamp01(base + delta);
+      setKnobY(targetPower * maxPull);
+      updateUI();
     }
     function onUp(){
-      isDown = false;
+      dragging = false;
+      // snap a bit (premium)
+      // if user pulled enough -> keep it on
+      if(targetPower > 0.35) targetPower = 1.0;
+      else targetPower = 0.0;
+
+      const maxPull = innerHeight * 0.38;
+      setKnobY(targetPower * maxPull);
+      updateUI();
     }
 
-    frame.addEventListener("pointerdown", (e)=>{ frame.setPointerCapture(e.pointerId); onDown(e.clientY); }, {passive:true});
-    frame.addEventListener("pointermove", (e)=> onMove(e.clientY), {passive:true});
-    frame.addEventListener("pointerup", onUp, {passive:true});
-    frame.addEventListener("pointercancel", onUp, {passive:true});
-    frame.addEventListener("mouseleave", onUp, {passive:true});
+    knob.addEventListener("pointerdown", onDown, {passive:true});
+    window.addEventListener("pointermove", onMove, {passive:true});
+    window.addEventListener("pointerup", onUp, {passive:true});
+    window.addEventListener("pointercancel", onUp, {passive:true});
 
-    // --------- Resize ----------
+    // ---------- Resize ----------
     function resize(){
-      const r = frame.getBoundingClientRect();
-      const w = Math.max(1, Math.floor(r.width));
-      const h = Math.max(1, Math.floor(r.height));
-      renderer.setSize(w, h, false);
-      camera.aspect = w/h;
+      renderer.setSize(innerWidth, innerHeight, false);
+      camera.aspect = innerWidth/innerHeight;
       camera.updateProjectionMatrix();
     }
-    new ResizeObserver(resize).observe(frame);
+    window.addEventListener("resize", resize);
     resize();
 
-    // --------- Animate ----------
+    // ---------- Animation ----------
     const clock = new THREE.Clock();
 
     function animate(){
       const t = clock.getElapsedTime();
 
-      // smooth reveal
-      reveal = THREE.MathUtils.lerp(reveal, targetReveal, 0.08);
-      setStatus();
+      // smooth power
+      power = THREE.MathUtils.lerp(power, targetPower, 0.08);
+      updateUI();
 
-      // Pull effect: from far+small+hidden -> near+large+bright
-      const z = THREE.MathUtils.lerp(-2.2, 1.15, reveal);
-      const s = THREE.MathUtils.lerp(0.70, 1.22, reveal);
-      const y = THREE.MathUtils.lerp(-0.35, 0.55, reveal);
+      // Scene reacts to power
+      // lights intensify
+      amb.intensity = 0.18 + power*0.55;
+      key.intensity = 0.20 + power*1.35;
+      rim.intensity = 0.14 + power*0.65;
 
-      crescent.position.z = z;
-      crescent.position.y = y;
-      crescent.scale.setScalar(s);
+      // lantern glow
+      const glow = 2.2 * power;
+      L1.light.intensity = glow * 1.15;
+      L2.light.intensity = glow * 1.05;
+      L3.light.intensity = glow * 0.95;
 
-      // add premium motion always
-      crescent.rotation.y = t * (0.35 + reveal*0.9);
-      crescent.rotation.x = 0.05 + Math.sin(t*0.8)*0.05;
+      // crescent reveal (comes forward + scales)
+      crescent.position.z = THREE.MathUtils.lerp(-2.2, 1.25, power);
+      crescent.scale.setScalar(THREE.MathUtils.lerp(0.72, 1.25, power));
+      crescent.position.y = THREE.MathUtils.lerp(0.55, 0.75, power);
 
-      star.rotation.y = -t * 1.2;
-      star.rotation.x =  t * 1.0;
+      // premium motion
+      crescent.rotation.y = t * (0.35 + power*0.95);
+      crescent.rotation.x = 0.05 + Math.sin(t*0.85)*0.05;
+
+      // lantern swing (stronger when powered)
+      L1.group.rotation.z = Math.sin(t*0.9) * (0.08 + power*0.12);
+      L2.group.rotation.z = Math.sin(t*1.05 + 1.2) * (0.07 + power*0.11);
+      L3.group.rotation.z = Math.sin(t*1.1 + 2.2) * (0.06 + power*0.10);
+
+      L1.group.position.y = 0.35 + Math.sin(t*0.8) * (0.04 + power*0.05);
+      L2.group.position.y = 0.05 + Math.sin(t*0.9 + 0.7) * (0.04 + power*0.05);
+      L3.group.position.y = -0.65 + Math.sin(t*0.95 + 1.1) * (0.03 + power*0.04);
 
       // stars drift
       stars.rotation.y = t * 0.03;
       stars.rotation.x = Math.sin(t*0.08) * 0.03;
 
-      // glow reacts
-      glow.material.opacity = 0.06 + reveal*0.12;
-      glow.scale.setScalar(1.0 + reveal*0.16);
-
-      // light reacts (a bit)
-      key.intensity = 1.1 + reveal*0.6;
-      amb.intensity = 0.50 + reveal*0.20;
+      // camera slight drift
+      camera.position.x = Math.sin(t*0.15) * 0.12;
+      camera.position.y = 1.0 + Math.sin(t*0.12) * 0.08;
+      camera.lookAt(0, 0.35, 0);
 
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
     }
     animate();
 
-    // Start bar at 0
-    fill.style.width = "0%";
+    // initial state
+    setKnobY(0);
+    updateUI();
   </script>
 </body>
 </html>
