@@ -1,161 +1,92 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Ramadan Pop — Luxury Decor</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ramadan Dark Luxury</title>
 
 <style>
-  :root{
-    --bg1:#000000;
-    --bg2:#050611;
-    --gold:#f6d365;
-    --gold2:#ffb36b;
-    --mint:#7cf7d4;
-    --stroke: rgba(255,255,255,.16);
-  }
+body{
+margin:0;
+overflow:hidden;
+background:#000; /* اسود حقيقي */
+font-family:"Noto Kufi Arabic",system-ui;
+color:white;
+}
 
-  *{box-sizing:border-box}
+canvas{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+}
 
-  body{
-    margin:0;
-    overflow:hidden;
-    font-family:"Noto Kufi Arabic",system-ui;
-    color:#fff;
-    background:
-      radial-gradient(900px 600px at 25% 10%, rgba(246,211,101,.10), transparent 55%),
-      radial-gradient(900px 600px at 80% 25%, rgba(124,247,212,.06), transparent 55%),
-      linear-gradient(180deg, var(--bg1), var(--bg2));
-  }
+.ui{
+position:fixed;
+inset:0;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+padding:20px;
+pointer-events:none;
+}
 
-  canvas{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-  }
+.title{
+text-align:center;
+margin-bottom:40px;
+opacity:0;
+transform:translateY(40px);
+transition:0.6s cubic-bezier(.2,.8,.2,1);
+text-shadow:0 0 30px rgba(255,215,120,.6);
+}
 
-  .ui{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    padding:18px;
-  }
+.title.on{
+opacity:1;
+transform:translateY(0);
+}
 
-  .badge{
-    align-self:flex-start;
-    display:flex;
-    gap:10px;
-    align-items:center;
-    padding:10px 14px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,.14);
-    background: rgba(0,0,0,.35);
-    backdrop-filter: blur(10px);
-    font-size:12px;
-    box-shadow: 0 18px 60px rgba(0,0,0,.35);
-  }
+.title h1{
+font-size:70px;
+margin:0;
+background:linear-gradient(90deg,#f6d365,#ffffff,#f6d365);
+-webkit-background-clip:text;
+color:transparent;
+}
 
-  .dot{
-    width:8px;height:8px;border-radius:50%;
-    background: var(--mint);
-    box-shadow: 0 0 18px rgba(124,247,212,.55);
-  }
+.title p{
+margin-top:15px;
+font-size:20px;
+opacity:.85;
+}
 
-  .title{
-    text-align:center;
-    margin-bottom:24px;
-    opacity:0;
-    transform: translateY(26px) scale(.98);
-    transition: opacity .6s cubic-bezier(.2,.8,.2,1), transform .6s cubic-bezier(.2,.8,.2,1);
-    text-shadow: 0 18px 60px rgba(0,0,0,.75);
-  }
+.pop{
+position:fixed;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+width:110px;
+height:110px;
+border-radius:50%;
+background:radial-gradient(circle,#f6d365,#ffb36b);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+cursor:pointer;
+box-shadow:0 0 50px rgba(255,200,120,.8);
+transition:.15s;
+z-index:10;
+}
+.pop:active{transform:translate(-50%,-50%) scale(.9)}
 
-  .title.on{
-    opacity:1;
-    transform: translateY(0) scale(1);
-  }
-
-  .title h1{
-    margin:0;
-    font-size: clamp(30px, 5vw, 74px);
-    background: linear-gradient(90deg, var(--gold), #fff, var(--mint));
-    -webkit-background-clip:text;
-    color:transparent;
-    letter-spacing:1px;
-  }
-
-  .title p{
-    margin:14px 0 0;
-    font-size: clamp(14px, 2vw, 20px);
-    opacity:.85;
-  }
-
-  /* Pop Button */
-  .popWrap{
-    position:fixed;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
-    width: 120px;
-    height: 120px;
-    border-radius: 999px;
-    pointer-events:auto;
-    display:grid;
-    place-items:center;
-    cursor:pointer;
-    user-select:none;
-    z-index: 20;
-  }
-
-  .popGlow{
-    position:absolute;
-    inset:-20px;
-    border-radius:999px;
-    background: radial-gradient(circle, rgba(246,211,101,.25), transparent 60%);
-    filter: blur(2px);
-    opacity: .65;
-    transition: opacity .3s ease;
-  }
-
-  .pop{
-    width: 120px;
-    height: 120px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.18);
-    background:
-      radial-gradient(circle at 30% 30%, rgba(246,211,101,.95), rgba(255,179,107,.55) 55%, rgba(255,255,255,.05));
-    box-shadow: 0 24px 90px rgba(0,0,0,.65);
-    display:grid;
-    place-items:center;
-    font-size: 28px;
-    transition: transform .12s ease;
-  }
-
-  .popWrap:active .pop{
-    transform: scale(0.94);
-  }
-
-  .hint{
-    position:fixed;
-    left:50%;
-    transform: translateX(-50%);
-    bottom: 22px;
-    width: min(640px, 92vw);
-    text-align:center;
-    color: rgba(255,255,255,.75);
-    font-size: 12px;
-    pointer-events:none;
-    padding: 10px 12px;
-    border-radius: 999px;
-    border: 1px dashed rgba(255,255,255,.22);
-    background: rgba(0,0,0,.20);
-    backdrop-filter: blur(10px);
-    z-index: 12;
-  }
+.hint{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+opacity:.6;
+font-size:13px;
+}
 </style>
 </head>
 
@@ -164,326 +95,136 @@
 <canvas id="c"></canvas>
 
 <div class="ui">
-  <div class="badge">
-    <span class="dot"></span>
-    <span id="status">فقّع الزر لتطلع زينة رمضان ✨</span>
-  </div>
-
-  <div class="title" id="title">
-    <h1>رمضان كريم</h1>
-    <p>اللهم اجعل رمضان لنا نورًا… وفرحًا… وبداية خيرٍ لا ينتهي ✨</p>
-  </div>
-
-  <div style="height:1px"></div>
+<div></div>
+<div class="title" id="title">
+<h1>رمضان كريم</h1>
+<p>اللهم اجعل رمضان لنا نورًا في القلوب… وبركةً في الأيام ✨</p>
+</div>
+<div></div>
 </div>
 
-<div class="popWrap" id="popBtn">
-  <div class="popGlow"></div>
-  <div class="pop">💥</div>
-</div>
-
-<div class="hint">كبسة واحدة: تشغيل الزينة ✨ — كبسة ثانية: إطفاء</div>
+<div class="pop" id="popBtn">💥</div>
+<div class="hint">اضغط لتشغيل الزينة ✨</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
-/* =========================
-   SCENE
-========================= */
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.1, 200);
-camera.position.set(0, 1.0, 10.0);
+const scene=new THREE.Scene()
+const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,100)
+camera.position.z=12
 
-const renderer = new THREE.WebGLRenderer({ canvas: c, antialias:true, alpha:true });
-renderer.setSize(innerWidth, innerHeight);
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const renderer=new THREE.WebGLRenderer({canvas:c,antialias:true})
+renderer.setSize(innerWidth,innerHeight)
+renderer.setPixelRatio(devicePixelRatio)
 
-window.addEventListener("resize", ()=>{
-  renderer.setSize(innerWidth, innerHeight);
-  camera.aspect = innerWidth/innerHeight;
-  camera.updateProjectionMatrix();
-});
+window.addEventListener("resize",()=>{
+renderer.setSize(innerWidth,innerHeight)
+camera.aspect=innerWidth/innerHeight
+camera.updateProjectionMatrix()
+})
 
-/* =========================
-   LIGHTS
-========================= */
-const ambient = new THREE.AmbientLight(0xffffff, 0.05);
-scene.add(ambient);
+/* LIGHTS */
+const ambient=new THREE.AmbientLight(0xffffff,.05)
+scene.add(ambient)
 
-const warm = new THREE.PointLight(0xffd88a, 0, 40);
-warm.position.set(0, 4.0, 4.0);
-scene.add(warm);
+const mainLight=new THREE.PointLight(0xffd88a,0,50)
+mainLight.position.set(0,5,5)
+scene.add(mainLight)
 
-const rim = new THREE.DirectionalLight(0xbfefff, 0);
-rim.position.set(-4, 2, -3);
-scene.add(rim);
-
-/* =========================
-   STARS (COLORED)
-========================= */
-const starCount = 3200;
-const starGeo = new THREE.BufferGeometry();
-const starPos = new Float32Array(starCount*3);
-const starCol = new Float32Array(starCount*3);
+/* STARS كثيفة */
+const starGeo=new THREE.BufferGeometry()
+const starCount=5000
+const starPos=new Float32Array(starCount*3)
 
 for(let i=0;i<starCount;i++){
-  starPos[i*3]   = (Math.random()-0.5)*36;
-  starPos[i*3+1] = (Math.random()-0.5)*22;
-  starPos[i*3+2] = -Math.random()*60;
-
-  const r = Math.random();
-  let c = new THREE.Color("#ffffff");
-  if(r < 0.12) c = new THREE.Color("#7cf7d4");
-  else if(r < 0.30) c = new THREE.Color("#f6d365");
-
-  starCol[i*3] = c.r;
-  starCol[i*3+1] = c.g;
-  starCol[i*3+2] = c.b;
+starPos[i*3]=(Math.random()-.5)*80
+starPos[i*3+1]=(Math.random()-.5)*50
+starPos[i*3+2]=-Math.random()*100
 }
 
-starGeo.setAttribute("position", new THREE.BufferAttribute(starPos,3));
-starGeo.setAttribute("color", new THREE.BufferAttribute(starCol,3));
+starGeo.setAttribute("position",new THREE.BufferAttribute(starPos,3))
+const stars=new THREE.Points(starGeo,new THREE.PointsMaterial({
+color:0xffffff,
+size:.15,
+transparent:true,
+opacity:.9
+}))
+scene.add(stars)
 
-const stars = new THREE.Points(
-  starGeo,
-  new THREE.PointsMaterial({
-    size: 0.05,
-    vertexColors:true,
-    transparent:true,
-    opacity:0.9,
-    depthWrite:false
-  })
-);
-stars.position.z = -7;
-scene.add(stars);
+/* GARLAND LIGHTS */
+const bulbs=[]
+for(let i=-6;i<=6;i++){
+const mesh=new THREE.Mesh(
+new THREE.SphereGeometry(.25,16,16),
+new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffd88a,emissiveIntensity:0})
+)
+mesh.position.set(i,4,-5)
+scene.add(mesh)
 
-/* =========================
-   GOLD DUST
-========================= */
-const dustCount = 1300;
-const dustGeo = new THREE.BufferGeometry();
-const dustPos = new Float32Array(dustCount*3);
+const light=new THREE.PointLight(0xffd88a,0,10)
+light.position.copy(mesh.position)
+scene.add(light)
 
-for(let i=0;i<dustCount;i++){
-  dustPos[i*3]   = (Math.random()-0.5)*14;
-  dustPos[i*3+1] = (Math.random()-0.5)*12;
-  dustPos[i*3+2] = -Math.random()*12;
-}
-dustGeo.setAttribute("position", new THREE.BufferAttribute(dustPos,3));
-
-const dust = new THREE.Points(
-  dustGeo,
-  new THREE.PointsMaterial({ color:0xffd88a, size:0.035, transparent:true, opacity:0.0 })
-);
-scene.add(dust);
-
-/* =========================
-   GARLAND (ROPE + BULBS)
-========================= */
-const garland = new THREE.Group();
-scene.add(garland);
-
-const ropePts = [];
-const ropeW = 10.5;
-for(let i=0;i<=60;i++){
-  const x = (i/60 - 0.5) * ropeW;
-  const y = 3.2 + Math.sin(i/60 * Math.PI) * 0.55;
-  ropePts.push(new THREE.Vector3(x, y, -2.5));
+bulbs.push({mesh,light})
 }
 
-const ropeCurve = new THREE.CatmullRomCurve3(ropePts);
-const ropeGeo = new THREE.TubeGeometry(ropeCurve, 220, 0.03, 10, false);
-
-const ropeMat = new THREE.MeshStandardMaterial({
-  color: 0xffffff,
-  roughness: 0.9,
-  metalness: 0.0,
-  transparent:true,
-  opacity:0.0
-});
-
-const ropeMesh = new THREE.Mesh(ropeGeo, ropeMat);
-garland.add(ropeMesh);
-
-const bulbs = [];
-for(let i=0;i<18;i++){
-  const t = i/17;
-  const p = ropeCurve.getPoint(t);
-
-  const bulbMesh = new THREE.Mesh(
-    new THREE.SphereGeometry(0.12, 18, 18),
-    new THREE.MeshStandardMaterial({
-      color: 0xffffff,
-      emissive: 0xffd88a,
-      emissiveIntensity: 0.0,
-      roughness: 0.25,
-      metalness: 0.0,
-      transparent:true,
-      opacity:0.0
-    })
-  );
-
-  const bulbLight = new THREE.PointLight(0xffe7b0, 0.0, 7, 2);
-  bulbMesh.position.copy(p);
-  bulbLight.position.copy(p);
-
-  garland.add(bulbMesh);
-  garland.add(bulbLight);
-
-  bulbs.push({ bulbMesh, bulbLight });
+/* LANTERNS أكثر */
+function lantern(x,y){
+const g=new THREE.Group()
+const body=new THREE.Mesh(
+new THREE.CylinderGeometry(.5,.5,1.5,32),
+new THREE.MeshStandardMaterial({color:0xf6d365,metalness:.8,roughness:.3})
+)
+const glow=new THREE.PointLight(0xffd88a,0,20)
+g.add(body,glow)
+g.position.set(x,y,-8)
+scene.add(g)
+return {g,glow}
 }
 
-/* =========================
-   LANTERNS
-========================= */
-function metal(hex, rough=0.22, metalness=0.95){
-  return new THREE.MeshStandardMaterial({
-    color: new THREE.Color(hex),
-    roughness: rough,
-    metalness: metalness
-  });
+const L1=lantern(-6,1)
+const L2=lantern(-3,-1)
+const L3=lantern(0,0)
+const L4=lantern(3,-1)
+const L5=lantern(6,1)
+
+/* TOGGLE */
+let on=false
+let reveal=0
+let target=0
+
+const title=document.getElementById("title")
+const popBtn=document.getElementById("popBtn")
+
+popBtn.onclick=()=>{
+on=!on
+target=on?1:0
+title.classList.toggle("on",on)
 }
-
-function createLantern(scale=1){
-  const g = new THREE.Group();
-
-  const body = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.28,0.32,0.70,52,1,true),
-    metal("#fda085", 0.38, 0.85)
-  );
-
-  const ribsMat = metal("#f6d365", 0.20, 1.0);
-  for(let i=0;i<12;i++){
-    const rib = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.006,0.006,0.78,10),
-      ribsMat
-    );
-    const a = (i/12)*Math.PI*2;
-    rib.position.set(Math.cos(a)*0.31, 0, Math.sin(a)*0.31);
-    g.add(rib);
-  }
-
-  const cap = new THREE.Mesh(
-    new THREE.SphereGeometry(0.22,42,30),
-    metal("#f6d365", 0.18, 1.0)
-  );
-  cap.scale.set(1.18,0.68,1.18);
-  cap.position.y = 0.42;
-
-  const cap2 = cap.clone();
-  cap2.position.y = -0.42;
-
-  const hook = new THREE.Mesh(
-    new THREE.TorusGeometry(0.12,0.02,18,42),
-    metal("#ffffff", 0.25, 0.95)
-  );
-  hook.position.y = 0.72;
-  hook.rotation.x = Math.PI/2;
-
-  const light = new THREE.PointLight(0xffe7b0, 0.0, 12, 2);
-  light.position.set(0,0,0);
-
-  g.add(body, cap, cap2, hook, light);
-  g.scale.setScalar(scale);
-
-  return { g, light };
-}
-
-const A = createLantern(1.05);
-const B = createLantern(0.92);
-const Cc = createLantern(0.78);
-
-A.g.position.set(-3.6, 1.1, -16);
-B.g.position.set( 3.6, 0.9, -16);
-Cc.g.position.set(0.0, -0.2, -16);
-
-scene.add(A.g, B.g, Cc.g);
-
-/* =========================
-   POP TOGGLE
-========================= */
-const popBtn = document.getElementById("popBtn");
-const titleEl = document.getElementById("title");
-const status = document.getElementById("status");
-
-let on = false;
-let reveal = 0.0;
-let target = 0.0;
-
-function toggle(){
-  on = !on;
-  target = on ? 1.0 : 0.0;
-
-  // pop effect
-  popBtn.style.transform = "translate(-50%,-50%) scale(0.92)";
-  setTimeout(()=> popBtn.style.transform = "translate(-50%,-50%) scale(1)", 120);
-
-  status.textContent = on ? "فخم 🔥 رمضان كريم!" : "فقّع الزر لتطلع زينة رمضان ✨";
-  titleEl.classList.toggle("on", on);
-}
-
-popBtn.addEventListener("click", toggle);
-
-/* =========================
-   ANIMATE
-========================= */
-const clock = new THREE.Clock();
 
 function animate(){
-  requestAnimationFrame(animate);
-  const t = clock.getElapsedTime();
+requestAnimationFrame(animate)
 
-  reveal = THREE.MathUtils.lerp(reveal, target, 0.06);
+reveal+= (target-reveal)*.05
 
-  // lights
-  ambient.intensity = 0.02 + reveal*0.70;
-  warm.intensity    = reveal*2.8;
-  rim.intensity     = reveal*0.55;
+ambient.intensity=.05+reveal*.6
+mainLight.intensity=reveal*3
 
-  // dust
-  dust.material.opacity = reveal*0.55;
-  dust.rotation.y = t*0.08;
+bulbs.forEach(b=>{
+b.mesh.material.emissiveIntensity=reveal*3
+b.light.intensity=reveal*4
+})
 
-  // rope visible
-  ropeMat.opacity = reveal*0.55;
+;[L1,L2,L3,L4,L5].forEach(l=>{
+l.glow.intensity=reveal*4
+l.g.position.z=-8+reveal*5
+})
 
-  // bulbs twinkle
-  bulbs.forEach((b, i)=>{
-    const tw = 0.65 + Math.sin(t*2.2 + i*0.55)*0.35;
-    b.bulbMesh.material.opacity = reveal;
-    b.bulbMesh.material.emissiveIntensity = reveal * (1.8 + tw*1.0);
-    b.bulbLight.intensity = reveal * (2.0 + tw*1.8);
-  });
+stars.rotation.y+=.0005
 
-  // lanterns appear
-  A.g.position.z  = THREE.MathUtils.lerp(-16, -0.8, reveal);
-  B.g.position.z  = THREE.MathUtils.lerp(-16, -0.5, reveal);
-  Cc.g.position.z = THREE.MathUtils.lerp(-16, -1.0, reveal);
-
-  // lantern glow
-  const glow = 3.8*reveal;
-  A.light.intensity = glow*1.2;
-  B.light.intensity = glow*1.1;
-  Cc.light.intensity = glow*0.95;
-
-  // swing
-  const swing = 0.03 + reveal*0.13;
-  A.g.rotation.z = Math.sin(t*0.9) * swing;
-  B.g.rotation.z = Math.sin(t*1.05 + 1.2) * swing*0.92;
-  Cc.g.rotation.z = Math.sin(t*1.1 + 2.2) * swing*0.85;
-
-  // drift
-  stars.rotation.y = t*0.02;
-
-  // camera cinematic
-  camera.position.x = Math.sin(t*0.12)*0.20;
-  camera.position.y = 1.0 + Math.sin(t*0.10)*0.10;
-  camera.lookAt(0, 0.7, 0);
-
-  renderer.render(scene, camera);
+renderer.render(scene,camera)
 }
-
-animate();
+animate()
 </script>
 
 </body>
