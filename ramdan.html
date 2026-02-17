@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Ramadan — Luxury 3D Decor</title>
+  <title>Ramadan — Luxury 3D Decor (Fixed)</title>
 
   <style>
     :root{
@@ -37,12 +37,16 @@
       width:100%;
       height:100%;
       display:block;
+      position:absolute;
+      inset:0;
+      z-index:1;
     }
 
     /* UI overlay */
     .ui{
       position:absolute;
       inset:0;
+      z-index:5;
       pointer-events:none;
       display:flex;
       flex-direction:column;
@@ -101,12 +105,9 @@
     /* Rope click */
     .ropeWrap{
       position:absolute;
-      top:0;
-      left:50%;
-      transform: translateX(-50%);
-      width:min(520px, 92vw);
-      height: 100vh;
-      pointer-events:auto;
+      inset:0;
+      z-index:10;
+      pointer-events:none;
       display:flex;
       justify-content:center;
       align-items:flex-start;
@@ -122,27 +123,28 @@
       border:1px solid rgba(255,255,255,.14);
       box-shadow: 0 18px 55px rgba(0,0,0,.35);
       opacity:.95;
+      pointer-events:none;
     }
 
     .knob{
       position:absolute;
       top: calc(62vh - 16px);
-      width: 54px;
-      height: 54px;
+      width: 58px;
+      height: 58px;
       border-radius: 999px;
       border:1px solid rgba(255,255,255,.18);
       background: radial-gradient(circle at 30% 30%, rgba(246,211,101,.95), rgba(253,160,133,.55) 55%, rgba(255,255,255,.05));
       box-shadow: 0 18px 75px rgba(246,211,101,.18);
       cursor: pointer;
-      pointer-events:auto;
       display:grid;
       place-items:center;
       user-select:none;
       touch-action: manipulation;
       transition: transform .12s ease;
+      pointer-events:auto;
     }
     .knob:hover{ transform: translateY(2px) scale(1.02); }
-    .knob:active{ transform: translateY(6px) scale(0.98); }
+    .knob:active{ transform: translateY(8px) scale(0.98); }
 
     .knob svg{ opacity:.9; }
 
@@ -150,8 +152,8 @@
       position:absolute;
       left:50%;
       transform: translateX(-50%);
-      bottom: 28px;
-      width: min(520px, 92vw);
+      bottom: 26px;
+      width: min(560px, 92vw);
       text-align:center;
       color: rgba(255,255,255,.75);
       font-size: 12px;
@@ -161,7 +163,29 @@
       border: 1px dashed rgba(255,255,255,.22);
       background: rgba(0,0,0,.20);
       backdrop-filter: blur(10px);
+      z-index: 12;
     }
+
+    /* Backup button */
+    .btn{
+      position:absolute;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      pointer-events:auto;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.07);
+      color: rgba(255,255,255,.92);
+      font-weight: 700;
+      cursor:pointer;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      transition: transform .15s ease, background .15s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
+    .btn:active{ transform: translateY(2px); }
 
     .pulse{
       position:absolute;
@@ -173,6 +197,7 @@
       opacity: 0;
       transition: opacity .3s ease;
       pointer-events:none;
+      z-index: 20;
     }
     .pulse.on{ opacity:1; }
     @keyframes pulse{
@@ -200,6 +225,7 @@
 
     <div class="ropeWrap">
       <div class="rope"></div>
+
       <div class="knob" id="knob" title="Click">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
           <path d="M12 2c1.7 1.2 2.8 2.9 3 5h2v2h-1v2.3c0 2.3-1.2 4.4-3 5.7V21H11v-3.1c-1.8-1.3-3-3.4-3-5.7V9H7V7h2c.2-2.1 1.3-3.8 3-5Z"
@@ -210,10 +236,10 @@
       <div class="hint">كبسة واحدة: تشغيل ✨ — كبسة ثانية: إطفاء</div>
     </div>
 
+    <button class="btn" id="backupBtn">تشغيل / إطفاء</button>
     <div class="pulse" id="pulse"></div>
   </div>
 
-  <!-- THREE + POSTPROCESS (Bloom) -->
   <script type="module">
     import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
     import { EffectComposer } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js";
@@ -226,6 +252,7 @@
     const status = document.getElementById("status");
     const title  = document.getElementById("title");
     const pulse  = document.getElementById("pulse");
+    const backupBtn = document.getElementById("backupBtn");
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
@@ -240,14 +267,14 @@
     camera.position.set(0, 1.0, 7.2);
 
     // Lights
-    const amb = new THREE.AmbientLight(0xffffff, 0.20);
+    const amb = new THREE.AmbientLight(0xffffff, 0.18);
     scene.add(amb);
 
-    const key = new THREE.DirectionalLight(0xfff1cf, 0.35);
+    const key = new THREE.DirectionalLight(0xfff1cf, 0.22);
     key.position.set(2.6, 3.2, 2.0);
     scene.add(key);
 
-    const rim = new THREE.DirectionalLight(0xcfefff, 0.22);
+    const rim = new THREE.DirectionalLight(0xcfefff, 0.18);
     rim.position.set(-3.2, 1.2, -2.4);
     scene.add(rim);
 
@@ -263,8 +290,8 @@
       });
     }
 
-    // ---------- Stars + gold dust ----------
-    const starCount = 1600;
+    // Stars + gold dust
+    const starCount = 1700;
     const g = new THREE.BufferGeometry();
     const pos = new Float32Array(starCount*3);
     const col = new Float32Array(starCount*3);
@@ -293,7 +320,7 @@
     stars.position.z = -4;
     scene.add(stars);
 
-    // ---------- Crescent ----------
+    // Crescent
     const crescent = new THREE.Group();
 
     const arcGeo = new THREE.TorusGeometry(1.28, 0.25, 72, 280, Math.PI*1.58);
@@ -313,11 +340,11 @@
     star.position.set(1.14, 0.94, 0.25);
 
     crescent.add(arc, cut, star);
-    crescent.position.set(0, 0.65, -2.4);
-    crescent.scale.setScalar(0.70);
+    crescent.position.set(0, 0.65, -2.6);
+    crescent.scale.setScalar(0.65);
     root.add(crescent);
 
-    // ---------- Lanterns ----------
+    // Lanterns
     function createLantern(scale=1){
       const group = new THREE.Group();
 
@@ -373,34 +400,58 @@
 
     root.add(L1.group, L2.group, L3.group);
 
-    // ---------- Floor glow ----------
-    const glow = new THREE.Mesh(
+    // Floor glow
+    const floorGlow = new THREE.Mesh(
       new THREE.RingGeometry(0.9, 2.9, 100),
       new THREE.MeshStandardMaterial({
         color: new THREE.Color("#fda085"),
         transparent:true,
-        opacity:0.04,
+        opacity:0.02,
         roughness: 1.0,
         metalness: 0.0,
         side: THREE.DoubleSide
       })
     );
-    glow.rotation.x = Math.PI/2;
-    glow.position.y = -0.95;
-    root.add(glow);
+    floorGlow.rotation.x = Math.PI/2;
+    floorGlow.position.y = -0.95;
+    root.add(floorGlow);
 
-    // ---------- Postprocessing: Bloom ----------
+    // Postprocessing
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
 
     const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.85, 0.75, 0.20);
     composer.addPass(bloom);
 
-    // ---------- Power toggle ----------
+    // Toggle
     let on = false;
     let power = 0.0;
     let target = 0.0;
 
+    function toggle(){
+      on = !on;
+      target = on ? 1.0 : 0.0;
+
+      // click feedback
+      knob.style.transform = "translateY(8px) scale(0.98)";
+      setTimeout(()=> knob.style.transform = "", 140);
+    }
+
+    knob.addEventListener("click", toggle);
+    backupBtn.addEventListener("click", toggle);
+
+    // Resize
+    function resize(){
+      renderer.setSize(innerWidth, innerHeight, false);
+      composer.setSize(innerWidth, innerHeight);
+      camera.aspect = innerWidth/innerHeight;
+      camera.updateProjectionMatrix();
+      bloom.setSize(innerWidth, innerHeight);
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    // UI state
     function uiUpdate(){
       if(power < 0.05){
         status.textContent = "اكبس الحبل لتشغيل زينة رمضان ✨";
@@ -417,26 +468,7 @@
       }
     }
 
-    knob.addEventListener("click", ()=>{
-      on = !on;
-      target = on ? 1.0 : 0.0;
-      // small premium press feedback
-      knob.style.transform = "translateY(8px) scale(0.98)";
-      setTimeout(()=> knob.style.transform = "", 120);
-    });
-
-    // ---------- Resize ----------
-    function resize(){
-      renderer.setSize(innerWidth, innerHeight, false);
-      composer.setSize(innerWidth, innerHeight);
-      camera.aspect = innerWidth/innerHeight;
-      camera.updateProjectionMatrix();
-      bloom.setSize(innerWidth, innerHeight);
-    }
-    window.addEventListener("resize", resize);
-    resize();
-
-    // ---------- Animation ----------
+    // Animation
     const clock = new THREE.Clock();
 
     function animate(){
@@ -446,39 +478,38 @@
       power = THREE.MathUtils.lerp(power, target, 0.06);
       uiUpdate();
 
-      // Scene reacts
-      amb.intensity = 0.14 + power*0.70;
-      key.intensity = 0.12 + power*1.65;
-      rim.intensity = 0.10 + power*0.85;
+      // lights react
+      amb.intensity = 0.10 + power*0.85;
+      key.intensity = 0.08 + power*1.85;
+      rim.intensity = 0.06 + power*0.95;
 
       // bloom reacts
-      bloom.strength = 0.25 + power*1.05;
+      bloom.strength = 0.18 + power*1.15;
       bloom.radius   = 0.75;
-      bloom.threshold= 0.16;
+      bloom.threshold= 0.14;
 
       // lantern glow
-      const glowI = 2.5 * power;
+      const glowI = 2.8 * power;
       L1.light.intensity = glowI * 1.15;
       L2.light.intensity = glowI * 1.05;
       L3.light.intensity = glowI * 0.95;
 
       // crescent reveal
-      crescent.position.z = THREE.MathUtils.lerp(-2.4, 1.35, power);
-      crescent.scale.setScalar(THREE.MathUtils.lerp(0.70, 1.30, power));
-      crescent.position.y = THREE.MathUtils.lerp(0.65, 0.80, power);
+      crescent.position.z = THREE.MathUtils.lerp(-2.6, 1.55, power);
+      crescent.scale.setScalar(THREE.MathUtils.lerp(0.65, 1.35, power));
+      crescent.position.y = THREE.MathUtils.lerp(0.65, 0.82, power);
 
       // floor glow
-      glow.material.opacity = 0.02 + power*0.14;
-      glow.scale.setScalar(1.0 + power*0.18);
+      floorGlow.material.opacity = 0.01 + power*0.16;
+      floorGlow.scale.setScalar(1.0 + power*0.20);
 
-      // premium motion
-      crescent.rotation.y = t * (0.35 + power*1.0);
+      // motion
+      crescent.rotation.y = t * (0.35 + power*1.05);
       crescent.rotation.x = 0.05 + Math.sin(t*0.85)*0.05;
 
       star.rotation.y = -t * 1.25;
       star.rotation.x =  t * 1.05;
 
-      // lantern swing
       const swing = 0.06 + power*0.14;
       L1.group.rotation.z = Math.sin(t*0.9) * swing;
       L2.group.rotation.z = Math.sin(t*1.05 + 1.2) * swing*0.92;
@@ -501,6 +532,9 @@
       requestAnimationFrame(animate);
     }
     animate();
+
+    // Start OFF
+    target = 0.0;
   </script>
 </body>
 </html>
