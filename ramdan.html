@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ramadan 3D Reels Studio</title>
+  <style>
+    :root{
+      --bg1:#05060a;
+      --bg2:#090a12;
+      --gold:#f6d365;
+      --gold2:#fda085;
+      --mint:#7cf7d4;
+      --text:#f4f6ff;
+      --muted:rgba(244,246,255,.72);
+      --glass:rgba(255,255,255,.07);
+      --stroke:rgba(255,255,255,.12);
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Kufi Arabic", "Noto Sans Arabic", Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(246,211,101,.18), transparent 55%),
+        radial-gradient(900px 500px at 80% 20%, rgba(124,247,212,.10), transparent 55%),
+        radial-gradient(800px 600px at 50% 90%, rgba(253,160,133,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+      padding: 18px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 14px;
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 0;
+    }
+    .logo{
+      width:38px;height:38px;border-radius:12px;
+      background: radial-gradient(circle at 30% 30%, rgba(246,211,101,.95), rgba(253,160,133,.55) 45%, rgba(124,247,212,.35) 75%, rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 10px 25px rgba(246,211,101,.15);
+    }
+    .brand h1{
+      font-size:14px;
+      margin:0;
+      line-height:1.2;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brand p{
+      margin:2px 0 0;
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+    }
+
+    @media (min-width: 980px){
+      .grid{ grid-template-columns: 1.2fr .8fr; align-items:start; }
+    }
+
+    .card{
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .stage{
+      padding:14px;
+    }
+
+    /* إطار 9:16 مثل الريلز */
+    .reels-frame{
+      width:100%;
+      max-width: 520px;
+      margin: 0 auto;
+      aspect-ratio: 9 / 16;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.16);
+      overflow:hidden;
+      position:relative;
+      box-shadow: 0 18px 65px rgba(0,0,0,.55);
+      background: radial-gradient(900px 600px at 50% 20%, rgba(246,211,101,.10), transparent 60%),
+                  radial-gradient(900px 600px at 50% 100%, rgba(124,247,212,.08), transparent 60%),
+                  linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));
+    }
+
+    canvas{ display:block; width:100%; height:100%; }
+
+    .overlay{
+      position:absolute; inset:0;
+      pointer-events:none;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      padding:18px;
+    }
+
+    .top-chip{
+      align-self:flex-start;
+      background: rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius: 999px;
+      padding:8px 12px;
+      font-size:12px;
+      color: rgba(255,255,255,.9);
+      backdrop-filter: blur(8px);
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, var(--mint), rgba(124,247,212,.2));
+      box-shadow: 0 0 14px rgba(124,247,212,.45);
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom: 6px;
+      transform: translateY(2px);
+    }
+    .title h2{
+      margin:0;
+      font-size: clamp(18px, 3vw, 28px);
+      letter-spacing:.2px;
+      text-shadow: 0 10px 30px rgba(0,0,0,.55);
+      background: linear-gradient(90deg, var(--gold), #fff, var(--mint));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      filter: drop-shadow(0 18px 30px rgba(246,211,101,.12));
+    }
+    .title p{
+      margin:6px 0 0;
+      font-size: 13px;
+      color: rgba(255,255,255,.82);
+      text-shadow: 0 10px 30px rgba(0,0,0,.55);
+    }
+
+    .controls{
+      padding:14px;
+    }
+    .controls .inner{
+      display:grid;
+      gap:12px;
+      padding:14px;
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .row-1{ grid-template-columns: 1fr; }
+
+    label{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    input[type="text"], select{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--text);
+      outline:none;
+    }
+    input[type="text"]::placeholder{ color: rgba(255,255,255,.45); }
+    input[type="range"]{
+      width:100%;
+      accent-color: rgba(246,211,101,.85);
+    }
+
+    .btns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    button{
+      cursor:pointer;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 600;
+      box-shadow: 0 14px 35px rgba(0,0,0,.35);
+      transition: transform .15s ease, background .15s ease;
+    }
+    button:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); }
+    button.primary{
+      background: linear-gradient(90deg, rgba(246,211,101,.92), rgba(253,160,133,.82));
+      border: 1px solid rgba(255,255,255,.22);
+      color:#1b1408;
+    }
+    button.danger{
+      background: rgba(255,80,120,.16);
+      border-color: rgba(255,80,120,.28);
+    }
+
+    .hint{
+      font-size:12px;
+      color: rgba(255,255,255,.72);
+      line-height:1.5;
+    }
+    .footer-note{
+      padding: 0 14px 14px;
+      color: rgba(255,255,255,.55);
+      font-size: 11px;
+      line-height:1.55;
+    }
+
+    .pulse{
+      position:absolute; inset:auto auto 22px 22px;
+      width: 10px; height: 10px; border-radius: 999px;
+      background: rgba(255,80,120,.9);
+      box-shadow: 0 0 0 0 rgba(255,80,120,.55);
+      animation: pulse 1.2s infinite;
+      opacity:0;
+    }
+    .pulse.on{ opacity:1; }
+    @keyframes pulse{
+      0%{ box-shadow: 0 0 0 0 rgba(255,80,120,.55); }
+      70%{ box-shadow: 0 0 0 16px rgba(255,80,120,0); }
+      100%{ box-shadow: 0 0 0 0 rgba(255,80,120,0); }
+    }
+
+    /* نصوص متحركة لطيفة */
+    .floaty{
+      animation: floaty 3.6s ease-in-out infinite;
+    }
+    @keyframes floaty{
+      0%,100%{ transform: translateY(2px); }
+      50%{ transform: translateY(-6px); }
+    }
+
+    /* شريط صغير لعرض رابط تحميل الفيديو */
+    .download{
+      display:none;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px dashed rgba(255,255,255,.25);
+      background: rgba(0,0,0,.18);
+      color: rgba(255,255,255,.9);
+      font-size:12px;
+      word-break: break-word;
+    }
+    .download a{ color: var(--mint); font-weight:700; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"></div>
+        <div style="min-width:0">
+          <h1>Ramadan 3D Reels Studio</h1>
+          <p>مولّد ريلز 9:16 بمشهد ثلاثي الأبعاد + تسجيل فيديو</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end">
+        <span style="font-size:12px;color:var(--muted)">جاهز للاستخدام ✅</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card stage">
+        <div class="reels-frame" id="frame">
+          <canvas id="c"></canvas>
+
+          <div class="overlay">
+            <div class="top-chip">
+              <span class="dot"></span>
+              <span id="chipText">رمضان كريم ✨</span>
+            </div>
+
+            <div class="title floaty">
+              <h2 id="mainTitle">رمضان كريم</h2>
+              <p id="subTitle">أعاد الله علينا وعليكم الشهر بالخير والبركة</p>
+            </div>
+          </div>
+
+          <div class="pulse" id="recPulse" title="Recording"></div>
+        </div>
+        <div class="footer-note">
+          تلميح: لو بدك “فخامة أكثر” ارفع الـBloom في الإعدادات، أو غيّر ثيم الإضاءة إلى “Night Gold”.
+        </div>
+      </section>
+
+      <aside class="card controls">
+        <div class="inner">
+          <div class="row row-1">
+            <div>
+              <label>العنوان الرئيسي</label>
+              <input id="titleInput" type="text" value="رمضان كريم" placeholder="مثال: رمضان كريم" />
+            </div>
+          </div>
+
+          <div class="row row-1">
+            <div>
+              <label>النص الفرعي</label>
+              <input id="subInput" type="text" value="أعاد الله علينا وعليكم الشهر بالخير والبركة" placeholder="اكتب تهنئتك..." />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>الثيم</label>
+              <select id="theme">
+                <option value="gold">Night Gold</option>
+                <option value="mint">Moon Mint</option>
+                <option value="sunset">Sunset Warm</option>
+              </select>
+            </div>
+            <div>
+              <label>سرعة الحركة</label>
+              <input id="speed" type="range" min="0.2" max="2.2" step="0.01" value="1.0" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>قوة الإضاءة</label>
+              <input id="light" type="range" min="0.2" max="2.5" step="0.01" value="1.2" />
+            </div>
+            <div>
+              <label>Bloom (توهّج)</label>
+              <input id="bloom" type="range" min="0" max="1.2" step="0.01" value="0.55" />
+            </div>
+          </div>
+
+          <div class="btns">
+            <button class="primary" id="startRec">ابدأ تسجيل (10s)</button>
+            <button class="danger" id="stopRec" disabled>إيقاف</button>
+            <button id="snap">صورة PNG</button>
+          </div>
+
+          <div class="download" id="downloadBox"></div>
+
+          <div class="hint">
+            ✅ التسجيل بيعمل ملف <b>WEBM</b>. لتحويله MP4 بسرعة:
+            <br/>- استخدم CapCut / Premiere / أو FFmpeg.
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Three.js + Extras (CDN) -->
+  <script type="module">
+    import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+    import { EffectComposer } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js";
+    import { RenderPass } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/RenderPass.js";
+    import { UnrealBloomPass } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js";
+
+    // ---------- DOM ----------
+    const canvas = document.getElementById("c");
+    const frame = document.getElementById("frame");
+    const titleInput = document.getElementById("titleInput");
+    const subInput   = document.getElementById("subInput");
+    const mainTitle  = document.getElementById("mainTitle");
+    const subTitle   = document.getElementById("subTitle");
+    const chipText   = document.getElementById("chipText");
+    const themeSel   = document.getElementById("theme");
+    const speedEl    = document.getElementById("speed");
+    const lightEl    = document.getElementById("light");
+    const bloomEl    = document.getElementById("bloom");
+    const startBtn   = document.getElementById("startRec");
+    const stopBtn    = document.getElementById("stopRec");
+    const snapBtn    = document.getElementById("snap");
+    const recPulse   = document.getElementById("recPulse");
+    const downloadBox= document.getElementById("downloadBox");
+
+    titleInput.addEventListener("input", () => {
+      mainTitle.textContent = titleInput.value || "رمضان كريم";
+      chipText.textContent  = (titleInput.value || "رمضان كريم") + " ✨";
+    });
+    subInput.addEventListener("input", () => {
+      subTitle.textContent = subInput.value || "أعاد الله علينا وعليكم الشهر بالخير والبركة";
+    });
+
+    // ---------- THREE Setup ----------
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true, preserveDrawingBuffer:true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(45, 9/16, 0.1, 100);
+    camera.position.set(0, 0.9, 6.2);
+
+    // Light rig
+    const amb = new THREE.AmbientLight(0xffffff, 0.55);
+    scene.add(amb);
+
+    const key = new THREE.DirectionalLight(0xffffff, 1.2);
+    key.position.set(2.2, 3.2, 3.0);
+    scene.add(key);
+
+    const rim = new THREE.DirectionalLight(0xffffff, 0.8);
+    rim.position.set(-3.0, 1.5, -2.5);
+    scene.add(rim);
+
+    // Group
+    const root = new THREE.Group();
+    scene.add(root);
+
+    // ---------- Materials (Goldy) ----------
+    function makeMetal(colorHex, rough=0.22, metal=1.0){
+      return new THREE.MeshStandardMaterial({
+        color: new THREE.Color(colorHex),
+        roughness: rough,
+        metalness: metal,
+      });
+    }
+
+    // ---------- Crescent Moon ----------
+    // Crescent via two spheres subtract illusion (two meshes + stencil would be complex)
+    // We'll do a "fake crescent": torus segment + sphere cap => looks premium in motion.
+    const crescent = new THREE.Group();
+
+    const torusGeo = new THREE.TorusGeometry(1.15, 0.22, 64, 220, Math.PI * 1.45);
+    const torus = new THREE.Mesh(torusGeo, makeMetal("#f6d365", 0.18, 1.0));
+    torus.rotation.z = Math.PI * 0.2;
+    torus.rotation.x = Math.PI * 0.06;
+
+    // inner cut illusion
+    const innerGeo = new THREE.TorusGeometry(0.95, 0.18, 64, 220, Math.PI * 1.45);
+    const inner = new THREE.Mesh(innerGeo, makeMetal("#0b0c14", 0.75, 0.1));
+    inner.position.set(0.1, -0.02, 0.06);
+    inner.rotation.copy(torus.rotation);
+
+    // small star
+    const star = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.16, 1),
+      makeMetal("#ffffff", 0.28, 0.9)
+    );
+    star.position.set(1.05, 0.85, 0.2);
+
+    crescent.add(torus, inner, star);
+    crescent.position.set(0, 0.4, 0);
+    root.add(crescent);
+
+    // ---------- Lanterns ----------
+    function createLantern(scale=1){
+      const g = new THREE.Group();
+
+      const body = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.22, 0.26, 0.48, 48, 1, true),
+        makeMetal("#fda085", 0.3, 0.85)
+      );
+      body.position.y = 0;
+
+      // ribs
+      const ribMat = makeMetal("#f6d365", 0.22, 1.0);
+      for(let i=0;i<8;i++){
+        const rib = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.005, 0.005, 0.52, 10),
+          ribMat
+        );
+        const a = (i/8) * Math.PI*2;
+        rib.position.set(Math.cos(a)*0.24, 0, Math.sin(a)*0.24);
+        g.add(rib);
+      }
+
+      // top & bottom caps
+      const capTop = new THREE.Mesh(
+        new THREE.SphereGeometry(0.18, 40, 30),
+        makeMetal("#f6d365", 0.2, 1)
+      );
+      capTop.scale.set(1.1, 0.65, 1.1);
+      capTop.position.y = 0.30;
+
+      const capBot = capTop.clone();
+      capBot.position.y = -0.30;
+
+      // inner glow
+      const glow = new THREE.PointLight(0xffe7b0, 2.0, 4.5, 2.0);
+      glow.position.set(0, 0, 0);
+
+      // hook
+      const hook = new THREE.Mesh(
+        new THREE.TorusGeometry(0.10, 0.02, 20, 40),
+        makeMetal("#ffffff", 0.25, 0.95)
+      );
+      hook.position.y = 0.54;
+      hook.rotation.x = Math.PI/2;
+
+      g.add(body, capTop, capBot, glow, hook);
+      g.scale.setScalar(scale);
+      return { group:g, light:glow };
+    }
+
+    const lanternA = createLantern(1.1);
+    lanternA.group.position.set(-1.35, 0.15, 0.5);
+    root.add(lanternA.group);
+
+    const lanternB = createLantern(0.9);
+    lanternB.group.position.set(1.55, -0.05, 0.25);
+    root.add(lanternB.group);
+
+    const lanternC = createLantern(0.75);
+    lanternC.group.position.set(0.0, -0.55, -0.2);
+    root.add(lanternC.group);
+
+    // ---------- Stars / Particles ----------
+    const starCount = 900;
+    const starGeo = new THREE.BufferGeometry();
+    const pos = new Float32Array(starCount*3);
+    const col = new Float32Array(starCount*3);
+
+    for(let i=0;i<starCount;i++){
+      // in a capsule-ish volume in front of camera
+      const x = (Math.random()-0.5)*8.5;
+      const y = (Math.random()-0.5)*10.5;
+      const z = -Math.random()*12.0;  // behind root
+      pos[i*3+0]=x;
+      pos[i*3+1]=y;
+      pos[i*3+2]=z;
+
+      // gradienty color (gold/mint/white)
+      const t = Math.random();
+      const c = new THREE.Color().setHSL(0.12 + 0.25*t, 0.85, 0.65);
+      if(Math.random()<0.22) c.set("#7cf7d4");
+      if(Math.random()<0.12) c.set("#ffffff");
+      col[i*3+0]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
+    }
+
+    starGeo.setAttribute("position", new THREE.BufferAttribute(pos,3));
+    starGeo.setAttribute("color", new THREE.BufferAttribute(col,3));
+
+    const starMat = new THREE.PointsMaterial({
+      size: 0.03,
+      vertexColors:true,
+      transparent:true,
+      opacity:0.95,
+      depthWrite:false
+    });
+
+    const stars = new THREE.Points(starGeo, starMat);
+    stars.position.z = -2.5;
+    scene.add(stars);
+
+    // ---------- Floating Calligraphy Plane (subtle) ----------
+    const plane = new THREE.Mesh(
+      new THREE.PlaneGeometry(3.6, 1.1, 1, 1),
+      new THREE.MeshStandardMaterial({
+        color: new THREE.Color("#0c0d16"),
+        transparent:true,
+        opacity:0.25,
+        metalness:0.1,
+        roughness:0.9
+      })
+    );
+    plane.position.set(0, 1.05, -0.6);
+    root.add(plane);
+
+    // ---------- Postprocessing (Bloom) ----------
+    const composer = new EffectComposer(renderer);
+    const renderPass = new RenderPass(scene, camera);
+    composer.addPass(renderPass);
+
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(720, 1280), 0.55, 0.7, 0.25);
+    composer.addPass(bloomPass);
+
+    // ---------- Resize ----------
+    function resize(){
+      const rect = frame.getBoundingClientRect();
+      const w = Math.max(1, Math.floor(rect.width));
+      const h = Math.max(1, Math.floor(rect.height));
+      renderer.setSize(w, h, false);
+      composer.setSize(w, h);
+      camera.aspect = w/h;
+      camera.updateProjectionMatrix();
+    }
+    new ResizeObserver(resize).observe(frame);
+    resize();
+
+    // ---------- Theme control ----------
+    function applyTheme(mode){
+      // background fog-ish tint (via lights)
+      if(mode === "gold"){
+        key.color.set("#fff1cf");
+        rim.color.set("#cfefff");
+        amb.color.set("#fff7e5");
+        lanternA.light.color.set("#ffe7b0");
+        lanternB.light.color.set("#ffe7b0");
+        lanternC.light.color.set("#ffe7b0");
+        renderer.toneMappingExposure = 1.05;
+      } else if(mode === "mint"){
+        key.color.set("#d8fff6");
+        rim.color.set("#ffd9c8");
+        amb.color.set("#eafcff");
+        lanternA.light.color.set("#c9fff0");
+        lanternB.light.color.set("#c9fff0");
+        lanternC.light.color.set("#c9fff0");
+        renderer.toneMappingExposure = 1.0;
+      } else { // sunset
+        key.color.set("#ffd9c2");
+        rim.color.set("#ffe9ff");
+        amb.color.set("#fff0e7");
+        lanternA.light.color.set("#ffd1a8");
+        lanternB.light.color.set("#ffd1a8");
+        lanternC.light.color.set("#ffd1a8");
+        renderer.toneMappingExposure = 1.08;
+      }
+    }
+    applyTheme(themeSel.value);
+    themeSel.addEventListener("change", () => applyTheme(themeSel.value));
+
+    // sliders
+    function updateLight(){
+      const v = parseFloat(lightEl.value);
+      key.intensity = 1.2 * v;
+      rim.intensity = 0.8 * v;
+      amb.intensity = 0.55 * (0.7 + v*0.3);
+      lanternA.light.intensity = 2.0 * v;
+      lanternB.light.intensity = 1.8 * v;
+      lanternC.light.intensity = 1.6 * v;
+    }
+    function updateBloom(){
+      bloomPass.strength = parseFloat(bloomEl.value);
+      bloomPass.radius   = 0.7;
+      bloomPass.threshold= 0.18;
+    }
+    lightEl.addEventListener("input", updateLight);
+    bloomEl.addEventListener("input", updateBloom);
+    updateLight(); updateBloom();
+
+    // ---------- Animation ----------
+    const clock = new THREE.Clock();
+    let mouseX = 0, mouseY = 0;
+    window.addEventListener("pointermove", (e)=>{
+      const r = frame.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width;   // 0..1
+      const ny = (e.clientY - r.top) / r.height;   // 0..1
+      mouseX = (nx - 0.5) * 2; // -1..1
+      mouseY = (ny - 0.5) * 2;
+    }, { passive:true });
+
+    function animate(){
+      const t = clock.getElapsedTime();
+      const sp = parseFloat(speedEl.value);
+
+      // subtle camera drift for premium feel
+      camera.position.x = THREE.MathUtils.lerp(camera.position.x, mouseX*0.35, 0.05);
+      camera.position.y = THREE.MathUtils.lerp(camera.position.y, 0.9 + (-mouseY*0.15), 0.05);
+      camera.lookAt(0, 0.35, 0);
+
+      // crescent float & shine
+      crescent.rotation.y = t * 0.45 * sp;
+      crescent.rotation.x = 0.05 + Math.sin(t*0.6)*0.06;
+      crescent.position.y = 0.4 + Math.sin(t*0.9)*0.08;
+
+      // star twinkle
+      star.rotation.y = -t * 1.2 * sp;
+      star.rotation.x = t * 1.05 * sp;
+
+      // lantern swing
+      lanternA.group.rotation.z = Math.sin(t*0.9)*0.12;
+      lanternA.group.rotation.x = Math.sin(t*0.7)*0.05;
+      lanternA.group.position.y = 0.15 + Math.sin(t*0.8)*0.06;
+
+      lanternB.group.rotation.z = Math.sin(t*1.05 + 1.2)*0.10;
+      lanternB.group.rotation.x = Math.sin(t*0.6 + 0.6)*0.05;
+      lanternB.group.position.y = -0.05 + Math.sin(t*0.9 + 0.7)*0.06;
+
+      lanternC.group.rotation.z = Math.sin(t*1.1 + 2.1)*0.08;
+      lanternC.group.rotation.x = Math.sin(t*0.7 + 1.4)*0.05;
+      lanternC.group.position.y = -0.55 + Math.sin(t*0.95 + 1.1)*0.06;
+
+      // particles drift
+      stars.rotation.y = t * 0.035 * sp;
+      stars.rotation.x = Math.sin(t*0.07) * 0.03;
+
+      // plane breathing
+      plane.position.y = 1.05 + Math.sin(t*0.6)*0.05;
+      plane.rotation.y = Math.sin(t*0.35)*0.12;
+
+      composer.render();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // ---------- Snapshot PNG ----------
+    snapBtn.addEventListener("click", ()=>{
+      // ensure latest frame
+      composer.render();
+      const a = document.createElement("a");
+      a.download = "ramadan-reels.png";
+      a.href = canvas.toDataURL("image/png");
+      a.click();
+    });
+
+    // ---------- Recording (Canvas -> WebM) ----------
+    let mediaRecorder = null;
+    let chunks = [];
+    let stopTimer = null;
+
+    function setDownload(url){
+      downloadBox.style.display = "block";
+      downloadBox.innerHTML = `تم تجهيز الفيديو ✅ <a href="${url}" download="ramadan-reels.webm">اضغط لتحميله</a>`;
+    }
+
+    function resetDownload(){
+      downloadBox.style.display = "none";
+      downloadBox.textContent = "";
+    }
+
+    async function startRecording(seconds=10){
+      resetDownload();
+
+      const stream = canvas.captureStream(60); // 60fps
+      const options = [
+        { mimeType: "video/webm;codecs=vp9", videoBitsPerSecond: 10_000_000 },
+        { mimeType: "video/webm;codecs=vp8", videoBitsPerSecond: 8_000_000 },
+        { mimeType: "video/webm", videoBitsPerSecond: 8_000_000 }
+      ];
+
+      let chosen = null;
+      for(const o of options){
+        if(MediaRecorder.isTypeSupported(o.mimeType)){ chosen = o; break; }
+      }
+      if(!chosen){
+        alert("المتصفح لا يدعم تسجيل WebM هنا. جرّب Chrome/Edge.");
+        return;
+      }
+
+      chunks = [];
+      mediaRecorder = new MediaRecorder(stream, chosen);
+
+      mediaRecorder.ondataavailable = (e)=>{ if(e.data && e.data.size>0) chunks.push(e.data); };
+      mediaRecorder.onstop = ()=>{
+        const blob = new Blob(chunks, { type: chosen.mimeType });
+        const url = URL.createObjectURL(blob);
+        setDownload(url);
+      };
+
+      mediaRecorder.start(200);
+      recPulse.classList.add("on");
+      startBtn.disabled = true;
+      stopBtn.disabled = false;
+
+      stopTimer = setTimeout(()=> stopRecording(), seconds*1000);
+    }
+
+    function stopRecording(){
+      if(stopTimer){ clearTimeout(stopTimer); stopTimer = null; }
+      if(mediaRecorder && mediaRecorder.state !== "inactive"){
+        mediaRecorder.stop();
+      }
+      recPulse.classList.remove("on");
+      startBtn.disabled = false;
+      stopBtn.disabled = true;
+    }
+
+    startBtn.addEventListener("click", ()=> startRecording(10));
+    stopBtn.addEventListener("click", stopRecording);
+
+  </script>
+</body>
+</html>
