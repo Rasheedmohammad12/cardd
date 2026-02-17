@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ramadan Cinematic 10/10</title>
+<title>Ramadan Luxury Lights</title>
 
 <style>
 body{
 margin:0;
 overflow:hidden;
-background:#02030a;
+background:radial-gradient(circle at 50% 20%,#111633,#03040a 70%);
 font-family:"Noto Kufi Arabic",system-ui;
 color:white;
 }
@@ -34,21 +34,23 @@ pointer-events:none;
 .title{
 text-align:center;
 opacity:0;
-transform:translateY(40px);
-transition:0.6s cubic-bezier(.2,.8,.2,1);
+transform:translateY(40px) scale(.95);
+transition:0.7s cubic-bezier(.2,.8,.2,1);
 }
 
 .title h1{
-font-size:64px;
+font-size:70px;
 margin:0;
 background:linear-gradient(90deg,#f6d365,#fff,#7cf7d4);
 -webkit-background-clip:text;
 color:transparent;
+letter-spacing:2px;
 }
 
 .title p{
-margin-top:14px;
-opacity:.8;
+margin-top:20px;
+font-size:20px;
+opacity:.85;
 }
 
 .ropeWrap{
@@ -79,6 +81,7 @@ justify-content:center;
 cursor:grab;
 pointer-events:auto;
 box-shadow:0 10px 60px rgba(0,0,0,.7);
+font-size:22px;
 }
 .knob:active{cursor:grabbing}
 </style>
@@ -91,7 +94,7 @@ box-shadow:0 10px 60px rgba(0,0,0,.7);
 <div class="ui">
 <div class="title" id="title">
 <h1>رمضان كريم</h1>
-<p>أعاد الله علينا وعليكم الشهر بالخير والبركة</p>
+<p>نسأل الله أن يملأ أيامكم نورًا ورحمةً وبركة 🌙✨</p>
 </div>
 </div>
 
@@ -100,37 +103,20 @@ box-shadow:0 10px 60px rgba(0,0,0,.7);
 <div class="knob" id="knob">✨</div>
 </div>
 
-<script type="module">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
-import { EffectComposer } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js";
-import { RenderPass } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/RenderPass.js";
-import { UnrealBloomPass } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js";
-
-/* ---------- Scene Setup ---------- */
+<script>
 
 const scene=new THREE.Scene()
-scene.fog=new THREE.Fog(0x02030a,8,25)
-
 const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,100)
-camera.position.set(0,1,8)
+camera.position.z=10
 
-const renderer=new THREE.WebGLRenderer({canvas:c,antialias:true})
+const renderer=new THREE.WebGLRenderer({canvas:c,alpha:true,antialias:true})
 renderer.setSize(innerWidth,innerHeight)
 renderer.setPixelRatio(devicePixelRatio)
-renderer.toneMapping=THREE.ACESFilmicToneMapping
-renderer.toneMappingExposure=1.2
-
-const composer=new EffectComposer(renderer)
-composer.addPass(new RenderPass(scene,camera))
-composer.addPass(new UnrealBloomPass(
-new THREE.Vector2(innerWidth,innerHeight),
-1.2,0.8,0.15
-))
 
 window.addEventListener("resize",()=>{
 renderer.setSize(innerWidth,innerHeight)
-composer.setSize(innerWidth,innerHeight)
 camera.aspect=innerWidth/innerHeight
 camera.updateProjectionMatrix()
 })
@@ -140,89 +126,53 @@ camera.updateProjectionMatrix()
 const ambient=new THREE.AmbientLight(0xffffff,.05)
 scene.add(ambient)
 
-const rim=new THREE.DirectionalLight(0xffd88a,0)
-rim.position.set(-3,2,3)
-scene.add(rim)
+const mainLight=new THREE.PointLight(0xffd88a,0,30)
+mainLight.position.set(0,3,3)
+scene.add(mainLight)
 
-const key=new THREE.DirectionalLight(0xfff1cf,0)
-key.position.set(3,4,5)
-scene.add(key)
+/* ---------- Stars ---------- */
 
-/* ---------- Gold Material ---------- */
+const starGeo=new THREE.BufferGeometry()
+const starCount=2000
+const starPos=new Float32Array(starCount*3)
 
-const gold=new THREE.MeshPhysicalMaterial({
-color:0xf6d365,
-metalness:1,
-roughness:.15,
-clearcoat:1,
-clearcoatRoughness:.05
-})
+for(let i=0;i<starCount;i++){
+starPos[i*3]=(Math.random()-.5)*30
+starPos[i*3+1]=(Math.random()-.5)*20
+starPos[i*3+2]=-Math.random()*40
+}
 
-/* ---------- Crescent ---------- */
+starGeo.setAttribute("position",new THREE.BufferAttribute(starPos,3))
+const starMat=new THREE.PointsMaterial({color:0xffffff,size:.05})
+const stars=new THREE.Points(starGeo,starMat)
+scene.add(stars)
 
-const crescent=new THREE.Group()
+/* ---------- Decorative Hanging Lights ---------- */
 
-const outer=new THREE.Mesh(
-new THREE.TorusGeometry(2,0.18,64,200,Math.PI*1.7),
-gold
-)
+const lightsGroup=new THREE.Group()
 
-outer.rotation.z=.3
-outer.rotation.x=.15
-
-const inner=new THREE.Mesh(
-new THREE.TorusGeometry(1.6,0.18,64,200,Math.PI*1.7),
-new THREE.MeshBasicMaterial({color:0x02030a})
-)
-
-inner.position.x=.6
-inner.position.y=-.1
-inner.rotation.copy(outer.rotation)
-
-crescent.add(outer,inner)
-crescent.position.z=-6
-crescent.scale.set(.5,.5,.5)
-scene.add(crescent)
-
-/* ---------- Lanterns ---------- */
-
-function lantern(x){
+function bulb(x,y){
 const g=new THREE.Group()
 
-const body=new THREE.Mesh(
-new THREE.CylinderGeometry(.4,.4,1.2,32),
-new THREE.MeshStandardMaterial({color:0xfda085,metalness:.7,roughness:.3})
+const mesh=new THREE.Mesh(
+new THREE.SphereGeometry(.25,16,16),
+new THREE.MeshStandardMaterial({color:0xf6d365,emissive:0xf6d365,emissiveIntensity:0})
 )
 
-const glow=new THREE.PointLight(0xffe7b0,0,15)
-g.add(body,glow)
-g.position.x=x
-g.position.z=-7
-return {g,glow}
+const glow=new THREE.PointLight(0xffe7b0,0,10)
+
+g.add(mesh,glow)
+g.position.set(x,y,-5)
+return {g,mesh,glow}
 }
 
-const L1=lantern(-4)
-const L2=lantern(4)
-scene.add(L1.g,L2.g)
-
-/* ---------- Dust Particles ---------- */
-
-const dustGeo=new THREE.BufferGeometry()
-const dustCount=1200
-const dustPos=new Float32Array(dustCount*3)
-
-for(let i=0;i<dustCount;i++){
-dustPos[i*3]=(Math.random()-.5)*10
-dustPos[i*3+1]=(Math.random()-.5)*8
-dustPos[i*3+2]=-Math.random()*10
+const bulbs=[]
+for(let i=-4;i<=4;i+=2){
+bulbs.push(bulb(i,3))
 }
 
-dustGeo.setAttribute("position",new THREE.BufferAttribute(dustPos,3))
-const dust=new THREE.Points(
-dustGeo,
-new THREE.PointsMaterial({color:0xffd88a,size:.03})
-)
-scene.add(dust)
+bulbs.forEach(b=>lightsGroup.add(b.g))
+scene.add(lightsGroup)
 
 /* ---------- Pull Logic ---------- */
 
@@ -254,28 +204,21 @@ requestAnimationFrame(animate)
 
 reveal+=(target-reveal)*.06
 
-ambient.intensity=.05+reveal*.7
-rim.intensity=reveal*2
-key.intensity=reveal*1.5
+ambient.intensity=.05+reveal*.6
+mainLight.intensity=reveal*2
 
-crescent.position.z=-6+reveal*6
-crescent.scale.set(.5+reveal*.8,.5+reveal*.8,.5+reveal*.8)
-crescent.rotation.y+=.005
+bulbs.forEach(b=>{
+b.mesh.material.emissiveIntensity=reveal*2
+b.glow.intensity=reveal*3
+})
 
-L1.g.position.z=-7+reveal*6
-L2.g.position.z=-7+reveal*6
-L1.glow.intensity=reveal*3
-L2.glow.intensity=reveal*3
-
-dust.rotation.y+=.0008
-
-camera.position.x=Math.sin(Date.now()*.0002)*.3
-camera.lookAt(0,0,0)
+lightsGroup.rotation.z=Math.sin(Date.now()*.0005)*.05
+stars.rotation.y+=.0004
 
 title.style.opacity=reveal
-title.style.transform=`translateY(${40-40*reveal}px)`
+title.style.transform=`translateY(${40-40*reveal}px) scale(${.95+reveal*.05})`
 
-composer.render()
+renderer.render(scene,camera)
 }
 
 animate()
