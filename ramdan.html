@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Ramadan Luxury Garland</title>
+<title>Ramadan Pop — Luxury Decor</title>
 
 <style>
   :root{
-    --bg1:#04040a;
-    --bg2:#070817;
+    --bg1:#000000;
+    --bg2:#050611;
     --gold:#f6d365;
     --gold2:#ffb36b;
     --mint:#7cf7d4;
@@ -21,11 +21,11 @@
     margin:0;
     overflow:hidden;
     font-family:"Noto Kufi Arabic",system-ui;
-    background:
-      radial-gradient(900px 600px at 20% 10%, rgba(246,211,101,.12), transparent 55%),
-      radial-gradient(900px 600px at 80% 20%, rgba(124,247,212,.08), transparent 55%),
-      linear-gradient(180deg, var(--bg1), var(--bg2));
     color:#fff;
+    background:
+      radial-gradient(900px 600px at 25% 10%, rgba(246,211,101,.10), transparent 55%),
+      radial-gradient(900px 600px at 80% 25%, rgba(124,247,212,.06), transparent 55%),
+      linear-gradient(180deg, var(--bg1), var(--bg2));
   }
 
   canvas{
@@ -35,7 +35,6 @@
     height:100%;
   }
 
-  /* UI */
   .ui{
     position:fixed;
     inset:0;
@@ -71,8 +70,13 @@
     margin-bottom:24px;
     opacity:0;
     transform: translateY(26px) scale(.98);
-    transition: opacity .15s linear, transform .15s linear;
+    transition: opacity .6s cubic-bezier(.2,.8,.2,1), transform .6s cubic-bezier(.2,.8,.2,1);
     text-shadow: 0 18px 60px rgba(0,0,0,.75);
+  }
+
+  .title.on{
+    opacity:1;
+    transform: translateY(0) scale(1);
   }
 
   .title h1{
@@ -90,66 +94,50 @@
     opacity:.85;
   }
 
-  /* Garland rope line (visual) */
-  .garlandLine{
+  /* Pop Button */
+  .popWrap{
     position:fixed;
     left:50%;
-    top: 64px;
-    transform: translateX(-50%);
-    width: min(980px, 96vw);
-    height: 4px;
+    top:50%;
+    transform: translate(-50%,-50%);
+    width: 120px;
+    height: 120px;
     border-radius: 999px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
-    opacity: .35;
-    pointer-events:none;
+    pointer-events:auto;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    user-select:none;
+    z-index: 20;
   }
 
-  /* Chain pull (new control) */
-  .chainWrap{
-    position:fixed;
-    left:50%;
-    top:0;
-    transform: translateX(-50%);
-    height: 100vh;
-    width: 220px;
-    pointer-events:none;
-    z-index:10;
-    display:flex;
-    justify-content:center;
-  }
-
-  .chain{
+  .popGlow{
     position:absolute;
-    top:0;
-    width: 10px;
-    height: 56vh;
-    border-radius: 999px;
-    background: linear-gradient(180deg, rgba(246,211,101,.35), rgba(255,255,255,.05));
-    border: 1px solid rgba(255,255,255,.10);
-    box-shadow: 0 18px 60px rgba(0,0,0,.35);
-    opacity: .85;
+    inset:-20px;
+    border-radius:999px;
+    background: radial-gradient(circle, rgba(246,211,101,.25), transparent 60%);
+    filter: blur(2px);
+    opacity: .65;
+    transition: opacity .3s ease;
   }
 
-  .charm{
-    position:absolute;
-    top: calc(56vh - 18px);
-    width: 66px;
-    height: 66px;
+  .pop{
+    width: 120px;
+    height: 120px;
     border-radius: 999px;
     border: 1px solid rgba(255,255,255,.18);
     background:
-      radial-gradient(circle at 30% 30%, rgba(246,211,101,.95), rgba(255,179,107,.55) 60%, rgba(255,255,255,.05));
-    box-shadow: 0 18px 80px rgba(246,211,101,.16);
+      radial-gradient(circle at 30% 30%, rgba(246,211,101,.95), rgba(255,179,107,.55) 55%, rgba(255,255,255,.05));
+    box-shadow: 0 24px 90px rgba(0,0,0,.65);
     display:grid;
     place-items:center;
-    font-size: 22px;
-    cursor: grab;
-    pointer-events:auto;
-    user-select:none;
-    touch-action:none;
+    font-size: 28px;
+    transition: transform .12s ease;
   }
 
-  .charm:active{ cursor: grabbing; transform: translateY(6px) scale(.98); }
+  .popWrap:active .pop{
+    transform: scale(0.94);
+  }
 
   .hint{
     position:fixed;
@@ -168,27 +156,6 @@
     backdrop-filter: blur(10px);
     z-index: 12;
   }
-
-  .bar{
-    position:fixed;
-    left:50%;
-    transform: translateX(-50%);
-    bottom: 56px;
-    width: min(640px, 92vw);
-    height: 12px;
-    border-radius: 999px;
-    border:1px solid rgba(255,255,255,.14);
-    background: rgba(255,255,255,.06);
-    overflow:hidden;
-    z-index:12;
-    pointer-events:none;
-  }
-  .fill{
-    height:100%;
-    width:0%;
-    background: linear-gradient(90deg, rgba(246,211,101,.92), rgba(124,247,212,.55));
-    box-shadow: 0 0 30px rgba(246,211,101,.16);
-  }
 </style>
 </head>
 
@@ -196,29 +163,26 @@
 
 <canvas id="c"></canvas>
 
-<div class="garlandLine"></div>
-
 <div class="ui">
   <div class="badge">
     <span class="dot"></span>
-    <span id="status">اسحب التعليقة لتشتغل زينة رمضان ✨</span>
+    <span id="status">فقّع الزر لتطلع زينة رمضان ✨</span>
   </div>
 
   <div class="title" id="title">
     <h1>رمضان كريم</h1>
-    <p>نسأل الله أن يملأ لياليكم نورًا… ويجعل رمضان بداية خيرٍ لكم ✨</p>
+    <p>اللهم اجعل رمضان لنا نورًا… وفرحًا… وبداية خيرٍ لا ينتهي ✨</p>
   </div>
 
   <div style="height:1px"></div>
 </div>
 
-<div class="chainWrap">
-  <div class="chain" id="chain"></div>
-  <div class="charm" id="charm">🕌</div>
+<div class="popWrap" id="popBtn">
+  <div class="popGlow"></div>
+  <div class="pop">💥</div>
 </div>
 
-<div class="bar"><div class="fill" id="fill"></div></div>
-<div class="hint">اسحب للأسفل… الزينة فوق رح تنور وتظهر الفوانيس والنص</div>
+<div class="hint">كبسة واحدة: تشغيل الزينة ✨ — كبسة ثانية: إطفاء</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -243,7 +207,7 @@ window.addEventListener("resize", ()=>{
 /* =========================
    LIGHTS
 ========================= */
-const ambient = new THREE.AmbientLight(0xffffff, 0.04);
+const ambient = new THREE.AmbientLight(0xffffff, 0.05);
 scene.add(ambient);
 
 const warm = new THREE.PointLight(0xffd88a, 0, 40);
@@ -257,20 +221,20 @@ scene.add(rim);
 /* =========================
    STARS (COLORED)
 ========================= */
-const starCount = 2600;
+const starCount = 3200;
 const starGeo = new THREE.BufferGeometry();
 const starPos = new Float32Array(starCount*3);
 const starCol = new Float32Array(starCount*3);
 
 for(let i=0;i<starCount;i++){
-  starPos[i*3]   = (Math.random()-0.5)*34;
-  starPos[i*3+1] = (Math.random()-0.5)*20;
-  starPos[i*3+2] = -Math.random()*55;
+  starPos[i*3]   = (Math.random()-0.5)*36;
+  starPos[i*3+1] = (Math.random()-0.5)*22;
+  starPos[i*3+2] = -Math.random()*60;
 
   const r = Math.random();
   let c = new THREE.Color("#ffffff");
-  if(r < 0.15) c = new THREE.Color("#7cf7d4");
-  else if(r < 0.35) c = new THREE.Color("#f6d365");
+  if(r < 0.12) c = new THREE.Color("#7cf7d4");
+  else if(r < 0.30) c = new THREE.Color("#f6d365");
 
   starCol[i*3] = c.r;
   starCol[i*3+1] = c.g;
@@ -283,20 +247,20 @@ starGeo.setAttribute("color", new THREE.BufferAttribute(starCol,3));
 const stars = new THREE.Points(
   starGeo,
   new THREE.PointsMaterial({
-    size: 0.055,
+    size: 0.05,
     vertexColors:true,
     transparent:true,
-    opacity:0.85,
+    opacity:0.9,
     depthWrite:false
   })
 );
-stars.position.z = -6;
+stars.position.z = -7;
 scene.add(stars);
 
 /* =========================
    GOLD DUST
 ========================= */
-const dustCount = 1200;
+const dustCount = 1300;
 const dustGeo = new THREE.BufferGeometry();
 const dustPos = new Float32Array(dustCount*3);
 
@@ -314,22 +278,22 @@ const dust = new THREE.Points(
 scene.add(dust);
 
 /* =========================
-   RAMADAN STRING LIGHTS (rope + bulbs)
+   GARLAND (ROPE + BULBS)
 ========================= */
 const garland = new THREE.Group();
 scene.add(garland);
 
-// rope curve points
 const ropePts = [];
-const ropeW = 9.0;
+const ropeW = 10.5;
 for(let i=0;i<=60;i++){
   const x = (i/60 - 0.5) * ropeW;
-  const y = 3.2 + Math.sin(i/60 * Math.PI) * 0.55; // sag
+  const y = 3.2 + Math.sin(i/60 * Math.PI) * 0.55;
   ropePts.push(new THREE.Vector3(x, y, -2.5));
 }
 
 const ropeCurve = new THREE.CatmullRomCurve3(ropePts);
 const ropeGeo = new THREE.TubeGeometry(ropeCurve, 220, 0.03, 10, false);
+
 const ropeMat = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   roughness: 0.9,
@@ -337,13 +301,13 @@ const ropeMat = new THREE.MeshStandardMaterial({
   transparent:true,
   opacity:0.0
 });
+
 const ropeMesh = new THREE.Mesh(ropeGeo, ropeMat);
 garland.add(ropeMesh);
 
-// bulbs along rope
 const bulbs = [];
-for(let i=0;i<16;i++){
-  const t = i/15;
+for(let i=0;i<18;i++){
+  const t = i/17;
   const p = ropeCurve.getPoint(t);
 
   const bulbMesh = new THREE.Mesh(
@@ -366,7 +330,7 @@ for(let i=0;i<16;i++){
   garland.add(bulbMesh);
   garland.add(bulbLight);
 
-  bulbs.push({ bulbMesh, bulbLight, baseT:t });
+  bulbs.push({ bulbMesh, bulbLight });
 }
 
 /* =========================
@@ -429,7 +393,6 @@ const A = createLantern(1.05);
 const B = createLantern(0.92);
 const Cc = createLantern(0.78);
 
-// hidden at start
 A.g.position.set(-3.6, 1.1, -16);
 B.g.position.set( 3.6, 0.9, -16);
 Cc.g.position.set(0.0, -0.2, -16);
@@ -437,67 +400,29 @@ Cc.g.position.set(0.0, -0.2, -16);
 scene.add(A.g, B.g, Cc.g);
 
 /* =========================
-   REVEAL CONTROL
+   POP TOGGLE
 ========================= */
+const popBtn = document.getElementById("popBtn");
+const titleEl = document.getElementById("title");
+const status = document.getElementById("status");
+
+let on = false;
 let reveal = 0.0;
 let target = 0.0;
 
-const charm = document.getElementById("charm");
-const chain = document.getElementById("chain");
-const fill = document.getElementById("fill");
-const status = document.getElementById("status");
-const title = document.getElementById("title");
+function toggle(){
+  on = !on;
+  target = on ? 1.0 : 0.0;
 
-let dragging = false;
-let startY = 0;
-let startVal = 0;
+  // pop effect
+  popBtn.style.transform = "translate(-50%,-50%) scale(0.92)";
+  setTimeout(()=> popBtn.style.transform = "translate(-50%,-50%) scale(1)", 120);
 
-function clamp01(x){ return Math.max(0, Math.min(1, x)); }
-
-function setCharm(px){
-  charm.style.transform = `translateY(${px}px)`;
-  chain.style.height = `calc(56vh + ${px}px)`;
+  status.textContent = on ? "فخم 🔥 رمضان كريم!" : "فقّع الزر لتطلع زينة رمضان ✨";
+  titleEl.classList.toggle("on", on);
 }
 
-function setUI(v){
-  fill.style.width = (v*100).toFixed(1) + "%";
-  title.style.opacity = Math.min(1, Math.max(0, (v - 0.15) / 0.35));
-  title.style.transform = `translateY(${26 - v*26}px) scale(${0.98 + v*0.02})`;
-
-  if(v < 0.05) status.textContent = "اسحب التعليقة لتشتغل زينة رمضان ✨";
-  else if(v < 0.75) status.textContent = "واو… الزينة عم تنور 😍";
-  else status.textContent = "فخم 🔥 رمضان كريم!";
-}
-
-charm.addEventListener("pointerdown", (e)=>{
-  dragging = true;
-  startY = e.clientY;
-  startVal = target;
-  charm.setPointerCapture(e.pointerId);
-});
-
-window.addEventListener("pointermove", (e)=>{
-  if(!dragging) return;
-
-  const maxPull = innerHeight * 0.42;
-  const dy = (e.clientY - startY);
-  const delta = dy / maxPull;
-
-  target = clamp01(startVal + delta);
-  setCharm(target * maxPull);
-  setUI(target);
-}, {passive:true});
-
-window.addEventListener("pointerup", ()=>{
-  dragging = false;
-}, {passive:true});
-
-window.addEventListener("pointercancel", ()=>{
-  dragging = false;
-}, {passive:true});
-
-setCharm(0);
-setUI(0);
+popBtn.addEventListener("click", toggle);
 
 /* =========================
    ANIMATE
@@ -508,7 +433,7 @@ function animate(){
   requestAnimationFrame(animate);
   const t = clock.getElapsedTime();
 
-  reveal = THREE.MathUtils.lerp(reveal, target, 0.07);
+  reveal = THREE.MathUtils.lerp(reveal, target, 0.06);
 
   // lights
   ambient.intensity = 0.02 + reveal*0.70;
@@ -522,12 +447,12 @@ function animate(){
   // rope visible
   ropeMat.opacity = reveal*0.55;
 
-  // bulbs
+  // bulbs twinkle
   bulbs.forEach((b, i)=>{
-    const twinkle = 0.65 + Math.sin(t*2.2 + i*0.6)*0.35;
+    const tw = 0.65 + Math.sin(t*2.2 + i*0.55)*0.35;
     b.bulbMesh.material.opacity = reveal;
-    b.bulbMesh.material.emissiveIntensity = reveal * (1.8 + twinkle*0.9);
-    b.bulbLight.intensity = reveal * (2.0 + twinkle*1.6);
+    b.bulbMesh.material.emissiveIntensity = reveal * (1.8 + tw*1.0);
+    b.bulbLight.intensity = reveal * (2.0 + tw*1.8);
   });
 
   // lanterns appear
