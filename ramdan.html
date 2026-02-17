@@ -3,38 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ramadan Luxury Pull</title>
+<title>Ramadan Cinematic 10/10</title>
 
 <style>
 body{
 margin:0;
 overflow:hidden;
-background:radial-gradient(circle at 30% 20%,#1a1f35,#05060a 70%);
+background:#02030a;
 font-family:"Noto Kufi Arabic",system-ui;
 color:white;
 }
 
-canvas{position:fixed;inset:0;width:100%;height:100%}
+canvas{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+}
 
 .ui{
 position:fixed;
 inset:0;
 display:flex;
 flex-direction:column;
-justify-content:space-between;
-padding:20px;
+justify-content:center;
+align-items:center;
 pointer-events:none;
 }
 
 .title{
 text-align:center;
 opacity:0;
-transform:translateY(30px);
-transition:0.3s;
+transform:translateY(40px);
+transition:0.6s cubic-bezier(.2,.8,.2,1);
 }
 
 .title h1{
-font-size:55px;
+font-size:64px;
 margin:0;
 background:linear-gradient(90deg,#f6d365,#fff,#7cf7d4);
 -webkit-background-clip:text;
@@ -42,7 +47,7 @@ color:transparent;
 }
 
 .title p{
-margin-top:10px;
+margin-top:14px;
 opacity:.8;
 }
 
@@ -59,14 +64,13 @@ pointer-events:none;
 width:6px;
 height:50vh;
 background:linear-gradient(white,transparent);
-margin:auto;
 }
 
 .knob{
 position:absolute;
 top:50vh;
-width:60px;
-height:60px;
+width:64px;
+height:64px;
 border-radius:50%;
 background:radial-gradient(circle at 30% 30%,#f6d365,#fda085);
 display:flex;
@@ -74,9 +78,8 @@ align-items:center;
 justify-content:center;
 cursor:grab;
 pointer-events:auto;
-box-shadow:0 10px 40px rgba(0,0,0,.6);
+box-shadow:0 10px 60px rgba(0,0,0,.7);
 }
-
 .knob:active{cursor:grabbing}
 </style>
 </head>
@@ -86,12 +89,10 @@ box-shadow:0 10px 40px rgba(0,0,0,.6);
 <canvas id="c"></canvas>
 
 <div class="ui">
-<div></div>
 <div class="title" id="title">
 <h1>رمضان كريم</h1>
 <p>أعاد الله علينا وعليكم الشهر بالخير والبركة</p>
 </div>
-<div></div>
 </div>
 
 <div class="ropeWrap">
@@ -99,90 +100,104 @@ box-shadow:0 10px 40px rgba(0,0,0,.6);
 <div class="knob" id="knob">✨</div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script type="module">
 
-<script>
+import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+import { EffectComposer } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js";
+
+/* ---------- Scene Setup ---------- */
 
 const scene=new THREE.Scene()
-const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,100)
-camera.position.z=8
+scene.fog=new THREE.Fog(0x02030a,8,25)
 
-const renderer=new THREE.WebGLRenderer({canvas:c,alpha:true,antialias:true})
+const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,100)
+camera.position.set(0,1,8)
+
+const renderer=new THREE.WebGLRenderer({canvas:c,antialias:true})
 renderer.setSize(innerWidth,innerHeight)
 renderer.setPixelRatio(devicePixelRatio)
+renderer.toneMapping=THREE.ACESFilmicToneMapping
+renderer.toneMappingExposure=1.2
+
+const composer=new EffectComposer(renderer)
+composer.addPass(new RenderPass(scene,camera))
+composer.addPass(new UnrealBloomPass(
+new THREE.Vector2(innerWidth,innerHeight),
+1.2,0.8,0.15
+))
 
 window.addEventListener("resize",()=>{
 renderer.setSize(innerWidth,innerHeight)
+composer.setSize(innerWidth,innerHeight)
 camera.aspect=innerWidth/innerHeight
 camera.updateProjectionMatrix()
 })
 
-/* -------- Lights -------- */
+/* ---------- Lights ---------- */
 
 const ambient=new THREE.AmbientLight(0xffffff,.05)
 scene.add(ambient)
 
-const light=new THREE.PointLight(0xffe7b0,0,20)
-light.position.set(0,3,3)
-scene.add(light)
+const rim=new THREE.DirectionalLight(0xffd88a,0)
+rim.position.set(-3,2,3)
+scene.add(rim)
 
-/* -------- Stars -------- */
+const key=new THREE.DirectionalLight(0xfff1cf,0)
+key.position.set(3,4,5)
+scene.add(key)
 
-const starGeo=new THREE.BufferGeometry()
-const starCount=1500
-const starPos=new Float32Array(starCount*3)
+/* ---------- Gold Material ---------- */
 
-for(let i=0;i<starCount;i++){
-starPos[i*3]=(Math.random()-.5)*20
-starPos[i*3+1]=(Math.random()-.5)*15
-starPos[i*3+2]=-Math.random()*20
-}
+const gold=new THREE.MeshPhysicalMaterial({
+color:0xf6d365,
+metalness:1,
+roughness:.15,
+clearcoat:1,
+clearcoatRoughness:.05
+})
 
-starGeo.setAttribute("position",new THREE.BufferAttribute(starPos,3))
-const starMat=new THREE.PointsMaterial({color:0xffffff,size:.05})
-const stars=new THREE.Points(starGeo,starMat)
-scene.add(stars)
-
-/* -------- Crescent -------- */
+/* ---------- Crescent ---------- */
 
 const crescent=new THREE.Group()
 
 const outer=new THREE.Mesh(
-new THREE.TorusGeometry(2,0.25,32,200,Math.PI*1.6),
-new THREE.MeshStandardMaterial({color:0xf6d365,metalness:1,roughness:.2})
+new THREE.TorusGeometry(2,0.18,64,200,Math.PI*1.7),
+gold
 )
 
 outer.rotation.z=.3
-outer.rotation.x=.1
+outer.rotation.x=.15
 
 const inner=new THREE.Mesh(
-new THREE.TorusGeometry(1.7,0.25,32,200,Math.PI*1.6),
-new THREE.MeshStandardMaterial({color:0x05060a})
+new THREE.TorusGeometry(1.6,0.18,64,200,Math.PI*1.7),
+new THREE.MeshBasicMaterial({color:0x02030a})
 )
 
-inner.position.x=.5
+inner.position.x=.6
 inner.position.y=-.1
 inner.rotation.copy(outer.rotation)
 
 crescent.add(outer,inner)
-crescent.position.z=-5
-crescent.scale.set(.4,.4,.4)
+crescent.position.z=-6
+crescent.scale.set(.5,.5,.5)
 scene.add(crescent)
 
-/* -------- Lantern -------- */
+/* ---------- Lanterns ---------- */
 
 function lantern(x){
 const g=new THREE.Group()
 
 const body=new THREE.Mesh(
-new THREE.CylinderGeometry(.4,.4,1,32),
-new THREE.MeshStandardMaterial({color:0xfda085,metalness:.6,roughness:.4})
+new THREE.CylinderGeometry(.4,.4,1.2,32),
+new THREE.MeshStandardMaterial({color:0xfda085,metalness:.7,roughness:.3})
 )
 
-const glow=new THREE.PointLight(0xffd88a,0,10)
+const glow=new THREE.PointLight(0xffe7b0,0,15)
 g.add(body,glow)
 g.position.x=x
-g.position.z=-6
+g.position.z=-7
 return {g,glow}
 }
 
@@ -190,11 +205,28 @@ const L1=lantern(-4)
 const L2=lantern(4)
 scene.add(L1.g,L2.g)
 
-/* -------- Pull Logic -------- */
+/* ---------- Dust Particles ---------- */
 
-let reveal=0
-let target=0
+const dustGeo=new THREE.BufferGeometry()
+const dustCount=1200
+const dustPos=new Float32Array(dustCount*3)
 
+for(let i=0;i<dustCount;i++){
+dustPos[i*3]=(Math.random()-.5)*10
+dustPos[i*3+1]=(Math.random()-.5)*8
+dustPos[i*3+2]=-Math.random()*10
+}
+
+dustGeo.setAttribute("position",new THREE.BufferAttribute(dustPos,3))
+const dust=new THREE.Points(
+dustGeo,
+new THREE.PointsMaterial({color:0xffd88a,size:.03})
+)
+scene.add(dust)
+
+/* ---------- Pull Logic ---------- */
+
+let reveal=0,target=0
 const knob=document.getElementById("knob")
 const title=document.getElementById("title")
 
@@ -211,43 +243,44 @@ window.addEventListener("pointermove",e=>{
 if(!dragging)return
 const delta=(e.clientY-startY)/300
 target=Math.min(1,Math.max(0,startVal+delta))
-knob.style.top=(50+target*200)+"px"
 })
 
 window.addEventListener("pointerup",()=>dragging=false)
 
-/* -------- Sound -------- */
-
-const audio=new Audio("https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3")
-
-/* -------- Animate -------- */
+/* ---------- Animate ---------- */
 
 function animate(){
 requestAnimationFrame(animate)
 
-reveal+= (target-reveal)*.07
+reveal+=(target-reveal)*.06
 
 ambient.intensity=.05+reveal*.7
-light.intensity=reveal*2
+rim.intensity=reveal*2
+key.intensity=reveal*1.5
 
-crescent.position.z=-5+reveal*6
-crescent.scale.set(.4+reveal*.8,.4+reveal*.8,.4+reveal*.8)
+crescent.position.z=-6+reveal*6
+crescent.scale.set(.5+reveal*.8,.5+reveal*.8,.5+reveal*.8)
+crescent.rotation.y+=.005
 
-L1.g.position.z=-6+reveal*6
-L2.g.position.z=-6+reveal*6
+L1.g.position.z=-7+reveal*6
+L2.g.position.z=-7+reveal*6
 L1.glow.intensity=reveal*3
 L2.glow.intensity=reveal*3
 
+dust.rotation.y+=.0008
+
+camera.position.x=Math.sin(Date.now()*.0002)*.3
+camera.lookAt(0,0,0)
+
 title.style.opacity=reveal
-title.style.transform=`translateY(${30-30*reveal}px)`
+title.style.transform=`translateY(${40-40*reveal}px)`
 
-stars.rotation.y+=.0005
-
-renderer.render(scene,camera)
+composer.render()
 }
 
 animate()
 
 </script>
+
 </body>
 </html>
