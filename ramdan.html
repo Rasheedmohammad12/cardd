@@ -3,805 +3,426 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Ramadan 3D Reels Studio</title>
+  <title>Ramadan Crescent 3D</title>
   <style>
     :root{
-      --bg1:#05060a;
-      --bg2:#090a12;
-      --gold:#f6d365;
-      --gold2:#fda085;
-      --mint:#7cf7d4;
-      --text:#f4f6ff;
-      --muted:rgba(244,246,255,.72);
-      --glass:rgba(255,255,255,.07);
-      --stroke:rgba(255,255,255,.12);
-      --shadow: 0 18px 55px rgba(0,0,0,.45);
-      --radius: 18px;
+      --bg1:#05060a; --bg2:#0a0b14;
+      --gold:#f6d365; --mint:#7cf7d4; --text:#f4f6ff;
+      --glass:rgba(255,255,255,.07); --stroke:rgba(255,255,255,.12);
+      --shadow: 0 22px 70px rgba(0,0,0,.55);
+      --radius:22px;
     }
-
     *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Kufi Arabic", "Noto Sans Arabic", Arial;
-      color:var(--text);
+      margin:0; min-height:100vh; color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Kufi Arabic", Arial;
       background:
-        radial-gradient(1200px 600px at 20% 10%, rgba(246,211,101,.18), transparent 55%),
-        radial-gradient(900px 500px at 80% 20%, rgba(124,247,212,.10), transparent 55%),
-        radial-gradient(800px 600px at 50% 90%, rgba(253,160,133,.10), transparent 55%),
+        radial-gradient(1100px 700px at 20% 10%, rgba(246,211,101,.16), transparent 55%),
+        radial-gradient(900px 600px at 80% 25%, rgba(124,247,212,.10), transparent 55%),
         linear-gradient(180deg, var(--bg1), var(--bg2));
-      min-height:100vh;
-      overflow-x:hidden;
-    }
-
-    .wrap{
+      overflow:hidden;
       display:grid;
-      grid-template-columns: 1fr;
-      gap:16px;
-      padding: 18px;
-      max-width: 1120px;
-      margin: 0 auto;
+      place-items:center;
+      padding:18px;
     }
 
+    .app{
+      width:min(980px, 100%);
+      display:grid;
+      gap:14px;
+      grid-template-columns: 1fr;
+    }
     header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:14px 14px;
-      border:1px solid var(--stroke);
-      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width: 0;
-    }
-    .logo{
-      width:38px;height:38px;border-radius:12px;
-      background: radial-gradient(circle at 30% 30%, rgba(246,211,101,.95), rgba(253,160,133,.55) 45%, rgba(124,247,212,.35) 75%, rgba(255,255,255,.05));
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 10px 25px rgba(246,211,101,.15);
-    }
-    .brand h1{
-      font-size:14px;
-      margin:0;
-      line-height:1.2;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .brand p{
-      margin:2px 0 0;
-      font-size:12px;
-      color:var(--muted);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:16px;
-    }
-
-    @media (min-width: 980px){
-      .grid{ grid-template-columns: 1.2fr .8fr; align-items:start; }
-    }
-
-    .card{
       border:1px solid var(--stroke);
       background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
+      padding:14px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{display:flex;gap:10px;align-items:center;min-width:0}
+    .logo{
+      width:40px;height:40px;border-radius:14px;
+      background: radial-gradient(circle at 30% 30%, rgba(246,211,101,.95), rgba(124,247,212,.25) 70%, rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 12px 30px rgba(246,211,101,.18);
+    }
+    h1{margin:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .sub{margin:2px 0 0;font-size:12px;color:rgba(244,246,255,.72);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+    .stageCard{
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
       overflow:hidden;
       position:relative;
     }
 
-    .stage{
-      padding:14px;
-    }
-
-    /* إطار 9:16 مثل الريلز */
-    .reels-frame{
-      width:100%;
-      max-width: 520px;
-      margin: 0 auto;
+    /* إطار عمودي 9:16 (ريلز) */
+    .frame{
+      width:min(520px, 100%);
+      margin: 14px auto 18px;
       aspect-ratio: 9 / 16;
-      border-radius: 26px;
-      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 28px;
+      border:1px solid rgba(255,255,255,.16);
       overflow:hidden;
       position:relative;
-      box-shadow: 0 18px 65px rgba(0,0,0,.55);
-      background: radial-gradient(900px 600px at 50% 20%, rgba(246,211,101,.10), transparent 60%),
-                  radial-gradient(900px 600px at 50% 100%, rgba(124,247,212,.08), transparent 60%),
-                  linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));
+      background: radial-gradient(900px 600px at 50% 15%, rgba(246,211,101,.10), transparent 60%),
+                  radial-gradient(900px 700px at 50% 110%, rgba(124,247,212,.08), transparent 60%),
+                  linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.60));
     }
+    canvas{width:100%;height:100%;display:block}
 
-    canvas{ display:block; width:100%; height:100%; }
-
-    .overlay{
+    .ui{
       position:absolute; inset:0;
       pointer-events:none;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
-      padding:18px;
+      padding:16px;
     }
-
-    .top-chip{
+    .chip{
       align-self:flex-start;
-      background: rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.15);
-      border-radius: 999px;
-      padding:8px 12px;
-      font-size:12px;
-      color: rgba(255,255,255,.9);
+      pointer-events:none;
+      display:flex; align-items:center; gap:10px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.33);
       backdrop-filter: blur(8px);
-      display:flex;
-      gap:10px;
-      align-items:center;
+      font-size:12px;
+      color:rgba(255,255,255,.92);
     }
-    .dot{
-      width:8px;height:8px;border-radius:999px;
-      background: radial-gradient(circle at 30% 30%, var(--mint), rgba(124,247,212,.2));
-      box-shadow: 0 0 14px rgba(124,247,212,.45);
-    }
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--mint);box-shadow:0 0 18px rgba(124,247,212,.5)}
 
     .title{
       text-align:center;
-      margin-bottom: 6px;
-      transform: translateY(2px);
+      margin-bottom:8px;
+      text-shadow: 0 12px 36px rgba(0,0,0,.6);
     }
     .title h2{
       margin:0;
-      font-size: clamp(18px, 3vw, 28px);
-      letter-spacing:.2px;
-      text-shadow: 0 10px 30px rgba(0,0,0,.55);
+      font-size: clamp(18px, 3vw, 30px);
       background: linear-gradient(90deg, var(--gold), #fff, var(--mint));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
+      -webkit-background-clip:text;background-clip:text;color:transparent;
       filter: drop-shadow(0 18px 30px rgba(246,211,101,.12));
     }
-    .title p{
-      margin:6px 0 0;
-      font-size: 13px;
-      color: rgba(255,255,255,.82);
-      text-shadow: 0 10px 30px rgba(0,0,0,.55);
+    .title p{margin:6px 0 0;font-size:13px;color:rgba(255,255,255,.82)}
+
+    .pull{
+      pointer-events:none;
+      text-align:center;
+      margin: 0 auto 2px;
+      width: 100%;
+      max-width: 420px;
+      font-size: 12px;
+      color: rgba(255,255,255,.78);
+      padding:10px 12px;
+      border-radius: 999px;
+      border: 1px dashed rgba(255,255,255,.22);
+      background: rgba(0,0,0,.20);
+      backdrop-filter: blur(8px);
     }
 
-    .controls{
-      padding:14px;
-    }
-    .controls .inner{
-      display:grid;
-      gap:12px;
-      padding:14px;
-    }
-    .row{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-    }
-    .row-1{ grid-template-columns: 1fr; }
-
-    label{
-      display:block;
-      font-size:12px;
-      color:var(--muted);
-      margin-bottom:6px;
-    }
-    input[type="text"], select{
-      width:100%;
-      padding:12px 12px;
-      border-radius: 14px;
-      background: rgba(0,0,0,.22);
-      border:1px solid rgba(255,255,255,.14);
-      color:var(--text);
-      outline:none;
-    }
-    input[type="text"]::placeholder{ color: rgba(255,255,255,.45); }
-    input[type="range"]{
-      width:100%;
-      accent-color: rgba(246,211,101,.85);
-    }
-
-    .btns{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    button{
-      cursor:pointer;
-      padding:12px 14px;
-      border-radius: 14px;
+    .bar{
+      position:absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 18px;
+      width: 56%;
+      height: 10px;
+      border-radius: 999px;
       border:1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.06);
-      color: var(--text);
-      font-weight: 600;
-      box-shadow: 0 14px 35px rgba(0,0,0,.35);
-      transition: transform .15s ease, background .15s ease;
+      overflow:hidden;
+      pointer-events:none;
     }
-    button:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); }
-    button.primary{
-      background: linear-gradient(90deg, rgba(246,211,101,.92), rgba(253,160,133,.82));
-      border: 1px solid rgba(255,255,255,.22);
-      color:#1b1408;
+    .fill{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(246,211,101,.9), rgba(124,247,212,.55));
+      box-shadow: 0 0 24px rgba(246,211,101,.18);
     }
-    button.danger{
-      background: rgba(255,80,120,.16);
-      border-color: rgba(255,80,120,.28);
+
+    .footer{
+      padding: 0 16px 14px;
+      color: rgba(255,255,255,.60);
+      font-size: 11px;
+      line-height:1.6;
+      text-align:center;
     }
 
     .hint{
-      font-size:12px;
-      color: rgba(255,255,255,.72);
-      line-height:1.5;
-    }
-    .footer-note{
-      padding: 0 14px 14px;
-      color: rgba(255,255,255,.55);
-      font-size: 11px;
-      line-height:1.55;
+      pointer-events:none;
+      position:absolute;
+      inset:auto 16px 16px 16px;
+      text-align:center;
+      display:flex;
+      justify-content:center;
     }
 
-    .pulse{
-      position:absolute; inset:auto auto 22px 22px;
-      width: 10px; height: 10px; border-radius: 999px;
-      background: rgba(255,80,120,.9);
-      box-shadow: 0 0 0 0 rgba(255,80,120,.55);
-      animation: pulse 1.2s infinite;
-      opacity:0;
+    @media (min-width: 980px){
+      .app{ grid-template-columns: 1fr; }
     }
-    .pulse.on{ opacity:1; }
-    @keyframes pulse{
-      0%{ box-shadow: 0 0 0 0 rgba(255,80,120,.55); }
-      70%{ box-shadow: 0 0 0 16px rgba(255,80,120,0); }
-      100%{ box-shadow: 0 0 0 0 rgba(255,80,120,0); }
-    }
-
-    /* نصوص متحركة لطيفة */
-    .floaty{
-      animation: floaty 3.6s ease-in-out infinite;
-    }
-    @keyframes floaty{
-      0%,100%{ transform: translateY(2px); }
-      50%{ transform: translateY(-6px); }
-    }
-
-    /* شريط صغير لعرض رابط تحميل الفيديو */
-    .download{
-      display:none;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px dashed rgba(255,255,255,.25);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.9);
-      font-size:12px;
-      word-break: break-word;
-    }
-    .download a{ color: var(--mint); font-weight:700; }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+  <div class="app">
     <header>
       <div class="brand">
         <div class="logo"></div>
         <div style="min-width:0">
-          <h1>Ramadan 3D Reels Studio</h1>
-          <p>مولّد ريلز 9:16 بمشهد ثلاثي الأبعاد + تسجيل فيديو</p>
+          <h1>Ramadan Crescent — Pull to Reveal</h1>
+          <div class="sub">اسحب داخل الإطار ليطلع الهلال 3D (فخم ✨)</div>
         </div>
       </div>
-      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end">
-        <span style="font-size:12px;color:var(--muted)">جاهز للاستخدام ✅</span>
-      </div>
+      <div style="font-size:12px;color:rgba(244,246,255,.7)">3D • تفاعل • 9:16</div>
     </header>
 
-    <div class="grid">
-      <section class="card stage">
-        <div class="reels-frame" id="frame">
-          <canvas id="c"></canvas>
+    <section class="stageCard">
+      <div class="frame" id="frame">
+        <canvas id="c"></canvas>
 
-          <div class="overlay">
-            <div class="top-chip">
-              <span class="dot"></span>
-              <span id="chipText">رمضان كريم ✨</span>
-            </div>
+        <div class="ui">
+          <div class="chip"><span class="dot"></span><span id="status">اسحب لتطلع الهلال</span></div>
 
-            <div class="title floaty">
-              <h2 id="mainTitle">رمضان كريم</h2>
-              <p id="subTitle">أعاد الله علينا وعليكم الشهر بالخير والبركة</p>
-            </div>
+          <div class="title">
+            <h2>رمضان كريم</h2>
+            <p>اسحب للأعلى/للأسفل… الهلال رح يطلع قدامك ✨</p>
           </div>
-
-          <div class="pulse" id="recPulse" title="Recording"></div>
-        </div>
-        <div class="footer-note">
-          تلميح: لو بدك “فخامة أكثر” ارفع الـBloom في الإعدادات، أو غيّر ثيم الإضاءة إلى “Night Gold”.
-        </div>
-      </section>
-
-      <aside class="card controls">
-        <div class="inner">
-          <div class="row row-1">
-            <div>
-              <label>العنوان الرئيسي</label>
-              <input id="titleInput" type="text" value="رمضان كريم" placeholder="مثال: رمضان كريم" />
-            </div>
-          </div>
-
-          <div class="row row-1">
-            <div>
-              <label>النص الفرعي</label>
-              <input id="subInput" type="text" value="أعاد الله علينا وعليكم الشهر بالخير والبركة" placeholder="اكتب تهنئتك..." />
-            </div>
-          </div>
-
-          <div class="row">
-            <div>
-              <label>الثيم</label>
-              <select id="theme">
-                <option value="gold">Night Gold</option>
-                <option value="mint">Moon Mint</option>
-                <option value="sunset">Sunset Warm</option>
-              </select>
-            </div>
-            <div>
-              <label>سرعة الحركة</label>
-              <input id="speed" type="range" min="0.2" max="2.2" step="0.01" value="1.0" />
-            </div>
-          </div>
-
-          <div class="row">
-            <div>
-              <label>قوة الإضاءة</label>
-              <input id="light" type="range" min="0.2" max="2.5" step="0.01" value="1.2" />
-            </div>
-            <div>
-              <label>Bloom (توهّج)</label>
-              <input id="bloom" type="range" min="0" max="1.2" step="0.01" value="0.55" />
-            </div>
-          </div>
-
-          <div class="btns">
-            <button class="primary" id="startRec">ابدأ تسجيل (10s)</button>
-            <button class="danger" id="stopRec" disabled>إيقاف</button>
-            <button id="snap">صورة PNG</button>
-          </div>
-
-          <div class="download" id="downloadBox"></div>
 
           <div class="hint">
-            ✅ التسجيل بيعمل ملف <b>WEBM</b>. لتحويله MP4 بسرعة:
-            <br/>- استخدم CapCut / Premiere / أو FFmpeg.
+            <div class="pull">اسحب داخل الفيديو: <b>Pull</b> لإظهار الهلال — حرّر لتثبيت</div>
           </div>
         </div>
-      </aside>
-    </div>
+
+        <div class="bar"><div class="fill" id="fill"></div></div>
+      </div>
+
+      <div class="footer">
+        لو بدك “طلعة” أقوى: زِد السحب للأعلى أكثر. على الموبايل اسحب بإصبعك داخل الإطار.
+      </div>
+    </section>
   </div>
 
-  <!-- Three.js + Extras (CDN) -->
   <script type="module">
     import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
-    import { EffectComposer } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js";
-    import { RenderPass } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/RenderPass.js";
-    import { UnrealBloomPass } from "https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js";
 
-    // ---------- DOM ----------
     const canvas = document.getElementById("c");
-    const frame = document.getElementById("frame");
-    const titleInput = document.getElementById("titleInput");
-    const subInput   = document.getElementById("subInput");
-    const mainTitle  = document.getElementById("mainTitle");
-    const subTitle   = document.getElementById("subTitle");
-    const chipText   = document.getElementById("chipText");
-    const themeSel   = document.getElementById("theme");
-    const speedEl    = document.getElementById("speed");
-    const lightEl    = document.getElementById("light");
-    const bloomEl    = document.getElementById("bloom");
-    const startBtn   = document.getElementById("startRec");
-    const stopBtn    = document.getElementById("stopRec");
-    const snapBtn    = document.getElementById("snap");
-    const recPulse   = document.getElementById("recPulse");
-    const downloadBox= document.getElementById("downloadBox");
+    const frame  = document.getElementById("frame");
+    const fill   = document.getElementById("fill");
+    const status = document.getElementById("status");
 
-    titleInput.addEventListener("input", () => {
-      mainTitle.textContent = titleInput.value || "رمضان كريم";
-      chipText.textContent  = (titleInput.value || "رمضان كريم") + " ✨";
-    });
-    subInput.addEventListener("input", () => {
-      subTitle.textContent = subInput.value || "أعاد الله علينا وعليكم الشهر بالخير والبركة";
-    });
-
-    // ---------- THREE Setup ----------
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true, preserveDrawingBuffer:true });
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.05;
+    renderer.toneMappingExposure = 1.06;
 
+    // Scene + camera
     const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 9/16, 0.1, 120);
+    camera.position.set(0, 0.85, 6.2);
 
-    const camera = new THREE.PerspectiveCamera(45, 9/16, 0.1, 100);
-    camera.position.set(0, 0.9, 6.2);
-
-    // Light rig
+    // Lights (gold cinematic)
     const amb = new THREE.AmbientLight(0xffffff, 0.55);
     scene.add(amb);
 
-    const key = new THREE.DirectionalLight(0xffffff, 1.2);
-    key.position.set(2.2, 3.2, 3.0);
+    const key = new THREE.DirectionalLight(0xfff1cf, 1.35);
+    key.position.set(2.8, 3.2, 2.5);
     scene.add(key);
 
-    const rim = new THREE.DirectionalLight(0xffffff, 0.8);
-    rim.position.set(-3.0, 1.5, -2.5);
+    const rim = new THREE.DirectionalLight(0xcfefff, 0.85);
+    rim.position.set(-3.2, 1.4, -2.5);
     scene.add(rim);
 
-    // Group
+    // Helpers
     const root = new THREE.Group();
     scene.add(root);
 
-    // ---------- Materials (Goldy) ----------
-    function makeMetal(colorHex, rough=0.22, metal=1.0){
+    function makeMetal(hex, rough=0.18, metal=1.0){
       return new THREE.MeshStandardMaterial({
-        color: new THREE.Color(colorHex),
+        color: new THREE.Color(hex),
         roughness: rough,
-        metalness: metal,
+        metalness: metal
       });
     }
 
-    // ---------- Crescent Moon ----------
-    // Crescent via two spheres subtract illusion (two meshes + stencil would be complex)
-    // We'll do a "fake crescent": torus segment + sphere cap => looks premium in motion.
-    const crescent = new THREE.Group();
-
-    const torusGeo = new THREE.TorusGeometry(1.15, 0.22, 64, 220, Math.PI * 1.45);
-    const torus = new THREE.Mesh(torusGeo, makeMetal("#f6d365", 0.18, 1.0));
-    torus.rotation.z = Math.PI * 0.2;
-    torus.rotation.x = Math.PI * 0.06;
-
-    // inner cut illusion
-    const innerGeo = new THREE.TorusGeometry(0.95, 0.18, 64, 220, Math.PI * 1.45);
-    const inner = new THREE.Mesh(innerGeo, makeMetal("#0b0c14", 0.75, 0.1));
-    inner.position.set(0.1, -0.02, 0.06);
-    inner.rotation.copy(torus.rotation);
-
-    // small star
-    const star = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(0.16, 1),
-      makeMetal("#ffffff", 0.28, 0.9)
-    );
-    star.position.set(1.05, 0.85, 0.2);
-
-    crescent.add(torus, inner, star);
-    crescent.position.set(0, 0.4, 0);
-    root.add(crescent);
-
-    // ---------- Lanterns ----------
-    function createLantern(scale=1){
-      const g = new THREE.Group();
-
-      const body = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.22, 0.26, 0.48, 48, 1, true),
-        makeMetal("#fda085", 0.3, 0.85)
-      );
-      body.position.y = 0;
-
-      // ribs
-      const ribMat = makeMetal("#f6d365", 0.22, 1.0);
-      for(let i=0;i<8;i++){
-        const rib = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.005, 0.005, 0.52, 10),
-          ribMat
-        );
-        const a = (i/8) * Math.PI*2;
-        rib.position.set(Math.cos(a)*0.24, 0, Math.sin(a)*0.24);
-        g.add(rib);
-      }
-
-      // top & bottom caps
-      const capTop = new THREE.Mesh(
-        new THREE.SphereGeometry(0.18, 40, 30),
-        makeMetal("#f6d365", 0.2, 1)
-      );
-      capTop.scale.set(1.1, 0.65, 1.1);
-      capTop.position.y = 0.30;
-
-      const capBot = capTop.clone();
-      capBot.position.y = -0.30;
-
-      // inner glow
-      const glow = new THREE.PointLight(0xffe7b0, 2.0, 4.5, 2.0);
-      glow.position.set(0, 0, 0);
-
-      // hook
-      const hook = new THREE.Mesh(
-        new THREE.TorusGeometry(0.10, 0.02, 20, 40),
-        makeMetal("#ffffff", 0.25, 0.95)
-      );
-      hook.position.y = 0.54;
-      hook.rotation.x = Math.PI/2;
-
-      g.add(body, capTop, capBot, glow, hook);
-      g.scale.setScalar(scale);
-      return { group:g, light:glow };
-    }
-
-    const lanternA = createLantern(1.1);
-    lanternA.group.position.set(-1.35, 0.15, 0.5);
-    root.add(lanternA.group);
-
-    const lanternB = createLantern(0.9);
-    lanternB.group.position.set(1.55, -0.05, 0.25);
-    root.add(lanternB.group);
-
-    const lanternC = createLantern(0.75);
-    lanternC.group.position.set(0.0, -0.55, -0.2);
-    root.add(lanternC.group);
-
-    // ---------- Stars / Particles ----------
-    const starCount = 900;
-    const starGeo = new THREE.BufferGeometry();
+    // --------- Stars (particles) ----------
+    const starCount = 800;
+    const g = new THREE.BufferGeometry();
     const pos = new Float32Array(starCount*3);
     const col = new Float32Array(starCount*3);
 
     for(let i=0;i<starCount;i++){
-      // in a capsule-ish volume in front of camera
-      const x = (Math.random()-0.5)*8.5;
-      const y = (Math.random()-0.5)*10.5;
-      const z = -Math.random()*12.0;  // behind root
-      pos[i*3+0]=x;
-      pos[i*3+1]=y;
-      pos[i*3+2]=z;
+      pos[i*3+0] = (Math.random()-0.5)*9.5;
+      pos[i*3+1] = (Math.random()-0.5)*12.0;
+      pos[i*3+2] = -Math.random()*14.0;
 
-      // gradienty color (gold/mint/white)
       const t = Math.random();
-      const c = new THREE.Color().setHSL(0.12 + 0.25*t, 0.85, 0.65);
-      if(Math.random()<0.22) c.set("#7cf7d4");
+      const c = new THREE.Color().setHSL(0.12 + 0.2*t, 0.9, 0.65);
+      if(Math.random()<0.25) c.set("#7cf7d4");
       if(Math.random()<0.12) c.set("#ffffff");
       col[i*3+0]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
     }
+    g.setAttribute("position", new THREE.BufferAttribute(pos,3));
+    g.setAttribute("color", new THREE.BufferAttribute(col,3));
 
-    starGeo.setAttribute("position", new THREE.BufferAttribute(pos,3));
-    starGeo.setAttribute("color", new THREE.BufferAttribute(col,3));
-
-    const starMat = new THREE.PointsMaterial({
+    const stars = new THREE.Points(g, new THREE.PointsMaterial({
       size: 0.03,
       vertexColors:true,
       transparent:true,
       opacity:0.95,
       depthWrite:false
-    });
-
-    const stars = new THREE.Points(starGeo, starMat);
-    stars.position.z = -2.5;
+    }));
+    stars.position.z = -3.0;
     scene.add(stars);
 
-    // ---------- Floating Calligraphy Plane (subtle) ----------
-    const plane = new THREE.Mesh(
-      new THREE.PlaneGeometry(3.6, 1.1, 1, 1),
+    // --------- Crescent 3D ----------
+    // Premium fake crescent: torus arc + inner dark torus offset + small star
+    const crescent = new THREE.Group();
+
+    const arcGeo = new THREE.TorusGeometry(1.2, 0.23, 72, 260, Math.PI * 1.52);
+    const arc = new THREE.Mesh(arcGeo, makeMetal("#f6d365", 0.16, 1));
+    arc.rotation.z = Math.PI * 0.18;
+    arc.rotation.x = Math.PI * 0.06;
+
+    const cutGeo = new THREE.TorusGeometry(0.98, 0.19, 72, 260, Math.PI * 1.52);
+    const cut = new THREE.Mesh(cutGeo, makeMetal("#0b0c14", 0.85, 0.08));
+    cut.position.set(0.14, -0.03, 0.08);
+    cut.rotation.copy(arc.rotation);
+
+    const star = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.16, 1),
+      makeMetal("#ffffff", 0.28, 0.9)
+    );
+    star.position.set(1.08, 0.88, 0.25);
+
+    crescent.add(arc, cut, star);
+    crescent.position.set(0, 0.45, 0);
+    root.add(crescent);
+
+    // Floor glow (subtle)
+    const glow = new THREE.Mesh(
+      new THREE.RingGeometry(0.8, 2.6, 90),
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#0c0d16"),
+        color: new THREE.Color("#fda085"),
         transparent:true,
-        opacity:0.25,
-        metalness:0.1,
-        roughness:0.9
+        opacity:0.10,
+        roughness: 1.0,
+        metalness: 0.0,
+        side: THREE.DoubleSide
       })
     );
-    plane.position.set(0, 1.05, -0.6);
-    root.add(plane);
+    glow.rotation.x = Math.PI/2;
+    glow.position.y = -0.8;
+    root.add(glow);
 
-    // ---------- Postprocessing (Bloom) ----------
-    const composer = new EffectComposer(renderer);
-    const renderPass = new RenderPass(scene, camera);
-    composer.addPass(renderPass);
+    // --------- Pull-to-reveal interaction ----------
+    let reveal = 0.0; // 0..1
+    let targetReveal = 0.0;
 
-    const bloomPass = new UnrealBloomPass(new THREE.Vector2(720, 1280), 0.55, 0.7, 0.25);
-    composer.addPass(bloomPass);
+    let isDown = false;
+    let startY = 0;
+    let baseReveal = 0;
 
-    // ---------- Resize ----------
-    function resize(){
+    function clamp01(x){ return Math.max(0, Math.min(1, x)); }
+
+    function setStatus(){
+      if(reveal < 0.02) status.textContent = "اسحب لتطلع الهلال";
+      else if(reveal < 0.7) status.textContent = "ممتاز… كمل سحب ✨";
+      else status.textContent = "فخم 🔥 ثبتّه أو لفّه";
+    }
+
+    function onDown(clientY){
+      isDown = true;
+      startY = clientY;
+      baseReveal = targetReveal;
+    }
+    function onMove(clientY){
+      if(!isDown) return;
       const rect = frame.getBoundingClientRect();
-      const w = Math.max(1, Math.floor(rect.width));
-      const h = Math.max(1, Math.floor(rect.height));
+      const dy = (startY - clientY); // up = positive
+      // normalize by frame height
+      const delta = dy / rect.height; // ~ -1..1
+      targetReveal = clamp01(baseReveal + delta * 1.35);
+      fill.style.width = (targetReveal*100).toFixed(1) + "%";
+    }
+    function onUp(){
+      isDown = false;
+    }
+
+    frame.addEventListener("pointerdown", (e)=>{ frame.setPointerCapture(e.pointerId); onDown(e.clientY); }, {passive:true});
+    frame.addEventListener("pointermove", (e)=> onMove(e.clientY), {passive:true});
+    frame.addEventListener("pointerup", onUp, {passive:true});
+    frame.addEventListener("pointercancel", onUp, {passive:true});
+    frame.addEventListener("mouseleave", onUp, {passive:true});
+
+    // --------- Resize ----------
+    function resize(){
+      const r = frame.getBoundingClientRect();
+      const w = Math.max(1, Math.floor(r.width));
+      const h = Math.max(1, Math.floor(r.height));
       renderer.setSize(w, h, false);
-      composer.setSize(w, h);
       camera.aspect = w/h;
       camera.updateProjectionMatrix();
     }
     new ResizeObserver(resize).observe(frame);
     resize();
 
-    // ---------- Theme control ----------
-    function applyTheme(mode){
-      // background fog-ish tint (via lights)
-      if(mode === "gold"){
-        key.color.set("#fff1cf");
-        rim.color.set("#cfefff");
-        amb.color.set("#fff7e5");
-        lanternA.light.color.set("#ffe7b0");
-        lanternB.light.color.set("#ffe7b0");
-        lanternC.light.color.set("#ffe7b0");
-        renderer.toneMappingExposure = 1.05;
-      } else if(mode === "mint"){
-        key.color.set("#d8fff6");
-        rim.color.set("#ffd9c8");
-        amb.color.set("#eafcff");
-        lanternA.light.color.set("#c9fff0");
-        lanternB.light.color.set("#c9fff0");
-        lanternC.light.color.set("#c9fff0");
-        renderer.toneMappingExposure = 1.0;
-      } else { // sunset
-        key.color.set("#ffd9c2");
-        rim.color.set("#ffe9ff");
-        amb.color.set("#fff0e7");
-        lanternA.light.color.set("#ffd1a8");
-        lanternB.light.color.set("#ffd1a8");
-        lanternC.light.color.set("#ffd1a8");
-        renderer.toneMappingExposure = 1.08;
-      }
-    }
-    applyTheme(themeSel.value);
-    themeSel.addEventListener("change", () => applyTheme(themeSel.value));
-
-    // sliders
-    function updateLight(){
-      const v = parseFloat(lightEl.value);
-      key.intensity = 1.2 * v;
-      rim.intensity = 0.8 * v;
-      amb.intensity = 0.55 * (0.7 + v*0.3);
-      lanternA.light.intensity = 2.0 * v;
-      lanternB.light.intensity = 1.8 * v;
-      lanternC.light.intensity = 1.6 * v;
-    }
-    function updateBloom(){
-      bloomPass.strength = parseFloat(bloomEl.value);
-      bloomPass.radius   = 0.7;
-      bloomPass.threshold= 0.18;
-    }
-    lightEl.addEventListener("input", updateLight);
-    bloomEl.addEventListener("input", updateBloom);
-    updateLight(); updateBloom();
-
-    // ---------- Animation ----------
+    // --------- Animate ----------
     const clock = new THREE.Clock();
-    let mouseX = 0, mouseY = 0;
-    window.addEventListener("pointermove", (e)=>{
-      const r = frame.getBoundingClientRect();
-      const nx = (e.clientX - r.left) / r.width;   // 0..1
-      const ny = (e.clientY - r.top) / r.height;   // 0..1
-      mouseX = (nx - 0.5) * 2; // -1..1
-      mouseY = (ny - 0.5) * 2;
-    }, { passive:true });
 
     function animate(){
       const t = clock.getElapsedTime();
-      const sp = parseFloat(speedEl.value);
 
-      // subtle camera drift for premium feel
-      camera.position.x = THREE.MathUtils.lerp(camera.position.x, mouseX*0.35, 0.05);
-      camera.position.y = THREE.MathUtils.lerp(camera.position.y, 0.9 + (-mouseY*0.15), 0.05);
-      camera.lookAt(0, 0.35, 0);
+      // smooth reveal
+      reveal = THREE.MathUtils.lerp(reveal, targetReveal, 0.08);
+      setStatus();
 
-      // crescent float & shine
-      crescent.rotation.y = t * 0.45 * sp;
-      crescent.rotation.x = 0.05 + Math.sin(t*0.6)*0.06;
-      crescent.position.y = 0.4 + Math.sin(t*0.9)*0.08;
+      // Pull effect: from far+small+hidden -> near+large+bright
+      const z = THREE.MathUtils.lerp(-2.2, 1.15, reveal);
+      const s = THREE.MathUtils.lerp(0.70, 1.22, reveal);
+      const y = THREE.MathUtils.lerp(-0.35, 0.55, reveal);
 
-      // star twinkle
-      star.rotation.y = -t * 1.2 * sp;
-      star.rotation.x = t * 1.05 * sp;
+      crescent.position.z = z;
+      crescent.position.y = y;
+      crescent.scale.setScalar(s);
 
-      // lantern swing
-      lanternA.group.rotation.z = Math.sin(t*0.9)*0.12;
-      lanternA.group.rotation.x = Math.sin(t*0.7)*0.05;
-      lanternA.group.position.y = 0.15 + Math.sin(t*0.8)*0.06;
+      // add premium motion always
+      crescent.rotation.y = t * (0.35 + reveal*0.9);
+      crescent.rotation.x = 0.05 + Math.sin(t*0.8)*0.05;
 
-      lanternB.group.rotation.z = Math.sin(t*1.05 + 1.2)*0.10;
-      lanternB.group.rotation.x = Math.sin(t*0.6 + 0.6)*0.05;
-      lanternB.group.position.y = -0.05 + Math.sin(t*0.9 + 0.7)*0.06;
+      star.rotation.y = -t * 1.2;
+      star.rotation.x =  t * 1.0;
 
-      lanternC.group.rotation.z = Math.sin(t*1.1 + 2.1)*0.08;
-      lanternC.group.rotation.x = Math.sin(t*0.7 + 1.4)*0.05;
-      lanternC.group.position.y = -0.55 + Math.sin(t*0.95 + 1.1)*0.06;
+      // stars drift
+      stars.rotation.y = t * 0.03;
+      stars.rotation.x = Math.sin(t*0.08) * 0.03;
 
-      // particles drift
-      stars.rotation.y = t * 0.035 * sp;
-      stars.rotation.x = Math.sin(t*0.07) * 0.03;
+      // glow reacts
+      glow.material.opacity = 0.06 + reveal*0.12;
+      glow.scale.setScalar(1.0 + reveal*0.16);
 
-      // plane breathing
-      plane.position.y = 1.05 + Math.sin(t*0.6)*0.05;
-      plane.rotation.y = Math.sin(t*0.35)*0.12;
+      // light reacts (a bit)
+      key.intensity = 1.1 + reveal*0.6;
+      amb.intensity = 0.50 + reveal*0.20;
 
-      composer.render();
+      renderer.render(scene, camera);
       requestAnimationFrame(animate);
     }
     animate();
 
-    // ---------- Snapshot PNG ----------
-    snapBtn.addEventListener("click", ()=>{
-      // ensure latest frame
-      composer.render();
-      const a = document.createElement("a");
-      a.download = "ramadan-reels.png";
-      a.href = canvas.toDataURL("image/png");
-      a.click();
-    });
-
-    // ---------- Recording (Canvas -> WebM) ----------
-    let mediaRecorder = null;
-    let chunks = [];
-    let stopTimer = null;
-
-    function setDownload(url){
-      downloadBox.style.display = "block";
-      downloadBox.innerHTML = `تم تجهيز الفيديو ✅ <a href="${url}" download="ramadan-reels.webm">اضغط لتحميله</a>`;
-    }
-
-    function resetDownload(){
-      downloadBox.style.display = "none";
-      downloadBox.textContent = "";
-    }
-
-    async function startRecording(seconds=10){
-      resetDownload();
-
-      const stream = canvas.captureStream(60); // 60fps
-      const options = [
-        { mimeType: "video/webm;codecs=vp9", videoBitsPerSecond: 10_000_000 },
-        { mimeType: "video/webm;codecs=vp8", videoBitsPerSecond: 8_000_000 },
-        { mimeType: "video/webm", videoBitsPerSecond: 8_000_000 }
-      ];
-
-      let chosen = null;
-      for(const o of options){
-        if(MediaRecorder.isTypeSupported(o.mimeType)){ chosen = o; break; }
-      }
-      if(!chosen){
-        alert("المتصفح لا يدعم تسجيل WebM هنا. جرّب Chrome/Edge.");
-        return;
-      }
-
-      chunks = [];
-      mediaRecorder = new MediaRecorder(stream, chosen);
-
-      mediaRecorder.ondataavailable = (e)=>{ if(e.data && e.data.size>0) chunks.push(e.data); };
-      mediaRecorder.onstop = ()=>{
-        const blob = new Blob(chunks, { type: chosen.mimeType });
-        const url = URL.createObjectURL(blob);
-        setDownload(url);
-      };
-
-      mediaRecorder.start(200);
-      recPulse.classList.add("on");
-      startBtn.disabled = true;
-      stopBtn.disabled = false;
-
-      stopTimer = setTimeout(()=> stopRecording(), seconds*1000);
-    }
-
-    function stopRecording(){
-      if(stopTimer){ clearTimeout(stopTimer); stopTimer = null; }
-      if(mediaRecorder && mediaRecorder.state !== "inactive"){
-        mediaRecorder.stop();
-      }
-      recPulse.classList.remove("on");
-      startBtn.disabled = false;
-      stopBtn.disabled = true;
-    }
-
-    startBtn.addEventListener("click", ()=> startRecording(10));
-    stopBtn.addEventListener("click", stopRecording);
-
+    // Start bar at 0
+    fill.style.width = "0%";
   </script>
 </body>
 </html>
